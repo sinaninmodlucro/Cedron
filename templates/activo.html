@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% from "_macros.html" import contraste, noticia %}
+{% block titulo %}{{ a.nombre }}: precio y contexto | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}Precio {{ a.de_art }} {{ a.nombre|lower }} en dólares y euros, gráfico de 10 años e indicadores de contexto actualizados.{% endblock %}
+{% block contenido %}
+<article class="ficha">
+  <header class="ficha__cab">
+    <div>
+      <h1>{{ a.nombre }}</h1>
+      <p class="ficha__precio cifra">
+        {% if a.precio.precio %}{{ a.precio.precio|numero }} ${% else %}Sin precio actual{% endif %}
+      </p>
+      <p class="ficha__datos">
+        {% if a.precio.precio %}
+          Por {{ a.unidad }}{% if a.precio_eur %}, {{ a.precio_eur|numero }} €{% endif %}.
+          {% if a.precio.variacion_24h_pct is not none %}En 24 horas, <span class="cifra {{ 'sube' if a.precio.variacion_24h_pct > 0 else 'baja' if a.precio.variacion_24h_pct < 0 }}">{{ a.precio.variacion_24h_pct|porcentaje(2) }}</span>.{% endif %}
+          Fuente: {{ a.precio.fuente }}, {{ a.precio.consultado|fecha_hora }}.
+          {% if a.precio.estado == 'en revisión' %}<strong class="baja">Dato en revisión: {{ a.precio.motivos|join('; ') }}.</strong>{% endif %}
+        {% else %}
+          La fuente de precios no ha respondido todavía. Los indicadores usan la última media mensual disponible.
+        {% endif %}
+      </p>
+    </div>
+    <div>{{ contraste(a.lectura, grande=true) }}</div>
+  </header>
+
+  {% if a.lectura.frase %}<p class="ficha__frase">{{ a.lectura.frase }}</p>{% endif %}
+
+  <div class="columnas">
+    <section class="bloque" aria-labelledby="t-graf">
+      <h2 id="t-graf">Diez años de precio</h2>
+      {% if a.grafico %}{% set g = a.grafico %}
+      <figure class="grafico">
+        <div class="leyenda" aria-hidden="true"><span>Media mensual del precio</span><span class="l-media">Media de {{ g.meses_media }} meses</span></div>
+        <div class="grafico__marco">
+        <svg viewBox="0 0 {{ g.ancho }} {{ g.alto }}" role="img" aria-labelledby="g-desc" data-puntos='{{ g.puntos_json }}'>
+          <desc id="g-desc">Precio medio mensual {{ a.de_art }} {{ a.nombre|lower }} en dólares por {{ a.unidad }} durante los últimos diez años, con su media de {{ g.meses_media }} meses. Último dato: {{ g.ultimo.mes }}, {{ g.ultimo.precio }} dólares.</desc>
+          <g class="rejilla eje">
+            {% for t in g.eje_y %}<line x1="{{ g.izq }}" x2="{{ g.ancho - g.der }}" y1="{{ t.y }}" y2="{{ t.y }}"/><text x="{{ g.izq - 8 }}" y="{{ t.y + 4 }}" text-anchor="end">{{ t.texto }}</text>{% endfor %}
+          </g>
+          <g class="eje">
+            {% for t in g.eje_x %}<text x="{{ t.x }}" y="{{ g.alto - 8 }}" text-anchor="middle">{{ t.texto }}</text>{% endfor %}
+          </g>
+          <path class="media" d="{{ g.media }}"/>
+          <path class="serie" d="{{ g.linea }}"/>
+          <text class="rotulo" x="{{ g.ultimo.x + 8 }}" y="{{ g.ultimo.y + 4 }}">{{ g.ultimo.precio }}</text>
+          <text class="rotulo rotulo--media" x="{{ g.ultimo.x + 8 }}" y="{{ g.ultimo_media_y + (14 if g.ultimo_media_y > g.ultimo.y else -6) }}">media</text>
+          <line class="cruz" x1="0" x2="0" y1="{{ g.arr }}" y2="{{ g.alto - g.aba }}" hidden/>
+          <circle class="punto" r="5" hidden/>
+          <rect class="captura" x="{{ g.izq }}" y="0" width="{{ g.ancho - g.izq - g.der }}" height="{{ g.alto }}" fill="transparent"/>
+        </svg>
+        <div class="globo" hidden></div>
+        </div>
+        <figcaption>Medias mensuales en dólares por {{ a.unidad }}. Hasta el último mes publicado: Banco Mundial (Pink Sheet, CC BY 4.0); después, cierres diarios recogidos por Cedron.</figcaption>
+      </figure>
+      <details class="pequeno">
+        <summary>Ver los datos en tabla</summary>
+        <div class="desplazable"><table class="tabla"><thead><tr><th>Mes</th><th class="num">Precio medio ($)</th><th class="num">Media {{ g.meses_media }} meses ($)</th></tr></thead>
+        <tbody>{% for p in g.puntos|reverse %}<tr><td>{{ p.mes }}</td><td class="num">{{ p.precio }}</td><td class="num">{{ p.media }}</td></tr>{% endfor %}</tbody></table></div>
+      </details>
+      {% else %}
+      <p class="vacio">Aún no hay suficiente historia para dibujar el gráfico.</p>
+      {% endif %}
+    </section>
+
+    <section class="bloque" aria-labelledby="t-ind">
+      <h2 id="t-ind">Indicadores</h2>
+      {% if a.lectura.indicadores %}
+      <ul class="indicadores">
+      {% for r in a.lectura.indicadores %}
+        <li class="indicador">
+          <span class="indicador__puntos {{ 'sube' if r.puntos == 1 else 'baja' if r.puntos == -1 else 'secundario' }}" aria-label="{{ 'sin datos' if r.puntos is none else ('%+d'|format(r.puntos)) ~ ' puntos' }}">{{ '—' if r.puntos is none else ('%+d'|format(r.puntos))|replace('-', '−')|replace('+0', '0') }}</span>
+          <div>
+            <h3 class="indicador__nombre">{{ r.nombre }}</h3>
+            <p class="indicador__dato">{{ r.dato }}</p>
+            <p class="indicador__exp">{{ r.explicacion }}{% if r.fecha %} Dato de {{ r.fecha|mes }}.{% endif %}</p>
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+      <p class="pequeno secundario">Calculado {{ a.lectura.calculado|fecha_hora }} con {{ a.lectura.precio_origen or 'datos disponibles' }}. <a href="{{ raiz }}metodologia.html">Cómo se calcula cada indicador</a>.</p>
+      {% else %}
+      <p class="vacio">Sin indicadores calculados todavía.</p>
+      {% endif %}
+    </section>
+  </div>
+
+  <section class="bloque texto" aria-labelledby="t-mueve">
+    <h2 id="t-mueve">Qué mueve su precio</h2>
+    <p>{{ a.descripcion }}</p>
+  </section>
+
+  <section class="bloque" aria-labelledby="t-an">
+    <h2 id="t-an">Noticias sobre {{ a.articulo }} {{ a.nombre|lower }}</h2>
+    {% if a.noticias %}
+    <ul class="noticias">{% for n in a.noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
+    {% else %}
+    <p class="vacio">Ninguna noticia sobre {{ a.articulo }} {{ a.nombre|lower }} supera el filtro de calidad en las últimas 72 horas.</p>
+    {% endif %}
+  </section>
+</article>
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/grafico.js" defer></script>
+{% endblock %}

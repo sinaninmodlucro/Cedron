@@ -1,0 +1,23 @@
+{% macro contraste(l, grande=false) -%}
+{% set tipo = l.lectura if l and l.lectura in ('favorable', 'neutral', 'desfavorable') else 'sin' %}
+<span class="contraste contraste--{{ tipo }}{% if grande %} contraste--grande{% endif %}">
+  {%- if tipo == 'sin' -%}
+    Sin lectura
+  {%- else -%}
+    {{ l.lectura|capitalize }} <span class="contraste__puntos">{{ '0' if l.total == 0 else ('%+d'|format(l.total))|replace('-', '−') }}</span>
+  {%- endif -%}
+</span>
+{%- endmacro %}
+
+{% macro noticia(n, raiz, nombres) -%}
+<li class="noticia" data-activos="{{ n.activos|join(' ') }}">
+  <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>
+  <p class="noticia__datos">
+    <span>{{ n.medio }}{% if n.comercial %} <span class="etiqueta etiqueta--comercial" title="Este medio vende metales">medio comercial</span>{% endif %}</span>
+    <span>{{ n.fecha|hace }}</span>
+    {% if n.idioma == 'en' %}<span class="etiqueta" title="Artículo en inglés">en inglés</span>{% endif %}
+    {% if n.tambien_en %}<span>También en {{ n.tambien_en|join(', ') }}</span>{% endif %}
+    {% for a in n.activos %}<span class="etiqueta">{{ nombres[a] }}</span>{% endfor %}
+  </p>
+</li>
+{%- endmacro %}

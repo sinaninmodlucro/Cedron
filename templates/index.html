@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% from "_macros.html" import contraste, noticia %}
+{% block titulo %}{{ sitio.nombre }}: cotizaciones y contexto de los metales{% endblock %}
+{% block contenido %}
+<section class="cotizaciones" aria-labelledby="t-cot">
+  <div class="cotizaciones__cab">
+    <div>
+      <h1 id="t-cot">Cotizaciones y contexto</h1>
+      <p class="cotizaciones__estado">
+        {% if ultima_precios %}Precios de {{ ultima_precios|fecha_hora }} (hora de Madrid), {{ ultima_precios|hace }}.{% else %}Todavía no hay precios actuales.{% endif %}
+        {% if proxima %} Próxima actualización {{ proxima }}.{% endif %}
+      </p>
+    </div>
+    <p class="cotizaciones__estado">{% if eurusd %}Cambio usado: 1 € = {{ eurusd[1]|numero(4) }} $ (BCE vía FRED, {{ eurusd[0] }}){% endif %}</p>
+  </div>
+
+  <table class="tabla-precios">
+    <thead>
+      <tr><th scope="col">Metal</th><th scope="col">Dólares</th><th scope="col" class="col-eur">Euros</th><th scope="col" class="col-var">24 horas</th><th scope="col">Contexto</th></tr>
+    </thead>
+    <tbody>
+    {% for a in activos %}
+      <tr>
+        <th scope="row" class="metal"><a href="{{ raiz }}activos/{{ a.id }}.html">{{ a.nombre }}</a><span class="unidad">por {{ a.unidad }}</span></th>
+        <td class="precio cifra">
+          {% if a.precio.precio %}{{ a.precio.precio|numero }} ${% else %}—{% endif %}
+          {% if a.precio.estado == 'en revisión' %}<span class="revision">En revisión</span>{% endif %}
+        </td>
+        <td class="col-eur cifra">{% if a.precio_eur %}{{ a.precio_eur|numero }} €{% else %}—{% endif %}</td>
+        <td class="col-var cifra {% if a.precio.variacion_24h_pct and a.precio.variacion_24h_pct > 0 %}sube{% elif a.precio.variacion_24h_pct and a.precio.variacion_24h_pct < 0 %}baja{% endif %}">{{ a.precio.variacion_24h_pct|porcentaje(2) }}</td>
+        <td>{{ contraste(a.lectura) }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<div class="columnas">
+  <section class="bloque" aria-labelledby="t-not">
+    <h2 id="t-not">Lo más relevante</h2>
+    {% if noticias %}
+    <ul class="noticias">{% for n in noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
+    <p class="pequeno"><a href="{{ raiz }}noticias.html">Todas las noticias seleccionadas</a></p>
+    {% else %}
+    <p class="vacio">No hay noticias que superen el filtro de calidad en las últimas horas.</p>
+    {% endif %}
+  </section>
+
+  <section class="bloque texto" aria-labelledby="t-leer">
+    <h2 id="t-leer">Cómo leer el contexto</h2>
+    <p>Cada metal tiene hasta cinco indicadores públicos: tendencia, momento, entorno macro, posicionamiento y valoración relativa. Cada uno suma +1, 0 o −1.</p>
+    <p>{{ contraste({'lectura': 'favorable', 'total': 2}) }} cuando la suma es +2 o más, {{ contraste({'lectura': 'desfavorable', 'total': -2}) }} con −2 o menos, y neutral en medio.</p>
+    <p>Es una descripción del entorno, no una orden de compra o venta. <a href="{{ raiz }}metodologia.html">Reglas completas e historial de aciertos y fallos</a>.</p>
+  </section>
+</div>
+{% endblock %}

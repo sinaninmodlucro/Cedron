@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "_macros.html" import noticia %}
+{% block titulo %}Noticias seleccionadas | {{ sitio.nombre }}{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Noticias seleccionadas</h1>
+  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación. Cada enlace lleva al artículo original. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
+</div>
+<div class="filtros" role="group" aria-label="Filtrar por metal">
+  <button type="button" data-filtro="" aria-pressed="true">Todas</button>
+  {% for a in activos %}<button type="button" data-filtro="{{ a.id }}" aria-pressed="false">{{ a.nombre }}</button>{% endfor %}
+</div>
+{% if noticias %}
+<ul class="noticias" id="lista">{% for n in noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
+<p class="vacio" id="sin-resultados" hidden>Ninguna noticia seleccionada sobre este metal en este momento.</p>
+{% else %}
+<p class="vacio">Ahora mismo ninguna noticia supera el filtro de calidad. La lista se revisa cada hora.</p>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+document.querySelectorAll(".filtros button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var f = b.dataset.filtro, visibles = 0;
+    document.querySelectorAll(".filtros button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+    document.querySelectorAll("#lista .noticia").forEach(function (n) {
+      var ver = !f || n.dataset.activos.split(" ").indexOf(f) >= 0;
+      n.hidden = !ver; if (ver) visibles++;
+    });
+    var sin = document.getElementById("sin-resultados"); if (sin) sin.hidden = visibles > 0;
+  });
+});
+</script>
+{% endblock %}

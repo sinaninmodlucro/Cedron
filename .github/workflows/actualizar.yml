@@ -1,0 +1,97 @@
+# Cedron: actualizacion automatica cada hora.
+# Recoge datos, calcula indicadores, guarda el historico en el repositorio y
+# publica la web en GitHub Pages. Si una fuente falla 3 veces seguidas, abre
+# una incidencia en GitHub (que te llega por correo).
+name: Actualizar Cedron
+
+on:
+  schedule:
+    - cron: "17 * * * *"      # cada hora, minuto 17 (UTC); evita la hora en punto, muy saturada
+  workflow_dispatch:           # boton "Run workflow" para lanzarlo a mano
+    inputs:
+      forzar:
+        description: "Pedir todas las fuentes aunque no toque"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["config.yaml", "templates/**", "static/**", "cedron/**"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: cedron
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.publicar.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Pruebas
+        run: python -m unittest discover tests
+
+      - name: Recoger datos y generar la web
+        env:
+          METALCHARTS_KEY: ${{ secrets.METALCHARTS_KEY }}
+          FRED_KEY: ${{ secrets.FRED_KEY }}
+          NEWSDATA_KEY: ${{ secrets.NEWSDATA_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python run.py --solo-web
+          elif [ "${{ inputs.forzar }}" = "true" ]; then
+            python run.py --forzar
+          else
+            python run.py
+          fi
+
+      - name: Guardar datos en el repositorio
+        run: |
+          git config user.name "cedron-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p data
+          git add -A data
+          if ! git diff --cached --quiet; then
+            git commit -m "Datos $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase --autostash
+            git push
+          fi
+
+      - name: Avisar si alguna fuente falla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          titulo="Cedron: fuentes con fallos"
+          abierta=$(gh issue list --state open --search "\"$titulo\" in:title" --json number --jq '.[0].number')
+          # Un solo aviso al empezar el problema y otro al resolverse (no uno por hora)
+          if [ -f alertas.md ]; then
+            if [ -z "$abierta" ]; then
+              gh issue create --title "$titulo" --body-file alertas.md
+            fi
+          elif [ -n "$abierta" ]; then
+            gh issue close "$abierta" --comment "Todas las fuentes vuelven a responder."
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: publicar
+        uses: actions/deploy-pages@v4

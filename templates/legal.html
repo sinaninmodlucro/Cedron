@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %}Aviso legal y privacidad | {{ sitio.nombre }}{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Aviso legal y privacidad</h1>
+  <p class="secundario pequeno">Borrador pendiente de revisión por un abogado antes de la publicación. Los campos entre corchetes deben completarse.</p>
+
+  <h2 class="bloque">Titular de la web</h2>
+  <p>En cumplimiento de la Ley 34/2002 de servicios de la sociedad de la información: titular [nombre o razón social], NIF [número], domicilio [dirección], correo <a href="mailto:{{ sitio.contacto }}">{{ sitio.contacto }}</a>.</p>
+
+  <h2 class="bloque">Naturaleza del contenido</h2>
+  <p>{{ sitio.nombre }} publica información y análisis generales sobre materias primas, dirigidos al público en general. El contenido no tiene en cuenta la situación personal, los objetivos ni el perfil de riesgo de ningún lector, por lo que no constituye asesoramiento en materia de inversión. {{ sitio.nombre }} no está registrado en la CNMV como empresa de servicios de inversión y no recomienda la compra o venta de instrumentos financieros concretos.</p>
+  <p>Las lecturas de contexto se generan de forma automática con las reglas publicadas en la <a href="{{ raiz }}metodologia.html">metodología</a>. Los datos proceden de terceros y pueden contener errores o retrasos. Invertir en materias primas implica riesgo de pérdida.</p>
+
+  <h2 class="bloque">Conflictos de interés</h2>
+  <p>[Declarar aquí si el autor o la empresa poseen metales, instrumentos ligados a ellos, enlaces de afiliado o publicidad. Si no hay ninguno, indicarlo expresamente.]</p>
+
+  <h2 class="bloque">Privacidad</h2>
+  <p>Esta web no usa cookies, no tiene formularios y no recoge datos personales. No hay herramientas de analítica ni publicidad.</p>
+  <p>Al visitarla, intervienen dos proveedores técnicos que reciben la dirección IP por necesidad del servicio: GitHub (alojamiento de la web) y Bunny Fonts (tipografías, servidas desde la UE sin registro de usuarios). Si escribes al correo de contacto, tus datos se usarán solo para responderte y se borrarán cuando ya no sean necesarios. Puedes ejercer tus derechos de acceso, rectificación y supresión en esa dirección, y reclamar ante la Agencia Española de Protección de Datos.</p>
+
+  <h2 class="bloque">Propiedad intelectual</h2>
+  <p>Los textos y gráficos propios de {{ sitio.nombre }} pueden citarse con enlace a la fuente. Los datos de terceros conservan sus licencias, detalladas en <a href="{{ raiz }}fuentes.html">Fuentes y licencias</a>. Los titulares de noticias enlazan a sus medios originales.</p>
+</div>
+{% endblock %}

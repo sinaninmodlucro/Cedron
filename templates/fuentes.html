@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block titulo %}Fuentes y licencias | {{ sitio.nombre }}{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Fuentes y licencias</h1>
+  <p>Cedron solo usa fuentes cuyas condiciones permiten mostrar sus datos en una web pública. De las noticias se publica el titular y un enlace al original, nunca el texto completo.</p>
+</div>
+
+<h2 class="bloque">Datos</h2>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Fuente</th><th>Qué aporta</th><th>Frecuencia</th><th>Licencia</th></tr></thead>
+  <tbody>
+    <tr><td><a href="https://metalcharts.org/metals-api" rel="noopener">MetalCharts</a></td><td>Precio actual de oro, plata, platino, paladio y cobre</td><td>Varias veces al día, de lunes a viernes</td><td>Plan gratuito con uso comercial permitido</td></tr>
+    <tr><td><a href="https://www.worldbank.org/en/research/commodity-markets" rel="noopener">Banco Mundial, Commodity Price Data (Pink Sheet)</a></td><td>Precios medios mensuales desde 1960</td><td>Mensual{% if pink_consultado %} (revisado {{ pink_consultado|fecha_larga }}){% endif %}</td><td>CC BY 4.0</td></tr>
+    <tr><td><a href="https://fred.stlouisfed.org/" rel="noopener">FRED, Banco de la Reserva Federal de St. Louis</a></td><td>Tipo real a 10 años (DFII10), índice del dólar (DTWEXBGS), cambio euro/dólar (DEXUSEU)</td><td>Diaria</td><td>Uso permitido con atribución; series sin copyright de terceros</td></tr>
+    <tr><td><a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm" rel="noopener">CFTC, Commitments of Traders</a></td><td>Posicionamiento de especuladores en futuros</td><td>Semanal (viernes)</td><td>Dominio público</td></tr>
+    <tr><td><a href="https://newsdata.io/" rel="noopener">NewsData.io</a></td><td>Titulares de prensa económica</td><td>Cada hora</td><td>Plan gratuito con uso comercial permitido</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="bloque">Medios de noticias</h2>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Medio</th><th class="num">Nota de calidad</th><th>Tipo</th><th>Estado</th></tr></thead>
+  <tbody>
+  {% for m in cfg.medios %}{% set e = fuentes_estado.get('RSS ' ~ m.nombre, {}) %}
+    <tr><td>{{ m.nombre }}</td><td class="num">{{ m.nota }}</td><td>{{ 'Comercial (vende metales)' if m.comercial else 'Informativo u oficial' }}</td>
+      <td>{% if not m.activo %}Desactivado{% elif e.fallos_seguidos %}<span class="estado-mal">Sin respuesta desde {{ e.ultimo_ok|fecha_hora if e.ultimo_ok else 'el inicio' }}</span>{% elif e.ultimo_ok %}<span class="estado-ok">Funciona</span>{% else %}Pendiente{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<p class="pequeno secundario">Los medios que llegan a través de NewsData.io y no están en esta lista reciben una nota de {{ cfg.noticias.nota_medio_desconocido }}. La lista y las notas se revisan cada trimestre.</p>
+
+<h2 class="bloque">Estado de las fuentes</h2>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Fuente</th><th>Última respuesta correcta</th><th>Estado</th></tr></thead>
+  <tbody>
+  {% for nombre, e in fuentes_estado|dictsort if not nombre.startswith('RSS ') %}
+    <tr><td>{{ nombre }}</td><td>{{ e.ultimo_ok|fecha_hora if e.ultimo_ok else '—' }}</td>
+      <td>{% if e.fallos_seguidos %}<span class="estado-mal">Fallando ({{ e.fallos_seguidos }} intentos): {{ e.ultimo_error }}</span>{% else %}<span class="estado-ok">Correcto</span>{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% if ultima_ejecucion %}<p class="pequeno secundario">Última comprobación: {{ ultima_ejecucion|fecha_hora }}.</p>{% endif %}
+{% endblock %}

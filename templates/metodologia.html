@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %}Metodología e historial | {{ sitio.nombre }}{% endblock %}
+{% block contenido %}
+{% set i = cfg.indicadores %}
+<div class="texto">
+  <h1>Metodología e historial</h1>
+  <p>Cedron describe el contexto de cada metal con cinco indicadores públicos y comprobables. Ningún método predice precios con fiabilidad: el objetivo es ser transparente, constante y verificable. Los análisis los firma {{ sitio.autor }}.</p>
+
+  <h2 class="bloque">Los indicadores</h2>
+  <p>Cada indicador suma +1 (favorable), 0 (neutral) o −1 (desfavorable). Si un indicador no tiene datos, no cuenta. La lectura es <strong>favorable</strong> con +{{ i.lectura.favorable_desde }} o más, <strong>desfavorable</strong> con {{ i.lectura.desfavorable_hasta }} o menos y <strong>neutral</strong> en medio. Con menos de tres indicadores disponibles no se publica lectura.</p>
+</div>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Indicador</th><th>Qué mide</th><th>Regla</th><th>Fuente</th></tr></thead>
+  <tbody>
+    <tr><td>Tendencia de largo plazo</td><td>Precio frente a la media de sus últimos {{ i.tendencia.meses_media }} meses (equivale a unas 200 sesiones)</td><td>+1 por encima y con la media subiendo; −1 por debajo y con la media bajando; 0 en otro caso</td><td>Banco Mundial y cierres propios</td></tr>
+    <tr><td>Momento</td><td>Cambio del precio frente a la media mensual de hace {{ i.momento.meses }} meses</td><td>+1 si sube más de un {{ i.momento.umbral_pct }} %; −1 si cae más de un {{ i.momento.umbral_pct }} %</td><td>Banco Mundial y cierres propios</td></tr>
+    <tr><td>Entorno macro (solo metales preciosos)</td><td>Tipo de interés real a 10 años de EE. UU. (serie DFII10) e índice amplio del dólar (DTWEXBGS) frente a hace {{ i.macro.meses }} meses</td><td>+1 si ambos bajan (más de {{ i.macro.umbral_tipo_real|numero }} puntos y {{ i.macro.umbral_dolar_pct|numero(1) }} %); −1 si ambos suben; 0 si discrepan</td><td>FRED</td></tr>
+    <tr><td>Posicionamiento especulativo</td><td>Posición neta de los grandes especuladores en futuros, en % del interés abierto, frente a sus últimos {{ i.posicionamiento.anios }} años</td><td>Lectura contraria: −1 por encima del percentil {{ i.posicionamiento.percentil_alto }}; +1 por debajo del percentil {{ i.posicionamiento.percentil_bajo }}</td><td>CFTC, informe semanal Commitments of Traders</td></tr>
+    <tr><td>Valoración relativa</td><td>Ratio oro/plata (para oro y plata) y platino/oro (para platino) frente a su media de {{ i.ratio.anios }} años</td><td>−1 si el metal está caro respecto al otro (más de {{ i.ratio.desviaciones|numero(1) }} desviación típica); +1 si está barato</td><td>Banco Mundial y cierres propios</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="texto">
+  <p class="pequeno secundario">El paladio no tiene histórico mensual en el Banco Mundial; sus indicadores de tendencia y momento se activan cuando Cedron acumula suficientes cierres propios. El cobre no usa el indicador macro, porque su precio depende más de la actividad industrial que de los tipos reales.</p>
+
+  <h2 class="bloque" id="noticias">Cómo se seleccionan las noticias</h2>
+  <p>Cada titular recibe una nota de 0 a 100: relevancia temática ({{ cfg.noticias.pesos.relevancia }} %), calidad del medio ({{ cfg.noticias.pesos.calidad_medio }} %), actualidad ({{ cfg.noticias.pesos.actualidad }} %) y confirmación por otros medios ({{ cfg.noticias.pesos.confirmacion }} %). Se publican las que superan {{ cfg.noticias.umbral_publicacion }} puntos. Las noticias repetidas en varios medios se agrupan. Los medios que venden metales se marcan como «medio comercial» y no bastan por sí solos: su noticia debe estar confirmada por otro medio.</p>
+
+  <h2 class="bloque">Cambios en la metodología</h2>
+  <p>Si se añade, cambia o elimina una regla, se anunciará aquí con fecha y motivo. Las lecturas anteriores no se recalculan.</p>
+
+  <h2 class="bloque" id="historial">Historial de lecturas</h2>
+  <p>Cada día laborable se guarda la lectura de cada metal con el precio de ese día. La tabla muestra cómo se movió el precio 1, 3 y 6 meses después, incluidas las lecturas que fallaron. Rentabilidades pasadas no garantizan resultados futuros.</p>
+</div>
+{% if historial %}
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Fecha</th><th>Metal</th><th>Lectura</th><th class="num">Precio ($)</th><th class="num">1 mes</th><th class="num">3 meses</th><th class="num">6 meses</th></tr></thead>
+  <tbody>
+  {% for h in historial %}
+    <tr><td>{{ h.fecha }}</td><td>{{ nombres[h.activo] }}</td><td>{{ h.lectura|capitalize }} ({{ '0' if h.total == 0 else ('%+d'|format(h.total))|replace('-', '−') }})</td>
+      <td class="num">{{ h.precio|numero }}</td>
+      {% for k in ('1m', '3m', '6m') %}<td class="num">{{ h[k]|porcentaje if h[k] is not none else 'pendiente' }}</td>{% endfor %}</tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="vacio">El historial empieza con la primera lectura con precio real.</p>
+{% endif %}
+{% endblock %}

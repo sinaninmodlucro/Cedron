@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titulo %}{{ sitio.nombre }}{% endblock %}</title>
+<meta name="description" content="{% block descripcion %}{{ sitio.lema }}{% endblock %}">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=archivo:400,600,700|literata:400,400i,600&display=swap">
+<link rel="stylesheet" href="{{ raiz }}static/estilo.css">
+<link rel="icon" href="{{ raiz }}static/marca.svg" type="image/svg+xml">
+{% if demo %}<meta name="robots" content="noindex">{% endif %}
+</head>
+<body>
+<a class="saltar" href="#contenido">Ir al contenido</a>
+{% if demo %}
+<div class="aviso-demo" role="note">
+  Vista de ejemplo con <strong>datos inventados</strong>. Los precios, noticias y lecturas no son reales.
+</div>
+{% endif %}
+<header class="cabecera">
+  <div class="envoltura cabecera__fila">
+    <a class="marca" href="{{ raiz }}index.html" aria-label="{{ sitio.nombre }}, inicio">
+      <svg class="marca__sello" viewBox="0 0 40 24" aria-hidden="true"><rect x="1.5" y="1.5" width="37" height="21" rx="10.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="5" width="30" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <span class="marca__nombre">{{ sitio.nombre }}</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="{{ raiz }}index.html"{% if seccion == 'mercado' %} aria-current="page"{% endif %}>Mercado</a>
+      <a href="{{ raiz }}noticias.html"{% if seccion == 'noticias' %} aria-current="page"{% endif %}>Noticias</a>
+      <a href="{{ raiz }}metodologia.html"{% if seccion == 'metodologia' %} aria-current="page"{% endif %}>Metodología</a>
+      <a href="{{ raiz }}fuentes.html"{% if seccion == 'fuentes' %} aria-current="page"{% endif %}>Fuentes</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido" class="envoltura">
+{% block contenido %}{% endblock %}
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <p class="pie__aviso">
+      Cedron publica información y análisis generales sobre materias primas. No está adaptado a la situación
+      de ningún lector, no es asesoramiento en materia de inversión y no recomienda productos financieros concretos.
+      Rentabilidades pasadas no garantizan resultados futuros. <a href="{{ raiz }}metodologia.html">Cómo se elabora</a>.
+    </p>
+    <p class="pie__enlaces">
+      <a href="{{ raiz }}legal.html">Aviso legal y privacidad</a>
+      <a href="{{ raiz }}fuentes.html">Fuentes y licencias</a>
+      <a href="mailto:{{ sitio.contacto }}">Contacto</a>
+    </p>
+    <p class="pie__nota">© {{ anio }} {{ sitio.nombre }}. Datos históricos: Banco Mundial (CC BY 4.0), FRED, CFTC. Precios actuales: MetalCharts.</p>
+  </div>
+</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

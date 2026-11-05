@@ -1,0 +1,181 @@
+# =============================================================================
+# CEDRON - Configuracion general
+# Este es el UNICO archivo que hace falta tocar para ajustar el comportamiento
+# de la web. Cada parametro lleva una explicacion. Tras cambiarlo, la siguiente
+# actualizacion automatica (cada hora) ya lo aplica.
+# =============================================================================
+
+sitio:
+  nombre: "Cedron"
+  lema: "Análisis independiente de metales preciosos y materias primas"
+  url: "https://cedron.example"        # cambiar cuando tengamos dominio
+  autor: "Equipo Cedron"               # quien firma los analisis (exigido por MAR)
+  contacto: "contacto@cedron.example"
+  idioma: "es"
+  zona_horaria: "Europe/Madrid"
+
+# -----------------------------------------------------------------------------
+# Activos cubiertos. 'pink_sheet' es el nombre exacto de la serie en el Banco
+# Mundial (historico mensual, licencia CC BY 4.0). 'metalcharts' es el simbolo
+# para el precio actual. 'cftc' es el codigo de contrato de la CFTC.
+# -----------------------------------------------------------------------------
+activos:
+  - id: oro
+    nombre: "Oro"
+    simbolo: XAU
+    unidad: "onza troy"
+    metalcharts: XAU
+    pink_sheet: "Gold"
+    cftc: "088691"
+    macro: true
+    descripcion: >
+      Activo refugio por excelencia. Su precio responde sobre todo a los tipos de
+      interés reales, la fortaleza del dólar y las compras de los bancos centrales.
+  - id: plata
+    nombre: "Plata"
+    articulo: "la"
+    simbolo: XAG
+    unidad: "onza troy"
+    metalcharts: XAG
+    pink_sheet: "Silver"
+    cftc: "084691"
+    macro: true
+    descripcion: >
+      Mitad metal precioso, mitad metal industrial (electrónica, paneles solares).
+      Suele moverse en la misma dirección que el oro pero con más intensidad.
+  - id: platino
+    nombre: "Platino"
+    simbolo: XPT
+    unidad: "onza troy"
+    metalcharts: XPT
+    pink_sheet: "Platinum"
+    cftc: "076651"
+    macro: true
+    descripcion: >
+      Mercado pequeño y muy concentrado (Sudáfrica produce la mayoría). Su demanda
+      depende en gran parte de los catalizadores de automóvil y de la joyería.
+  - id: paladio
+    nombre: "Paladio"
+    simbolo: XPD
+    unidad: "onza troy"
+    metalcharts: XPD
+    pink_sheet: null          # el Banco Mundial no publica paladio
+    cftc: "075651"
+    macro: true
+    descripcion: >
+      Usado casi en exclusiva en catalizadores de coches de gasolina. Rusia y
+      Sudáfrica concentran la producción; es el más volátil de los cuatro.
+  - id: cobre
+    nombre: "Cobre"
+    simbolo: HG
+    unidad: "libra"
+    metalcharts: HG
+    pink_sheet: "Copper"
+    pink_sheet_unidad: "tonelada"   # el Banco Mundial lo da en $/tonelada
+    cftc: "085692"
+    macro: false
+    descripcion: >
+      Termómetro de la economía mundial: construcción, redes eléctricas y coches
+      eléctricos. China consume aproximadamente la mitad del cobre del mundo.
+
+# -----------------------------------------------------------------------------
+# Presupuesto de consultas a las APIs gratuitas. El motor nunca lo supera.
+# -----------------------------------------------------------------------------
+presupuesto:
+  metalcharts_mensual: 190        # el plan gratuito da 200; dejamos margen
+  metalcharts_horas: [8, 11, 14, 17, 20, 23]   # horas (Madrid) en que se piden precios, lunes a viernes
+  newsdata_diario: 150            # el plan gratuito da 200 creditos
+
+# -----------------------------------------------------------------------------
+# Indicadores (ver pagina de metodologia). Cada uno puntua -1, 0 o +1.
+# -----------------------------------------------------------------------------
+indicadores:
+  tendencia:
+    meses_media: 10               # media movil de 10 meses (equivale a ~200 sesiones)
+  momento:
+    meses: 3
+    umbral_pct: 5                 # +1 si sube mas de 5% en 3 meses; -1 si cae mas de 5%
+  macro:
+    meses: 3                      # compara tipos reales y dolar con hace 3 meses
+    umbral_tipo_real: 0.10        # puntos porcentuales para considerar que "baja" o "sube"
+    umbral_dolar_pct: 1.0
+  posicionamiento:
+    anios: 3
+    percentil_alto: 90            # por encima: euforia -> -1
+    percentil_bajo: 10            # por debajo: pesimismo extremo -> +1
+  ratio:
+    anios: 10
+    desviaciones: 1.0             # cuantas desviaciones tipicas para considerar extremo
+  lectura:
+    favorable_desde: 2            # suma >= 2 -> favorable
+    desfavorable_hasta: -2        # suma <= -2 -> desfavorable
+
+# -----------------------------------------------------------------------------
+# Noticias: como se puntua cada titular (0-100) y que se publica.
+# -----------------------------------------------------------------------------
+noticias:
+  umbral_publicacion: 60          # solo se publican las que superan esta nota
+  maximo_portada: 5
+  maximo_pagina: 60
+  horas_vigencia: 72              # noticias mas antiguas no se muestran
+  comercial_requiere_confirmacion: true   # un medio que vende metales no basta por si solo
+  nota_medio_desconocido: 50      # nota para medios que llegan via NewsData.io y no estan en la lista
+  pesos:
+    relevancia: 40
+    calidad_medio: 25
+    actualidad: 20
+    confirmacion: 15
+  palabras_clave:
+    general: ["materias primas", "commodities", "metales preciosos", "precious metals",
+              "bancos centrales", "central bank", "Fed", "BCE", "ECB", "tipos de interés",
+              "interest rates", "inflación", "inflation", "dólar", "dollar", "LBMA", "COMEX"]
+    oro: ["oro", "gold", "XAU", "bullion", "lingote"]
+    plata: ["plata", "silver", "XAG"]
+    platino: ["platino", "platinum", "PGM"]
+    paladio: ["paladio", "palladium", "PGM"]
+    cobre: ["cobre", "copper", "LME"]
+  excluir: ["horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino"]
+
+# -----------------------------------------------------------------------------
+# Medios. 'nota' de 0 a 100 = calidad del medio. 'comercial: true' marca a quien
+# vende metales: se publica con etiqueta y nunca puede ser fuente unica.
+# 'activo: false' desactiva un feed sin borrarlo.
+# -----------------------------------------------------------------------------
+medios:
+  - nombre: "Reserva Federal"
+    rss: "https://www.federalreserve.gov/feeds/press_all.xml"
+    nota: 100
+    idioma: en
+    activo: true
+  - nombre: "Banco Central Europeo"
+    rss: "https://www.ecb.europa.eu/rss/press.html"
+    nota: 100
+    idioma: en
+    activo: true
+  - nombre: "Mining.com"
+    rss: "https://www.mining.com/feed/"
+    nota: 75
+    idioma: en
+    activo: true
+  - nombre: "Kitco News"
+    rss: "https://www.kitco.com/rss/KitcoNews.xml"
+    nota: 75
+    idioma: en
+    comercial: true
+    activo: true
+  - nombre: "GoldSeek News"
+    rss: "https://news.goldseek.com/newsRSS.xml"
+    nota: 45
+    idioma: en
+    comercial: true
+    activo: true
+  - nombre: "Expansión - Mercados"
+    rss: "https://e00-expansion.uecdn.es/rss/mercados.xml"
+    nota: 80
+    idioma: es
+    activo: true
+  - nombre: "Cinco Días - Mercados"
+    rss: "https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.elpais.com/section/mercados/portada"
+    nota: 80
+    idioma: es
+    activo: true
