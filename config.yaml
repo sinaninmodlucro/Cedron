@@ -114,7 +114,7 @@ indicadores:
 # Noticias: como se puntua cada titular (0-100) y que se publica.
 # -----------------------------------------------------------------------------
 noticias:
-  umbral_publicacion: 60          # solo se publican las que superan esta nota
+  umbral_publicacion: 55          # solo se publican las que superan esta nota (6-nov-2026: bajado de 60)
   maximo_portada: 5
   maximo_pagina: 60
   horas_vigencia: 72              # noticias mas antiguas no se muestran
@@ -134,7 +134,14 @@ noticias:
     platino: ["platino", "platinum", "PGM"]
     paladio: ["paladio", "palladium", "PGM"]
     cobre: ["cobre", "copper", "LME"]
-  excluir: ["horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino"]
+  # Para medios que NO estan en la lista de abajo, el titular debe incluir al menos
+  # uno de estos terminos de mercado (ademas del metal).
+  contexto_mercado: ["precio", "precios", "cotiza", "cotización", "mercado", "mercados", "onza", "futuros",
+                     "price", "prices", "market", "markets", "ounce", "futures", "spot", "rally", "record",
+                     "demand", "demanda", "supply", "oferta", "central bank", "banco central", "ETF",
+                     "Fed", "rate", "rates", "tipos", "inflation", "inflación", "tariff", "aranceles", "mine", "mina"]
+  excluir: ["horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino",
+            "tola", "carat", "quilates", "joyería", "jewellery", "jewelry", "throne", "medalla", "medal"]
 
 # -----------------------------------------------------------------------------
 # Medios. 'nota' de 0 a 100 = calidad del medio. 'comercial: true' marca a quien
@@ -156,13 +163,13 @@ medios:
     rss: "https://www.mining.com/feed/"
     nota: 75
     idioma: en
-    activo: true
+    activo: false        # 6-nov-2026: bloquea lectores automaticos (403)
   - nombre: "Kitco News"
     rss: "https://www.kitco.com/rss/KitcoNews.xml"
     nota: 75
     idioma: en
     comercial: true
-    activo: true
+    activo: false        # 6-nov-2026: direccion del feed ya no existe (404); buscar la nueva
   - nombre: "GoldSeek News"
     rss: "https://news.goldseek.com/newsRSS.xml"
     nota: 45

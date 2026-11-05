@@ -95,6 +95,12 @@ def seleccionar(brutas: list[dict], cfg: dict, medios: dict[str, dict], nota_def
         activos, relevancia = etiquetar(n, cfg["palabras_clave"])
         if relevancia == 0:
             continue
+        # Medios fuera de la lista (llegan por NewsData): ademas del metal, el titular
+        # debe hablar de mercado. Evita joyeria, precios locales al por menor, cine...
+        if n["medio"] not in medios:
+            mercado = cfg.get("contexto_mercado", [])
+            if not any(_contiene(normalizar(n["titulo"]), k) for k in mercado):
+                continue
         medio = medios.get(n["medio"], {})
         candidatas.append({**n, "activos": activos, "relevancia": relevancia,
                            "frescura": frescura,

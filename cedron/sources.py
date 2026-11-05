@@ -39,7 +39,9 @@ def _get(url: str, **kwargs) -> requests.Response:
     if r.status_code == 429:
         raise FuenteError("limite de consultas alcanzado (429)")
     if r.status_code in (401, 403):
-        raise FuenteError(f"clave rechazada ({r.status_code}); revisa el secreto en GitHub")
+        if kwargs.get("params", {}).get("apikey") or kwargs.get("params", {}).get("api_key") or "Authorization" in cabeceras:
+            raise FuenteError(f"clave rechazada ({r.status_code}); revisa el secreto en GitHub")
+        raise FuenteError(f"acceso denegado por el sitio ({r.status_code})")
     if r.status_code >= 400:
         raise FuenteError(f"error HTTP {r.status_code}")
     return r
@@ -217,8 +219,13 @@ def _limpiar(t: str) -> str:
 
 def rss(url: str) -> list[dict]:
     r = _get(url)
+    contenido = re.sub(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]", b"", r.content)
+    # '&' sueltos (sin entidad) son el error mas comun en feeds mal formados
+    contenido = re.sub(rb"&(?!(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);)", b"&amp;", contenido)
+    if not contenido.strip():
+        raise FuenteError("el feed llega vacio")
     try:
-        raiz = ET.fromstring(r.content)
+        raiz = ET.fromstring(contenido)
     except ET.ParseError as e:
         raise FuenteError(f"feed ilegible ({e})") from e
     atom = "{http://www.w3.org/2005/Atom}"
@@ -242,7 +249,7 @@ def newsdata(clave: str, consulta: str, idiomas: str = "es,en") -> list[dict]:
     if not clave:
         raise FuenteError("falta la clave NEWSDATA_KEY")
     r = _get("https://newsdata.io/api/1/latest",
-             params={"apikey": clave, "q": consulta, "language": idiomas})
+             params={"apikey": clave, "q": consulta, "language": idiomas, "category": "business"})
     cuerpo = r.json()
     if cuerpo.get("status") != "success":
         raise FuenteError(f"NewsData: {str(cuerpo.get('results', cuerpo))[:150]}")
