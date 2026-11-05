@@ -135,6 +135,14 @@ class Noticias(unittest.TestCase):
                            noticia("Gold casino promo", "Oficial")], CFG_NOT, MEDIOS, 50)
         self.assertEqual(sel, [])
 
+    def test_medio_bloqueado_y_compraventas(self):
+        cfg = {**CFG_NOT, "medios_bloqueados": ["Watch List News"],
+               "excluir": CFG_NOT["excluir"] + ["acquires new position"]}
+        sel = seleccionar([noticia("Gold record as Fed cuts", "Watch List News"),
+                           noticia("Fund acquires new position in gold ETF as Fed cuts", "Oficial")],
+                          cfg, MEDIOS, 50)
+        self.assertEqual(sel, [])
+
     def test_agrupar_duplicados(self):
         g = agrupar([{"titulo": "Copper prices fall on weak China data"},
                      {"titulo": "Copper prices fall after weak China data"},

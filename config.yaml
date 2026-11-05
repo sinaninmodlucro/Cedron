@@ -140,7 +140,13 @@ noticias:
                      "price", "prices", "market", "markets", "ounce", "futures", "spot", "rally", "record",
                      "demand", "demanda", "supply", "oferta", "central bank", "banco central", "ETF",
                      "Fed", "rate", "rates", "tipos", "inflation", "inflación", "tariff", "aranceles", "mine", "mina"]
-  excluir: ["horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino",
+  # Webs que generan noticias automaticas sobre compraventas de acciones/ETF concretos
+  medios_bloqueados: ["Watch List News", "MarketBeat", "ETF Daily News", "Defense World",
+                      "Ticker Report", "The Cerbat Gem", "Modern Readers", "The Lincolnian Online",
+                      "Daily Political", "American Banking News", "Stock Observer", "Zolmax"]
+  excluir: ["acquires new position", "acquires shares", "position in", "stake in", "shares sold",
+            "shares bought", "price target", "holdings in", "sells shares", "buys shares",
+            "horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino",
             "tola", "carat", "quilates", "joyería", "jewellery", "jewelry", "throne", "medalla", "medal"]
 
 # -----------------------------------------------------------------------------

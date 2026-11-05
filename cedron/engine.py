@@ -237,9 +237,14 @@ def calcular_lecturas(cfg) -> dict:
 # ---------------------------------------------------------------------------
 # Avisos de salud
 # ---------------------------------------------------------------------------
-def revisar_salud(estado: Estado) -> list[str]:
+def revisar_salud(cfg, estado: Estado) -> list[str]:
+    # Los medios desactivados en config.yaml dejan de contar (y se olvida su historial)
+    inactivos = {f"RSS {m['nombre']}" for m in cfg["medios"] if not m.get("activo", True)}
+    fuentes = estado.get("fuentes", {})
+    for f in inactivos:
+        fuentes.pop(f, None)
     avisos = []
-    for fuente, info in sorted(estado.get("fuentes", {}).items()):
+    for fuente, info in sorted(fuentes.items()):
         if info.get("fallos_seguidos", 0) >= 3:
             avisos.append(f"- **{fuente}** lleva {info['fallos_seguidos']} fallos seguidos. "
                           f"Último error: {info.get('ultimo_error', '?')}")
@@ -253,6 +258,6 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     actualizar_noticias(cfg, estado)
     calcular_lecturas(cfg)
     estado.set("ultima_ejecucion", iso())
-    avisos = revisar_salud(estado)
+    avisos = revisar_salud(cfg, estado)
     estado.guardar()
     return avisos

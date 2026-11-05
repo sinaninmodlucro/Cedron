@@ -80,12 +80,15 @@ def agrupar(noticias: list[dict], similitud: float = 0.5) -> list[list[dict]]:
 def seleccionar(brutas: list[dict], cfg: dict, medios: dict[str, dict], nota_defecto: int) -> list[dict]:
     pesos = cfg["pesos"]
     excluir = [normalizar(x) for x in cfg.get("excluir", [])]
+    bloqueados = {normalizar(m) for m in cfg.get("medios_bloqueados", [])}
     candidatas = []
     vistas = set()
     for n in brutas:
         if n["enlace"] in vistas:
             continue
         vistas.add(n["enlace"])
+        if normalizar(n["medio"]) in bloqueados:
+            continue
         texto = normalizar(n["titulo"] + " " + n.get("resumen", ""))
         if any(x in texto for x in excluir):
             continue
