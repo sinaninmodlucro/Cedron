@@ -48,9 +48,9 @@ def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
 
 def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
     from .apoyo import _canales_panel, materias
-    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}, "pagados": {}, "eurostat": {}}
+    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}, "pagados": {}, "eurostat": {}, "metalcharts": {}}
     clave = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
-             "pagados": "producto", "eurostat": "serie"}
+             "pagados": "producto", "eurostat": "serie", "metalcharts": "simbolo"}
     semilla = 700
 
     def panel(d, nivel):
@@ -86,7 +86,7 @@ def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
                 else:
                     caches[d["fuente"]][d[clave[d["fuente"]]]] = serie
     escribir("apoyo/carburantes.json", {"series": caches["carburantes"], "dato": iso(), "consultado": iso()})
-    for f in ("boletin", "mapa", "fred", "panel", "pagados", "eurostat"):
+    for f in ("boletin", "mapa", "fred", "panel", "pagados", "eurostat", "metalcharts"):
         escribir(f"apoyo/{f}.json", {"series": caches[f], "consultado": iso()})
 
 

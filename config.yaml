@@ -674,11 +674,12 @@ apoyo:
               frecuencia: mensual
               nota: "Índice de precios de fábrica del aluminio en la UE"
             global:
-              fuente: pink
-              serie: "Aluminum"
+              fuente: metalcharts
+              simbolo: "ALI"
               unidad: "$/tonelada"
-              frecuencia: mensual
-              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+              frecuencia: diaria
+              historia: {fuente: pink, serie: "Aluminum"}
+              nota: "Precio al contado, varias veces al día (MetalCharts); el histórico mensual, del Banco Mundial"
         - id: cobre_industrial
           nombre: "Cobre"
           ambitos:
@@ -697,11 +698,13 @@ apoyo:
               frecuencia: mensual
               nota: "Índice de precios de fábrica del cobre en la UE"
             global:
-              fuente: pink
-              serie: "Copper"
+              fuente: metalcharts
+              simbolo: "HG"
+              factor: 2204.62        # de dólares por libra a dólares por tonelada
               unidad: "$/tonelada"
-              frecuencia: mensual
-              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+              frecuencia: diaria
+              historia: {fuente: pink, serie: "Copper"}
+              nota: "Precio al contado, varias veces al día (MetalCharts); el histórico mensual, del Banco Mundial"
         - id: zinc
           nombre: "Zinc"
           ambitos:
@@ -720,29 +723,32 @@ apoyo:
               frecuencia: mensual
               nota: "Índice conjunto de plomo, zinc y estaño en la UE (Eurostat no los separa)"
             global:
-              fuente: pink
-              serie: "Zinc"
+              fuente: metalcharts
+              simbolo: "ZN"
               unidad: "$/tonelada"
-              frecuencia: mensual
-              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+              frecuencia: diaria
+              historia: {fuente: pink, serie: "Zinc"}
+              nota: "Precio al contado, varias veces al día (MetalCharts); el histórico mensual, del Banco Mundial"
         - id: niquel
           nombre: "Níquel"
           ambitos:
             global:
-              fuente: pink
-              serie: "Nickel"
+              fuente: metalcharts
+              simbolo: "NI"
               unidad: "$/tonelada"
-              frecuencia: mensual
-              nota: "Bolsa de Metales de Londres (Banco Mundial); se usa sobre todo en el acero inoxidable"
+              frecuencia: diaria
+              historia: {fuente: pink, serie: "Nickel"}
+              nota: "Precio al contado, varias veces al día (MetalCharts); el histórico mensual, del Banco Mundial; se usa sobre todo en el acero inoxidable"
         - id: plomo
           nombre: "Plomo"
           ambitos:
             global:
-              fuente: pink
-              serie: "Lead"
+              fuente: metalcharts
+              simbolo: "PB"
               unidad: "$/tonelada"
-              frecuencia: mensual
-              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+              frecuencia: diaria
+              historia: {fuente: pink, serie: "Lead"}
+              nota: "Precio al contado, varias veces al día (MetalCharts); el histórico mensual, del Banco Mundial"
         - id: estano
           nombre: "Estaño"
           ambitos:

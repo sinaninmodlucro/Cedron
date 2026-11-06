@@ -224,13 +224,15 @@ FUENTES_NOMBRE = {
     "panel": "Ministerio de Agricultura, panel de consumo en hogares",
     "pagados": "Ministerio de Agricultura, precios pagados por los agricultores",
     "eurostat": "Eurostat, índices de precios industriales",
+    "metalcharts": "MetalCharts",
 }
 CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
-                "pagados": "producto", "eurostat": "serie"}
+                "pagados": "producto", "eurostat": "serie", "metalcharts": "simbolo"}
 
 
 def cargar_fuentes() -> dict:
     carburantes = leer("apoyo/carburantes.json", {}) or {}
+    metalcharts = leer("apoyo/metalcharts.json", {}) or {}
     return {
         "_carburantes_dato": carburantes.get("dato"),
         "carburantes": carburantes.get("series", {}),
@@ -241,6 +243,10 @@ def cargar_fuentes() -> dict:
         "panel": (leer("apoyo/panel.json", {}) or {}).get("series", {}),
         "pagados": (leer("apoyo/pagados.json", {}) or {}).get("series", {}),
         "eurostat": (leer("apoyo/eurostat.json", {}) or {}).get("series", {}),
+        # MetalCharts: 6 precios por dia laborable; se queda el ultimo de cada dia
+        "metalcharts": {s: sorted({f[:10]: v for f, v in serie}.items())
+                        for s, serie in metalcharts.get("series", {}).items()},
+        "_metalcharts_hora": {s: serie[-1][0] for s, serie in metalcharts.get("series", {}).items() if serie},
     }
 
 
@@ -488,6 +494,8 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                 r = resumen(serie, meses_media, n_actual=len(actual) if actual and historia else None)
                 if r and amb["fuente"] == "carburantes" and actual:
                     r["hora"] = fuentes.get("_carburantes_dato")     # hora exacta del dato
+                if r and amb["fuente"] == "metalcharts" and actual and len(r["fecha"]) == 10:
+                    r["hora"] = fuentes.get("_metalcharts_hora", {}).get(amb["simbolo"])
                 ambitos[a] = {"decimales": decimales_por_defecto(amb["unidad"]),
                               **{k: v for k, v in amb.items() if k != "historia"},
                               "unidad": unidad, "usd": usd,
