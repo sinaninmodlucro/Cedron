@@ -117,14 +117,17 @@ apoyo:
         - id: diesel
           nombre: "Diésel (gasóleo A)"
           ambitos:
+            # 6-nov-2026: el Ministerio de Transición Ecológica (media horaria de las
+            # gasolineras) corta las conexiones desde GitHub; por decisión del usuario se
+            # sustituye por el boletín semanal de la Comisión Europea para España.
             espana:
-              fuente: carburantes
-              campo: "Precio Gasoleo A"
+              fuente: boletin
+              columna: "ES_price_with_tax_diesel"
+              factor: 0.001
               unidad: "€/litro"
               decimales: 3
-              frecuencia: horaria
-              nota: "Media simple de todas las gasolineras de España, impuestos incluidos"
-              historia: {fuente: boletin, columna: "ES_price_with_tax_diesel", factor: 0.001}
+              frecuencia: semanal
+              nota: "Precio medio en España, impuestos incluidos (boletín semanal de la Comisión Europea)"
             europa:
               fuente: boletin
               columna: "EU_price_with_tax_diesel"

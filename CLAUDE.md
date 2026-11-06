@@ -77,7 +77,7 @@ python -m unittest discover tests
 | FRED | DFII10 (tipo real 10 años), DTWEXBGS (dólar), DEXUSEU (euro/dólar) | 120/min | 1 vez al día |
 | CFTC COT Legacy (`jun7-fc8e`) | Posicionamiento no comercial | Sin clave | Códigos: oro 088691, plata 084691, platino 076651, paladio 075651, cobre 085692 |
 | NewsData.io `/api/1/latest` | Noticias (categoría business) | 200 créditos/día | Tope 150/día; 1 consulta por hora |
-| Ministerio Transición Ecológica (carburantes) | Diésel en España, media simple de ~11.000 gasolineras | Sin clave | Se pide cada hora; JSON de ~12 MB |
+| Ministerio Transición Ecológica (carburantes) | **Desactivada el 6-nov-2026**: corta las conexiones desde GitHub (SSL). El diésel de España sale del Weekly Oil Bulletin | Sin clave | El conector sigue en el código por si vuelve |
 | Comisión Europea, Weekly Oil Bulletin | Diésel España y media UE, semanal desde 2005 | Sin clave | El Excel histórico se descubre en la página |
 | MAPA, precios medios nacionales | Cerdo, pollo, ternera (y cereales para el bloque 2), semanal | Sin clave | Un Excel por año; certificado FNMT. La primera vez baja 5 años |
 | MAPA, panel de consumo en hogares (por canales) | Precio en tienda (supermercado) de carne, huevos y leche | Sin clave | Mensual, 2-3 meses de retraso. Un Excel por año; el canal SUPERMERCADO solo existe desde 2025 y antes se usa T.ESPAÑA (todas las tiendas). Los Excel de 2022-2024 nombran las hojas «enero»…; el mes sale del título interno |
