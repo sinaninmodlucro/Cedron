@@ -152,11 +152,13 @@ def actualizar_diarios(cfg, estado: Estado, forzar=False) -> None:
             log.warning("FRED: %s", e)
 
     # Cambio euro/dolar oficial del BCE: se mira en cada ejecucion (lo publica cada dia
-    # laborable hacia las 16:00 de Madrid). La primera vez baja 11 anos; despues, el
+    # laborable hacia las 16:00 de Madrid). La primera vez baja desde 1999; despues, el
     # ultimo mes, que se une a lo guardado. FRED (DEXUSEU) queda de respaldo.
     guardado = leer("cambio.json", {}) or {}
     serie = guardado.get("series", {}).get("USD", [])
-    desde = (date.today() - timedelta(days=365 * 11 if len(serie) < 2000 else 31)).isoformat()
+    # Desde 1999 (primer dato del BCE): lo usa la cadena de costes (diesel desde 2005)
+    completo = bool(serie) and serie[0][0] <= "1999-01-31"
+    desde = "1999-01-04" if not completo else (date.today() - timedelta(days=31)).isoformat()
     try:
         nuevos = src.bce_cambio("USD", desde)
         por_dia = {f: v for f, v in serie}
@@ -284,6 +286,19 @@ def calcular_lecturas(cfg) -> dict:
     return salida
 
 
+def actualizar_cadena(cfg, estado: Estado, forzar=False) -> None:
+    """Recalcula la cadena de costes una vez al mes (o con --forzar, o si cambia el metodo)."""
+    from cedron import cadena
+    mes = f"{date.today().isoformat()[:7]}/v{cadena.VERSION}"
+    if not forzar and estado.get("cadena_mes") == mes:
+        return
+    try:
+        cadena.ejecutar(cfg)
+        estado.set("cadena_mes", mes)
+    except (KeyError, ValueError, ZeroDivisionError) as e:
+        log.warning("Cadena de costes: %s", e)
+
+
 def actualizar_prueba(cfg, estado: Estado, forzar=False) -> None:
     """Repite la prueba historica de las reglas una vez al mes (o con --forzar)."""
     from cedron import prueba
@@ -328,6 +343,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     actualizar_noticias(cfg, estado)
     calcular_lecturas(cfg)
     actualizar_prueba(cfg, estado, forzar)
+    actualizar_cadena(cfg, estado, forzar)
     estado.set("ultima_ejecucion", iso())
     avisos = revisar_salud(cfg, estado)
     estado.guardar()

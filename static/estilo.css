@@ -324,3 +324,14 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
 
 /* Pie de tabla alineado a la izquierda, como el resto del texto */
 .tabla caption { text-align: left; caption-side: top; padding-bottom: 0.5rem; }
+
+/* ------------------------------------------------------- cadena de costes */
+.eslabones { list-style: none; margin: 0; padding: 0; }
+.eslabon { padding: 1.25rem 0 1rem; border-bottom: 1px solid var(--linea); max-width: 46rem; }
+.eslabon__titulo { font-family: var(--f-cifra); font-weight: 600; font-size: var(--t-m); margin: 0 0 0.4rem; }
+.eslabon__frase { margin: 0 0 0.6rem; }
+.eslabon__notas { margin: 0.6rem 0; padding-left: 1.1rem; font-size: var(--t-s); }
+.eslabon__notas li { margin-bottom: 0.3rem; }
+.eslabon--no_se_aprecia .eslabon__titulo, .eslabon--pocos .eslabon__titulo { color: var(--tinta-2); font-weight: 500; }
+.tabla--compacta { max-width: 34rem; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

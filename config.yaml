@@ -909,6 +909,96 @@ indicadores:
     desfavorable_hasta: -2        # suma <= -2 -> desfavorable
 
 # -----------------------------------------------------------------------------
+# Cadena de costes (pagina «Cadena de costes»; cedron/cadena.py). Anadida el
+# 6-nov-2026, decidida con el usuario: se muestran solo los eslabones que se
+# comprueban con datos (los demas, en gris), el traslado pendiente solo si acierta
+# en la prueba a ciegas, y subidas frente a bajadas solo si la diferencia es clara.
+# Cada eslabon: serie de arriba y de abajo ("origen:nombre"; origen = pink, pagados,
+# boletin, eurostat o fred), si se pasa a euros, y desde cuando se mide.
+# Se recalcula una vez al mes.
+# -----------------------------------------------------------------------------
+cadena:
+  remuestreos: 300
+  cadenas:
+    - id: energia
+      nombre: "Energía"
+      eslabones:
+        - id: brent_diesel
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent (en euros)", corto: "el petróleo", en_euros: true}
+          abajo: {serie: "boletin:ES_price_with_tax_diesel", nombre: "Diésel en España (con impuestos)", corto: "el diésel"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Comisión Europea (Weekly Oil Bulletin); BCE"
+          nota: "Los impuestos fijos por litro hacen que el diésel suba en porcentaje menos que el petróleo."
+        - id: brent_urea
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent", corto: "el petróleo"}
+          abajo: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial"
+        - id: gas_urea
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa", corto: "el gas"}
+          abajo: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial"
+          nota: "El gas es entre el 70 y el 90 % del coste de fabricar abonos nitrogenados."
+    - id: alimentos
+      nombre: "Abonos y alimentos"
+      eslabones:
+        - id: gas_urea_es
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "pagados:UREA 46%", nombre: "Urea que paga el agricultor en España", corto: "la urea"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
+        - id: gas_nac_es
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "pagados:NITRATO AMONICO CALCICO 26%", nombre: "Nitrato amónico cálcico que paga el agricultor en España", corto: "el nitrato amónico cálcico"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
+        - id: urea_trigo
+          arriba: {serie: "pink:Urea", nombre: "Urea", corto: "la urea"}
+          abajo: {serie: "pink:Wheat, US HRW", nombre: "Trigo", corto: "el trigo"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial"
+        - id: urea_maiz
+          arriba: {serie: "pink:Urea", nombre: "Urea", corto: "la urea"}
+          abajo: {serie: "pink:Maize", nombre: "Maíz", corto: "el maíz"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial"
+        - id: maiz_pollo
+          arriba: {serie: "pink:Maize", nombre: "Maíz (pienso)", corto: "el maíz"}
+          abajo: {serie: "pink:Chicken **", nombre: "Pollo", corto: "el pollo"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial (pollo: precio de EE. UU.)"
+        - id: soja_pollo
+          arriba: {serie: "pink:Soybean meal", nombre: "Harina de soja (pienso)", corto: "la harina de soja"}
+          abajo: {serie: "pink:Chicken **", nombre: "Pollo", corto: "el pollo"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial (pollo: precio de EE. UU.)"
+        - id: maiz_vacuno
+          arriba: {serie: "pink:Maize", nombre: "Maíz (pienso)", corto: "el maíz"}
+          abajo: {serie: "pink:Beef **", nombre: "Vacuno", corto: "el vacuno"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial"
+    - id: construccion
+      nombre: "Construcción"
+      eslabones:
+        - id: gas_cemento
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:EU27_2020|C235", nombre: "Cemento (precio de fábrica en la UE)", corto: "el cemento"}
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: hierro_acero
+          arriba: {serie: "pink:Iron ore, cfr spot", nombre: "Mineral de hierro (en euros)", corto: "el mineral de hierro", en_euros: true}
+          abajo: {serie: "eurostat:ES|C241", nombre: "Acero (precio de fábrica en España)", corto: "el acero"}
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: cobre_es
+          arriba: {serie: "pink:Copper", nombre: "Cobre mundial (en euros)", corto: "el cobre mundial", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2444", nombre: "Cobre (precio de fábrica en España)", corto: "el cobre de fábrica"}
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: aluminio_es
+          arriba: {serie: "pink:Aluminum", nombre: "Aluminio mundial (en euros)", corto: "el aluminio mundial", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2442", nombre: "Aluminio (precio de fábrica en España)", corto: "el aluminio de fábrica"}
+          fuentes: "Banco Mundial; Eurostat; BCE"
+
+# -----------------------------------------------------------------------------
 # Prueba historica (pagina de metodologia). Aplica las reglas de arriba, mes a
 # mes, a los ultimos anios del Banco Mundial y mira que paso despues con el
 # precio. Se repite sola una vez al mes. Anadida el 6-nov-2026.

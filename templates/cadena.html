@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block titulo %}Cadena de costes | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}Cuánto y en cuánto tiempo se traslada el precio de la energía y las materias primas a abonos, alimentos y materiales, medido con datos.{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Cadena de costes</h1>
+  <p>Cuando sube el petróleo o el gas, ¿cuánto acaban subiendo el diésel, los abonos, los alimentos o los materiales, y cuánto tardan? Aquí se mide con datos de muchos años. Cada eslabón se lee así: <strong>de cada 10 % que sube el precio de arriba, el de abajo sube de media tanto</strong>, al cabo de un mes, de seis meses y de un año.</p>
+  <p>Solo se muestran como comprobados los eslabones que aparecen con claridad en los datos y en las dos mitades del periodo; los demás se muestran en gris, para ver la cadena completa sin inventar. Son medias del pasado: cada vez puede ser distinta. <a href="{{ raiz }}metodologia.html#cadena">Cómo se calcula</a>.</p>
+</div>
+
+{% if cadena %}
+{% for c in cadena.cadenas %}
+<section class="bloque cadena" aria-labelledby="c-{{ c.id }}">
+  <h2 id="c-{{ c.id }}">{{ c.nombre }}</h2>
+  <ol class="eslabones">
+  {% for e in c.eslabones %}
+    <li class="eslabon eslabon--{{ e.clase }}">
+      <h3 class="eslabon__titulo">{{ e.arriba }} <span aria-hidden="true">→</span><span class="oculto"> hacia </span> {{ e.abajo }}</h3>
+      {% if e.clase == 'comprobado' %}
+        {% set p = e.porc %}
+        <p class="eslabon__frase">De cada 10 % que sube {{ e.arriba_corto }}, {{ e.abajo_corto }} sube de media <strong class="cifra">{{ p[1]|numero(1) }}&nbsp;%</strong> en un mes, <strong class="cifra">{{ p[6]|numero(1) }}&nbsp;%</strong> en seis meses y <strong class="cifra">{{ p[12]|numero(1) }}&nbsp;%</strong> en un año.</p>
+        <div class="desplazable">
+        <table class="tabla tabla--compacta">
+          <caption class="pequeno secundario">Subida media {{ e.de_abajo }} por cada 10 % que sube {{ e.arriba_corto }}, y su margen de error (95 %).</caption>
+          <thead><tr><th>Después de</th>{% for x in e.tabla %}<th class="num">{{ x.etiqueta }}</th>{% endfor %}</tr></thead>
+          <tbody>
+            <tr><th scope="row">Subida media</th>{% for x in e.tabla %}<td class="num">{{ x.valor|numero(1)|replace('-', '−') }} %</td>{% endfor %}</tr>
+            <tr class="secundario"><th scope="row">Margen</th>{% for x in e.tabla %}<td class="num">{{ x.bajo|numero(1)|replace('-', '−') }} a {{ x.alto|numero(1)|replace('-', '−') }}</td>{% endfor %}</tr>
+          </tbody>
+        </table>
+        </div>
+        <ul class="eslabon__notas">
+          {% if e.tarda_mitad is not none %}<li><strong>Cuánto tarda:</strong> {% if e.tarda_mitad == 0 %}la mitad del efecto de un año llega ya en el mismo mes{% else %}la mitad del efecto de un año llega en {{ e.tarda_mitad }} {{ 'mes' if e.tarda_mitad == 1 else 'meses' }}{% endif %}.</li>{% endif %}
+          {% if e.asimetria and e.asimetria.clara %}{% set a = e.asimetria.plazos[cadena.plazo_asimetria|string] %}
+          <li><strong>Subidas y bajadas:</strong> las subidas se trasladan más que las bajadas. En {{ cadena.plazo_asimetria }} meses, de cada 10 % que sube {{ e.arriba_corto }}, {{ e.abajo_corto }} sube {{ (a.subidas * 10)|numero(1) }} %; de cada 10 % que baja, baja {{ (a.bajadas * 10)|numero(1) }} %.{% if e.meses < 180 %} Con solo {{ (e.meses / 12)|round|int }} años de datos, tómalo con cautela.{% endif %}</li>
+          {% elif e.asimetria %}
+          <li><strong>Subidas y bajadas:</strong> no hay una diferencia clara entre cómo se trasladan las subidas y las bajadas.</li>
+          {% endif %}
+          <li><strong>Lo que falta por trasladarse:</strong> {% if e.pendiente and e.pendiente.valor is not none %}según la media histórica, {{ e.a_abajo }} le quedaría por {{ 'subir' if e.pendiente.valor > 0 else 'bajar' }} un {{ e.pendiente.valor|abs|numero(1) }} % por los cambios recientes de {{ e.arriba_corto }}.{% else %}no se publica: en la prueba a ciegas, esta estimación no acertó más que la simple media histórica.{% endif %}</li>
+          {% if e.nota %}<li>{{ e.nota }}</li>{% endif %}
+        </ul>
+      {% elif e.clase == 'no_se_aprecia' %}
+        {% set x6 = e.seis %}
+        <p class="eslabon__frase secundario"><strong>No se aprecia en los datos.</strong> {% if x6 %}A seis meses, la subida media sería de {{ x6.valor|numero(1)|replace('-', '−') }} % por cada 10 %, con un margen de {{ x6.bajo|numero(1)|replace('-', '−') }} a {{ x6.alto|numero(1)|replace('-', '−') }}: no se distingue de cero{% if e.mitades_distintas %} o cambia de una época a otra{% endif %}.{% endif %} En este precio pesan más otros factores{% if c.id == "alimentos" %} (cosechas, el tiempo, la demanda){% endif %}.</p>
+      {% else %}
+        <p class="eslabon__frase secundario">Todavía no hay datos suficientes para medirlo.</p>
+      {% endif %}
+      <p class="pequeno secundario">{% if e.desde %}Datos mensuales de {{ e.desde|mes }} a {{ e.hasta|mes }}. {% endif %}Fuentes: {{ e.fuentes }}.</p>
+    </li>
+  {% endfor %}
+  </ol>
+</section>
+{% endfor %}
+<p class="pequeno secundario">Calculado {{ cadena.calculado|fecha_larga }}. Se recalcula cada mes. Que dos precios se muevan juntos no demuestra por sí solo que uno cause el otro; aquí solo se incluyen eslabones con una razón clara de coste (el gas es la materia prima de los abonos nitrogenados, el pienso es el principal coste del pollo…).</p>
+{% else %}
+<p class="vacio">La cadena de costes todavía no se ha calculado.</p>
+{% endif %}
+{% endblock %}

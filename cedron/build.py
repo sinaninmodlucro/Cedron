@@ -344,6 +344,40 @@ def datos_prueba(prueba: dict | None, cfg: dict) -> dict | None:
             "total_reglas": sum(recuento.values())}
 
 
+def _contraer(texto: str) -> str:
+    """«de el diésel» -> «del diésel»; «a el pollo» -> «al pollo»."""
+    if texto.startswith("de el "):
+        return "del " + texto[6:]
+    if texto.startswith("a el "):
+        return "al " + texto[5:]
+    return texto
+
+
+def datos_cadena(cadena: dict | None) -> dict | None:
+    """Prepara la cadena de costes: todo en «por cada 10 % que sube el precio de arriba»."""
+    if not cadena or not cadena.get("cadenas"):
+        return None
+    etiquetas = {1: "1 mes", 3: "3 meses", 6: "6 meses", 12: "1 año"}
+    salida = {**cadena, "cadenas": []}
+    for c in cadena["cadenas"]:
+        eslabones = []
+        for e in c["eslabones"]:
+            perfil = {int(x["h"]): x for x in e.get("perfil", [])}
+            tabla = [{"etiqueta": etiquetas[h], "valor": perfil[h]["b"] * 10, "bajo": perfil[h]["bajo"] * 10,
+                      "alto": perfil[h]["alto"] * 10} for h in etiquetas if h in perfil]
+            seis = next((x for x in tabla if x["etiqueta"] == "6 meses"), None)
+            mit = e.get("mitades") or {}
+            antes, despues = mit.get("antes"), mit.get("despues")
+            abajo = e.get("abajo_corto", "")
+            eslabones.append({**e, "porc": {h: perfil[h]["b"] * 10 for h in perfil}, "tabla": tabla,
+                              "de_abajo": _contraer("de " + abajo), "a_abajo": _contraer("a " + abajo),
+                              "seis": seis, "tarda_mitad": e.get("tarda_mitad"),
+                              "mitades_distintas": antes is not None and despues is not None
+                              and (antes > 0) != (despues > 0)})
+        salida["cadenas"].append({**c, "eslabones": eslabones})
+    return salida
+
+
 def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = False) -> None:
     tz = ZoneInfo(cfg["sitio"]["zona_horaria"])
     fecha_larga, fecha_hora, hace, mes = crear_fechas(tz)
@@ -431,6 +465,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
             pagina("materia.html", f"materias/{m['id']}.html", seccion="materias", m=m, g=g)
     pagina("comparar.html", "comparar.html", seccion="comparar", datos_comparar=datos_comparar)
     pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias)
+    pagina("cadena.html", "cadena.html", seccion="cadena", cadena=datos_cadena(leer("cadena.json")))
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],
            prueba=datos_prueba(leer("prueba_historica.json"), cfg))
