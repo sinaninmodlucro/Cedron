@@ -191,4 +191,4 @@ medios:
     rss: "https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.elpais.com/section/mercados/portada"
     nota: 80
     idioma: es
-    activo: true
+    activo: false        # 6-nov-2026: el feed llega vacio; buscar la direccion correcta
