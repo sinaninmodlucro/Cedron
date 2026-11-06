@@ -269,6 +269,10 @@ apoyo:
 # Mensual, con 2-3 meses de retraso. Se usa el canal 'preferido' (supermercado) y,
 # en los meses en que no existe (antes de 2025 se media de otra forma), la media
 # de todas las tiendas ('respaldo'), que se mide igual desde 2022.
+# Origen y tienda en cualquier materia (ganadería ahora, agrícolas más adelante):
+# basta con añadir 'tienda: {producto: "<nombre en el panel>", unidad: "..."}' a su
+# ámbito 'espana'. La web muestra entonces los dos precios, el multiplicador del mismo
+# mes y el selector «Origen y tienda / En origen / En tienda» (7-nov-2026).
 panel:
   canal: "SUPERMERCADO"
   canal_respaldo: "T.ESPAÑA"

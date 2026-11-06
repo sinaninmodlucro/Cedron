@@ -40,6 +40,28 @@
 {%- endif -%}
 {%- endmacro %}
 
+{# Una fila de la tabla de materias de apoyo.
+   d = de donde salen las cifras (el ambito, o su precio en tienda).
+   precio = 'origen' | 'tienda' | 'todos' (filas de materias con un solo precio). #}
+{% macro fila_apoyo(m, v, vista, amb, d, precio, clase, etiqueta, oculta) -%}
+{%- set r = d.resumen -%}
+<tr data-vista="{{ v }}" data-precio="{{ precio }}"{% if clase %} class="{{ clase }}"{% endif %}{% if oculta %} hidden{% endif %}>
+  <th scope="row"><a href="{{ raiz }}materias/{{ m.id }}.html">{{ m.nombre }}</a>
+    <span class="ambito">{{ amb.nombre }}{% if vista.motivo %} · <span class="aviso">{{ vista.motivo }}</span>{% endif %}</span>
+    {%- if precio == 'todos' and m.con_tienda %}
+    {%- if amb.medida == 'tienda' %}<span class="ambito nota-precio nota-precio--origen">Sin precio en origen: se muestra el de tienda</span>
+    {%- else %}<span class="ambito nota-precio nota-precio--tienda">Sin precio en tienda{% if amb.id != 'espana' %} en este ámbito{% endif %}: se muestra el de origen</span>{% endif %}
+    {%- endif %}</th>
+  <td class="num">{% if etiqueta %}<span class="ambito">{{ etiqueta }}</span>{% endif %}{{ valor_apoyo(d) }}{% if d.eur %}<span class="ambito">≈ {{ d.eur|numero(d.decimales or 2) }} {{ d.unidad_eur }}</span>{% endif %}
+    {%- if precio == 'origen' %}<span class="solo-ambos">{{ tienda_linea(amb.tienda) }}</span>{% endif %}
+    {%- if precio == 'tienda' and d.multiplicador %}<span class="ambito">×{{ d.multiplicador.veces|numero(1) }} el precio en origen</span>{% endif %}</td>
+  <td class="num {{ 'sube' if r.cambio_pct and r.cambio_pct > 0 else 'baja' if r.cambio_pct and r.cambio_pct < 0 }}" data-etiqueta="Frente al anterior">{{ r.cambio_pct|porcentaje }}</td>
+  <td class="num {{ 'sube' if r.interanual_pct and r.interanual_pct > 0 else 'baja' if r.interanual_pct and r.interanual_pct < 0 }}" data-etiqueta="En un año">{{ r.interanual_pct|porcentaje }}</td>
+  <td class="col-tendencia">{{ tendencia(r) }}</td>
+  <td class="pequeno col-dato">{{ fecha_dato(d) }}<span class="ambito">{{ d.fuente_nombre }}</span></td>
+</tr>
+{%- endmacro %}
+
 {% macro noticia(n, raiz, nombres) -%}
 <li class="noticia" data-activos="{{ n.activos|join(' ') }}">
   <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>

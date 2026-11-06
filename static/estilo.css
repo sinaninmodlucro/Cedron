@@ -188,7 +188,17 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
 .ambito.tienda { margin-top: 0.35rem; color: var(--tinta); }
 .bloque-pequeno { margin: 2.5rem 0 0.25rem; font-size: var(--t-m); }
 .ficha__precio--medio { font-size: var(--t-xl); }
+.bloque-pequeno--primero { margin-top: 0.5rem; }
 tr[hidden] { display: none; }
+/* Selector de precio (origen / tienda). Sin elegir nada se ven los dos. */
+html:not([data-precio="tienda"]) tr[data-precio="tienda"],
+html[data-precio="tienda"] tr.con-tienda[data-precio="origen"],
+html[data-precio="origen"] .solo-ambos,
+html[data-precio="tienda"] .solo-origen,
+html[data-precio="origen"] .solo-tienda,
+.nota-precio { display: none; }
+html[data-precio="tienda"] .nota-precio--tienda,
+html[data-precio="origen"] .nota-precio--origen { display: block; }
 @media (max-width: 46rem) {
   .tabla-apoyo thead { display: none; }
   .tabla-apoyo, .tabla-apoyo tbody { display: block; width: 100%; }

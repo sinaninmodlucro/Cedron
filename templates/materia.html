@@ -11,11 +11,21 @@
     </div>
   </header>
   {% if g.descripcion %}<p class="ficha__frase">{{ g.descripcion }}</p>{% endif %}
+  {% if m.con_tienda %}
+  <div class="vistas" role="group" aria-label="Qué precio ver">
+    <button type="button" data-precio="ambos" aria-pressed="true">Origen y tienda</button>
+    <button type="button" data-precio="origen" aria-pressed="false">En origen</button>
+    <button type="button" data-precio="tienda" aria-pressed="false">En tienda</button>
+  </div>
+  {% endif %}
 
   {% for id, _ in ambitos %}{% set amb = m.ambitos.get(id) %}
   {% if amb and amb.resumen %}{% set r = amb.resumen %}
   <section class="bloque" aria-labelledby="t-{{ id }}">
     <h2 id="t-{{ id }}">{{ amb.nombre }}</h2>
+    {% set hay_tienda = amb.tienda and amb.tienda.resumen %}
+    <div{% if hay_tienda %} class="solo-origen"{% endif %}>
+    {% if hay_tienda %}<h3 class="bloque-pequeno bloque-pequeno--primero">En origen</h3>{% endif %}
     <p class="ficha__precio cifra">{{ valor_apoyo(amb) }}</p>
     <p class="ficha__datos">
       {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}. {% endif %}
@@ -57,9 +67,11 @@
     {% else %}
     <p class="vacio">Aún no hay historia suficiente para dibujar el gráfico.</p>
     {% endif %}
+    </div>
 
     {% set t = amb.tienda %}
     {% if t and t.resumen %}{% set rt = t.resumen %}
+    <div class="solo-tienda">
     <h3 class="bloque-pequeno">En la tienda</h3>
     <p class="ficha__precio ficha__precio--medio cifra">{{ rt.valor|numero(t.decimales or 2) }} {{ t.unidad }}</p>
     <p class="ficha__datos">
@@ -92,6 +104,7 @@
       <figcaption>Precio medio mensual en tienda. Supermercados desde 2025; antes, media de todas las tiendas (incluidos supermercados), porque hasta entonces el Ministerio agrupaba los tipos de tienda de otra forma.</figcaption>
     </figure>
     {% endif %}
+    </div>
     {% endif %}
   </section>
   {% endif %}
@@ -103,4 +116,5 @@
 {% endblock %}
 {% block scripts %}
 <script src="{{ raiz }}static/grafico.js" defer></script>
+<script src="{{ raiz }}static/vistas.js" defer></script>
 {% endblock %}

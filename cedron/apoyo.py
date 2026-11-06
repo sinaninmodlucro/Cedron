@@ -354,7 +354,8 @@ def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dic
     else:
         r["interanual_pct"], r["interanual_base"] = None, None
     preferidos = {f for f, _ in solo_pref}
-    return {**t, "resumen": r, "canal_ultimo": "supermercado" if r["fecha"] in preferidos else "todas las tiendas",
+    return {**t, "resumen": r, "frecuencia": "mensual",
+            "canal_ultimo": "supermercado" if r["fecha"] in preferidos else "todas las tiendas",
             "multiplicador": multiplicador(origen, r["fecha"], r["valor"]),
             "fuente_nombre": FUENTES_NOMBRE["panel"]}
 
@@ -392,12 +393,17 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                               "fuente_nombre": fuentes_usadas[0] if actual else fuentes_usadas[-1],
                               "fuentes": fuentes_usadas, "resumen": r,
                               "solo_historia": not actual and bool(historia),
+                              # Que mide el precio principal: en origen (lo que cobra el
+                              # productor) o en tienda (panel de consumo, lo que paga el hogar)
+                              "medida": "tienda" if amb["fuente"] == "panel" else "origen",
                               "tienda": tienda(cfg, amb, serie, fuentes, meses_media)}
             vistas = {}
             for v in AMBITOS:
                 mostrado, motivo = elegir(ambitos, v, dias, hoy)
                 vistas[v] = {"ambito": mostrado, "motivo": motivo}
+            con_tienda = any(d.get("tienda") or d["medida"] == "tienda" for d in ambitos.values())
             lista.append({**{k: v for k, v in m.items() if k != "ambitos"}, "ambitos": ambitos, "vistas": vistas,
-                          "grupo": g["id"]})
-        grupos.append({**{k: v for k, v in g.items() if k != "materias"}, "materias": lista})
+                          "grupo": g["id"], "con_tienda": con_tienda})
+        grupos.append({**{k: v for k, v in g.items() if k != "materias"}, "materias": lista,
+                       "con_tienda": any(x["con_tienda"] for x in lista)})
     return grupos

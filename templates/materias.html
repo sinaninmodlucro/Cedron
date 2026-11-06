@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, tienda_linea %}
+{% from "_macros.html" import fila_apoyo as fila with context %}
 {% block titulo %}Materias primas de apoyo | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Energía y ganadería: precios en España, Europa y el mundo, con su fecha y su fuente.{% endblock %}
 {% block contenido %}
@@ -13,7 +13,14 @@
   <button type="button" data-vista="{{ id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ nombre }}</button>
   {% endfor %}
 </div>
-<p class="pequeno secundario">Si el ámbito elegido no tiene un dato reciente de una materia, se muestra el último disponible de otro ámbito, indicado en cada fila.</p>
+{% if grupos_apoyo|selectattr('con_tienda')|list %}
+<div class="vistas" role="group" aria-label="Qué precio ver">
+  <button type="button" data-precio="ambos" aria-pressed="true">Origen y tienda</button>
+  <button type="button" data-precio="origen" aria-pressed="false">En origen</button>
+  <button type="button" data-precio="tienda" aria-pressed="false">En tienda</button>
+</div>
+{% endif %}
+<p class="pequeno secundario">Si el ámbito elegido no tiene un dato reciente de una materia, se muestra el último disponible de otro ámbito, indicado en cada fila. <strong>En origen</strong> es lo que cobra el productor (ganadero o agricultor); <strong>en tienda</strong>, lo que pagan los hogares en el supermercado, IVA incluido. Si una materia no tiene uno de los dos precios, se muestra el que hay, indicándolo.</p>
 
 {% for g in grupos_apoyo %}
 <section class="bloque" aria-labelledby="t-{{ g.id }}">
@@ -25,19 +32,18 @@
     {% for m in g.materias %}
     <tbody>
     {% for v, _ in ambitos %}{% set vista = m.vistas[v] %}{% set amb = m.ambitos[vista.ambito] if vista.ambito else none %}
-      <tr data-vista="{{ v }}"{% if not loop.first %} hidden{% endif %}>
-        <th scope="row"><a href="{{ raiz }}materias/{{ m.id }}.html">{{ m.nombre }}</a>
-          {% if amb %}<span class="ambito">{{ amb.nombre }}{% if vista.motivo %} · <span class="aviso">{{ vista.motivo }}</span>{% endif %}</span>{% endif %}</th>
-        {% if amb %}{% set r = amb.resumen %}
-        <td class="num">{% if amb.tienda %}<span class="ambito">En origen</span>{% endif %}{{ valor_apoyo(amb) }}{% if amb.eur %}<span class="ambito">≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}</span>{% endif %}{{ tienda_linea(amb.tienda) }}</td>
-        <td class="num {{ 'sube' if r.cambio_pct and r.cambio_pct > 0 else 'baja' if r.cambio_pct and r.cambio_pct < 0 }}" data-etiqueta="Frente al anterior">{{ r.cambio_pct|porcentaje }}</td>
-        <td class="num {{ 'sube' if r.interanual_pct and r.interanual_pct > 0 else 'baja' if r.interanual_pct and r.interanual_pct < 0 }}" data-etiqueta="En un año">{{ r.interanual_pct|porcentaje }}</td>
-        <td class="col-tendencia">{{ tendencia(r) }}</td>
-        <td class="pequeno col-dato">{{ fecha_dato(amb) }}<span class="ambito">{{ amb.fuente_nombre }}</span></td>
-        {% else %}
+      {% set oculta = not loop.first %}
+      {% if amb and amb.tienda and amb.tienda.resumen %}
+        {{ fila(m, v, vista, amb, amb, 'origen', 'con-tienda', 'En origen', oculta) }}
+        {{ fila(m, v, vista, amb, amb.tienda, 'tienda', '', 'En ' ~ amb.tienda.canal_ultimo, oculta) }}
+      {% elif amb %}
+        {{ fila(m, v, vista, amb, amb, 'todos', '', 'En tienda' if amb.medida == 'tienda' else '', oculta) }}
+      {% else %}
+      <tr data-vista="{{ v }}" data-precio="todos"{% if oculta %} hidden{% endif %}>
+        <th scope="row"><a href="{{ raiz }}materias/{{ m.id }}.html">{{ m.nombre }}</a></th>
         <td colspan="5" class="vacio">Todavía no hay datos.</td>
-        {% endif %}
       </tr>
+      {% endif %}
     {% endfor %}
     </tbody>
     {% endfor %}
