@@ -8,7 +8,7 @@
  "consultas_dia": {
   "newsdata": {
    "2026-11-05": 3,
-   "2026-11-06": 2
+   "2026-11-06": 3
   }
  },
  "fred_dia": "2026-11-06",
@@ -31,71 +31,70 @@
   },
   "NewsData.io": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:45Z"
+   "ultimo_ok": "2026-11-06T01:31:51Z"
   },
   "RSS Banco Central Europeo": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:40Z"
+   "ultimo_ok": "2026-11-06T01:31:46Z"
   },
   "RSS Banco de Inglaterra": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:40Z"
+   "ultimo_ok": "2026-11-06T01:31:46Z"
   },
   "RSS Cinco Días - Mercados": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-06T00:31:02Z",
-   "ultimo_ok": "2026-11-06T01:19:44Z"
+   "ultimo_ok": "2026-11-06T01:31:50Z"
   },
   "RSS Expansión - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:44Z"
+   "ultimo_ok": "2026-11-06T01:31:49Z"
   },
   "RSS FXStreet": {
-   "fallos_seguidos": 1,
+   "fallos_seguidos": 2,
    "ultimo_error": "acceso denegado por el sitio (403)",
-   "ultimo_fallo": "2026-11-06T01:19:43Z"
+   "ultimo_fallo": "2026-11-06T01:31:49Z"
   },
   "RSS Financial Times - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:41Z"
+   "ultimo_ok": "2026-11-06T01:31:47Z"
   },
   "RSS GoldSeek News": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-05T23:39:59Z",
-   "ultimo_ok": "2026-11-06T01:19:44Z"
+   "ultimo_ok": "2026-11-06T01:31:49Z"
   },
   "RSS Investing.com - Análisis de materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:43Z"
+   "ultimo_ok": "2026-11-06T01:31:49Z"
   },
   "RSS Investing.com - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:41Z"
+   "ultimo_ok": "2026-11-06T01:31:47Z"
   },
   "RSS Investing.com España - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:41Z"
+   "ultimo_ok": "2026-11-06T01:31:47Z"
   },
   "RSS Mining Technology": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:43Z"
+   "ultimo_ok": "2026-11-06T01:31:48Z"
   },
   "RSS Reserva Federal": {
-   "fallos_seguidos": 1,
-   "ultimo_error": "error HTTP 404",
+   "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-06T01:19:39Z",
-   "ultimo_ok": "2026-11-06T00:30:59Z"
+   "ultimo_ok": "2026-11-06T01:31:45Z"
   },
   "RSS Silver Institute": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:43Z"
+   "ultimo_ok": "2026-11-06T01:31:48Z"
   },
   "RSS The Northern Miner": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-06T01:19:43Z"
+   "ultimo_ok": "2026-11-06T01:31:48Z"
   }
  },
  "pink_dia": "2026-11-06",
  "precios_ultima_consulta": "2026-11-05T23:39:58Z",
- "ultima_ejecucion": "2026-11-06T01:19:45Z"
+ "ultima_ejecucion": "2026-11-06T01:31:51Z"
 }
