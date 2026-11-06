@@ -309,7 +309,8 @@ noticias:
   excluir: ["acquires new position", "acquires shares", "position in", "stake in", "shares sold",
             "shares bought", "price target", "holdings in", "sells shares", "buys shares",
             "horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino",
-            "tola", "carat", "quilates", "joyería", "jewellery", "jewelry", "throne", "medalla", "medal"]
+            "tola", "carat", "quilates", "joyería", "jewellery", "jewelry", "throne", "medalla", "medal",
+            "silver lining"]     # 6-nov-2026: expresion inglesa ("el lado bueno"), no habla de plata
 
 # -----------------------------------------------------------------------------
 # Medios. 'nota' de 0 a 100 = calidad del medio. 'comercial: true' marca a quien
@@ -337,6 +338,28 @@ medios:
     nota: 90
     idioma: en
     activo: true         # 6-nov-2026: añadido y validado. Articulos de pago. RSS para uso personal: revisar condiciones si la web se abre al publico
+  # Bloomberg (6-nov-2026, peticion del usuario): articulos de pago; RSS para uso
+  # personal. Solo mientras la web sea privada (ver CLAUDE.md, limites legales).
+  - nombre: "Bloomberg - Mercados"
+    rss: "https://feeds.bloomberg.com/markets/news.rss"
+    nota: 90
+    idioma: en
+    activo: true         # 6-nov-2026: validado. Solo uso privado
+  - nombre: "Bloomberg - Economía"
+    rss: "https://feeds.bloomberg.com/economics/news.rss"
+    nota: 90
+    idioma: en
+    activo: false        # 6-nov-2026: funciona, pero casi todo es macro de otros paises (inflacion en Tailandia, Angola...)
+  - nombre: "Bloomberg - Industrias"
+    rss: "https://feeds.bloomberg.com/industries/news.rss"
+    nota: 90
+    idioma: en
+    activo: true         # 6-nov-2026: validado. Solo uso privado
+  - nombre: "Bloomberg Línea - Mercados"
+    rss: "https://www.bloomberglinea.com/arc/outboundfeeds/rss/category/mercados/?outputType=xml"
+    nota: 75
+    idioma: es
+    activo: true         # 6-nov-2026: validado. Edicion en espanol (Latinoamerica). Solo uso privado
   - nombre: "Investing.com - Materias primas"
     rss: "https://www.investing.com/rss/news_11.rss"
     nota: 60
