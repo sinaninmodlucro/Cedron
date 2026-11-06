@@ -54,6 +54,9 @@ def _get(url: str, **kwargs) -> requests.Response:
 # ---------------------------------------------------------------------------
 # MetalCharts: precio spot actual
 # ---------------------------------------------------------------------------
+METALCHARTS_DISPONIBLES: list[str] = []
+
+
 def metalcharts_precios(clave: str, simbolos: list[str]) -> dict:
     if not clave:
         raise FuenteError("falta la clave METALCHARTS_KEY")
@@ -62,6 +65,10 @@ def metalcharts_precios(clave: str, simbolos: list[str]) -> dict:
     cuerpo = r.json()
     if not cuerpo.get("success", True) or "data" not in cuerpo:
         raise FuenteError(f"respuesta inesperada: {str(cuerpo)[:120]}")
+    # Que simbolos trae la respuesta (para saber si el plan gratuito incluye metales
+    # industriales sin gastar consultas extra). Se guarda en el estado.
+    global METALCHARTS_DISPONIBLES
+    METALCHARTS_DISPONIBLES = sorted(cuerpo["data"].keys())
     salida = {}
     for s in simbolos:
         d = cuerpo["data"].get(s)
@@ -483,6 +490,51 @@ def _pagados_excel(contenido: bytes, buscados: dict[str, str]) -> dict[str, dict
                 v = f[j] if j < len(f) else None
                 if isinstance(v, (int, float)) and v > 0:      # el 0 marca meses sin publicar
                     salida.setdefault(actual, {})[f"{int(anio)}-{mes:02d}"] = float(v)
+    return salida
+
+
+# ---------------------------------------------------------------------------
+# Eurostat: indices de precios industriales (sts_inpp_m), Espana y la UE
+# ---------------------------------------------------------------------------
+URL_EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_inpp_m"
+
+
+def eurostat_indices(series: list[str], desde: str) -> dict[str, list[tuple[str, float]]]:
+    """Indices mensuales de precios industriales (2021 = 100, mercado total, sin ajustar).
+
+    'series' = ["ES|C2442", "EU27_2020|C241", ...] (territorio|actividad NACE).
+    Devuelve {serie: [(AAAA-MM, indice), ...]}. 'desde' = "AAAA-MM".
+    """
+    geos = sorted({s.split("|")[0] for s in series})
+    naces = sorted({s.split("|")[1] for s in series})
+    params = [("indic_bt", "PRC_PRR"), ("s_adj", "NSA"), ("unit", "I21"), ("sinceTimePeriod", desde),
+              ("lang", "en")] + [("geo", g) for g in geos] + [("nace_r2", n) for n in naces]
+    d = _get(URL_EUROSTAT, params=params).json()
+    try:
+        dims, tam, valores = d["id"], d["size"], d["value"]
+        cats = {k: d["dimension"][k]["category"]["index"] for k in dims}
+    except (KeyError, TypeError) as e:
+        raise FuenteError(f"Eurostat cambio el formato de su respuesta ({e})") from e
+    # JSON-stat: la posicion de cada dato es el indice "aplanado" de sus coordenadas
+    pesos, p = {}, 1
+    for k, n in reversed(list(zip(dims, tam))):
+        pesos[k] = p
+        p *= n
+    salida: dict[str, list[tuple[str, float]]] = {}
+    for s in series:
+        geo, nace = s.split("|")
+        if geo not in cats["geo"] or nace not in cats["nace_r2"]:
+            raise FuenteError(f"Eurostat no tiene la serie {s}")
+        # el resto de dimensiones (frecuencia, unidad...) tienen un solo valor: posicion 0
+        base = sum(pesos[k] * cats[k][v] for k, v in (("geo", geo), ("nace_r2", nace)))
+        serie = []
+        for mes, i in cats["time"].items():
+            v = valores.get(str(base + pesos["time"] * i)) if isinstance(valores, dict) else None
+            if isinstance(v, (int, float)):
+                serie.append((mes, float(v)))
+        if not serie:
+            raise FuenteError(f"Eurostat no trae datos de {s}")
+        salida[s] = sorted(serie)
     return salida
 
 

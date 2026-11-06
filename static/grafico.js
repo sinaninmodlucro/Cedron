@@ -17,8 +17,11 @@ document.querySelectorAll(".grafico svg[data-puntos]").forEach(function (svg) {
     var escala = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
     globo.style.left = (p.x * escala) + "px";
     globo.style.top = (p.y * escala) + "px";
-    var s = svg.dataset.simbolo || "$";
-    globo.innerHTML = "<strong>" + p.mes + "</strong><br>Precio: " + p.precio + " " + s + "<br>Media: " + p.media + " " + s;
+    // Sin simbolo (indices de precios, 2021 = 100) se habla de "Índice", no de precio
+    var s = svg.dataset.simbolo === undefined ? "$" : svg.dataset.simbolo;
+    var nombre = s ? "Precio" : "Índice";
+    globo.innerHTML = "<strong>" + p.mes + "</strong><br>" + nombre + ": " + p.precio + (s ? " " + s : "") +
+      "<br>Media: " + p.media + (s ? " " + s : "");
   }
   function ocultar() { cruz.hidden = punto.hidden = globo.hidden = true; }
   function indice(evento) {

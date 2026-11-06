@@ -52,6 +52,8 @@ def actualizar_precios(cfg, estado: Estado, forzar=False) -> None:
                                         [a["metalcharts"] for a in activos])
         estado.sumar_consulta("metalcharts")
         estado.set("precios_ultima_consulta", iso())
+        if src.METALCHARTS_DISPONIBLES:
+            estado.set("metalcharts_simbolos", src.METALCHARTS_DISPONIBLES)
         estado.registrar_fuente("MetalCharts", True)
     except src.FuenteError as e:
         estado.registrar_fuente("MetalCharts", False, str(e))

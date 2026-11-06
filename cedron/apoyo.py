@@ -71,7 +71,8 @@ def pares_panel(cfg) -> list[tuple[str, str]]:
 # Nombre con el que cada tipo de fuente se registra en el estado (avisos de salud)
 NOMBRE_ESTADO = {"carburantes": "Ministerio (carburantes)", "boletin": "Comisión Europea (Oil Bulletin)",
                  "mapa": "MAPA (precios semanales)", "panel": "MAPA (panel de consumo)",
-                 "pagados": "MAPA (precios pagados)", "fred": "FRED (materias de apoyo)"}
+                 "pagados": "MAPA (precios pagados)", "fred": "FRED (materias de apoyo)",
+                 "eurostat": "Eurostat (precios industriales)"}
 
 
 def fuentes_sin_uso(cfg) -> set[str]:
@@ -182,6 +183,19 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
             estado.registrar_fuente("MAPA (precios pagados)", False, str(e))
             log.warning("Precios pagados: %s", e)
 
+    # Eurostat (indices de precios industriales de Espana y la UE): mensual; una vez al dia
+    series_eu = _fuentes_de(cfg, "eurostat", "serie")
+    if series_eu and (forzar or _una_vez_al_dia(estado, "apoyo_eurostat_dia")):
+        try:
+            desde = f"{hoy.year - ANIOS_HISTORIA}-01"
+            datos = {s: [list(x) for x in v] for s, v in src.eurostat_indices(series_eu, desde).items()}
+            escribir("apoyo/eurostat.json", {"series": datos, "consultado": iso()})
+            estado.set("apoyo_eurostat_dia", hoy.isoformat())
+            estado.registrar_fuente("Eurostat (precios industriales)", True)
+        except src.FuenteError as e:
+            estado.registrar_fuente("Eurostat (precios industriales)", False, str(e))
+            log.warning("Eurostat: %s", e)
+
     # FRED: una vez al dia
     codigos = _fuentes_de(cfg, "fred", "serie")
     if codigos and (forzar or _una_vez_al_dia(estado, "apoyo_fred_dia")):
@@ -209,9 +223,10 @@ FUENTES_NOMBRE = {
     "fred": "FRED",
     "panel": "Ministerio de Agricultura, panel de consumo en hogares",
     "pagados": "Ministerio de Agricultura, precios pagados por los agricultores",
+    "eurostat": "Eurostat, índices de precios industriales",
 }
 CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
-                "pagados": "producto"}
+                "pagados": "producto", "eurostat": "serie"}
 
 
 def cargar_fuentes() -> dict:
@@ -225,6 +240,7 @@ def cargar_fuentes() -> dict:
         "pink": (leer("pink.json", {}) or {}).get("series", {}),
         "panel": (leer("apoyo/panel.json", {}) or {}).get("series", {}),
         "pagados": (leer("apoyo/pagados.json", {}) or {}).get("series", {}),
+        "eurostat": (leer("apoyo/eurostat.json", {}) or {}).get("series", {}),
     }
 
 
@@ -358,6 +374,11 @@ def multiplicador(origen: list, f_tienda: str, v_tienda: float) -> dict | None:
     return {"veces": v_tienda / media, "mes": mes, "origen": media} if media else None
 
 
+def decimales_por_defecto(unidad: str) -> int:
+    """Precios por tonelada sin decimales (15.436 $/tonelada); el resto, con dos."""
+    return 0 if "tonelada" in unidad else 2
+
+
 def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dict | None:
     """Precio en tienda (panel de consumo) junto al de origen, si el ambito lo define."""
     t = amb.get("tienda")
@@ -384,7 +405,7 @@ def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dic
     else:
         r["interanual_pct"], r["interanual_base"] = None, None
     preferidos = {f for f, _ in solo_pref}
-    return {**t, "resumen": r, "frecuencia": "mensual",
+    return {"decimales": decimales_por_defecto(t["unidad"]), **t, "resumen": r, "frecuencia": "mensual",
             "canal_ultimo": "supermercado" if r["fecha"] in preferidos else "todas las tiendas",
             # 'multiplicador: false' en config.yaml cuando la tienda vende un producto
             # elaborado (trigo -> pan): compararlos kilo a kilo no tendria sentido.
@@ -422,7 +443,8 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                 r = resumen(serie, meses_media, n_actual=len(actual) if actual and historia else None)
                 if r and amb["fuente"] == "carburantes" and actual:
                     r["hora"] = fuentes.get("_carburantes_dato")     # hora exacta del dato
-                ambitos[a] = {**{k: v for k, v in amb.items() if k != "historia"},
+                ambitos[a] = {"decimales": decimales_por_defecto(amb["unidad"]),
+                              **{k: v for k, v in amb.items() if k != "historia"},
                               "id": a, "nombre": amb.get("etiqueta") or NOMBRES_AMBITO[a],
                               "frecuencia": amb.get("frecuencia", "mensual") if actual else "mensual",
                               "fuente_nombre": fuentes_usadas[0] if actual else fuentes_usadas[-1],

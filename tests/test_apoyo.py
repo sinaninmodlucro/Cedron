@@ -116,6 +116,25 @@ class Conectores(unittest.TestCase):
         self.assertEqual(d["UREA 46%"], [("2024-01", 40.0), ("2025-01", 50.0), ("2025-02", 51.0), ("2025-03", 52.0),
                                          ("2026-01", 75.0), ("2026-02", 78.5)])   # manda el reciente; el 0 no cuenta
 
+    def test_eurostat(self):
+        # JSON-stat: 2 territorios x 2 actividades x 2 meses, aplanado en ese orden
+        cuerpo = {"id": ["freq", "unit", "nace_r2", "geo", "time"], "size": [1, 1, 2, 2, 2],
+                  "dimension": {"freq": {"category": {"index": {"M": 0}}},
+                                "unit": {"category": {"index": {"I21": 0}}},
+                                "nace_r2": {"category": {"index": {"C241": 0, "C2442": 1}}},
+                                "geo": {"category": {"index": {"EU27_2020": 0, "ES": 1}}},
+                                "time": {"category": {"index": {"2026-08": 0, "2026-09": 1}}}},
+                  "value": {"0": 104.9, "1": 105.3, "2": 107.5, "4": 141.4, "5": 141.1, "6": 141.6, "7": 140.6}}
+        with mock.patch("cedron.sources.requests.get", return_value=Respuesta(json_=cuerpo)) as g:
+            s = src.eurostat_indices(["ES|C2442", "EU27_2020|C241", "ES|C241"], "2016-01")
+        self.assertEqual(s["ES|C2442"], [("2026-08", 141.6), ("2026-09", 140.6)])
+        self.assertEqual(s["EU27_2020|C241"], [("2026-08", 104.9), ("2026-09", 105.3)])
+        self.assertEqual(s["ES|C241"], [("2026-08", 107.5)])               # el dato que falta no se inventa
+        self.assertIn(("unit", "I21"), g.call_args[1]["params"])
+        with mock.patch("cedron.sources.requests.get", return_value=Respuesta(json_=cuerpo)):
+            with self.assertRaisesRegex(src.FuenteError, "no tiene la serie"):
+                src.eurostat_indices(["FR|C241"], "2016-01")
+
     def test_panel_nombre_repetido(self):
         orden = [("CACAO SOLUBLE", ["CACAO SOLUBLE", 7.7]), ("NORMAL", ["NORMAL", 7.6]),
                  ("ARROZ", ["ARROZ", 2.4]), ("NORMAL", ["NORMAL", 1.6]), ("TOMATES", ["TOMATES", 2.4]),

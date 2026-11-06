@@ -99,6 +99,8 @@ activos:
 #                nombre se repite, 'PADRE>HIJO' (p. ej. "ARROZ>NORMAL").
 #   pagados      Ministerio de Agricultura, precios pagados por los agricultores
 #                (mensual, EUR/100 kg sin IVA). 'producto' = principio del nombre.
+#   eurostat     Eurostat, indices de precios industriales (mensual, 2021 = 100).
+#                'serie' = "territorio|actividad NACE", p. ej. "ES|C2442" (aluminio).
 # 'factor' multiplica el dato original para pasarlo a la unidad mostrada.
 # 'dias_reciente' en un ambito cambia la antiguedad maxima para esa fuente
 # (las estadisticas oficiales mensuales salen con 2-4 meses de retraso).
@@ -622,6 +624,225 @@ apoyo:
               frecuencia: mensual
               dias_reciente: 150
               nota: "Nitrógeno, fósforo y potasio a partes iguales, precio pagado por el agricultor"
+
+    # Bloque 3 (6-nov-2026): metales industriales y materiales de construcción.
+    # España y Europa: Eurostat, índices de precios industriales (2021 = 100, mensual,
+    # 'serie' = "territorio|actividad NACE"); no hay precios en euros gratuitos y
+    # reutilizables. Global: Banco Mundial (precio en dólares). Orden: lo más usado
+    # primero (acero y aluminio, luego cobre y zinc...).
+    - id: metales
+      nombre: "Metales industriales"
+      pestana: "Construcción"
+      descripcion: >
+        Acero, aluminio, cobre y zinc están en la estructura, las ventanas, la instalación
+        eléctrica y las cubiertas de los edificios; su precio depende mucho de la energía.
+        En España y Europa se muestra un índice de precios de fábrica (2021 = 100): sirve
+        para ver cuánto sube o baja, no es un precio en euros.
+      materias:
+        - id: acero
+          nombre: "Acero"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C241"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica de hierro, acero y ferroaleaciones en España"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C241"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica de hierro, acero y ferroaleaciones en la UE"
+        - id: aluminio
+          nombre: "Aluminio"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C2442"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del aluminio en España"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C2442"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del aluminio en la UE"
+            global:
+              fuente: pink
+              serie: "Aluminum"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+        - id: cobre_industrial
+          nombre: "Cobre"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C2444"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del cobre en España. El cobre tiene además su ficha con lectura en «Mercado»"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C2444"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del cobre en la UE"
+            global:
+              fuente: pink
+              serie: "Copper"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+        - id: zinc
+          nombre: "Zinc"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C2443"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice conjunto de plomo, zinc y estaño en España (Eurostat no los separa)"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C2443"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice conjunto de plomo, zinc y estaño en la UE (Eurostat no los separa)"
+            global:
+              fuente: pink
+              serie: "Zinc"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+        - id: niquel
+          nombre: "Níquel"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Nickel"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Bolsa de Metales de Londres (Banco Mundial); se usa sobre todo en el acero inoxidable"
+        - id: plomo
+          nombre: "Plomo"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Lead"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+        - id: estano
+          nombre: "Estaño"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Tin"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Bolsa de Metales de Londres (Banco Mundial)"
+        - id: hierro
+          nombre: "Mineral de hierro"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Iron ore, cfr spot"
+              unidad: "$/tonelada seca"
+              frecuencia: mensual
+              nota: "Mineral importado en China, la materia prima del acero (Banco Mundial)"
+
+    - id: construccion
+      nombre: "Madera y otros materiales de construcción"
+      pestana: "Construcción"
+      descripcion: >
+        Materiales que, junto a los metales, marcan el coste de construir. En España y
+        Europa, índice de precios de fábrica (2021 = 100).
+      materias:
+        - id: madera
+          nombre: "Madera aserrada"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C161"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del aserrado y cepillado de madera en España"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C161"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del aserrado y cepillado de madera en la UE"
+            global:
+              fuente: fred
+              serie: PSAWOREUSDM
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Madera aserrada de coníferas (pino, abeto), referencia mundial del FMI"
+        - id: cemento
+          nombre: "Cemento"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C2351"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del cemento en España"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C235"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de cemento, cal y yeso en la UE (Eurostat no publica el cemento solo)"
+        - id: hormigon
+          nombre: "Hormigón preparado"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C2363"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del hormigón preparado en España"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C2363"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica del hormigón preparado en la UE"
+        - id: estructuras
+          nombre: "Estructuras metálicas"
+          ambitos:
+            espana:
+              fuente: eurostat
+              serie: "ES|C2511"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica de estructuras metálicas (vigas, cerchas...) en España"
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|C2511"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              nota: "Índice de precios de fábrica de estructuras metálicas en la UE"
 
 # Precio en tienda (6-nov-2026): Panel de consumo alimentario en hogares del MAPA.
 # Mensual, con 2-3 meses de retraso. Se usa el canal 'preferido' (supermercado) y,

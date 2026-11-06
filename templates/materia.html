@@ -28,7 +28,7 @@
     {% if hay_tienda %}<h3 class="bloque-pequeno bloque-pequeno--primero">En origen</h3>{% endif %}
     <p class="ficha__precio cifra">{{ valor_apoyo(amb) }}</p>
     <p class="ficha__datos">
-      {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}. {% endif %}
+      {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad_eur }}. {% endif %}
       Dato: {{ fecha_dato(amb) }}.
       {% if r.cambio_pct is not none %}Frente al dato anterior ({{ r.anterior.fecha|mes }}): <span class="cifra {{ 'sube' if r.cambio_pct > 0 else 'baja' if r.cambio_pct < 0 }}">{{ r.cambio_pct|porcentaje }}</span>.{% endif %}
       {% if r.interanual_pct is not none %} En un año: <span class="cifra {{ 'sube' if r.interanual_pct > 0 else 'baja' if r.interanual_pct < 0 }}">{{ r.interanual_pct|porcentaje }}</span>.{% endif %}
@@ -74,11 +74,11 @@
     <div class="solo-tienda">
     <h3 class="bloque-pequeno">En la tienda{% if t.nombre %}: {{ t.nombre }}{% endif %}</h3>
     {% if t.explicacion %}<p class="pequeno secundario">{{ t.explicacion }}</p>{% endif %}
-    <p class="ficha__precio ficha__precio--medio cifra">{{ rt.valor|numero(t.decimales or 2) }} {{ t.unidad }}</p>
+    <p class="ficha__precio ficha__precio--medio cifra">{{ rt.valor|numero(t.decimales if t.decimales is not none else 2) }} {{ t.unidad }}</p>
     <p class="ficha__datos">
       Precio medio que pagaron los hogares en {{ t.canal_ultimo }} en {{ rt.fecha|mes }}, IVA incluido.
       {% if rt.interanual_pct is not none %}En un año: <span class="cifra {{ 'sube' if rt.interanual_pct > 0 else 'baja' if rt.interanual_pct < 0 }}">{{ rt.interanual_pct|porcentaje }}</span>{% if rt.interanual_base != t.canal_ultimo %} (comparando la media de {{ rt.interanual_base }}){% endif %}.{% endif %}
-      {% if t.multiplicador %} Es <strong>{{ t.multiplicador.veces|numero(1) }} veces</strong> el precio en origen de ese mes ({{ t.multiplicador.origen|numero(amb.decimales or 2) }} {{ amb.unidad }}).{% endif %}
+      {% if t.multiplicador %} Es <strong>{{ t.multiplicador.veces|numero(1) }} veces</strong> el precio en origen de ese mes ({{ t.multiplicador.origen|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad }}).{% endif %}
     </p>
     <p class="pequeno secundario">El precio en tienda es del producto ya preparado para la venta, con IVA; el de origen es lo que cobra el productor, sin IVA. La diferencia incluye transformación (despiece, molienda, envasado), mermas, transporte, conservación, distribución, márgenes e impuestos: no es el beneficio de nadie. Fuente: {{ t.fuente_nombre }}, mensual, con unos dos o tres meses de retraso.</p>
     {% if t.grafico %}{% set gr = t.grafico %}

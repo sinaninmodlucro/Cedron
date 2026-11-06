@@ -197,7 +197,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         for m in g["materias"]:
             for amb in m["ambitos"].values():
                 r = amb["resumen"]
-                simbolo = "€" if amb["unidad"].startswith("€") else "$"
+                # € o $ segun la unidad; los indices (2021 = 100) no llevan simbolo ni euros
+                simbolo = "€" if amb["unidad"].startswith("€") else "$" if amb["unidad"].startswith("$") else ""
                 amb["grafico"] = grafico(r["mensual"], meses_media, amb["unidad"], simbolo) if r else None
                 amb["eur"] = (r["valor"] / eurusd[1]) if r and simbolo == "$" and eurusd else None
                 amb["unidad_eur"] = "€" + amb["unidad"][1:] if simbolo == "$" else None
