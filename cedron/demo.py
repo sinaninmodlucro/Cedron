@@ -24,7 +24,8 @@ def _paseo(n, final, volatilidad, deriva, semilla):
 
 # Niveles aproximados de las materias de apoyo, por unidad (y ambito si hace falta)
 NIVELES_APOYO = {"€/litro": 1.6, "$/galón": 3.8, "$/barril": 80, "$/MMBtu": 3.0, "$/tonelada": 130,
-                 "€/kg canal": 2.4, "$/kg": 3.0, "€/kg": 8.0, "€/unidad": 0.25}
+                 "€/kg canal": 2.4, "$/kg": 3.0, "€/kg": 8.0, "€/unidad": 0.25, "€/tonelada": 300,
+                 "$/litro": 1.3}
 
 
 def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
@@ -47,8 +48,9 @@ def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
 
 def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
     from .apoyo import _canales_panel, materias
-    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}}
-    clave = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie"}
+    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}, "pagados": {}}
+    clave = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
+             "pagados": "producto"}
     semilla = 700
 
     def panel(d, nivel):
@@ -84,7 +86,7 @@ def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
                 else:
                     caches[d["fuente"]][d[clave[d["fuente"]]]] = serie
     escribir("apoyo/carburantes.json", {"series": caches["carburantes"], "dato": iso(), "consultado": iso()})
-    for f in ("boletin", "mapa", "fred", "panel"):
+    for f in ("boletin", "mapa", "fred", "panel", "pagados"):
         escribir(f"apoyo/{f}.json", {"series": caches[f], "consultado": iso()})
 
 
@@ -165,7 +167,7 @@ def generar(cfg) -> None:
     estado = Estado()
     for f in ("MetalCharts", "Banco Mundial", "FRED", "CFTC", "NewsData.io", "Ministerio (carburantes)",
               "Comisión Europea (Oil Bulletin)", "MAPA (precios semanales)", "FRED (materias de apoyo)",
-              "MAPA (panel de consumo)"):
+              "MAPA (panel de consumo)", "MAPA (precios pagados)"):
         estado.registrar_fuente(f, True)
     estado.set("ultima_ejecucion", iso())
     estado.guardar()

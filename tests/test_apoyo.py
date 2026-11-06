@@ -76,6 +76,53 @@ class Conectores(unittest.TestCase):
             with self.assertRaisesRegex(src.FuenteError, "producto no encontrado"):
                 src.mapa_semanal(["Pollo ("])
 
+    def test_mapa_producto_de_temporada_sin_datos(self):
+        contenido = excel([
+            ["SECTOR", "x", "PRODUCTOS", "Semana 1"],
+            [None, "(12)", "Naranja (€/100kg)", "-"],              # fuera de temporada
+            [None, "(13)", "Patata (€/100kg)", 39.25],
+        ])
+        pagina = Respuesta('<a href="/dam/x/precios_medios_nacionales_2027.xlsx">b</a>')
+        with mock.patch("cedron.sources.requests.get", side_effect=[pagina, Respuesta(contenido)]):
+            s = src.mapa_semanal(["Naranja (", "Patata"])
+        self.assertEqual(s["Naranja ("], [])                      # sin datos, pero no rompe la fuente
+        self.assertEqual(s["Patata"], [("2027-01-04", 39.25)])
+
+    def test_precios_pagados(self):
+        def libro(filas):
+            from openpyxl import Workbook
+            wb = Workbook()
+            wb.active.title = "CONTENIDO A"
+            wb.active.append(["UREA 46%"])                         # indice: sin cabecera, se ignora
+            h = wb.create_sheet("PrePag1")
+            for f in filas:
+                h.append(f)
+            buf = io.BytesIO()
+            wb.save(buf)
+            return buf.getvalue()
+        cab = [["PRECIOS PAGADOS POR LOS AGRICULTORES"], ["EUROS POR 100kg s/IVA"],
+               ["PRODUCTOS", "AÑO", "Enero", "Febrero", "Marzo"]]
+        nuevo = libro(cab + [["ABONOS"], ["UREA 46% (100kg)", 2026, 75.0, 78.5, 0],
+                             [None, 2025, 50.0, 51.0, 52.0],
+                             ["NITRATO AMONICO 33,5 (100kg)", 2026, 60.0, 61.0, 0]])
+        viejo = libro(cab + [["UREA   46%  (100kg)", 2025, 49.0, 49.5, 49.9],
+                             [None, 2024, 40.0, None, None]])
+        pagina = Respuesta('<a href="/dam/x/indices-y-precios-pagados-agrarios--2026-.xlsx">n</a>'
+                           '<a href="/dam/x/indicesypreciospagadosagrariosenero2015.xlsx">v</a>')
+        with mock.patch("cedron.sources.requests.get",
+                        side_effect=[pagina, Respuesta(viejo), Respuesta(nuevo)]) as g:
+            d = src.precios_pagados(["UREA 46%"])
+        self.assertEqual(g.call_args_list[1][0][0], "https://www.mapa.gob.es/dam/x/indicesypreciospagadosagrariosenero2015.xlsx")
+        self.assertEqual(d["UREA 46%"], [("2024-01", 40.0), ("2025-01", 50.0), ("2025-02", 51.0), ("2025-03", 52.0),
+                                         ("2026-01", 75.0), ("2026-02", 78.5)])   # manda el reciente; el 0 no cuenta
+
+    def test_panel_nombre_repetido(self):
+        orden = [("CACAO SOLUBLE", ["CACAO SOLUBLE", 7.7]), ("NORMAL", ["NORMAL", 7.6]),
+                 ("ARROZ", ["ARROZ", 2.4]), ("NORMAL", ["NORMAL", 1.6]), ("TOMATES", ["TOMATES", 2.4]),
+                 ("TOMATES", ["TOMATES", 2.0])]
+        self.assertEqual(src._fila_panel(orden, "ARROZ>NORMAL")[1], 1.6)
+        self.assertEqual(src._fila_panel(orden, "TOMATES")[1], 2.4)          # la primera: frescos
+        self.assertIsNone(src._fila_panel(orden, "PASTA>NORMAL"))
 
     def test_panel_consumo(self):
         def hoja(titulo, mes):
@@ -155,6 +202,10 @@ class Calculos(unittest.TestCase):
         solo = {"espana": self._amb("2026-08-03", "semanal")}
         self.assertEqual(apoyo.elegir(solo, "espana", dias, hoy), ("espana", None))
         self.assertEqual(apoyo.elegir({}, "espana", dias, hoy), (None, None))
+        # Fuente oficial con retraso conocido ('dias_reciente' propio): sigue valiendo
+        lento = {"espana": {**self._amb("2026-07", "mensual"), "dias_reciente": 150},
+                 "global": self._amb("2026-10", "mensual")}
+        self.assertEqual(apoyo.elegir(lento, "espana", dias, hoy), ("espana", None))
 
 
 if __name__ == "__main__":

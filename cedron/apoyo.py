@@ -124,12 +124,12 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
         try:
             guardado = leer("apoyo/mapa.json", {}) or {}
             series = guardado.get("series", {})
-            vacio = any(not series.get(p) for p in productos)
+            vacio = any(p not in series for p in productos)     # producto nuevo: baja su historia
             anios = list(range(hoy.year - ANIOS_MAPA_INICIAL, hoy.year + 1)) if vacio else \
                 ([hoy.year - 1, hoy.year] if hoy.month == 1 else [hoy.year])
             nuevas = src.mapa_semanal(productos, anios)
-            for p, s in nuevas.items():
-                series[p] = _fusionar(series.get(p, []), [list(x) for x in s])
+            for p in productos:
+                series[p] = _fusionar(series.get(p, []), [list(x) for x in nuevas.get(p, [])])
             escribir("apoyo/mapa.json", {"series": series, "consultado": iso()})
             estado.set("apoyo_mapa_dia", hoy.isoformat())
             estado.registrar_fuente("MAPA (precios semanales)", True)
@@ -144,7 +144,7 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
         try:
             guardado = leer("apoyo/panel.json", {}) or {}
             series = guardado.get("series", {})
-            vacio = any(not series.get(f"{p}|{c}") for p, c in pares)
+            vacio = any(f"{p}|{c}" not in series for p, c in pares)    # producto nuevo: baja su historia
             desde = int(cfg.get("panel", {}).get("anios_inicial", hoy.year - 4))
             anios = list(range(desde, hoy.year + 1)) if vacio else [hoy.year - 1, hoy.year]
             nuevas = src.panel_consumo(pares, anios)
@@ -157,6 +157,18 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
         except src.FuenteError as e:
             estado.registrar_fuente("MAPA (panel de consumo)", False, str(e))
             log.warning("Panel de consumo: %s", e)
+
+    # Precios pagados por los agricultores (abonos): mensual; se mira una vez al dia
+    productos = _fuentes_de(cfg, "pagados", "producto")
+    if productos and (forzar or _una_vez_al_dia(estado, "apoyo_pagados_dia")):
+        try:
+            series = {p: [list(x) for x in s] for p, s in src.precios_pagados(productos).items()}
+            escribir("apoyo/pagados.json", {"series": series, "consultado": iso()})
+            estado.set("apoyo_pagados_dia", hoy.isoformat())
+            estado.registrar_fuente("MAPA (precios pagados)", True)
+        except src.FuenteError as e:
+            estado.registrar_fuente("MAPA (precios pagados)", False, str(e))
+            log.warning("Precios pagados: %s", e)
 
     # FRED: una vez al dia
     codigos = _fuentes_de(cfg, "fred", "serie")
@@ -184,8 +196,10 @@ FUENTES_NOMBRE = {
     "pink": "Banco Mundial (Pink Sheet)",
     "fred": "FRED",
     "panel": "Ministerio de Agricultura, panel de consumo en hogares",
+    "pagados": "Ministerio de Agricultura, precios pagados por los agricultores",
 }
-CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie"}
+CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
+                "pagados": "producto"}
 
 
 def cargar_fuentes() -> dict:
@@ -198,6 +212,7 @@ def cargar_fuentes() -> dict:
         "fred": (leer("apoyo/fred.json", {}) or {}).get("series", {}),
         "pink": (leer("pink.json", {}) or {}).get("series", {}),
         "panel": (leer("apoyo/panel.json", {}) or {}).get("series", {}),
+        "pagados": (leer("apoyo/pagados.json", {}) or {}).get("series", {}),
     }
 
 
@@ -288,8 +303,11 @@ def resumen(serie: list, meses_media: int = 10, n_actual: int | None = None) -> 
     return r
 
 
-def reciente(r: dict, frecuencia: str, dias: dict, hoy: date) -> bool:
-    return (hoy - fecha_fin(r["fecha"])).days <= int(dias.get(frecuencia, 75))
+def reciente(r: dict, frecuencia: str, dias: dict, hoy: date, propio: int | None = None) -> bool:
+    """'propio' = dias que una fuente concreta puede tardar (config: 'dias_reciente' en el
+    ambito), para fuentes oficiales que publican siempre con meses de retraso."""
+    limite = int(propio) if propio else int(dias.get(frecuencia, 75))
+    return (hoy - fecha_fin(r["fecha"])).days <= limite
 
 
 def elegir(ambitos: dict, vista: str, dias: dict, hoy: date) -> tuple[str | None, str | None]:
@@ -306,7 +324,7 @@ def elegir(ambitos: dict, vista: str, dias: dict, hoy: date) -> tuple[str | None
     nombre = NOMBRES_AMBITO.get(vista, vista)
     if vista in disponibles:
         d = disponibles[vista]
-        if reciente(d["resumen"], d["frecuencia"], dias, hoy):
+        if reciente(d["resumen"], d["frecuencia"], dias, hoy, d.get("dias_reciente")):
             return vista, None
         propio = fecha_fin(d["resumen"]["fecha"])
         mas_nuevos = {a: x for a, x in disponibles.items() if fecha_fin(x["resumen"]["fecha"]) > propio}
@@ -356,7 +374,9 @@ def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dic
     preferidos = {f for f, _ in solo_pref}
     return {**t, "resumen": r, "frecuencia": "mensual",
             "canal_ultimo": "supermercado" if r["fecha"] in preferidos else "todas las tiendas",
-            "multiplicador": multiplicador(origen, r["fecha"], r["valor"]),
+            # 'multiplicador: false' en config.yaml cuando la tienda vende un producto
+            # elaborado (trigo -> pan): compararlos kilo a kilo no tendria sentido.
+            "multiplicador": multiplicador(origen, r["fecha"], r["valor"]) if t.get("multiplicador", True) else None,
             "fuente_nombre": FUENTES_NOMBRE["panel"]}
 
 

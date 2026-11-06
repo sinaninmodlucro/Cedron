@@ -72,14 +72,15 @@
     {% set t = amb.tienda %}
     {% if t and t.resumen %}{% set rt = t.resumen %}
     <div class="solo-tienda">
-    <h3 class="bloque-pequeno">En la tienda</h3>
+    <h3 class="bloque-pequeno">En la tienda{% if t.nombre %}: {{ t.nombre }}{% endif %}</h3>
+    {% if t.explicacion %}<p class="pequeno secundario">{{ t.explicacion }}</p>{% endif %}
     <p class="ficha__precio ficha__precio--medio cifra">{{ rt.valor|numero(t.decimales or 2) }} {{ t.unidad }}</p>
     <p class="ficha__datos">
       Precio medio que pagaron los hogares en {{ t.canal_ultimo }} en {{ rt.fecha|mes }}, IVA incluido.
       {% if rt.interanual_pct is not none %}En un año: <span class="cifra {{ 'sube' if rt.interanual_pct > 0 else 'baja' if rt.interanual_pct < 0 }}">{{ rt.interanual_pct|porcentaje }}</span>{% if rt.interanual_base != t.canal_ultimo %} (comparando la media de {{ rt.interanual_base }}){% endif %}.{% endif %}
       {% if t.multiplicador %} Es <strong>{{ t.multiplicador.veces|numero(1) }} veces</strong> el precio en origen de ese mes ({{ t.multiplicador.origen|numero(amb.decimales or 2) }} {{ amb.unidad }}).{% endif %}
     </p>
-    <p class="pequeno secundario">El precio en tienda es de la carne o el producto ya preparado para la venta, con IVA; el de origen es lo que cobra el productor, sin IVA. La diferencia incluye despiece y mermas, transporte, conservación, distribución, márgenes e impuestos: no es el beneficio de nadie. Fuente: {{ t.fuente_nombre }}, mensual, con unos dos o tres meses de retraso.</p>
+    <p class="pequeno secundario">El precio en tienda es del producto ya preparado para la venta, con IVA; el de origen es lo que cobra el productor, sin IVA. La diferencia incluye transformación (despiece, molienda, envasado), mermas, transporte, conservación, distribución, márgenes e impuestos: no es el beneficio de nadie. Fuente: {{ t.fuente_nombre }}, mensual, con unos dos o tres meses de retraso.</p>
     {% if t.grafico %}{% set gr = t.grafico %}
     <figure class="grafico">
       <div class="leyenda" aria-hidden="true"><span>Precio medio en tienda</span><span class="l-media">Media de {{ gr.meses_media }} meses</span></div>

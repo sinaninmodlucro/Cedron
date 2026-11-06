@@ -94,7 +94,14 @@ activos:
 #                'producto' = principio del nombre de la fila en su Excel.
 #   pink         Banco Mundial, Pink Sheet (mensual). 'serie' = nombre exacto.
 #   fred         FRED (necesita FRED_KEY). 'serie' = codigo de la serie.
+#   panel        Ministerio de Agricultura, panel de consumo en hogares (mensual):
+#                precio en tienda. 'producto' = nombre exacto de la fila; si el
+#                nombre se repite, 'PADRE>HIJO' (p. ej. "ARROZ>NORMAL").
+#   pagados      Ministerio de Agricultura, precios pagados por los agricultores
+#                (mensual, EUR/100 kg sin IVA). 'producto' = principio del nombre.
 # 'factor' multiplica el dato original para pasarlo a la unidad mostrada.
+# 'dias_reciente' en un ambito cambia la antiguedad maxima para esa fuente
+# (las estadisticas oficiales mensuales salen con 2-4 meses de retraso).
 # 'historia' (opcional) es otra fuente con la que se completa el pasado.
 # -----------------------------------------------------------------------------
 apoyo:
@@ -265,6 +272,351 @@ apoyo:
               nota: "Precio en supermercado que pagan los hogares (toda la leche líquida)"
             # origen: pendiente (precio de la leche cruda al ganadero, FEGA); europa: pendiente
 
+    # Bloque 2 (6-nov-2026). Criterio del usuario: centrarse en lo más consumido en
+    # España (volumen del panel de consumo), incluyendo siempre trigo, arroz y AOVE;
+    # el resto se incluye por la cadena de costes. Europa: pendiente (el portal
+    # agroalimentario de la UE estaba suspendido), salvo el azúcar.
+    # Aceites: de €/100 kg a €/litro con la densidad (oliva 0,916; girasol 0,92).
+    - id: agricolas
+      nombre: "Agrícolas principales"
+      descripcion: >
+        Los alimentos de origen agrícola que más se consumen en España, más el trigo,
+        el arroz y el aceite de oliva virgen extra, que se siguen siempre. En España se
+        ve el precio en origen y el que se paga en la tienda.
+      materias:
+        - id: trigo
+          nombre: "Trigo"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Trigo blando"
+              unidad: "€/tonelada"
+              frecuencia: semanal
+              nota: "Precio en origen: trigo blando panificable, media nacional"
+              tienda: {producto: "PAN FRESCO NORMAL", nombre: "pan", unidad: "€/kg", multiplicador: false,
+                       explicacion: "El pan es un producto elaborado: el trigo es solo una parte de su coste, junto a la energía del horno, la mano de obra y la distribución. Por eso no se calcula cuántas veces es el precio en origen."}
+            global:
+              fuente: pink
+              serie: "Wheat, US HRW"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Trigo rojo de invierno de EE. UU. (HRW), referencia mundial (Banco Mundial)"
+        - id: arroz
+          nombre: "Arroz"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Arroz blanco japónica"
+              factor: 0.001          # de €/tonelada a €/kg, para compararlo con la tienda
+              unidad: "€/kg"
+              decimales: 3
+              frecuencia: semanal
+              nota: "Precio en origen: arroz blanco japónica (grano redondo) a granel, salida de industria"
+              tienda: {producto: "ARROZ>NORMAL", nombre: "arroz redondo", unidad: "€/kg"}
+            global:
+              fuente: pink
+              serie: "Rice, Thai 5%"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Arroz blanco tailandés, 5 % de grano partido (Banco Mundial)"
+        - id: aove
+          nombre: "Aceite de oliva virgen extra"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Aceite de oliva virgen extra"
+              factor: 0.00916        # de €/100 kg a €/litro
+              unidad: "€/litro"
+              decimales: 2
+              frecuencia: semanal
+              nota: "Precio en origen: salida de almazara, a granel, media nacional"
+              tienda: {producto: "A.O VIRGEN EXTRA", unidad: "€/litro"}
+            global:
+              fuente: fred
+              serie: POLVOILUSDM
+              factor: 0.000916       # de $/tonelada a $/litro
+              unidad: "$/litro"
+              frecuencia: mensual
+              nota: "Precio de referencia mundial del FMI (aceite de oliva virgen extra)"
+        - id: girasol
+          nombre: "Aceite de girasol"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Aceite de girasol refinado convencional"
+              factor: 0.0092         # de €/100 kg a €/litro
+              unidad: "€/litro"
+              frecuencia: semanal
+              nota: "Precio en origen: refinado, salida de refinería, a granel"
+              tienda: {producto: "ACEITE DE GIRASOL", unidad: "€/litro"}
+            global:
+              fuente: pink
+              serie: "Sunflower oil"
+              factor: 0.00092        # de $/tonelada a $/litro
+              unidad: "$/litro"
+              frecuencia: mensual
+              nota: "Precio de referencia mundial (Banco Mundial)"
+        - id: patata
+          nombre: "Patata"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Patata"
+              factor: 0.01
+              unidad: "€/kg"
+              frecuencia: semanal
+              nota: "Precio en origen (lo que cobra el agricultor), media nacional"
+              tienda: {producto: "PATATAS FRESCAS", unidad: "€/kg"}
+        - id: tomate
+          nombre: "Tomate"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Tomate redondo liso"
+              factor: 0.01
+              unidad: "€/kg"
+              frecuencia: semanal
+              nota: "Precio en origen: tomate redondo liso, media nacional"
+              tienda: {producto: "TOMATES", unidad: "€/kg"}
+        - id: naranja
+          nombre: "Naranja"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Naranja ("
+              factor: 0.01
+              unidad: "€/kg"
+              frecuencia: semanal
+              nota: "Precio en origen (en el árbol), todas las variedades; sin dato fuera de temporada"
+              tienda: {producto: "NARANJAS", unidad: "€/kg"}
+            global:
+              fuente: pink
+              serie: "Orange"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Referencia mundial (Banco Mundial)"
+        - id: platano
+          nombre: "Plátano"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Plátano"
+              factor: 0.01
+              unidad: "€/kg"
+              frecuencia: semanal
+              nota: "Precio en origen: plátano de Canarias"
+              tienda: {producto: "PLATANOS", unidad: "€/kg"}
+            europa:
+              fuente: pink
+              serie: "Banana, Europe"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Banana importada en Europa (Banco Mundial)"
+        - id: manzana
+          nombre: "Manzana"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Manzana Golden"
+              factor: 0.01
+              unidad: "€/kg"
+              frecuencia: semanal
+              nota: "Precio en origen: manzana Golden, media nacional"
+              tienda: {producto: "MANZANA GOLDEN", unidad: "€/kg"}
+        - id: cebolla
+          nombre: "Cebolla"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Cebolla"
+              factor: 0.01
+              unidad: "€/kg"
+              frecuencia: semanal
+              nota: "Precio en origen, media nacional"
+              tienda: {producto: "CEBOLLAS", unidad: "€/kg"}
+        - id: azucar
+          nombre: "Azúcar"
+          ambitos:
+            espana:
+              fuente: panel
+              producto: "AZUCAR"
+              unidad: "€/kg"
+              frecuencia: mensual
+              nota: "Precio en tienda que pagan los hogares (no hay precio en origen publicado)"
+            europa:
+              fuente: pink
+              serie: "Sugar, EU"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Precio de referencia en la UE (Banco Mundial)"
+            global:
+              fuente: pink
+              serie: "Sugar, world"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Azúcar en bruto, referencia mundial (Banco Mundial)"
+
+    - id: agricolas_apoyo
+      nombre: "Agrícolas de apoyo"
+      descripcion: >
+        Cereales y oleaginosas para pienso y productos importados. Casi no se compran
+        tal cual, pero entran en el coste de la carne, la leche, el pan o los dulces.
+      materias:
+        - id: maiz
+          nombre: "Maíz"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Maíz grano"
+              unidad: "€/tonelada"
+              frecuencia: semanal
+              nota: "Precio en origen: maíz grano, base del pienso"
+            global:
+              fuente: pink
+              serie: "Maize"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Maíz de EE. UU., referencia mundial (Banco Mundial)"
+        - id: cebada
+          nombre: "Cebada"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Cebada pienso"
+              unidad: "€/tonelada"
+              frecuencia: semanal
+              nota: "Precio en origen: cebada para pienso"
+            # global: el Banco Mundial dejó de publicar la cebada en agosto de 2020
+        - id: soja
+          nombre: "Soja (harina para pienso)"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Torta de soja"
+              unidad: "€/tonelada"
+              frecuencia: semanal
+              nota: "Torta (harina) de soja, salida de industria: la proteína principal del pienso"
+            global:
+              fuente: pink
+              serie: "Soybean meal"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Harina de soja, referencia mundial (Banco Mundial)"
+        - id: cafe
+          nombre: "Café"
+          ambitos:
+            espana:
+              fuente: panel
+              producto: "CAFE G. O M.NATURAL"
+              unidad: "€/kg"
+              frecuencia: mensual
+              nota: "Precio en tienda: café molido o en grano natural (no hay precio en origen en España)"
+            global:
+              fuente: pink
+              serie: "Coffee, Arabica"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Café arábica, referencia mundial (Banco Mundial)"
+        - id: cacao
+          nombre: "Cacao"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Cocoa"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Grano de cacao, referencia mundial (Banco Mundial)"
+        - id: algodon
+          nombre: "Algodón"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Cotton, A Index"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Índice A, referencia mundial (Banco Mundial)"
+
+    - id: fertilizantes
+      nombre: "Fertilizantes"
+      descripcion: >
+        El abono es uno de los mayores costes del cereal. Los nitrogenados (urea,
+        nitrato) se fabrican con gas natural, por eso suben cuando sube el gas.
+        En España, precio que paga el agricultor (sin IVA), con unos tres meses de retraso.
+      materias:
+        - id: urea
+          nombre: "Urea"
+          ambitos:
+            espana:
+              fuente: pagados
+              producto: "UREA 46%"
+              factor: 10             # de €/100 kg a €/tonelada
+              unidad: "€/tonelada"
+              frecuencia: mensual
+              dias_reciente: 150
+              nota: "Urea 46 % de nitrógeno, precio pagado por el agricultor"
+            global:
+              fuente: pink
+              serie: "Urea"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Referencia mundial (Banco Mundial)"
+        - id: nitrato
+          nombre: "Nitrato amónico cálcico"
+          ambitos:
+            espana:
+              fuente: pagados
+              producto: "NITRATO AMONICO CALCICO 26%"
+              factor: 10
+              unidad: "€/tonelada"
+              frecuencia: mensual
+              dias_reciente: 150
+              nota: "Nitrato amónico cálcico (26 % de nitrógeno), precio pagado por el agricultor"
+        - id: fosfatos
+          nombre: "Fosfatos (DAP)"
+          ambitos:
+            espana:
+              fuente: pagados
+              producto: "DAP"
+              factor: 10
+              unidad: "€/tonelada"
+              frecuencia: mensual
+              dias_reciente: 150
+              nota: "Fosfato diamónico, precio pagado por el agricultor"
+            global:
+              fuente: pink
+              serie: "DAP"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Fosfato diamónico, referencia mundial (Banco Mundial)"
+        - id: potasa
+          nombre: "Potasa (cloruro potásico)"
+          ambitos:
+            espana:
+              fuente: pagados
+              producto: "CLORURO POTASICO 60%"
+              factor: 10
+              unidad: "€/tonelada"
+              frecuencia: mensual
+              dias_reciente: 150
+              nota: "Cloruro potásico 60 %, precio pagado por el agricultor"
+            global:
+              fuente: pink
+              serie: "Potassium chloride **"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Referencia mundial (Banco Mundial)"
+        - id: complejo
+          nombre: "Abono complejo 15-15-15"
+          ambitos:
+            espana:
+              fuente: pagados
+              producto: "COMPLEJO 15-15-15"
+              factor: 10
+              unidad: "€/tonelada"
+              frecuencia: mensual
+              dias_reciente: 150
+              nota: "Nitrógeno, fósforo y potasio a partes iguales, precio pagado por el agricultor"
+
 # Precio en tienda (6-nov-2026): Panel de consumo alimentario en hogares del MAPA.
 # Mensual, con 2-3 meses de retraso. Se usa el canal 'preferido' (supermercado) y,
 # en los meses en que no existe (antes de 2025 se media de otra forma), la media
@@ -272,7 +624,7 @@ apoyo:
 # Origen y tienda en cualquier materia (ganadería ahora, agrícolas más adelante):
 # basta con añadir 'tienda: {producto: "<nombre en el panel>", unidad: "..."}' a su
 # ámbito 'espana'. La web muestra entonces los dos precios, el multiplicador del mismo
-# mes y el selector «Origen y tienda / En origen / En tienda» (7-nov-2026).
+# mes y el selector «Origen y tienda / En origen / En tienda» (6-nov-2026).
 panel:
   canal: "SUPERMERCADO"
   canal_respaldo: "T.ESPAÑA"

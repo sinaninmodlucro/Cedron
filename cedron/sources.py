@@ -300,9 +300,12 @@ def _mapa_excel(contenido: bytes, anio: int, productos: list[str], obligatorio: 
                 except ValueError:      # semana 53 en anos que no la tienen
                     continue
                 serie.append((lunes.isoformat(), float(v)))
-        if not serie and obligatorio:
-            raise FuenteError(f"el MAPA no trae datos de {prod}")
-        salida[prod] = serie
+        # Un producto de temporada (naranja, melocoton...) puede no tener semanas con
+        # dato a principio de ano: no es un error, se omite y se conserva lo guardado.
+        if serie:
+            salida[prod] = serie
+    if obligatorio and productos and not salida:
+        raise FuenteError("el Excel del MAPA no trae datos de ningun producto pedido")
     return salida
 
 
@@ -356,6 +359,19 @@ def panel_consumo(pares: list[tuple[str, str]], anios: list[int] | None = None) 
     return {p: sorted(dict(s).items()) for p, s in salida.items()}
 
 
+def _fila_panel(orden: list, producto: str):
+    """Fila de un producto del panel. Algunos nombres se repiten (hay un 'NORMAL' en
+    cacao y otro en arroz; 'TOMATES' frescos y en conserva): se usa la primera
+    aparicion o, con 'ARROZ>NORMAL', la primera 'NORMAL' que sigue a 'ARROZ'."""
+    *padres, nombre = [p.strip() for p in producto.split(">")]
+    i = 0
+    for padre in padres:
+        i = next((k for k in range(i, len(orden)) if orden[k][0] == padre), None)
+        if i is None:
+            return None
+    return next((f for n, f in orden[i:] if n == nombre), None)
+
+
 def _panel_excel(contenido: bytes, pares: list[tuple[str, str]], obligatorio: bool) -> dict:
     from openpyxl import load_workbook
     libro = load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
@@ -379,10 +395,10 @@ def _panel_excel(contenido: bytes, pares: list[tuple[str, str]], obligatorio: bo
         # el bloque de precio llega hasta el siguiente titulo de bloque
         fin = next((j for j in range(inicio + 1, len(filas[1])) if filas[1][j]), len(filas[2]))
         columnas = {_canal_norm(filas[2][j]): j for j in range(inicio, min(fin, len(filas[2]))) if filas[2][j]}
-        por_producto = {str(f[0]).strip(): f for f in filas[3:] if f and f[0]}
+        orden = [(str(f[0]).strip(), f) for f in filas[3:] if f and f[0]]
         hojas_leidas += 1
         for prod, canal in pares:
-            fila, j = por_producto.get(prod), columnas.get(_canal_norm(canal))
+            fila, j = _fila_panel(orden, prod), columnas.get(_canal_norm(canal))
             if fila is not None and j is not None and j < len(fila) and isinstance(fila[j], (int, float)) and fila[j] > 0:
                 salida[(prod, canal)].append((mes, float(fila[j])))
     if obligatorio:
@@ -391,6 +407,82 @@ def _panel_excel(contenido: bytes, pares: list[tuple[str, str]], obligatorio: bo
         faltan = [f"{p} ({c})" for (p, c), s in salida.items() if not s]
         if faltan:
             raise FuenteError("sin datos en el panel de consumo para: " + ", ".join(faltan))
+    return salida
+
+
+# ---------------------------------------------------------------------------
+# MAPA: precios pagados por los agricultores (abonos y piensos), mensual
+# ---------------------------------------------------------------------------
+PAGINA_PAGADOS = ("https://www.mapa.gob.es/es/estadistica/temas/estadisticas-agrarias/economia/"
+                  "precios-percibidos-pagados/precios-pagados-por-los-agricultores-y-ganaderos")
+
+
+def _norm_pagados(t) -> str:
+    """Nombre comparable: mayusculas, sin acentos, sin '(100kg)' ni espacios dobles."""
+    import unicodedata
+    t = unicodedata.normalize("NFKD", str(t or "")).encode("ascii", "ignore").decode().upper()
+    t = re.sub(r"\(\s*100\s*KG\s*\)", "", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def precios_pagados(productos: list[str]) -> dict[str, list[tuple[str, float]]]:
+    """Precio medio mensual pagado por los agricultores (euros por 100 kg, sin IVA).
+
+    'productos' = principio del nombre, p. ej. "UREA 46%". El MAPA publica varios
+    Excel (el actual y los historicos desde 2005); se leen todos y, si un mes
+    aparece en varios, manda el mas reciente. Devuelve {producto: [(AAAA-MM, valor)]}.
+    """
+    pagina = _get(PAGINA_PAGADOS, verify=CERT_FNMT).text
+    enlaces = []
+    for url in re.findall(r'href="([^"]*precios-?pagados[^"]*\.xlsx)"', pagina, flags=re.I):
+        url = html.unescape(url)
+        if url not in enlaces:
+            enlaces.append(url)
+    if not enlaces:
+        raise FuenteError("no se encuentra el Excel de precios pagados por los agricultores del MAPA")
+    buscados = {p: _norm_pagados(p) for p in productos}
+    salida: dict[str, dict[str, float]] = {p: {} for p in productos}
+    # La pagina pone primero el mas reciente: se leen al reves para que mande ese
+    for k, url in enumerate(reversed(enlaces)):
+        if url.startswith("/"):
+            url = "https://www.mapa.gob.es" + url
+        datos = _pagados_excel(_get(url, verify=CERT_FNMT).content, buscados)
+        if k == len(enlaces) - 1:
+            faltan = [p for p in productos if not datos.get(p)]
+            if faltan:
+                raise FuenteError("sin datos recientes de precios pagados para: " + ", ".join(faltan))
+        for p, s in datos.items():
+            salida[p].update(s)
+    return {p: sorted(s.items()) for p, s in salida.items()}
+
+
+def _pagados_excel(contenido: bytes, buscados: dict[str, str]) -> dict[str, dict[str, float]]:
+    from openpyxl import load_workbook
+    libro = load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
+    salida: dict[str, dict[str, float]] = {}
+    for hoja in libro.worksheets:
+        filas = list(hoja.iter_rows(values_only=True, max_row=600))
+        cab = next((i for i, f in enumerate(filas[:15])
+                    if f and any(_norm_pagados(c) == "PRODUCTOS" for c in f[:3])
+                    and any(_norm_pagados(c) == "ANO" for c in f[:4])), None)
+        if cab is None:
+            continue
+        j_anio = next(j for j, c in enumerate(filas[cab]) if _norm_pagados(c) == "ANO")
+        actual = None
+        for f in filas[cab + 1:]:
+            if not f:
+                continue
+            if isinstance(f[0], str) and f[0].strip():
+                nombre = _norm_pagados(f[0])
+                actual = next((p for p, b in buscados.items() if nombre.startswith(b)), None)
+            anio = f[j_anio] if j_anio < len(f) else None
+            if actual is None or not isinstance(anio, (int, float)) or not 1990 < anio < 2100:
+                continue
+            for mes in range(1, 13):
+                j = j_anio + mes
+                v = f[j] if j < len(f) else None
+                if isinstance(v, (int, float)) and v > 0:      # el 0 marca meses sin publicar
+                    salida.setdefault(actual, {})[f"{int(anio)}-{mes:02d}"] = float(v)
     return salida
 
 

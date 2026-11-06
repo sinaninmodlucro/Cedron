@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "_macros.html" import fila_apoyo as fila with context %}
 {% block titulo %}Materias primas de apoyo | {{ sitio.nombre }}{% endblock %}
-{% block descripcion %}Energía y ganadería: precios en España, Europa y el mundo, con su fecha y su fuente.{% endblock %}
+{% block descripcion %}Energía, ganadería, agrícolas y fertilizantes: precios en España, Europa y el mundo, con su fecha y su fuente.{% endblock %}
 {% block contenido %}
 <div class="texto">
   <h1>Materias primas de apoyo</h1>
@@ -35,7 +35,7 @@
       {% set oculta = not loop.first %}
       {% if amb and amb.tienda and amb.tienda.resumen %}
         {{ fila(m, v, vista, amb, amb, 'origen', 'con-tienda', 'En origen', oculta) }}
-        {{ fila(m, v, vista, amb, amb.tienda, 'tienda', '', 'En ' ~ amb.tienda.canal_ultimo, oculta) }}
+        {{ fila(m, v, vista, amb, amb.tienda, 'tienda', '', 'En ' ~ amb.tienda.canal_ultimo ~ (' (' ~ amb.tienda.nombre ~ ')' if amb.tienda.nombre else ''), oculta) }}
       {% elif amb %}
         {{ fila(m, v, vista, amb, amb, 'todos', '', 'En tienda' if amb.medida == 'tienda' else '', oculta) }}
       {% else %}

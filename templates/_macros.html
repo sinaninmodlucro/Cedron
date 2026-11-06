@@ -35,7 +35,7 @@
 
 {% macro tienda_linea(t) -%}
 {%- if t and t.resumen -%}
-<span class="ambito tienda">En {{ t.canal_ultimo }}: <strong class="cifra">{{ t.resumen.valor|numero(t.decimales or 2) }} {{ t.unidad }}</strong> ({{ t.resumen.fecha|mes }})
+<span class="ambito tienda">En {{ t.canal_ultimo }}{% if t.nombre %} ({{ t.nombre }}){% endif %}: <strong class="cifra">{{ t.resumen.valor|numero(t.decimales or 2) }} {{ t.unidad }}</strong> ({{ t.resumen.fecha|mes }})
 {%- if t.multiplicador %} · ×{{ t.multiplicador.veces|numero(1) }} el precio en origen{% endif %}</span>
 {%- endif -%}
 {%- endmacro %}
