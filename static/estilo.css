@@ -115,9 +115,9 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
   border: 3px double currentColor; border-radius: 999px;
 }
 .contraste__puntos { font-weight: 400; font-variant-numeric: tabular-nums; }
-.contraste--favorable { color: var(--verdin); }
-.contraste--desfavorable { color: var(--oxido); }
-.contraste--neutral { color: var(--neutro); }
+.contraste--alza { color: var(--verdin); }
+.contraste--baja { color: var(--oxido); }
+.contraste--mixta { color: var(--neutro); }
 .contraste--sin { color: var(--tinta-2); border-style: dashed; border-width: 1px; }
 .contraste--grande { font-size: var(--t-l); padding: 0.25em 1em 0.3em; border-width: 4px; }
 
@@ -244,6 +244,10 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
 .indicador__nombre { font-family: var(--f-cifra); font-weight: 600; margin: 0; }
 .indicador__dato { font-family: var(--f-cifra); font-size: var(--t-s); margin: 0.1rem 0 0.25rem; }
 .indicador__exp { font-size: var(--t-s); color: var(--tinta-2); margin: 0; }
+.indicadores--contexto .indicador { grid-template-columns: 1fr; }
+.bloque__sub { font-family: var(--f-cifra); font-size: var(--t-m, 1.05rem); font-weight: 600; margin: 1.75rem 0 0.5rem; }
+.situaciones tr.actual td, .situaciones tr.actual th { font-weight: 600; }
+.situaciones tr.actual th::after { content: " · hoy"; font-weight: 400; color: var(--tinta-2); }
 
 /* -------------------------------------------------------------- grafico */
 .grafico { margin: 0; }
@@ -317,3 +321,6 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 @media print { .nav, .filtros, .aviso-demo { display: none; } body { background: #fff; color: #000; } }
+
+/* Pie de tabla alineado a la izquierda, como el resto del texto */
+.tabla caption { text-align: left; caption-side: top; padding-bottom: 0.5rem; }

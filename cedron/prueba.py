@@ -58,7 +58,7 @@ RATIOS = {  # activo -> (numerador, denominador, etiqueta, invertir)
     "plata": ("oro", "plata", "oro/plata", True),
     "platino": ("platino", "oro", "platino/oro", False),
 }
-VERSION = 3            # subirla al cambiar el metodo: la prueba se repite en la siguiente ejecucion
+VERSION = 4            # subirla al cambiar el metodo: la prueba se repite en la siguiente ejecucion
 MINIMO_CASOS = 6       # meses de cada senal (+1 y -1) para poder comparar
 BLOQUE = 12            # meses por bloque en el remuestreo
 
@@ -141,12 +141,15 @@ def senales(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
                                      etiqueta, invertir, icfg["ratio"]))
             if "tendencia_plazos" in nuevos:
                 res.append(ind.tendencia_plazos(hist, precio, nuevos["tendencia_plazos"]))
+            plazos = (icfg.get("tendencia_plazos") or {}).get("plazos")
+            t = ind.plazos_al_alza(hist, precio, plazos) if plazos else None
             if "valor" in nuevos:
                 res.append(ind.valor(hist, precio, nuevos["valor"]))
             if "actividad" in nuevos and capacidad:
                 res.append(ind.actividad(capacidad, mes, nuevos["actividad"]))
             filas.append({"mes": mes, "precio": precio, "i": i,
-                          "puntos": {r.id: r.puntos for r in res}})
+                          "puntos": {r.id: r.puntos for r in res},
+                          "suben": t["suben"] if t else None})
         salida[aid] = filas
     return salida
 
@@ -435,6 +438,46 @@ def evaluar_metodo(metodo: dict, cfg: dict, tabla: dict, mensuales: dict, horizo
     return {"texto": metodo.get("texto", ""), "horizonte": h, "previa": previa, "activos": activos}
 
 
+def panel(cfg: dict, tabla: dict, mensuales: dict, horizontes, salto, corte, remuestreos,
+          semilla, confianza, h: int = 12) -> dict:
+    """Estadisticas del panel de cada metal: que paso a 12 meses segun cuantos plazos subian.
+
+    Incluye la frecuencia general, cada situacion (0 a N plazos al alza), si la
+    tendencia separo bien el cambio medio (veredicto) y si sirvio para anticipar la
+    direccion mejor que la frecuencia general (probabilidad calculada solo con el pasado).
+    """
+    salida = {}
+    for a in cfg["activos"]:
+        filas = [f for f in tabla.get(a["id"], []) if f.get("suben") is not None]
+        if not filas:
+            continue
+        fut = _futuros(mensuales[a["id"]], filas, tuple(horizontes), salto)
+        total = max(len((cfg["indicadores"].get("tendencia_plazos") or {}).get("plazos", [])), 1)
+        con_dato = [(f, fut[f["i"]].get(h)) for f in filas if fut[f["i"]].get(h) is not None]
+        if not con_dato:
+            continue
+
+        def resumen(pares):
+            v = [y for _, y in pares]
+            return {"n": len(v), "sube": sum(1 for y in v if y > 0) / len(v) * 100,
+                    "media": statistics.mean(v), "mediana": statistics.median(v)} if v else None
+
+        situaciones = []
+        for k in range(total + 1):
+            r = resumen([(f, y) for f, y in con_dato if f["suben"] == k])
+            if r:
+                situaciones.append({"suben": k, **r})
+        for f in filas:
+            f["puntos"]["plazos"] = 1 if f["suben"] == total else -1 if f["suben"] == 0 else 0
+        prev = probabilidades(filas, lambda f: f["suben"], fut, h, salto, 12, 60)
+        salida[a["id"]] = {
+            "horizonte": h, "plazos": total, "desde": con_dato[0][0]["mes"],
+            "hasta": con_dato[-1][0]["mes"], "general": resumen(con_dato), "situaciones": situaciones,
+            "veredicto": veredicto(filas, "plazos", fut, horizontes, corte, remuestreos, semilla, confianza),
+            "probabilidad": evaluar_probabilidad(prev, corte, remuestreos, semilla, confianza)}
+    return salida
+
+
 def calcular(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
              anios: int = 50, horizontes: tuple = (3, 6, 12), salto: int = 1,
              corte: str = "2006-01", remuestreos: int = 500, semilla: int = 2026,
@@ -461,11 +504,14 @@ def calcular(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict
             "texto": c.get("texto", nombre),
             "activos": evaluar(cfg_c, tabla_c, mensuales, horizontes, salto, corte, remuestreos,
                                semilla, quitar, claves=list(cambios), confianza=confianza)}
+    resultado_panel = panel(cfg, tabla, mensuales, horizontes, salto, corte, remuestreos, semilla,
+                            confianza)
     resultado_metodo = (evaluar_metodo(metodo, cfg, tabla, mensuales, horizontes, salto, corte,
                                        remuestreos, semilla, confianza) if metodo else None)
     return {"anios": anios, "horizontes": list(horizontes), "salto": salto, "corte": corte,
             "remuestreos": remuestreos, "confianza": confianza, "activos": actual,
-            "candidatas": resultado_candidatas, "metodo": resultado_metodo}
+            "candidatas": resultado_candidatas, "metodo": resultado_metodo,
+            "panel": resultado_panel}
 
 
 # ---------------------------------------------------------------------------

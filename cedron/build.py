@@ -206,6 +206,52 @@ def grafico(mensual: list, meses_media: int, unidad: str, simbolo: str = "$") ->
 
 
 # ---------------------------------------------------------------------------
+# Panel de cada metal: tendencia en varios plazos y lo que paso en situaciones parecidas
+# ---------------------------------------------------------------------------
+def _lista_es(xs: list) -> str:
+    xs = [str(x) for x in xs]
+    return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " y " + xs[-1]
+
+
+def situacion_actual(tendencia: dict | None, panel: dict | None) -> dict | None:
+    """La fila de la estadistica historica que corresponde a la tendencia de hoy."""
+    if not tendencia or not panel:
+        return None
+    return next((x for x in panel.get("situaciones", []) if x["suben"] == tendencia["suben"]), None)
+
+
+def frase_panel(nombre: str, de_art: str, tendencia: dict | None, panel: dict | None) -> str:
+    """Resumen en lenguaje llano. Describe; no predice ni recomienda."""
+    if not tendencia:
+        return (f"Aún no hay historia suficiente para describir la tendencia {de_art} {nombre.lower()}.")
+    sube = [d["meses"] for d in tendencia["detalle"] if d["sube"]]
+    baja = [d["meses"] for d in tendencia["detalle"] if not d["sube"]]
+    def meses(xs):
+        return f"{_lista_es(xs)} {'mes' if xs == [1] else 'meses'}"
+
+    if sube and baja:
+        cuerpo = f"está por encima de su precio medio de hace {meses(sube)} y por debajo del de hace {meses(baja)}"
+    elif sube:
+        cuerpo = f"está por encima de su precio medio de hace {meses(sube)}"
+    else:
+        cuerpo = f"está por debajo de su precio medio de hace {meses(baja)}"
+    texto = f"El precio {de_art} {nombre.lower()} {cuerpo}."
+    sit = situacion_actual(tendencia, panel)
+    if sit and panel.get("general"):
+        g = panel["general"]
+        texto += (f" Desde {panel['desde'][:4]}, en situaciones como esta ({tendencia['suben']} de "
+                  f"{tendencia['total']} plazos al alza) el precio subió en los {panel['horizonte']} meses "
+                  f"siguientes en {sit['sube']:.0f} de cada 100 casos, frente a {g['sube']:.0f} de cada 100 "
+                  f"en general.")
+        if (panel.get("probabilidad") or {}).get("clase") == "coherente":
+            texto += " En la prueba histórica, esta diferencia ayudó a anticipar la dirección del precio."
+        else:
+            texto += (" En la prueba histórica, esta diferencia no ha servido para anticipar la dirección "
+                      "del precio mejor que esa frecuencia general: no es una previsión.")
+    return texto
+
+
+# ---------------------------------------------------------------------------
 # Rendimiento posterior de cada lectura (historial publico)
 # ---------------------------------------------------------------------------
 def rendimiento_historial(historial: list, historicos: dict) -> list:
@@ -273,13 +319,26 @@ def datos_prueba(prueba: dict | None, cfg: dict) -> dict | None:
             for clave in [k for k in INDICADORES + ["suma"] if k in a["indicadores"]]:
                 filas.append(fila(a["nombre"], clave, a["indicadores"][clave]))
         candidatas.append({"id": nombre, "texto": c["texto"], "filas": filas})
+    panel = []
+    for aid in [x for x in orden if x in (prueba.get("panel") or {})]:
+        pn = prueba["panel"][aid]
+        prob = pn.get("probabilidad") or {}
+        clase_p = prob.get("clase", "sin_datos")
+        panel.append({
+            "activo": prueba["activos"].get(aid, {}).get("nombre", aid), "desde": pn["desde"],
+            "plazos": pn["plazos"], "general": pn["general"],
+            "por_k": {x["suben"]: x for x in pn["situaciones"]},
+            "separa": CLASES[pn["veredicto"]["clase"]],
+            "anticipa": {"coherente": "Sí", "debil": "No de forma segura", "inestable": "No (inestable)",
+                         "sin_efecto": "No", "al_reves": "No", "pocos": "Pocos casos"}.get(clase_p, CLASES.get(clase_p, "—")),
+            "mejora": prob.get("mejora")})
     primero = prueba["activos"][next(x for x in orden if x in prueba["activos"])]
     return {"anios": prueba["anios"], "horizontes": horizontes, "medio": medio,
             "salto": prueba["salto"], "corte": prueba["corte"],
             "fin_eleccion": ind.restar_meses(prueba["corte"], 1),
             "remuestreos": prueba["remuestreos"], "confianza": prueba.get("confianza", 95),
             "desde": primero["desde"], "hasta": primero["hasta"], "calculado": prueba.get("calculado"),
-            "indicadores": indicadores, "lecturas": lecturas, "candidatas": candidatas,
+            "indicadores": indicadores, "lecturas": lecturas, "candidatas": candidatas, "panel": panel,
             "clases": CLASES,
             "recuento": [(CLASES[c], recuento[c]) for c in CLASES if c in recuento],
             "total_reglas": sum(recuento.values())}
@@ -305,13 +364,19 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     historicos = {a["id"]: [tuple(x) for x in (leer(f"historico/{a['id']}.json", []) or [])]
                   for a in cfg["activos"]}
 
+    prueba_h = leer("prueba_historica.json") or {}
+    paneles = prueba_h.get("panel") or {}
     activos = []
     for a in cfg["activos"]:
         p = precios.get(a["id"], {})
         l = lecturas.get(a["id"], {})
         art = a.get("articulo", "el")
+        de_art = "del" if art == "el" else "de la"
+        pan = paneles.get(a["id"])
         activos.append({
-            **a, "precio": p, "lectura": l, "articulo": art, "de_art": "del" if art == "el" else "de la",
+            **a, "precio": p, "lectura": l, "articulo": art, "de_art": de_art,
+            "panel": pan, "situacion": situacion_actual(l.get("tendencia"), pan),
+            "frase": frase_panel(a["nombre"], de_art, l.get("tendencia"), pan),
             "precio_eur": (p["precio"] / eurusd[1]) if p.get("precio") and eurusd else None,
             "noticias": [n for n in noticias if a["id"] in n["activos"]][:8],
             "grafico": grafico(l.get("mensual", []), cfg["indicadores"]["tendencia"]["meses_media"],

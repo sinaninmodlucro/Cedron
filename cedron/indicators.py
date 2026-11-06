@@ -158,7 +158,7 @@ def macro(tipo_real: list[tuple[str, float]], dolar: list[tuple[str, float]],
         "macro", nombre, puntos,
         f"En {cfg['meses']} meses: tipo real {signo_tr} puntos; dólar {fmt_pct(d_dx)}",
         "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; "
-        "ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
+        "ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
         min(tipo_real[-1][0], dolar[-1][0]))
 
 
@@ -173,9 +173,9 @@ def posicionamiento(cot: list[dict], cfg: dict) -> Resultado:
     por_debajo = sum(1 for c in validos if c["neto_pct"] < actual)
     percentil = por_debajo / (len(validos) - 1) * 100 if len(validos) > 1 else 50
     if percentil >= cfg["percentil_alto"]:
-        puntos, estado = -1, "en zona de euforia (lectura contraria: riesgo de corrección)"
+        puntos, estado = -1, "en zona de euforia (cerca de su máximo de estos años)"
     elif percentil <= cfg["percentil_bajo"]:
-        puntos, estado = 1, "en zona de pesimismo extremo (lectura contraria: margen de recuperación)"
+        puntos, estado = 1, "en zona de pesimismo extremo (cerca de su mínimo de estos años)"
     else:
         puntos, estado = 0, "sin excesos"
     return Resultado("posicionamiento", nombre, puntos,
@@ -218,6 +218,30 @@ def ratio(numerador: list[tuple[str, float]], denominador: list[tuple[str, float
 # ---------------------------------------------------------------------------
 def _signo(x: float) -> int:
     return 1 if x > 0 else -1 if x < 0 else 0
+
+
+ESTADOS_TENDENCIA = {"alza": "Al alza", "mixta": "Mixta", "baja": "A la baja"}
+
+
+def plazos_al_alza(mensual: list[tuple[str, float]], precio: float, plazos: list[int]) -> dict | None:
+    """Detalle de la tendencia en varios plazos, para el panel de cada metal.
+
+    Para cada plazo k compara el precio con la media mensual de k meses antes.
+    Devuelve cuantos plazos suben y el estado: "alza" si suben todos, "baja" si no
+    sube ninguno, "mixta" en otro caso. None si falta historia.
+    """
+    if not plazos or len(mensual) < max(plazos) + 1 or not precio:
+        return None
+    detalle = []
+    for k in plazos:
+        mes_ref, ref = mensual[-1 - k]
+        cambio = (precio / ref - 1) * 100
+        detalle.append({"meses": k, "mes_ref": mes_ref, "referencia": ref, "cambio_pct": cambio,
+                        "sube": cambio > 0})
+    suben = sum(1 for d in detalle if d["sube"])
+    estado = "alza" if suben == len(plazos) else "baja" if suben == 0 else "mixta"
+    return {"suben": suben, "total": len(plazos), "estado": estado,
+            "estado_texto": ESTADOS_TENDENCIA[estado], "detalle": detalle, "mes": mensual[-1][0]}
 
 
 def tendencia_plazos(mensual: list[tuple[str, float]], precio: float, cfg: dict) -> Resultado:

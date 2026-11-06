@@ -240,6 +240,7 @@ def calcular_lecturas(cfg) -> dict:
 
     tipo_real = [tuple(x) for x in macro.get("DFII10", [])]
     dolar = [tuple(x) for x in macro.get("DTWEXBGS", [])]
+    plazos = icfg["tendencia_plazos"]["plazos"]
     salida = {}
     for a in cfg["activos"]:
         p = precios.get(a["id"], {})
@@ -249,33 +250,36 @@ def calcular_lecturas(cfg) -> dict:
             precio = mensuales[a["id"]][-1][1]   # sin precio vivo: ultimo dato mensual
             origen = f"media mensual de {mensuales[a['id']][-1][0]}"
         m = mensuales[a["id"]]
-        resultados = []
-        if precio is not None:
-            resultados += [ind.tendencia(m, precio, icfg["tendencia"]),
-                           ind.momento(m, precio, icfg["momento"])]
+        # Lo principal: la tendencia en varios plazos (la unica regla que aguanta la prueba)
+        tendencia = ind.plazos_al_alza(m, precio, plazos) if precio is not None else None
+        # Contexto: se muestra, pero ya no suma en ninguna lectura
+        # (la media de 10 meses ya se ve en el grafico y equivale a la tendencia)
+        contexto = []
         if a.get("macro"):
-            resultados.append(ind.macro(tipo_real, dolar, date.today(), icfg["macro"]))
-        resultados.append(ind.posicionamiento(cot.get(a["id"], []), icfg["posicionamiento"]))
+            contexto.append(ind.macro(tipo_real, dolar, date.today(), icfg["macro"]))
+        contexto.append(ind.posicionamiento(cot.get(a["id"], []), icfg["posicionamiento"]))
         if a["id"] == "oro":
-            resultados.append(ind.ratio(mensuales["oro"], mensuales["plata"], "oro/plata", False, icfg["ratio"]))
+            contexto.append(ind.ratio(mensuales["oro"], mensuales["plata"], "oro/plata", False, icfg["ratio"]))
         elif a["id"] == "plata":
-            resultados.append(ind.ratio(mensuales["oro"], mensuales["plata"], "oro/plata", True, icfg["ratio"]))
+            contexto.append(ind.ratio(mensuales["oro"], mensuales["plata"], "oro/plata", True, icfg["ratio"]))
         elif a["id"] == "platino":
-            resultados.append(ind.ratio(mensuales["platino"], mensuales["oro"], "platino/oro", False, icfg["ratio"]))
-        lectura = ind.combinar(a["id"], a["nombre"], resultados, icfg["lectura"])
-        salida[a["id"]] = {**asdict(lectura), "precio_usado": precio, "precio_origen": origen,
+            contexto.append(ind.ratio(mensuales["platino"], mensuales["oro"], "platino/oro", False, icfg["ratio"]))
+        salida[a["id"]] = {"tendencia": tendencia, "contexto": [asdict(r) for r in contexto],
+                           "precio_usado": precio, "precio_origen": origen,
                            "mensual": m[-130:], "calculado": iso()}
     escribir("lecturas.json", salida)
 
-    # Historial publico: una foto al dia por activo (incluye las que luego fallen)
+    # Historial publico: una foto al dia por metal, solo con precio real del dia.
+    # Hasta el 6-nov-2026 se guardaba la lectura (favorable/neutral/desfavorable);
+    # desde entonces, la tendencia. Las entradas antiguas se conservan tal cual.
     historial = leer("historial_lecturas.json", []) or []
     hoy = date.today().isoformat()
-    historial = [h for h in historial if h["fecha"] != hoy]
+    historial = [h for h in historial if not (h["fecha"] == hoy and "tendencia" in h)]
     for aid, l in salida.items():
-        # solo con precio real del dia: el historial no se rellena con medias
-        if l["lectura"] != "datos insuficientes" and l["precio_origen"] == "precio actual":
-            historial.append({"fecha": hoy, "activo": aid, "lectura": l["lectura"],
-                              "total": l["total"], "precio": l["precio_usado"]})
+        t = l["tendencia"]
+        if t and l["precio_origen"] == "precio actual":
+            historial.append({"fecha": hoy, "activo": aid, "tendencia": t["estado"],
+                              "suben": t["suben"], "plazos": t["total"], "precio": l["precio_usado"]})
     escribir("historial_lecturas.json", historial)
     return salida
 

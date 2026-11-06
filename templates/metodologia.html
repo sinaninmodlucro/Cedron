@@ -4,26 +4,26 @@
 {% set i = cfg.indicadores %}
 <div class="texto">
   <h1>Metodología e historial</h1>
-  <p>Cedron describe el contexto de cada metal con cinco indicadores públicos y comprobables. Ningún método predice precios con fiabilidad: el objetivo es ser transparente, constante y verificable. Los análisis los firma {{ sitio.autor }}.</p>
+  <p>Cedron describe cada metal con datos públicos y comprobables. Ningún método predice precios con fiabilidad, y la prueba histórica de esta página lo confirma: el objetivo es ser transparente, constante y verificable, no adivinar. Los análisis los firma {{ sitio.autor }}.</p>
 
-  <h2 class="bloque">Los indicadores</h2>
-  <p>Cada indicador suma +1 (favorable), 0 (neutral) o −1 (desfavorable). Si un indicador no tiene datos, no cuenta. La lectura es <strong>favorable</strong> con +{{ i.lectura.favorable_desde }} o más, <strong>desfavorable</strong> con {{ i.lectura.desfavorable_hasta }} o menos y <strong>neutral</strong> en medio. Con menos de tres indicadores disponibles no se publica lectura.</p>
+  <h2 class="bloque" id="panel">El panel de cada metal</h2>
+  <p><strong>Tendencia en varios plazos.</strong> Se compara el precio de hoy con su precio medio de hace {{ i.tendencia_plazos.plazos[:-1]|join(', ') }} y {{ i.tendencia_plazos.plazos[-1] }} meses. La tendencia es <strong>al alza</strong> si está por encima en todos los plazos, <strong>a la baja</strong> si está por debajo en todos, y <strong>mixta</strong> en otro caso. Es la forma de medir la tendencia con más respaldo en los estudios (un siglo de datos en decenas de mercados: Hurst, Ooi y Pedersen, 2017) y la única regla que aguantó nuestra prueba histórica en el oro y, con menos seguridad, en la plata.</p>
+  <p><strong>Qué pasó en situaciones parecidas.</strong> Para cada metal se cuenta, desde 1976, cuántas veces subió el precio en los 12 meses siguientes según en cuántos plazos estaba al alza, y se compara con la frecuencia de todos los meses. Junto a la tabla se dice si esa diferencia sirvió para anticipar la dirección: se comprueba calculando, mes a mes y solo con el pasado, la probabilidad de subida que habría dado la tabla, y midiendo con la puntuación de Brier (la que se usa en meteorología) si acierta más que la frecuencia general. Hasta ahora no lo ha hecho de forma segura en ningún metal, y la web lo dice así.</p>
+  <p><strong>Contexto.</strong> Se muestran también otros datos que se suelen citar, sin puntos y sin sumar en nada, porque en la prueba histórica la mayoría no ayudaron a anticipar el precio:</p>
 </div>
 <div class="desplazable">
 <table class="tabla">
-  <thead><tr><th>Indicador</th><th>Qué mide</th><th>Regla</th><th>Fuente</th></tr></thead>
+  <thead><tr><th>Dato</th><th>Qué mide</th><th>Cómo se describe</th><th>Fuente</th></tr></thead>
   <tbody>
-    <tr><td>Tendencia de largo plazo</td><td>Precio frente a la media de sus últimos {{ i.tendencia.meses_media }} meses (equivale a unas 200 sesiones)</td><td>+1 por encima y con la media subiendo; −1 por debajo y con la media bajando; 0 en otro caso</td><td>Banco Mundial y cierres propios</td></tr>
-    <tr><td>Momento</td><td>Cambio del precio frente a la media mensual de hace {{ i.momento.meses }} meses</td><td>+1 si sube más de un {{ i.momento.umbral_pct }} %; −1 si cae más de un {{ i.momento.umbral_pct }} %</td><td>Banco Mundial y cierres propios</td></tr>
-    <tr><td>Entorno macro (solo metales preciosos)</td><td>Tipo de interés real a 10 años de EE. UU. (serie DFII10) e índice amplio del dólar (DTWEXBGS) frente a hace {{ i.macro.meses }} meses</td><td>+1 si ambos bajan (más de {{ i.macro.umbral_tipo_real|numero }} puntos y {{ i.macro.umbral_dolar_pct|numero(1) }} %); −1 si ambos suben; 0 si discrepan</td><td>FRED</td></tr>
-    <tr><td>Posicionamiento especulativo</td><td>Posición neta de los grandes especuladores en futuros, en % del interés abierto, frente a sus últimos {{ i.posicionamiento.anios }} años</td><td>Lectura contraria: −1 por encima del percentil {{ i.posicionamiento.percentil_alto }}; +1 por debajo del percentil {{ i.posicionamiento.percentil_bajo }}</td><td>CFTC, informe semanal Commitments of Traders</td></tr>
-    <tr><td>Valoración relativa</td><td>Ratio oro/plata (para oro y plata) y platino/oro (para platino) frente a su media de {{ i.ratio.anios }} años</td><td>−1 si el metal está caro respecto al otro (más de {{ i.ratio.desviaciones|numero(1) }} desviación típica); +1 si está barato</td><td>Banco Mundial y cierres propios</td></tr>
+    <tr><td>Entorno macro (solo metales preciosos)</td><td>Tipo de interés real a 10 años de EE. UU. (serie DFII10) e índice amplio del dólar (DTWEXBGS) frente a hace {{ i.macro.meses }} meses</td><td>Si ambos bajan (más de {{ i.macro.umbral_tipo_real|numero }} puntos y {{ i.macro.umbral_dolar_pct|numero(1) }} %), ambos suben o van en direcciones distintas</td><td>FRED</td></tr>
+    <tr><td>Posicionamiento especulativo</td><td>Posición neta de los grandes especuladores en futuros, en % del interés abierto, frente a sus últimos {{ i.posicionamiento.anios }} años</td><td>En qué percentil está; por encima del {{ i.posicionamiento.percentil_alto }} o por debajo del {{ i.posicionamiento.percentil_bajo }} se considera un extremo</td><td>CFTC, informe semanal Commitments of Traders</td></tr>
+    <tr><td>Valoración relativa</td><td>Ratio oro/plata (para oro y plata) y platino/oro (para platino) frente a su media de {{ i.ratio.anios }} años</td><td>Caro o barato frente al otro metal si se aleja más de {{ i.ratio.desviaciones|numero(1) }} desviación típica</td><td>Banco Mundial y cierres propios</td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="texto">
-  <p class="pequeno secundario">El paladio no tiene histórico mensual en el Banco Mundial; sus indicadores de tendencia y momento se activan cuando Cedron acumula suficientes cierres propios. El cobre no usa el indicador macro, porque su precio depende más de la actividad industrial que de los tipos reales.</p>
+  <p class="pequeno secundario">El paladio no tiene histórico mensual en el Banco Mundial: su tendencia aparecerá cuando Cedron acumule 13 meses de cierres propios, y no tiene estadística de situaciones parecidas. El cobre no muestra el entorno macro, porque su precio depende más de la actividad industrial que de los tipos reales. La media de {{ i.tendencia.meses_media }} meses se ve en el gráfico de cada metal.</p>
 
   <h2 class="bloque" id="noticias">Cómo se seleccionan las noticias</h2>
   <p>Cada titular recibe una nota de 0 a 100: relevancia temática ({{ cfg.noticias.pesos.relevancia }} %), calidad del medio ({{ cfg.noticias.pesos.calidad_medio }} %), actualidad ({{ cfg.noticias.pesos.actualidad }} %) y confirmación por otros medios ({{ cfg.noticias.pesos.confirmacion }} %). Se publican las que superan {{ cfg.noticias.umbral_publicacion }} puntos. Las noticias repetidas en varios medios se agrupan. Los medios que venden metales se marcan como «medio comercial» y no bastan por sí solos: su noticia debe estar confirmada por otro medio.</p>
@@ -68,6 +68,28 @@
     <li><strong>Al revés</strong> (o <strong>apunta al revés, sin seguridad</strong>): tras −1 le fue mejor que tras +1.</li>
     <li><strong>Casi siempre la misma señal</strong>: marca +1 o −1 en más de tres de cada cuatro meses, así que apenas distingue unas épocas de otras.</li>
   </ul>
+  {% if prueba.panel %}
+  <h3 id="prueba-tendencia">La tendencia en varios plazos (la que usa la web)</h3>
+  <p>Cuántas veces subió el precio en los 12 meses siguientes, según en cuántos plazos estaba al alza. «Separa el cambio medio» compara lo que pasó con los tres plazos al alza frente a ninguno; «Anticipa la dirección» dice si la tabla, usada mes a mes solo con el pasado, acertó si subiría más que la frecuencia general.</p>
+</div>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Metal</th><th>Desde</th><th class="num">En general</th>{% for k in range(prueba.panel[0].plazos + 1) %}<th class="num">{{ k }} de {{ prueba.panel[0].plazos }}</th>{% endfor %}<th>Separa el cambio medio</th><th>Anticipa la dirección</th></tr></thead>
+  <tbody>
+  {% for f in prueba.panel %}
+    <tr><td>{{ f.activo }}</td><td>{{ f.desde[:4] }}</td><td class="num">{{ f.general.sube|numero(0) }} %</td>
+      {% for k in range(f.plazos + 1) %}{% set x = f.por_k.get(k) %}<td class="num">{{ (x.sube|numero(0) ~ ' %') if x else '—' }}</td>{% endfor %}
+      <td>{{ f.separa }}</td><td>{{ f.anticipa }}{% if f.mejora is not none %} <span class="secundario">({{ (f.mejora * 100)|porcentaje }})</span>{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="texto">
+  <p class="pequeno secundario">Porcentaje de meses en que el precio subió en los 12 meses siguientes (medido desde el mes siguiente). Entre paréntesis, la mejora de la puntuación de Brier frente a la frecuencia general: positiva es mejor, y solo cuenta como segura si su margen de error no incluye el cero en los dos periodos.</p>
+  {% endif %}
+
+  <h3 id="prueba-anterior">Las reglas del método anterior</h3>
+  <p>Hasta el 6 de noviembre de 2026 cada metal tenía una lectura (favorable, neutral o desfavorable) que sumaba cinco indicadores. Estos son sus resultados, que llevaron a cambiar el método.</p>
   <p>Resultado de las {{ prueba.total_reglas }} combinaciones de metal e indicador: {% for nombre, n in prueba.recuento %}{{ nombre|lower }}, {{ n }}{{ '; ' if not loop.last else '.' }}{% endfor %} La fila «Lectura (suma)» de cada metal evalúa la lectura final.</p>
 </div>
 {% macro tabla_prueba(filas, titulo) %}
@@ -91,9 +113,9 @@
 </table>
 </div>
 {% endmacro %}
-{{ tabla_prueba(prueba.indicadores, "Reglas actuales. «Tras +1» y «Tras −1»: cambio medio del precio " ~ m ~ " meses después (entre paréntesis, meses con esa señal). «Elección» y «Comprobación»: diferencia entre lo que pasó tras +1 y tras −1, en puntos porcentuales (media de los tres plazos), en cada periodo. «Margen»: intervalo de confianza de esa diferencia en toda la historia.") }}
+{{ tabla_prueba(prueba.indicadores, "Reglas del método anterior. «Tras +1» y «Tras −1»: cambio medio del precio " ~ m ~ " meses después (entre paréntesis, meses con esa señal). «Elección» y «Comprobación»: diferencia entre lo que pasó tras +1 y tras −1, en puntos porcentuales (media de los tres plazos), en cada periodo. «Margen»: intervalo de confianza de esa diferencia en toda la historia.") }}
 <div class="texto">
-  <p>Así le fue al precio después de cada lectura, frente a la media de todos los meses:</p>
+  <p>Así le fue al precio después de cada lectura del método anterior, frente a la media de todos los meses:</p>
 </div>
 <div class="desplazable">
 <table class="tabla">
@@ -110,7 +132,7 @@
 {% if prueba.candidatas %}
 <div class="texto">
   <h3 id="candidatas">Reglas en estudio</h3>
-  <p>Variantes que se prueban del mismo modo pero <strong>no se usan en las lecturas</strong>. Sirven para decidir cambios con datos; si alguna se adopta, se anunciará abajo, en «Cambios en la metodología».</p>
+  <p>Variantes del método anterior que se probaron del mismo modo y <strong>no se usan en la web</strong>. Sirvieron para decidir el cambio con datos.</p>
 </div>
 {% for c in prueba.candidatas %}
 {{ tabla_prueba(c.filas, c.texto) }}
@@ -125,6 +147,7 @@
   <h2 class="bloque">Cambios en la metodología</h2>
   <p>Si se añade, cambia o elimina una regla, se anunciará aquí con fecha y motivo. Las lecturas anteriores no se recalculan.</p>
   <ul>
+    <li><strong>6 de noviembre de 2026.</strong> <strong>Se sustituye la lectura favorable / neutral / desfavorable por un panel.</strong> Motivo: en la prueba histórica de 50 años, la lectura solo fue fiable en el oro y la plata y, convertida en probabilidad de subida, no acertó más que la frecuencia general en ningún metal. Ahora cada metal muestra su tendencia en 1, 3 y 12 meses, qué pasó en situaciones parecidas (y si eso sirvió para anticipar algo) y, como contexto que no suma, el entorno macro, el posicionamiento y la valoración relativa. El momento a 3 meses y la media de 10 meses dejan de mostrarse como indicadores aparte, porque miden lo mismo que la tendencia (la media se sigue viendo en el gráfico). Las lecturas antiguas se conservan en el historial.</li>
     <li><strong>6 de noviembre de 2026.</strong> Se publica la prueba histórica de las reglas, que se repetirá cada mes: unos 50 años de historia, con un mes de separación entre señal y medición, prueba a ciegas, margen de error y prueba de reglas candidatas. Por ahora no cambia ninguna regla; si sus resultados llevan a cambiar alguna, se anunciará aquí.</li>
     <li><strong>6 de noviembre de 2026.</strong> Se añaden las materias primas de apoyo (energía y ganadería), sin lectura. No cambia nada en las lecturas de los metales.</li>
     <li><strong>6 de noviembre de 2026.</strong> En la ganadería de España se añade el precio en tienda junto al de origen, con su multiplicador, y se incorporan huevos y leche.</li>
@@ -135,16 +158,16 @@
     <li><strong>6 de noviembre de 2026.</strong> El diésel de España pasa de la media horaria de gasolineras del Ministerio (no se puede consultar desde el servidor) al boletín semanal de la Comisión Europea.</li>
   </ul>
 
-  <h2 class="bloque" id="historial">Historial de lecturas</h2>
-  <p>Cada día laborable se guarda la lectura de cada metal con el precio de ese día. La tabla muestra cómo se movió el precio 1, 3 y 6 meses después, incluidas las lecturas que fallaron. Rentabilidades pasadas no garantizan resultados futuros.</p>
+  <h2 class="bloque" id="historial">Historial</h2>
+  <p>Cada día laborable se guarda la tendencia de cada metal con el precio de ese día (hasta el 6 de noviembre de 2026, su lectura del método anterior). La tabla muestra cómo se movió el precio 1, 3 y 6 meses después, pase lo que pase. Rentabilidades pasadas no garantizan resultados futuros.</p>
 </div>
 {% if historial %}
 <div class="desplazable">
 <table class="tabla">
-  <thead><tr><th>Fecha</th><th>Metal</th><th>Lectura</th><th class="num">Precio ($)</th><th class="num">1 mes</th><th class="num">3 meses</th><th class="num">6 meses</th></tr></thead>
+  <thead><tr><th>Fecha</th><th>Metal</th><th>Tendencia</th><th class="num">Precio ($)</th><th class="num">1 mes</th><th class="num">3 meses</th><th class="num">6 meses</th></tr></thead>
   <tbody>
   {% for h in historial %}
-    <tr><td>{{ h.fecha }}</td><td>{{ nombres[h.activo] }}</td><td>{{ h.lectura|capitalize }} ({{ '0' if h.total == 0 else ('%+d'|format(h.total))|replace('-', '−') }})</td>
+    <tr><td>{{ h.fecha }}</td><td>{{ nombres[h.activo] }}</td><td>{% if h.tendencia %}{{ {'alza': 'Al alza', 'mixta': 'Mixta', 'baja': 'A la baja'}[h.tendencia] }} ({{ h.suben }} de {{ h.plazos }}){% else %}{{ h.lectura|capitalize }} ({{ '0' if h.total == 0 else ('%+d'|format(h.total))|replace('-', '−') }}) <span class="secundario">· método anterior</span>{% endif %}</td>
       <td class="num">{{ h.precio|numero }}</td>
       {% for k in ('1m', '3m', '6m') %}<td class="num">{{ h[k]|porcentaje if h[k] is not none else 'pendiente' }}</td>{% endfor %}</tr>
   {% endfor %}
@@ -152,6 +175,6 @@
 </table>
 </div>
 {% else %}
-<p class="vacio">El historial empieza con la primera lectura con precio real.</p>
+<p class="vacio">El historial empieza con el primer día con precio real.</p>
 {% endif %}
 {% endblock %}

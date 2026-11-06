@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "_macros.html" import contraste, noticia %}
 {% block titulo %}{{ a.nombre }}: precio y contexto | {{ sitio.nombre }}{% endblock %}
-{% block descripcion %}Precio {{ a.de_art }} {{ a.nombre|lower }} en dólares y euros, gráfico de 10 años e indicadores de contexto actualizados.{% endblock %}
+{% block descripcion %}Precio {{ a.de_art }} {{ a.nombre|lower }} en dólares y euros, gráfico de 10 años, tendencia en varios plazos y contexto.{% endblock %}
 {% block contenido %}
 <article class="ficha">
   <header class="ficha__cab">
@@ -21,10 +21,10 @@
         {% endif %}
       </p>
     </div>
-    <div>{{ contraste(a.lectura, grande=true) }}</div>
+    <div>{{ contraste(a.lectura.tendencia, grande=true) }}</div>
   </header>
 
-  {% if a.lectura.frase %}<p class="ficha__frase">{{ a.lectura.frase }}</p>{% endif %}
+  {% if a.frase %}<p class="ficha__frase">{{ a.frase }}</p>{% endif %}
 
   <div class="columnas">
     <section class="bloque" aria-labelledby="t-graf">
@@ -63,27 +63,66 @@
       {% endif %}
     </section>
 
-    <section class="bloque" aria-labelledby="t-ind">
-      <h2 id="t-ind">Indicadores</h2>
-      {% if a.lectura.indicadores %}
+    <section class="bloque" aria-labelledby="t-ten">
+      <h2 id="t-ten">Tendencia</h2>
+      {% set t = a.lectura.tendencia %}
+      {% if t %}
       <ul class="indicadores">
-      {% for r in a.lectura.indicadores %}
+      {% for d in t.detalle %}
         <li class="indicador">
-          <span class="indicador__puntos {{ 'sube' if r.puntos == 1 else 'baja' if r.puntos == -1 else 'secundario' }}" aria-label="{{ 'sin datos' if r.puntos is none else ('%+d'|format(r.puntos)) ~ ' puntos' }}">{{ '—' if r.puntos is none else ('%+d'|format(r.puntos))|replace('-', '−')|replace('+0', '0') }}</span>
+          <span class="indicador__puntos {{ 'sube' if d.sube else 'baja' }}" aria-label="{{ 'por encima' if d.sube else 'por debajo' }}">{{ '↑' if d.sube else '↓' }}</span>
           <div>
-            <h3 class="indicador__nombre">{{ r.nombre }}</h3>
-            <p class="indicador__dato">{{ r.dato }}</p>
-            <p class="indicador__exp">{{ r.explicacion }}{% if r.fecha %} Dato de {{ r.fecha|mes }}.{% endif %}</p>
+            <h3 class="indicador__nombre">Frente a hace {{ d.meses }} {{ 'mes' if d.meses == 1 else 'meses' }}</h3>
+            <p class="indicador__dato cifra">{{ d.cambio_pct|porcentaje }}</p>
+            <p class="indicador__exp">Comparado con el precio medio de {{ d.mes_ref|mes }} ({{ d.referencia|numero }} $).</p>
           </div>
         </li>
       {% endfor %}
       </ul>
-      <p class="pequeno secundario">Calculado {{ a.lectura.calculado|fecha_hora }} con {{ a.lectura.precio_origen or 'datos disponibles' }}. <a href="{{ raiz }}metodologia.html">Cómo se calcula cada indicador</a>.</p>
+      {% set pn = a.panel %}
+      {% if pn and pn.situaciones %}
+      <h3 class="bloque__sub">Qué pasó después en situaciones parecidas</h3>
+      <div class="desplazable">
+      <table class="tabla situaciones">
+        <caption class="pequeno secundario">Meses desde {{ pn.desde|mes }} hasta {{ pn.hasta|mes }}, según en cuántos plazos estaba al alza el precio, y cómo cambió en los {{ pn.horizonte }} meses siguientes (medido desde el mes siguiente).</caption>
+        <thead><tr><th>Plazos al alza</th><th class="num">Meses</th><th class="num">Subió en</th><th class="num">Cambio mediano</th></tr></thead>
+        <tbody>
+        {% for x in pn.situaciones %}
+          <tr{% if x.suben == t.suben %} class="actual"{% endif %}><th scope="row">{{ x.suben }} de {{ pn.plazos }}</th><td class="num">{{ x.n }}</td><td class="num">{{ x.sube|numero(0) }} %</td><td class="num">{{ x.mediana|porcentaje }}</td></tr>
+        {% endfor %}
+          <tr><th scope="row">Todos los meses</th><td class="num">{{ pn.general.n }}</td><td class="num">{{ pn.general.sube|numero(0) }} %</td><td class="num">{{ pn.general.mediana|porcentaje }}</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="pequeno secundario">{% if pn.probabilidad.clase == 'coherente' %}En la prueba histórica, saber en cuántos plazos sube el precio ayudó a anticipar si subiría en los {{ pn.horizonte }} meses siguientes.{% else %}Cuidado: en la prueba histórica, saber en cuántos plazos sube el precio <strong>no ha servido para anticipar</strong> si subiría en los {{ pn.horizonte }} meses siguientes mejor que la frecuencia de «todos los meses». Los meses seguidos se solapan, así que hay muchos menos casos independientes de los que parece.{% endif %} <a href="{{ raiz }}metodologia.html#prueba">Ver la prueba</a>.</p>
+      {% endif %}
+      <p class="pequeno secundario">Calculado {{ a.lectura.calculado|fecha_hora }} con {{ a.lectura.precio_origen or 'datos disponibles' }}.</p>
       {% else %}
-      <p class="vacio">Sin indicadores calculados todavía.</p>
+      <p class="vacio">Aún no hay historia suficiente: hacen falta al menos {{ cfg.indicadores.tendencia_plazos.plazos|max + 1 }} meses de precios.</p>
       {% endif %}
     </section>
   </div>
+
+  <section class="bloque" aria-labelledby="t-ctx">
+    <h2 id="t-ctx">Contexto</h2>
+    <p class="texto secundario">Datos que suelen citarse al hablar {{ a.de_art }} {{ a.nombre|lower }}. Se muestran como información y no cuentan en la tendencia: en la prueba histórica, la mayoría no ayudaron a anticipar el precio de forma fiable (<a href="{{ raiz }}metodologia.html#prueba">ver la prueba</a>).</p>
+    {% if a.lectura.contexto %}
+    <ul class="indicadores indicadores--contexto">
+    {% for r in a.lectura.contexto %}
+      <li class="indicador">
+        <div>
+          <h3 class="indicador__nombre">{{ r.nombre }}</h3>
+          <p class="indicador__dato">{{ r.dato }}</p>
+          <p class="indicador__exp">{{ r.explicacion }}{% if r.fecha %} Dato de {{ r.fecha|mes }}.{% endif %}</p>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+    <p class="pequeno secundario"><a href="{{ raiz }}metodologia.html">Cómo se calcula cada dato</a>.</p>
+    {% else %}
+    <p class="vacio">Sin datos de contexto todavía.</p>
+    {% endif %}
+  </section>
 
   <section class="bloque texto" aria-labelledby="t-mueve">
     <h2 id="t-mueve">Qué mueve su precio</h2>

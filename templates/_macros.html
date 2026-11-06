@@ -1,10 +1,11 @@
-{% macro contraste(l, grande=false) -%}
-{% set tipo = l.lectura if l and l.lectura in ('favorable', 'neutral', 'desfavorable') else 'sin' %}
+{% macro contraste(t, grande=false) -%}
+{# Sello de la tendencia en varios plazos: describe el precio, no predice #}
+{% set tipo = t.estado if t and t.estado in ('alza', 'mixta', 'baja') else 'sin' %}
 <span class="contraste contraste--{{ tipo }}{% if grande %} contraste--grande{% endif %}">
   {%- if tipo == 'sin' -%}
-    Sin lectura
+    Sin datos
   {%- else -%}
-    {{ l.lectura|capitalize }} <span class="contraste__puntos">{{ '0' if l.total == 0 else ('%+d'|format(l.total))|replace('-', '−') }}</span>
+    {{ t.estado_texto }} <span class="contraste__puntos">{{ t.suben }} de {{ t.total }}</span>
   {%- endif -%}
 </span>
 {%- endmacro %}

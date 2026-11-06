@@ -1,26 +1,7 @@
 {
  "cobre": {
-  "activo": "cobre",
-  "calculado": "2026-11-06T18:02:22Z",
-  "disponibles": 3,
-  "frase": "El contexto del cobre es neutral: suma +1 con 3 indicadores. A favor: tendencia de largo plazo.",
-  "indicadores": [
-   {
-    "dato": "+1,1 % frente a la media de 10 meses",
-    "explicacion": "El precio está por encima de su media y con la media al alza.",
-    "fecha": "2026-11",
-    "id": "tendencia",
-    "nombre": "Tendencia de largo plazo",
-    "puntos": 1
-   },
-   {
-    "dato": "−3,9 % en 3 meses",
-    "explicacion": "Una caída de 3,9 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
-    "fecha": "2026-11",
-    "id": "momento",
-    "nombre": "Momento",
-    "puntos": 0
-   },
+  "calculado": "2026-11-06T18:19:13Z",
+  "contexto": [
    {
     "dato": "Percentil 56 de los últimos 3 años",
     "explicacion": "Los grandes especuladores están sin excesos.",
@@ -30,7 +11,6 @@
     "puntos": 0
    }
   ],
-  "lectura": "neutral",
   "mensual": [
    [
     "2016-02",
@@ -555,33 +535,43 @@
   ],
   "precio_origen": "precio actual",
   "precio_usado": 6.24187,
-  "total": 1
+  "tendencia": {
+   "detalle": [
+    {
+     "cambio_pct": -5.149105368766193,
+     "mes_ref": "2026-10",
+     "meses": 1,
+     "referencia": 6.580718109478528,
+     "sube": false
+    },
+    {
+     "cambio_pct": -3.944103077625294,
+     "mes_ref": "2026-08",
+     "meses": 3,
+     "referencia": 6.498164298069299,
+     "sube": false
+    },
+    {
+     "cambio_pct": 27.274951841466887,
+     "mes_ref": "2025-11",
+     "meses": 12,
+     "referencia": 4.90424070855265,
+     "sube": true
+    }
+   ],
+   "estado": "mixta",
+   "estado_texto": "Mixta",
+   "mes": "2026-11",
+   "suben": 1,
+   "total": 3
+  }
  },
  "oro": {
-  "activo": "oro",
-  "calculado": "2026-11-06T18:02:22Z",
-  "disponibles": 5,
-  "frase": "El contexto del oro es desfavorable: suma −3 con 5 indicadores. En contra: tendencia de largo plazo, momento y entorno macro.",
-  "indicadores": [
-   {
-    "dato": "−8,5 % frente a la media de 10 meses",
-    "explicacion": "El precio está por debajo de su media y con la media a la baja.",
-    "fecha": "2026-11",
-    "id": "tendencia",
-    "nombre": "Tendencia de largo plazo",
-    "puntos": -1
-   },
-   {
-    "dato": "−8,0 % en 3 meses",
-    "explicacion": "Una caída de 8,0 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
-    "fecha": "2026-11",
-    "id": "momento",
-    "nombre": "Momento",
-    "puntos": -1
-   },
+  "calculado": "2026-11-06T18:19:13Z",
+  "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
-    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
+    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
     "nombre": "Entorno macro",
@@ -604,7 +594,6 @@
     "puntos": 0
    }
   ],
-  "lectura": "desfavorable",
   "mensual": [
    [
     "2016-02",
@@ -1129,33 +1118,43 @@
   ],
   "precio_origen": "precio actual",
   "precio_usado": 4060.25417,
-  "total": -3
+  "tendencia": {
+   "detalle": [
+    {
+     "cambio_pct": -1.0900323995127859,
+     "mes_ref": "2026-10",
+     "meses": 1,
+     "referencia": 4105.0,
+     "sube": false
+    },
+    {
+     "cambio_pct": -7.95161709362956,
+     "mes_ref": "2026-08",
+     "meses": 3,
+     "referencia": 4411.0,
+     "sube": false
+    },
+    {
+     "cambio_pct": -0.6544122828480492,
+     "mes_ref": "2025-11",
+     "meses": 12,
+     "referencia": 4087.0,
+     "sube": false
+    }
+   ],
+   "estado": "baja",
+   "estado_texto": "A la baja",
+   "mes": "2026-11",
+   "suben": 0,
+   "total": 3
+  }
  },
  "paladio": {
-  "activo": "paladio",
-  "calculado": "2026-11-06T18:02:22Z",
-  "disponibles": 2,
-  "frase": "Aún no hay datos suficientes para una lectura del paladio: 2 de 4 indicadores disponibles.",
-  "indicadores": [
-   {
-    "dato": "sin datos",
-    "explicacion": "Hacen falta al menos 11 meses de historia.",
-    "fecha": null,
-    "id": "tendencia",
-    "nombre": "Tendencia de largo plazo",
-    "puntos": null
-   },
-   {
-    "dato": "sin datos",
-    "explicacion": "Hacen falta al menos 4 meses de historia.",
-    "fecha": null,
-    "id": "momento",
-    "nombre": "Momento",
-    "puntos": null
-   },
+  "calculado": "2026-11-06T18:19:13Z",
+  "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
-    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
+    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
     "nombre": "Entorno macro",
@@ -1170,7 +1169,6 @@
     "puntos": 0
    }
   ],
-  "lectura": "datos insuficientes",
   "mensual": [
    [
     "2026-11",
@@ -1179,33 +1177,14 @@
   ],
   "precio_origen": "precio actual",
   "precio_usado": 1021.38786,
-  "total": -1
+  "tendencia": null
  },
  "plata": {
-  "activo": "plata",
-  "calculado": "2026-11-06T18:02:22Z",
-  "disponibles": 5,
-  "frase": "El contexto de la plata es desfavorable: suma −3 con 5 indicadores. En contra: tendencia de largo plazo, momento y entorno macro.",
-  "indicadores": [
-   {
-    "dato": "−23,4 % frente a la media de 10 meses",
-    "explicacion": "El precio está por debajo de su media y con la media a la baja.",
-    "fecha": "2026-11",
-    "id": "tendencia",
-    "nombre": "Tendencia de largo plazo",
-    "puntos": -1
-   },
-   {
-    "dato": "−20,6 % en 3 meses",
-    "explicacion": "Una caída de 20,6 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
-    "fecha": "2026-11",
-    "id": "momento",
-    "nombre": "Momento",
-    "puntos": -1
-   },
+  "calculado": "2026-11-06T18:19:13Z",
+  "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
-    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
+    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
     "nombre": "Entorno macro",
@@ -1228,7 +1207,6 @@
     "puntos": 0
    }
   ],
-  "lectura": "desfavorable",
   "mensual": [
    [
     "2016-02",
@@ -1753,33 +1731,43 @@
   ],
   "precio_origen": "precio actual",
   "precio_usado": 51.93726,
-  "total": -3
+  "tendencia": {
+   "detalle": [
+    {
+     "cambio_pct": -8.882000000000001,
+     "mes_ref": "2026-10",
+     "meses": 1,
+     "referencia": 57.0,
+     "sube": false
+    },
+    {
+     "cambio_pct": -20.585229357798173,
+     "mes_ref": "2026-08",
+     "meses": 3,
+     "referencia": 65.4,
+     "sube": false
+    },
+    {
+     "cambio_pct": 3.0501190476190487,
+     "mes_ref": "2025-11",
+     "meses": 12,
+     "referencia": 50.4,
+     "sube": true
+    }
+   ],
+   "estado": "mixta",
+   "estado_texto": "Mixta",
+   "mes": "2026-11",
+   "suben": 1,
+   "total": 3
+  }
  },
  "platino": {
-  "activo": "platino",
-  "calculado": "2026-11-06T18:02:22Z",
-  "disponibles": 5,
-  "frase": "El contexto del platino es desfavorable: suma −2 con 5 indicadores. A favor: valoración relativa (platino/oro); en contra: tendencia de largo plazo, momento y entorno macro.",
-  "indicadores": [
-   {
-    "dato": "−15,2 % frente a la media de 10 meses",
-    "explicacion": "El precio está por debajo de su media y con la media a la baja.",
-    "fecha": "2026-11",
-    "id": "tendencia",
-    "nombre": "Tendencia de largo plazo",
-    "puntos": -1
-   },
-   {
-    "dato": "−13,0 % en 3 meses",
-    "explicacion": "Una caída de 13,0 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
-    "fecha": "2026-11",
-    "id": "momento",
-    "nombre": "Momento",
-    "puntos": -1
-   },
+  "calculado": "2026-11-06T18:19:13Z",
+  "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
-    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
+    "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
     "nombre": "Entorno macro",
@@ -1802,7 +1790,6 @@
     "puntos": 1
    }
   ],
-  "lectura": "desfavorable",
   "mensual": [
    [
     "2016-02",
@@ -2327,6 +2314,35 @@
   ],
   "precio_origen": "precio actual",
   "precio_usado": 1549.40271,
-  "total": -2
+  "tendencia": {
+   "detalle": [
+    {
+     "cambio_pct": -4.416859346082658,
+     "mes_ref": "2026-10",
+     "meses": 1,
+     "referencia": 1621.0,
+     "sube": false
+    },
+    {
+     "cambio_pct": -12.95490393258426,
+     "mes_ref": "2026-08",
+     "meses": 3,
+     "referencia": 1780.0,
+     "sube": false
+    },
+    {
+     "cambio_pct": -0.9966319488817876,
+     "mes_ref": "2025-11",
+     "meses": 12,
+     "referencia": 1565.0,
+     "sube": false
+    }
+   ],
+   "estado": "baja",
+   "estado_texto": "A la baja",
+   "mes": "2026-11",
+   "suben": 0,
+   "total": 3
+  }
  }
 }

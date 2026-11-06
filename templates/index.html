@@ -16,7 +16,7 @@
 
   <table class="tabla-precios">
     <thead>
-      <tr><th scope="col">Metal</th><th scope="col">Dólares</th><th scope="col" class="col-eur">Euros</th><th scope="col" class="col-var">24 horas</th><th scope="col">Contexto</th></tr>
+      <tr><th scope="col">Metal</th><th scope="col">Dólares</th><th scope="col" class="col-eur">Euros</th><th scope="col" class="col-var">24 horas</th><th scope="col">Tendencia</th></tr>
     </thead>
     <tbody>
     {% for a in activos %}
@@ -28,7 +28,7 @@
         </td>
         <td class="col-eur cifra">{% if a.precio_eur %}{{ a.precio_eur|numero }} €{% else %}—{% endif %}</td>
         <td class="col-var cifra {% if a.precio.variacion_24h_pct and a.precio.variacion_24h_pct > 0 %}sube{% elif a.precio.variacion_24h_pct and a.precio.variacion_24h_pct < 0 %}baja{% endif %}">{{ a.precio.variacion_24h_pct|porcentaje(2) }}</td>
-        <td>{{ contraste(a.lectura) }}</td>
+        <td>{{ contraste(a.lectura.tendencia) }}</td>
       </tr>
     {% endfor %}
     </tbody>
@@ -59,10 +59,10 @@
   </section>
 
   <section class="bloque texto" aria-labelledby="t-leer">
-    <h2 id="t-leer">Cómo leer el contexto</h2>
-    <p>Cada metal tiene hasta cinco indicadores públicos: tendencia, momento, entorno macro, posicionamiento y valoración relativa. Cada uno suma +1, 0 o −1.</p>
-    <p>{{ contraste({'lectura': 'favorable', 'total': 2}) }} cuando la suma es +2 o más, {{ contraste({'lectura': 'desfavorable', 'total': -2}) }} con −2 o menos, y neutral en medio.</p>
-    <p>Es una descripción del entorno, no una orden de compra o venta. <a href="{{ raiz }}metodologia.html">Reglas completas e historial de aciertos y fallos</a>.</p>
+    <h2 id="t-leer">Cómo leer la tendencia</h2>
+    <p>Para cada metal se compara el precio de hoy con su precio medio de hace {{ cfg.indicadores.tendencia_plazos.plazos[:-1]|join(', ') }} y {{ cfg.indicadores.tendencia_plazos.plazos[-1] }} meses.</p>
+    <p>{{ contraste({'estado': 'alza', 'estado_texto': 'Al alza', 'suben': 3, 'total': 3}) }} si está por encima en los tres plazos, {{ contraste({'estado': 'baja', 'estado_texto': 'A la baja', 'suben': 0, 'total': 3}) }} si está por debajo en los tres, y mixta en otro caso.</p>
+    <p>Describe lo que ha hecho el precio; no es una previsión ni una orden de compra o venta. En la ficha de cada metal verás qué pasó en el pasado en situaciones parecidas y cuánto se puede fiar uno de eso. <a href="{{ raiz }}metodologia.html">Metodología y prueba histórica</a>.</p>
   </section>
 </div>
 {% endblock %}

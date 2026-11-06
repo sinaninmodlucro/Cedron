@@ -883,6 +883,11 @@ presupuesto:
 # Indicadores (ver pagina de metodologia). Cada uno puntua -1, 0 o +1.
 # -----------------------------------------------------------------------------
 indicadores:
+  # Panel de cada metal (desde el 6-nov-2026, decision del usuario tras la prueba
+  # historica): la tendencia en varios plazos es lo principal; el resto es contexto
+  # y ya no suma en ninguna lectura.
+  tendencia_plazos:
+    plazos: [1, 3, 12]            # meses; Hurst, Ooi y Pedersen (2017)
   tendencia:
     meses_media: 10               # media movil de 10 meses (equivale a ~200 sesiones)
   momento:
