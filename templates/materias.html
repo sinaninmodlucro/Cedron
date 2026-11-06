@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia %}
+{% block titulo %}Materias primas de apoyo | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}Energía y ganadería: precios en España, Europa y el mundo, con su fecha y su fuente.{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Materias primas de apoyo</h1>
+  <p>Precios que ayudan a entender los costes y las cadenas de precios. No tienen lectura favorable o desfavorable: solo el dato, sus cambios y su tendencia.</p>
+</div>
+
+<div class="vistas" role="group" aria-label="Ámbito de los precios">
+  {% for id, nombre in ambitos %}
+  <button type="button" data-vista="{{ id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ nombre }}</button>
+  {% endfor %}
+</div>
+<p class="pequeno secundario">Si el ámbito elegido no tiene un dato reciente de una materia, se muestra el último disponible de otro ámbito, indicado en cada fila.</p>
+
+{% for g in grupos_apoyo %}
+<section class="bloque" aria-labelledby="t-{{ g.id }}">
+  <h2 id="t-{{ g.id }}">{{ g.nombre }}</h2>
+  {% if g.descripcion %}<p class="texto secundario">{{ g.descripcion }}</p>{% endif %}
+  <div class="desplazable">
+  <table class="tabla tabla-apoyo">
+    <thead><tr><th scope="col">Materia</th><th scope="col" class="num">Precio</th><th scope="col" class="num">Frente al dato anterior</th><th scope="col" class="num">En un año</th><th scope="col">Tendencia</th><th scope="col">Dato</th></tr></thead>
+    {% for m in g.materias %}
+    <tbody>
+    {% for v, _ in ambitos %}{% set vista = m.vistas[v] %}{% set amb = m.ambitos[vista.ambito] if vista.ambito else none %}
+      <tr data-vista="{{ v }}"{% if not loop.first %} hidden{% endif %}>
+        <th scope="row"><a href="{{ raiz }}materias/{{ m.id }}.html">{{ m.nombre }}</a>
+          {% if amb %}<span class="ambito">{{ amb.nombre }}{% if vista.motivo %} · <span class="aviso">{{ vista.motivo }}</span>{% endif %}</span>{% endif %}</th>
+        {% if amb %}{% set r = amb.resumen %}
+        <td class="num">{{ valor_apoyo(amb) }}{% if amb.eur %}<span class="ambito">≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}</span>{% endif %}</td>
+        <td class="num {{ 'sube' if r.cambio_pct and r.cambio_pct > 0 else 'baja' if r.cambio_pct and r.cambio_pct < 0 }}" data-etiqueta="Frente al anterior">{{ r.cambio_pct|porcentaje }}</td>
+        <td class="num {{ 'sube' if r.interanual_pct and r.interanual_pct > 0 else 'baja' if r.interanual_pct and r.interanual_pct < 0 }}" data-etiqueta="En un año">{{ r.interanual_pct|porcentaje }}</td>
+        <td class="col-tendencia">{{ tendencia(r) }}</td>
+        <td class="pequeno col-dato">{{ fecha_dato(amb) }}<span class="ambito">{{ amb.fuente_nombre }}</span></td>
+        {% else %}
+        <td colspan="5" class="vacio">Todavía no hay datos.</td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+    </tbody>
+    {% endfor %}
+  </table>
+  </div>
+</section>
+{% endfor %}
+
+<div class="texto">
+  <p class="pequeno secundario bloque">Los precios en dólares muestran también su equivalente aproximado en euros{% if eurusd %} (1 € = {{ eurusd[1]|numero(4) }} $, {{ eurusd[0] }}){% endif %}. <a href="{{ raiz }}metodologia.html#apoyo">Cómo se calculan los cambios y la tendencia</a>.</p>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/vistas.js" defer></script>
+{% endblock %}

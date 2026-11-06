@@ -7,6 +7,7 @@ from dataclasses import asdict
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
+from . import apoyo
 from . import indicators as ind
 from . import sources as src
 from .news import seleccionar
@@ -98,14 +99,25 @@ def _una_vez_al_dia(estado: Estado, clave: str) -> bool:
 def actualizar_diarios(cfg, estado: Estado, forzar=False) -> None:
     hoy = date.today().isoformat()
 
-    if forzar or _una_vez_al_dia(estado, "pink_dia"):
-        nombres = [a["pink_sheet"] for a in cfg["activos"] if a.get("pink_sheet")]
+    # Metales: obligatorios. Materias de apoyo: opcionales (un error en una de ellas
+    # nunca debe dejar a los metales sin historico).
+    nombres = [a["pink_sheet"] for a in cfg["activos"] if a.get("pink_sheet")]
+    opcionales = [n for n in apoyo.series_pink(cfg) if n not in nombres]
+    guardadas = (leer("pink.json", {}) or {}).get("series", {})
+    faltan = any(n not in guardadas for n in nombres + opcionales)   # p. ej. al anadir una materia
+    if forzar or faltan or _una_vez_al_dia(estado, "pink_dia"):
         try:
-            series = src.pink_sheet_mensual(nombres)
+            series = src.pink_sheet_mensual(nombres, opcionales)
             escribir("pink.json", {"series": series, "consultado": iso(),
                                    "fuente": "Banco Mundial, Commodity Price Data (Pink Sheet), CC BY 4.0"})
             estado.set("pink_dia", hoy)
             estado.registrar_fuente("Banco Mundial", True)
+            perdidas = [n for n in opcionales if n not in series]
+            if perdidas:
+                estado.registrar_fuente("Banco Mundial (materias de apoyo)", False,
+                                        "series no encontradas: " + ", ".join(perdidas))
+            else:
+                estado.registrar_fuente("Banco Mundial (materias de apoyo)", True)
         except src.FuenteError as e:
             estado.registrar_fuente("Banco Mundial", False, str(e))
             log.warning("Banco Mundial: %s", e)
@@ -255,6 +267,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     estado = Estado()
     actualizar_diarios(cfg, estado, forzar)
     actualizar_precios(cfg, estado, forzar)
+    apoyo.recoger(cfg, estado, forzar)
     actualizar_noticias(cfg, estado)
     calcular_lecturas(cfg)
     estado.set("ultima_ejecucion", iso())

@@ -45,11 +45,13 @@ GitHub Actions (cada hora, minuto 17 UTC)  →  run.py
 ```
 
 - `config.yaml`: **todos los parámetros ajustables**, comentados línea a línea. Es lo primero que hay que tocar para cualquier ajuste.
+- `cedron/apoyo.py`: **materias primas de apoyo** (sección `apoyo` de `config.yaml`): recoge, guarda en `data/apoyo/*.json` y calcula el resumen (último dato, cambio frente al anterior de la misma fuente, interanual y posición frente a la media de 10 meses). Elige qué ámbito mostrar (España / Europa / Global) con `elegir()`. Páginas `templates/materias.html` y `templates/materia.html`; selector en `static/vistas.js`.
+- `cedron/certificados/`: certificado raíz público de la FNMT, necesario para verificar `www.mapa.gob.es` (Python no lo trae). Solo se usa para esa web.
 - `cedron/sources.py`: conectores. Lanzan `FuenteError` con mensaje claro; nunca inventan datos.
 - `cedron/store.py`: lectura/escritura atómica de JSON en `data/` (o `CEDRON_DATA`).
 - `cedron/demo.py`: datos **inventados** para ver la web sin claves (`python run.py --demo` → `_site_demo/`, con aviso visible).
 - `templates/acceso.html`: pantalla de contraseña (no pasa por Jinja; usa `__DATOS__` y `__RAIZ__`).
-- `tests/`: 28 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
+- `tests/`: 37 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
 - `.github/workflows/actualizar.yml`: la automatización. Si una fuente falla 3 veces seguidas, abre una incidencia en GitHub (le llega por correo) y la cierra al recuperarse.
 
 Comandos:
@@ -75,6 +77,10 @@ python -m unittest discover tests
 | FRED | DFII10 (tipo real 10 años), DTWEXBGS (dólar), DEXUSEU (euro/dólar) | 120/min | 1 vez al día |
 | CFTC COT Legacy (`jun7-fc8e`) | Posicionamiento no comercial | Sin clave | Códigos: oro 088691, plata 084691, platino 076651, paladio 075651, cobre 085692 |
 | NewsData.io `/api/1/latest` | Noticias (categoría business) | 200 créditos/día | Tope 150/día; 1 consulta por hora |
+| Ministerio Transición Ecológica (carburantes) | Diésel en España, media simple de ~11.000 gasolineras | Sin clave | Se pide cada hora; JSON de ~12 MB |
+| Comisión Europea, Weekly Oil Bulletin | Diésel España y media UE, semanal desde 2005 | Sin clave | El Excel histórico se descubre en la página |
+| MAPA, precios medios nacionales | Cerdo, pollo, ternera (y cereales para el bloque 2), semanal | Sin clave | Un Excel por año; certificado FNMT. La primera vez baja 5 años |
+| FRED (apoyo) | Brent, WTI, Henry Hub, diésel EE. UU. (EIA); cerdo (FMI) | FRED_KEY | El FMI: revisar condiciones si la web se abre al público |
 | RSS | Noticias | — | Fed, BCE, Banco de Inglaterra, Expansión, Cinco Días, FT Materias primas, Investing.com (en y es), Silver Institute y GoldSeek funcionan (validados el 6-nov-2026). FT e Investing: RSS para uso personal, revisar condiciones si se abre al público |
 
 Descartadas, no las reintroduzcas sin revisar sus condiciones: **OilPriceAPI** (todos sus planes son de uso interno, no permiten mostrar datos al público), **Alpha Vantage** (uso comercial del plan gratuito no aclarado), **NewsAPI.org y GNews** (plan gratuito no comercial). Desde el entorno anterior no se podía acceder a internet salvo por las herramientas; desde Claude Code sí podrás probar las fuentes directamente.
@@ -108,7 +114,11 @@ Pendiente, por orden de prioridad:
 1. **Feeds de noticias** (hecho en parte el 6-nov-2026): Cinco Días arreglado (sección `mercados-financieros`) y añadidos Banco de Inglaterra, FT, Investing.com (en/es) y Silver Institute; en la simulación se pasó de 2 a 18 noticias publicadas. Kitco ya no tiene RSS y Mining.com bloquea lectores: siguen desactivados. Además, **por decisión del usuario y solo mientras la web sea privada**, se activaron The Northern Miner, Mining Technology (noticias de empresas mineras), FXStreet (trae también noticias de divisas) y el feed de análisis de Investing.com (análisis técnico de terceros). En la simulación salían unas 40 noticias. **Si la web se abre al público, hay que desactivar esos cuatro** (están marcados en `config.yaml`).
 2. **Prueba histórica de 15 años** (fase 4 del plan, aún no hecha): comprobar con el histórico del Banco Mundial que las reglas no dan resultados absurdos, quitar las que no aporten y publicar los resultados en la página de metodología.
 3. **Paladio**: no tiene lectura hasta acumular historia propia (sin Banco Mundial). Valorar otra fuente histórica con licencia adecuada.
-4. Fase 2: energía (Brent, WTI, gas) y agrícolas desde el Banco Mundial.
+4. **Materias primas de apoyo** (decidido con el usuario el 6-nov-2026). Sin lectura: solo precio, cambios y tendencia. **España primero**, luego Europa, luego global; un selector en la web elige el ámbito y, si falta un dato reciente, se muestra el último de otro ámbito, indicándolo. Bloques, en este orden:
+   - **Bloque 1, energía + ganadería: HECHO** (diésel, Brent, WTI, gas, carbón; cerdo, pollo, ternera). Pendiente dentro del bloque: gas en España (MIBGAS, revisar condiciones), Europa para ganadería (el portal agroalimentario de la UE estaba suspendido el 6-nov-2026), lácteos (leche cruda del FEGA y referencia europea).
+   - Bloque 2: fertilizantes (urea, fosfatos, potasa) + agrícolas (trigo, maíz, soja, arroz, café, cacao, azúcar, aceite de oliva, algodón). Antes, el usuario dirá qué agrícolas son principales y cuáles de apoyo, y cómo quiere verlas. El Excel del MAPA ya trae trigo, cebada y maíz de España.
+   - Bloque 3: metales industriales (aluminio, níquel, zinc, estaño, plomo, mineral de hierro) + **madera**, como materiales de construcción.
+   - Bloque 4: **cadena de costes**: estimaciones de cómo se transmiten los precios (gas → fertilizantes → cereales → pienso → carne; petróleo → diésel → todo; energía + metales → construcción). Es una regla nueva: diseñarla con el usuario, con datos históricos medibles, publicada y sin recomendaciones.
 5. Opcional: dominio propio; si se quiere ocultar también el repositorio, estudiar Cloudflare Pages + Access.
 
 ## Forma de trabajar en este repositorio

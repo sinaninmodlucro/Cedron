@@ -79,6 +79,168 @@ activos:
       eléctricos. China consume aproximadamente la mitad del cobre del mundo.
 
 # -----------------------------------------------------------------------------
+# Materias primas de APOYO (6-nov-2026). No tienen lectura favorable/desfavorable:
+# solo precio, cambios y tendencia, para entender costes y cadenas de precios.
+# Cada materia tiene hasta tres ambitos: espana, europa y global. En la web se
+# elige cual ver; si el elegido no tiene dato reciente, se muestra el ultimo
+# disponible de otro ambito, indicando siempre de donde y de cuando es.
+#
+# Tipos de fuente:
+#   carburantes  Ministerio para la Transicion Ecologica: media de todas las
+#                gasolineras de Espana. Se pide cada hora. 'campo' = nombre exacto.
+#   boletin      Comision Europea, Weekly Oil Bulletin (semanal). 'columna' = nombre
+#                exacto de la columna del Excel (precios con impuestos, EUR/1000 l).
+#   mapa         Ministerio de Agricultura, precios medios nacionales (semanal).
+#                'producto' = principio del nombre de la fila en su Excel.
+#   pink         Banco Mundial, Pink Sheet (mensual). 'serie' = nombre exacto.
+#   fred         FRED (necesita FRED_KEY). 'serie' = codigo de la serie.
+# 'factor' multiplica el dato original para pasarlo a la unidad mostrada.
+# 'historia' (opcional) es otra fuente con la que se completa el pasado.
+# -----------------------------------------------------------------------------
+apoyo:
+  # Antiguedad maxima (dias) para considerar "reciente" un dato segun su frecuencia
+  dias_reciente: {horaria: 2, diaria: 10, semanal: 21, mensual: 75}
+  grupos:
+    - id: energia
+      nombre: "Energía"
+      descripcion: >
+        La energía entra en el coste de casi todo: transporte, maquinaria agrícola,
+        fertilizantes y fabricación de materiales.
+      materias:
+        - id: diesel
+          nombre: "Diésel (gasóleo A)"
+          ambitos:
+            espana:
+              fuente: carburantes
+              campo: "Precio Gasoleo A"
+              unidad: "€/litro"
+              decimales: 3
+              frecuencia: horaria
+              nota: "Media simple de todas las gasolineras de España, impuestos incluidos"
+              historia: {fuente: boletin, columna: "ES_price_with_tax_diesel", factor: 0.001}
+            europa:
+              fuente: boletin
+              columna: "EU_price_with_tax_diesel"
+              factor: 0.001
+              unidad: "€/litro"
+              decimales: 3
+              frecuencia: semanal
+              nota: "Media ponderada de la UE, impuestos incluidos"
+            global:
+              fuente: fred
+              serie: GASDESW
+              unidad: "$/galón"
+              decimales: 3
+              frecuencia: semanal
+              etiqueta: "EE. UU."
+              nota: "Precio medio en gasolinera en EE. UU. (EIA)"
+        - id: brent
+          nombre: "Petróleo Brent"
+          ambitos:
+            global:
+              fuente: fred
+              serie: DCOILBRENTEU
+              unidad: "$/barril"
+              frecuencia: diaria
+              nota: "Referencia europea del crudo, precio al contado (EIA)"
+              historia: {fuente: pink, serie: "Crude oil, Brent"}
+        - id: wti
+          nombre: "Petróleo WTI"
+          ambitos:
+            global:
+              fuente: fred
+              serie: DCOILWTICO
+              unidad: "$/barril"
+              frecuencia: diaria
+              nota: "Referencia estadounidense del crudo, precio al contado (EIA)"
+              historia: {fuente: pink, serie: "Crude oil, WTI"}
+        - id: gas
+          nombre: "Gas natural"
+          ambitos:
+            # espana: pendiente (MIBGAS, el mercado ibérico; falta confirmar sus condiciones)
+            europa:
+              fuente: pink
+              serie: "Natural gas, Europe"
+              unidad: "$/MMBtu"
+              frecuencia: mensual
+              nota: "Media mensual del mercado europeo (TTF)"
+            global:
+              fuente: fred
+              serie: DHHNGSP
+              unidad: "$/MMBtu"
+              frecuencia: diaria
+              etiqueta: "EE. UU."
+              nota: "Henry Hub, referencia estadounidense (EIA)"
+              historia: {fuente: pink, serie: "Natural gas, US"}
+        - id: carbon
+          nombre: "Carbón"
+          ambitos:
+            global:
+              fuente: pink
+              serie: "Coal, Australian"
+              unidad: "$/tonelada"
+              frecuencia: mensual
+              nota: "Carbón térmico australiano, referencia de Asia y Europa"
+
+    - id: ganaderia
+      nombre: "Ganadería"
+      descripcion: >
+        El pienso (cereales y soja) y la energía son los mayores costes de la
+        ganadería; sus precios suelen trasladarse a la carne con algunos meses de retraso.
+      materias:
+        - id: cerdo
+          nombre: "Cerdo"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Porcino >60% magro (S)"
+              factor: 0.01
+              unidad: "€/kg canal"
+              frecuencia: semanal
+              nota: "Canal clase S, precio medio nacional"
+            # europa: pendiente (el portal agroalimentario de la UE está suspendido)
+            global:
+              fuente: fred
+              serie: PPORKUSDM
+              factor: 0.0220462      # de centavos de dólar por libra a dólares por kilo
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Precio de referencia mundial del FMI (canal, EE. UU.)"
+        - id: pollo
+          nombre: "Pollo"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Pollo ("
+              factor: 0.01
+              unidad: "€/kg canal"
+              frecuencia: semanal
+              nota: "Canal, precio medio nacional"
+            global:
+              fuente: pink
+              serie: "Chicken **"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Precio de referencia mundial del Banco Mundial"
+        - id: ternera
+          nombre: "Ternera"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Terneras 180-300 kg"
+              factor: 0.01
+              unidad: "€/kg canal"
+              frecuencia: semanal
+              nota: "Terneras de 180 a 300 kg, canal, precio medio nacional"
+            global:
+              fuente: pink
+              serie: "Beef **"
+              unidad: "$/kg"
+              frecuencia: mensual
+              nota: "Vacuno, precio de referencia mundial del Banco Mundial"
+        # lacteos: pendiente (precio de la leche cruda en España del FEGA y referencia europea)
+
+# -----------------------------------------------------------------------------
 # Presupuesto de consultas a las APIs gratuitas. El motor nunca lo supera.
 # -----------------------------------------------------------------------------
 presupuesto:

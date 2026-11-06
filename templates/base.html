@@ -26,6 +26,7 @@
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="{{ raiz }}index.html"{% if seccion == 'mercado' %} aria-current="page"{% endif %}>Mercado</a>
+      <a href="{{ raiz }}materias.html"{% if seccion == 'materias' %} aria-current="page"{% endif %}>Materias primas</a>
       <a href="{{ raiz }}noticias.html"{% if seccion == 'noticias' %} aria-current="page"{% endif %}>Noticias</a>
       <a href="{{ raiz }}metodologia.html"{% if seccion == 'metodologia' %} aria-current="page"{% endif %}>Metodología</a>
       <a href="{{ raiz }}fuentes.html"{% if seccion == 'fuentes' %} aria-current="page"{% endif %}>Fuentes</a>
@@ -50,7 +51,7 @@
       <a href="mailto:{{ sitio.contacto }}">Contacto</a>
       {% if privado %}<a href="#" id="cerrar-sesion">Cerrar sesión en este dispositivo</a>{% endif %}
     </p>
-    <p class="pie__nota">© {{ anio }} {{ sitio.nombre }}. Datos históricos: Banco Mundial (CC BY 4.0), FRED, CFTC. Precios actuales: MetalCharts.</p>
+    <p class="pie__nota">© {{ anio }} {{ sitio.nombre }}. Datos históricos: Banco Mundial (CC BY 4.0), FRED, CFTC. Precios actuales: MetalCharts. Energía y ganadería: Ministerio para la Transición Ecológica, Ministerio de Agricultura, Comisión Europea.</p>
   </div>
 </footer>
 {% if privado %}

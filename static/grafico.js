@@ -17,7 +17,8 @@ document.querySelectorAll(".grafico svg[data-puntos]").forEach(function (svg) {
     var escala = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
     globo.style.left = (p.x * escala) + "px";
     globo.style.top = (p.y * escala) + "px";
-    globo.innerHTML = "<strong>" + p.mes + "</strong><br>Precio: " + p.precio + " $<br>Media: " + p.media + " $";
+    var s = svg.dataset.simbolo || "$";
+    globo.innerHTML = "<strong>" + p.mes + "</strong><br>Precio: " + p.precio + " " + s + "<br>Media: " + p.media + " " + s;
   }
   function ocultar() { cruz.hidden = punto.hidden = globo.hidden = true; }
   function indice(evento) {

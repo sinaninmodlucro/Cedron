@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia %}
+{% block titulo %}{{ m.nombre }}: precio en España, Europa y el mundo | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}{{ m.nombre }}: último precio, cambios, tendencia y diez años de historia por ámbito.{% endblock %}
+{% block contenido %}
+<article class="ficha">
+  <header class="ficha__cab">
+    <div>
+      <p class="pequeno secundario"><a href="{{ raiz }}materias.html">Materias primas de apoyo</a> · {{ g.nombre }}</p>
+      <h1>{{ m.nombre }}</h1>
+    </div>
+  </header>
+  {% if g.descripcion %}<p class="ficha__frase">{{ g.descripcion }}</p>{% endif %}
+
+  {% for id, _ in ambitos %}{% set amb = m.ambitos.get(id) %}
+  {% if amb and amb.resumen %}{% set r = amb.resumen %}
+  <section class="bloque" aria-labelledby="t-{{ id }}">
+    <h2 id="t-{{ id }}">{{ amb.nombre }}</h2>
+    <p class="ficha__precio cifra">{{ valor_apoyo(amb) }}</p>
+    <p class="ficha__datos">
+      {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}. {% endif %}
+      Dato: {{ fecha_dato(amb) }}.
+      {% if r.cambio_pct is not none %}Frente al dato anterior ({{ r.anterior.fecha|mes }}): <span class="cifra {{ 'sube' if r.cambio_pct > 0 else 'baja' if r.cambio_pct < 0 }}">{{ r.cambio_pct|porcentaje }}</span>.{% endif %}
+      {% if r.interanual_pct is not none %}En un año: <span class="cifra {{ 'sube' if r.interanual_pct > 0 else 'baja' if r.interanual_pct < 0 }}">{{ r.interanual_pct|porcentaje }}</span>.{% endif %}
+    </p>
+    <p class="pequeno">{{ tendencia(r) }}.</p>
+    {% if amb.nota %}<p class="pequeno secundario">{{ amb.nota }}. Fuente: {{ amb.fuentes|join(' y, para los datos más antiguos, ') }}.</p>{% endif %}
+
+    {% if amb.grafico %}{% set gr = amb.grafico %}
+    <figure class="grafico">
+      <div class="leyenda" aria-hidden="true"><span>Media mensual</span><span class="l-media">Media de {{ gr.meses_media }} meses</span></div>
+      <div class="grafico__marco">
+      <svg viewBox="0 0 {{ gr.ancho }} {{ gr.alto }}" role="img" aria-labelledby="g-{{ id }}" data-puntos='{{ gr.puntos_json }}' data-simbolo="{{ gr.simbolo }}">
+        <desc id="g-{{ id }}">{{ m.nombre }}, {{ amb.nombre }}: precio medio mensual en {{ amb.unidad }} durante los últimos diez años, con su media de {{ gr.meses_media }} meses. Último dato: {{ gr.ultimo.mes }}, {{ gr.ultimo.precio }}.</desc>
+        <g class="rejilla eje">
+          {% for t in gr.eje_y %}<line x1="{{ gr.izq }}" x2="{{ gr.ancho - gr.der }}" y1="{{ t.y }}" y2="{{ t.y }}"/><text x="{{ gr.izq - 8 }}" y="{{ t.y + 4 }}" text-anchor="end">{{ t.texto }}</text>{% endfor %}
+        </g>
+        <g class="eje">
+          {% for t in gr.eje_x %}<text x="{{ t.x }}" y="{{ gr.alto - 8 }}" text-anchor="middle">{{ t.texto }}</text>{% endfor %}
+        </g>
+        <path class="media" d="{{ gr.media }}"/>
+        <path class="serie" d="{{ gr.linea }}"/>
+        <text class="rotulo" x="{{ gr.ultimo.x + 8 }}" y="{{ gr.ultimo.y + 4 }}">{{ gr.ultimo.precio }}</text>
+        <line class="cruz" x1="0" x2="0" y1="{{ gr.arr }}" y2="{{ gr.alto - gr.aba }}" hidden/>
+        <circle class="punto" r="5" hidden/>
+        <rect class="captura" x="{{ gr.izq }}" y="0" width="{{ gr.ancho - gr.izq - gr.der }}" height="{{ gr.alto }}" fill="transparent"/>
+      </svg>
+      <div class="globo" hidden></div>
+      </div>
+      <figcaption>Medias mensuales en {{ amb.unidad }}. Fuente: {{ amb.fuentes|join(' y ') }}.</figcaption>
+    </figure>
+    <details class="pequeno">
+      <summary>Ver los datos en tabla</summary>
+      <div class="desplazable"><table class="tabla"><thead><tr><th>Mes</th><th class="num">Media ({{ amb.unidad }})</th><th class="num">Media {{ gr.meses_media }} meses</th></tr></thead>
+      <tbody>{% for p in gr.puntos|reverse %}<tr><td>{{ p.mes }}</td><td class="num">{{ p.precio }}</td><td class="num">{{ p.media }}</td></tr>{% endfor %}</tbody></table></div>
+    </details>
+    {% else %}
+    <p class="vacio">Aún no hay historia suficiente para dibujar el gráfico.</p>
+    {% endif %}
+  </section>
+  {% endif %}
+  {% endfor %}
+
+  {% set sin = [] %}{% for id, nombre in ambitos %}{% if not m.ambitos.get(id) or not m.ambitos[id].resumen %}{% set _ = sin.append(nombre) %}{% endif %}{% endfor %}
+  {% if sin %}<p class="pequeno secundario bloque">Sin datos por ahora para: {{ sin|join(', ') }}.</p>{% endif %}
+</article>
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/grafico.js" defer></script>
+{% endblock %}

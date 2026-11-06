@@ -10,6 +10,9 @@ Fuentes y licencias (ver pagina de Fuentes de la web):
 - CFTC Commitments of Traders .... posicionamiento semanal (dominio publico)
 - RSS de medios .................. titular + enlace
 - NewsData.io .................... titular + enlace (plan gratuito con uso comercial)
+- Ministerio Transicion Ecologica  carburantes en Espana (datos abiertos, reutilizacion con atribucion)
+- Comision Europea, Oil Bulletin . carburantes por pais de la UE (reutilizacion con atribucion)
+- MAPA precios medios nacionales . ganaderia y agricultura en Espana (reutilizacion con atribucion)
 """
 from __future__ import annotations
 
@@ -17,7 +20,8 @@ import html
 import io
 import re
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
+from pathlib import Path
 from email.utils import parsedate_to_datetime
 
 import requests
@@ -89,11 +93,14 @@ def _num(v):
 PAGINA_BM = "https://www.worldbank.org/en/research/commodity-markets"
 
 
-def pink_sheet_mensual(nombres: list[str]) -> dict[str, list[tuple[str, float]]]:
+def pink_sheet_mensual(nombres: list[str], opcionales: list[str] = ()) -> dict[str, list[tuple[str, float]]]:
     """Devuelve {nombre: [(AAAA-MM, precio), ...]} en dolares nominales.
 
     La URL del Excel cambia cada mes, asi que se descubre en la pagina oficial.
+    Si falta una serie de 'nombres' se lanza FuenteError; las de 'opcionales'
+    que falten simplemente no aparecen en el resultado.
     """
+    nombres = list(nombres) + [n for n in opcionales if n not in nombres]
     pagina = _get(PAGINA_BM).text
     enlaces = re.findall(r'href="([^"]*CMO-Historical-Data-Monthly\.xlsx)"', pagina)
     if not enlaces:
@@ -125,11 +132,11 @@ def pink_sheet_mensual(nombres: list[str]) -> dict[str, list[tuple[str, float]]]
             if c == nombre:
                 columnas[nombre] = j
                 break
-    faltan = [n for n in nombres if n not in columnas]
+    faltan = [n for n in nombres if n not in columnas and n not in opcionales]
     if faltan:
         raise FuenteError(f"series no encontradas en el Banco Mundial: {', '.join(faltan)}")
 
-    salida: dict[str, list[tuple[str, float]]] = {n: [] for n in nombres}
+    salida: dict[str, list[tuple[str, float]]] = {n: [] for n in columnas}
     patron = re.compile(r"^(\d{4})M(\d{2})$")
     for fila in filas[cabecera_idx + 1:]:
         m = patron.match(str(fila[0]).strip()) if fila and fila[0] else None
@@ -140,6 +147,162 @@ def pink_sheet_mensual(nombres: list[str]) -> dict[str, list[tuple[str, float]]]
             v = fila[j] if j < len(fila) else None
             if isinstance(v, (int, float)):
                 salida[nombre].append((mes, float(v)))
+    return salida
+
+
+# ---------------------------------------------------------------------------
+# Espana: precios de carburantes (Ministerio para la Transicion Ecologica)
+# ---------------------------------------------------------------------------
+URL_CARBURANTES = ("https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/"
+                   "PreciosCarburantes/EstacionesTerrestres/")
+
+
+def carburantes_media(campos: list[str]) -> dict:
+    """Media simple de todas las gasolineras de Espana para cada campo de precio.
+
+    Devuelve {"fecha": ISO UTC del dato, "medias": {campo: (euros/litro, n_estaciones)}}.
+    """
+    r = _get(URL_CARBURANTES, headers={"Accept": "application/json"})
+    try:
+        d = r.json()
+        estaciones = d["ListaEESSPrecio"]
+        fecha_local = datetime.strptime(d["Fecha"], "%d/%m/%Y %H:%M:%S")
+    except (ValueError, KeyError, TypeError) as e:
+        raise FuenteError(f"el Ministerio cambio el formato de los carburantes ({e})") from e
+    from zoneinfo import ZoneInfo
+    fecha = fecha_local.replace(tzinfo=ZoneInfo("Europe/Madrid")).astimezone(timezone.utc)
+    medias = {}
+    for campo in campos:
+        valores = []
+        for est in estaciones:
+            v = _num(str(est.get(campo) or "").replace(",", "."))
+            if v is not None and 0.3 < v < 5:      # descarta vacios y errores de tecleo
+                valores.append(v)
+        if len(valores) < 1000:
+            raise FuenteError(f"pocas gasolineras con '{campo}' ({len(valores)}): posible cambio de formato")
+        medias[campo] = (sum(valores) / len(valores), len(valores))
+    return {"fecha": fecha.strftime("%Y-%m-%dT%H:%M:%SZ"), "medias": medias}
+
+
+# ---------------------------------------------------------------------------
+# Comision Europea: Weekly Oil Bulletin (historico semanal por pais)
+# ---------------------------------------------------------------------------
+PAGINA_BOLETIN = "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en"
+
+
+def boletin_petroleo(columnas: list[str]) -> dict[str, list[tuple[str, float]]]:
+    """Devuelve {columna: [(AAAA-MM-DD, valor), ...]} de la hoja 'Prices with taxes'."""
+    pagina = _get(PAGINA_BOLETIN).text
+    enlaces = re.findall(r'href="([^"]*Prices_History[^"]*\.xlsx)"', pagina)
+    if not enlaces:
+        raise FuenteError("no se encuentra el Excel historico del Weekly Oil Bulletin")
+    url = html.unescape(enlaces[0])
+    if url.startswith("/"):
+        url = "https://energy.ec.europa.eu" + url
+    from openpyxl import load_workbook
+    libro = load_workbook(io.BytesIO(_get(url).content), read_only=True, data_only=True)
+    if "Prices with taxes" not in libro.sheetnames:
+        raise FuenteError("el Weekly Oil Bulletin ya no tiene la hoja 'Prices with taxes'")
+    filas = libro["Prices with taxes"].iter_rows(values_only=True)
+    cabecera = [str(c).strip() if c else "" for c in next(filas)]
+    indices = {}
+    for col in columnas:
+        if col not in cabecera:
+            raise FuenteError(f"columna no encontrada en el Weekly Oil Bulletin: {col}")
+        indices[col] = cabecera.index(col)
+    salida: dict[str, list[tuple[str, float]]] = {c: [] for c in columnas}
+    for fila in filas:
+        if not fila or not isinstance(fila[0], datetime):
+            continue
+        dia = fila[0].date().isoformat()
+        for col, j in indices.items():
+            v = fila[j] if j < len(fila) else None
+            if isinstance(v, (int, float)):
+                salida[col].append((dia, float(v)))
+    for col in columnas:
+        salida[col].sort()
+        if not salida[col]:
+            raise FuenteError(f"el Weekly Oil Bulletin no trae datos de {col}")
+    return salida
+
+
+# ---------------------------------------------------------------------------
+# Ministerio de Agricultura (MAPA): precios medios nacionales semanales
+# ---------------------------------------------------------------------------
+PAGINA_MAPA = ("https://www.mapa.gob.es/es/estadistica/temas/estadisticas-agrarias/"
+               "economia/precios-medios-nacionales/")
+# La web del MAPA usa un certificado de la FNMT que no esta en la lista de Python
+# (certifi). Se verifica con el certificado raiz oficial de la FNMT, solo para ella.
+CERT_FNMT = str(Path(__file__).resolve().parent / "certificados" / "fnmt_raiz_servidores_seguros.pem")
+
+
+def mapa_semanal(productos: list[str], anios: list[int] | None = None) -> dict[str, list[tuple[str, float]]]:
+    """Devuelve {producto: [(AAAA-MM-DD lunes de la semana, valor), ...]}.
+
+    'producto' es el principio del nombre de la fila (por ejemplo "Pollo (").
+    El MAPA publica un Excel por ano; 'anios' elige cuales leer (por defecto, el
+    mas reciente). El ano mas reciente es obligatorio; en los anteriores, un
+    producto que no aparezca simplemente se omite.
+    """
+    pagina = _get(PAGINA_MAPA, verify=CERT_FNMT).text
+    enlaces = {}
+    for url, anio in re.findall(r'href="([^"]*precios_medios_nacionales_(\d{4})[^"]*\.xlsx)"', pagina):
+        enlaces.setdefault(int(anio), html.unescape(url))
+    if not enlaces:
+        raise FuenteError("no se encuentra el Excel de precios medios nacionales del MAPA")
+    ultimo = max(enlaces)
+    elegidos = sorted(a for a in (anios or [ultimo]) if a in enlaces)
+    if ultimo not in elegidos:
+        elegidos.append(ultimo)
+    salida: dict[str, list[tuple[str, float]]] = {p: [] for p in productos}
+    for anio in elegidos:
+        url = enlaces[anio]
+        if url.startswith("/"):
+            url = "https://www.mapa.gob.es" + url
+        datos = _mapa_excel(_get(url, verify=CERT_FNMT).content, anio, productos, obligatorio=anio == ultimo)
+        for p, s in datos.items():
+            salida[p] += s
+    return {p: sorted(s) for p, s in salida.items()}
+
+
+def _mapa_excel(contenido: bytes, anio: int, productos: list[str], obligatorio: bool) -> dict:
+    from openpyxl import load_workbook
+    libro = load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
+    filas = list(libro.worksheets[0].iter_rows(values_only=True))
+
+    semanas = {}
+    for fila in filas[:15]:
+        for j, c in enumerate(fila):
+            m = re.match(r"^\s*Semana\s+(\d{1,2})\s*$", str(c or ""))
+            if m:
+                semanas[j] = int(m.group(1))
+        if semanas:
+            break
+    if not semanas:
+        if obligatorio:
+            raise FuenteError("el Excel del MAPA ya no tiene la fila de semanas")
+        return {}
+
+    salida: dict[str, list[tuple[str, float]]] = {}
+    for prod in productos:
+        fila = next((f for f in filas
+                     if any(isinstance(c, str) and c.strip().startswith(prod) for c in f[:4])), None)
+        if fila is None:
+            if obligatorio:
+                raise FuenteError(f"producto no encontrado en el Excel del MAPA: {prod}")
+            continue
+        serie = []
+        for j, semana in semanas.items():
+            v = fila[j] if j < len(fila) else None
+            if isinstance(v, (int, float)):
+                try:
+                    lunes = date.fromisocalendar(anio, semana, 1)
+                except ValueError:      # semana 53 en anos que no la tienen
+                    continue
+                serie.append((lunes.isoformat(), float(v)))
+        if not serie and obligatorio:
+            raise FuenteError(f"el MAPA no trae datos de {prod}")
+        salida[prod] = serie
     return salida
 
 

@@ -9,6 +9,30 @@
 </span>
 {%- endmacro %}
 
+{# ---- Materias primas de apoyo ---- #}
+{% macro valor_apoyo(amb) -%}
+{%- set r = amb.resumen -%}
+{{ r.valor|numero(amb.decimales or 2) }} {{ amb.unidad }}
+{%- endmacro %}
+
+{% macro fecha_dato(amb) -%}
+{%- set r = amb.resumen -%}
+{%- if r.hora -%}{{ r.hora|fecha_hora }} (hora de Madrid)
+{%- elif r.fecha|length == 7 -%}media de {{ r.fecha|mes }}
+{%- elif amb.frecuencia == 'semanal' -%}semana del {{ r.fecha|mes }}
+{%- else -%}{{ r.fecha|mes }}
+{%- endif -%}
+{%- endmacro %}
+
+{% macro tendencia(r) -%}
+{%- if r.tendencia -%}
+{%- set t = r.tendencia -%}
+{{ 'Por encima' if t.diferencia_pct > 0 else 'Por debajo' }} de su media de {{ t.meses }} meses
+(<span class="cifra {{ 'sube' if t.diferencia_pct > 0 else 'baja' }}">{{ t.diferencia_pct|porcentaje }}</span>), que está {{ t.pendiente }}
+{%- else -%}<span class="secundario">Sin historia suficiente</span>
+{%- endif -%}
+{%- endmacro %}
+
 {% macro noticia(n, raiz, nombres) -%}
 <li class="noticia" data-activos="{{ n.activos|join(' ') }}">
   <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>

@@ -22,6 +22,58 @@ def _paseo(n, final, volatilidad, deriva, semilla):
     return [x * escala for x in xs]
 
 
+# Niveles aproximados de las materias de apoyo, por unidad (y ambito si hace falta)
+NIVELES_APOYO = {"€/litro": 1.6, "$/galón": 3.8, "$/barril": 80, "$/MMBtu": 3.0, "$/tonelada": 130,
+                 "€/kg canal": 2.4, "$/kg": 3.0}
+
+
+def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
+    inicio = hoy - timedelta(days=365 * anios)
+    if frecuencia == "mensual":
+        out, a, m = [], inicio.year, inicio.month
+        while (a, m) < (hoy.year, hoy.month):        # el mes en curso aun no se publica
+            out.append(f"{a:04d}-{m:02d}")
+            a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+        return out
+    paso = 7 if frecuencia == "semanal" else 1
+    d = inicio - timedelta(days=inicio.weekday()) if paso == 7 else inicio
+    out = []
+    while d <= hoy:
+        if paso == 7 or d.weekday() < 5:
+            out.append(d.isoformat())
+        d += timedelta(days=paso)
+    return out
+
+
+def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
+    from .apoyo import materias
+    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}}
+    clave = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie"}
+    semilla = 700
+    for m in materias(cfg):
+        for ambito, amb in m.get("ambitos", {}).items():
+            nivel = NIVELES_APOYO.get(amb["unidad"], 10) * (4 if ambito == "europa" and "MMBtu" in amb["unidad"] else 1)
+            defs = [(amb, amb.get("frecuencia", "mensual"), 3 if amb["fuente"] == "carburantes" else 10)]
+            if amb.get("historia"):
+                h = amb["historia"]
+                defs.append((h, "mensual" if h["fuente"] == "pink" else "semanal", 15))
+            for d, frec, anios in defs:
+                if d["fuente"] == "carburantes":
+                    frec = "diaria"
+                semilla += 1
+                fechas = _fechas(hoy, frec, anios if d["fuente"] != "carburantes" else 0.1)
+                valores = _paseo(len(fechas), nivel, 0.03 if frec == "mensual" else 0.008, 0.001, semilla)
+                factor = float(d.get("factor", 1))
+                serie = [[f, round(v / factor, 4)] for f, v in zip(fechas, valores)]
+                if d["fuente"] == "pink":
+                    pink[d["serie"]] = serie
+                else:
+                    caches[d["fuente"]][d[clave[d["fuente"]]]] = serie
+    escribir("apoyo/carburantes.json", {"series": caches["carburantes"], "dato": iso(), "consultado": iso()})
+    for f in ("boletin", "mapa", "fred"):
+        escribir(f"apoyo/{f}.json", {"series": caches[f], "consultado": iso()})
+
+
 def generar(cfg) -> None:
     hoy = date.today()
     meses = []
@@ -58,6 +110,7 @@ def generar(cfg) -> None:
                               "hora_fuente": iso(), "obsoleto_segun_fuente": False,
                               "fuente": "MetalCharts (ejemplo)", "consultado": iso(),
                               "estado": "ok", "motivos": []}
+    _demo_apoyo(cfg, pink, hoy)
     escribir("pink.json", {"series": pink, "consultado": iso(), "fuente": "ejemplo"})
     escribir("precios.json", precios)
 
@@ -96,7 +149,8 @@ def generar(cfg) -> None:
     escribir("noticias.json", {"noticias": noticias, "generado": iso()})
 
     estado = Estado()
-    for f in ("MetalCharts", "Banco Mundial", "FRED", "CFTC", "NewsData.io"):
+    for f in ("MetalCharts", "Banco Mundial", "FRED", "CFTC", "NewsData.io", "Ministerio (carburantes)",
+              "Comisión Europea (Oil Bulletin)", "MAPA (precios semanales)", "FRED (materias de apoyo)"):
         estado.registrar_fuente(f, True)
     estado.set("ultima_ejecucion", iso())
     estado.guardar()

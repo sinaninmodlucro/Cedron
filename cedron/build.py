@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 
+from . import apoyo
 from .store import RAIZ, leer, parse_iso
 
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -83,7 +84,7 @@ def crear_fechas(tz):
 # ---------------------------------------------------------------------------
 # Grafico: precio mensual y media movil, en SVG generado aqui (sin librerias)
 # ---------------------------------------------------------------------------
-def grafico(mensual: list, meses_media: int, unidad: str) -> dict | None:
+def grafico(mensual: list, meses_media: int, unidad: str, simbolo: str = "$") -> dict | None:
     if len(mensual) < meses_media + 2:
         return None
     serie = mensual[-120:]
@@ -136,7 +137,7 @@ def grafico(mensual: list, meses_media: int, unidad: str) -> dict | None:
             "linea": linea, "media": " ".join(tramo), "eje_y": eje_y, "eje_x": eje_x,
             "ultimo": puntos[-1], "ultimo_media_y": round(Y(mm[-1]), 1),
             "puntos_json": json.dumps(puntos, ensure_ascii=False), "puntos": puntos, "unidad": unidad,
-            "meses_media": meses_media}
+            "meses_media": meses_media, "simbolo": simbolo}
 
 
 # ---------------------------------------------------------------------------
@@ -189,17 +190,31 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
                                a["unidad"]),
         })
 
+    # Materias primas de apoyo (energia, ganaderia...): sin lectura, solo contexto
+    meses_media = cfg["indicadores"]["tendencia"]["meses_media"]
+    grupos_apoyo = apoyo.preparar(cfg)
+    for g in grupos_apoyo:
+        for m in g["materias"]:
+            for amb in m["ambitos"].values():
+                r = amb["resumen"]
+                simbolo = "€" if amb["unidad"].startswith("€") else "$"
+                amb["grafico"] = grafico(r["mensual"], meses_media, amb["unidad"], simbolo) if r else None
+                amb["eur"] = (r["valor"] / eurusd[1]) if r and simbolo == "$" and eurusd else None
+                amb["unidad_eur"] = "€" + amb["unidad"][1:] if simbolo == "$" else None
+
     ultima_precios = max((p.get("consultado", "") for p in precios.values()), default="") or None
     proxima = _proxima_hora(cfg, tz)
     comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, privado=privado, cfg=cfg, eurusd=eurusd,
                  nombres={a["id"]: a["nombre"] for a in cfg["activos"]},
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),
-                 anio=datetime.now(tz).year)
+                 anio=datetime.now(tz).year, grupos_apoyo=grupos_apoyo,
+                 ambitos=[(a, apoyo.NOMBRES_AMBITO[a]) for a in apoyo.AMBITOS])
 
     if destino.exists():
         shutil.rmtree(destino)
     (destino / "activos").mkdir(parents=True)
+    (destino / "materias").mkdir(parents=True)
     shutil.copytree(RAIZ / "static", destino / "static")
 
     def pagina(plantilla, ruta, **extra):
@@ -211,6 +226,10 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
            noticias=noticias[: cfg["noticias"]["maximo_portada"]])
     for a in activos:
         pagina("activo.html", f"activos/{a['id']}.html", seccion="mercado", a=a)
+    pagina("materias.html", "materias.html", seccion="materias")
+    for g in grupos_apoyo:
+        for m in g["materias"]:
+            pagina("materia.html", f"materias/{m['id']}.html", seccion="materias", m=m, g=g)
     pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias)
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200])

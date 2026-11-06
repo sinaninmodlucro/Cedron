@@ -28,8 +28,22 @@
   <h2 class="bloque" id="noticias">Cómo se seleccionan las noticias</h2>
   <p>Cada titular recibe una nota de 0 a 100: relevancia temática ({{ cfg.noticias.pesos.relevancia }} %), calidad del medio ({{ cfg.noticias.pesos.calidad_medio }} %), actualidad ({{ cfg.noticias.pesos.actualidad }} %) y confirmación por otros medios ({{ cfg.noticias.pesos.confirmacion }} %). Se publican las que superan {{ cfg.noticias.umbral_publicacion }} puntos. Las noticias repetidas en varios medios se agrupan. Los medios que venden metales se marcan como «medio comercial» y no bastan por sí solos: su noticia debe estar confirmada por otro medio.</p>
 
+  <h2 class="bloque" id="apoyo">Materias primas de apoyo</h2>
+  <p>Energía y ganadería sirven para entender costes y cadenas de precios. <strong>No tienen lectura</strong> favorable o desfavorable; para cada una se muestra:</p>
+  <ul>
+    <li><strong>Precio</strong>: el último dato publicado, con su fecha y su fuente. Los precios en dólares llevan su equivalente aproximado en euros.</li>
+    <li><strong>Frente al dato anterior</strong>: cambio respecto al dato previo de la misma fuente (la hora, la semana o el mes anterior, según cómo publique).</li>
+    <li><strong>En un año</strong>: cambio respecto al dato más cercano a un año antes.</li>
+    <li><strong>Tendencia</strong>: si el último dato está por encima o por debajo de la media de los últimos {{ cfg.indicadores.tendencia.meses_media }} meses, y si esa media sube o baja. Es una descripción, no una previsión.</li>
+  </ul>
+  <p>Cada materia puede tener datos de <strong>España</strong>, <strong>Europa</strong> y un ámbito <strong>global</strong>. Se elige cuál ver; si el ámbito elegido no tiene un dato reciente, se muestra el último dato disponible de otro ámbito y se indica en la fila. Se considera reciente un dato horario de hasta {{ cfg.apoyo.dias_reciente.horaria }} días, uno diario de hasta {{ cfg.apoyo.dias_reciente.diaria }}, uno semanal de hasta {{ cfg.apoyo.dias_reciente.semanal }} y uno mensual de hasta {{ cfg.apoyo.dias_reciente.mensual }} días desde el fin de su mes.</p>
+  <p class="pequeno secundario">El diésel en España es la media simple de todas las gasolineras que publica el Ministerio cada hora; sus datos anteriores proceden del boletín semanal de la Comisión Europea, que calcula la media de otra forma, por eso el cambio frente al dato anterior solo compara datos del Ministerio. Las series mensuales del Banco Mundial completan el pasado de las series diarias.</p>
+
   <h2 class="bloque">Cambios en la metodología</h2>
   <p>Si se añade, cambia o elimina una regla, se anunciará aquí con fecha y motivo. Las lecturas anteriores no se recalculan.</p>
+  <ul>
+    <li><strong>6 de noviembre de 2026.</strong> Se añaden las materias primas de apoyo (energía y ganadería), sin lectura. No cambia nada en las lecturas de los metales.</li>
+  </ul>
 
   <h2 class="bloque" id="historial">Historial de lecturas</h2>
   <p>Cada día laborable se guarda la lectura de cada metal con el precio de ese día. La tabla muestra cómo se movió el precio 1, 3 y 6 meses después, incluidas las lecturas que fallaron. Rentabilidades pasadas no garantizan resultados futuros.</p>
