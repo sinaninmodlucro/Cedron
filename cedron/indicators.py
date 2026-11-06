@@ -9,6 +9,7 @@ ni disco, para poder probarlas con datos historicos.
 """
 from __future__ import annotations
 
+import math
 import statistics
 from dataclasses import dataclass, field
 from datetime import date, timedelta
@@ -209,6 +210,90 @@ def ratio(numerador: list[tuple[str, float]], denominador: list[tuple[str, float
     return Resultado("ratio", nombre, puntos,
                      f"Ratio {fmt_num(actual)} (media {cfg['anios']} años: {fmt_num(mu)})",
                      f"Frente al otro metal, el activo está {estado}.", pares[-1][0])
+
+
+# ---------------------------------------------------------------------------
+# Indicadores del metodo en estudio (prueba_historica.metodo_nuevo en config.yaml).
+# Todavia no se usan en la web; se evaluan en cedron/prueba.py.
+# ---------------------------------------------------------------------------
+def _signo(x: float) -> int:
+    return 1 if x > 0 else -1 if x < 0 else 0
+
+
+def tendencia_plazos(mensual: list[tuple[str, float]], precio: float, cfg: dict) -> Resultado:
+    """Tendencia en varios plazos (Hurst, Ooi y Pedersen, 2017): signo del cambio del
+    precio frente a 1, 3 y 12 meses antes; +1 si la mayoria sube, -1 si la mayoria baja."""
+    plazos = cfg.get("plazos", [1, 3, 12])
+    nombre = "Tendencia en varios plazos"
+    if len(mensual) < max(plazos) + 1:
+        return Resultado("tendencia_plazos", nombre, None, "sin datos",
+                         f"Hacen falta al menos {max(plazos) + 1} meses de historia.")
+    signos = [_signo(precio / mensual[-1 - k][1] - 1) for k in plazos]
+    media_signos = sum(signos) / len(signos)
+    puntos = _signo(media_signos)
+    suben = sum(1 for s in signos if s > 0)
+    return Resultado("tendencia_plazos", nombre, puntos,
+                     f"Sube en {suben} de {len(plazos)} plazos ({', '.join(map(str, plazos))} meses)",
+                     "Cuenta en cuántos plazos el precio está por encima del de entonces.",
+                     mensual[-1][0])
+
+
+def _valor_serie(valores: list[float], cfg: dict) -> list[float | None]:
+    """Para cada mes: logaritmo de (media de hace 4,5 a 5,5 anios / precio de ese mes)."""
+    lejos = round(cfg.get("anios", 5) * 12)
+    medio_ancho = cfg.get("ventana_meses", 12) // 2
+    out: list[float | None] = []
+    for i, v in enumerate(valores):
+        a, b = i - lejos - medio_ancho, i - lejos + medio_ancho
+        if a < 0 or v <= 0:
+            out.append(None)
+            continue
+        ref = media(valores[a:b + 1])
+        out.append(math.log(ref / v) if ref and ref > 0 else None)
+    return out
+
+
+def valor(mensual: list[tuple[str, float]], precio: float, cfg: dict) -> Resultado:
+    """Valor (Asness, Moskowitz y Pedersen, 2013): cuanto ha caido o subido el precio en
+    cinco anios, comparado con lo habitual en su historia. Caida excepcional -> +1
+    (barato frente a su propia historia); subida excepcional -> -1."""
+    nombre = "Valor a cinco años"
+    valores = [v for _, v in mensual[:-1]] + [precio]
+    serie = _valor_serie(valores, cfg)
+    actual = serie[-1]
+    pasado = [x for x in serie[:-1] if x is not None]
+    minimo = cfg.get("historia_anios", 20) * 12
+    if actual is None or len(pasado) < minimo:
+        return Resultado("valor", nombre, None, "sin datos",
+                         f"Hacen falta {cfg.get('historia_anios', 20)} años de historia de esta medida.")
+    mu, sigma = statistics.mean(pasado), statistics.pstdev(pasado)
+    z = (actual - mu) / sigma if sigma else 0
+    d = cfg.get("desviaciones", 1.0)
+    puntos = 1 if z >= d else -1 if z <= -d else 0
+    cambio = (math.exp(-actual) - 1) * 100
+    estado = ("barato" if puntos == 1 else "caro" if puntos == -1 else "en su rango habitual")
+    return Resultado("valor", nombre, puntos, f"{fmt_pct(cambio)} en cinco años",
+                     f"Frente a su propia historia, el precio está {estado}.", mensual[-1][0])
+
+
+def actividad(serie: list[tuple[str, float]], mes: str, cfg: dict) -> Resultado:
+    """Actividad industrial (utilizacion de la capacidad en metales primarios, EE. UU.):
+    cambio en `meses` meses del ultimo dato ya publicado (con `retraso` meses)."""
+    nombre = "Actividad industrial"
+    n, umbral, retraso = cfg.get("meses", 12), cfg.get("umbral_puntos", 1.0), cfg.get("retraso_meses", 1)
+    limite = restar_meses(mes, retraso)
+    disponibles = [(f[:7], v) for f, v in serie if f[:7] <= limite]
+    if len(disponibles) < n + 1:
+        return Resultado("actividad", nombre, None, "sin datos", "No hay datos suficientes.")
+    ultimo_mes, ultimo = disponibles[-1]
+    antes = valor_en_fecha(disponibles, restar_meses(ultimo_mes, n))
+    if antes is None:
+        return Resultado("actividad", nombre, None, "sin datos", "No hay datos suficientes.")
+    cambio = ultimo - antes
+    puntos = 1 if cambio >= umbral else -1 if cambio <= -umbral else 0
+    signo = f"{cambio:+.1f}".replace(".", ",").replace("-", "−")
+    return Resultado("actividad", nombre, puntos, f"{signo} puntos en {n} meses",
+                     "Uso de la capacidad de las fábricas de metales primarios de EE. UU.", ultimo_mes)
 
 
 # ---------------------------------------------------------------------------

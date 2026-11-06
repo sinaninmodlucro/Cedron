@@ -932,6 +932,25 @@ prueba_historica:
       texto: "Momento a 12 meses, sin posicionamiento y sin ratio en el platino"
       indicadores: {momento: {meses: 12, umbral_pct: 0}}
       quitar: {oro: [posicionamiento], plata: [posicionamiento], platino: [posicionamiento, ratio], cobre: [posicionamiento], paladio: [posicionamiento]}
+  # Metodo en estudio (6-nov-2026). Reglas y parametros fijados ANTES de probarlos,
+  # sacados de los estudios (no ajustados a nuestros datos). No se usa en la web
+  # hasta que el usuario lo decida.
+  metodo_nuevo:
+    texto: "Tendencia en varios plazos + valor a cinco años (+ ratio oro/plata en oro y plata; + actividad industrial en el cobre)"
+    horizonte: 12                 # probabilidad de que el precio suba en 12 meses
+    previa: 12                    # con pocos casos de una situacion, la probabilidad se acerca a la general (12 casos ficticios)
+    minimo_casos: 60              # meses con resultado conocido antes de empezar a dar probabilidades
+    min_indicadores: 2
+    indicadores:
+      oro: [tendencia_plazos, valor, ratio]
+      plata: [tendencia_plazos, valor, ratio]
+      platino: [tendencia_plazos, valor]
+      cobre: [tendencia_plazos, valor, actividad]
+      paladio: [tendencia_plazos, valor]
+    parametros:
+      tendencia_plazos: {plazos: [1, 3, 12]}          # Hurst, Ooi y Pedersen (2017)
+      valor: {anios: 5, ventana_meses: 12, historia_anios: 20, desviaciones: 1.0}   # Asness, Moskowitz y Pedersen (2013)
+      actividad: {meses: 12, umbral_puntos: 1.0, retraso_meses: 1}   # FRED CAPUTLG331S; respaldo mas debil (un estudio de 2025)
 
 # -----------------------------------------------------------------------------
 # Noticias: como se puntua cada titular (0-100) y que se publica.
