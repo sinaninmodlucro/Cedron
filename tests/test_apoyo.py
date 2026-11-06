@@ -84,6 +84,11 @@ class Calculos(unittest.TestCase):
         self.assertEqual(apoyo.combinar(historia, actual),
                          [("2026-08", 1.0), ("2026-09", 2.0), ("2026-10-05", 10.0), ("2026-10-06", 11.0)])
 
+    def test_fred_mensual_como_mes(self):
+        fuentes = {"fred": {"PPORKUSDM": [["2026-08-01", 80.0], ["2026-09-01", 83.0]]}}
+        d = {"fuente": "fred", "serie": "PPORKUSDM", "frecuencia": "mensual", "factor": 0.5}
+        self.assertEqual(apoyo._serie(d, fuentes), [("2026-08", 40.0), ("2026-09", 41.5)])
+
     def test_resumen(self):
         serie = [(f"{a}-{m:02d}", 100.0 + i) for i, (a, m) in
                  enumerate((a, m) for a in (2025, 2026) for m in range(1, 13))][:22]   # 2025-01 .. 2026-10

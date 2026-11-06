@@ -158,7 +158,9 @@ def _serie(definicion: dict, fuentes: dict) -> list[tuple[str, float]]:
     tipo = definicion.get("fuente")
     datos = fuentes.get(tipo, {}).get(definicion.get(CLAVE_FUENTE.get(tipo, ""), ""), [])
     factor = float(definicion.get("factor", 1))
-    return [(f, v * factor) for f, v in datos]
+    # FRED fecha sus series mensuales el dia 1 (AAAA-MM-01): se tratan como medias del mes
+    mensual = tipo == "fred" and definicion.get("frecuencia") == "mensual"
+    return [(f[:7] if mensual else f, v * factor) for f, v in datos]
 
 
 def combinar(historia: list, actual: list) -> list:
