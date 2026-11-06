@@ -1,27 +1,36 @@
 """Prueba historica de las reglas de Cedron (fase 4 del plan).
 
 Aplica, mes a mes, los mismos indicadores que usa la web (cedron/indicators.py,
-con los parametros de config.yaml) a los ultimos N anios de historia, usando en
-cada mes SOLO los datos que existian entonces, y mira que paso despues con el
-precio. No es una estrategia de inversion ni simula compras: solo comprueba si
-las lecturas tenian relacion con lo que ocurrio despues, para detectar reglas
-absurdas o que no aportan.
+con los parametros de config.yaml) a toda la historia disponible, usando en cada
+mes SOLO los datos que existian entonces, y mira que paso despues con el precio.
+No es una estrategia de inversion ni simula compras: solo comprueba si las
+senales tenian relacion con lo que ocurrio despues.
 
-Simplificaciones (se explican en la pagina de metodologia):
-- El "precio del momento" es la media mensual del Banco Mundial de ese mes.
-- Los horizontes se miden de media mensual a media mensual.
-- Los periodos se solapan (cada mes mira los 6 siguientes), asi que los casos no
-  son independientes: sirven para detectar fallos gordos, no para afinar decimales.
+Para que el resultado sea fiable (ver la pagina de metodologia):
+- Un mes de separacion entre la senal y la medicion. El Banco Mundial publica
+  medias mensuales, y las medias crean una inercia aparente entre un mes y el
+  siguiente (Working, 1960); saltarse un mes la elimina.
+- Prueba a ciegas: el periodo se parte en dos (antes y despues de `corte`). Una
+  regla solo se considera coherente si funciona en los dos por separado; el
+  segundo periodo hace de comprobacion de lo que se veria eligiendo con el primero.
+- Margen de error: remuestreo por bloques de 12 meses (los meses seguidos se
+  parecen entre si y los periodos de medicion se solapan, asi que no son casos
+  independientes). Si el intervalo de confianza (95 %) incluye el cero, el
+  efecto no se distingue de la casualidad.
+- Reglas candidatas: variantes de config.yaml que se prueban igual, sin usarse
+  en la web, para decidir cambios con datos.
 
 calcular() es pura (sin red ni disco); descargar() trae la historia larga.
 """
 from __future__ import annotations
 
 import calendar
+import copy
 import logging
 import os
+import random
 import statistics
-from datetime import date, timedelta
+from datetime import date
 
 from cedron import indicators as ind
 from cedron import sources as src
@@ -29,23 +38,28 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prueba")
 
+INDICADORES = ["tendencia", "momento", "macro", "posicionamiento", "ratio"]
+NOMBRES = {"tendencia": "Tendencia", "momento": "Momento", "macro": "Entorno macro",
+           "posicionamiento": "Posicionamiento", "ratio": "Valoración relativa",
+           "suma": "Lectura (suma)"}
 CLASES = {
     "coherente": "Coherente",
-    "inestable": "Inestable",
+    "debil": "Apunta bien, sin seguridad",
+    "sin_efecto": "Apunta al revés, sin seguridad",
     "al_reves": "Al revés",
+    "inestable": "Inestable",
     "fija": "Casi siempre la misma señal",
     "rara": "Casi nunca da señal",
     "pocos": "Pocos casos",
     "sin_datos": "Sin datos",
 }
-INDICADORES = ["tendencia", "momento", "macro", "posicionamiento", "ratio"]
-NOMBRES = {"tendencia": "Tendencia", "momento": "Momento", "macro": "Entorno macro",
-           "posicionamiento": "Posicionamiento", "ratio": "Valoración relativa"}
 RATIOS = {  # activo -> (numerador, denominador, etiqueta, invertir)
     "oro": ("oro", "plata", "oro/plata", False),
     "plata": ("oro", "plata", "oro/plata", True),
     "platino": ("platino", "oro", "platino/oro", False),
 }
+MINIMO_CASOS = 6       # meses de cada senal (+1 y -1) para poder comparar
+BLOQUE = 12            # meses por bloque en el remuestreo
 
 
 # ---------------------------------------------------------------------------
@@ -68,12 +82,31 @@ def _resumen(valores: list[float]) -> dict | None:
             "sube": sum(1 for v in valores if v > 0) / len(valores) * 100}
 
 
+def lectura_de(puntos: dict, quitar: set, cfg_lectura: dict) -> int | None:
+    """Lectura como +1/0/-1 (None sin datos suficientes), igual que indicators.combinar."""
+    validos = [v for k, v in puntos.items() if v is not None and k not in quitar]
+    if len(validos) < 3:
+        return None
+    total = sum(validos)
+    return 1 if total >= cfg_lectura["favorable_desde"] else -1 if total <= cfg_lectura["desfavorable_hasta"] else 0
+
+
+def _fusionar(base: dict, cambios: dict) -> dict:
+    salida = copy.deepcopy(base)
+    for k, v in (cambios or {}).items():
+        if isinstance(v, dict) and isinstance(salida.get(k), dict):
+            salida[k] = _fusionar(salida[k], v)
+        else:
+            salida[k] = v
+    return salida
+
+
 # ---------------------------------------------------------------------------
-# Calculo (puro)
+# Senales mes a mes (puro)
 # ---------------------------------------------------------------------------
 def senales(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
             anios: int) -> dict:
-    """Para cada activo y mes evaluado, los puntos de cada indicador y la lectura."""
+    """Para cada activo y mes evaluado, los puntos de cada indicador."""
     icfg = cfg["indicadores"]
     salida = {}
     for a in cfg["activos"]:
@@ -81,8 +114,8 @@ def senales(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
         serie = mensuales.get(aid) or []
         if len(serie) < 24:
             continue
-        ultimo = serie[-1][0]
-        inicio = ind.restar_meses(ultimo, anios * 12 - 1)
+        inicio = ind.restar_meses(serie[-1][0], anios * 12 - 1)
+        cot_a = cot.get(aid, [])
         filas = []
         for i, (mes, precio) in enumerate(serie):
             if mes < inicio:
@@ -92,94 +125,70 @@ def senales(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
             res = [ind.tendencia(hist, precio, icfg["tendencia"]),
                    ind.momento(hist, precio, icfg["momento"])]
             if a.get("macro"):
-                tr, dx = _hasta(tipo_real, corte), _hasta(dolar, corte)
-                res.append(ind.macro(tr, dx, fin_de_mes(mes), icfg["macro"]))
-            res.append(ind.posicionamiento([c for c in cot.get(aid, []) if c["fecha"] <= corte],
+                res.append(ind.macro(_hasta(tipo_real, corte), _hasta(dolar, corte),
+                                     fin_de_mes(mes), icfg["macro"]))
+            res.append(ind.posicionamiento([c for c in cot_a if c["fecha"] <= corte],
                                            icfg["posicionamiento"]))
             if aid in RATIOS:
                 num, den, etiqueta, invertir = RATIOS[aid]
                 res.append(ind.ratio(_hasta(mensuales[num], mes), _hasta(mensuales[den], mes),
                                      etiqueta, invertir, icfg["ratio"]))
-            lectura = ind.combinar(aid, a["nombre"], res, icfg["lectura"])
             filas.append({"mes": mes, "precio": precio, "i": i,
-                          "puntos": {r.id: r.puntos for r in res},
-                          "total": lectura.total, "lectura": lectura.lectura})
+                          "puntos": {r.id: r.puntos for r in res}})
         salida[aid] = filas
     return salida
 
 
-def calcular(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
-             anios: int = 15, horizontes: tuple = (3, 6, 12)) -> dict:
-    """Estadisticas de lo que paso despues de cada senal, por activo e indicador."""
-    tabla = senales(cfg, mensuales, tipo_real, dolar, cot, anios)
-    activos = {}
-    for a in cfg["activos"]:
-        aid = a["id"]
-        filas = tabla.get(aid)
-        if not filas:
-            continue
-        serie = mensuales[aid]
-
-        def futuro(fila, h):
-            j = fila["i"] + h
-            return (serie[j][1] / fila["precio"] - 1) * 100 if j < len(serie) else None
-
-        base = {h: _resumen([r for f in filas if (r := futuro(f, h)) is not None]) for h in horizontes}
-        indicadores = {}
-        for clave in INDICADORES:
-            con = [f for f in filas if clave in f["puntos"]]
-            if not con:
-                continue
-            estados = {}
-            for p in (1, 0, -1):
-                grupo = [f for f in con if f["puntos"][clave] == p]
-                estados[str(p)] = {
-                    "meses": len(grupo),
-                    **{f"h{h}": _resumen([r for f in grupo if (r := futuro(f, h)) is not None])
-                       for h in horizontes}}
-            disponibles = sum(1 for f in con if f["puntos"][clave] is not None)
-            indicadores[clave] = {"estados": estados, "disponibles": disponibles,
-                                  "veredicto": veredicto(con, clave, futuro, horizontes)}
-        lecturas = {}
-        for nombre in ("favorable", "neutral", "desfavorable", "datos insuficientes"):
-            grupo = [f for f in filas if f["lectura"] == nombre]
-            lecturas[nombre] = {"meses": len(grupo),
-                                **{f"h{h}": _resumen([r for f in grupo if (r := futuro(f, h)) is not None])
-                                   for h in horizontes}}
-        activos[aid] = {"nombre": a["nombre"], "desde": filas[0]["mes"], "hasta": filas[-1]["mes"],
-                        "meses": len(filas), "base": {f"h{h}": base[h] for h in horizontes},
-                        "indicadores": indicadores, "lecturas": lecturas,
-                        "aciertos": aciertos(filas, futuro, horizontes),
-                        "serie": [{"mes": f["mes"], "total": f["total"], "lectura": f["lectura"]}
-                                  for f in filas]}
-    return {"anios": anios, "horizontes": list(horizontes), "activos": activos}
-
-
-def _diferencia(filas, clave, futuro, horizontes) -> float | None:
-    """Media (entre horizontes) de: precio tras +1 menos precio tras -1, en puntos %."""
+# ---------------------------------------------------------------------------
+# Estadistica (pura)
+# ---------------------------------------------------------------------------
+def _diferencia(filas, clave, futuros, horizontes) -> float | None:
+    """Media (entre horizontes) de: cambio tras +1 menos cambio tras -1, en puntos %."""
     difs = []
     for h in horizontes:
-        mas = [r for f in filas if f["puntos"].get(clave) == 1 and (r := futuro(f, h)) is not None]
-        menos = [r for f in filas if f["puntos"].get(clave) == -1 and (r := futuro(f, h)) is not None]
+        mas = [r for f in filas if f["puntos"].get(clave) == 1 and (r := futuros[f["i"]].get(h)) is not None]
+        menos = [r for f in filas if f["puntos"].get(clave) == -1 and (r := futuros[f["i"]].get(h)) is not None]
         if len(mas) >= MINIMO_CASOS and len(menos) >= MINIMO_CASOS:
             difs.append(statistics.mean(mas) - statistics.mean(menos))
     return statistics.mean(difs) if difs else None
 
 
-MINIMO_CASOS = 6
+def intervalo(filas, clave, futuros, horizontes, remuestreos: int, semilla: int,
+              confianza: float = 95) -> tuple | None:
+    """Intervalo de confianza de la diferencia, remuestreando bloques de meses seguidos."""
+    n = len(filas)
+    if n < BLOQUE * 3 or remuestreos <= 0:
+        return None
+    rng = random.Random(semilla)
+    bloques = -(-n // BLOQUE)
+    valores = []
+    for _ in range(remuestreos):
+        muestra = []
+        for _ in range(bloques):
+            j = rng.randrange(0, n - BLOQUE + 1)
+            muestra.extend(filas[j:j + BLOQUE])
+        d = _diferencia(muestra[:n], clave, futuros, horizontes)
+        if d is not None:
+            valores.append(d)
+    if len(valores) < remuestreos * 0.8:
+        return None
+    valores.sort()
+    cola = (100 - confianza) / 200
+    return valores[int(len(valores) * cola)], valores[int(len(valores) * (1 - cola)) - 1]
 
 
-def veredicto(filas, clave, futuro, horizontes) -> dict:
-    """Clasifica un indicador segun lo que paso despues de sus senales.
+def veredicto(filas, clave, futuros, horizontes, corte: str,
+              remuestreos: int = 0, semilla: int = 2026, confianza: float = 95) -> dict:
+    """Clasifica una senal segun lo que paso despues.
 
-    Compara el precio tras +1 con el precio tras -1 en todo el periodo y en cada
-    mitad por separado (para no fiarse de una sola racha del mercado):
-    - "sin_datos"; "rara": menos del 10 % de meses con +1 o -1; "fija": +1 o -1
-      en mas del 75 % de los meses (casi siempre la misma senal);
-    - "coherente": tras +1 fue mejor que tras -1 en el total y en cada mitad;
-    - "al_reves": fue peor en el total y en cada mitad;
-    - "inestable": el total y las mitades no apuntan al mismo lado;
-    - "pocos": no hay al menos 6 meses de cada senal para comparar.
+    - "sin_datos"; "rara": +1 o -1 en menos del 10 % de los meses; "fija": +1 o -1
+      en mas del 75 % (casi siempre la misma senal); "pocos": no hay 6 meses de
+      cada senal para comparar.
+    - "inestable": el periodo de eleccion y el de comprobacion apuntan a lados
+      distintos (o el total contradice a los dos).
+    - Si todo apunta al mismo lado: "coherente" o "al_reves" si el intervalo de
+      confianza no incluye el cero; si lo incluye, "debil" (apunta bien) o
+      "sin_efecto" (apunta al reves), sin seguridad.
     """
     con = [f for f in filas if f["puntos"].get(clave) is not None]
     if not con:
@@ -187,53 +196,120 @@ def veredicto(filas, clave, futuro, horizontes) -> dict:
     n_mas = sum(1 for f in con if f["puntos"][clave] == 1)
     n_menos = sum(1 for f in con if f["puntos"][clave] == -1)
     senal_pct = (n_mas + n_menos) / len(con) * 100
-    base = {"senal_pct": senal_pct}
+    base = {"senal_pct": senal_pct, "desde": con[0]["mes"], "meses": len(con)}
     if senal_pct < 10:
         return {"clase": "rara", **base}
     if max(n_mas, n_menos) / len(con) > 0.75:
         return {"clase": "fija", **base}
-    mitad = len(con) // 2
-    total = _diferencia(con, clave, futuro, horizontes)
-    m1 = _diferencia(con[:mitad], clave, futuro, horizontes)
-    m2 = _diferencia(con[mitad:], clave, futuro, horizontes)
-    base.update(diferencia=total, mitad_1=m1, mitad_2=m2,
-                corte=con[mitad]["mes"])
+    total = _diferencia(con, clave, futuros, horizontes)
+    eleccion = _diferencia([f for f in con if f["mes"] < corte], clave, futuros, horizontes)
+    comprobacion = _diferencia([f for f in con if f["mes"] >= corte], clave, futuros, horizontes)
+    base.update(diferencia=total, eleccion=eleccion, comprobacion=comprobacion,
+                a_ciegas=eleccion is not None and comprobacion is not None)
     if total is None:
         return {"clase": "pocos", **base}
-    # Todo (total y cada mitad con datos) debe apuntar al mismo lado; si no, el
-    # resultado depende de la epoca elegida (o es un efecto de mezclar epocas).
-    signos = {x > 0 for x in (total, m1, m2) if x is not None}
+    signos = {x > 0 for x in (total, eleccion, comprobacion) if x is not None}
     if len(signos) > 1:
         return {"clase": "inestable", **base}
-    return {"clase": "coherente" if total > 0 else "al_reves", **base}
+    ic = intervalo(con, clave, futuros, horizontes, remuestreos, semilla, confianza)
+    base["intervalo"] = ic
+    seguro = ic is not None and (ic[0] > 0 or ic[1] < 0)
+    if total > 0:
+        return {"clase": "coherente" if seguro else "debil", **base}
+    return {"clase": "al_reves" if seguro else "sin_efecto", **base}
 
 
-def aciertos(filas, futuro, horizontes) -> dict:
-    """Porcentaje de lecturas favorables seguidas de subida y desfavorables de bajada."""
+def _futuros(serie, filas, horizontes, salto) -> dict:
+    """Cambio del precio h meses despues, empezando `salto` meses tras la senal."""
     out = {}
-    for h in horizontes:
-        fav = [r for f in filas if f["lectura"] == "favorable" and (r := futuro(f, h)) is not None]
-        des = [r for f in filas if f["lectura"] == "desfavorable" and (r := futuro(f, h)) is not None]
-        out[f"h{h}"] = {
-            "favorable": {"n": len(fav), "acierto": sum(1 for r in fav if r > 0) / len(fav) * 100} if fav else None,
-            "desfavorable": {"n": len(des), "acierto": sum(1 for r in des if r < 0) / len(des) * 100} if des else None,
-        }
+    for f in filas:
+        j0 = f["i"] + salto
+        out[f["i"]] = {h: (serie[j0 + h][1] / serie[j0][1] - 1) * 100
+                       for h in horizontes if j0 + h < len(serie)}
     return out
+
+
+def _estados(filas, clave, futuros, horizontes) -> dict:
+    estados = {}
+    for p in (1, 0, -1):
+        grupo = [f for f in filas if f["puntos"].get(clave) == p]
+        estados[str(p)] = {"meses": len(grupo),
+                           **{f"h{h}": _resumen([r for f in grupo if (r := futuros[f["i"]].get(h)) is not None])
+                              for h in horizontes}}
+    return estados
+
+
+def evaluar(cfg: dict, tabla: dict, mensuales: dict, horizontes, salto, corte, remuestreos,
+            semilla, quitar: dict | None = None, claves: list | None = None,
+            confianza: float = 95) -> dict:
+    """Estadisticas por activo: cada indicador (o solo `claves`) y la lectura (suma)."""
+    quitar = quitar or {}
+    activos = {}
+    for a in cfg["activos"]:
+        aid = a["id"]
+        filas = tabla.get(aid)
+        if not filas:
+            continue
+        fut = _futuros(mensuales[aid], filas, horizontes, salto)
+        q = set(quitar.get(aid, []))
+        for f in filas:
+            f["puntos"]["suma"] = lectura_de({k: v for k, v in f["puntos"].items() if k != "suma"},
+                                             q, cfg["indicadores"]["lectura"])
+        base = {f"h{h}": _resumen([r for f in filas if (r := fut[f["i"]].get(h)) is not None])
+                for h in horizontes}
+        indicadores = {}
+        for clave in (claves if claves is not None else INDICADORES) + ["suma"]:
+            if not any(clave in f["puntos"] for f in filas):
+                continue
+            indicadores[clave] = {
+                "estados": _estados(filas, clave, fut, horizontes),
+                "veredicto": veredicto(filas, clave, fut, horizontes, corte, remuestreos,
+                                       semilla + len(indicadores), confianza)}
+        activos[aid] = {"nombre": a["nombre"], "desde": filas[0]["mes"], "hasta": filas[-1]["mes"],
+                        "meses": len(filas), "base": base, "indicadores": indicadores,
+                        "quitados": sorted(q)}
+    return activos
+
+
+def calcular(cfg: dict, mensuales: dict, tipo_real: list, dolar: list, cot: dict,
+             anios: int = 50, horizontes: tuple = (3, 6, 12), salto: int = 1,
+             corte: str = "2006-01", remuestreos: int = 500, semilla: int = 2026,
+             candidatas: dict | None = None, confianza: float = 95) -> dict:
+    """Prueba completa: reglas actuales y, aparte, cada regla candidata."""
+    tabla = senales(cfg, mensuales, tipo_real, dolar, cot, anios)
+    actual = evaluar(cfg, tabla, mensuales, horizontes, salto, corte, remuestreos, semilla,
+                     confianza=confianza)
+    resultado_candidatas = {}
+    for nombre, c in (candidatas or {}).items():
+        cambios = c.get("indicadores") or {}
+        quitar = c.get("quitar") or {}
+        if isinstance(quitar, list):          # una lista vale para todos los metales
+            quitar = {a["id"]: quitar for a in cfg["activos"]}
+        if cambios:
+            cfg_c = {**cfg, "indicadores": _fusionar(cfg["indicadores"], cambios)}
+            tabla_c = senales(cfg_c, mensuales, tipo_real, dolar, cot, anios)
+        else:
+            cfg_c = cfg
+            tabla_c = {k: [{**f, "puntos": dict(f["puntos"])} for f in v] for k, v in tabla.items()}
+        resultado_candidatas[nombre] = {
+            "texto": c.get("texto", nombre),
+            "activos": evaluar(cfg_c, tabla_c, mensuales, horizontes, salto, corte, remuestreos,
+                               semilla, quitar, claves=list(cambios), confianza=confianza)}
+    return {"anios": anios, "horizontes": list(horizontes), "salto": salto, "corte": corte,
+            "remuestreos": remuestreos, "confianza": confianza, "activos": actual, "candidatas": resultado_candidatas}
 
 
 # ---------------------------------------------------------------------------
 # Datos (red y disco)
 # ---------------------------------------------------------------------------
-def descargar(cfg: dict, anios: int = 15) -> dict:
-    """Trae la historia larga que la web no guarda: FRED y CFTC desde antes del inicio."""
-    desde = date.today() - timedelta(days=round((anios + 4) * 365.25))
+def descargar(cfg: dict) -> dict:
+    """Trae la historia larga que la web no guarda: FRED y CFTC completos."""
     clave = os.environ.get("FRED_KEY", "")
-    macro = {}
-    for s in ("DFII10", "DTWEXBGS"):
-        macro[s] = (src.fred_serie(s, clave, desde.isoformat()) if clave
-                    else src.fred_csv(s, desde.isoformat()))
-    semanas = (anios + 4) * 53
-    cot = {a["id"]: src.cftc_posiciones(a["cftc"], semanas) for a in cfg["activos"] if a.get("cftc")}
+    desde = "1990-01-01"      # DFII10 empieza en 2003 y DTWEXBGS en 2006
+    macro = {s: (src.fred_serie(s, clave, desde) if clave else src.fred_csv(s, desde))
+             for s in ("DFII10", "DTWEXBGS")}
+    # El informe Legacy de la CFTC llega hasta 1986: unas 2.100 semanas
+    cot = {a["id"]: src.cftc_posiciones(a["cftc"], 2200) for a in cfg["activos"] if a.get("cftc")}
     entrada = {"macro": macro, "cot": cot, "consultado": iso()}
     escribir("prueba/entrada.json", entrada)
     return entrada
@@ -241,9 +317,7 @@ def descargar(cfg: dict, anios: int = 15) -> dict:
 
 def ejecutar(cfg: dict, descargar_datos: bool = True) -> dict:
     pcfg = cfg.get("prueba_historica", {})
-    anios = int(pcfg.get("anios", 15))
-    horizontes = tuple(pcfg.get("horizontes", (3, 6, 12)))
-    entrada = descargar(cfg, anios) if descargar_datos else (leer("prueba/entrada.json") or {})
+    entrada = descargar(cfg) if descargar_datos else (leer("prueba/entrada.json") or {})
     if not entrada:
         raise src.FuenteError("no hay datos guardados para la prueba historica")
     pink = (leer("pink.json", {}) or {}).get("series", {})
@@ -256,7 +330,14 @@ def ejecutar(cfg: dict, descargar_datos: bool = True) -> dict:
     resultado = calcular(cfg, mensuales,
                          [tuple(x) for x in entrada["macro"]["DFII10"]],
                          [tuple(x) for x in entrada["macro"]["DTWEXBGS"]],
-                         entrada["cot"], anios, horizontes)
+                         entrada["cot"],
+                         anios=int(pcfg.get("anios", 50)),
+                         horizontes=tuple(pcfg.get("horizontes", (3, 6, 12))),
+                         salto=int(pcfg.get("salto_meses", 1)),
+                         corte=str(pcfg.get("corte", "2006-01")),
+                         remuestreos=int(pcfg.get("remuestreos", 500)),
+                         candidatas=pcfg.get("candidatas") or {},
+                         confianza=float(pcfg.get("confianza", 95)))
     resultado["calculado"] = iso()
     resultado["datos_consultados"] = entrada.get("consultado")
     resultado["parametros"] = cfg["indicadores"]

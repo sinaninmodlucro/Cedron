@@ -52,39 +52,52 @@
   <h2 class="bloque" id="prueba">Prueba histórica de las reglas</h2>
 {% if prueba %}
 {% set m = prueba.medio %}
-  <p>Para comprobar que las reglas no dan resultados absurdos, se aplicaron, mes a mes, a los últimos {{ prueba.anios }} años ({{ prueba.desde|mes }} a {{ prueba.hasta|mes }}), usando en cada mes solo los datos que existían entonces y los mismos parámetros que usa la web hoy. Después se miró qué hizo el precio {{ prueba.horizontes[:-1]|join(', ') }} y {{ prueba.horizontes[-1] }} meses más tarde. No es una simulación de compras ni de rentabilidad: solo se pregunta si, tras una señal favorable, al precio le fue mejor que tras una desfavorable.</p>
-  <p>Para no fiarse de una sola racha del mercado, el periodo se divide en dos mitades y se exige que el resultado vaya en el mismo sentido en las dos:</p>
+  <p>Para saber si las reglas tienen sentido, se aplicaron mes a mes a la historia disponible ({{ prueba.desde|mes }} a {{ prueba.hasta|mes }}; unos {{ prueba.anios }} años), usando en cada mes solo los datos que existían entonces y los mismos parámetros que usa la web hoy. Después se miró qué hizo el precio {{ prueba.horizontes[:-1]|join(', ') }} y {{ prueba.horizontes[-1] }} meses más tarde. No es una simulación de compras ni de rentabilidad: solo se pregunta si, tras una señal favorable (+1), al precio le fue mejor que tras una desfavorable (−1).</p>
+  <p>Cuatro precauciones para no engañarse con los datos:</p>
   <ul>
-    <li><strong>Coherente</strong>: tras +1 al precio le fue mejor que tras −1 en todo el periodo y en cada mitad.</li>
-    <li><strong>Inestable</strong>: el resultado cambia según la época que se mire.</li>
-    <li><strong>Al revés</strong>: tras −1 le fue mejor que tras +1, en todo el periodo y en cada mitad.</li>
-    <li><strong>Casi siempre la misma señal</strong>: marca +1 o −1 en más de tres de cada cuatro meses, así que apenas distingue unas épocas de otras.</li>
-    <li><strong>Pocos casos</strong>: no hubo al menos seis meses de cada señal para comparar.</li>
+    <li><strong>Un mes de separación.</strong> El histórico del Banco Mundial son medias mensuales, y las medias crean una inercia falsa entre un mes y el siguiente (lo demostró Holbrook Working en 1960). Por eso el cambio se mide empezando {{ prueba.salto }} mes después de la señal.</li>
+    <li><strong>Prueba a ciegas.</strong> La historia se parte en dos: un periodo de elección (hasta {{ prueba.fin_eleccion|mes }}) y otro de comprobación (desde {{ prueba.corte|mes }}). Una regla solo se da por buena si funciona en los dos por separado: es lo que habría visto alguien que la eligiera en {{ prueba.fin_eleccion[:4] }} y la siguiera usando después.</li>
+    <li><strong>Margen de error.</strong> Los meses seguidos se parecen entre sí, así que no son casos independientes. Se calcula un intervalo de confianza del {{ prueba.confianza|numero(0) }} % remuestreando {{ prueba.remuestreos }} veces bloques de 12 meses seguidos; si incluye el cero, el resultado no se distingue de la casualidad. Con datos inventados al azar, este método da un resultado «seguro» por casualidad en menos de un 6 % de los casos.</li>
+    <li><strong>Datos cortos.</strong> El entorno macro solo tiene datos desde 2006 y el posicionamiento desde 1996: para ellos la prueba a ciegas no es posible o es más corta, y se indica en la columna «Desde».</li>
   </ul>
-  <p>Resultado de las {{ prueba.total_reglas }} combinaciones de metal e indicador: {% for nombre, n in prueba.recuento %}{{ nombre|lower }}, {{ n }}{{ '; ' if not loop.last else '.' }}{% endfor %}</p>
+  <p>Cómo leer el resultado:</p>
+  <ul>
+    <li><strong>Coherente</strong>: tras +1 al precio le fue mejor que tras −1 en los dos periodos, con un margen de error que no incluye el cero.</li>
+    <li><strong>Apunta bien, sin seguridad</strong>: va en el buen sentido en los dos periodos, pero el margen de error incluye el cero.</li>
+    <li><strong>Inestable</strong>: en un periodo funcionó y en el otro no.</li>
+    <li><strong>Al revés</strong> (o <strong>apunta al revés, sin seguridad</strong>): tras −1 le fue mejor que tras +1.</li>
+    <li><strong>Casi siempre la misma señal</strong>: marca +1 o −1 en más de tres de cada cuatro meses, así que apenas distingue unas épocas de otras.</li>
+  </ul>
+  <p>Resultado de las {{ prueba.total_reglas }} combinaciones de metal e indicador: {% for nombre, n in prueba.recuento %}{{ nombre|lower }}, {{ n }}{{ '; ' if not loop.last else '.' }}{% endfor %} La fila «Lectura (suma)» de cada metal evalúa la lectura final.</p>
 </div>
+{% macro tabla_prueba(filas, titulo) %}
 <div class="desplazable">
 <table class="tabla">
-  <caption class="pequeno secundario">Cambio medio del precio {{ m }} meses después de cada señal. «Mitades»: diferencia entre lo que pasó tras +1 y tras −1 (media de los tres plazos), en cada mitad del periodo.</caption>
-  <thead><tr><th>Metal</th><th>Indicador</th><th class="num">Meses con señal</th><th class="num">Tras +1</th><th class="num">Tras −1</th><th class="num">Mitades</th><th>Resultado</th></tr></thead>
+  <caption class="pequeno secundario">{{ titulo }}</caption>
+  <thead><tr><th>Metal</th><th>Indicador</th><th>Desde</th><th class="num">Meses con señal</th><th class="num">Tras +1</th><th class="num">Tras −1</th><th class="num">Elección</th><th class="num">Comprobación</th><th class="num">Margen ({{ prueba.confianza|numero(0) }} %)</th><th>Resultado</th></tr></thead>
   <tbody>
-  {% for f in prueba.indicadores %}
-    <tr><td>{{ f.activo }}</td><td>{{ f.indicador }}</td>
+  {% for f in filas %}
+    <tr><td>{{ f.activo }}</td><td>{% if f.clave == 'suma' %}<strong>{{ f.indicador }}</strong>{% else %}{{ f.indicador }}{% endif %}</td>
+      <td>{{ f.desde[:4] if f.desde else '—' }}</td>
       <td class="num">{{ f.senal_pct|numero(0) }} %</td>
       <td class="num">{{ f.mas.media|porcentaje if f.mas else '—' }}{% if f.mas %} <span class="secundario">({{ f.n_mas }})</span>{% endif %}</td>
       <td class="num">{{ f.menos.media|porcentaje if f.menos else '—' }}{% if f.menos %} <span class="secundario">({{ f.n_menos }})</span>{% endif %}</td>
-      <td class="num">{{ f.mitad_1|porcentaje if f.mitad_1 is not none else '—' }} / {{ f.mitad_2|porcentaje if f.mitad_2 is not none else '—' }}</td>
-      <td>{{ f.clase_texto }}</td></tr>
+      <td class="num">{{ f.eleccion|porcentaje if f.eleccion is not none else '—' }}</td>
+      <td class="num">{{ f.comprobacion|porcentaje if f.comprobacion is not none else '—' }}</td>
+      <td class="num">{{ ((f.intervalo[0]|porcentaje) ~ ' a ' ~ (f.intervalo[1]|porcentaje)) if f.intervalo else '—' }}</td>
+      <td>{% if f.clave == 'suma' %}<strong>{{ f.clase_texto }}</strong>{% else %}{{ f.clase_texto }}{% endif %}</td></tr>
   {% endfor %}
   </tbody>
 </table>
 </div>
+{% endmacro %}
+{{ tabla_prueba(prueba.indicadores, "Reglas actuales. «Tras +1» y «Tras −1»: cambio medio del precio " ~ m ~ " meses después (entre paréntesis, meses con esa señal). «Elección» y «Comprobación»: diferencia entre lo que pasó tras +1 y tras −1, en puntos porcentuales (media de los tres plazos), en cada periodo. «Margen»: intervalo de confianza de esa diferencia en toda la historia.") }}
 <div class="texto">
-  <p>Y así le fue al precio después de cada lectura (suma de los indicadores), frente a la media de todos los meses:</p>
+  <p>Así le fue al precio después de cada lectura, frente a la media de todos los meses:</p>
 </div>
 <div class="desplazable">
 <table class="tabla">
-  <caption class="pequeno secundario">Cambio medio del precio después de cada lectura y, entre paréntesis, en qué porcentaje de los meses subió.</caption>
+  <caption class="pequeno secundario">Cambio medio del precio después de cada lectura (empezando un mes después) y, entre paréntesis, en qué porcentaje de los casos subió. Los meses sin datos suficientes para una lectura no aparecen.</caption>
   <thead><tr><th>Metal</th><th>Lectura</th><th class="num">Meses</th>{% for h in prueba.horizontes %}<th class="num">{{ h }} meses después</th>{% endfor %}</tr></thead>
   <tbody>
   {% for f in prueba.lecturas %}
@@ -94,8 +107,17 @@
   </tbody>
 </table>
 </div>
+{% if prueba.candidatas %}
 <div class="texto">
-  <p class="pequeno secundario">Cómo se hizo: el precio de cada mes es la media mensual del Banco Mundial (el paladio no tiene y queda fuera); el entorno macro usa las series de FRED y el posicionamiento, los informes de la CFTC, cortados en el último día de cada mes. Cada mes mira los siguientes, así que los periodos se solapan y los casos no son independientes: {{ prueba.anios }} años son pocos ciclos del mercado. La prueba sirve para detectar reglas que fallan de forma clara, no para prometer nada. Se repite sola cada mes; última vez: {{ prueba.calculado|fecha_larga }}. Rentabilidades pasadas no garantizan resultados futuros.</p>
+  <h3 id="candidatas">Reglas en estudio</h3>
+  <p>Variantes que se prueban del mismo modo pero <strong>no se usan en las lecturas</strong>. Sirven para decidir cambios con datos; si alguna se adopta, se anunciará abajo, en «Cambios en la metodología».</p>
+</div>
+{% for c in prueba.candidatas %}
+{{ tabla_prueba(c.filas, c.texto) }}
+{% endfor %}
+{% endif %}
+<div class="texto">
+  <p class="pequeno secundario">Cómo se hizo: el precio de cada mes es la media mensual del Banco Mundial (el paladio no tiene y queda fuera); el entorno macro usa las series de FRED y el posicionamiento, los informes de la CFTC, cortados en el último día de cada mes. Aun con estas precauciones, unas pocas décadas son pocos ciclos del mercado, y una regla que funcionó puede dejar de hacerlo. La prueba sirve para descartar reglas que fallan y para saber cuánto fiarse de las demás, no para prometer nada. Se repite sola cada mes; última vez: {{ prueba.calculado|fecha_larga }}. Rentabilidades pasadas no garantizan resultados futuros.</p>
 {% else %}
   <p class="vacio">La prueba histórica todavía no se ha calculado.</p>
 {% endif %}
@@ -103,7 +125,7 @@
   <h2 class="bloque">Cambios en la metodología</h2>
   <p>Si se añade, cambia o elimina una regla, se anunciará aquí con fecha y motivo. Las lecturas anteriores no se recalculan.</p>
   <ul>
-    <li><strong>6 de noviembre de 2026.</strong> Se publica la prueba histórica de las reglas en los últimos 15 años, que se repetirá cada mes. Por ahora no cambia ninguna regla; si sus resultados llevan a cambiar alguna, se anunciará aquí.</li>
+    <li><strong>6 de noviembre de 2026.</strong> Se publica la prueba histórica de las reglas, que se repetirá cada mes: unos 50 años de historia, con un mes de separación entre señal y medición, prueba a ciegas, margen de error y prueba de reglas candidatas. Por ahora no cambia ninguna regla; si sus resultados llevan a cambiar alguna, se anunciará aquí.</li>
     <li><strong>6 de noviembre de 2026.</strong> Se añaden las materias primas de apoyo (energía y ganadería), sin lectura. No cambia nada en las lecturas de los metales.</li>
     <li><strong>6 de noviembre de 2026.</strong> En la ganadería de España se añade el precio en tienda junto al de origen, con su multiplicador, y se incorporan huevos y leche.</li>
     <li><strong>6 de noviembre de 2026.</strong> Se añaden agrícolas (principales y de apoyo) y fertilizantes, sin lectura, con precio en origen y en tienda cuando existen. No cambia nada en las lecturas de los metales.</li>

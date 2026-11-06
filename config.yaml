@@ -909,8 +909,29 @@ indicadores:
 # precio. Se repite sola una vez al mes. Anadida el 6-nov-2026.
 # -----------------------------------------------------------------------------
 prueba_historica:
-  anios: 15                       # meses evaluados: los ultimos 15 anios
-  horizontes: [3, 6, 12]          # meses despues de cada lectura en que se mira el precio
+  anios: 50                       # 15 al principio; 50 desde el 6-nov-2026 (mas ciclos de mercado)
+  horizontes: [3, 6, 12]          # meses despues de cada senal en que se mira el precio
+  salto_meses: 1                  # un mes entre senal y medicion: quita la inercia falsa de las medias mensuales
+  corte: "2006-01"                # prueba a ciegas: antes = periodo de eleccion, despues = comprobacion
+  remuestreos: 500                # para el margen de error
+  confianza: 95                   # % del margen de error; con 90 % habia un 11 % de "aciertos" por casualidad
+  # Reglas candidatas: se prueban igual que las actuales pero NO se usan en la web.
+  # Sirven para decidir cambios con datos. "indicadores" cambia parametros;
+  # "quitar" saca indicadores de la suma (lista para todos o por metal).
+  candidatas:
+    momento_12:
+      texto: "Momento: cambio frente a hace 12 meses (subida o bajada, sin umbral)"
+      indicadores: {momento: {meses: 12, umbral_pct: 0}}
+    sin_posicionamiento:
+      texto: "Sin posicionamiento en la suma"
+      quitar: [posicionamiento]
+    sin_ratio_platino:
+      texto: "Sin valoración relativa en la suma del platino"
+      quitar: {platino: [ratio]}
+    conjunto:
+      texto: "Momento a 12 meses, sin posicionamiento y sin ratio en el platino"
+      indicadores: {momento: {meses: 12, umbral_pct: 0}}
+      quitar: {oro: [posicionamiento], plata: [posicionamiento], platino: [posicionamiento, ratio], cobre: [posicionamiento], paladio: [posicionamiento]}
 
 # -----------------------------------------------------------------------------
 # Noticias: como se puntua cada titular (0-100) y que se publica.

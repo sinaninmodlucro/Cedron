@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 
 from . import apoyo
+from . import indicators as ind
 from .store import RAIZ, leer, parse_iso
 
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -226,35 +227,60 @@ def rendimiento_historial(historial: list, historicos: dict) -> list:
 def datos_prueba(prueba: dict | None, cfg: dict) -> dict | None:
     """Prepara los resultados de la prueba historica para la pagina de metodologia."""
     from cedron.prueba import CLASES, INDICADORES, NOMBRES
-    if not prueba or not prueba.get("activos"):
+    if not prueba or not prueba.get("activos") or "corte" not in prueba:
         return None
     horizontes = prueba["horizontes"]
-    medio = horizontes[len(horizontes) // 2]          # horizonte principal (6 meses)
-    indicadores, lecturas, recuento = [], [], {}
+    medio = horizontes[len(horizontes) // 2]          # horizonte de las columnas (6 meses)
     # El archivo guarda las claves en orden alfabetico: se ordena como en config.yaml
-    orden = [x["id"] for x in cfg["activos"] if x["id"] in prueba["activos"]]
-    for aid in orden:
-        a = prueba["activos"][aid]
-        for clave in [k for k in INDICADORES if k in a["indicadores"]]:
-            ind = a["indicadores"][clave]
-            e, v = ind["estados"], ind["veredicto"]
-            recuento[v["clase"]] = recuento.get(v["clase"], 0) + 1
-            indicadores.append({
-                "activo": a["nombre"], "indicador": NOMBRES[clave], "clase": v["clase"],
-                "clase_texto": CLASES[v["clase"]], "senal_pct": v["senal_pct"],
+    orden = [x["id"] for x in cfg["activos"]]
+
+    def fila(nombre_activo, clave, datos):
+        e, v = datos["estados"], datos["veredicto"]
+        return {"activo": nombre_activo, "indicador": NOMBRES[clave], "clave": clave,
+                "clase": v["clase"], "clase_texto": CLASES[v["clase"]],
+                "desde": v.get("desde"), "senal_pct": v["senal_pct"],
                 "mas": e["1"].get(f"h{medio}"), "menos": e["-1"].get(f"h{medio}"),
                 "n_mas": e["1"]["meses"], "n_menos": e["-1"]["meses"],
-                "mitad_1": v.get("mitad_1"), "mitad_2": v.get("mitad_2"), "corte": v.get("corte")})
-        filas = [("Todos los meses", a["meses"], a["base"])]
-        filas += [(n.capitalize(), a["lecturas"][n]["meses"], a["lecturas"][n])
-                  for n in ("favorable", "neutral", "desfavorable") if a["lecturas"][n]["meses"]]
-        for nombre, meses, d in filas:
-            lecturas.append({"activo": a["nombre"], "lectura": nombre, "meses": meses,
-                             **{f"h{h}": d.get(f"h{h}") for h in horizontes}})
-    primero = prueba["activos"][orden[0]]
+                "eleccion": v.get("eleccion"), "comprobacion": v.get("comprobacion"),
+                "intervalo": v.get("intervalo")}
+
+    indicadores, lecturas, recuento = [], [], {}
+    for aid in [x for x in orden if x in prueba["activos"]]:
+        a = prueba["activos"][aid]
+        for clave in [k for k in INDICADORES + ["suma"] if k in a["indicadores"]]:
+            f = fila(a["nombre"], clave, a["indicadores"][clave])
+            indicadores.append(f)
+            if clave != "suma":
+                recuento[f["clase"]] = recuento.get(f["clase"], 0) + 1
+        suma = a["indicadores"].get("suma")
+        lecturas.append({"activo": a["nombre"], "lectura": "Todos los meses", "meses": a["meses"],
+                         **{f"h{h}": a["base"].get(f"h{h}") for h in horizontes}})
+        if suma:
+            for p, nombre in (("1", "Favorable"), ("0", "Neutral"), ("-1", "Desfavorable")):
+                est = suma["estados"][p]
+                if est["meses"]:
+                    lecturas.append({"activo": a["nombre"], "lectura": nombre, "meses": est["meses"],
+                                     **{f"h{h}": est.get(f"h{h}") for h in horizontes}})
+    candidatas = []
+    guardadas = prueba.get("candidatas") or {}
+    # Mismo orden que en config.yaml (el archivo las guarda en orden alfabetico)
+    orden_c = [k for k in (cfg.get("prueba_historica", {}).get("candidatas") or {}) if k in guardadas]
+    orden_c += [k for k in guardadas if k not in orden_c]
+    for nombre, c in ((k, guardadas[k]) for k in orden_c):
+        filas = []
+        for aid in [x for x in orden if x in c["activos"]]:
+            a = c["activos"][aid]
+            for clave in [k for k in INDICADORES + ["suma"] if k in a["indicadores"]]:
+                filas.append(fila(a["nombre"], clave, a["indicadores"][clave]))
+        candidatas.append({"id": nombre, "texto": c["texto"], "filas": filas})
+    primero = prueba["activos"][next(x for x in orden if x in prueba["activos"])]
     return {"anios": prueba["anios"], "horizontes": horizontes, "medio": medio,
+            "salto": prueba["salto"], "corte": prueba["corte"],
+            "fin_eleccion": ind.restar_meses(prueba["corte"], 1),
+            "remuestreos": prueba["remuestreos"], "confianza": prueba.get("confianza", 95),
             "desde": primero["desde"], "hasta": primero["hasta"], "calculado": prueba.get("calculado"),
-            "indicadores": indicadores, "lecturas": lecturas, "clases": CLASES,
+            "indicadores": indicadores, "lecturas": lecturas, "candidatas": candidatas,
+            "clases": CLASES,
             "recuento": [(CLASES[c], recuento[c]) for c in CLASES if c in recuento],
             "total_reglas": sum(recuento.values())}
 
