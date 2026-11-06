@@ -48,10 +48,22 @@
       <a href="{{ raiz }}legal.html">Aviso legal y privacidad</a>
       <a href="{{ raiz }}fuentes.html">Fuentes y licencias</a>
       <a href="mailto:{{ sitio.contacto }}">Contacto</a>
+      {% if privado %}<a href="#" id="cerrar-sesion">Cerrar sesión en este dispositivo</a>{% endif %}
     </p>
     <p class="pie__nota">© {{ anio }} {{ sitio.nombre }}. Datos históricos: Banco Mundial (CC BY 4.0), FRED, CFTC. Precios actuales: MetalCharts.</p>
   </div>
 </footer>
+{% if privado %}
+<script>
+document.getElementById("cerrar-sesion").addEventListener("click", function (e) {
+  e.preventDefault();
+  ["localStorage", "sessionStorage"].forEach(function (a) {
+    try { Object.keys(window[a]).forEach(function (k) { if (k.indexOf("cedron-clave-") === 0) window[a].removeItem(k); }); } catch (x) {}
+  });
+  location.reload();
+});
+</script>
+{% endif %}
 {% block scripts %}{% endblock %}
 </body>
 </html>

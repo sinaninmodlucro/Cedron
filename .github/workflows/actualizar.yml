@@ -53,6 +53,7 @@ jobs:
           METALCHARTS_KEY: ${{ secrets.METALCHARTS_KEY }}
           FRED_KEY: ${{ secrets.FRED_KEY }}
           NEWSDATA_KEY: ${{ secrets.NEWSDATA_KEY }}
+          CEDRON_PASSWORD: ${{ secrets.CEDRON_PASSWORD }}
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             python run.py --solo-web

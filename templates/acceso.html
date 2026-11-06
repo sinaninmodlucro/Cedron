@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cedron</title>
+<link rel="stylesheet" href="__RAIZ__static/estilo.css">
+<link rel="icon" href="__RAIZ__static/marca.svg" type="image/svg+xml">
+<style>
+  .acceso { min-height: 100vh; display: grid; place-items: center; padding: 1.25rem; }
+  .acceso__caja { width: 100%; max-width: 22rem; }
+  .acceso .marca { margin-bottom: 2rem; }
+  .acceso h1 { font-size: var(--t-l); margin-bottom: 0.5rem; }
+  .acceso p { color: var(--tinta-2); font-size: var(--t-s); }
+  .acceso label { display: block; font-family: var(--f-cifra); font-size: var(--t-s); margin: 1.25rem 0 0.35rem; }
+  .acceso input[type=password] {
+    width: 100%; font: inherit; font-family: var(--f-cifra); color: var(--tinta); background: var(--papel);
+    border: 1px solid var(--tinta-2); border-radius: 6px; padding: 0.6rem 0.75rem;
+  }
+  .acceso .recordar { display: flex; gap: 0.5rem; align-items: center; margin: 0.9rem 0 1.25rem; font-family: var(--f-cifra); font-size: var(--t-s); color: var(--tinta-2); }
+  .acceso .recordar label { margin: 0; font-size: inherit; }
+  .acceso button {
+    font: inherit; font-family: var(--f-cifra); font-weight: 600; cursor: pointer; width: 100%;
+    background: var(--tinta); color: var(--papel); border: 0; border-radius: 6px; padding: 0.7rem 1rem;
+  }
+  .acceso button[disabled] { opacity: 0.6; cursor: progress; }
+  .acceso .error { color: var(--oxido); min-height: 1.5em; margin: 0.75rem 0 0; }
+</style>
+</head>
+<body>
+<main class="acceso">
+  <div class="acceso__caja">
+    <span class="marca" aria-hidden="true">
+      <svg class="marca__sello" viewBox="0 0 40 24"><rect x="1.5" y="1.5" width="37" height="21" rx="10.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="5" width="30" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <span class="marca__nombre">Cedron</span>
+    </span>
+    <h1>Acceso privado</h1>
+    <p>El contenido de esta web está cifrado. Escribe la contraseña para verlo.</p>
+    <form id="formulario" hidden>
+      <label for="clave">Contraseña</label>
+      <input id="clave" type="password" autocomplete="current-password" required autofocus>
+      <div class="recordar"><input id="recordar" type="checkbox"><label for="recordar">Recordar en este dispositivo</label></div>
+      <button type="submit" id="entrar">Entrar</button>
+      <p class="error" id="error" role="alert"></p>
+    </form>
+    <noscript><p class="error">Hace falta JavaScript para descifrar el contenido.</p></noscript>
+  </div>
+</main>
+<script type="application/json" id="cedron-datos">__DATOS__</script>
+<script>
+(function () {
+  var d = JSON.parse(document.getElementById("cedron-datos").textContent);
+  var NOMBRE = "cedron-clave-" + d.s;
+  var formulario = document.getElementById("formulario");
+  var error = document.getElementById("error");
+  var boton = document.getElementById("entrar");
+
+  function b64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
+  function a64(u) { var t = ""; u.forEach(function (b) { t += String.fromCharCode(b); }); return btoa(t); }
+  function leer(almacen) { try { return window[almacen].getItem(NOMBRE); } catch (e) { return null; } }
+  function guardar(almacen, valor) { try { window[almacen].setItem(NOMBRE, valor); } catch (e) {} }
+  function olvidar() { ["localStorage", "sessionStorage"].forEach(function (a) { try { window[a].removeItem(NOMBRE); } catch (e) {} }); }
+
+  async function derivar(clave) {
+    var base = await crypto.subtle.importKey("raw", new TextEncoder().encode(clave), "PBKDF2", false, ["deriveBits"]);
+    var bits = await crypto.subtle.deriveBits({ name: "PBKDF2", salt: b64(d.s), iterations: d.i, hash: "SHA-256" }, base, 256);
+    return new Uint8Array(bits);
+  }
+  async function descifrar(cruda) {
+    var k = await crypto.subtle.importKey("raw", cruda, "AES-GCM", false, ["decrypt"]);
+    var claro = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(d.v) }, k, b64(d.c));
+    return new TextDecoder().decode(claro);
+  }
+  function mostrar(html) { document.open(); document.write(html); document.close(); }
+
+  async function inicio() {
+    if (!window.crypto || !crypto.subtle) {
+      formulario.hidden = false;
+      error.textContent = "Este navegador no permite descifrar la página. Prueba con uno actualizado.";
+      boton.disabled = true;
+      return;
+    }
+    var guardada = leer("localStorage") || leer("sessionStorage");
+    if (guardada) {
+      try { mostrar(await descifrar(b64(guardada))); return; } catch (e) { olvidar(); }
+    }
+    formulario.hidden = false;
+    document.getElementById("clave").focus();
+  }
+
+  formulario.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    error.textContent = "";
+    boton.disabled = true;
+    boton.textContent = "Comprobando…";
+    try {
+      var cruda = await derivar(document.getElementById("clave").value);
+      var html = await descifrar(cruda);
+      guardar(document.getElementById("recordar").checked ? "localStorage" : "sessionStorage", a64(cruda));
+      mostrar(html);
+    } catch (e) {
+      error.textContent = "Contraseña incorrecta.";
+      boton.disabled = false;
+      boton.textContent = "Entrar";
+    }
+  });
+
+  // Esperar a que la pagina de acceso termine de cargar antes de sustituirla
+  if (document.readyState === "complete") inicio();
+  else window.addEventListener("load", inicio);
+})();
+</script>
+</body>
+</html>

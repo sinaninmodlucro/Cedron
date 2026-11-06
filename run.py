@@ -42,7 +42,15 @@ def main() -> int:
         return 0
 
     avisos = [] if args.solo_web else engine.ejecutar(cfg, forzar=args.forzar)
-    build.construir(cfg, RAIZ / "_site")
+    contrasena = os.environ.get("CEDRON_PASSWORD", "")
+    build.construir(cfg, RAIZ / "_site", privado=bool(contrasena))
+    if contrasena:
+        from cedron.cifrado import cifrar_sitio
+        plantilla = (RAIZ / "templates" / "acceso.html").read_text(encoding="utf-8")
+        n = cifrar_sitio(RAIZ / "_site", contrasena, plantilla)
+        logging.info("Web cifrada: %d páginas", n)
+    else:
+        logging.warning("Sin CEDRON_PASSWORD: la web se genera SIN cifrar (no se publicará)")
 
     alertas = RAIZ / "alertas.md"
     if avisos:

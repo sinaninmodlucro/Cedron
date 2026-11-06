@@ -158,7 +158,7 @@ def rendimiento_historial(historial: list, historicos: dict) -> list:
 # ---------------------------------------------------------------------------
 # Construccion
 # ---------------------------------------------------------------------------
-def construir(cfg: dict, destino: Path, demo: bool = False) -> None:
+def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = False) -> None:
     tz = ZoneInfo(cfg["sitio"]["zona_horaria"])
     fecha_larga, fecha_hora, hace, mes = crear_fechas(tz)
     env = Environment(loader=FileSystemLoader(RAIZ / "templates"),
@@ -191,7 +191,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False) -> None:
 
     ultima_precios = max((p.get("consultado", "") for p in precios.values()), default="") or None
     proxima = _proxima_hora(cfg, tz)
-    comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, cfg=cfg, eurusd=eurusd,
+    comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, privado=privado, cfg=cfg, eurusd=eurusd,
                  nombres={a["id"]: a["nombre"] for a in cfg["activos"]},
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),

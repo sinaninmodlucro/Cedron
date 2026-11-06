@@ -150,5 +150,33 @@ class Noticias(unittest.TestCase):
         self.assertEqual(len(g), 2)
 
 
+class Cifrado(unittest.TestCase):
+    def test_ida_y_vuelta(self):
+        import base64, hashlib, json, os, re, tempfile
+        from pathlib import Path
+        from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+        from cedron import cifrado
+        with tempfile.TemporaryDirectory() as t:
+            os.environ["CEDRON_DATA"] = t
+            import importlib, cedron.store
+            importlib.reload(cedron.store); importlib.reload(cifrado)
+            sitio = Path(t) / "sitio"; (sitio / "activos").mkdir(parents=True)
+            (sitio / "index.html").write_text("<p>secreto</p>")
+            (sitio / "activos" / "oro.html").write_text("<p>oro</p>")
+            n = cifrado.cifrar_sitio(sitio, "contraseña-de-prueba", "<x>__RAIZ__</x><script>__DATOS__</script>")
+            self.assertEqual(n, 2)
+            pub = (sitio / "activos" / "oro.html").read_text()
+            self.assertNotIn("oro</p>", pub)
+            self.assertIn("<x>../</x>", pub)
+            d = json.loads(re.search(r"<script>(.*)</script>", pub).group(1))
+            clave = hashlib.pbkdf2_hmac("sha256", "contraseña-de-prueba".encode(), base64.b64decode(d["s"]), d["i"], 32)
+            claro = AESGCM(clave).decrypt(base64.b64decode(d["v"]), base64.b64decode(d["c"]), None)
+            self.assertEqual(claro, b"<p>oro</p>")
+            with self.assertRaises(ValueError):
+                cifrado.cifrar_sitio(sitio, "corta", "x")
+        os.environ.pop("CEDRON_DATA", None)
+        importlib.reload(cedron.store)
+
+
 if __name__ == "__main__":
     unittest.main()
