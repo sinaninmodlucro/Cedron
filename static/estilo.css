@@ -28,6 +28,11 @@
 
   --medida: 42rem;
   --ancho: 68rem;
+
+  /* Colores de las lineas del comparador: orden fijo, validado para daltonismo
+     (CVD) sobre este papel; nunca se reciclan (maximo 8 lineas) */
+  --serie-1: #2a78d6; --serie-2: #eb6834; --serie-3: #1baf7a; --serie-4: #eda100;
+  --serie-5: #e87ba4; --serie-6: #008300; --serie-7: #6250d6; --serie-8: #e34948;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,6 +47,8 @@
     --neutro: #A0ACA9;
     --enlace: #8CC9D3;
     --foco: #8CC9D3;
+    --serie-1: #3987e5; --serie-2: #d95926; --serie-3: #199e70; --serie-4: #c98500;
+    --serie-5: #d55181; --serie-6: #008300; --serie-7: #9085e9; --serie-8: #e66767;
   }
 }
 
@@ -257,6 +264,36 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
   transform: translate(-50%, calc(-100% - 12px));
 }
 .grafico__marco { position: relative; }
+
+/* -------------------------------------------------------------- comparador */
+.comparar__controles { display: flex; flex-wrap: wrap; gap: 0 2rem; }
+.comparar__cuerpo { display: grid; grid-template-columns: 16rem 1fr; gap: 2rem; margin-top: 1rem; align-items: start; }
+.comparar__eleccion { border: 0; padding: 0; margin: 0; font-size: var(--t-s); }
+.comparar__eleccion legend { font-family: var(--f-cifra); font-weight: 600; margin-bottom: 0.5rem; }
+.comparar__eleccion details { border-bottom: 1px solid var(--linea); padding: 0.4rem 0; }
+.comparar__eleccion summary { cursor: pointer; font-family: var(--f-cifra); font-weight: 600; }
+.cmp-casilla { display: flex; align-items: center; gap: 0.4rem; padding: 0.15rem 0 0.15rem 0.5rem; cursor: pointer; }
+.cmp-casilla--grupo { font-style: italic; color: var(--tinta-2); }
+.comparar__total { display: flex; align-items: center; gap: 0.4rem; margin: 0.75rem 0 0.5rem; }
+.enlace-boton { font: inherit; font-size: var(--t-xs); background: none; border: 0; padding: 0; color: var(--enlace); text-decoration: underline; cursor: pointer; }
+.cmp-color { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 50%; flex: none; vertical-align: middle; margin-right: 0.35rem; }
+.cmp-casilla .cmp-color:not([style]) { visibility: hidden; }
+.cmp-leyenda { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-family: var(--f-cifra); font-size: var(--t-xs); }
+.cmp-leyenda li { display: flex; align-items: center; gap: 0.25rem; }
+.cmp-quitar { font: inherit; background: none; border: 0; color: var(--tinta-2); cursor: pointer; padding: 0 0.25rem; font-size: 1rem; line-height: 1; }
+.cmp-quitar:hover { color: var(--tinta); }
+.comparar__grafico .cmp-linea { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.comparar__grafico .cmp-base { stroke: var(--neutro); stroke-width: 1; stroke-dasharray: 4 4; }
+.comparar__grafico .cmp-fin { stroke: var(--papel); stroke-width: 2; }
+.comparar__grafico .punto { stroke: var(--papel); stroke-width: 2; }
+.cmp-vacio { fill: var(--tinta-2); font-family: var(--f-texto); font-size: 15px; }
+.globo.globo--izq { transform: translate(calc(-100% - 12px), 0); }
+#cmp-globo { transform: translate(12px, 0); white-space: normal; min-width: 14rem; max-width: 22rem; }
+#cmp-globo.globo--izq { transform: translate(calc(-100% - 12px), 0); }
+@media (max-width: 46rem) {
+  .comparar__cuerpo { grid-template-columns: 1fr; }
+  .comparar__grafico { order: -1; }            /* en el movil, primero el grafico y luego la lista */
+}
 .grafico svg [hidden], .globo[hidden] { display: none; }
 
 /* ---------------------------------------------------- tablas de texto */

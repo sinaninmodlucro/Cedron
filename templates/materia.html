@@ -28,7 +28,7 @@
     {% if hay_tienda %}<h3 class="bloque-pequeno bloque-pequeno--primero">En origen</h3>{% endif %}
     <p class="ficha__precio cifra">{{ valor_apoyo(amb) }}</p>
     <p class="ficha__datos">
-      {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad_eur }}. {% endif %}
+      {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad_eur }}. {% endif %}{% if amb.usd %}En dólares: {{ amb.usd.valor|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.usd.unidad }} (pasado a euros con el cambio de cada fecha). {% endif %}
       Dato: {{ fecha_dato(amb) }}.
       {% if r.cambio_pct is not none %}Frente al dato anterior ({{ r.anterior.fecha|mes }}): <span class="cifra {{ 'sube' if r.cambio_pct > 0 else 'baja' if r.cambio_pct < 0 }}">{{ r.cambio_pct|porcentaje }}</span>.{% endif %}
       {% if r.interanual_pct is not none %} En un año: <span class="cifra {{ 'sube' if r.interanual_pct > 0 else 'baja' if r.interanual_pct < 0 }}">{{ r.interanual_pct|porcentaje }}</span>.{% endif %}

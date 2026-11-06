@@ -84,6 +84,41 @@ def crear_fechas(tz):
 # ---------------------------------------------------------------------------
 # Grafico: precio mensual y media movil, en SVG generado aqui (sin librerias)
 # ---------------------------------------------------------------------------
+def _redondear(v: float) -> float:
+    """5 cifras significativas: suficiente para el grafico y mucho mas ligero."""
+    return float(f"{v:.5g}")
+
+
+def datos_comparacion(grupos_apoyo: list) -> str:
+    """Series mensuales de todas las materias de apoyo para la pagina «Comparar».
+
+    Por cada materia: su pestana (grupo), que ambito se ve con cada vista
+    (España, Europa, Global, con el mismo criterio de la lista) y la serie mensual
+    de cada ambito (once anos, para poder empezar el periodo de diez).
+    """
+    pestanas: dict[str, dict] = {}
+    materias = {}
+    for g in grupos_apoyo:
+        p = pestanas.setdefault(g["pestana_id"], {"id": g["pestana_id"], "nombre": g["pestana"], "materias": []})
+        for m in g["materias"]:
+            ambitos = {}
+            for a, d in m["ambitos"].items():
+                r = d.get("resumen")
+                if r and r.get("mensual"):
+                    ambitos[a] = {"nombre": d["nombre"], "unidad": d["unidad"],
+                                  "decimales": d.get("decimales", 2),
+                                  "serie": [[f, _redondear(v)] for f, v in r["mensual"][-132:]]}
+            if not ambitos:
+                continue
+            p["materias"].append(m["id"])
+            materias[m["id"]] = {"nombre": m["nombre"], "pestana": g["pestana_id"],
+                                 "vistas": {v: x["ambito"] for v, x in m["vistas"].items()},
+                                 "ambitos": ambitos}
+    # Va dentro de un <script>: "</" se escapa para que no cierre la etiqueta
+    return json.dumps({"pestanas": list(pestanas.values()), "materias": materias},
+                      ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
 def grafico(mensual: list, meses_media: int, unidad: str, simbolo: str = "$") -> dict | None:
     if len(mensual) < meses_media + 2:
         return None
@@ -206,6 +241,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
                 if t and t.get("resumen"):
                     t["grafico"] = grafico(t["resumen"]["mensual"], meses_media, t["unidad"], "€")
 
+    datos_comparar = datos_comparacion(grupos_apoyo)
+
     ultima_precios = max((p.get("consultado", "") for p in precios.values()), default="") or None
     proxima = _proxima_hora(cfg, tz)
     comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, privado=privado, cfg=cfg, eurusd=eurusd,
@@ -234,6 +271,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     for g in grupos_apoyo:
         for m in g["materias"]:
             pagina("materia.html", f"materias/{m['id']}.html", seccion="materias", m=m, g=g)
+    pagina("comparar.html", "comparar.html", seccion="comparar", datos_comparar=datos_comparar)
     pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias)
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200])

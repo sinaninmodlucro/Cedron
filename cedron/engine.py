@@ -138,8 +138,12 @@ def actualizar_diarios(cfg, estado: Estado, forzar=False) -> None:
     if forzar or _una_vez_al_dia(estado, "fred_dia"):
         clave = os.environ.get("FRED_KEY", "")
         desde = (date.today() - timedelta(days=365 * 6)).isoformat()
+        # El euro/dolar se guarda 11 anos: sirve tambien para pasar a euros los diez
+        # anos de historia de las materias de apoyo que cotizan en dolares
+        desde_cambio = (date.today() - timedelta(days=365 * 11)).isoformat()
         try:
-            macro = {s: src.fred_serie(s, clave, desde) for s in ("DFII10", "DTWEXBGS", "DEXUSEU")}
+            macro = {s: src.fred_serie(s, clave, desde_cambio if s == "DEXUSEU" else desde)
+                     for s in ("DFII10", "DTWEXBGS", "DEXUSEU")}
             escribir("macro.json", {"series": macro, "consultado": iso()})
             estado.set("fred_dia", hoy)
             estado.registrar_fuente("FRED", True)

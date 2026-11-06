@@ -374,6 +374,41 @@ def multiplicador(origen: list, f_tienda: str, v_tienda: float) -> dict | None:
     return {"veces": v_tienda / media, "mes": mes, "origen": media} if media else None
 
 
+class TipoCambio:
+    """Dolares por euro (FRED, DEXUSEU), diario. Para pasar a euros las series en dolares
+    con el cambio de cada fecha: el dia (o el anterior con dato) en las series diarias y
+    semanales, y la media del mes en las mensuales."""
+
+    def __init__(self, diario: list):
+        self.dias = sorted((f[:10], float(v)) for f, v in diario if v)
+        self.fechas = [f for f, _ in self.dias]
+        meses: dict[str, list[float]] = {}
+        for f, v in self.dias:
+            meses.setdefault(f[:7], []).append(v)
+        self.meses = {m: sum(vs) / len(vs) for m, vs in meses.items()}
+
+    def __bool__(self):
+        return bool(self.dias)
+
+    def en(self, fecha: str) -> float | None:
+        if len(fecha) == 7:
+            return self.meses.get(fecha)
+        import bisect
+        i = bisect.bisect_right(self.fechas, fecha[:10]) - 1
+        if i < 0 or (date.fromisoformat(fecha[:10]) - date.fromisoformat(self.fechas[i])).days > 10:
+            return None
+        return self.dias[i][1]
+
+    def a_euros(self, serie: list) -> list:
+        """Serie en dolares -> en euros. Los datos sin cambio conocido se descartan."""
+        salida = []
+        for f, v in serie:
+            c = self.en(f)
+            if c:
+                salida.append((f, v / c))
+        return salida
+
+
 def decimales_por_defecto(unidad: str) -> int:
     """Precios por tonelada sin decimales (15.436 $/tonelada); el resto, con dos."""
     return 0 if "tonelada" in unidad else 2
@@ -420,6 +455,9 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
     dias = acfg.get("dias_reciente", {})
     meses_media = cfg["indicadores"]["tendencia"]["meses_media"]
     fuentes = cargar_fuentes()
+    # Precios en dolares -> euros con el cambio de cada fecha (config: apoyo.en_euros)
+    en_euros = acfg.get("en_euros", True)
+    cambio = TipoCambio(((leer("macro.json", {}) or {}).get("series", {}) or {}).get("DEXUSEU", []))
     grupos = []
     pestanas: dict[str, str] = {}       # nombre de pestana -> id (el del primer grupo que la usa)
     for g in acfg.get("grupos", []):
@@ -434,6 +472,13 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                     continue
                 actual = _serie(amb, fuentes, cfg)
                 historia = _serie(amb["historia"], fuentes, cfg) if amb.get("historia") else []
+                unidad, usd = amb["unidad"], None
+                if en_euros and unidad.startswith("$") and cambio:
+                    # Se guarda el ultimo dato en dolares para mostrarlo al lado
+                    ult = (combinar(historia, actual) if actual else historia)[-1:]
+                    usd = {"valor": ult[0][1], "unidad": unidad} if ult else None
+                    actual, historia = cambio.a_euros(actual), cambio.a_euros(historia)
+                    unidad = "€" + unidad[1:]
                 serie = combinar(historia, actual) if actual else historia
                 fuentes_usadas = [FUENTES_NOMBRE.get(amb["fuente"], amb["fuente"])]
                 if amb.get("historia") and historia:
@@ -445,6 +490,7 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                     r["hora"] = fuentes.get("_carburantes_dato")     # hora exacta del dato
                 ambitos[a] = {"decimales": decimales_por_defecto(amb["unidad"]),
                               **{k: v for k, v in amb.items() if k != "historia"},
+                              "unidad": unidad, "usd": usd,
                               "id": a, "nombre": amb.get("etiqueta") or NOMBRES_AMBITO[a],
                               "frecuencia": amb.get("frecuencia", "mensual") if actual else "mensual",
                               "fuente_nombre": fuentes_usadas[0] if actual else fuentes_usadas[-1],

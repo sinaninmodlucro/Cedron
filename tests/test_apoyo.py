@@ -182,6 +182,15 @@ class Salud(unittest.TestCase):
 
 
 class Calculos(unittest.TestCase):
+    def test_tipo_cambio(self):
+        c = apoyo.TipoCambio([["2026-09-29", 1.10], ["2026-09-30", 1.20], ["2026-10-01", 1.25], ["2026-10-02", 1.15]])
+        self.assertAlmostEqual(c.en("2026-09"), 1.15)                 # mensual: media del mes
+        self.assertEqual(c.en("2026-10-04"), 1.15)                    # fin de semana: el ultimo dia con dato
+        self.assertIsNone(c.en("2026-11-30"))                         # demasiado lejos: no se inventa
+        euros = c.a_euros([("2026-09", 115.0), ("2020-01", 1.0)])       # 2020: sin cambio, se descarta
+        self.assertEqual([f for f, _ in euros], ["2026-09"])
+        self.assertAlmostEqual(euros[0][1], 100.0)
+
     def test_preferir_supermercado(self):
         todas = [("2026-06", 7.5), ("2026-07", 7.6), ("2026-08", 7.7)]
         super_ = [("2026-08", 7.2)]

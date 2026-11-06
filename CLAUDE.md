@@ -46,12 +46,14 @@ GitHub Actions (cada hora, minuto 17 UTC)  →  run.py
 
 - `config.yaml`: **todos los parámetros ajustables**, comentados línea a línea. Es lo primero que hay que tocar para cualquier ajuste.
 - `cedron/apoyo.py`: **materias primas de apoyo** (sección `apoyo` de `config.yaml`): recoge, guarda en `data/apoyo/*.json` y calcula el resumen (último dato, cambio frente al anterior de la misma fuente, interanual y posición frente a la media de 10 meses). Elige qué ámbito mostrar (España / Europa / Global) con `elegir()`. Páginas `templates/materias.html` y `templates/materia.html`; selectores en `static/vistas.js` (pestañas por grupo con `pestana:` en `config.yaml`, ámbito España/Europa/Global y precio «Origen y tienda / En origen / En tienda»; el segundo aparece en cualquier materia con `tienda:` en `config.yaml`, y se usará también para las agrícolas).
+- **Euros**: las materias de apoyo en dólares se pasan a euros con el cambio de cada fecha (`apoyo.TipoCambio`, DEXUSEU de FRED, guardado 11 años en `data/macro.json`); se muestra al lado el último precio en dólares. Se desactiva con `apoyo.en_euros: false`.
+- **Comparar** (`templates/comparar.html` + `static/comparar.js`): elegir materias sueltas y grupos «en conjunto» (media simple en base 100), por ámbito y periodo (1, 3, 5, 10 años); máximo 8 líneas con la paleta validada para daltonismo (`--serie-1..8` en `estilo.css`, claro y oscuro). Los datos los prepara `build.datos_comparacion`.
 - `cedron/certificados/`: certificado raíz público de la FNMT, necesario para verificar `www.mapa.gob.es` (Python no lo trae). Solo se usa para esa web.
 - `cedron/sources.py`: conectores. Lanzan `FuenteError` con mensaje claro; nunca inventan datos.
 - `cedron/store.py`: lectura/escritura atómica de JSON en `data/` (o `CEDRON_DATA`).
 - `cedron/demo.py`: datos **inventados** para ver la web sin claves (`python run.py --demo` → `_site_demo/`, con aviso visible).
 - `templates/acceso.html`: pantalla de contraseña (no pasa por Jinja; usa `__DATOS__` y `__RAIZ__`).
-- `tests/`: 46 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
+- `tests/`: 47 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
 - `.github/workflows/actualizar.yml`: la automatización. Si una fuente falla 3 veces seguidas, abre una incidencia en GitHub (le llega por correo) y la cierra al recuperarse.
 
 Comandos:

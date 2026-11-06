@@ -52,7 +52,7 @@
     {%- if amb.medida == 'tienda' %}<span class="ambito nota-precio nota-precio--origen">Sin precio en origen: se muestra el de tienda</span>
     {%- else %}<span class="ambito nota-precio nota-precio--tienda">Sin precio en tienda{% if amb.id != 'espana' %} en este ámbito{% endif %}: se muestra el de origen</span>{% endif %}
     {%- endif %}</th>
-  <td class="num">{% if etiqueta %}<span class="ambito">{{ etiqueta }}</span>{% endif %}{{ valor_apoyo(d) }}{% if d.eur %}<span class="ambito">≈ {{ d.eur|numero(d.decimales if d.decimales is not none else 2) }} {{ d.unidad_eur }}</span>{% endif %}
+  <td class="num">{% if etiqueta %}<span class="ambito">{{ etiqueta }}</span>{% endif %}{{ valor_apoyo(d) }}{% if d.eur %}<span class="ambito">≈ {{ d.eur|numero(d.decimales if d.decimales is not none else 2) }} {{ d.unidad_eur }}</span>{% endif %}{% if d.usd %}<span class="ambito">En dólares: {{ d.usd.valor|numero(d.decimales if d.decimales is not none else 2) }} {{ d.usd.unidad }}</span>{% endif %}
     {%- if precio == 'origen' %}<span class="solo-ambos">{{ tienda_linea(amb.tienda) }}</span>{% endif %}
     {%- if precio == 'tienda' and d.multiplicador %}<span class="ambito">×{{ d.multiplicador.veces|numero(1) }} el precio en origen</span>{% endif %}</td>
   <td class="num {{ 'sube' if r.cambio_pct and r.cambio_pct > 0 else 'baja' if r.cambio_pct and r.cambio_pct < 0 }}" data-etiqueta="Frente al anterior">{{ r.cambio_pct|porcentaje }}</td>
