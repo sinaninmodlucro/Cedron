@@ -1,7 +1,7 @@
 {
  "cobre": {
   "activo": "cobre",
-  "calculado": "2026-11-05T23:43:38Z",
+  "calculado": "2026-11-06T00:31:03Z",
   "disponibles": 3,
   "frase": "El contexto del cobre es neutral: suma +1 con 3 indicadores. A favor: tendencia de largo plazo.",
   "indicadores": [
@@ -559,7 +559,7 @@
  },
  "oro": {
   "activo": "oro",
-  "calculado": "2026-11-05T23:43:38Z",
+  "calculado": "2026-11-06T00:31:03Z",
   "disponibles": 5,
   "frase": "El contexto del oro es desfavorable: suma −3 con 5 indicadores. En contra: tendencia de largo plazo, momento y entorno macro.",
   "indicadores": [
@@ -580,7 +580,7 @@
     "puntos": -1
    },
    {
-    "dato": "En 3 meses: tipo real +0,21 puntos; dólar +1,8 %",
+    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -1133,7 +1133,7 @@
  },
  "paladio": {
   "activo": "paladio",
-  "calculado": "2026-11-05T23:43:38Z",
+  "calculado": "2026-11-06T00:31:03Z",
   "disponibles": 2,
   "frase": "Aún no hay datos suficientes para una lectura del paladio: 2 de 4 indicadores disponibles.",
   "indicadores": [
@@ -1154,7 +1154,7 @@
     "puntos": null
    },
    {
-    "dato": "En 3 meses: tipo real +0,21 puntos; dólar +1,8 %",
+    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -1183,7 +1183,7 @@
  },
  "plata": {
   "activo": "plata",
-  "calculado": "2026-11-05T23:43:38Z",
+  "calculado": "2026-11-06T00:31:03Z",
   "disponibles": 5,
   "frase": "El contexto de la plata es desfavorable: suma −3 con 5 indicadores. En contra: tendencia de largo plazo, momento y entorno macro.",
   "indicadores": [
@@ -1204,7 +1204,7 @@
     "puntos": -1
    },
    {
-    "dato": "En 3 meses: tipo real +0,21 puntos; dólar +1,8 %",
+    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -1757,7 +1757,7 @@
  },
  "platino": {
   "activo": "platino",
-  "calculado": "2026-11-05T23:43:38Z",
+  "calculado": "2026-11-06T00:31:03Z",
   "disponibles": 5,
   "frase": "El contexto del platino es desfavorable: suma −2 con 5 indicadores. A favor: valoración relativa (platino/oro); en contra: tendencia de largo plazo, momento y entorno macro.",
   "indicadores": [
@@ -1778,7 +1778,7 @@
     "puntos": -1
    },
    {
-    "dato": "En 3 meses: tipo real +0,21 puntos; dólar +1,8 %",
+    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Si van en direcciones distintas, cuenta como neutral.",
     "fecha": "2026-10-30",
     "id": "macro",
