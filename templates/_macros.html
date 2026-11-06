@@ -33,6 +33,13 @@
 {%- endif -%}
 {%- endmacro %}
 
+{% macro tienda_linea(t) -%}
+{%- if t and t.resumen -%}
+<span class="ambito tienda">En {{ t.canal_ultimo }}: <strong class="cifra">{{ t.resumen.valor|numero(t.decimales or 2) }} {{ t.unidad }}</strong> ({{ t.resumen.fecha|mes }})
+{%- if t.multiplicador %} · ×{{ t.multiplicador.veces|numero(1) }} el precio en origen{% endif %}</span>
+{%- endif -%}
+{%- endmacro %}
+
 {% macro noticia(n, raiz, nombres) -%}
 <li class="noticia" data-activos="{{ n.activos|join(' ') }}">
   <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>

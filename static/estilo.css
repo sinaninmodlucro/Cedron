@@ -185,6 +185,9 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
 .tabla-apoyo td.num { white-space: nowrap; }
 .ambito { display: block; font-family: var(--f-texto); font-weight: 400; font-size: var(--t-xs); color: var(--tinta-2); white-space: normal; }
 .aviso { color: var(--oxido); }
+.ambito.tienda { margin-top: 0.35rem; color: var(--tinta); }
+.bloque-pequeno { margin: 2.5rem 0 0.25rem; font-size: var(--t-m); }
+.ficha__precio--medio { font-size: var(--t-xl); }
 tr[hidden] { display: none; }
 @media (max-width: 46rem) {
   .tabla-apoyo thead { display: none; }

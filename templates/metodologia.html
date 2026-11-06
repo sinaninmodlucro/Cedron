@@ -37,12 +37,14 @@
     <li><strong>Tendencia</strong>: si el último dato está por encima o por debajo de la media de los últimos {{ cfg.indicadores.tendencia.meses_media }} meses, y si esa media sube o baja. Es una descripción, no una previsión.</li>
   </ul>
   <p>Cada materia puede tener datos de <strong>España</strong>, <strong>Europa</strong> y un ámbito <strong>global</strong>. Se elige cuál ver; si el ámbito elegido no tiene un dato reciente, se muestra el último dato disponible de otro ámbito y se indica en la fila. Se considera reciente un dato horario de hasta {{ cfg.apoyo.dias_reciente.horaria }} días, uno diario de hasta {{ cfg.apoyo.dias_reciente.diaria }}, uno semanal de hasta {{ cfg.apoyo.dias_reciente.semanal }} y uno mensual de hasta {{ cfg.apoyo.dias_reciente.mensual }} días desde el fin de su mes.</p>
+  <p><strong>Origen y tienda.</strong> En las carnes y los huevos de España se muestran dos precios: el de <strong>origen</strong> (lo que cobra el productor, sin IVA; Ministerio de Agricultura, semanal) y el de <strong>tienda</strong> (lo que pagan de media los hogares en supermercados, con IVA; panel de consumo del Ministerio, mensual, con dos o tres meses de retraso). El multiplicador divide el precio en tienda de un mes entre la media del precio en origen de ese mismo mes. No mide el beneficio de nadie: la diferencia incluye despiece y mermas (el precio en origen es por kilo de canal, con hueso), transporte, conservación, distribución, márgenes e IVA. El canal «supermercado» existe con ese nombre desde 2025; para los meses anteriores se usa la media de todas las tiendas, que incluye los supermercados.</p>
   <p class="pequeno secundario">El diésel en España es la media simple de todas las gasolineras que publica el Ministerio cada hora; sus datos anteriores proceden del boletín semanal de la Comisión Europea, que calcula la media de otra forma, por eso el cambio frente al dato anterior solo compara datos del Ministerio. Las series mensuales del Banco Mundial completan el pasado de las series diarias.</p>
 
   <h2 class="bloque">Cambios en la metodología</h2>
   <p>Si se añade, cambia o elimina una regla, se anunciará aquí con fecha y motivo. Las lecturas anteriores no se recalculan.</p>
   <ul>
     <li><strong>6 de noviembre de 2026.</strong> Se añaden las materias primas de apoyo (energía y ganadería), sin lectura. No cambia nada en las lecturas de los metales.</li>
+    <li><strong>6 de noviembre de 2026.</strong> En la ganadería de España se añade el precio en tienda junto al de origen, con su multiplicador, y se incorporan huevos y leche.</li>
   </ul>
 
   <h2 class="bloque" id="historial">Historial de lecturas</h2>

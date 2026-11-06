@@ -77,7 +77,41 @@ class Conectores(unittest.TestCase):
                 src.mapa_semanal(["Pollo ("])
 
 
+    def test_panel_consumo(self):
+        def hoja(titulo, mes):
+            return [["CONSUMO HOGARES"],
+                    [mes, "PENETRACION (%)", None, "PRECIO MEDIO kg ó litros", None, "VALOR"],
+                    [None, "T.ESPAÑA", "SUPERMERCADO", "T.ESPA�A", "SUPERMERCADO", "T.ESPAÑA"],
+                    ["CARNE CERDO", 77.5, 60.1, 7.62, 7.16, 999.0]]
+        from openpyxl import Workbook
+        wb = Workbook()
+        wb.active.title = "Julio 2026"
+        for f in hoja("Julio 2026", "JULIO 26"):
+            wb.active.append(f)
+        h = wb.create_sheet("agosto")                         # formato antiguo: mes solo en el titulo interno
+        for f in hoja("agosto", "AGOSTO 26"):
+            h.append(f)
+        buf = io.BytesIO()
+        wb.save(buf)
+        pagina = Respuesta('<a href="/es/dam/x/2026ago-datos-mensuales-panel-consumo-hogares-canales-base2021.abc.xlsx">x</a>')
+        with mock.patch("cedron.sources.requests.get", side_effect=[pagina, Respuesta(buf.getvalue())]):
+            d = src.panel_consumo([("CARNE CERDO", "SUPERMERCADO"), ("CARNE CERDO", "T.ESPAÑA")])
+        self.assertEqual(d[("CARNE CERDO", "SUPERMERCADO")], [("2026-07", 7.16), ("2026-08", 7.16)])
+        self.assertEqual(d[("CARNE CERDO", "T.ESPAÑA")][-1], ("2026-08", 7.62))   # bloque de precio, no penetracion
+
+
 class Calculos(unittest.TestCase):
+    def test_preferir_supermercado(self):
+        todas = [("2026-06", 7.5), ("2026-07", 7.6), ("2026-08", 7.7)]
+        super_ = [("2026-08", 7.2)]
+        self.assertEqual(apoyo.preferir(todas, super_), [("2026-06", 7.5), ("2026-07", 7.6), ("2026-08", 7.2)])
+
+    def test_multiplicador(self):
+        origen = [("2026-08-03", 1.6), ("2026-08-10", 1.8), ("2026-09-07", 2.0)]
+        m = apoyo.multiplicador(origen, "2026-08", 6.8)
+        self.assertAlmostEqual(m["veces"], 4.0)
+        self.assertIsNone(apoyo.multiplicador(origen, "2026-05", 6.8))      # sin origen ese mes
+
     def test_combinar_historia_mensual(self):
         historia = [("2026-08", 1.0), ("2026-09", 2.0), ("2026-10", 3.0)]
         actual = [("2026-10-05", 10.0), ("2026-10-06", 11.0)]

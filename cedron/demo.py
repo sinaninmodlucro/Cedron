@@ -24,7 +24,7 @@ def _paseo(n, final, volatilidad, deriva, semilla):
 
 # Niveles aproximados de las materias de apoyo, por unidad (y ambito si hace falta)
 NIVELES_APOYO = {"€/litro": 1.6, "$/galón": 3.8, "$/barril": 80, "$/MMBtu": 3.0, "$/tonelada": 130,
-                 "€/kg canal": 2.4, "$/kg": 3.0}
+                 "€/kg canal": 2.4, "$/kg": 3.0, "€/kg": 8.0, "€/unidad": 0.25}
 
 
 def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
@@ -46,13 +46,27 @@ def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
 
 
 def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
-    from .apoyo import materias
-    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}}
+    from .apoyo import _canales_panel, materias
+    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}}
     clave = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie"}
     semilla = 700
+
+    def panel(d, nivel):
+        # respaldo (todas las tiendas) 4 anos; preferido (supermercado) el ultimo ano, algo mas barato
+        canal, respaldo = _canales_panel(cfg, d)
+        fechas = _fechas(hoy - timedelta(days=60), "mensual", 4)
+        valores = _paseo(len(fechas), nivel, 0.02, 0.002, sum(map(ord, d["producto"])))
+        caches["panel"][f"{d['producto']}|{respaldo}"] = [[f, round(v, 4)] for f, v in zip(fechas, valores)]
+        caches["panel"][f"{d['producto']}|{canal}"] = [[f, round(v * 0.96, 4)] for f, v in zip(fechas[-12:], valores[-12:])]
+
     for m in materias(cfg):
         for ambito, amb in m.get("ambitos", {}).items():
             nivel = NIVELES_APOYO.get(amb["unidad"], 10) * (4 if ambito == "europa" and "MMBtu" in amb["unidad"] else 1)
+            if amb.get("tienda"):
+                panel(amb["tienda"], NIVELES_APOYO.get(amb["tienda"]["unidad"], 5))
+            if amb["fuente"] == "panel":
+                panel(amb, NIVELES_APOYO.get(amb["unidad"], 1) * (0.6 if "litro" in amb["unidad"] else 1))
+                continue
             defs = [(amb, amb.get("frecuencia", "mensual"), 3 if amb["fuente"] == "carburantes" else 10)]
             if amb.get("historia"):
                 h = amb["historia"]
@@ -70,7 +84,7 @@ def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
                 else:
                     caches[d["fuente"]][d[clave[d["fuente"]]]] = serie
     escribir("apoyo/carburantes.json", {"series": caches["carburantes"], "dato": iso(), "consultado": iso()})
-    for f in ("boletin", "mapa", "fred"):
+    for f in ("boletin", "mapa", "fred", "panel"):
         escribir(f"apoyo/{f}.json", {"series": caches[f], "consultado": iso()})
 
 
@@ -150,7 +164,8 @@ def generar(cfg) -> None:
 
     estado = Estado()
     for f in ("MetalCharts", "Banco Mundial", "FRED", "CFTC", "NewsData.io", "Ministerio (carburantes)",
-              "Comisión Europea (Oil Bulletin)", "MAPA (precios semanales)", "FRED (materias de apoyo)"):
+              "Comisión Europea (Oil Bulletin)", "MAPA (precios semanales)", "FRED (materias de apoyo)",
+              "MAPA (panel de consumo)"):
         estado.registrar_fuente(f, True)
     estado.set("ultima_ejecucion", iso())
     estado.guardar()

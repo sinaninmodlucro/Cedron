@@ -307,6 +307,94 @@ def _mapa_excel(contenido: bytes, anio: int, productos: list[str], obligatorio: 
 
 
 # ---------------------------------------------------------------------------
+# MAPA: Panel de consumo alimentario en hogares (precio medio pagado por canal)
+# ---------------------------------------------------------------------------
+PAGINA_PANEL = ("https://www.mapa.gob.es/es/alimentacion/temas/consumo-tendencias/"
+                "panel-de-consumo-alimentario/series-anuales")
+MESES_ES = {"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6, "JULIO": 7,
+            "AGOSTO": 8, "SEPTIEMBRE": 9, "OCTUBRE": 10, "NOVIEMBRE": 11, "DICIEMBRE": 12}
+
+
+def _canal_norm(t) -> str:
+    """'T.ESPAÑA' llega a veces mal codificado; se compara sin acentos ni simbolos raros."""
+    t = str(t or "").strip().upper().replace("�", "N").replace("Ñ", "N")
+    return re.sub(r"\s+", " ", t)
+
+
+def panel_consumo(pares: list[tuple[str, str]], anios: list[int] | None = None) -> dict:
+    """Precio medio (euros por kg, litro o unidad) que pagan los hogares, por mes.
+
+    'pares' = [(producto, canal)], p. ej. ("CARNE CERDO", "SUPERMERCADO"). El MAPA
+    publica un Excel por ano con una hoja por mes y, en cada hoja, un bloque
+    "PRECIO MEDIO" con una columna por canal de compra.
+    Devuelve {(producto, canal): [(AAAA-MM, valor), ...]}.
+    """
+    pagina = _get(PAGINA_PANEL, verify=CERT_FNMT).text
+    enlaces: dict[int, str] = {}
+    for url in re.findall(r'href="([^"]*datos-mensuales-panel-consumo-hogares-canales[^"]*\.xlsx)"', pagina):
+        m = re.search(r"/(\d{4})[a-z]{0,3}-datos-mensuales", url)
+        if not m:
+            continue
+        anio = int(m.group(1))
+        # si hay dos versiones del mismo ano, se prefiere la de base 2021 (la actual)
+        if anio not in enlaces or ("base2021" in url and "base2021" not in enlaces[anio]):
+            enlaces[anio] = html.unescape(url)
+    if not enlaces:
+        raise FuenteError("no se encuentra el Excel por canales del panel de consumo del MAPA")
+    ultimo = max(enlaces)
+    elegidos = sorted(a for a in (anios or [ultimo]) if a in enlaces)
+    if ultimo not in elegidos:
+        elegidos.append(ultimo)
+    salida: dict = {p: [] for p in pares}
+    for anio in elegidos:
+        url = enlaces[anio]
+        if url.startswith("/"):
+            url = "https://www.mapa.gob.es" + url
+        datos = _panel_excel(_get(url, verify=CERT_FNMT).content, pares, obligatorio=anio == ultimo)
+        for p, s in datos.items():
+            salida[p] += s
+    return {p: sorted(dict(s).items()) for p, s in salida.items()}
+
+
+def _panel_excel(contenido: bytes, pares: list[tuple[str, str]], obligatorio: bool) -> dict:
+    from openpyxl import load_workbook
+    libro = load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
+    salida: dict = {p: [] for p in pares}
+    hojas_leidas = 0
+    for hoja in libro.worksheets:
+        filas = list(hoja.iter_rows(values_only=True, max_row=1000))
+        if len(filas) < 4:
+            continue
+        # El mes sale del titulo interno ("AGOSTO 26"); en los Excel antiguos la hoja
+        # se llama solo "enero", "febrero"... y en los nuevos "Enero 2026".
+        m = re.match(r"^\s*([A-ZÁÉÍÓÚ]+)\s+(\d{2,4})\s*$", str(filas[1][0] or "").upper()) or \
+            re.match(r"^\s*([A-ZÁÉÍÓÚ]+)\s+(\d{4})\s*$", hoja.title.upper())
+        if not m or m.group(1) not in MESES_ES:
+            continue
+        anio = int(m.group(2)) + (2000 if len(m.group(2)) == 2 else 0)
+        mes = f"{anio}-{MESES_ES[m.group(1)]:02d}"
+        inicio = next((j for j, c in enumerate(filas[1]) if c and "PRECIO" in str(c).upper()), None)
+        if inicio is None:
+            continue
+        # el bloque de precio llega hasta el siguiente titulo de bloque
+        fin = next((j for j in range(inicio + 1, len(filas[1])) if filas[1][j]), len(filas[2]))
+        columnas = {_canal_norm(filas[2][j]): j for j in range(inicio, min(fin, len(filas[2]))) if filas[2][j]}
+        por_producto = {str(f[0]).strip(): f for f in filas[3:] if f and f[0]}
+        hojas_leidas += 1
+        for prod, canal in pares:
+            fila, j = por_producto.get(prod), columnas.get(_canal_norm(canal))
+            if fila is not None and j is not None and j < len(fila) and isinstance(fila[j], (int, float)) and fila[j] > 0:
+                salida[(prod, canal)].append((mes, float(fila[j])))
+    if obligatorio:
+        if not hojas_leidas:
+            raise FuenteError("el Excel del panel de consumo ya no tiene el bloque de precio medio")
+        faltan = [f"{p} ({c})" for (p, c), s in salida.items() if not s]
+        if faltan:
+            raise FuenteError("sin datos en el panel de consumo para: " + ", ".join(faltan))
+    return salida
+
+
+# ---------------------------------------------------------------------------
 # FRED: series macroeconomicas
 # ---------------------------------------------------------------------------
 def fred_serie(serie: str, clave: str, desde: str) -> list[tuple[str, float]]:

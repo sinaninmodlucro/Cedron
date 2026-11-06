@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia %}
+{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, tienda_linea %}
 {% block titulo %}Materias primas de apoyo | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Energía y ganadería: precios en España, Europa y el mundo, con su fecha y su fuente.{% endblock %}
 {% block contenido %}
@@ -29,7 +29,7 @@
         <th scope="row"><a href="{{ raiz }}materias/{{ m.id }}.html">{{ m.nombre }}</a>
           {% if amb %}<span class="ambito">{{ amb.nombre }}{% if vista.motivo %} · <span class="aviso">{{ vista.motivo }}</span>{% endif %}</span>{% endif %}</th>
         {% if amb %}{% set r = amb.resumen %}
-        <td class="num">{{ valor_apoyo(amb) }}{% if amb.eur %}<span class="ambito">≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}</span>{% endif %}</td>
+        <td class="num">{% if amb.tienda %}<span class="ambito">En origen</span>{% endif %}{{ valor_apoyo(amb) }}{% if amb.eur %}<span class="ambito">≈ {{ amb.eur|numero(amb.decimales or 2) }} {{ amb.unidad_eur }}</span>{% endif %}{{ tienda_linea(amb.tienda) }}</td>
         <td class="num {{ 'sube' if r.cambio_pct and r.cambio_pct > 0 else 'baja' if r.cambio_pct and r.cambio_pct < 0 }}" data-etiqueta="Frente al anterior">{{ r.cambio_pct|porcentaje }}</td>
         <td class="num {{ 'sube' if r.interanual_pct and r.interanual_pct > 0 else 'baja' if r.interanual_pct and r.interanual_pct < 0 }}" data-etiqueta="En un año">{{ r.interanual_pct|porcentaje }}</td>
         <td class="col-tendencia">{{ tendencia(r) }}</td>

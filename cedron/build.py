@@ -201,6 +201,9 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
                 amb["grafico"] = grafico(r["mensual"], meses_media, amb["unidad"], simbolo) if r else None
                 amb["eur"] = (r["valor"] / eurusd[1]) if r and simbolo == "$" and eurusd else None
                 amb["unidad_eur"] = "€" + amb["unidad"][1:] if simbolo == "$" else None
+                t = amb.get("tienda")
+                if t and t.get("resumen"):
+                    t["grafico"] = grafico(t["resumen"]["mensual"], meses_media, t["unidad"], "€")
 
     ultima_precios = max((p.get("consultado", "") for p in precios.values()), default="") or None
     proxima = _proxima_hora(cfg, tz)

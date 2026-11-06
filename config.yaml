@@ -183,10 +183,11 @@ apoyo:
               nota: "Carbón térmico australiano, referencia de Asia y Europa"
 
     - id: ganaderia
-      nombre: "Ganadería"
+      nombre: "Ganadería, huevos y leche"
       descripcion: >
         El pienso (cereales y soja) y la energía son los mayores costes de la
         ganadería; sus precios suelen trasladarse a la carne con algunos meses de retraso.
+        En España se ve el precio en origen y el que se paga en el supermercado.
       materias:
         - id: cerdo
           nombre: "Cerdo"
@@ -197,7 +198,8 @@ apoyo:
               factor: 0.01
               unidad: "€/kg canal"
               frecuencia: semanal
-              nota: "Canal clase S, precio medio nacional"
+              nota: "Precio en origen (lo que cobra el ganadero): canal clase S, media nacional"
+              tienda: {producto: "CARNE CERDO", unidad: "€/kg"}
             # europa: pendiente (el portal agroalimentario de la UE está suspendido)
             global:
               fuente: fred
@@ -215,7 +217,8 @@ apoyo:
               factor: 0.01
               unidad: "€/kg canal"
               frecuencia: semanal
-              nota: "Canal, precio medio nacional"
+              nota: "Precio en origen (lo que cobra el ganadero): canal, media nacional"
+              tienda: {producto: "CARNE POLLO", unidad: "€/kg"}
             global:
               fuente: pink
               serie: "Chicken **"
@@ -231,14 +234,45 @@ apoyo:
               factor: 0.01
               unidad: "€/kg canal"
               frecuencia: semanal
-              nota: "Terneras de 180 a 300 kg, canal, precio medio nacional"
+              nota: "Precio en origen (lo que cobra el ganadero): terneras de 180 a 300 kg, canal, media nacional"
+              tienda: {producto: "CARNE VACUNO", unidad: "€/kg"}
             global:
               fuente: pink
               serie: "Beef **"
               unidad: "$/kg"
               frecuencia: mensual
               nota: "Vacuno, precio de referencia mundial del Banco Mundial"
-        # lacteos: pendiente (precio de la leche cruda en España del FEGA y referencia europea)
+        - id: huevos
+          nombre: "Huevos"
+          ambitos:
+            espana:
+              fuente: mapa
+              producto: "Huevos tipo jaula acondicionada - Clase M"
+              factor: 0.0833333      # de euros por docena a euros por huevo
+              unidad: "€/unidad"
+              decimales: 3
+              frecuencia: semanal
+              nota: "Precio en origen (lo que cobra el productor): huevo de jaula, clase M, media nacional"
+              tienda: {producto: "T.HUEVOS UNDS.", unidad: "€/unidad", decimales: 3}
+        - id: leche
+          nombre: "Leche"
+          ambitos:
+            espana:
+              fuente: panel
+              producto: "TOTAL LECHE LIQUIDA"
+              unidad: "€/litro"
+              frecuencia: mensual
+              nota: "Precio en supermercado que pagan los hogares (toda la leche líquida)"
+            # origen: pendiente (precio de la leche cruda al ganadero, FEGA); europa: pendiente
+
+# Precio en tienda (6-nov-2026): Panel de consumo alimentario en hogares del MAPA.
+# Mensual, con 2-3 meses de retraso. Se usa el canal 'preferido' (supermercado) y,
+# en los meses en que no existe (antes de 2025 se media de otra forma), la media
+# de todas las tiendas ('respaldo'), que se mide igual desde 2022.
+panel:
+  canal: "SUPERMERCADO"
+  canal_respaldo: "T.ESPAÑA"
+  anios_inicial: 2022       # primer ano que se descarga la primera vez
 
 # -----------------------------------------------------------------------------
 # Presupuesto de consultas a las APIs gratuitas. El motor nunca lo supera.

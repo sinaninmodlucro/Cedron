@@ -33,15 +33,39 @@ def materias(cfg) -> list[dict]:
     return [m for g in cfg.get("apoyo", {}).get("grupos", []) for m in g.get("materias", [])]
 
 
-def _fuentes_de(cfg, tipo: str, clave: str) -> list[str]:
-    """Valores de 'clave' de todos los ambitos (e historias) que usan la fuente 'tipo'."""
-    salida = []
+def _definiciones(cfg):
+    """Todas las definiciones de serie: ambitos, sus historias y sus precios en tienda."""
     for m in materias(cfg):
         for amb in m.get("ambitos", {}).values():
-            for d in (amb, amb.get("historia") or {}):
-                if d.get("fuente") == tipo and d.get(clave) and d[clave] not in salida:
-                    salida.append(d[clave])
+            yield amb
+            if amb.get("historia"):
+                yield amb["historia"]
+            if amb.get("tienda"):
+                yield {"fuente": "panel", **amb["tienda"]}
+
+
+def _fuentes_de(cfg, tipo: str, clave: str) -> list[str]:
+    """Valores de 'clave' de todas las definiciones que usan la fuente 'tipo'."""
+    salida = []
+    for d in _definiciones(cfg):
+        if d.get("fuente") == tipo and d.get(clave) and d[clave] not in salida:
+            salida.append(d[clave])
     return salida
+
+
+def _canales_panel(cfg, d: dict) -> tuple[str, str]:
+    p = cfg.get("panel", {})
+    return d.get("canal") or p.get("canal", "SUPERMERCADO"), d.get("canal_respaldo") or p.get("canal_respaldo", "T.ESPAÑA")
+
+
+def pares_panel(cfg) -> list[tuple[str, str]]:
+    pares = []
+    for d in _definiciones(cfg):
+        if d.get("fuente") == "panel":
+            for canal in _canales_panel(cfg, d):
+                if (d["producto"], canal) not in pares:
+                    pares.append((d["producto"], canal))
+    return pares
 
 
 def series_pink(cfg) -> list[str]:
@@ -113,6 +137,27 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
             estado.registrar_fuente("MAPA (precios semanales)", False, str(e))
             log.warning("MAPA: %s", e)
 
+    # Panel de consumo (precio en tienda): una vez al dia. El ano anterior se sigue
+    # leyendo porque el MAPA publica su diciembre meses despues.
+    pares = pares_panel(cfg)
+    if pares and (forzar or _una_vez_al_dia(estado, "apoyo_panel_dia")):
+        try:
+            guardado = leer("apoyo/panel.json", {}) or {}
+            series = guardado.get("series", {})
+            vacio = any(not series.get(f"{p}|{c}") for p, c in pares)
+            desde = int(cfg.get("panel", {}).get("anios_inicial", hoy.year - 4))
+            anios = list(range(desde, hoy.year + 1)) if vacio else [hoy.year - 1, hoy.year]
+            nuevas = src.panel_consumo(pares, anios)
+            for (p, c), s in nuevas.items():
+                clave = f"{p}|{c}"
+                series[clave] = _fusionar(series.get(clave, []), [list(x) for x in s])
+            escribir("apoyo/panel.json", {"series": series, "consultado": iso()})
+            estado.set("apoyo_panel_dia", hoy.isoformat())
+            estado.registrar_fuente("MAPA (panel de consumo)", True)
+        except src.FuenteError as e:
+            estado.registrar_fuente("MAPA (panel de consumo)", False, str(e))
+            log.warning("Panel de consumo: %s", e)
+
     # FRED: una vez al dia
     codigos = _fuentes_de(cfg, "fred", "serie")
     if codigos and (forzar or _una_vez_al_dia(estado, "apoyo_fred_dia")):
@@ -138,6 +183,7 @@ FUENTES_NOMBRE = {
     "mapa": "Ministerio de Agricultura (MAPA)",
     "pink": "Banco Mundial (Pink Sheet)",
     "fred": "FRED",
+    "panel": "Ministerio de Agricultura, panel de consumo en hogares",
 }
 CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie"}
 
@@ -151,11 +197,26 @@ def cargar_fuentes() -> dict:
         "mapa": (leer("apoyo/mapa.json", {}) or {}).get("series", {}),
         "fred": (leer("apoyo/fred.json", {}) or {}).get("series", {}),
         "pink": (leer("pink.json", {}) or {}).get("series", {}),
+        "panel": (leer("apoyo/panel.json", {}) or {}).get("series", {}),
     }
 
 
-def _serie(definicion: dict, fuentes: dict) -> list[tuple[str, float]]:
+def preferir(respaldo: list, preferida: list) -> list:
+    """Serie mensual con el dato del canal preferido cuando existe y, si no, el de respaldo."""
+    por_mes = {f: v for f, v in respaldo}
+    por_mes.update({f: v for f, v in preferida})
+    return sorted(por_mes.items())
+
+
+def _serie(definicion: dict, fuentes: dict, cfg: dict | None = None) -> list[tuple[str, float]]:
     tipo = definicion.get("fuente")
+    if tipo == "panel":
+        canal, respaldo = _canales_panel(cfg or {}, definicion)
+        datos = fuentes.get("panel", {})
+        factor = float(definicion.get("factor", 1))
+        serie = preferir(datos.get(f"{definicion['producto']}|{respaldo}", []),
+                         datos.get(f"{definicion['producto']}|{canal}", []))
+        return [(f, v * factor) for f, v in serie]
     datos = fuentes.get(tipo, {}).get(definicion.get(CLAVE_FUENTE.get(tipo, ""), ""), [])
     factor = float(definicion.get("factor", 1))
     # FRED fecha sus series mensuales el dia 1 (AAAA-MM-01): se tratan como medias del mes
@@ -257,6 +318,47 @@ def elegir(ambitos: dict, vista: str, dias: dict, hoy: date) -> tuple[str | None
     return mejor, f"sin datos de {nombre}"
 
 
+def multiplicador(origen: list, f_tienda: str, v_tienda: float) -> dict | None:
+    """Cuantas veces el precio en tienda supera al de origen en el mismo mes."""
+    mes = f_tienda[:7]
+    del_mes = [v for f, v in origen if f[:7] == mes]
+    if not del_mes or not v_tienda:
+        return None
+    media = sum(del_mes) / len(del_mes)
+    return {"veces": v_tienda / media, "mes": mes, "origen": media} if media else None
+
+
+def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dict | None:
+    """Precio en tienda (panel de consumo) junto al de origen, si el ambito lo define."""
+    t = amb.get("tienda")
+    if not t:
+        return None
+    definicion = {"fuente": "panel", **t}
+    serie = _serie(definicion, fuentes, cfg)
+    if not serie:
+        return {**t, "resumen": None}
+    canal, respaldo = _canales_panel(cfg, definicion)
+    datos = fuentes.get("panel", {})
+    factor = float(t.get("factor", 1))
+    solo_pref = [(f, v * factor) for f, v in datos.get(f"{t['producto']}|{canal}", [])]
+    solo_resp = [(f, v * factor) for f, v in datos.get(f"{t['producto']}|{respaldo}", [])]
+    r = resumen(serie, meses_media)
+    # El cambio en un ano compara siempre la misma medida: supermercado con supermercado
+    # si existe el dato de hace un ano; si no, la media de todas las tiendas en ambos meses.
+    r_pref = resumen(solo_pref, meses_media) if solo_pref else None
+    r_resp = resumen(solo_resp, meses_media) if solo_resp else None
+    if r_pref and r_pref["fecha"] == r["fecha"] and r_pref["interanual_pct"] is not None:
+        r["interanual_pct"], r["interanual_base"] = r_pref["interanual_pct"], "supermercado"
+    elif r_resp and r_resp["fecha"] == r["fecha"]:
+        r["interanual_pct"], r["interanual_base"] = r_resp["interanual_pct"], "todas las tiendas"
+    else:
+        r["interanual_pct"], r["interanual_base"] = None, None
+    preferidos = {f for f, _ in solo_pref}
+    return {**t, "resumen": r, "canal_ultimo": "supermercado" if r["fecha"] in preferidos else "todas las tiendas",
+            "multiplicador": multiplicador(origen, r["fecha"], r["valor"]),
+            "fuente_nombre": FUENTES_NOMBRE["panel"]}
+
+
 def preparar(cfg, hoy: date | None = None) -> list[dict]:
     """Estructura lista para las plantillas: grupos -> materias -> ambitos y vistas."""
     hoy = hoy or date.today()
@@ -273,8 +375,8 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                 amb = m.get("ambitos", {}).get(a)
                 if not amb:
                     continue
-                actual = _serie(amb, fuentes)
-                historia = _serie(amb["historia"], fuentes) if amb.get("historia") else []
+                actual = _serie(amb, fuentes, cfg)
+                historia = _serie(amb["historia"], fuentes, cfg) if amb.get("historia") else []
                 serie = combinar(historia, actual) if actual else historia
                 fuentes_usadas = [FUENTES_NOMBRE.get(amb["fuente"], amb["fuente"])]
                 if amb.get("historia") and historia:
@@ -289,7 +391,8 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                               "frecuencia": amb.get("frecuencia", "mensual") if actual else "mensual",
                               "fuente_nombre": fuentes_usadas[0] if actual else fuentes_usadas[-1],
                               "fuentes": fuentes_usadas, "resumen": r,
-                              "solo_historia": not actual and bool(historia)}
+                              "solo_historia": not actual and bool(historia),
+                              "tienda": tienda(cfg, amb, serie, fuentes, meses_media)}
             vistas = {}
             for v in AMBITOS:
                 mostrado, motivo = elegir(ambitos, v, dias, hoy)

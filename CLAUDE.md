@@ -51,7 +51,7 @@ GitHub Actions (cada hora, minuto 17 UTC)  →  run.py
 - `cedron/store.py`: lectura/escritura atómica de JSON en `data/` (o `CEDRON_DATA`).
 - `cedron/demo.py`: datos **inventados** para ver la web sin claves (`python run.py --demo` → `_site_demo/`, con aviso visible).
 - `templates/acceso.html`: pantalla de contraseña (no pasa por Jinja; usa `__DATOS__` y `__RAIZ__`).
-- `tests/`: 37 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
+- `tests/`: 41 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
 - `.github/workflows/actualizar.yml`: la automatización. Si una fuente falla 3 veces seguidas, abre una incidencia en GitHub (le llega por correo) y la cierra al recuperarse.
 
 Comandos:
@@ -80,6 +80,7 @@ python -m unittest discover tests
 | Ministerio Transición Ecológica (carburantes) | Diésel en España, media simple de ~11.000 gasolineras | Sin clave | Se pide cada hora; JSON de ~12 MB |
 | Comisión Europea, Weekly Oil Bulletin | Diésel España y media UE, semanal desde 2005 | Sin clave | El Excel histórico se descubre en la página |
 | MAPA, precios medios nacionales | Cerdo, pollo, ternera (y cereales para el bloque 2), semanal | Sin clave | Un Excel por año; certificado FNMT. La primera vez baja 5 años |
+| MAPA, panel de consumo en hogares (por canales) | Precio en tienda (supermercado) de carne, huevos y leche | Sin clave | Mensual, 2-3 meses de retraso. Un Excel por año; el canal SUPERMERCADO solo existe desde 2025 y antes se usa T.ESPAÑA (todas las tiendas). Los Excel de 2022-2024 nombran las hojas «enero»…; el mes sale del título interno |
 | FRED (apoyo) | Brent, WTI, Henry Hub, diésel EE. UU. (EIA); cerdo (FMI) | FRED_KEY | El FMI: revisar condiciones si la web se abre al público |
 | RSS | Noticias | — | Fed, BCE, Banco de Inglaterra, Expansión, Cinco Días, FT Materias primas, Investing.com (en y es), Silver Institute y GoldSeek funcionan (validados el 6-nov-2026). FT e Investing: RSS para uso personal, revisar condiciones si se abre al público |
 
@@ -115,7 +116,8 @@ Pendiente, por orden de prioridad:
 2. **Prueba histórica de 15 años** (fase 4 del plan, aún no hecha): comprobar con el histórico del Banco Mundial que las reglas no dan resultados absurdos, quitar las que no aporten y publicar los resultados en la página de metodología.
 3. **Paladio**: no tiene lectura hasta acumular historia propia (sin Banco Mundial). Valorar otra fuente histórica con licencia adecuada.
 4. **Materias primas de apoyo** (decidido con el usuario el 6-nov-2026). Sin lectura: solo precio, cambios y tendencia. **España primero**, luego Europa, luego global; un selector en la web elige el ámbito y, si falta un dato reciente, se muestra el último de otro ámbito, indicándolo. Bloques, en este orden:
-   - **Bloque 1, energía + ganadería: HECHO** (diésel, Brent, WTI, gas, carbón; cerdo, pollo, ternera). Pendiente dentro del bloque: gas en España (MIBGAS, revisar condiciones), Europa para ganadería (el portal agroalimentario de la UE estaba suspendido el 6-nov-2026), lácteos (leche cruda del FEGA y referencia europea).
+   - **Bloque 1, energía + ganadería: HECHO** (diésel, Brent, WTI, gas, carbón; cerdo, pollo, ternera, huevos, leche). En España, la ganadería muestra **precio en origen y en supermercado** (decisión del usuario: «junto al de origen»), con el multiplicador tienda/origen del mismo mes. El usuario NO quiere solo precios de origen: quería precios reales de supermercado. No se leen webs de supermercados (sin API oficial ni condiciones verificadas). Pendiente dentro del bloque: gas en España (MIBGAS, revisar condiciones), Europa para ganadería (el portal agroalimentario de la UE estaba suspendido el 6-nov-2026), leche cruda en origen (FEGA).
+   - Noticias: Bloomberg Mercados, Industrias y Línea activos (solo uso privado); Bloomberg Economía desactivado por ruido.
    - Bloque 2: fertilizantes (urea, fosfatos, potasa) + agrícolas (trigo, maíz, soja, arroz, café, cacao, azúcar, aceite de oliva, algodón). Antes, el usuario dirá qué agrícolas son principales y cuáles de apoyo, y cómo quiere verlas. El Excel del MAPA ya trae trigo, cebada y maíz de España.
    - Bloque 3: metales industriales (aluminio, níquel, zinc, estaño, plomo, mineral de hierro) + **madera**, como materiales de construcción.
    - Bloque 4: **cadena de costes**: estimaciones de cómo se transmiten los precios (gas → fertilizantes → cereales → pienso → carne; petróleo → diésel → todo; energía + metales → construcción). Es una regla nueva: diseñarla con el usuario, con datos históricos medibles, publicada y sin recomendaciones.
