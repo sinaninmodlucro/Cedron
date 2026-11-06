@@ -369,7 +369,7 @@ medios:
     rss: "https://www.fxstreet.com/rss/news"
     nota: 60
     idioma: en
-    activo: true         # 6-nov-2026: validado. Solo uso privado. Trae tambien noticias de divisas
+    activo: false        # 6-nov-2026: desactivado; bloquea las conexiones desde GitHub (403, 11 fallos seguidos)
   - nombre: "Investing.com - Análisis de materias primas"
     rss: "https://www.investing.com/rss/commodities.rss"
     nota: 60
