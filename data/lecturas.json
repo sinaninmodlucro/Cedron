@@ -1,12 +1,12 @@
 {
  "cobre": {
   "activo": "cobre",
-  "calculado": "2026-11-06T15:05:20Z",
+  "calculado": "2026-11-06T15:36:33Z",
   "disponibles": 3,
   "frase": "El contexto del cobre es neutral: suma +1 con 3 indicadores. A favor: tendencia de largo plazo.",
   "indicadores": [
    {
-    "dato": "+1,2 % frente a la media de 10 meses",
+    "dato": "+1,0 % frente a la media de 10 meses",
     "explicacion": "El precio está por encima de su media y con la media al alza.",
     "fecha": "2026-11",
     "id": "tendencia",
@@ -14,8 +14,8 @@
     "puntos": 1
    },
    {
-    "dato": "−3,9 % en 3 meses",
-    "explicacion": "Una caída de 3,9 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
+    "dato": "−4,1 % en 3 meses",
+    "explicacion": "Una caída de 4,1 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
     "fecha": "2026-11",
     "id": "momento",
     "nombre": "Momento",
@@ -550,21 +550,21 @@
    ],
    [
     "2026-11",
-    6.228255
+    6.22189
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 6.247,
+  "precio_usado": 6.23427,
   "total": 1
  },
  "oro": {
   "activo": "oro",
-  "calculado": "2026-11-06T15:05:20Z",
+  "calculado": "2026-11-06T15:36:33Z",
   "disponibles": 5,
   "frase": "El contexto del oro es desfavorable: suma −3 con 5 indicadores. En contra: tendencia de largo plazo, momento y entorno macro.",
   "indicadores": [
    {
-    "dato": "−9,0 % frente a la media de 10 meses",
+    "dato": "−8,8 % frente a la media de 10 meses",
     "explicacion": "El precio está por debajo de su media y con la media a la baja.",
     "fecha": "2026-11",
     "id": "tendencia",
@@ -572,8 +572,8 @@
     "puntos": -1
    },
    {
-    "dato": "−8,4 % en 3 meses",
-    "explicacion": "Una caída de 8,4 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
+    "dato": "−8,2 % en 3 meses",
+    "explicacion": "Una caída de 8,2 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
     "fecha": "2026-11",
     "id": "momento",
     "nombre": "Momento",
@@ -596,7 +596,7 @@
     "puntos": 0
    },
    {
-    "dato": "Ratio 78,59 (media 10 años: 80,55)",
+    "dato": "Ratio 78,62 (media 10 años: 80,55)",
     "explicacion": "Frente al otro metal, el activo está en su rango habitual.",
     "fecha": "2026-11",
     "id": "ratio",
@@ -1124,16 +1124,16 @@
    ],
    [
     "2026-11",
-    4064.7941650000002
+    4068.976145
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 4038.77221,
+  "precio_usado": 4047.13617,
   "total": -3
  },
  "paladio": {
   "activo": "paladio",
-  "calculado": "2026-11-06T15:05:20Z",
+  "calculado": "2026-11-06T15:36:33Z",
   "disponibles": 2,
   "frase": "Aún no hay datos suficientes para una lectura del paladio: 2 de 4 indicadores disponibles.",
   "indicadores": [
@@ -1174,16 +1174,16 @@
   "mensual": [
    [
     "2026-11",
-    1030.0660400000002
+    1027.43715
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 1026.23045,
+  "precio_usado": 1020.97267,
   "total": -1
  },
  "plata": {
   "activo": "plata",
-  "calculado": "2026-11-06T15:05:20Z",
+  "calculado": "2026-11-06T15:36:33Z",
   "disponibles": 5,
   "frase": "El contexto de la plata es desfavorable: suma −3 con 5 indicadores. En contra: tendencia de largo plazo, momento y entorno macro.",
   "indicadores": [
@@ -1196,8 +1196,8 @@
     "puntos": -1
    },
    {
-    "dato": "−20,9 % en 3 meses",
-    "explicacion": "Una caída de 20,9 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
+    "dato": "−20,8 % en 3 meses",
+    "explicacion": "Una caída de 20,8 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
     "fecha": "2026-11",
     "id": "momento",
     "nombre": "Momento",
@@ -1220,7 +1220,7 @@
     "puntos": 0
    },
    {
-    "dato": "Ratio 78,59 (media 10 años: 80,55)",
+    "dato": "Ratio 78,62 (media 10 años: 80,55)",
     "explicacion": "Frente al otro metal, el activo está en su rango habitual.",
     "fecha": "2026-11",
     "id": "ratio",
@@ -1748,21 +1748,21 @@
    ],
    [
     "2026-11",
-    51.72105
+    51.75454
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 51.76251,
+  "precio_usado": 51.82949,
   "total": -3
  },
  "platino": {
   "activo": "platino",
-  "calculado": "2026-11-06T15:05:20Z",
+  "calculado": "2026-11-06T15:36:33Z",
   "disponibles": 5,
   "frase": "El contexto del platino es desfavorable: suma −2 con 5 indicadores. A favor: valoración relativa (platino/oro); en contra: tendencia de largo plazo, momento y entorno macro.",
   "indicadores": [
    {
-    "dato": "−16,5 % frente a la media de 10 meses",
+    "dato": "−15,8 % frente a la media de 10 meses",
     "explicacion": "El precio está por debajo de su media y con la media a la baja.",
     "fecha": "2026-11",
     "id": "tendencia",
@@ -1770,8 +1770,8 @@
     "puntos": -1
    },
    {
-    "dato": "−14,3 % en 3 meses",
-    "explicacion": "Una caída de 14,3 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
+    "dato": "−13,6 % en 3 meses",
+    "explicacion": "Una caída de 13,6 % frente a la media de hace 3 meses; cuenta como señal si supera el 5 %.",
     "fecha": "2026-11",
     "id": "momento",
     "nombre": "Momento",
@@ -1794,7 +1794,7 @@
     "puntos": 0
    },
    {
-    "dato": "Ratio 0,37 (media 10 años: 0,54)",
+    "dato": "Ratio 0,38 (media 10 años: 0,54)",
     "explicacion": "Frente al otro metal, el activo está barato.",
     "fecha": "2026-11",
     "id": "ratio",
@@ -2322,11 +2322,11 @@
    ],
    [
     "2026-11",
-    1521.3657050000002
+    1527.461025
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 1525.90219,
+  "precio_usado": 1538.09283,
   "total": -2
  }
 }
