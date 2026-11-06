@@ -1,6 +1,6 @@
 {
  "cobre": {
-  "calculado": "2026-11-06T18:19:13Z",
+  "calculado": "2026-11-06T19:16:03Z",
   "contexto": [
    {
     "dato": "Percentil 56 de los últimos 3 años",
@@ -530,29 +530,29 @@
    ],
    [
     "2026-11",
-    6.22569
+    6.229855000000001
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 6.24187,
+  "precio_usado": 6.2502,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -5.149105368766193,
+     "cambio_pct": -5.022523438626947,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 6.580718109478528,
      "sube": false
     },
     {
-     "cambio_pct": -3.944103077625294,
+     "cambio_pct": -3.8159130285913556,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 6.498164298069299,
      "sube": false
     },
     {
-     "cambio_pct": 27.274951841466887,
+     "cambio_pct": 27.444804842064375,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 4.90424070855265,
@@ -567,7 +567,7 @@
   }
  },
  "oro": {
-  "calculado": "2026-11-06T18:19:13Z",
+  "calculado": "2026-11-06T19:16:03Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
@@ -1113,29 +1113,29 @@
    ],
    [
     "2026-11",
-    4075.535145
+    4081.90203
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 4060.25417,
+  "precio_usado": 4072.98794,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -1.0900323995127859,
+     "cambio_pct": -0.7798309378806323,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 4105.0,
      "sube": false
     },
     {
-     "cambio_pct": -7.95161709362956,
+     "cambio_pct": -7.662934935388799,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 4411.0,
      "sube": false
     },
     {
-     "cambio_pct": -0.6544122828480492,
+     "cambio_pct": -0.3428446293124554,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 4087.0,
@@ -1150,7 +1150,7 @@
   }
  },
  "paladio": {
-  "calculado": "2026-11-06T18:19:13Z",
+  "calculado": "2026-11-06T19:16:03Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
@@ -1172,15 +1172,15 @@
   "mensual": [
    [
     "2026-11",
-    1027.644745
+    1030.66704
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 1021.38786,
+  "precio_usado": 1027.43245,
   "tendencia": null
  },
  "plata": {
-  "calculado": "2026-11-06T18:19:13Z",
+  "calculado": "2026-11-06T19:16:03Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
@@ -1726,29 +1726,29 @@
    ],
    [
     "2026-11",
-    51.808425
+    51.8896
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 51.93726,
+  "precio_usado": 52.09961,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -8.882000000000001,
+     "cambio_pct": -8.597175438596494,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 57.0,
      "sube": false
     },
     {
-     "cambio_pct": -20.585229357798173,
+     "cambio_pct": -20.3369877675841,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 65.4,
      "sube": false
     },
     {
-     "cambio_pct": 3.0501190476190487,
+     "cambio_pct": 3.3722420634920702,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 50.4,
@@ -1763,7 +1763,7 @@
   }
  },
  "platino": {
-  "calculado": "2026-11-06T18:19:13Z",
+  "calculado": "2026-11-06T19:16:03Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
@@ -1782,7 +1782,7 @@
     "puntos": 0
    },
    {
-    "dato": "Ratio 0,38 (media 10 años: 0,54)",
+    "dato": "Ratio 0,37 (media 10 años: 0,54)",
     "explicacion": "Frente al otro metal, el activo está barato.",
     "fecha": "2026-11",
     "id": "ratio",
@@ -2309,29 +2309,29 @@
    ],
    [
     "2026-11",
-    1533.115965
+    1529.353305
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 1549.40271,
+  "precio_usado": 1541.87739,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -4.416859346082658,
+     "cambio_pct": -4.881098704503383,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 1621.0,
      "sube": false
     },
     {
-     "cambio_pct": -12.95490393258426,
+     "cambio_pct": -13.377674719101119,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 1780.0,
      "sube": false
     },
     {
-     "cambio_pct": -0.9966319488817876,
+     "cambio_pct": -1.4774830670926442,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 1565.0,
