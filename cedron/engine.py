@@ -252,6 +252,9 @@ def calcular_lecturas(cfg) -> dict:
 def revisar_salud(cfg, estado: Estado) -> list[str]:
     # Los medios desactivados en config.yaml dejan de contar (y se olvida su historial)
     inactivos = {f"RSS {m['nombre']}" for m in cfg["medios"] if not m.get("activo", True)}
+    # Igual con las fuentes de materias de apoyo que ya no usa ninguna materia
+    # (p. ej. los carburantes del Ministerio, sustituidos por el boletin europeo)
+    inactivos |= apoyo.fuentes_sin_uso(cfg)
     fuentes = estado.get("fuentes", {})
     for f in inactivos:
         fuentes.pop(f, None)

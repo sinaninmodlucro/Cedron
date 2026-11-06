@@ -147,6 +147,21 @@ class Conectores(unittest.TestCase):
         self.assertEqual(d[("CARNE CERDO", "T.ESPAÑA")][-1], ("2026-08", 7.62))   # bloque de precio, no penetracion
 
 
+class Salud(unittest.TestCase):
+    def test_fuente_sin_uso_no_avisa(self):
+        from cedron import engine
+        cfg = {"medios": [], "apoyo": {"grupos": [{"materias": [
+            {"ambitos": {"espana": {"fuente": "boletin", "columna": "ES"}}}]}]}}
+        estado = mock.Mock()
+        fuentes = {"Ministerio (carburantes)": {"fallos_seguidos": 3},
+                   "Comisión Europea (Oil Bulletin)": {"fallos_seguidos": 3}}
+        estado.get.return_value = fuentes
+        avisos = engine.revisar_salud(cfg, estado)
+        self.assertEqual(len(avisos), 1)                          # solo la que se sigue usando
+        self.assertIn("Oil Bulletin", avisos[0])
+        self.assertNotIn("Ministerio (carburantes)", fuentes)     # y se olvida su historial
+
+
 class Calculos(unittest.TestCase):
     def test_preferir_supermercado(self):
         todas = [("2026-06", 7.5), ("2026-07", 7.6), ("2026-08", 7.7)]

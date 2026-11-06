@@ -8,6 +8,16 @@
   <p>Precios que ayudan a entender los costes y las cadenas de precios. No tienen lectura favorable o desfavorable: solo el dato, sus cambios y su tendencia.</p>
 </div>
 
+{# Pestañas por grupo: un grupo cada vez, para no tener que bajar toda la página #}
+{% set ns = namespace(vistas=[]) %}
+{% for g in grupos_apoyo %}{% if (g.pestana_id, g.pestana) not in ns.vistas %}{% set ns.vistas = ns.vistas + [(g.pestana_id, g.pestana)] %}{% endif %}{% endfor %}
+<nav class="vistas vistas--grupos" aria-label="Grupos de materias primas">
+  {% for id, nombre in ns.vistas %}
+  <a href="#{{ id }}" data-grupo="{{ id }}"{% if loop.first %} aria-current="true"{% endif %}>{{ nombre }}</a>
+  {% endfor %}
+  <a href="#todas" data-grupo="todas">Todas</a>
+</nav>
+
 <div class="vistas" role="group" aria-label="Ámbito de los precios">
   {% for id, nombre in ambitos %}
   <button type="button" data-vista="{{ id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ nombre }}</button>
@@ -23,7 +33,7 @@
 <p class="pequeno secundario">Si el ámbito elegido no tiene un dato reciente de una materia, se muestra el último disponible de otro ámbito, indicado en cada fila. <strong>En origen</strong> es lo que cobra el productor (ganadero o agricultor); <strong>en tienda</strong>, lo que pagan los hogares en el supermercado, IVA incluido. Si una materia no tiene uno de los dos precios, se muestra el que hay, indicándolo.</p>
 
 {% for g in grupos_apoyo %}
-<section class="bloque" aria-labelledby="t-{{ g.id }}">
+<section class="bloque" aria-labelledby="t-{{ g.id }}" data-grupo="{{ g.pestana_id }}">
   <h2 id="t-{{ g.id }}">{{ g.nombre }}</h2>
   {% if g.descripcion %}<p class="texto secundario">{{ g.descripcion }}</p>{% endif %}
   <div class="desplazable">

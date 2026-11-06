@@ -178,6 +178,15 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
   border: 1px solid var(--linea); border-radius: 999px; padding: 0.35rem 1rem;
 }
 .vistas button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+/* Pestanas por grupo: mismo aspecto que los botones, subrayado para distinguirlas */
+.vistas--grupos { margin: 1.5rem 0 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--linea); font-size: var(--t-m, 1rem); }
+.vistas--grupos a {
+  color: var(--tinta); text-decoration: none; border: 1px solid var(--linea);
+  border-radius: 999px; padding: 0.35rem 1rem;
+}
+.vistas--grupos a:hover { border-color: var(--tinta); }
+.vistas--grupos a[aria-current="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+section[data-grupo][hidden] { display: none; }
 .tabla-apoyo tbody th { font-family: var(--f-cifra); font-weight: 600; white-space: nowrap; border-bottom: 1px solid var(--linea); padding: 0.7rem 0.75rem 0.7rem 0; vertical-align: top; text-align: left; }
 .tabla-apoyo tbody th a { color: var(--tinta); text-decoration: none; }
 .tabla-apoyo tbody th a:hover { text-decoration: underline; }

@@ -194,6 +194,7 @@ apoyo:
 
     - id: ganaderia
       nombre: "Ganadería, huevos y leche"
+      pestana: "Ganadería"        # nombre corto de su pestaña en la web
       descripcion: >
         El pienso (cereales y soja) y la energía son los mayores costes de la
         ganadería; sus precios suelen trasladarse a la carne con algunos meses de retraso.
@@ -282,6 +283,7 @@ apoyo:
     # Aceites: de €/100 kg a €/litro con la densidad (oliva 0,916; girasol 0,92).
     - id: agricolas
       nombre: "Agrícolas principales"
+      pestana: "Agricultura"      # comparte pestaña con las agrícolas de apoyo
       descripcion: >
         Los alimentos de origen agrícola que más se consumen en España, más el trigo,
         el arroz y el aceite de oliva virgen extra, que se siguen siempre. En España se
@@ -461,6 +463,7 @@ apoyo:
 
     - id: agricolas_apoyo
       nombre: "Agrícolas de apoyo"
+      pestana: "Agricultura"
       descripcion: >
         Cereales y oleaginosas para pienso y productos importados. Casi no se compran
         tal cual, pero entran en el coste de la carne, la leche, el pan o los dulces.

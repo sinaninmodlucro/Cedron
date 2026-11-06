@@ -68,6 +68,18 @@ def pares_panel(cfg) -> list[tuple[str, str]]:
     return pares
 
 
+# Nombre con el que cada tipo de fuente se registra en el estado (avisos de salud)
+NOMBRE_ESTADO = {"carburantes": "Ministerio (carburantes)", "boletin": "Comisión Europea (Oil Bulletin)",
+                 "mapa": "MAPA (precios semanales)", "panel": "MAPA (panel de consumo)",
+                 "pagados": "MAPA (precios pagados)", "fred": "FRED (materias de apoyo)"}
+
+
+def fuentes_sin_uso(cfg) -> set[str]:
+    """Nombres de estado de las fuentes de apoyo que ninguna materia usa ya."""
+    usadas = {d.get("fuente") for d in _definiciones(cfg)}
+    return {nombre for tipo, nombre in NOMBRE_ESTADO.items() if tipo not in usadas}
+
+
 def series_pink(cfg) -> list[str]:
     return _fuentes_de(cfg, "pink", "serie")
 
@@ -388,7 +400,10 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
     meses_media = cfg["indicadores"]["tendencia"]["meses_media"]
     fuentes = cargar_fuentes()
     grupos = []
+    pestanas: dict[str, str] = {}       # nombre de pestana -> id (el del primer grupo que la usa)
     for g in acfg.get("grupos", []):
+        pestana = g.get("pestana") or g["nombre"]
+        pestanas.setdefault(pestana, g["id"])
         lista = []
         for m in g.get("materias", []):
             ambitos = {}
@@ -425,5 +440,6 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
             lista.append({**{k: v for k, v in m.items() if k != "ambitos"}, "ambitos": ambitos, "vistas": vistas,
                           "grupo": g["id"], "con_tienda": con_tienda})
         grupos.append({**{k: v for k, v in g.items() if k != "materias"}, "materias": lista,
+                       "pestana": pestana, "pestana_id": pestanas[pestana],
                        "con_tienda": any(x["con_tienda"] for x in lista)})
     return grupos

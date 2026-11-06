@@ -20,6 +20,44 @@
   if (guardada && document.querySelector('.vistas button[data-vista="' + guardada + '"]')) aplicar(guardada);
 })();
 
+// Pestanas por grupo (Energia, Ganaderia, Agricultura...): muestra un grupo cada vez.
+// Sin JavaScript se ven todos. Manda la direccion (#ganaderia), luego la ultima elegida.
+(function () {
+  var enlaces = document.querySelectorAll(".vistas--grupos a[data-grupo]");
+  if (!enlaces.length) return;
+  var CLAVE = "cedron-grupo";
+  var secciones = document.querySelectorAll("section[data-grupo]");
+
+  function existe(g) { return g && document.querySelector('.vistas--grupos a[data-grupo="' + g + '"]'); }
+  function aplicar(grupo) {
+    enlaces.forEach(function (a) {
+      if (a.dataset.grupo === grupo) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+    secciones.forEach(function (s) { s.hidden = grupo !== "todas" && s.dataset.grupo !== grupo; });
+  }
+  function elegir(grupo, recordar) {
+    aplicar(grupo);
+    if (recordar) { try { localStorage.setItem(CLAVE, grupo); } catch (e) {} }
+  }
+  enlaces.forEach(function (a) {
+    a.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      elegir(a.dataset.grupo, true);
+      try { history.replaceState(null, "", "#" + a.dataset.grupo); } catch (e) {}
+    });
+  });
+  window.addEventListener("hashchange", function () {
+    var g = location.hash.slice(1);
+    if (existe(g)) elegir(g, true);
+  });
+  var inicial = location.hash.slice(1);
+  if (!existe(inicial)) {
+    inicial = null;
+    try { inicial = localStorage.getItem(CLAVE); } catch (e) {}
+  }
+  aplicar(existe(inicial) ? inicial : enlaces[0].dataset.grupo);
+})();
+
 // Selector de precio: origen y tienda / solo origen / solo tienda.
 // Funciona con una marca en <html> que lee la hoja de estilos, asi sirve igual
 // en la lista de materias y en la ficha de cada una.
