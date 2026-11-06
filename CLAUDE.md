@@ -28,7 +28,7 @@ Aunque ahora es de uso privado, se diseñó para poder abrirse al público en Es
 - Se habla del **activo** (el oro como materia prima), **nunca de productos financieros concretos** (ETF, ETC, fondos, acciones mineras). Por eso hay filtros que descartan noticias de compraventa de ETF/acciones.
 - Lecturas como «favorable / neutral / desfavorable» con los datos que las justifican, nunca «compra» o «vende».
 - Transparencia: metodología publicada, autor identificado, fecha y fuente de cada dato, historial público de aciertos y fallos.
-- Si alguna vez se abre al público: completar `templates/legal.html` (titular, NIF, domicilio, conflictos de interés; ahora tiene corchetes) y validarlo con un abogado de mercado de valores.
+- Si alguna vez se abre al público: desactivar los cuatro feeds marcados como «solo uso privado» en `config.yaml`, revisar las condiciones de los RSS del FT e Investing.com, y completar `templates/legal.html` (titular, NIF, domicilio, conflictos de interés; ahora tiene corchetes) y validarlo con un abogado de mercado de valores.
 
 ## Arquitectura
 
@@ -75,7 +75,7 @@ python -m unittest discover tests
 | FRED | DFII10 (tipo real 10 años), DTWEXBGS (dólar), DEXUSEU (euro/dólar) | 120/min | 1 vez al día |
 | CFTC COT Legacy (`jun7-fc8e`) | Posicionamiento no comercial | Sin clave | Códigos: oro 088691, plata 084691, platino 076651, paladio 075651, cobre 085692 |
 | NewsData.io `/api/1/latest` | Noticias (categoría business) | 200 créditos/día | Tope 150/día; 1 consulta por hora |
-| RSS | Noticias | — | Fed, BCE, Expansión y GoldSeek funcionan |
+| RSS | Noticias | — | Fed, BCE, Banco de Inglaterra, Expansión, Cinco Días, FT Materias primas, Investing.com (en y es), Silver Institute y GoldSeek funcionan (validados el 6-nov-2026). FT e Investing: RSS para uso personal, revisar condiciones si se abre al público |
 
 Descartadas, no las reintroduzcas sin revisar sus condiciones: **OilPriceAPI** (todos sus planes son de uso interno, no permiten mostrar datos al público), **Alpha Vantage** (uso comercial del plan gratuito no aclarado), **NewsAPI.org y GNews** (plan gratuito no comercial). Desde el entorno anterior no se podía acceder a internet salvo por las herramientas; desde Claude Code sí podrás probar las fuentes directamente.
 
@@ -105,7 +105,7 @@ Concepto: «informe de ensayo de metales». El elemento memorable es el **contra
 Funciona: todas las fuentes de datos, lecturas de oro, plata, platino y cobre, web cifrada publicada.
 
 Pendiente, por orden de prioridad:
-1. **Sustituir feeds de noticias rotos** (desactivados en `config.yaml`): Kitco (404, buscar la URL nueva), Mining.com (bloquea lectores automáticos), Cinco Días (llega vacío). Hay pocas noticias; buscar medios fiables con RSS en español e inglés y validar cada feed antes de activarlo.
+1. **Feeds de noticias** (hecho en parte el 6-nov-2026): Cinco Días arreglado (sección `mercados-financieros`) y añadidos Banco de Inglaterra, FT, Investing.com (en/es) y Silver Institute; en la simulación se pasó de 2 a 18 noticias publicadas. Kitco ya no tiene RSS y Mining.com bloquea lectores: siguen desactivados. Además, **por decisión del usuario y solo mientras la web sea privada**, se activaron The Northern Miner, Mining Technology (noticias de empresas mineras), FXStreet (trae también noticias de divisas) y el feed de análisis de Investing.com (análisis técnico de terceros). En la simulación salían unas 40 noticias. **Si la web se abre al público, hay que desactivar esos cuatro** (están marcados en `config.yaml`).
 2. **Prueba histórica de 15 años** (fase 4 del plan, aún no hecha): comprobar con el histórico del Banco Mundial que las reglas no dan resultados absurdos, quitar las que no aporten y publicar los resultados en la página de metodología.
 3. **Paladio**: no tiene lectura hasta acumular historia propia (sin Banco Mundial). Valorar otra fuente histórica con licencia adecuada.
 4. Fase 2: energía (Brent, WTI, gas) y agrícolas desde el Banco Mundial.

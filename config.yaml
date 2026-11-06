@@ -165,17 +165,65 @@ medios:
     nota: 100
     idioma: en
     activo: true
+  - nombre: "Banco de Inglaterra"
+    rss: "https://www.bankofengland.co.uk/rss/news"
+    nota: 100
+    idioma: en
+    activo: true         # 6-nov-2026: añadido y validado
+  - nombre: "Financial Times - Materias primas"
+    rss: "https://www.ft.com/commodities?format=rss"
+    nota: 90
+    idioma: en
+    activo: true         # 6-nov-2026: añadido y validado. Articulos de pago. RSS para uso personal: revisar condiciones si la web se abre al publico
+  - nombre: "Investing.com - Materias primas"
+    rss: "https://www.investing.com/rss/news_11.rss"
+    nota: 60
+    idioma: en
+    activo: true         # 6-nov-2026: añadido y validado. Revisar condiciones del RSS si la web se abre al publico
+  - nombre: "Investing.com España - Materias primas"
+    rss: "https://es.investing.com/rss/news_11.rss"
+    nota: 60
+    idioma: es
+    activo: true         # 6-nov-2026: añadido y validado. Revisar condiciones del RSS si la web se abre al publico
+  - nombre: "Silver Institute"
+    rss: "https://www.silverinstitute.org/feed/"
+    nota: 85
+    idioma: en
+    activo: true         # 6-nov-2026: añadido y validado. Asociacion del sector; publica poco (informes mensuales)
+  # Los cuatro siguientes se activan porque la web es PRIVADA (decision del usuario,
+  # 6-nov-2026). Si algun dia se abre al publico, DESACTIVARLOS: hablan de empresas
+  # mineras concretas o publican analisis tecnico que suena a senal de compraventa.
+  - nombre: "The Northern Miner"
+    rss: "https://www.northernminer.com/feed/"
+    nota: 70
+    idioma: en
+    activo: true         # 6-nov-2026: validado. Solo uso privado (noticias de empresas mineras)
+  - nombre: "Mining Technology"
+    rss: "https://www.mining-technology.com/feed/"
+    nota: 65
+    idioma: en
+    activo: true         # 6-nov-2026: validado. Solo uso privado (noticias de empresas mineras)
+  - nombre: "FXStreet"
+    rss: "https://www.fxstreet.com/rss/news"
+    nota: 60
+    idioma: en
+    activo: true         # 6-nov-2026: validado. Solo uso privado. Trae tambien noticias de divisas
+  - nombre: "Investing.com - Análisis de materias primas"
+    rss: "https://www.investing.com/rss/commodities.rss"
+    nota: 60
+    idioma: en
+    activo: true         # 6-nov-2026: validado. Solo uso privado (analisis tecnico de terceros)
   - nombre: "Mining.com"
     rss: "https://www.mining.com/feed/"
     nota: 75
     idioma: en
-    activo: false        # 6-nov-2026: bloquea lectores automaticos (403)
+    activo: false        # 6-nov-2026: bloquea lectores automaticos (403), tambien en sus feeds por metal
   - nombre: "Kitco News"
     rss: "https://www.kitco.com/rss/KitcoNews.xml"
     nota: 75
     idioma: en
     comercial: true
-    activo: false        # 6-nov-2026: direccion del feed ya no existe (404); buscar la nueva
+    activo: false        # 6-nov-2026: Kitco ya no publica RSS (la direccion /news/rss es una pagina web normal)
   - nombre: "GoldSeek News"
     rss: "https://news.goldseek.com/newsRSS.xml"
     nota: 45
@@ -188,7 +236,7 @@ medios:
     idioma: es
     activo: true
   - nombre: "Cinco Días - Mercados"
-    rss: "https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.elpais.com/section/mercados/portada"
+    rss: "https://feeds.elpais.com/mrss-s/list/ep/site/cincodias.elpais.com/section/mercados-financieros"
     nota: 80
     idioma: es
-    activo: false        # 6-nov-2026: el feed llega vacio; buscar la direccion correcta
+    activo: true         # 6-nov-2026: la seccion se llama ahora "mercados-financieros"; direccion nueva validada
