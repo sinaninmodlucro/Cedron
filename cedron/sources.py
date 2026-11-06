@@ -55,6 +55,7 @@ def _get(url: str, **kwargs) -> requests.Response:
 # MetalCharts: precio spot actual
 # ---------------------------------------------------------------------------
 METALCHARTS_DISPONIBLES: list[str] = []
+METALCHARTS_TODOS: dict = {}
 
 
 def metalcharts_precios(clave: str, simbolos: list[str]) -> dict:
@@ -67,8 +68,12 @@ def metalcharts_precios(clave: str, simbolos: list[str]) -> dict:
         raise FuenteError(f"respuesta inesperada: {str(cuerpo)[:120]}")
     # Que simbolos trae la respuesta (para saber si el plan gratuito incluye metales
     # industriales sin gastar consultas extra). Se guarda en el estado.
-    global METALCHARTS_DISPONIBLES
+    global METALCHARTS_DISPONIBLES, METALCHARTS_TODOS
     METALCHARTS_DISPONIBLES = sorted(cuerpo["data"].keys())
+    # Precio y hora de todos los simbolos que trae la respuesta (sin consulta extra)
+    METALCHARTS_TODOS = {s: {"precio": _num(d.get("price")), "hora": d.get("timestamp"),
+                             "unidad": d.get("unit") or d.get("units")}
+                         for s, d in cuerpo["data"].items() if isinstance(d, dict)}
     salida = {}
     for s in simbolos:
         d = cuerpo["data"].get(s)

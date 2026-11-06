@@ -54,6 +54,17 @@ def actualizar_precios(cfg, estado: Estado, forzar=False) -> None:
         estado.set("precios_ultima_consulta", iso())
         if src.METALCHARTS_DISPONIBLES:
             estado.set("metalcharts_simbolos", src.METALCHARTS_DISPONIBLES)
+        # Metales industriales que vienen en la misma respuesta (aluminio, niquel,
+        # plomo, zinc...): se acumulan para usarlos como precio global de apoyo.
+        if src.METALCHARTS_TODOS:
+            guardado = leer("apoyo/metalcharts.json", {}) or {}
+            series = guardado.get("series", {})
+            for s, d in src.METALCHARTS_TODOS.items():
+                if d["precio"] is not None:
+                    series.setdefault(s, []).append([iso(), d["precio"]])
+                    series[s] = series[s][-3000:]
+            escribir("apoyo/metalcharts.json", {"series": series, "consultado": iso(),
+                                                "unidades": {s: d["unidad"] for s, d in src.METALCHARTS_TODOS.items()}})
         estado.registrar_fuente("MetalCharts", True)
     except src.FuenteError as e:
         estado.registrar_fuente("MetalCharts", False, str(e))
