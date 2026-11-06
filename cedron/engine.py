@@ -282,10 +282,11 @@ def calcular_lecturas(cfg) -> dict:
 
 def actualizar_prueba(cfg, estado: Estado, forzar=False) -> None:
     """Repite la prueba historica de las reglas una vez al mes (o con --forzar)."""
-    mes = date.today().isoformat()[:7]
+    from cedron import prueba
+    # El mes y la version: si cambia el metodo de la prueba, se repite sin esperar al mes siguiente
+    mes = f"{date.today().isoformat()[:7]}/v{prueba.VERSION}"
     if not forzar and estado.get("prueba_mes") == mes:
         return
-    from cedron import prueba
     try:
         prueba.ejecutar(cfg)
         estado.set("prueba_mes", mes)

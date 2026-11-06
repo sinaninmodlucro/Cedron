@@ -58,6 +58,7 @@ RATIOS = {  # activo -> (numerador, denominador, etiqueta, invertir)
     "plata": ("oro", "plata", "oro/plata", True),
     "platino": ("platino", "oro", "platino/oro", False),
 }
+VERSION = 2            # subirla al cambiar el metodo: la prueba se repite en la siguiente ejecucion
 MINIMO_CASOS = 6       # meses de cada senal (+1 y -1) para poder comparar
 BLOQUE = 12            # meses por bloque en el remuestreo
 
