@@ -904,6 +904,15 @@ indicadores:
     desfavorable_hasta: -2        # suma <= -2 -> desfavorable
 
 # -----------------------------------------------------------------------------
+# Prueba historica (pagina de metodologia). Aplica las reglas de arriba, mes a
+# mes, a los ultimos anios del Banco Mundial y mira que paso despues con el
+# precio. Se repite sola una vez al mes. Anadida el 6-nov-2026.
+# -----------------------------------------------------------------------------
+prueba_historica:
+  anios: 15                       # meses evaluados: los ultimos 15 anios
+  horizontes: [3, 6, 12]          # meses despues de cada lectura en que se mira el precio
+
+# -----------------------------------------------------------------------------
 # Noticias: como se puntua cada titular (0-100) y que se publica.
 # -----------------------------------------------------------------------------
 noticias:

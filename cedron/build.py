@@ -43,6 +43,8 @@ def porcentaje(x, dec=1):
     x = _valor(x)
     if x is None:
         return "—"
+    if round(x, dec) == 0:
+        x = 0.0                       # evita «−0,0 %»
     return f"{x:+.{dec}f}".replace(".", ",").replace("-", "−") + " %"
 
 
@@ -221,6 +223,42 @@ def rendimiento_historial(historial: list, historicos: dict) -> list:
 # ---------------------------------------------------------------------------
 # Construccion
 # ---------------------------------------------------------------------------
+def datos_prueba(prueba: dict | None, cfg: dict) -> dict | None:
+    """Prepara los resultados de la prueba historica para la pagina de metodologia."""
+    from cedron.prueba import CLASES, INDICADORES, NOMBRES
+    if not prueba or not prueba.get("activos"):
+        return None
+    horizontes = prueba["horizontes"]
+    medio = horizontes[len(horizontes) // 2]          # horizonte principal (6 meses)
+    indicadores, lecturas, recuento = [], [], {}
+    # El archivo guarda las claves en orden alfabetico: se ordena como en config.yaml
+    orden = [x["id"] for x in cfg["activos"] if x["id"] in prueba["activos"]]
+    for aid in orden:
+        a = prueba["activos"][aid]
+        for clave in [k for k in INDICADORES if k in a["indicadores"]]:
+            ind = a["indicadores"][clave]
+            e, v = ind["estados"], ind["veredicto"]
+            recuento[v["clase"]] = recuento.get(v["clase"], 0) + 1
+            indicadores.append({
+                "activo": a["nombre"], "indicador": NOMBRES[clave], "clase": v["clase"],
+                "clase_texto": CLASES[v["clase"]], "senal_pct": v["senal_pct"],
+                "mas": e["1"].get(f"h{medio}"), "menos": e["-1"].get(f"h{medio}"),
+                "n_mas": e["1"]["meses"], "n_menos": e["-1"]["meses"],
+                "mitad_1": v.get("mitad_1"), "mitad_2": v.get("mitad_2"), "corte": v.get("corte")})
+        filas = [("Todos los meses", a["meses"], a["base"])]
+        filas += [(n.capitalize(), a["lecturas"][n]["meses"], a["lecturas"][n])
+                  for n in ("favorable", "neutral", "desfavorable") if a["lecturas"][n]["meses"]]
+        for nombre, meses, d in filas:
+            lecturas.append({"activo": a["nombre"], "lectura": nombre, "meses": meses,
+                             **{f"h{h}": d.get(f"h{h}") for h in horizontes}})
+    primero = prueba["activos"][orden[0]]
+    return {"anios": prueba["anios"], "horizontes": horizontes, "medio": medio,
+            "desde": primero["desde"], "hasta": primero["hasta"], "calculado": prueba.get("calculado"),
+            "indicadores": indicadores, "lecturas": lecturas, "clases": CLASES,
+            "recuento": [(CLASES[c], recuento[c]) for c in CLASES if c in recuento],
+            "total_reglas": sum(recuento.values())}
+
+
 def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = False) -> None:
     tz = ZoneInfo(cfg["sitio"]["zona_horaria"])
     fecha_larga, fecha_hora, hace, mes = crear_fechas(tz)
@@ -303,7 +341,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     pagina("comparar.html", "comparar.html", seccion="comparar", datos_comparar=datos_comparar)
     pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias)
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
-    pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200])
+    pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],
+           prueba=datos_prueba(leer("prueba_historica.json"), cfg))
     pagina("fuentes.html", "fuentes.html", seccion="fuentes", fuentes_estado=estado.get("fuentes", {}),
            pink_consultado=pink.get("consultado"))
     pagina("legal.html", "legal.html", seccion="")

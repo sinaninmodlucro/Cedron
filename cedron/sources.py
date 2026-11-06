@@ -581,6 +581,26 @@ def fred_serie(serie: str, clave: str, desde: str) -> list[tuple[str, float]]:
     return [(o["date"], float(o["value"])) for o in obs if o.get("value") not in (".", "", None)]
 
 
+def fred_csv(serie: str, desde: str) -> list[tuple[str, float]]:
+    """Misma serie de FRED desde su descarga publica en CSV (sin clave).
+
+    Solo se usa en ejecuciones locales sin FRED_KEY (prueba historica); en GitHub
+    se usa siempre la API con la clave.
+    """
+    r = _get("https://fred.stlouisfed.org/graph/fredgraph.csv", params={"id": serie, "cosd": desde})
+    lineas = r.text.strip().splitlines()
+    if len(lineas) < 2 or "," not in lineas[0]:
+        raise FuenteError(f"FRED (CSV) no devolvio datos para {serie}")
+    salida = []
+    for linea in lineas[1:]:
+        f, _, v = linea.partition(",")
+        try:
+            salida.append((f, float(v)))
+        except ValueError:
+            continue   # dias sin dato ("" o ".")
+    return [x for x in salida if x[0] >= desde]
+
+
 # ---------------------------------------------------------------------------
 # CFTC: Commitments of Traders (informe Legacy, solo futuros)
 # ---------------------------------------------------------------------------

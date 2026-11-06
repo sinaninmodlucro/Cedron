@@ -49,9 +49,61 @@
   <p><strong>Origen y tienda.</strong> En las carnes, los huevos y los alimentos agrícolas de España se muestran dos precios cuando existen: el de <strong>origen</strong> (lo que cobra el productor, sin IVA; Ministerio de Agricultura, semanal) y el de <strong>tienda</strong> (lo que pagan de media los hogares en supermercados, con IVA; panel de consumo del Ministerio, mensual, con dos o tres meses de retraso). El multiplicador divide el precio en tienda de un mes entre la media del precio en origen de ese mismo mes. No mide el beneficio de nadie: la diferencia incluye despiece y mermas (el precio en origen es por kilo de canal, con hueso), transporte, conservación, distribución, márgenes e IVA. El canal «supermercado» existe con ese nombre desde 2025; para los meses anteriores se usa la media de todas las tiendas, que incluye los supermercados. Los aceites se pasan de euros por kilo a euros por litro con su densidad (0,916 el de oliva y 0,92 el de girasol), para compararlos con la tienda. Cuando la tienda vende un producto elaborado (el pan, frente al trigo) no se calcula el multiplicador, porque no son el mismo producto.</p>
   <p class="pequeno secundario">El diésel en España es el precio medio semanal que publica la Comisión Europea (Weekly Oil Bulletin). Las series mensuales del Banco Mundial completan el pasado de las series diarias.</p>
 
+  <h2 class="bloque" id="prueba">Prueba histórica de las reglas</h2>
+{% if prueba %}
+{% set m = prueba.medio %}
+  <p>Para comprobar que las reglas no dan resultados absurdos, se aplicaron, mes a mes, a los últimos {{ prueba.anios }} años ({{ prueba.desde|mes }} a {{ prueba.hasta|mes }}), usando en cada mes solo los datos que existían entonces y los mismos parámetros que usa la web hoy. Después se miró qué hizo el precio {{ prueba.horizontes[:-1]|join(', ') }} y {{ prueba.horizontes[-1] }} meses más tarde. No es una simulación de compras ni de rentabilidad: solo se pregunta si, tras una señal favorable, al precio le fue mejor que tras una desfavorable.</p>
+  <p>Para no fiarse de una sola racha del mercado, el periodo se divide en dos mitades y se exige que el resultado vaya en el mismo sentido en las dos:</p>
+  <ul>
+    <li><strong>Coherente</strong>: tras +1 al precio le fue mejor que tras −1 en todo el periodo y en cada mitad.</li>
+    <li><strong>Inestable</strong>: el resultado cambia según la época que se mire.</li>
+    <li><strong>Al revés</strong>: tras −1 le fue mejor que tras +1, en todo el periodo y en cada mitad.</li>
+    <li><strong>Casi siempre la misma señal</strong>: marca +1 o −1 en más de tres de cada cuatro meses, así que apenas distingue unas épocas de otras.</li>
+    <li><strong>Pocos casos</strong>: no hubo al menos seis meses de cada señal para comparar.</li>
+  </ul>
+  <p>Resultado de las {{ prueba.total_reglas }} combinaciones de metal e indicador: {% for nombre, n in prueba.recuento %}{{ nombre|lower }}, {{ n }}{{ '; ' if not loop.last else '.' }}{% endfor %}</p>
+</div>
+<div class="desplazable">
+<table class="tabla">
+  <caption class="pequeno secundario">Cambio medio del precio {{ m }} meses después de cada señal. «Mitades»: diferencia entre lo que pasó tras +1 y tras −1 (media de los tres plazos), en cada mitad del periodo.</caption>
+  <thead><tr><th>Metal</th><th>Indicador</th><th class="num">Meses con señal</th><th class="num">Tras +1</th><th class="num">Tras −1</th><th class="num">Mitades</th><th>Resultado</th></tr></thead>
+  <tbody>
+  {% for f in prueba.indicadores %}
+    <tr><td>{{ f.activo }}</td><td>{{ f.indicador }}</td>
+      <td class="num">{{ f.senal_pct|numero(0) }} %</td>
+      <td class="num">{{ f.mas.media|porcentaje if f.mas else '—' }}{% if f.mas %} <span class="secundario">({{ f.n_mas }})</span>{% endif %}</td>
+      <td class="num">{{ f.menos.media|porcentaje if f.menos else '—' }}{% if f.menos %} <span class="secundario">({{ f.n_menos }})</span>{% endif %}</td>
+      <td class="num">{{ f.mitad_1|porcentaje if f.mitad_1 is not none else '—' }} / {{ f.mitad_2|porcentaje if f.mitad_2 is not none else '—' }}</td>
+      <td>{{ f.clase_texto }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="texto">
+  <p>Y así le fue al precio después de cada lectura (suma de los indicadores), frente a la media de todos los meses:</p>
+</div>
+<div class="desplazable">
+<table class="tabla">
+  <caption class="pequeno secundario">Cambio medio del precio después de cada lectura y, entre paréntesis, en qué porcentaje de los meses subió.</caption>
+  <thead><tr><th>Metal</th><th>Lectura</th><th class="num">Meses</th>{% for h in prueba.horizontes %}<th class="num">{{ h }} meses después</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for f in prueba.lecturas %}
+    <tr><td>{{ f.activo }}</td><td>{{ f.lectura }}</td><td class="num">{{ f.meses }}</td>
+      {% for h in prueba.horizontes %}{% set d = f['h' ~ h] %}<td class="num">{{ (d.media|porcentaje ~ ' (' ~ d.sube|numero(0) ~ ' %)') if d else '—' }}</td>{% endfor %}</tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="texto">
+  <p class="pequeno secundario">Cómo se hizo: el precio de cada mes es la media mensual del Banco Mundial (el paladio no tiene y queda fuera); el entorno macro usa las series de FRED y el posicionamiento, los informes de la CFTC, cortados en el último día de cada mes. Cada mes mira los siguientes, así que los periodos se solapan y los casos no son independientes: {{ prueba.anios }} años son pocos ciclos del mercado. La prueba sirve para detectar reglas que fallan de forma clara, no para prometer nada. Se repite sola cada mes; última vez: {{ prueba.calculado|fecha_larga }}. Rentabilidades pasadas no garantizan resultados futuros.</p>
+{% else %}
+  <p class="vacio">La prueba histórica todavía no se ha calculado.</p>
+{% endif %}
+
   <h2 class="bloque">Cambios en la metodología</h2>
   <p>Si se añade, cambia o elimina una regla, se anunciará aquí con fecha y motivo. Las lecturas anteriores no se recalculan.</p>
   <ul>
+    <li><strong>6 de noviembre de 2026.</strong> Se publica la prueba histórica de las reglas en los últimos 15 años, que se repetirá cada mes. Por ahora no cambia ninguna regla; si sus resultados llevan a cambiar alguna, se anunciará aquí.</li>
     <li><strong>6 de noviembre de 2026.</strong> Se añaden las materias primas de apoyo (energía y ganadería), sin lectura. No cambia nada en las lecturas de los metales.</li>
     <li><strong>6 de noviembre de 2026.</strong> En la ganadería de España se añade el precio en tienda junto al de origen, con su multiplicador, y se incorporan huevos y leche.</li>
     <li><strong>6 de noviembre de 2026.</strong> Se añaden agrícolas (principales y de apoyo) y fertilizantes, sin lectura, con precio en origen y en tienda cuando existen. No cambia nada en las lecturas de los metales.</li>

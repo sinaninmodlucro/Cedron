@@ -280,6 +280,21 @@ def calcular_lecturas(cfg) -> dict:
     return salida
 
 
+def actualizar_prueba(cfg, estado: Estado, forzar=False) -> None:
+    """Repite la prueba historica de las reglas una vez al mes (o con --forzar)."""
+    mes = date.today().isoformat()[:7]
+    if not forzar and estado.get("prueba_mes") == mes:
+        return
+    from cedron import prueba
+    try:
+        prueba.ejecutar(cfg)
+        estado.set("prueba_mes", mes)
+        estado.registrar_fuente("Prueba histórica (FRED y CFTC)", True)
+    except (src.FuenteError, KeyError, ValueError) as e:
+        estado.registrar_fuente("Prueba histórica (FRED y CFTC)", False, str(e))
+        log.warning("Prueba historica: %s", e)
+
+
 # ---------------------------------------------------------------------------
 # Avisos de salud
 # ---------------------------------------------------------------------------
@@ -307,6 +322,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     apoyo.recoger(cfg, estado, forzar)
     actualizar_noticias(cfg, estado)
     calcular_lecturas(cfg)
+    actualizar_prueba(cfg, estado, forzar)
     estado.set("ultima_ejecucion", iso())
     avisos = revisar_salud(cfg, estado)
     estado.guardar()
