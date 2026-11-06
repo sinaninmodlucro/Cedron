@@ -636,8 +636,8 @@ apoyo:
       descripcion: >
         Acero, aluminio, cobre y zinc están en la estructura, las ventanas, la instalación
         eléctrica y las cubiertas de los edificios; su precio depende mucho de la energía.
-        En España y Europa se muestra un índice de precios de fábrica (2021 = 100): sirve
-        para ver cuánto sube o baja, no es un precio en euros.
+        En España y Europa, aluminio, cobre y zinc se dan como precio estimado en euros
+        (precio mundial de 2021 actualizado con los precios de fábrica de Eurostat); el acero, como cambio frente a 2021.
       materias:
         - id: acero
           nombre: "Acero"
@@ -662,6 +662,7 @@ apoyo:
             espana:
               fuente: eurostat
               serie: "ES|C2442"
+              referencia: {fuente: pink, serie: "Aluminum", unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -669,6 +670,7 @@ apoyo:
             europa:
               fuente: eurostat
               serie: "EU27_2020|C2442"
+              referencia: {fuente: pink, serie: "Aluminum", unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -686,6 +688,7 @@ apoyo:
             espana:
               fuente: eurostat
               serie: "ES|C2444"
+              referencia: {fuente: pink, serie: "Copper", unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -693,6 +696,7 @@ apoyo:
             europa:
               fuente: eurostat
               serie: "EU27_2020|C2444"
+              referencia: {fuente: pink, serie: "Copper", unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -711,6 +715,7 @@ apoyo:
             espana:
               fuente: eurostat
               serie: "ES|C2443"
+              referencia: {fuente: pink, serie: "Zinc", unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -718,6 +723,7 @@ apoyo:
             europa:
               fuente: eurostat
               serie: "EU27_2020|C2443"
+              referencia: {fuente: pink, serie: "Zinc", unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -772,8 +778,8 @@ apoyo:
       nombre: "Madera y otros materiales de construcción"
       pestana: "Construcción"
       descripcion: >
-        Materiales que, junto a los metales, marcan el coste de construir. En España y
-        Europa, índice de precios de fábrica (2021 = 100).
+        Materiales que, junto a los metales, marcan el coste de construir. La madera se da
+        como precio estimado en euros; cemento, hormigón y estructuras, como cambio frente a 2021.
       materias:
         - id: madera
           nombre: "Madera aserrada"
@@ -781,6 +787,7 @@ apoyo:
             espana:
               fuente: eurostat
               serie: "ES|C161"
+              referencia: {fuente: fred, serie: PSAWOREUSDM, unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual
@@ -788,6 +795,7 @@ apoyo:
             europa:
               fuente: eurostat
               serie: "EU27_2020|C161"
+              referencia: {fuente: fred, serie: PSAWOREUSDM, unidad: "$/tonelada"}     # precio estimado en euros
               unidad: "puntos (2021 = 100)"
               decimales: 1
               frecuencia: mensual

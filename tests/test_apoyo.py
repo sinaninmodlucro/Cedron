@@ -116,6 +116,15 @@ class Conectores(unittest.TestCase):
         self.assertEqual(d["UREA 46%"], [("2024-01", 40.0), ("2025-01", 50.0), ("2025-02", 51.0), ("2025-03", 52.0),
                                          ("2026-01", 75.0), ("2026-02", 78.5)])   # manda el reciente; el 0 no cuenta
 
+    def test_bce_cambio(self):
+        csv_ = ("KEY,FREQ,TIME_PERIOD,OBS_VALUE,TITLE\n"
+                "EXR.D.USD.EUR.SP00.A,D,2026-11-06,1.1165,\"US dollar/Euro, 2.15 pm\"\n"
+                "EXR.D.USD.EUR.SP00.A,D,2026-11-05,1.1224,x\n"
+                "EXR.D.USD.EUR.SP00.A,D,2026-11-04,,x\n")
+        with mock.patch("cedron.sources.requests.get", return_value=Respuesta(csv_)):
+            s = src.bce_cambio("USD", "2026-11-01")
+        self.assertEqual(s, [("2026-11-05", 1.1224), ("2026-11-06", 1.1165)])     # el vacio no cuenta
+
     def test_eurostat(self):
         # JSON-stat: 2 territorios x 2 actividades x 2 meses, aplanado en ese orden
         cuerpo = {"id": ["freq", "unit", "nace_r2", "geo", "time"], "size": [1, 1, 2, 2, 2],

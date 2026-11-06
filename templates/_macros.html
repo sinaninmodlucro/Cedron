@@ -12,7 +12,18 @@
 {# ---- Materias primas de apoyo ---- #}
 {% macro valor_apoyo(amb) -%}
 {%- set r = amb.resumen -%}
+{%- if amb.indice and not amb.estimado -%}
+{# indice sin precio de referencia: en palabras, cuanto ha cambiado desde el ano base #}
+{{ (r.valor - 100)|porcentaje }} frente a {{ amb.indice.base }}
+{%- else -%}
 {{ r.valor|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad }}
+{%- endif -%}
+{%- endmacro %}
+
+{% macro nota_indice(amb) -%}
+{%- if amb.indice -%}
+<span class="ambito">{% if amb.estimado %}Precio estimado · {% endif %}índice {{ amb.indice.valor|numero(1) }} ({{ amb.indice.base }} = 100)</span>
+{%- endif -%}
 {%- endmacro %}
 
 {% macro fecha_dato(amb) -%}
@@ -53,7 +64,7 @@
     {%- else %}<span class="ambito nota-precio nota-precio--tienda">Sin precio en tienda{% if amb.id != 'espana' %} en este ámbito{% endif %}: se muestra el de origen</span>{% endif %}
     {%- endif %}</th>
   <td class="num">{% if etiqueta %}<span class="ambito">{{ etiqueta }}</span>{% endif %}{{ valor_apoyo(d) }}{% if d.eur %}<span class="ambito">≈ {{ d.eur|numero(d.decimales if d.decimales is not none else 2) }} {{ d.unidad_eur }}</span>{% endif %}{% if d.usd %}<span class="ambito">En dólares: {{ d.usd.valor|numero(d.decimales if d.decimales is not none else 2) }} {{ d.usd.unidad }}</span>{% endif %}
-    {%- if precio == 'origen' %}<span class="solo-ambos">{{ tienda_linea(amb.tienda) }}</span>{% endif %}
+    {{ nota_indice(d) }}{%- if precio == 'origen' %}<span class="solo-ambos">{{ tienda_linea(amb.tienda) }}</span>{% endif %}
     {%- if precio == 'tienda' and d.multiplicador %}<span class="ambito">×{{ d.multiplicador.veces|numero(1) }} el precio en origen</span>{% endif %}</td>
   <td class="num {{ 'sube' if r.cambio_pct and r.cambio_pct > 0 else 'baja' if r.cambio_pct and r.cambio_pct < 0 }}" data-etiqueta="Frente al anterior">{{ r.cambio_pct|porcentaje }}</td>
   <td class="num {{ 'sube' if r.interanual_pct and r.interanual_pct > 0 else 'baja' if r.interanual_pct and r.interanual_pct < 0 }}" data-etiqueta="En un año">{{ r.interanual_pct|porcentaje }}</td>

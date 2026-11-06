@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia %}
+{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, nota_indice %}
 {% block titulo %}{{ m.nombre }}: precio en España, Europa y el mundo | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}{{ m.nombre }}: último precio, cambios, tendencia y diez años de historia por ámbito.{% endblock %}
 {% block contenido %}
@@ -27,6 +27,7 @@
     <div{% if hay_tienda %} class="solo-origen"{% endif %}>
     {% if hay_tienda %}<h3 class="bloque-pequeno bloque-pequeno--primero">En origen</h3>{% endif %}
     <p class="ficha__precio cifra">{{ valor_apoyo(amb) }}</p>
+    {% if amb.indice %}<p class="pequeno secundario">{% if amb.estimado %}Precio estimado: el precio mundial medio de {{ amb.indice.base }}, pasado a euros, actualizado con lo que han subido o bajado los precios de fábrica en {{ amb.nombre }} desde entonces (índice {{ amb.indice.valor|numero(1) }}, Eurostat). Es una aproximación: cada fábrica y cada producto tienen su precio.{% else %}No hay un precio en euros publicado y gratuito para este material: se muestra cuánto han cambiado sus precios de fábrica en {{ amb.nombre }} desde {{ amb.indice.base }} (índice {{ amb.indice.valor|numero(1) }}, donde {{ amb.indice.base }} = 100).{% endif %}</p>{% endif %}
     <p class="ficha__datos">
       {% if amb.eur %}≈ {{ amb.eur|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad_eur }}. {% endif %}{% if amb.usd %}En dólares: {{ amb.usd.valor|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.usd.unidad }} (pasado a euros con el cambio de cada fecha). {% endif %}
       Dato: {{ fecha_dato(amb) }}.

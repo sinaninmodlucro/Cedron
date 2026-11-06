@@ -151,6 +151,23 @@ def actualizar_diarios(cfg, estado: Estado, forzar=False) -> None:
             estado.registrar_fuente("FRED", False, str(e))
             log.warning("FRED: %s", e)
 
+    # Cambio euro/dolar oficial del BCE: se mira en cada ejecucion (lo publica cada dia
+    # laborable hacia las 16:00 de Madrid). La primera vez baja 11 anos; despues, el
+    # ultimo mes, que se une a lo guardado. FRED (DEXUSEU) queda de respaldo.
+    guardado = leer("cambio.json", {}) or {}
+    serie = guardado.get("series", {}).get("USD", [])
+    desde = (date.today() - timedelta(days=365 * 11 if len(serie) < 2000 else 31)).isoformat()
+    try:
+        nuevos = src.bce_cambio("USD", desde)
+        por_dia = {f: v for f, v in serie}
+        por_dia.update({f: v for f, v in nuevos})
+        escribir("cambio.json", {"series": {"USD": [[f, por_dia[f]] for f in sorted(por_dia)]},
+                                 "consultado": iso(), "fuente": "Banco Central Europeo"})
+        estado.registrar_fuente("BCE (tipo de cambio)", True)
+    except src.FuenteError as e:
+        estado.registrar_fuente("BCE (tipo de cambio)", False, str(e))
+        log.warning("BCE: %s", e)
+
     if forzar or _una_vez_al_dia(estado, "cftc_dia"):
         cot = {}
         try:

@@ -13,10 +13,11 @@
 {% for g in grupos_apoyo %}{% if (g.pestana_id, g.pestana) not in ns.vistas %}{% set ns.vistas = ns.vistas + [(g.pestana_id, g.pestana)] %}{% endif %}{% endfor %}
 <nav class="vistas vistas--grupos" aria-label="Grupos de materias primas">
   {% for id, nombre in ns.vistas %}
-  <a href="#{{ id }}" data-grupo="{{ id }}"{% if loop.first %} aria-current="true"{% endif %}>{{ nombre }}</a>
+  <a href="#{{ id }}" data-grupo="{{ id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ nombre }}</a>
   {% endfor %}
-  <a href="#todas" data-grupo="todas">Todas</a>
+  <a href="#todas" data-grupo="todas" aria-pressed="false">Todas</a>
 </nav>
+<p class="pequeno secundario pista-grupos">Pulsa varios grupos para verlos juntos; vuelve a pulsar uno para quitarlo.</p>
 
 <div class="vistas" role="group" aria-label="Ámbito de los precios">
   {% for id, nombre in ambitos %}
@@ -63,7 +64,7 @@
 {% endfor %}
 
 <div class="texto">
-  <p class="pequeno secundario bloque">Los precios que cotizan en dólares se pasan a euros con el cambio de cada fecha (Reserva Federal; el último, 1 € = {% if eurusd %}{{ eurusd[1]|numero(4) }} $, {{ eurusd[0] }}{% else %}sin dato{% endif %}), así que sus cambios y su tendencia también son en euros; debajo se indica el precio original en dólares. <a href="{{ raiz }}metodologia.html#apoyo">Cómo se calculan los cambios y la tendencia</a>.</p>
+  <p class="pequeno secundario bloque">Los precios que cotizan en dólares se pasan a euros con el cambio oficial de cada fecha (Banco Central Europeo, se revisa cada hora; el último, 1 € = {% if eurusd %}{{ eurusd[1]|numero(4) }} $, {{ eurusd[0] }}{% else %}sin dato{% endif %}), así que sus cambios y su tendencia también son en euros; debajo se indica el precio original en dólares. <a href="{{ raiz }}metodologia.html#apoyo">Cómo se calculan los cambios y la tendencia</a>.</p>
 </div>
 {% endblock %}
 {% block scripts %}

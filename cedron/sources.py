@@ -544,6 +544,29 @@ def eurostat_indices(series: list[str], desde: str) -> dict[str, list[tuple[str,
 
 
 # ---------------------------------------------------------------------------
+# Banco Central Europeo: cambio de referencia oficial del euro (diario, 14:15 CET)
+# ---------------------------------------------------------------------------
+URL_BCE = "https://data-api.ecb.europa.eu/service/data/EXR/D.{moneda}.EUR.SP00.A"
+
+
+def bce_cambio(moneda: str, desde: str) -> list[tuple[str, float]]:
+    """Unidades de 'moneda' por euro, cada dia laborable desde 'desde' (AAAA-MM-DD)."""
+    import csv
+    r = _get(URL_BCE.format(moneda=moneda), params={"format": "csvdata", "startPeriod": desde})
+    filas = list(csv.DictReader(io.StringIO(r.text)))
+    if filas and ("TIME_PERIOD" not in filas[0] or "OBS_VALUE" not in filas[0]):
+        raise FuenteError("el BCE cambio el formato de sus datos de tipo de cambio")
+    salida = []
+    for f in filas:
+        v = _num(f.get("OBS_VALUE"))
+        if v and 0.1 < v < 10:
+            salida.append((f["TIME_PERIOD"][:10], v))
+    if not salida:
+        raise FuenteError(f"el BCE no trae el cambio euro/{moneda}")
+    return sorted(salida)
+
+
+# ---------------------------------------------------------------------------
 # FRED: series macroeconomicas
 # ---------------------------------------------------------------------------
 def fred_serie(serie: str, clave: str, desde: str) -> list[tuple[str, float]]:

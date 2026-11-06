@@ -42,6 +42,8 @@ def _definiciones(cfg):
                 yield amb["historia"]
             if amb.get("tienda"):
                 yield {"fuente": "panel", **amb["tienda"]}
+            if amb.get("referencia"):
+                yield amb["referencia"]
 
 
 def _fuentes_de(cfg, tipo: str, clave: str) -> list[str]:
@@ -380,6 +382,39 @@ def multiplicador(origen: list, f_tienda: str, v_tienda: float) -> dict | None:
     return {"veces": v_tienda / media, "mes": mes, "origen": media} if media else None
 
 
+def precio_estimado(indice: list, ref: dict | None, fuentes: dict, cfg, cambio) -> list | None:
+    """Indice de precios (2021 = 100) -> precio estimado en euros.
+
+    precio(mes) = precio medio de referencia en el ano base, en euros
+                  x indice(mes) / indice medio del ano base.
+    La referencia es un precio mundial (Banco Mundial, FRED...); si cotiza en dolares,
+    cada mes se pasa a euros con su cambio. Si falta algo, devuelve None y se sigue
+    mostrando el indice.
+    """
+    if not ref:
+        return None
+    anio = str(ref.get("anio", 2021))
+    serie_ref = _serie({"frecuencia": "mensual", **ref}, fuentes, cfg)
+    if ref.get("unidad", "$").startswith("$"):
+        if not cambio:
+            return None
+        serie_ref = cambio.a_euros(mensualizar(serie_ref))
+    ref_anio = [v for f, v in mensualizar(serie_ref) if f.startswith(anio)]
+    ind_anio = [v for f, v in mensualizar(indice) if f.startswith(anio)]
+    if len(ref_anio) < 6 or len(ind_anio) < 6:          # al menos medio ano para la media
+        return None
+    precio_base = sum(ref_anio) / len(ref_anio)
+    indice_base = sum(ind_anio) / len(ind_anio)
+    return [(f, v / indice_base * precio_base) for f, v in indice]
+
+
+def cambio_usd() -> list:
+    """Dolares por euro, diario: el oficial del BCE y, donde falte, el de FRED (DEXUSEU)."""
+    por_dia = {f[:10]: v for f, v in ((leer("macro.json", {}) or {}).get("series", {}) or {}).get("DEXUSEU", []) if v}
+    por_dia.update({f[:10]: v for f, v in ((leer("cambio.json", {}) or {}).get("series", {}) or {}).get("USD", []) if v})
+    return sorted(por_dia.items())
+
+
 class TipoCambio:
     """Dolares por euro (FRED, DEXUSEU), diario. Para pasar a euros las series en dolares
     con el cambio de cada fecha: el dia (o el anterior con dato) en las series diarias y
@@ -463,7 +498,7 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
     fuentes = cargar_fuentes()
     # Precios en dolares -> euros con el cambio de cada fecha (config: apoyo.en_euros)
     en_euros = acfg.get("en_euros", True)
-    cambio = TipoCambio(((leer("macro.json", {}) or {}).get("series", {}) or {}).get("DEXUSEU", []))
+    cambio = TipoCambio(cambio_usd())
     grupos = []
     pestanas: dict[str, str] = {}       # nombre de pestana -> id (el del primer grupo que la usa)
     for g in acfg.get("grupos", []):
@@ -486,6 +521,15 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                     actual, historia = cambio.a_euros(actual), cambio.a_euros(historia)
                     unidad = "€" + unidad[1:]
                 serie = combinar(historia, actual) if actual else historia
+                # Indices (2021 = 100): si hay un precio de referencia mundial, se pasan a
+                # precio estimado en euros; si no, se muestran como cambio frente a 2021
+                indice = None
+                if unidad.startswith("puntos") and serie:
+                    indice = {"valor": serie[-1][1], "base": amb.get("base_indice", 2021)}
+                    estimada = precio_estimado(serie, amb.get("referencia"), fuentes, cfg, cambio)
+                    if estimada:
+                        serie, unidad = estimada, amb["referencia"].get("unidad_eur", "€/tonelada")
+                        actual = serie
                 fuentes_usadas = [FUENTES_NOMBRE.get(amb["fuente"], amb["fuente"])]
                 if amb.get("historia") and historia:
                     h = FUENTES_NOMBRE.get(amb["historia"]["fuente"], amb["historia"]["fuente"])
@@ -498,7 +542,10 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                     r["hora"] = fuentes.get("_metalcharts_hora", {}).get(amb["simbolo"])
                 ambitos[a] = {"decimales": decimales_por_defecto(amb["unidad"]),
                               **{k: v for k, v in amb.items() if k != "historia"},
-                              "unidad": unidad, "usd": usd,
+                              "unidad": unidad, "usd": usd, "indice": indice,
+                              "estimado": bool(indice) and not unidad.startswith("puntos"),
+                              "decimales": (decimales_por_defecto(unidad) if indice and not unidad.startswith("puntos")
+                                            else amb.get("decimales", decimales_por_defecto(amb["unidad"]))),
                               "id": a, "nombre": amb.get("etiqueta") or NOMBRES_AMBITO[a],
                               "frecuencia": amb.get("frecuencia", "mensual") if actual else "mensual",
                               "fuente_nombre": fuentes_usadas[0] if actual else fuentes_usadas[-1],

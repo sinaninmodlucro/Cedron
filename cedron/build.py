@@ -208,7 +208,9 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     macro = (leer("macro.json", {}) or {}).get("series", {})
     estado = leer("estado.json", {}) or {}
     pink = leer("pink.json", {}) or {}
-    eurusd = macro.get("DEXUSEU", [])[-1] if macro.get("DEXUSEU") else None
+    # Cambio euro/dolar: el oficial del BCE (diario) y, si falta, el de FRED
+    cambio = apoyo.cambio_usd()
+    eurusd = list(cambio[-1]) if cambio else None
     historicos = {a["id"]: [tuple(x) for x in (leer(f"historico/{a['id']}.json", []) or [])]
                   for a in cfg["activos"]}
 
