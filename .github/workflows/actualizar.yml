@@ -89,9 +89,20 @@ jobs:
             gh issue close "$abierta" --comment "Todas las fuentes vuelven a responder."
           fi
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      # La web solo se publica si existe la contrasena (secreto CEDRON_PASSWORD):
+      # sin ella, nunca se publica nada sin cifrar.
+      - name: Comprobar contraseña
+        id: clave
+        env:
+          P: ${{ secrets.CEDRON_PASSWORD }}
+        run: echo "ok=$([ -n "$P" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - if: steps.clave.outputs.ok == 'true'
+        uses: actions/configure-pages@v5
+      - if: steps.clave.outputs.ok == 'true'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-      - id: publicar
+      - if: steps.clave.outputs.ok == 'true'
+        id: publicar
         uses: actions/deploy-pages@v4
