@@ -37,16 +37,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --papel: #10201F;
-    --papel-2: #172C2B;
-    --tinta: #E3EAE7;
-    --tinta-2: #A3B3B0;
-    --linea: #2E4746;
+    /* 6-nov-2026: negro neutro (sin tono verde), a peticion del usuario.
+       Texto casi blanco calido; contrastes AA/AAA comprobados sobre --papel. */
+    --papel: #121314;
+    --papel-2: #1C1D1F;
+    --tinta: #ECEBE7;
+    --tinta-2: #A9A8A3;
+    --linea: #303134;
     --verdin: #6CC3A9;
     --oxido: #E5876D;
-    --neutro: #A0ACA9;
-    --enlace: #8CC9D3;
-    --foco: #8CC9D3;
+    --neutro: #9E9D98;
+    --enlace: #9CCBD4;
+    --foco: #9CCBD4;
     --serie-1: #3987e5; --serie-2: #d95926; --serie-3: #199e70; --serie-4: #c98500;
     --serie-5: #d55181; --serie-6: #008300; --serie-7: #9085e9; --serie-8: #e66767;
   }

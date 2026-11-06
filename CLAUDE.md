@@ -50,7 +50,7 @@ GitHub Actions (cada hora, minuto 17 UTC)  →  run.py
 - **Cambio euro/dólar**: el oficial del **BCE** (`sources.bce_cambio`, `data/cambio.json`), consultado en cada ejecución (lo publica cada día laborable ~16:00); FRED DEXUSEU de respaldo (`apoyo.cambio_usd`).
 - **Índices de Eurostat en lenguaje llano**: con `referencia:` (aluminio, cobre, zinc, madera) se muestran como *precio estimado en euros* = precio mundial medio de 2021 en € × índice / índice medio de 2021 (`apoyo.precio_estimado`); sin referencia (acero, cemento, hormigón, estructuras), como «+X % frente a 2021».
 - **Pestañas de grupo múltiples**: se pueden pulsar varias (`#agricolas+metales`); «Todas» las muestra todas.
-- **Comparar** (`templates/comparar.html` + `static/comparar.js`): elegir materias sueltas y grupos «en conjunto» (media simple en base 100), por ámbito y periodo (1, 3, 5, 10 años); máximo 8 líneas con la paleta validada para daltonismo (`--serie-1..8` en `estilo.css`, claro y oscuro). Los datos los prepara `build.datos_comparacion`.
+- **Comparar** (`templates/comparar.html` + `static/comparar.js`): elegir materias sueltas y grupos «en conjunto» (media simple en base 100), por ámbito y periodo (1, 3, 5, 10 años); máximo 8 líneas con la paleta validada para daltonismo (`--serie-1..8` en `estilo.css`, claro y oscuro). Los datos los prepara `build.datos_comparacion`. El mismo comparador (`templates/_comparador.html`, reutilizable con `{% set cmp_... %}` + `include`) está en «Mercado» con los metales en euros (`build.datos_metales`; el paladio entra cuando tenga 13 meses).
 - `cedron/certificados/`: certificado raíz público de la FNMT, necesario para verificar `www.mapa.gob.es` (Python no lo trae). Solo se usa para esa web.
 - `cedron/sources.py`: conectores. Lanzan `FuenteError` con mensaje claro; nunca inventan datos.
 - `cedron/store.py`: lectura/escritura atómica de JSON en `data/` (o `CEDRON_DATA`).
@@ -109,7 +109,7 @@ Noticias: nota 0–100 = relevancia 40 + calidad del medio 25 + actualidad 20 + 
 ## Diseño
 
 Concepto: «informe de ensayo de metales». El elemento memorable es el **contraste** (sello ovalado de doble línea con la lectura). Todo lo demás, sobrio.
-- Colores: papel `#F2F4F1`, tinta petróleo `#1D3A3A`, gris `#55686A`, verdín `#2F7D6B` (favorable), óxido `#A2412B` (desfavorable). Modo oscuro propio.
+- Colores: papel `#F2F4F1`, tinta petróleo `#1D3A3A`, gris `#55686A`, verdín `#2F7D6B` (favorable), óxido `#A2412B` (desfavorable). Modo oscuro propio: **negro neutro sin tono verde** (papel `#121314`, texto `#ECEBE7`; decisión del usuario el 6-nov-2026), con contrastes AA/AAA comprobados.
 - Tipografía: Archivo (ancho expandido) para cifras y títulos, Literata para texto. Servidas desde Bunny Fonts (RGPD).
 - Alineado a la izquierda, sin tarjetas genéricas, sin etiquetas en mayúsculas, signo menos tipográfico (−) y formato numérico español.
 - Gráfico SVG generado en Python con cruceta y globo (`static/grafico.js`) y tabla de datos accesible.

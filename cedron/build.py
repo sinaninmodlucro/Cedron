@@ -119,6 +119,33 @@ def datos_comparacion(grupos_apoyo: list) -> str:
                       ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
+def datos_metales(activos: list) -> str:
+    """Series mensuales de los metales (en euros) para el comparador de «Mercado».
+
+    Dos grupos: los preciosos (onza troy) y el resto (cobre). Solo entran los metales
+    con al menos 13 meses de historia (el paladio, hasta que la acumule, no).
+    """
+    cambio = apoyo.TipoCambio(apoyo.cambio_usd())
+    grupos = {"preciosos": {"id": "preciosos", "nombre": "Metales preciosos", "materias": []},
+              "industriales": {"id": "industriales", "nombre": "Cobre", "materias": []}}
+    materias = {}
+    for a in activos:
+        mensual = [tuple(x) for x in (a.get("lectura") or {}).get("mensual", [])]
+        euros = cambio.a_euros(mensual) if cambio else []
+        serie, unidad = (euros, "€/" + a["unidad"]) if euros else (mensual, "$/" + a["unidad"])
+        if len(serie) < 13:
+            continue
+        grupo = "preciosos" if a["unidad"] == "onza troy" else "industriales"
+        grupos[grupo]["materias"].append(a["id"])
+        materias[a["id"]] = {"nombre": a["nombre"], "pestana": grupo,
+                             "vistas": {v: "global" for v in apoyo.AMBITOS},
+                             "ambitos": {"global": {"nombre": "Global", "unidad": unidad, "decimales": 2,
+                                                    "serie": [[f, _redondear(v)] for f, v in serie[-132:]]}}}
+    pestanas = [g for g in grupos.values() if g["materias"]]
+    return json.dumps({"pestanas": pestanas, "materias": materias},
+                      ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
 def grafico(mensual: list, meses_media: int, unidad: str, simbolo: str = "$") -> dict | None:
     if len(mensual) < meses_media + 2:
         return None
@@ -265,7 +292,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         html = env.get_template(plantilla).render(**comun, raiz="../" * profundidad, **extra)
         (destino / ruta).write_text(html, encoding="utf-8")
 
-    pagina("index.html", "index.html", seccion="mercado",
+    pagina("index.html", "index.html", seccion="mercado", datos_metales=datos_metales(activos),
            noticias=noticias[: cfg["noticias"]["maximo_portada"]])
     for a in activos:
         pagina("activo.html", f"activos/{a['id']}.html", seccion="mercado", a=a)

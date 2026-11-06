@@ -35,6 +35,18 @@
   </table>
 </section>
 
+<section class="bloque" aria-labelledby="t-cmp">
+  <h2 id="t-cmp">Comparar metales</h2>
+  <p class="texto secundario">Elige los metales que quieras, o los preciosos en conjunto, y mira cómo han evolucionado a la vez. Todos parten de 100 al principio del periodo.</p>
+  {% set cmp_id = "cmp-metales" %}
+  {% set cmp_datos = datos_metales %}
+  {% set cmp_clave = "cedron-comparar-metales" %}
+  {% set cmp_inicial = '["m:oro", "m:plata", "m:platino"]' %}
+  {% set cmp_ambitos = false %}
+  {% set cmp_pie = "Medias mensuales en euros (pasadas desde dólares con el cambio del BCE de cada mes), en base 100 al principio del periodo. «Metales preciosos en conjunto» es la media simple de los que tienen historia: todos pesan lo mismo. El paladio aparecerá cuando tenga historia suficiente." %}
+  {% include "_comparador.html" %}
+</section>
+
 <div class="columnas">
   <section class="bloque" aria-labelledby="t-not">
     <h2 id="t-not">Lo más relevante</h2>
@@ -53,4 +65,7 @@
     <p>Es una descripción del entorno, no una orden de compra o venta. <a href="{{ raiz }}metodologia.html">Reglas completas e historial de aciertos y fallos</a>.</p>
   </section>
 </div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/comparar.js" defer></script>
 {% endblock %}

@@ -1,0 +1,44 @@
+{# Comparador reutilizable (static/comparar.js). Variables que hay que dar con «set»:
+   cmp_id (unico en la pagina), cmp_datos (JSON), cmp_clave (memoria del navegador),
+   cmp_inicial (lista JSON de lo que sale elegido al principio), cmp_ambitos (si se
+   elige España / Europa / Global) y cmp_pie (texto bajo el grafico). #}
+<div class="comparar" id="{{ cmp_id }}" data-clave="{{ cmp_clave }}" data-inicial='{{ cmp_inicial }}'>
+  <div class="comparar__controles">
+    {% if cmp_ambitos %}
+    <div class="vistas" role="group" aria-label="Ámbito de los precios">
+      {% for id, nombre in ambitos %}
+      <button type="button" data-cmp-vista="{{ id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ nombre }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="vistas" role="group" aria-label="Periodo">
+      {% for anios in (1, 3, 5, 10) %}
+      <button type="button" data-cmp-anios="{{ anios }}" aria-pressed="{{ 'true' if anios == 3 else 'false' }}">{{ anios }} año{{ 's' if anios > 1 }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="comparar__cuerpo">
+    <fieldset class="comparar__eleccion">
+      <legend>Qué comparar <span class="secundario pequeno">(hasta 8 líneas)</span></legend>
+      <div data-cmp="lista"></div>
+      <label class="comparar__total"><input type="checkbox" data-cmp="total"> Añadir la media de todo lo elegido</label>
+      <button type="button" class="enlace-boton" data-cmp="limpiar">Quitar todo</button>
+    </fieldset>
+
+    <figure class="grafico comparar__grafico">
+      <p class="pequeno secundario" data-cmp="aviso" role="status"></p>
+      <ul class="cmp-leyenda" data-cmp="leyenda" aria-label="Leyenda"></ul>
+      <div class="grafico__marco">
+        <svg data-cmp="svg" viewBox="0 0 720 340" role="img" aria-labelledby="{{ cmp_id }}-desc"><desc id="{{ cmp_id }}-desc">Evolución en base 100 de lo elegido.</desc></svg>
+        <div class="globo" data-cmp="globo" hidden></div>
+      </div>
+      <figcaption>{{ cmp_pie }}</figcaption>
+      <details class="pequeno">
+        <summary>Ver los datos en tabla</summary>
+        <div class="desplazable" data-cmp="tabla"></div>
+      </details>
+    </figure>
+  </div>
+  <script type="application/json" data-cmp="datos">{{ cmp_datos|safe }}</script>
+</div>

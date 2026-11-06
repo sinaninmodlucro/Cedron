@@ -7,46 +7,14 @@
   <p>Elige materias sueltas, grupos enteros o las dos cosas, y mira cómo han evolucionado a la vez. Como cada una se mide en una unidad distinta, todas parten de <strong>100</strong> al principio del periodo: 120 significa un 20 % más cara que entonces, 90 un 10 % más barata.</p>
 </div>
 
-<div class="comparar" id="comparar">
-  <div class="comparar__controles">
-    <div class="vistas" role="group" aria-label="Ámbito de los precios">
-      {% for id, nombre in ambitos %}
-      <button type="button" data-cmp-vista="{{ id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ nombre }}</button>
-      {% endfor %}
-    </div>
-    <div class="vistas" role="group" aria-label="Periodo">
-      {% for anios in (1, 3, 5, 10) %}
-      <button type="button" data-cmp-anios="{{ anios }}" aria-pressed="{{ 'true' if anios == 3 else 'false' }}">{{ anios }} año{{ 's' if anios > 1 }}</button>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="comparar__cuerpo">
-    <fieldset class="comparar__eleccion">
-      <legend>Qué comparar <span class="secundario pequeno">(hasta 8 líneas)</span></legend>
-      <div id="cmp-lista"></div>
-      <label class="comparar__total"><input type="checkbox" id="cmp-total"> Añadir la media de todo lo elegido</label>
-      <button type="button" class="enlace-boton" id="cmp-limpiar">Quitar todo</button>
-    </fieldset>
-
-    <figure class="grafico comparar__grafico">
-      <p class="pequeno secundario" id="cmp-aviso" role="status"></p>
-      <ul class="cmp-leyenda" id="cmp-leyenda" aria-label="Leyenda"></ul>
-      <div class="grafico__marco">
-        <svg id="cmp-svg" viewBox="0 0 720 340" role="img" aria-labelledby="cmp-desc"><desc id="cmp-desc">Evolución en base 100 de las materias elegidas.</desc></svg>
-        <div class="globo" id="cmp-globo" hidden></div>
-      </div>
-      <figcaption>Medias mensuales, en base 100 al principio del periodo. Las líneas de grupo son la media simple de sus materias (todas pesan lo mismo). Si una materia no tiene datos de ese mes inicial, empieza en su primer mes con datos, y se indica en la leyenda.</figcaption>
-      <details class="pequeno">
-        <summary>Ver los datos en tabla</summary>
-        <div class="desplazable" id="cmp-tabla"></div>
-      </details>
-    </figure>
-  </div>
-</div>
+{% set cmp_id = "cmp-materias" %}
+{% set cmp_datos = datos_comparar %}
+{% set cmp_clave = "cedron-comparar" %}
+{% set cmp_inicial = '["g:agricolas", "g:fertilizantes"]' %}
+{% set cmp_ambitos = true %}
+{% set cmp_pie = "Medias mensuales, en base 100 al principio del periodo. Las líneas de grupo son la media simple de sus materias (todas pesan lo mismo). Si una materia no tiene datos de ese mes inicial, empieza en su primer mes con datos, y se indica en la leyenda." %}
+{% include "_comparador.html" %}
 <p class="pequeno secundario bloque">Comparar no es predecir: que dos precios se muevan juntos no significa que uno cause el otro. <a href="{{ raiz }}metodologia.html#comparar">Cómo se calcula</a>.</p>
-
-<script type="application/json" id="cmp-datos">{{ datos_comparar|safe }}</script>
 {% endblock %}
 {% block scripts %}
 <script src="{{ raiz }}static/comparar.js" defer></script>

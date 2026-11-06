@@ -1,15 +1,18 @@
-// Pagina «Comparar»: evolucion de varias materias (o grupos enteros) a la vez, en base 100.
-// Los datos vienen en <script id="cmp-datos"> (series mensuales por materia y ambito).
-(function () {
-  var nodo = document.getElementById("cmp-datos");
+// Comparador: evolucion de varias materias (o grupos enteros) a la vez, en base 100.
+// Sirve para cualquier bloque .comparar de la pagina (materias de apoyo en «Comparar»,
+// metales en «Mercado»). Cada bloque lleva sus datos en un <script data-cmp="datos">,
+// su clave de memoria en data-clave y su eleccion inicial en data-inicial.
+document.querySelectorAll(".comparar[data-clave]").forEach(function (raiz) {
+  function q(nombre) { return raiz.querySelector('[data-cmp="' + nombre + '"]'); }
+  var nodo = q("datos");
   if (!nodo) return;
   var DATOS = JSON.parse(nodo.textContent);
   var MAX = 8;                                    // colores de la paleta: nunca se repiten
   var MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
   var NOMBRE_AMB = { espana: "España", europa: "Europa", global: "Global" };
-  var CLAVE = "cedron-comparar";
-  var svg = document.getElementById("cmp-svg");
-  var globo = document.getElementById("cmp-globo");
+  var CLAVE = raiz.dataset.clave;
+  var svg = q("svg");
+  var globo = q("globo");
   var NS = "http://www.w3.org/2000/svg";
   var ANCHO = 720, ALTO = 340, IZQ = 48, DER = 128, ARR = 16, ABA = 32;
 
@@ -19,7 +22,7 @@
     if (g && Array.isArray(g.elegidos)) estado = Object.assign(estado, g);
   } catch (e) {}
   if (!estado.elegidos.length) {                   // ejemplo inicial: dos grupos juntos
-    ["g:agricolas", "g:fertilizantes"].forEach(function (k) { if (existe(k)) elegir(k, true); });
+    JSON.parse(raiz.dataset.inicial || "[]").forEach(function (k) { if (existe(k)) elegir(k, true); });
   }
   estado.elegidos = estado.elegidos.filter(existe);
 
@@ -114,7 +117,11 @@
       var p = k.split(":");
       if (p[0] === "m") {
         var s = materia(p[1]);
-        return { clave: k, nombre: s.nombre, detalle: NOMBRE_AMB[s.ambito] + (s.desde && s.desde !== meses[0] ? ", desde " + mesLargo(s.desde) : ""),
+        // el ambito solo se indica si se puede elegir (en «Mercado» todo es global)
+        var partes = [];
+        if (raiz.querySelector("[data-cmp-vista]")) partes.push(NOMBRE_AMB[s.ambito]);
+        if (s.desde && s.desde !== meses[0]) partes.push("desde " + mesLargo(s.desde));
+        return { clave: k, nombre: s.nombre, detalle: partes.join(", "),
                  valores: s.valores, real: s };
       }
       var pe = pestana(p[1]);
@@ -132,7 +139,7 @@
 
   // ---------------------------------------------------------------- lista de eleccion
   function pintarLista() {
-    var cont = document.getElementById("cmp-lista");
+    var cont = q("lista");
     cont.innerHTML = "";
     DATOS.pestanas.forEach(function (p, i) {
       var det = document.createElement("details");
@@ -141,11 +148,11 @@
       var sum = document.createElement("summary");
       sum.textContent = p.nombre;
       det.appendChild(sum);
-      det.appendChild(casilla("g:" + p.id, "Todo el grupo, en conjunto", true));
+      if (p.materias.length > 1) det.appendChild(casilla("g:" + p.id, "Todo el grupo, en conjunto", true));
       p.materias.forEach(function (id) { det.appendChild(casilla("m:" + id, DATOS.materias[id].nombre, false)); });
       cont.appendChild(det);
     });
-    document.getElementById("cmp-total").checked = estado.total;
+    q("total").checked = estado.total;
   }
   function casilla(k, texto, grupo) {
     var l = document.createElement("label");
@@ -158,7 +165,7 @@
     l.appendChild(c); l.appendChild(marca); l.appendChild(document.createTextNode(texto));
     return l;
   }
-  document.getElementById("cmp-lista").addEventListener("change", function (e) {
+  q("lista").addEventListener("change", function (e) {
     var c = e.target;
     if (!c.dataset || !c.dataset.clave) return;
     if (!elegir(c.dataset.clave, c.checked)) {
@@ -168,7 +175,7 @@
     }
     actualizar();
   });
-  document.getElementById("cmp-total").addEventListener("change", function (e) {
+  q("total").addEventListener("change", function (e) {
     if (e.target.checked && lineas() >= MAX) {
       e.target.checked = false;
       aviso("Como mucho " + MAX + " líneas a la vez. Quita alguna para añadir la media.");
@@ -178,17 +185,17 @@
     if (estado.total) estado.colores["t:total"] = slotLibre(); else delete estado.colores["t:total"];
     actualizar();
   });
-  document.getElementById("cmp-limpiar").addEventListener("click", function () {
+  q("limpiar").addEventListener("click", function () {
     estado.elegidos = []; estado.colores = {}; estado.total = false;
     actualizar();
   });
-  document.querySelectorAll("[data-cmp-vista]").forEach(function (b) {
+  raiz.querySelectorAll("[data-cmp-vista]").forEach(function (b) {
     b.addEventListener("click", function () { estado.vista = b.dataset.cmpVista; actualizar(); });
   });
-  document.querySelectorAll("[data-cmp-anios]").forEach(function (b) {
+  raiz.querySelectorAll("[data-cmp-anios]").forEach(function (b) {
     b.addEventListener("click", function () { estado.anios = +b.dataset.cmpAnios; actualizar(); });
   });
-  function aviso(t) { document.getElementById("cmp-aviso").textContent = t || ""; }
+  function aviso(t) { q("aviso").textContent = t || ""; }
 
   // ---------------------------------------------------------------- grafico
   function el(tipo, attrs, padre) {
@@ -291,12 +298,12 @@
   }
 
   function pintarLeyenda(res) {
-    var ul = document.getElementById("cmp-leyenda");
+    var ul = q("leyenda");
     ul.innerHTML = "";
     res.series.forEach(function (s) {
       var li = document.createElement("li");
       li.innerHTML = "<span class=\"cmp-color\" style=\"background: var(--serie-" + estado.colores[s.clave] + ")\"></span>" +
-                     "<span>" + escapar(s.nombre) + " <span class=\"secundario\">(" + escapar(s.detalle) + ")</span></span>";
+                     "<span>" + escapar(s.nombre) + (s.detalle ? " <span class=\"secundario\">(" + escapar(s.detalle) + ")</span>" : "") + "</span>";
       var b = document.createElement("button");
       b.type = "button"; b.className = "cmp-quitar"; b.textContent = "×";
       b.setAttribute("aria-label", "Quitar " + s.nombre);
@@ -311,7 +318,7 @@
   }
 
   function pintarTabla(res) {
-    var cont = document.getElementById("cmp-tabla");
+    var cont = q("tabla");
     if (!res.series.length) { cont.innerHTML = ""; return; }
     var h = "<table class=\"tabla\"><thead><tr><th>Mes</th>" +
             res.series.map(function (s) { return "<th class=\"num\">" + escapar(s.nombre) + "</th>"; }).join("") + "</tr></thead><tbody>";
@@ -324,8 +331,8 @@
 
   function actualizar() {
     aviso("");
-    document.querySelectorAll("[data-cmp-vista]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.cmpVista === estado.vista ? "true" : "false"); });
-    document.querySelectorAll("[data-cmp-anios]").forEach(function (b) { b.setAttribute("aria-pressed", +b.dataset.cmpAnios === estado.anios ? "true" : "false"); });
+    raiz.querySelectorAll("[data-cmp-vista]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.cmpVista === estado.vista ? "true" : "false"); });
+    raiz.querySelectorAll("[data-cmp-anios]").forEach(function (b) { b.setAttribute("aria-pressed", +b.dataset.cmpAnios === estado.anios ? "true" : "false"); });
     var res = calcular();
     pintarLista();
     pintar(res);
@@ -334,4 +341,4 @@
     guardar();
   }
   actualizar();
-})();
+});
