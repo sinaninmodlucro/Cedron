@@ -1,6 +1,20 @@
 {
- "generado": "2026-11-07T01:25:04Z",
+ "generado": "2026-11-07T03:07:35Z",
  "noticias": [
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.bloomberg.com/news/articles/2026-11-07/china-extends-gold-buying-streak-to-two-years-as-prices-drop",
+   "fecha": "2026-11-07T02:26:22Z",
+   "idioma": "en",
+   "medio": "Bloomberg - Mercados",
+   "nota": 82,
+   "resumen": "China’s central bank added to its gold reserves in October — extending a buying streak to two years — as the precious metal fell almost 7% to end the month below the $4,000-an-ounce support threshold.",
+   "tambien_en": [],
+   "titulo": "China Extends Gold-Buying Streak to Two Years as Prices Drop"
+  },
   {
    "activos": [
     "cobre"
@@ -38,7 +52,7 @@
    "fecha": "2026-11-06T00:09:55Z",
    "idioma": "en",
    "medio": "Bloomberg - Mercados",
-   "nota": 82,
+   "nota": 81,
    "resumen": "Gold fell after a hot US nonfarm payrolls print added fuel to speculations that the Federal Reserve will seek to raise interest rates to contain inflation.",
    "tambien_en": [],
    "titulo": "Gold Extends Drop on Stronger-Than-Expected US Employment Data"
@@ -294,7 +308,7 @@
    "fecha": "2026-11-06T01:33:22Z",
    "idioma": "es",
    "medio": "Investing.com España - Materias primas",
-   "nota": 75,
+   "nota": 74,
    "resumen": "",
    "tambien_en": [],
    "titulo": "El oro cae tras el informe de empleo, pero avanza semanalmente"
@@ -308,7 +322,7 @@
    "fecha": "2026-11-05T22:14:04Z",
    "idioma": "en",
    "medio": "Investing.com - Materias primas",
-   "nota": 74,
+   "nota": 73,
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold prices climb as tech rout on Wall Street keeps the dollar subdued"
@@ -322,52 +336,10 @@
    "fecha": "2026-11-05T16:43:15Z",
    "idioma": "en",
    "medio": "The Northern Miner",
-   "nota": 74,
+   "nota": 73,
    "resumen": "Democrats’ capture of Congress could put U.S. mining investments under closer scrutiny and sustain demand for gold as political stalemate complicates business planning, according to... The post Democrats’ win tests US mining support, lifts gold appeared first on The Northern Miner .",
    "tambien_en": [],
    "titulo": "Democrats’ win tests US mining support, lifts gold"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/gold-faces-a-payrolls-test-with-fed-hike-odds-still-near-80-200690961",
-   "fecha": "2026-11-05T20:35:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
-   "nota": 73,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Gold Faces a Payrolls Test With Fed Hike Odds Still Near 80%"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/golds-recovery-faces-a-tougher-test-after-sellers-emerge-near-4156-200690959",
-   "fecha": "2026-11-05T20:17:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
-   "nota": 73,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Gold’s Recovery Faces a Tougher Test After Sellers Emerge Near $4,156"
-  },
-  {
-   "activos": [
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/silvers-2027-surplus-forecast-puts-the-bullish-case-for-etf-demand-to-the-test-200690958",
-   "fecha": "2026-11-05T19:52:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
-   "nota": 73,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Silver’s 2027 Surplus Forecast Puts the Bullish Case for ETF Demand to the Test"
   },
   {
    "activos": [
@@ -399,17 +371,18 @@
   },
   {
    "activos": [
-    "cobre"
+    "oro",
+    "platino"
    ],
    "comercial": false,
-   "enlace": "https://www.northernminer.com/news/chibougamau-offers-central-asia-copper-growth-bmo/1003897434/",
-   "fecha": "2026-11-05T15:05:33Z",
-   "idioma": "en",
-   "medio": "The Northern Miner",
-   "nota": 73,
-   "resumen": "Central Asia Metals’ (AIM, TSX: CAML) newly acquired Chibougamau project in Quebec could produce more copper annually than the company’s Kounrad mine, helping offset shrinking... The post Chibougamau offers Central Asia copper growth: BMO appeared first on The Northern Miner .",
+   "enlace": "https://www.financialcontent.com/article/nnwire-2026-11-6-platinum-tops-1800-as-spot-prices-climb",
+   "fecha": "2026-11-06T15:05:00Z",
+   "idioma": "",
+   "medio": "Financialcontent",
+   "nota": 72,
+   "resumen": "Platinum prices have exceeded $1,800 per ounce since this month began, marking their highest levels since late 2011 and reviving interest in a metal that spent years underperforming gold. The rally has also prompted Bank of America to revise its outlook, reflecting the strength of a market increasin",
    "tambien_en": [],
-   "titulo": "Chibougamau offers Central Asia copper growth: BMO"
+   "titulo": "Platinum Tops $1,800 as Spot Prices Climb"
   },
   {
    "activos": [
@@ -590,11 +563,67 @@
     "oro"
    ],
    "comercial": false,
+   "enlace": "https://www.investing.com/analysis/gold-faces-a-payrolls-test-with-fed-hike-odds-still-near-80-200690961",
+   "fecha": "2026-11-05T20:35:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 72,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold Faces a Payrolls Test With Fed Hike Odds Still Near 80%"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/analysis/golds-recovery-faces-a-tougher-test-after-sellers-emerge-near-4156-200690959",
+   "fecha": "2026-11-05T20:17:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 72,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold’s Recovery Faces a Tougher Test After Sellers Emerge Near $4,156"
+  },
+  {
+   "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/analysis/silvers-2027-surplus-forecast-puts-the-bullish-case-for-etf-demand-to-the-test-200690958",
+   "fecha": "2026-11-05T19:52:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 72,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Silver’s 2027 Surplus Forecast Puts the Bullish Case for ETF Demand to the Test"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://www.northernminer.com/news/chibougamau-offers-central-asia-copper-growth-bmo/1003897434/",
+   "fecha": "2026-11-05T15:05:33Z",
+   "idioma": "en",
+   "medio": "The Northern Miner",
+   "nota": 72,
+   "resumen": "Central Asia Metals’ (AIM, TSX: CAML) newly acquired Chibougamau project in Quebec could produce more copper annually than the company’s Kounrad mine, helping offset shrinking... The post Chibougamau offers Central Asia copper growth: BMO appeared first on The Northern Miner .",
+   "tambien_en": [],
+   "titulo": "Chibougamau offers Central Asia copper growth: BMO"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
    "enlace": "https://kalkinemedia.com/au/news/announcements/barton-gold-showcases-23-million-ounce-gold-resource-at-2026-munich-mining-conference",
    "fecha": "2026-11-06T00:23:08Z",
    "idioma": "",
    "medio": "Kalkine Media",
-   "nota": 72,
+   "nota": 71,
    "resumen": "",
    "tambien_en": [],
    "titulo": "Barton Gold Showcases 2.3 Million Ounce Gold Resource at 2026 Munich Mining Conference - Kalkine Media"
@@ -608,7 +637,7 @@
    "fecha": "2026-11-06T00:01:56Z",
    "idioma": "",
    "medio": "Smartpeoplemail",
-   "nota": 72,
+   "nota": 71,
    "resumen": "Gold price extended its recovery on Thursday as investors digested the outcome of the US midterm elections and what it could mean for inflation. The metal climbed to $4,143, its highest level since October 22 and 7.18% above its lowest point this month. The rally could continue ahead of the US nonfa",
    "tambien_en": [],
    "titulo": "Gold price forecast: Can the rally last as oil slides before US nonfarm payrolls?"
@@ -623,7 +652,7 @@
    "fecha": "2026-11-05T00:01:03Z",
    "idioma": "en",
    "medio": "Financial Times - Materias primas",
-   "nota": 72,
+   "nota": 71,
    "resumen": "As selling prices soar, the red metal frenzy favours miners over smelters",
    "tambien_en": [],
    "titulo": "Copper is booming but not everyone is striking gold"
@@ -637,7 +666,7 @@
    "fecha": "2026-11-05T16:19:00Z",
    "idioma": "en",
    "medio": "Investing.com - Análisis de materias primas",
-   "nota": 71,
+   "nota": 70,
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold Faces New Risks as Trump Weighs Iran Strikes and Executive Action"
@@ -651,7 +680,7 @@
    "fecha": "2026-11-05T13:09:19Z",
    "idioma": "en",
    "medio": "Mining Technology",
-   "nota": 71,
+   "nota": 70,
    "resumen": "Caledonia Mining has entered into an interim financing facility agreement of up to $150m to support the development of the Bilboes Gold Project in Zimbabwe. The post Caledonia signs $150m financing for Bilboes Gold Project appeared first on Mining Technology .",
    "tambien_en": [],
    "titulo": "Caledonia signs $150m financing for Bilboes Gold Project"
@@ -665,7 +694,7 @@
    "fecha": "2026-11-05T10:49:00Z",
    "idioma": "en",
    "medio": "Investing.com - Análisis de materias primas",
-   "nota": 69,
+   "nota": 68,
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold Tests 0.786 Resistance Arc, Medium-Term Outlook Remains Bearish Toward $3,720"
@@ -679,7 +708,7 @@
    "fecha": "2026-11-05T10:31:00Z",
    "idioma": "en",
    "medio": "Investing.com - Análisis de materias primas",
-   "nota": 69,
+   "nota": 68,
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold Rally Gains Momentum With $4,080 as Key Short-Term Support"
@@ -735,7 +764,7 @@
    "fecha": "2026-11-04T21:13:46Z",
    "idioma": "es",
    "medio": "Bloomberg Línea - Mercados",
-   "nota": 67,
+   "nota": 66,
    "resumen": "El control demócrata de ambas cámaras del Congreso reduce las perspectivas de una mayor expansión fiscal en Estados Unidos y favorece la recuperación del metal precioso, tras las fuertes pérdidas registradas en octubre.",
    "tambien_en": [],
    "titulo": "Precio del oro tiene su mayor alza desde agosto tras victoria demócrata en EE.UU.: las razones del repunte"
@@ -749,52 +778,10 @@
    "fecha": "2026-11-04T21:08:08Z",
    "idioma": "es",
    "medio": "Bloomberg Línea - Mercados",
-   "nota": 67,
+   "nota": 66,
    "resumen": "Wall Street pasó del temor a una mayor regulación tecnológica a un repunte bursátil tras las elecciones. El resultado plantea nuevas oportunidades de inversión, pero también riesgos para 2027.",
    "tambien_en": [],
    "titulo": "Una guía para invertir tras resultados de elecciones en EE.UU.: acciones, bonos, dólar y oro"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.northernminer.com/news/freeport-approves-4-5b-bagdad-copper-expansion/1003897395/",
-   "fecha": "2026-11-04T20:55:21Z",
-   "idioma": "en",
-   "medio": "The Northern Miner",
-   "nota": 66,
-   "resumen": "Freeport-McMoRan (NYSE: FCX) has approved a $4.5-billion (C$6.3 billion) expansion of its Bagdad mine in Arizona that would more than double copper output, bolstering domestic... The post Freeport approves $4.5B Bagdad copper expansion appeared first on The Northern Miner .",
-   "tambien_en": [],
-   "titulo": "Freeport approves $4.5B Bagdad copper expansion"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.northernminer.com/news/friedlands-ivanhoe-slashes-copper-outlook-again/1003897389/",
-   "fecha": "2026-11-04T20:50:38Z",
-   "idioma": "en",
-   "medio": "The Northern Miner",
-   "nota": 66,
-   "resumen": "Robert Friedland’s Ivanhoe Mines (TSX: IVN; US-OTC: IVPAF) has cut next year’s copper production outlook at Kamoa-Kakula by 19% as recovery work at the flood-hit... The post Friedland’s Ivanhoe slashes copper outlook again appeared first on The Northern Miner .",
-   "tambien_en": [],
-   "titulo": "Friedland’s Ivanhoe slashes copper outlook again"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.ft.com/content/656f10c4-26ec-430e-adfa-dcadf0dd61ff?syn-25a6b1a6=1",
-   "fecha": "2026-11-04T09:42:01Z",
-   "idioma": "en",
-   "medio": "Financial Times - Materias primas",
-   "nota": 66,
-   "resumen": "Mitsui chief warns geopolitical risks continue to be ‘unpredictable rather than calming down’",
-   "tambien_en": [],
-   "titulo": "Copper and conflict trigger profit surge for Buffett-backed Japanese commodity traders"
   },
   {
    "activos": [],
@@ -824,29 +811,45 @@
   },
   {
    "activos": [
-    "platino"
+    "cobre"
    ],
    "comercial": false,
-   "enlace": "https://www.ft.com/content/97ce0d59-0d82-4f22-8ac1-d1b299c5b9d7?syn-25a6b1a6=1",
-   "fecha": "2026-11-04T04:00:07Z",
+   "enlace": "https://www.northernminer.com/news/freeport-approves-4-5b-bagdad-copper-expansion/1003897395/",
+   "fecha": "2026-11-04T20:55:21Z",
    "idioma": "en",
-   "medio": "Financial Times - Materias primas",
-   "nota": 64,
-   "resumen": "German group Heraeus alleged to have understated precious metals content in material processed for 450 customers worldwide",
+   "medio": "The Northern Miner",
+   "nota": 65,
+   "resumen": "Freeport-McMoRan (NYSE: FCX) has approved a $4.5-billion (C$6.3 billion) expansion of its Bagdad mine in Arizona that would more than double copper output, bolstering domestic... The post Freeport approves $4.5B Bagdad copper expansion appeared first on The Northern Miner .",
    "tambien_en": [],
-   "titulo": "Crisis widens at top platinum refiner as probe exposes metal test manipulation"
+   "titulo": "Freeport approves $4.5B Bagdad copper expansion"
   },
   {
-   "activos": [],
+   "activos": [
+    "cobre"
+   ],
    "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/articles/2026-11-06/canadian-dollar-set-for-worst-week-since-september-on-weak-jobs",
-   "fecha": "2026-11-06T18:48:22Z",
+   "enlace": "https://www.northernminer.com/news/friedlands-ivanhoe-slashes-copper-outlook-again/1003897389/",
+   "fecha": "2026-11-04T20:50:38Z",
    "idioma": "en",
-   "medio": "Bloomberg - Mercados",
-   "nota": 62,
-   "resumen": "The Canadian dollar posted its biggest weekly loss since late September after weaker-than-expected domestic employment data reinforced concerns about the outlook for the country’s economy.",
+   "medio": "The Northern Miner",
+   "nota": 65,
+   "resumen": "Robert Friedland’s Ivanhoe Mines (TSX: IVN; US-OTC: IVPAF) has cut next year’s copper production outlook at Kamoa-Kakula by 19% as recovery work at the flood-hit... The post Friedland’s Ivanhoe slashes copper outlook again appeared first on The Northern Miner .",
    "tambien_en": [],
-   "titulo": "Canadian Dollar Notches Worst Week Since September on Weak Jobs"
+   "titulo": "Friedland’s Ivanhoe slashes copper outlook again"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://www.ft.com/content/656f10c4-26ec-430e-adfa-dcadf0dd61ff?syn-25a6b1a6=1",
+   "fecha": "2026-11-04T09:42:01Z",
+   "idioma": "en",
+   "medio": "Financial Times - Materias primas",
+   "nota": 65,
+   "resumen": "Mitsui chief warns geopolitical risks continue to be ‘unpredictable rather than calming down’",
+   "tambien_en": [],
+   "titulo": "Copper and conflict trigger profit surge for Buffett-backed Japanese commodity traders"
   }
  ]
 }
