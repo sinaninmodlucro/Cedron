@@ -1,11 +1,11 @@
 {
  "cobre": {
-  "calculado": "2026-11-06T23:53:21Z",
+  "calculado": "2026-11-07T01:25:04Z",
   "contexto": [
    {
-    "dato": "Percentil 56 de los últimos 3 años",
+    "dato": "Percentil 43 de los últimos 3 años",
     "explicacion": "Los grandes especuladores están sin excesos.",
-    "fecha": "2026-10-27",
+    "fecha": "2026-11-03",
     "id": "posicionamiento",
     "nombre": "Posicionamiento especulativo",
     "puntos": 0
@@ -567,10 +567,10 @@
   }
  },
  "oro": {
-  "calculado": "2026-11-06T23:53:21Z",
+  "calculado": "2026-11-07T01:25:04Z",
   "contexto": [
    {
-    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
+    "dato": "En 3 meses: tipo real +0,20 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -578,9 +578,9 @@
     "puntos": -1
    },
    {
-    "dato": "Percentil 79 de los últimos 3 años",
+    "dato": "Percentil 64 de los últimos 3 años",
     "explicacion": "Los grandes especuladores están sin excesos.",
-    "fecha": "2026-10-27",
+    "fecha": "2026-11-03",
     "id": "posicionamiento",
     "nombre": "Posicionamiento especulativo",
     "puntos": 0
@@ -1150,10 +1150,10 @@
   }
  },
  "paladio": {
-  "calculado": "2026-11-06T23:53:21Z",
+  "calculado": "2026-11-07T01:25:04Z",
   "contexto": [
    {
-    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
+    "dato": "En 3 meses: tipo real +0,20 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -1161,9 +1161,9 @@
     "puntos": -1
    },
    {
-    "dato": "Percentil 44 de los últimos 3 años",
+    "dato": "Percentil 36 de los últimos 3 años",
     "explicacion": "Los grandes especuladores están sin excesos.",
-    "fecha": "2026-10-27",
+    "fecha": "2026-11-03",
     "id": "posicionamiento",
     "nombre": "Posicionamiento especulativo",
     "puntos": 0
@@ -1180,10 +1180,10 @@
   "tendencia": null
  },
  "plata": {
-  "calculado": "2026-11-06T23:53:21Z",
+  "calculado": "2026-11-07T01:25:04Z",
   "contexto": [
    {
-    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
+    "dato": "En 3 meses: tipo real +0,20 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -1191,9 +1191,9 @@
     "puntos": -1
    },
    {
-    "dato": "Percentil 11 de los últimos 3 años",
+    "dato": "Percentil 12 de los últimos 3 años",
     "explicacion": "Los grandes especuladores están sin excesos.",
-    "fecha": "2026-10-27",
+    "fecha": "2026-11-03",
     "id": "posicionamiento",
     "nombre": "Posicionamiento especulativo",
     "puntos": 0
@@ -1763,10 +1763,10 @@
   }
  },
  "platino": {
-  "calculado": "2026-11-06T23:53:21Z",
+  "calculado": "2026-11-07T01:25:04Z",
   "contexto": [
    {
-    "dato": "En 3 meses: tipo real +0,24 puntos; dólar +2,2 %",
+    "dato": "En 3 meses: tipo real +0,20 puntos; dólar +2,2 %",
     "explicacion": "Tipos reales y dólar a la baja suelen favorecer a los metales preciosos; ambos al alza, lo contrario. Desde 2022 esta relación se ha debilitado.",
     "fecha": "2026-10-30",
     "id": "macro",
@@ -1774,12 +1774,12 @@
     "puntos": -1
    },
    {
-    "dato": "Percentil 14 de los últimos 3 años",
-    "explicacion": "Los grandes especuladores están sin excesos.",
-    "fecha": "2026-10-27",
+    "dato": "Percentil 5 de los últimos 3 años",
+    "explicacion": "Los grandes especuladores están en zona de pesimismo extremo (cerca de su mínimo de estos años).",
+    "fecha": "2026-11-03",
     "id": "posicionamiento",
     "nombre": "Posicionamiento especulativo",
-    "puntos": 0
+    "puntos": 1
    },
    {
     "dato": "Ratio 0,37 (media 10 años: 0,54)",
