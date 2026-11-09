@@ -14,16 +14,17 @@
  },
  "consultas_dia": {
   "newsdata": {
-   "2026-11-06": 31,
    "2026-11-07": 22,
    "2026-11-08": 22,
-   "2026-11-09": 1
+   "2026-11-09": 2
   }
  },
  "fred_dia": "2026-11-09",
  "fuentes": {
   "BCE (tipo de cambio)": {
-   "fallos_seguidos": 0,
+   "fallos_seguidos": 1,
+   "ultimo_error": "sin conexion con data-api.ecb.europa.eu: ReadTimeout",
+   "ultimo_fallo": "2026-11-09T03:08:20Z",
    "ultimo_ok": "2026-11-09T01:32:24Z"
   },
   "Banco Mundial": {
@@ -73,7 +74,7 @@
   },
   "NewsData.io": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:51Z"
+   "ultimo_ok": "2026-11-09T03:08:26Z"
   },
   "Prueba histórica (FRED y CFTC)": {
    "fallos_seguidos": 0,
@@ -81,71 +82,71 @@
   },
   "RSS Banco Central Europeo": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:47Z"
+   "ultimo_ok": "2026-11-09T03:08:21Z"
   },
   "RSS Banco de Inglaterra": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:47Z"
+   "ultimo_ok": "2026-11-09T03:08:21Z"
   },
   "RSS Bloomberg - Industrias": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-08T16:56:04Z",
-   "ultimo_ok": "2026-11-09T01:32:48Z"
+   "ultimo_ok": "2026-11-09T03:08:22Z"
   },
   "RSS Bloomberg - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:48Z"
+   "ultimo_ok": "2026-11-09T03:08:22Z"
   },
   "RSS Bloomberg Línea - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:48Z"
+   "ultimo_ok": "2026-11-09T03:08:23Z"
   },
   "RSS Cinco Días - Mercados": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-06T00:31:02Z",
-   "ultimo_ok": "2026-11-09T01:32:51Z"
+   "ultimo_ok": "2026-11-09T03:08:25Z"
   },
   "RSS Expansión - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:51Z"
+   "ultimo_ok": "2026-11-09T03:08:25Z"
   },
   "RSS Financial Times - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:48Z"
+   "ultimo_ok": "2026-11-09T03:08:21Z"
   },
   "RSS GoldSeek News": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-05T23:39:59Z",
-   "ultimo_ok": "2026-11-09T01:32:50Z"
+   "ultimo_ok": "2026-11-09T03:08:25Z"
   },
   "RSS Investing.com - Análisis de materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:50Z"
+   "ultimo_ok": "2026-11-09T03:08:24Z"
   },
   "RSS Investing.com - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:49Z"
+   "ultimo_ok": "2026-11-09T03:08:23Z"
   },
   "RSS Investing.com España - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:49Z"
+   "ultimo_ok": "2026-11-09T03:08:23Z"
   },
   "RSS Mining Technology": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:50Z"
+   "ultimo_ok": "2026-11-09T03:08:24Z"
   },
   "RSS Reserva Federal": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-07T04:10:45Z",
-   "ultimo_ok": "2026-11-09T01:32:46Z"
+   "ultimo_ok": "2026-11-09T03:08:20Z"
   },
   "RSS Silver Institute": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:50Z"
+   "ultimo_ok": "2026-11-09T03:08:24Z"
   },
   "RSS The Northern Miner": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-09T01:32:50Z"
+   "ultimo_ok": "2026-11-09T03:08:24Z"
   }
  },
  "metalcharts_simbolos": [
@@ -166,5 +167,5 @@
  "pink_dia": "2026-11-09",
  "precios_ultima_consulta": "2026-11-06T22:58:58Z",
  "prueba_mes": "2026-11/v4",
- "ultima_ejecucion": "2026-11-09T01:32:51Z"
+ "ultima_ejecucion": "2026-11-09T03:08:26Z"
 }

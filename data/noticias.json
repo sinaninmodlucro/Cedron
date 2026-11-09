@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-09T01:32:51Z",
+ "generado": "2026-11-09T03:08:26Z",
  "noticias": [
   {
    "activos": [
@@ -11,9 +11,9 @@
    "idioma": "en",
    "medio": "Bloomberg - Mercados",
    "nota": 82,
-   "resumen": "Gold held a late-week retreat after strong US jobs data reinforced expectations the Federal Reserve will seek to raise interest rates to combat inflation.",
+   "resumen": "Gold rose, erasing Friday’s decline, as oil extended a fall and an investigation into Nvidia Corp.’s chief executive officer weighed on technology stocks.",
    "tambien_en": [],
-   "titulo": "Gold Holds Decline as US Jobs Data Fan December Rate Hike Bets"
+   "titulo": "Gold Gains as Oil Extends Fall and Nvidia Probe Rattles Markets"
   },
   {
    "activos": [
@@ -50,6 +50,20 @@
   },
   {
    "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/news/commodities-news/gold-rebounds-above-4100-as-traders-await-us-inflation-data-after-jobs-beat-5010397",
+   "fecha": "2026-11-09T01:16:44Z",
+   "idioma": "en",
+   "medio": "Investing.com - Materias primas",
+   "nota": 75,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold rebounds above $4,100 as traders await U.S. inflation data after jobs beat"
+  },
+  {
+   "activos": [
     "cobre"
    ],
    "comercial": false,
@@ -77,48 +91,6 @@
     "Business News India"
    ],
    "titulo": "Dhanteras Boost: NSE Electronic Gold Receipts Hit Record 2.27 Lakh Units"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/news/commodities-news/why-gold-is-losing-its-shine-goldman-breaks-down-the-recent-selloff-5010022",
-   "fecha": "2026-11-07T20:02:06Z",
-   "idioma": "en",
-   "medio": "Investing.com - Materias primas",
-   "nota": 73,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Why gold is losing its shine: Goldman breaks down the recent sell-off"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://es.investing.com/news/commodities-news/por-que-el-oro-pierde-su-brillo-goldman-analiza-la-reciente-caida-3917614",
-   "fecha": "2026-11-07T20:02:06Z",
-   "idioma": "es",
-   "medio": "Investing.com España - Materias primas",
-   "nota": 73,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Por qué el oro pierde su brillo: Goldman analiza la reciente caída"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/articles/2026-11-07/china-extends-gold-buying-streak-to-two-years-as-prices-drop",
-   "fecha": "2026-11-07T02:26:22Z",
-   "idioma": "en",
-   "medio": "Bloomberg - Mercados",
-   "nota": 73,
-   "resumen": "China’s central bank added to its gold reserves in October — extending a buying streak to two years — as the precious metal fell almost 7% to end the month below the $4,000-an-ounce support threshold.",
-   "tambien_en": [],
-   "titulo": "China Extends Gold-Buying Streak to Two Years as Prices Drop"
   },
   {
    "activos": [
@@ -196,11 +168,53 @@
     "oro"
    ],
    "comercial": false,
+   "enlace": "https://www.investing.com/news/commodities-news/why-gold-is-losing-its-shine-goldman-breaks-down-the-recent-selloff-5010022",
+   "fecha": "2026-11-07T20:02:06Z",
+   "idioma": "en",
+   "medio": "Investing.com - Materias primas",
+   "nota": 72,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Why gold is losing its shine: Goldman breaks down the recent sell-off"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://es.investing.com/news/commodities-news/por-que-el-oro-pierde-su-brillo-goldman-analiza-la-reciente-caida-3917614",
+   "fecha": "2026-11-07T20:02:06Z",
+   "idioma": "es",
+   "medio": "Investing.com España - Materias primas",
+   "nota": 72,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Por qué el oro pierde su brillo: Goldman analiza la reciente caída"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.bloomberg.com/news/articles/2026-11-07/china-extends-gold-buying-streak-to-two-years-as-prices-drop",
+   "fecha": "2026-11-07T02:26:22Z",
+   "idioma": "en",
+   "medio": "Bloomberg - Mercados",
+   "nota": 72,
+   "resumen": "China’s central bank added to its gold reserves in October — extending a buying streak to two years — as the precious metal fell almost 7% to end the month below the $4,000-an-ounce support threshold.",
+   "tambien_en": [],
+   "titulo": "China Extends Gold-Buying Streak to Two Years as Prices Drop"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
    "enlace": "https://fortune.com/2026/11/07/olive-oil-supplies-prices-liquid-gold-spain-production-harvest-season/",
    "fecha": "2026-11-08T00:34:52Z",
    "idioma": "",
    "medio": "Fortune",
-   "nota": 72,
+   "nota": 71,
    "resumen": "Spanish olive oil production is projected to jump 23% to 1.6 millions tons, marking the fourth-largest harvest ever.",
    "tambien_en": [],
    "titulo": "So much ‘liquid gold’ could hit the market that the world’s top producer is withholding output—but supplies can’t stay ‘extra virgin’ for long"
@@ -214,7 +228,7 @@
    "fecha": "2026-11-07T21:05:14Z",
    "idioma": "",
    "medio": "Econotimes",
-   "nota": 71,
+   "nota": 70,
    "resumen": "NSE attributed the activity to festival demand and reported significant receipt creation, but did not disclose the gold weight or rupee value represented.",
    "tambien_en": [],
    "titulo": "India’s NSE Logs Record 227,692 Electronic Gold Receipt Units"
@@ -228,7 +242,7 @@
    "fecha": "2026-11-06T16:31:51Z",
    "idioma": "en",
    "medio": "Financial Times - Materias primas",
-   "nota": 69,
+   "nota": 68,
    "resumen": "Red metal has soared this year on forecasts of surging demand from AI data centres, now seen at risk after Democrat sweep in US midterms",
    "tambien_en": [],
    "titulo": "Copper prices fall on fears of AI backlash"
@@ -242,7 +256,7 @@
    "fecha": "2026-11-07T15:04:49Z",
    "idioma": "",
    "medio": "Business News India",
-   "nota": 68,
+   "nota": 67,
    "resumen": "Jefferies' Christopher Wood warns that a slowdown in AI spending could weaken US economic growth and revive expectations of Federal Reserve rate cuts. With gold consolidating around $3,800–4,000 per ounce, could a deeper technology stock correction trigger the next bullion rally?",
    "tambien_en": [],
    "titulo": "Gold at $3,800–4,000: Could an AI spending crash trigger the next bullion rally? Jefferies explains"
@@ -271,7 +285,7 @@
    "fecha": "2026-11-07T11:44:29Z",
    "idioma": "",
    "medio": "Mm News",
-   "nota": 67,
+   "nota": 66,
    "resumen": "KARACHI: Gold prices remained unchanged in Pakistan’s local bullion markets on Saturday, November 7, 2026, while silver recorded a slight decline. According to the rates released by the All Pakistan Sarafa Gems and Jewellers Association, the price of 24-karat gold remained stable at Rs429,136 per to",
    "tambien_en": [],
    "titulo": "Gold Buyers Get a Surprise! Prices Hold Steady While Silver Slips"
@@ -285,7 +299,7 @@
    "fecha": "2026-11-07T08:48:11Z",
    "idioma": "",
    "medio": "Americanbankingnews",
-   "nota": 66,
+   "nota": 65,
    "resumen": "Capstone Copper Corp. (OTCMKTS:CSCCF – Get Free Report) shares traded up 1% during mid-day trading on Friday. The company traded as high as C$7.81 and last traded at C$7.78. Approximately 191,854 shares were traded during mid-day trading, a decline of 53% from the average daily volume of 411,780 sha",
    "tambien_en": [],
    "titulo": "Capstone Copper (OTCMKTS:CSCCF) Stock Price Up 1% – Here’s Why"
@@ -299,7 +313,7 @@
    "fecha": "2026-11-07T07:54:22Z",
    "idioma": "",
    "medio": "Business Times India",
-   "nota": 65,
+   "nota": 64,
    "resumen": "Gold ETF folios jumped 164% in three years, far ahead of large-cap mutual funds. A study warns investors against FOMO-driven gold bets and over-allocation.",
    "tambien_en": [],
    "titulo": "Gold Etf Folios Surge 164% In 3 Years On Gold Rally"
@@ -313,7 +327,7 @@
    "fecha": "2026-11-07T07:52:54Z",
    "idioma": "",
    "medio": "Devdiscourse",
-   "nota": 65,
+   "nota": 64,
    "resumen": "The National Stock Exchange of India NSE registered its highest-ever trading volumes in the Electronic Gold Receipts EGR segment on the occasion of Dhanteras marking a major milestone for the countrys organised bullion market Festive trading in the exchange-traded instrument touched 227692 units est",
    "tambien_en": [],
    "titulo": "NSE Electronic Gold Receipts log record trading volumes on Dhanteras"
@@ -327,25 +341,10 @@
    "fecha": "2026-11-07T07:51:22Z",
    "idioma": "",
    "medio": "Defenseworld Net",
-   "nota": 65,
+   "nota": 64,
    "resumen": "Pan American Silver Corp. (NYSE:PAAS – Get Free Report) (TSE:PAAS) has been assigned a consensus rating of “Moderate Buy” from the ten ratings firms that are currently covering the stock, MarketBeat.com reports. Three investment analysts have rated the stock with a hold recommendation and seven have",
    "tambien_en": [],
    "titulo": "Pan American Silver Corp. (NYSE:PAAS) Stock Has Average Target Price of $67.71 According to Brokerages"
-  },
-  {
-   "activos": [
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://www.dtnext.in/news/chennai/chennai-gold-price-rises-by-rs-160-on-november-7-2026-check-todays-gold-silver-rate",
-   "fecha": "2026-11-07T04:50:43Z",
-   "idioma": "",
-   "medio": "Dt Next",
-   "nota": 64,
-   "resumen": "Gold prices in the city rose by Rs 160 per sovereign on Saturday (November 7).",
-   "tambien_en": [],
-   "titulo": "Chennai gold price rises by Rs 160 on November 7, 2026; check today's gold, silver rate"
   },
   {
    "activos": [
@@ -363,31 +362,18 @@
   },
   {
    "activos": [
-    "oro"
+    "oro",
+    "plata"
    ],
    "comercial": false,
-   "enlace": "https://www.bloomberglinea.com/mercados/goldman-sachs-recorta-su-prevision-para-el-precio-del-oro-cual-es-su-proyeccion-para-2027/",
-   "fecha": "2026-11-06T13:41:49Z",
-   "idioma": "es",
-   "medio": "Bloomberg Línea - Mercados",
-   "nota": 64,
-   "resumen": "El banco estadounidense revisó a la baja sus expectativas para el metal precioso ante el giro restrictivo de la Reserva Federal, aunque prevé una recuperación.",
-   "tambien_en": [],
-   "titulo": "Goldman Sachs recorta su previsión para el precio del oro: ¿cuál es su proyección para 2027?"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.hindustantimes.com/cities/chandigarh-news/ludhiana-expectation-of-further-price-drop-holds-back-gold-buyers-101793986987558.html",
-   "fecha": "2026-11-07T02:00:00Z",
+   "enlace": "https://www.dtnext.in/news/chennai/chennai-gold-price-rises-by-rs-160-on-november-7-2026-check-todays-gold-silver-rate",
+   "fecha": "2026-11-07T04:50:43Z",
    "idioma": "",
-   "medio": "Hindustan Times",
+   "medio": "Dt Next",
    "nota": 63,
-   "resumen": "The downward trend, coupled with expectations of further fall in prices, has prompted many prospective buyers to postpone their purchases, jewellers said",
+   "resumen": "Gold prices in the city rose by Rs 160 per sovereign on Saturday (November 7).",
    "tambien_en": [],
-   "titulo": "Ludhiana: Expectation of further price drop holds back gold buyers"
+   "titulo": "Chennai gold price rises by Rs 160 on November 7, 2026; check today's gold, silver rate"
   },
   {
    "activos": [
@@ -408,14 +394,14 @@
     "oro"
    ],
    "comercial": false,
-   "enlace": "https://www.investing.com/analysis/golds-doubling-thesis-11200-in-2027-22400-by-2034-200691035",
-   "fecha": "2026-11-06T20:56:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
+   "enlace": "https://www.bloomberglinea.com/mercados/goldman-sachs-recorta-su-prevision-para-el-precio-del-oro-cual-es-su-proyeccion-para-2027/",
+   "fecha": "2026-11-06T13:41:49Z",
+   "idioma": "es",
+   "medio": "Bloomberg Línea - Mercados",
    "nota": 63,
-   "resumen": "",
+   "resumen": "El banco estadounidense revisó a la baja sus expectativas para el metal precioso ante el giro restrictivo de la Reserva Federal, aunque prevé una recuperación.",
    "tambien_en": [],
-   "titulo": "Gold’s Doubling Thesis: $11,200 in 2027, $22,400 by 2034"
+   "titulo": "Goldman Sachs recorta su previsión para el precio del oro: ¿cuál es su proyección para 2027?"
   },
   {
    "activos": [],
@@ -442,6 +428,34 @@
    "resumen": "Geopolitical factors, global interest rates and supply-demand dynamics will remain key drivers of crude oil and bullion prices, analysts say",
    "tambien_en": [],
    "titulo": "Global developments to keep commodity prices volatile in Samvat 2083"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.hindustantimes.com/cities/chandigarh-news/ludhiana-expectation-of-further-price-drop-holds-back-gold-buyers-101793986987558.html",
+   "fecha": "2026-11-07T02:00:00Z",
+   "idioma": "",
+   "medio": "Hindustan Times",
+   "nota": 62,
+   "resumen": "The downward trend, coupled with expectations of further fall in prices, has prompted many prospective buyers to postpone their purchases, jewellers said",
+   "tambien_en": [],
+   "titulo": "Ludhiana: Expectation of further price drop holds back gold buyers"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/analysis/golds-doubling-thesis-11200-in-2027-22400-by-2034-200691035",
+   "fecha": "2026-11-06T20:56:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 62,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold’s Doubling Thesis: $11,200 in 2027, $22,400 by 2034"
   },
   {
    "activos": [
@@ -476,20 +490,6 @@
     "oro"
    ],
    "comercial": false,
-   "enlace": "https://7news.com.au/news/contract-worker-killed-in-accident-at-regis-gold-mine-in-duketon-south-wa-c-23128491",
-   "fecha": "2026-11-06T22:02:09Z",
-   "idioma": "",
-   "medio": "7news",
-   "nota": 61,
-   "resumen": "All operations at the mine have been halted amid ongoing investigations.",
-   "tambien_en": [],
-   "titulo": "Contract worker killed in accident at Regis gold mine in Duketon South, WA"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
    "enlace": "https://www.investing.com/analysis/golds-36-postmidterm-rally-may-have-more-to-do-with-futures-than-politics-200691019",
    "fecha": "2026-11-06T16:55:00Z",
    "idioma": "en",
@@ -516,6 +516,20 @@
     "oro"
    ],
    "comercial": false,
+   "enlace": "https://7news.com.au/news/contract-worker-killed-in-accident-at-regis-gold-mine-in-duketon-south-wa-c-23128491",
+   "fecha": "2026-11-06T22:02:09Z",
+   "idioma": "",
+   "medio": "7news",
+   "nota": 60,
+   "resumen": "All operations at the mine have been halted amid ongoing investigations.",
+   "tambien_en": [],
+   "titulo": "Contract worker killed in accident at Regis gold mine in Duketon South, WA"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
    "enlace": "https://www.investing.com/analysis/golds-2026-pullback-raises-a-bigger-question-buy-the-metal-or-the-miners-200691010",
    "fecha": "2026-11-06T14:24:00Z",
    "idioma": "en",
@@ -524,35 +538,6 @@
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold’s 2026 Pullback Raises a Bigger Question: Buy the Metal or the Miners?"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/gold-outlook-weekend-iran-developments-could-determine-the-next-price-move-200691008",
-   "fecha": "2026-11-06T13:48:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
-   "nota": 60,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Gold Outlook: Weekend Iran Developments Could Determine the Next Price Move"
-  },
-  {
-   "activos": [
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://www.mining-technology.com/news/aureka-prospecting-licence-comstock-project/",
-   "fecha": "2026-11-06T10:22:26Z",
-   "idioma": "en",
-   "medio": "Mining Technology",
-   "nota": 60,
-   "resumen": "Aureka has secured a prospecting licence for its Comstock Gold & Silver Project, located roughly 2km north-northwest of St Arnaud in Victoria, Australia. The post Aureka secures prospecting licence for Comstock project in Victoria appeared first on Mining Technology .",
-   "tambien_en": [],
-   "titulo": "Aureka secures prospecting licence for Comstock project in Victoria"
   },
   {
    "activos": [
@@ -573,11 +558,40 @@
     "oro"
    ],
    "comercial": false,
+   "enlace": "https://www.investing.com/analysis/gold-outlook-weekend-iran-developments-could-determine-the-next-price-move-200691008",
+   "fecha": "2026-11-06T13:48:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 59,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold Outlook: Weekend Iran Developments Could Determine the Next Price Move"
+  },
+  {
+   "activos": [
+    "oro",
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://www.mining-technology.com/news/aureka-prospecting-licence-comstock-project/",
+   "fecha": "2026-11-06T10:22:26Z",
+   "idioma": "en",
+   "medio": "Mining Technology",
+   "nota": 59,
+   "resumen": "Aureka has secured a prospecting licence for its Comstock Gold & Silver Project, located roughly 2km north-northwest of St Arnaud in Victoria, Australia. The post Aureka secures prospecting licence for Comstock project in Victoria appeared first on Mining Technology .",
+   "tambien_en": [],
+   "titulo": "Aureka secures prospecting licence for Comstock project in Victoria"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
    "enlace": "https://www.investing.com/analysis/gold-near-4050-can-us-jobs-data-spark-a-rebound-or-deepen-the-decline-200690997",
    "fecha": "2026-11-06T10:35:00Z",
    "idioma": "en",
    "medio": "Investing.com - Análisis de materias primas",
-   "nota": 59,
+   "nota": 58,
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold Near $4,050: Can US Jobs Data Spark a Rebound or Deepen the Decline?"
@@ -591,53 +605,10 @@
    "fecha": "2026-11-06T08:05:59Z",
    "idioma": "en",
    "medio": "Mining Technology",
-   "nota": 59,
+   "nota": 58,
    "resumen": "Rio Tinto has approved $144m in funding to advance the next development phase of the Resolution Copper project located near Superior Arizona, US, with the company’s share totalling $79m. The post Rio Tinto approves $144m for copper project in Arizona, US appeared first on Mining Technology .",
    "tambien_en": [],
    "titulo": "Rio Tinto approves $144m for copper project in Arizona, US"
-  },
-  {
-   "activos": [
-    "oro",
-    "platino"
-   ],
-   "comercial": false,
-   "enlace": "https://www.financialcontent.com/article/nnwire-2026-11-6-platinum-tops-1800-as-spot-prices-climb",
-   "fecha": "2026-11-06T15:05:00Z",
-   "idioma": "",
-   "medio": "Financialcontent",
-   "nota": 58,
-   "resumen": "Platinum prices have exceeded $1,800 per ounce since this month began, marking their highest levels since late 2011 and reviving interest in a metal that spent years underperforming gold. The rally has also prompted Bank of America to revise its outlook, reflecting the strength of a market increasin",
-   "tambien_en": [],
-   "titulo": "Platinum Tops $1,800 as Spot Prices Climb"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/news/commodities-news/goldman-lowers-yearend-gold-price-forecast-on-hawkish-fed-shift-5006662",
-   "fecha": "2026-11-06T07:44:23Z",
-   "idioma": "en",
-   "medio": "Investing.com - Materias primas",
-   "nota": 58,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Goldman lowers year-end gold price forecast on hawkish Fed shift"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://es.investing.com/news/commodities-news/goldman-rebaja-su-prevision-del-precio-del-oro-para-fin-de-ano-por-el-giro-hawkish-de-la-fed-3915080",
-   "fecha": "2026-11-06T07:44:23Z",
-   "idioma": "es",
-   "medio": "Investing.com España - Materias primas",
-   "nota": 58,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Goldman rebaja su previsión del precio del oro para fin de año por el giro hawkish de la Fed"
   },
   {
    "activos": [],
@@ -650,6 +621,21 @@
    "resumen": "On Bloomberg This Weekend, Bloomberg Economics Chief US Economist Anna Wong says October's surprisingly strong jobs report showed hiring broadening into white collar, manufacturing and transportation jobs, strengthening the case for another Federal Reserve rate hike. Wong tells hosts Christina Ruffi",
    "tambien_en": [],
    "titulo": "US Jobs Surge Raises Odds of December Fed Hike"
+  },
+  {
+   "activos": [
+    "oro",
+    "platino"
+   ],
+   "comercial": false,
+   "enlace": "https://www.financialcontent.com/article/nnwire-2026-11-6-platinum-tops-1800-as-spot-prices-climb",
+   "fecha": "2026-11-06T15:05:00Z",
+   "idioma": "",
+   "medio": "Financialcontent",
+   "nota": 57,
+   "resumen": "Platinum prices have exceeded $1,800 per ounce since this month began, marking their highest levels since late 2011 and reviving interest in a metal that spent years underperforming gold. The rally has also prompted Bank of America to revise its outlook, reflecting the strength of a market increasin",
+   "tambien_en": [],
+   "titulo": "Platinum Tops $1,800 as Spot Prices Climb"
   },
   {
    "activos": [
@@ -670,6 +656,34 @@
     "oro"
    ],
    "comercial": false,
+   "enlace": "https://www.investing.com/news/commodities-news/goldman-lowers-yearend-gold-price-forecast-on-hawkish-fed-shift-5006662",
+   "fecha": "2026-11-06T07:44:23Z",
+   "idioma": "en",
+   "medio": "Investing.com - Materias primas",
+   "nota": 57,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Goldman lowers year-end gold price forecast on hawkish Fed shift"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://es.investing.com/news/commodities-news/goldman-rebaja-su-prevision-del-precio-del-oro-para-fin-de-ano-por-el-giro-hawkish-de-la-fed-3915080",
+   "fecha": "2026-11-06T07:44:23Z",
+   "idioma": "es",
+   "medio": "Investing.com España - Materias primas",
+   "nota": 57,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Goldman rebaja su previsión del precio del oro para fin de año por el giro hawkish de la Fed"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
    "enlace": "https://www.investing.com/analysis/gold-outlook-can-prices-hold-4044-as-trump-weighs-his-next-move-on-iran-200690982",
    "fecha": "2026-11-06T07:07:00Z",
    "idioma": "en",
@@ -678,34 +692,6 @@
    "resumen": "",
    "tambien_en": [],
    "titulo": "Gold Outlook: Can Prices Hold $4,044 as Trump Weighs His Next Move on Iran?"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/gold-at-4078-testing-support-as-bullish-momentum-builds-toward-4200-200690973",
-   "fecha": "2026-11-06T06:38:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
-   "nota": 57,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Gold at $4,078: Testing Support as Bullish Momentum Builds Toward $4,200"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/gold-vs-sp-500-a-key-ratio-could-signal-the-next-bull-market-move-200690974",
-   "fecha": "2026-11-06T05:22:00Z",
-   "idioma": "en",
-   "medio": "Investing.com - Análisis de materias primas",
-   "nota": 57,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "Gold Vs. S&P 500: A Key Ratio Could Signal the Next Bull Market Move"
   },
   {
    "activos": [
@@ -723,6 +709,34 @@
   },
   {
    "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/analysis/gold-at-4078-testing-support-as-bullish-momentum-builds-toward-4200-200690973",
+   "fecha": "2026-11-06T06:38:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 56,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold at $4,078: Testing Support as Bullish Momentum Builds Toward $4,200"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/analysis/gold-vs-sp-500-a-key-ratio-could-signal-the-next-bull-market-move-200690974",
+   "fecha": "2026-11-06T05:22:00Z",
+   "idioma": "en",
+   "medio": "Investing.com - Análisis de materias primas",
+   "nota": 56,
+   "resumen": "",
+   "tambien_en": [],
+   "titulo": "Gold Vs. S&P 500: A Key Ratio Could Signal the Next Bull Market Move"
+  },
+  {
+   "activos": [
     "oro",
     "plata"
    ],
@@ -731,38 +745,10 @@
    "fecha": "2026-11-06T09:51:20Z",
    "idioma": "",
    "medio": "The Hans India",
-   "nota": 56,
+   "nota": 55,
    "resumen": "There is welcome news for people planning to buy gold this Dhanteras, as prices of both gold and silver futures fell further.",
    "tambien_en": [],
    "titulo": "Gold and silver rates fall amid Dhanteras"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://newsable.asianetnews.com/gallery/india/gold-and-silver-prices-remain-stable-ahead-of-diwali-festival-5nqvu1d",
-   "fecha": "2026-11-06T08:05:48Z",
-   "idioma": "",
-   "medio": "Asianet Newsable",
-   "nota": 55,
-   "resumen": "Buyers usually feel the tension when gold prices shoot up. The yellow metal gave a massive shock with a heavy price hike over the last two days. The scene looks completely different today.",
-   "tambien_en": [],
-   "titulo": "Dhanteras Gold Rate: Price Hike Takes A Break Just Before Diwali"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://es.investing.com/news/commodities-news/el-oro-se-encamina-a-su-mejor-semana-desde-agosto-por-el-giro-politico-en-eeuu-3914805",
-   "fecha": "2026-11-06T01:33:22Z",
-   "idioma": "es",
-   "medio": "Investing.com España - Materias primas",
-   "nota": 55,
-   "resumen": "",
-   "tambien_en": [],
-   "titulo": "El oro cae tras el informe de empleo, pero avanza semanalmente"
   }
  ]
 }
