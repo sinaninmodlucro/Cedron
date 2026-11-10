@@ -170,6 +170,13 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
 .noticia__titulo a:hover { text-decoration: underline; }
 .noticia__datos { font-family: var(--f-cifra); font-size: var(--t-xs); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
 .etiqueta { border: 1px solid var(--linea); border-radius: 3px; padding: 0 0.4em; }
+.importancia { border-radius: 3px; padding: 0 0.4em; border: 1px solid var(--linea); }
+.importancia--alta { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+.importancia--media { border-color: var(--tinta); color: var(--tinta); }
+.filtros[hidden] { display: none; }
+.filtros--seccion { margin-bottom: 0.75rem; font-size: var(--t-m); }
+.filtros + .filtros { margin-top: -0.75rem; }
+.subtitulo { font-size: var(--t-m); margin: 1.2rem 0 0.6rem; }
 .etiqueta--comercial { border-color: var(--oxido); color: var(--oxido); }
 .vacio { color: var(--tinta-2); font-style: italic; }
 
@@ -333,6 +340,7 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
 .eslabon__notas { margin: 0.6rem 0; padding-left: 1.1rem; font-size: var(--t-s); }
 .eslabon__notas li { margin-bottom: 0.3rem; }
 .prevision { margin: 0.9rem 0 0.6rem; padding-left: 0.9rem; border-left: 2px solid var(--tinta); }
+.prevision__piezas { margin: 0.4rem 0; padding-left: 1.1rem; }
 .prevision__titulo { font-family: var(--f-cifra); font-weight: 600; font-size: var(--t-s); margin: 0 0 0.3rem; }
 .eslabon--no_se_aprecia .eslabon__titulo, .eslabon--pocos .eslabon__titulo { color: var(--tinta-2); font-weight: 500; }
 .tabla--compacta { max-width: 34rem; }

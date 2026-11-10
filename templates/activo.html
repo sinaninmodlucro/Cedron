@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import contraste, noticia %}
+{% from "_macros.html" import contraste, noticia, tabla_prevision %}
 {% block titulo %}{{ a.nombre }}: precio y contexto | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Precio {{ a.de_art }} {{ a.nombre|lower }} en dólares y euros, gráfico de 10 años, tendencia en varios plazos y contexto.{% endblock %}
 {% block contenido %}
@@ -95,6 +95,14 @@
       </table>
       </div>
       <p class="pequeno secundario">{% if pn.probabilidad.clase == 'coherente' %}En la prueba histórica, saber en cuántos plazos sube el precio ayudó a anticipar si subiría en los {{ pn.horizonte }} meses siguientes.{% else %}Cuidado: en la prueba histórica, saber en cuántos plazos sube el precio <strong>no ha servido para anticipar</strong> si subiría en los {{ pn.horizonte }} meses siguientes mejor que la frecuencia de «todos los meses». Los meses seguidos se solapan, así que hay muchos menos casos independientes de los que parece.{% endif %} <a href="{{ raiz }}metodologia.html#prueba">Ver la prueba</a>.</p>
+      {% endif %}
+      {% if a.prevision and a.prevision.previsiones %}
+      {% set pv = a.prevision.previsiones['12'] or a.prevision.previsiones['3'] %}
+      <div class="prevision">
+        <h3 class="prevision__titulo">Nuestra previsión para {{ a.articulo }} {{ a.nombre|lower }}</h3>
+        {{ tabla_prevision(a.prevision.previsiones, a.prevision.historial, nombres_piezas) }}
+        <p class="pequeno secundario">Cambio previsto del precio medio mensual en dólares desde {{ pv.desde_mes|mes }} ({{ pv.base|numero }} $). Las columnas de acierto salen de la prueba a ciegas desde {{ a.prevision.corte|mes }}: cada previsión del pasado se hizo solo con los datos que había entonces. {% if not pv.prueba.valido %}<strong>En los metales ningún cálculo ha mejorado hasta ahora a «lo habitual»</strong>, igual que les ocurre a los economistas que lo han estudiado; por eso la previsión se queda muy cerca de la subida media de siempre y hay que tomarla como una referencia, no como un pronóstico fiable. {% endif %}<a href="{{ raiz }}metodologia.html#previsiones">Cómo se calcula</a>.</p>
+      </div>
       {% endif %}
       <p class="pequeno secundario">Calculado {{ a.lectura.calculado|fecha_hora }} con {{ a.lectura.precio_origen or 'datos disponibles' }}.</p>
       {% else %}

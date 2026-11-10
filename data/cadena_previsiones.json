@@ -2,60 +2,60 @@
  {
   "base": 1898.318015,
   "desde": "2026-11",
-  "habitual": 0.9423640099240682,
+  "habitual": 0.9520750424961699,
   "id": "brent_diesel",
   "plazo": 3,
-  "previsto": -2.18838037825142,
+  "previsto": -0.9596983205363285,
   "real": null,
   "vence": "2027-02"
  },
  {
   "base": 1898.318015,
   "desde": "2026-11",
-  "habitual": 2.8957640973852783,
+  "habitual": 2.9992742041773157,
   "id": "brent_diesel",
   "plazo": 12,
-  "previsto": 0.39773574532486755,
+  "previsto": -3.1319290334941186,
   "real": null,
   "vence": "2027-11"
  },
  {
   "base": 1729.8897829999999,
   "desde": "2026-11",
-  "habitual": 0.8328762203446693,
+  "habitual": 0.8340735475239391,
   "id": "brent_gasolina",
   "plazo": 3,
-  "previsto": 0.582497192768372,
+  "previsto": -0.3009573262554688,
   "real": null,
   "vence": "2027-02"
  },
  {
   "base": 1729.8897829999999,
   "desde": "2026-11",
-  "habitual": 2.406333716304898,
+  "habitual": 2.4600470480821146,
   "id": "brent_gasolina",
   "plazo": 12,
-  "previsto": 1.1627890817083708,
+  "previsto": -1.622253900254178,
   "real": null,
   "vence": "2027-11"
  },
  {
   "base": 1516.869,
   "desde": "2026-11",
-  "habitual": 1.278312499478007,
+  "habitual": 1.3301796874198857,
   "id": "brent_calefaccion",
   "plazo": 3,
-  "previsto": -4.254915146401483,
+  "previsto": -2.407675643104823,
   "real": null,
   "vence": "2027-02"
  },
  {
   "base": 1516.869,
   "desde": "2026-11",
-  "habitual": 3.5126908313833027,
+  "habitual": 3.7032097668717956,
   "id": "brent_calefaccion",
   "plazo": 12,
-  "previsto": -2.522984525205263,
+  "previsto": -9.149120362712726,
   "real": null,
   "vence": "2027-11"
  },
@@ -65,7 +65,7 @@
   "habitual": 1.292286984769575,
   "id": "brent_refino",
   "plazo": 3,
-  "previsto": 24.711653468105887,
+  "previsto": 4.197427029858858,
   "real": null,
   "vence": "2026-12"
  },
@@ -75,7 +75,7 @@
   "habitual": 3.6411374808413166,
   "id": "brent_refino",
   "plazo": 12,
-  "previsto": 17.903337075530267,
+  "previsto": -1.4558017320165706,
   "real": null,
   "vence": "2027-09"
  },
@@ -85,7 +85,7 @@
   "habitual": 1.4974280076259339,
   "id": "brent_gas",
   "plazo": 3,
-  "previsto": 6.873877455582389,
+  "previsto": 3.1473178771962207,
   "real": null,
   "vence": "2027-01"
  },
@@ -95,7 +95,7 @@
   "habitual": 4.928775812556041,
   "id": "brent_gas",
   "plazo": 12,
-  "previsto": 21.308741030436316,
+  "previsto": -1.9388781228791285,
   "real": null,
   "vence": "2027-10"
  },
@@ -105,7 +105,7 @@
   "habitual": 1.3827488221629602,
   "id": "gas_electricidad",
   "plazo": 3,
-  "previsto": 10.83862508468516,
+  "previsto": 1.8896351610725004,
   "real": null,
   "vence": "2026-12"
  },
@@ -115,7 +115,7 @@
   "habitual": 4.620840848404173,
   "id": "gas_electricidad",
   "plazo": 12,
-  "previsto": 28.525841653130037,
+  "previsto": 5.013201160471792,
   "real": null,
   "vence": "2027-09"
  },
@@ -125,7 +125,7 @@
   "habitual": 1.3827488221629602,
   "id": "carbon_electricidad",
   "plazo": 3,
-  "previsto": 4.6834213232683775,
+  "previsto": -0.7827481051861374,
   "real": null,
   "vence": "2026-12"
  },
@@ -135,7 +135,7 @@
   "habitual": 4.620840848404173,
   "id": "carbon_electricidad",
   "plazo": 12,
-  "previsto": 13.830611069310761,
+  "previsto": 2.459575820106563,
   "real": null,
   "vence": "2027-09"
  },
@@ -145,7 +145,7 @@
   "habitual": 1.5860613806885748,
   "id": "gas_gas_es",
   "plazo": 3,
-  "previsto": 16.303588521693293,
+  "previsto": 6.703581293151695,
   "real": null,
   "vence": "2026-12"
  },
@@ -155,7 +155,7 @@
   "habitual": 5.580637764578467,
   "id": "gas_gas_es",
   "plazo": 12,
-  "previsto": 53.44981664636232,
+  "previsto": 12.512803913689163,
   "real": null,
   "vence": "2027-09"
  },
@@ -165,7 +165,7 @@
   "habitual": 0.9133622886322135,
   "id": "brent_urea",
   "plazo": 3,
-  "previsto": 11.400064053155834,
+  "previsto": 4.189807947228563,
   "real": null,
   "vence": "2027-01"
  },
@@ -175,7 +175,7 @@
   "habitual": 4.12892635794444,
   "id": "brent_urea",
   "plazo": 12,
-  "previsto": 16.721819959173388,
+  "previsto": 6.953916464337917,
   "real": null,
   "vence": "2027-10"
  },
@@ -185,7 +185,7 @@
   "habitual": 0.9133622886322135,
   "id": "gas_urea",
   "plazo": 3,
-  "previsto": 17.69917249189095,
+  "previsto": 6.766012851780534,
   "real": null,
   "vence": "2027-01"
  },
@@ -195,7 +195,7 @@
   "habitual": 4.12892635794444,
   "id": "gas_urea",
   "plazo": 12,
-  "previsto": 23.784186031244904,
+  "previsto": 7.065202380874114,
   "real": null,
   "vence": "2027-10"
  },
@@ -205,7 +205,7 @@
   "habitual": 1.4503649003031027,
   "id": "gas_abonos_fabrica",
   "plazo": 3,
-  "previsto": 14.02915248708152,
+  "previsto": 4.5659519034026985,
   "real": null,
   "vence": "2026-12"
  },
@@ -215,7 +215,7 @@
   "habitual": 5.820638329478833,
   "id": "gas_abonos_fabrica",
   "plazo": 12,
-  "previsto": 37.64534305384473,
+  "previsto": 8.114939291683143,
   "real": null,
   "vence": "2027-09"
  },
@@ -225,7 +225,7 @@
   "habitual": 0.4210987584305048,
   "id": "brent_plasticos",
   "plazo": 3,
-  "previsto": 12.384004647777115,
+  "previsto": 2.799316512413408,
   "real": null,
   "vence": "2026-12"
  },
@@ -235,7 +235,7 @@
   "habitual": 1.491693656534454,
   "id": "brent_plasticos",
   "plazo": 12,
-  "previsto": 9.6560292983781,
+  "previsto": -1.7280313247946988,
   "real": null,
   "vence": "2027-09"
  },
@@ -245,7 +245,7 @@
   "habitual": 1.3795128430257986,
   "id": "gas_urea_es",
   "plazo": 3,
-  "previsto": 14.717422753667385,
+  "previsto": 3.9687126767097736,
   "real": null,
   "vence": "2026-10"
  },
@@ -255,7 +255,7 @@
   "habitual": 4.511712185871741,
   "id": "gas_urea_es",
   "plazo": 12,
-  "previsto": 43.69539804151768,
+  "previsto": 2.908060917413624,
   "real": null,
   "vence": "2027-07"
  },
@@ -265,7 +265,7 @@
   "habitual": 1.0407063719078735,
   "id": "gas_nac_es",
   "plazo": 3,
-  "previsto": 21.615977622108517,
+  "previsto": 5.180360835444087,
   "real": null,
   "vence": "2026-10"
  },
@@ -275,7 +275,7 @@
   "habitual": 3.7629238792484365,
   "id": "gas_nac_es",
   "plazo": 12,
-  "previsto": 61.944581984757875,
+  "previsto": 7.157162333694056,
   "real": null,
   "vence": "2027-07"
  },
@@ -285,7 +285,7 @@
   "habitual": 1.3795128430257986,
   "id": "urea_urea_es",
   "plazo": 3,
-  "previsto": -13.870130905572498,
+  "previsto": -5.484514316329225,
   "real": null,
   "vence": "2026-10"
  },
@@ -295,7 +295,7 @@
   "habitual": 4.511712185871741,
   "id": "urea_urea_es",
   "plazo": 12,
-  "previsto": -8.000122751685424,
+  "previsto": -11.826196570259473,
   "real": null,
   "vence": "2027-07"
  },
@@ -305,7 +305,7 @@
   "habitual": 1.4518863666471926,
   "id": "dap_dap_es",
   "plazo": 3,
-  "previsto": 3.0135690172883534,
+  "previsto": 1.8045694140223612,
   "real": null,
   "vence": "2026-10"
  },
@@ -315,7 +315,7 @@
   "habitual": 5.628735105777416,
   "id": "dap_dap_es",
   "plazo": 12,
-  "previsto": 26.08706111058643,
+  "previsto": 3.314844187096,
   "real": null,
   "vence": "2027-07"
  },
@@ -325,7 +325,7 @@
   "habitual": 0.3858977064070679,
   "id": "potasa_potasa_es",
   "plazo": 3,
-  "previsto": 1.1425963294822816,
+  "previsto": 0.07401214197921835,
   "real": null,
   "vence": "2026-10"
  },
@@ -335,7 +335,7 @@
   "habitual": 1.7532641117615322,
   "id": "potasa_potasa_es",
   "plazo": 12,
-  "previsto": 0.8236763234305888,
+  "previsto": -1.7565291151128815,
   "real": null,
   "vence": "2027-07"
  },
@@ -345,7 +345,7 @@
   "habitual": 0.7065549679847738,
   "id": "maiz_piensos",
   "plazo": 3,
-  "previsto": 2.4323367036764854,
+  "previsto": 1.0190901375570993,
   "real": null,
   "vence": "2026-12"
  },
@@ -355,7 +355,7 @@
   "habitual": 2.790416612743929,
   "id": "maiz_piensos",
   "plazo": 12,
-  "previsto": 5.97131614557187,
+  "previsto": 2.031814440348434,
   "real": null,
   "vence": "2027-09"
  },
@@ -365,7 +365,7 @@
   "habitual": 0.7065549679847738,
   "id": "soja_piensos",
   "plazo": 3,
-  "previsto": 4.086456411821349,
+  "previsto": 1.4376902478377973,
   "real": null,
   "vence": "2026-12"
  },
@@ -375,7 +375,7 @@
   "habitual": 2.790416612743929,
   "id": "soja_piensos",
   "plazo": 12,
-  "previsto": 7.918782025897353,
+  "previsto": 3.033036748720419,
   "real": null,
   "vence": "2027-09"
  },
@@ -385,7 +385,7 @@
   "habitual": 0.7065549679847738,
   "id": "trigo_piensos",
   "plazo": 3,
-  "previsto": 3.0910649344002117,
+  "previsto": 1.458379415902633,
   "real": null,
   "vence": "2026-12"
  },
@@ -395,7 +395,7 @@
   "habitual": 2.790416612743929,
   "id": "trigo_piensos",
   "plazo": 12,
-  "previsto": 6.224770639649768,
+  "previsto": 2.5737687464783,
   "real": null,
   "vence": "2027-09"
  },
@@ -405,7 +405,7 @@
   "habitual": 0.5699771962457856,
   "id": "piensos_carne",
   "plazo": 3,
-  "previsto": 2.216441103710065,
+  "previsto": 0.695545215638238,
   "real": null,
   "vence": "2026-12"
  },
@@ -415,7 +415,7 @@
   "habitual": 2.441917682408201,
   "id": "piensos_carne",
   "plazo": 12,
-  "previsto": 5.346223780414361,
+  "previsto": 2.796151774046507,
   "real": null,
   "vence": "2027-09"
  },
@@ -425,7 +425,7 @@
   "habitual": 0.6439461041594319,
   "id": "piensos_aves",
   "plazo": 3,
-  "previsto": 2.9060512373625613,
+  "previsto": -0.018558622018161053,
   "real": null,
   "vence": "2026-12"
  },
@@ -435,7 +435,7 @@
   "habitual": 2.962873852426662,
   "id": "piensos_aves",
   "plazo": 12,
-  "previsto": 7.234940624633701,
+  "previsto": 1.7291439412738807,
   "real": null,
   "vence": "2027-09"
  },
@@ -445,7 +445,7 @@
   "habitual": 0.5387478005394408,
   "id": "piensos_lacteos",
   "plazo": 3,
-  "previsto": 1.6984235376796164,
+  "previsto": 0.6704737562966967,
   "real": null,
   "vence": "2026-12"
  },
@@ -455,7 +455,7 @@
   "habitual": 2.234743664385652,
   "id": "piensos_lacteos",
   "plazo": 12,
-  "previsto": 6.299332126469692,
+  "previsto": 2.364332260493218,
   "real": null,
   "vence": "2027-09"
  },
@@ -465,7 +465,7 @@
   "habitual": 0.517678458996973,
   "id": "carne_elaborados",
   "plazo": 3,
-  "previsto": 0.5026759913840051,
+  "previsto": 0.36137891865968275,
   "real": null,
   "vence": "2026-12"
  },
@@ -475,7 +475,7 @@
   "habitual": 2.14870410160668,
   "id": "carne_elaborados",
   "plazo": 12,
-  "previsto": 2.191700827137888,
+  "previsto": 2.0618289846709326,
   "real": null,
   "vence": "2027-09"
  },
@@ -485,7 +485,7 @@
   "habitual": 0.34387283326451357,
   "id": "maiz_pollo",
   "plazo": 3,
-  "previsto": -0.3811106864715419,
+  "previsto": -0.07131871406419465,
   "real": null,
   "vence": "2027-01"
  },
@@ -495,7 +495,7 @@
   "habitual": 1.3776261846724758,
   "id": "maiz_pollo",
   "plazo": 12,
-  "previsto": 0.360009526135352,
+  "previsto": 0.20799392878476652,
   "real": null,
   "vence": "2027-10"
  },
@@ -505,7 +505,7 @@
   "habitual": 1.3262308753906993,
   "id": "maiz_cerdo",
   "plazo": 3,
-  "previsto": 5.079445243211866,
+  "previsto": 3.6454941395990925,
   "real": null,
   "vence": "2026-12"
  },
@@ -515,7 +515,7 @@
   "habitual": 3.272522494633723,
   "id": "maiz_cerdo",
   "plazo": 12,
-  "previsto": -3.181658171646562,
+  "previsto": 3.1898929151571442,
   "real": null,
   "vence": "2027-09"
  },
@@ -525,7 +525,7 @@
   "habitual": 0.7141637218804009,
   "id": "trigo_harina",
   "plazo": 3,
-  "previsto": 3.838564222782148,
+  "previsto": 1.4106211117963285,
   "real": null,
   "vence": "2026-12"
  },
@@ -535,7 +535,7 @@
   "habitual": 3.095064601686315,
   "id": "trigo_harina",
   "plazo": 12,
-  "previsto": 9.344812014039805,
+  "previsto": 3.914351948357675,
   "real": null,
   "vence": "2027-09"
  },
@@ -545,7 +545,7 @@
   "habitual": 0.6912065859389971,
   "id": "harina_pan",
   "plazo": 3,
-  "previsto": -0.3361269442789694,
+  "previsto": 0.12394400061386257,
   "real": null,
   "vence": "2026-12"
  },
@@ -555,7 +555,7 @@
   "habitual": 2.803401820984397,
   "id": "harina_pan",
   "plazo": 12,
-  "previsto": 0.5870343196765271,
+  "previsto": 1.2418694134776365,
   "real": null,
   "vence": "2027-09"
  },
@@ -565,7 +565,7 @@
   "habitual": 0.6337610289828488,
   "id": "harina_galletas",
   "plazo": 3,
-  "previsto": -0.22032571412278212,
+  "previsto": 0.1299732804554754,
   "real": null,
   "vence": "2026-12"
  },
@@ -575,7 +575,7 @@
   "habitual": 2.6142660110442417,
   "id": "harina_galletas",
   "plazo": 12,
-  "previsto": 0.7321117744454542,
+  "previsto": 1.2936221210477328,
   "real": null,
   "vence": "2027-09"
  },
@@ -585,7 +585,7 @@
   "habitual": 0.8745476332772562,
   "id": "cacao_chocolate",
   "plazo": 3,
-  "previsto": 0.6961528949590567,
+  "previsto": 0.6223962165783137,
   "real": null,
   "vence": "2026-12"
  },
@@ -595,7 +595,7 @@
   "habitual": 3.7545517114111693,
   "id": "cacao_chocolate",
   "plazo": 12,
-  "previsto": 7.9631406571744945,
+  "previsto": 4.725395074236816,
   "real": null,
   "vence": "2027-09"
  },
@@ -605,7 +605,7 @@
   "habitual": 0.976409720017668,
   "id": "cafe_es",
   "plazo": 3,
-  "previsto": 1.1456056615053,
+  "previsto": 0.7874299700894039,
   "real": null,
   "vence": "2026-12"
  },
@@ -615,7 +615,7 @@
   "habitual": 4.063605861152353,
   "id": "cafe_es",
   "plazo": 12,
-  "previsto": 4.508130296509294,
+  "previsto": 3.8837525426253627,
   "real": null,
   "vence": "2027-09"
  },
@@ -625,7 +625,7 @@
   "habitual": 0.5735037438525881,
   "id": "girasol_aceites",
   "plazo": 3,
-  "previsto": 0.5571083355748296,
+  "previsto": 0.3291907829398255,
   "real": null,
   "vence": "2026-12"
  },
@@ -635,7 +635,7 @@
   "habitual": 2.0513263962418593,
   "id": "girasol_aceites",
   "plazo": 12,
-  "previsto": 1.6304875472640257,
+  "previsto": 1.3440083342387998,
   "real": null,
   "vence": "2027-09"
  },
@@ -645,7 +645,7 @@
   "habitual": 0.3792416972399959,
   "id": "gas_azulejos",
   "plazo": 3,
-  "previsto": 1.5316824812371177,
+  "previsto": 0.7985581736638991,
   "real": null,
   "vence": "2026-12"
  },
@@ -655,7 +655,7 @@
   "habitual": 1.5364030201933998,
   "id": "gas_azulejos",
   "plazo": 12,
-  "previsto": 5.62276028037676,
+  "previsto": 2.628833040710976,
   "real": null,
   "vence": "2027-09"
  },
@@ -665,7 +665,7 @@
   "habitual": 0.8589537236097566,
   "id": "gas_yeso",
   "plazo": 3,
-  "previsto": 3.8773679295620367,
+  "previsto": 2.200570624756848,
   "real": null,
   "vence": "2026-12"
  },
@@ -675,7 +675,7 @@
   "habitual": 3.3119669118084616,
   "id": "gas_yeso",
   "plazo": 12,
-  "previsto": 14.4196544460101,
+  "previsto": 6.176848204222085,
   "real": null,
   "vence": "2027-09"
  },
@@ -685,7 +685,7 @@
   "habitual": 0.6893403438147816,
   "id": "cemento_hormigon",
   "plazo": 3,
-  "previsto": 1.075532756702846,
+  "previsto": 1.3603581028559963,
   "real": null,
   "vence": "2026-12"
  },
@@ -695,7 +695,7 @@
   "habitual": 2.768177275586736,
   "id": "cemento_hormigon",
   "plazo": 12,
-  "previsto": 5.367065772422408,
+  "previsto": 5.666572175854601,
   "real": null,
   "vence": "2027-09"
  },
@@ -705,7 +705,7 @@
   "habitual": 0.6353177552745226,
   "id": "cemento_prefabricados",
   "plazo": 3,
-  "previsto": 0.009613124348994972,
+  "previsto": 0.7813206993968036,
   "real": null,
   "vence": "2026-12"
  },
@@ -715,7 +715,7 @@
   "habitual": 2.4491949149417547,
   "id": "cemento_prefabricados",
   "plazo": 12,
-  "previsto": 2.768999720624188,
+  "previsto": 3.395780778466584,
   "real": null,
   "vence": "2027-09"
  },
@@ -725,7 +725,7 @@
   "habitual": 0.6601166136044556,
   "id": "cemento_mortero",
   "plazo": 3,
-  "previsto": 1.333476067584627,
+  "previsto": 1.2382373815930547,
   "real": null,
   "vence": "2026-12"
  },
@@ -735,7 +735,7 @@
   "habitual": 2.5837083808826433,
   "id": "cemento_mortero",
   "plazo": 12,
-  "previsto": 5.186980205053615,
+  "previsto": 4.491960534269124,
   "real": null,
   "vence": "2027-09"
  },
@@ -745,7 +745,7 @@
   "habitual": 0.7153598829898522,
   "id": "hierro_acero",
   "plazo": 3,
-  "previsto": -0.9480909854156505,
+  "previsto": -0.37592869489800895,
   "real": null,
   "vence": "2026-12"
  },
@@ -755,7 +755,7 @@
   "habitual": 2.799389997423618,
   "id": "hierro_acero",
   "plazo": 12,
-  "previsto": -0.5877108054241131,
+  "previsto": -1.3095557335468855,
   "real": null,
   "vence": "2027-09"
  },
@@ -765,7 +765,7 @@
   "habitual": 0.6474881657756004,
   "id": "acero_tubos",
   "plazo": 3,
-  "previsto": 3.25981347999027,
+  "previsto": 1.126680770636801,
   "real": null,
   "vence": "2026-12"
  },
@@ -775,7 +775,7 @@
   "habitual": 2.653249559464821,
   "id": "acero_tubos",
   "plazo": 12,
-  "previsto": 6.714856569342853,
+  "previsto": 2.616389636166727,
   "real": null,
   "vence": "2027-09"
  },
@@ -785,7 +785,7 @@
   "habitual": 0.31590059256889624,
   "id": "acero_estructuras",
   "plazo": 3,
-  "previsto": 1.433606231025708,
+  "previsto": 0.531728356662664,
   "real": null,
   "vence": "2026-12"
  },
@@ -795,7 +795,7 @@
   "habitual": 1.3378353119819941,
   "id": "acero_estructuras",
   "plazo": 12,
-  "previsto": 3.70056847341953,
+  "previsto": 1.4908415156206,
   "real": null,
   "vence": "2027-09"
  },
@@ -805,7 +805,7 @@
   "habitual": 0.5900894556509995,
   "id": "acero_carpinteria",
   "plazo": 3,
-  "previsto": 1.0283130567690257,
+  "previsto": 0.7281786048653371,
   "real": null,
   "vence": "2026-12"
  },
@@ -815,7 +815,7 @@
   "habitual": 2.333365317229097,
   "id": "acero_carpinteria",
   "plazo": 12,
-  "previsto": 3.7560562295694933,
+  "previsto": 2.4578715213492197,
   "real": null,
   "vence": "2027-09"
  },
@@ -825,7 +825,7 @@
   "habitual": 0.5026317394285496,
   "id": "acero_alambre",
   "plazo": 3,
-  "previsto": 1.865189738287909,
+  "previsto": 0.48686870906380353,
   "real": null,
   "vence": "2026-12"
  },
@@ -835,7 +835,7 @@
   "habitual": 1.9001361802721162,
   "id": "acero_alambre",
   "plazo": 12,
-  "previsto": 5.059973987627719,
+  "previsto": -0.06637993036140433,
   "real": null,
   "vence": "2027-09"
  },
@@ -845,7 +845,7 @@
   "habitual": 1.790899372292909,
   "id": "cobre_es",
   "plazo": 3,
-  "previsto": 7.938568807267887,
+  "previsto": 2.2425099533373016,
   "real": null,
   "vence": "2026-12"
  },
@@ -855,7 +855,7 @@
   "habitual": 6.48314817403044,
   "id": "cobre_es",
   "plazo": 12,
-  "previsto": 12.944086411734945,
+  "previsto": -0.24842042813942866,
   "real": null,
   "vence": "2027-09"
  },
@@ -865,7 +865,7 @@
   "habitual": 1.369903807960049,
   "id": "cobre_cables",
   "plazo": 3,
-  "previsto": 4.277393591572798,
+  "previsto": 2.4106752440902435,
   "real": null,
   "vence": "2026-12"
  },
@@ -875,7 +875,7 @@
   "habitual": 5.369341798896188,
   "id": "cobre_cables",
   "plazo": 12,
-  "previsto": 10.709283450122008,
+  "previsto": 4.516431787591557,
   "real": null,
   "vence": "2027-09"
  },
@@ -885,7 +885,7 @@
   "habitual": 0.8192482431228942,
   "id": "aluminio_es",
   "plazo": 3,
-  "previsto": -1.403401198389731,
+  "previsto": -0.1557474689454108,
   "real": null,
   "vence": "2026-12"
  },
@@ -895,7 +895,7 @@
   "habitual": 2.907236304295968,
   "id": "aluminio_es",
   "plazo": 12,
-  "previsto": -1.0530780698202125,
+  "previsto": -2.059293291515396,
   "real": null,
   "vence": "2027-09"
  },
@@ -905,7 +905,7 @@
   "habitual": 1.3307404004358148,
   "id": "zinc_es",
   "plazo": 3,
-  "previsto": 5.189559894439655,
+  "previsto": 1.791246940860436,
   "real": null,
   "vence": "2026-12"
  },
@@ -915,7 +915,7 @@
   "habitual": 4.843987787263648,
   "id": "zinc_es",
   "plazo": 12,
-  "previsto": 13.505002889488527,
+  "previsto": -1.1183815512706197,
   "real": null,
   "vence": "2027-09"
  },
@@ -925,7 +925,7 @@
   "habitual": 0.5540535478616437,
   "id": "plasticos_tubos",
   "plazo": 3,
-  "previsto": 6.331277195728657,
+  "previsto": 1.7423629042554456,
   "real": null,
   "vence": "2026-12"
  },
@@ -935,7 +935,7 @@
   "habitual": 2.083335809814968,
   "id": "plasticos_tubos",
   "plazo": 12,
-  "previsto": 7.793698909288671,
+  "previsto": 2.1399679776819225,
   "real": null,
   "vence": "2027-09"
  },
@@ -945,7 +945,7 @@
   "habitual": 0.5400233892822515,
   "id": "plasticos_construccion",
   "plazo": 3,
-  "previsto": 2.1757956062071315,
+  "previsto": 0.9892318084412377,
   "real": null,
   "vence": "2026-12"
  },
@@ -955,7 +955,7 @@
   "habitual": 2.0936212727064474,
   "id": "plasticos_construccion",
   "plazo": 12,
-  "previsto": 5.382616814905106,
+  "previsto": 2.789851357070172,
   "real": null,
   "vence": "2027-09"
  },
@@ -965,7 +965,7 @@
   "habitual": 0.5149358702132734,
   "id": "madera_tableros",
   "plazo": 3,
-  "previsto": 1.2267469472585946,
+  "previsto": 0.7999644772892056,
   "real": null,
   "vence": "2026-12"
  },
@@ -975,7 +975,7 @@
   "habitual": 2.047456810262216,
   "id": "madera_tableros",
   "plazo": 12,
-  "previsto": 3.542515194006035,
+  "previsto": 2.403232679329892,
   "real": null,
   "vence": "2027-09"
  },
@@ -985,7 +985,7 @@
   "habitual": 0.5641322376379598,
   "id": "madera_productos",
   "plazo": 3,
-  "previsto": 1.1008005415158229,
+  "previsto": 0.7555286661480087,
   "real": null,
   "vence": "2026-12"
  },
@@ -995,7 +995,7 @@
   "habitual": 2.2699949796700203,
   "id": "madera_productos",
   "plazo": 12,
-  "previsto": 3.3112715045140684,
+  "previsto": 2.3849233942828008,
   "real": null,
   "vence": "2027-09"
  },
@@ -1005,7 +1005,7 @@
   "habitual": 0.5249802868793729,
   "id": "brent_pinturas",
   "plazo": 3,
-  "previsto": 1.8048764906229309,
+  "previsto": 0.90442572128977,
   "real": null,
   "vence": "2026-12"
  },
@@ -1015,7 +1015,7 @@
   "habitual": 2.078892265974397,
   "id": "brent_pinturas",
   "plazo": 12,
-  "previsto": 5.272478093435695,
+  "previsto": 2.601964183861649,
   "real": null,
   "vence": "2027-09"
  }

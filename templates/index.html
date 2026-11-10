@@ -51,7 +51,10 @@
   <section class="bloque" aria-labelledby="t-not">
     <h2 id="t-not">Lo más relevante</h2>
     {% if noticias %}
-    <ul class="noticias">{% for n in noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
+    {% for titulo, lista in portada_secciones %}{% if lista %}
+    <h3 class="subtitulo">{{ titulo }}</h3>
+    <ul class="noticias">{% for n in lista %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
+    {% endif %}{% endfor %}
     <p class="pequeno"><a href="{{ raiz }}noticias.html">Todas las noticias seleccionadas</a></p>
     {% else %}
     <p class="vacio">No hay noticias que superen el filtro de calidad en las últimas horas.</p>

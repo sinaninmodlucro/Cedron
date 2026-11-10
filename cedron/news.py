@@ -53,6 +53,48 @@ def etiquetar(noticia: dict, claves: dict[str, list[str]]) -> tuple[list[str], f
     return activos, min(1.0, puntos / 2)
 
 
+def seccion(activos: list[str], preciosos: list[str]) -> list[str]:
+    """Metales preciosos, materias primas o las dos (economia general = las dos)."""
+    s = []
+    if any(a in preciosos for a in activos):
+        s.append("preciosos")
+    if any(a not in preciosos for a in activos):
+        s.append("materias")
+    return s or ["preciosos", "materias"]
+
+
+def impacto(texto_norm: str, cfg: dict, calidad: float, confirmacion: float) -> dict:
+    """Importancia para el precio: tipo de hecho (el de mas peso que aparezca), nota 0-100,
+    nivel (alta, media, baja) y hacia donde apunta el titular (alza, baja o nada)."""
+    tipo, peso = None, float(cfg.get("peso_sin_tipo", 20))
+    for ident, t in (cfg.get("tipos") or {}).items():
+        if t["peso"] > peso and any(_contiene(texto_norm, k) for k in t["palabras"]):
+            tipo, peso = ident, float(t["peso"])
+    nota = round(0.60 * peso + 25 * calidad + 15 * confirmacion)
+    nivel = "alta" if nota >= cfg.get("alta_desde", 70) else "media" if nota >= cfg.get("media_desde", 50) else "baja"
+    sube = any(_contiene(texto_norm, k) for k in cfg.get("alza", []))
+    baja = any(_contiene(texto_norm, k) for k in cfg.get("baja", []))
+    return {"tipo": tipo, "impacto": nota, "nivel": nivel,
+            "sentido": "alza" if sube and not baja else "baja" if baja and not sube else ""}
+
+
+def balance(seleccion: list[dict], desde: str) -> dict:
+    """Por metal o tema, desde una fecha: cuantas noticias, cuantas importantes (alta o
+    media) y cuantos titulares apuntan al alza o a la baja. Es el dato que se guarda cada
+    dia para medir, con los meses, si las noticias se adelantan a los precios."""
+    out: dict[str, dict] = {}
+    for n in seleccion:
+        if (n.get("fecha") or "") < desde:
+            continue
+        for a in n["activos"]:
+            b = out.setdefault(a, {"noticias": 0, "importantes": 0, "alza": 0, "baja": 0})
+            b["noticias"] += 1
+            b["importantes"] += n.get("nivel") in ("alta", "media")
+            if n.get("sentido"):
+                b[n["sentido"]] += 1
+    return out
+
+
 def actualidad(fecha: str | None, horas_vigencia: int) -> float | None:
     if not fecha:
         return None
@@ -132,7 +174,12 @@ def seleccionar(brutas: list[dict], cfg: dict, medios: dict[str, dict], nota_def
         if nota < cfg["umbral_publicacion"]:
             continue
         activos = sorted({a for n in grupo for a in n["activos"]})
+        extra = {"seccion": seccion(activos, cfg.get("preciosos", []))}
+        if cfg.get("impacto"):
+            # el tipo y el sentido salen del titular: el resumen mezcla demasiadas cosas
+            extra.update(impacto(normalizar(rep["titulo"]), cfg["impacto"], rep["calidad"], confirmacion))
         seleccion.append({
+            **extra,
             "titulo": rep["titulo"], "enlace": rep["enlace"], "medio": rep["medio"],
             "fecha": max(n["fecha"] for n in grupo), "resumen": rep.get("resumen", ""),
             "activos": activos, "nota": round(nota), "comercial": rep["comercial"],

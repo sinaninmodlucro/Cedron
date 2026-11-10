@@ -1,0 +1,535 @@
+{
+ "activos": {
+  "cobre": {
+   "historial": {
+    "aciertos": 0,
+    "error_medio": null,
+    "hechas": 2,
+    "proxima": "2027-01",
+    "ultimas": [],
+    "vencidas": 0
+   },
+   "previsiones": {
+    "12": {
+     "base": 6.580718109478527,
+     "desde_mes": "2026-10",
+     "habitual": 4.603036958175699,
+     "piezas": {
+      "divisas": 4.966990051746967,
+      "dolar": 4.597011308102994,
+      "tendencia": 2.7139683840974316,
+      "tipo_real": 4.627595851788158,
+      "valor": 3.3393997295081412
+     },
+     "prueba": {
+      "acierto_base": 0.5252100840336135,
+      "acierto_direccion": 0.5126050420168067,
+      "calculos": {
+       "divisas": {
+        "casos": 238,
+        "r2": -0.17536081290737382
+       },
+       "dolar": {
+        "casos": 238,
+        "r2": -0.02075616872227104
+       },
+       "tendencia": {
+        "casos": 238,
+        "r2": -0.03163018527684747
+       },
+       "tipo_real": {
+        "casos": 238,
+        "r2": -0.10190000656915221
+       },
+       "valor": {
+        "casos": 238,
+        "r2": -0.023266047773038867
+       }
+      },
+      "casos": 238,
+      "desde": "2006-01",
+      "horizonte": 12,
+      "intervalo": [
+       -0.08977180836907084,
+       0.010039944138637402
+      ],
+      "r2": -0.04457944634411293,
+      "r2_sin_cambio": -0.051158689773449506,
+      "valido": false
+     },
+     "total": 4.138104159038525,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-10"
+    },
+    "3": {
+     "base": 6.580718109478527,
+     "desde_mes": "2026-10",
+     "habitual": 1.218267487853586,
+     "piezas": {
+      "divisas": 1.4642908090225282,
+      "dolar": 1.2183335896620573,
+      "tendencia": 0.41502243346693835,
+      "tipo_real": 1.2561556873871504,
+      "valor": 0.8000362627346824
+     },
+     "prueba": {
+      "acierto_base": 0.5708502024291497,
+      "acierto_direccion": 0.5668016194331984,
+      "calculos": {
+       "divisas": {
+        "casos": 247,
+        "r2": 0.002475388113844068
+       },
+       "dolar": {
+        "casos": 247,
+        "r2": -0.004371951368151494
+       },
+       "tendencia": {
+        "casos": 247,
+        "r2": -0.015491712709641892
+       },
+       "tipo_real": {
+        "casos": 246,
+        "r2": -0.00795785901481727
+       },
+       "valor": {
+        "casos": 247,
+        "r2": -0.009492292519976075
+       }
+      },
+      "casos": 247,
+      "desde": "2006-01",
+      "horizonte": 3,
+      "intervalo": [
+       -0.010227413148571562,
+       0.009272640621212025
+      ],
+      "r2": -0.000778773370913477,
+      "r2_sin_cambio": -0.0009245665946815418,
+      "valido": false
+     },
+     "total": 1.0614100120580616,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-01"
+    }
+   }
+  },
+  "oro": {
+   "historial": {
+    "aciertos": 0,
+    "error_medio": null,
+    "hechas": 2,
+    "proxima": "2027-01",
+    "ultimas": [],
+    "vencidas": 0
+   },
+   "previsiones": {
+    "12": {
+     "base": 4105.000000000003,
+     "desde_mes": "2026-10",
+     "habitual": 7.436626345725572,
+     "piezas": {
+      "divisas": 7.398699162839839,
+      "dolar": 7.43078971694251,
+      "ratio": 6.049806820923309,
+      "tendencia": 9.542046154332162,
+      "tipo_real": 7.381950166193474,
+      "valor": 8.667328050744505
+     },
+     "prueba": {
+      "acierto_base": 0.6848739495798319,
+      "acierto_direccion": 0.6848739495798319,
+      "calculos": {
+       "divisas": {
+        "casos": 238,
+        "r2": -0.01317105088607895
+       },
+       "dolar": {
+        "casos": 238,
+        "r2": -0.01884414663663425
+       },
+       "ratio": {
+        "casos": 238,
+        "r2": -0.09091117286127637
+       },
+       "tendencia": {
+        "casos": 238,
+        "r2": 0.08398965659249868
+       },
+       "tipo_real": {
+        "casos": 238,
+        "r2": -0.2140242901465672
+       },
+       "valor": {
+        "casos": 238,
+        "r2": -0.1773787381436427
+       }
+      },
+      "casos": 238,
+      "desde": "2006-01",
+      "horizonte": 12,
+      "intervalo": [
+       -0.09872068233822962,
+       -0.00324705445689788
+      ],
+      "r2": -0.04263902969619093,
+      "r2_sin_cambio": 0.17800048466610652,
+      "valido": false
+     },
+     "total": 7.69614685737845,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "ratio",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-10"
+    },
+    "3": {
+     "base": 4105.000000000003,
+     "desde_mes": "2026-10",
+     "habitual": 1.7351207206704133,
+     "piezas": {
+      "divisas": 1.731522089142623,
+      "dolar": 1.735093757680084,
+      "ratio": 1.1076257874362394,
+      "tendencia": 2.461283358860622,
+      "tipo_real": 1.6643540976616356,
+      "valor": 1.949064022876268
+     },
+     "prueba": {
+      "acierto_base": 0.6275303643724697,
+      "acierto_direccion": 0.6275303643724697,
+      "calculos": {
+       "divisas": {
+        "casos": 247,
+        "r2": -0.009769257717564095
+       },
+       "dolar": {
+        "casos": 247,
+        "r2": -0.007636547783433478
+       },
+       "ratio": {
+        "casos": 247,
+        "r2": -0.030246486847104626
+       },
+       "tendencia": {
+        "casos": 247,
+        "r2": 0.005395850549525294
+       },
+       "tipo_real": {
+        "casos": 246,
+        "r2": -0.12579682967071326
+       },
+       "valor": {
+        "casos": 247,
+        "r2": -0.05350496794078197
+       }
+      },
+      "casos": 247,
+      "desde": "2006-01",
+      "horizonte": 3,
+      "intervalo": [
+       -0.04223226424415594,
+       0.0039079689134191575
+      ],
+      "r2": -0.01883909169199649,
+      "r2_sin_cambio": 0.058622669486935064,
+      "valido": false
+     },
+     "total": 1.7684757542739016,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "ratio",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-01"
+    }
+   }
+  },
+  "plata": {
+   "historial": {
+    "aciertos": 0,
+    "error_medio": null,
+    "hechas": 2,
+    "proxima": "2027-01",
+    "ultimas": [],
+    "vencidas": 0
+   },
+   "previsiones": {
+    "12": {
+     "base": 57.00000000000001,
+     "desde_mes": "2026-10",
+     "habitual": 5.672175597195683,
+     "piezas": {
+      "divisas": 5.370172934047135,
+      "dolar": 5.6688259119825,
+      "ratio": 2.21153505685332,
+      "tendencia": 5.628684752351676,
+      "tipo_real": 5.649809440566633,
+      "valor": 8.723318182777628
+     },
+     "prueba": {
+      "acierto_base": 0.5672268907563025,
+      "acierto_direccion": 0.5546218487394958,
+      "calculos": {
+       "divisas": {
+        "casos": 238,
+        "r2": -0.006793823409674493
+       },
+       "dolar": {
+        "casos": 238,
+        "r2": -0.013548664249758646
+       },
+       "ratio": {
+        "casos": 238,
+        "r2": -0.010812281158401715
+       },
+       "tendencia": {
+        "casos": 238,
+        "r2": -0.029612703634555926
+       },
+       "tipo_real": {
+        "casos": 238,
+        "r2": -0.05632107515490903
+       },
+       "valor": {
+        "casos": 238,
+        "r2": -0.052893160627417224
+       }
+      },
+      "casos": 238,
+      "desde": "2006-01",
+      "horizonte": 12,
+      "intervalo": [
+       -0.038417120655500625,
+       -0.009751291326924427
+      ],
+      "r2": -0.02055398122850538,
+      "r2_sin_cambio": 0.01830524842558634,
+      "valido": false
+     },
+     "total": 5.546207271757564,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "ratio",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-10"
+    },
+    "3": {
+     "base": 57.00000000000001,
+     "desde_mes": "2026-10",
+     "habitual": 1.3491734265077326,
+     "piezas": {
+      "divisas": 1.3211379814265678,
+      "dolar": 1.3493500653201318,
+      "ratio": -0.485312792030701,
+      "tendencia": 0.9438709744356011,
+      "tipo_real": 1.254086901038698,
+      "valor": 1.598685330336247
+     },
+     "prueba": {
+      "acierto_base": 0.5344129554655871,
+      "acierto_direccion": 0.5182186234817814,
+      "calculos": {
+       "divisas": {
+        "casos": 247,
+        "r2": -0.005370422629056293
+       },
+       "dolar": {
+        "casos": 247,
+        "r2": 0.0038653240280994705
+       },
+       "ratio": {
+        "casos": 247,
+        "r2": 0.006883130528015813
+       },
+       "tendencia": {
+        "casos": 247,
+        "r2": -0.006693095919486192
+       },
+       "tipo_real": {
+        "casos": 246,
+        "r2": -0.04697749351255753
+       },
+       "valor": {
+        "casos": 247,
+        "r2": -0.02113087980708328
+       }
+      },
+      "casos": 247,
+      "desde": "2006-01",
+      "horizonte": 3,
+      "intervalo": [
+       -0.01763068426781267,
+       0.00033929643307417656
+      ],
+      "r2": -0.0077940212480136495,
+      "r2_sin_cambio": 0.0014812067935972006,
+      "valido": false
+     },
+     "total": 1.0451737489849844,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "ratio",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-01"
+    }
+   }
+  },
+  "platino": {
+   "historial": {
+    "aciertos": 0,
+    "error_medio": null,
+    "hechas": 2,
+    "proxima": "2027-01",
+    "ultimas": [],
+    "vencidas": 0
+   },
+   "previsiones": {
+    "12": {
+     "base": 1621.0000000000002,
+     "desde_mes": "2026-10",
+     "habitual": 5.063585684217808,
+     "piezas": {
+      "divisas": 4.909382521058325,
+      "dolar": 5.054637600829559,
+      "tendencia": 4.2781735219852735,
+      "tipo_real": 5.045889830526895,
+      "valor": 0.6753024086225468
+     },
+     "prueba": {
+      "acierto_base": 0.5084033613445378,
+      "acierto_direccion": 0.5084033613445378,
+      "calculos": {
+       "divisas": {
+        "casos": 238,
+        "r2": -0.022200390696747174
+       },
+       "dolar": {
+        "casos": 238,
+        "r2": -0.03272658205783596
+       },
+       "tendencia": {
+        "casos": 238,
+        "r2": -0.032960804710455704
+       },
+       "tipo_real": {
+        "casos": 238,
+        "r2": -0.1358852004191875
+       },
+       "valor": {
+        "casos": 238,
+        "r2": -0.04563718947440121
+       }
+      },
+      "casos": 238,
+      "desde": "2006-01",
+      "horizonte": 12,
+      "intervalo": [
+       -0.07322558015179292,
+       -0.012346074626390147
+      ],
+      "r2": -0.032467598500585115,
+      "r2_sin_cambio": -0.05738838967192561,
+      "valido": false
+     },
+     "total": 4.158855737715461,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-10"
+    },
+    "3": {
+     "base": 1621.0000000000002,
+     "desde_mes": "2026-10",
+     "habitual": 1.1825985169428899,
+     "piezas": {
+      "divisas": 1.2753148809079962,
+      "dolar": 1.1829896464384815,
+      "tendencia": 1.2166221099351393,
+      "tipo_real": 1.1416234546785864,
+      "valor": -0.08309358705933523
+     },
+     "prueba": {
+      "acierto_base": 0.5384615384615384,
+      "acierto_direccion": 0.5263157894736842,
+      "calculos": {
+       "divisas": {
+        "casos": 247,
+        "r2": -0.01124694471208132
+       },
+       "dolar": {
+        "casos": 247,
+        "r2": 0.013450325106889038
+       },
+       "tendencia": {
+        "casos": 247,
+        "r2": -0.044037364920978206
+       },
+       "tipo_real": {
+        "casos": 246,
+        "r2": -0.04733918079097643
+       },
+       "valor": {
+        "casos": 247,
+        "r2": -0.012778016051888663
+       }
+      },
+      "casos": 247,
+      "desde": "2006-01",
+      "horizonte": 3,
+      "intervalo": [
+       -0.02679467594037299,
+       0.0011998651369858893
+      ],
+      "r2": -0.012114912738704575,
+      "r2_sin_cambio": -0.02064625160763378,
+      "valido": false
+     },
+     "total": 0.9848627381835673,
+     "usadas": [
+      "divisas",
+      "dolar",
+      "tendencia",
+      "tipo_real",
+      "valor"
+     ],
+     "vence": "2027-01"
+    }
+   }
+  }
+ },
+ "calculado": "2026-11-10T14:37:55Z",
+ "corte": "2006-01",
+ "datos_consultados": "2026-11-10T14:37:53Z"
+}

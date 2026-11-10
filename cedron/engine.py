@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 from . import apoyo
 from . import indicators as ind
 from . import sources as src
-from .news import seleccionar
+from .news import balance, seleccionar
 from .store import Estado, ahora, escribir, iso, leer, parse_iso
 
 log = logging.getLogger("cedron")
@@ -233,6 +233,11 @@ def actualizar_noticias(cfg, estado: Estado) -> None:
     escribir("noticias.json", {"noticias": seleccion, "generado": iso()})
     if cfg["noticias"].get("archivo"):
         archivar_noticias(seleccion)
+        # Balance de titulares del dia (UTC), por metal y tema: se sobrescribe durante el dia
+        hoy = iso()[:10]
+        indice = leer("noticias_indice.json", {}) or {}
+        indice[hoy] = balance(seleccion, hoy)
+        escribir("noticias_indice.json", indice)
 
 
 def archivar_noticias(seleccion: list[dict]) -> None:
@@ -250,6 +255,7 @@ def archivar_noticias(seleccion: list[dict]) -> None:
         vistos = {a["enlace"] for a in archivo}
         nuevas = [{"fecha": n["fecha"], "titulo": n["titulo"], "medio": n["medio"], "enlace": n["enlace"],
                    "temas": n["activos"], "nota": n["nota"], "idioma": n.get("idioma", ""),
+                   "tipo": n.get("tipo"), "impacto": n.get("impacto"), "sentido": n.get("sentido", ""),
                    "visto": iso()} for n in lista if n["enlace"] not in vistos]
         if nuevas:
             escribir(ruta, sorted(archivo + nuevas, key=lambda a: a["fecha"]))
@@ -332,6 +338,23 @@ def actualizar_cadena(cfg, estado: Estado, forzar=False) -> None:
         log.warning("Cadena de costes: %s", e)
 
 
+def actualizar_previsiones(cfg, estado: Estado, forzar=False) -> None:
+    """Previsiones de los metales: una vez al mes (o con --forzar, o si cambia el metodo)."""
+    from cedron import prevision
+    if not (cfg.get("previsiones") or {}).get("metales"):
+        return
+    mes = f"{date.today().isoformat()[:7]}/v{prevision.VERSION}"
+    if not forzar and estado.get("prevision_mes") == mes:
+        return
+    try:
+        prevision.ejecutar(cfg)
+        estado.set("prevision_mes", mes)
+        estado.registrar_fuente("Previsiones de metales (FRED)", True)
+    except (src.FuenteError, KeyError, ValueError, ZeroDivisionError) as e:
+        estado.registrar_fuente("Previsiones de metales (FRED)", False, str(e))
+        log.warning("Previsiones de metales: %s", e)
+
+
 def actualizar_prueba(cfg, estado: Estado, forzar=False) -> None:
     """Repite la prueba historica de las reglas una vez al mes (o con --forzar)."""
     from cedron import prueba
@@ -377,6 +400,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     calcular_lecturas(cfg)
     actualizar_prueba(cfg, estado, forzar)
     actualizar_cadena(cfg, estado, forzar)
+    actualizar_previsiones(cfg, estado, forzar)
     estado.set("ultima_ejecucion", iso())
     avisos = revisar_salud(cfg, estado)
     estado.guardar()

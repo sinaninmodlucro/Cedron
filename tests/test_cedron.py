@@ -3,7 +3,7 @@ import unittest
 from datetime import date, timedelta
 
 from cedron import indicators as ind
-from cedron.news import agrupar, etiquetar, seleccionar
+from cedron.news import agrupar, balance, etiquetar, impacto, normalizar, seccion, seleccionar
 from cedron.store import ahora, iso
 
 CFG_IND = {
@@ -134,6 +134,30 @@ class Noticias(unittest.TestCase):
         sel = seleccionar([noticia("Gold 金价创新高 as Fed signals cuts", "Oficial"),
                            noticia("Цена на золото: gold hits record", "Oficial")], CFG_NOT, MEDIOS, 50)
         self.assertEqual(sel, [])
+
+    def test_secciones(self):
+        pre = ["oro", "plata"]
+        self.assertEqual(seccion(["oro"], pre), ["preciosos"])
+        self.assertEqual(seccion(["cobre", "energia"], pre), ["materias"])
+        self.assertEqual(seccion(["oro", "cobre"], pre), ["preciosos", "materias"])
+        self.assertEqual(seccion([], pre), ["preciosos", "materias"])      # economia general: en las dos
+
+    def test_importancia_para_el_precio(self):
+        cfg = {"alta_desde": 70, "media_desde": 50, "peso_sin_tipo": 20,
+               "tipos": {"oferta": {"peso": 90, "palabras": ["production cut", "huelga"]},
+                         "precio": {"peso": 40, "palabras": ["record high"]}},
+               "alza": ["rises", "production cut"], "baja": ["falls"]}
+        r = impacto(normalizar("Oil rises after OPEC production cut"), cfg, 1.0, 1.0)
+        self.assertEqual((r["tipo"], r["nivel"], r["sentido"], r["impacto"]), ("oferta", "alta", "alza", 94))
+        r = impacto(normalizar("Gold at record high"), cfg, 0.8, 0.0)
+        self.assertEqual((r["tipo"], r["nivel"], r["sentido"]), ("precio", "baja", ""))
+        # palabras de los dos lados: no apunta a ninguno
+        self.assertEqual(impacto(normalizar("Oil rises then falls"), cfg, 0.5, 0)["sentido"], "")
+        cfg_n = {**CFG_NOT, "preciosos": ["oro"], "impacto": cfg}
+        sel = seleccionar([noticia("Gold rises as Fed signals cuts", "Oficial")], cfg_n, MEDIOS, 50)
+        self.assertEqual((sel[0]["seccion"], sel[0]["sentido"]), (["preciosos"], "alza"))
+        b = balance(sel, "2000-01-01")
+        self.assertEqual(b["oro"], {"noticias": 1, "importantes": 0, "alza": 1, "baja": 0})
 
     def test_vieja_y_excluida(self):
         sel = seleccionar([noticia("Gold falls", "Oficial", horas=100),

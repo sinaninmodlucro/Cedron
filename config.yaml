@@ -1336,6 +1336,85 @@ noticias:
     energia: "Energía"
     alimentos: "Abonos y alimentos"
     construccion: "Construcción"
+  # Dos secciones (10-nov-2026): las noticias de estos metales van a «Metales preciosos»;
+  # las del cobre, la energia, los alimentos y la construccion, a «Materias primas». Las de
+  # economia general (bancos centrales, inflacion, dolar) salen en las dos.
+  preciosos: [oro, plata, platino, paladio]
+  # Importancia para el precio (10-nov-2026). Cada noticia se clasifica por el tipo de
+  # hecho que cuenta. 'peso' (0-100) es de partida, segun lo que la investigacion ha
+  # medido que mueve los precios (cortes de oferta, guerras, decisiones de tipos, datos
+  # oficiales...). Importancia = 60 % peso del tipo + 25 % calidad del medio + 15 %
+  # confirmacion por otros medios. Cuando el archivo tenga meses, los pesos se cambiaran
+  # por lo que de verdad se movio el precio despues de cada tipo de noticia.
+  impacto:
+    alta_desde: 70
+    media_desde: 50
+    peso_sin_tipo: 20
+    tipos:
+      oferta:
+        nombre: "Oferta"
+        peso: 90
+        palabras: ["OPEP", "OPEC", "recorte de producción", "recorta la producción", "production cut",
+                   "output cut", "huelga", "strike", "force majeure", "fuerza mayor", "outage", "shutdown",
+                   "cierre de la mina", "mine closure", "export ban", "veta la exportación", "sanciones",
+                   "sanctions", "embargo", "sequía", "drought", "helada", "heladas", "frost", "inundaciones",
+                   "floods", "peste porcina", "swine fever", "gripe aviar", "bird flu", "huracán", "hurricane",
+                   "escasez", "shortage", "supply disruption", "pipeline", "oleoducto", "gasoducto", "squeeze",
+                   "falta de", "desabastecimiento", "paro", "strike threat"]
+      geopolitica:
+        nombre: "Conflictos"
+        peso: 85
+        palabras: ["guerra", "war", "ataque", "ataques", "attack", "attacks", "misil", "missile", "Ormuz",
+                   "Hormuz", "mar Rojo", "Red Sea", "alto el fuego", "ceasefire", "invasión", "invasion",
+                   "bloqueo", "blockade", "golpe de Estado", "coup", "strikes", "paz", "peace", "Iran", "Irán"]
+      tipos_interes:
+        nombre: "Tipos de interés"
+        peso: 85
+        palabras: ["rate cut", "rate hike", "rate decision", "cuts rates", "raises rates", "holds rates",
+                   "FOMC", "baja los tipos", "sube los tipos", "mantiene los tipos", "recorte de tipos",
+                   "subida de tipos", "decisión de tipos", "Powell", "Lagarde", "política monetaria",
+                   "monetary policy"]
+      comercio:
+        nombre: "Aranceles y comercio"
+        peso: 75
+        palabras: ["arancel", "aranceles", "tariff", "tariffs", "cuota de importación", "import quota",
+                   "trade deal", "acuerdo comercial", "trade war", "guerra comercial", "antidumping"]
+      datos:
+        nombre: "Datos oficiales"
+        peso: 70
+        palabras: ["IPC", "CPI", "payrolls", "nóminas", "PIB", "GDP", "PMI", "inventarios", "inventories",
+                   "stockpiles", "existencias", "reservas de crudo", "WASDE", "USDA", "EIA", "AIE", "IEA",
+                   "previsión de cosecha", "crop report", "acreage", "siembras", "inflation data", "dato de inflación",
+                   "jobs report", "dato de empleo"]
+      demanda:
+        nombre: "Demanda"
+        peso: 65
+        palabras: ["demanda", "demand", "importaciones", "imports", "compras de oro", "gold buying",
+                   "central bank buying", "central bank purchases", "estímulo", "stimulus", "consumo",
+                   "consumption"]
+      precio:
+        nombre: "Movimiento del precio"
+        peso: 40
+        palabras: ["máximo histórico", "record high", "all-time high", "récord", "hits record", "se dispara",
+                   "surges", "soars", "jumps", "se desploma", "plunges", "tumbles", "slumps", "mínimo",
+                   "lowest since", "highest since", "rally", "plunge", "crash", "crashes", "sink", "surge", "soar",
+                   "week low", "month low", "week high", "month high", "year high", "year low", "se hunde"]
+      opinion:
+        nombre: "Opinión y previsiones de otros"
+        peso: 30
+        palabras: ["forecast", "outlook", "analyst", "analysts", "analistas", "prevé", "prevén", "podría",
+                   "could", "may", "expects", "espera", "opinión", "opinion", "price target"]
+    # Hacia donde apunta el titular (solo si no hay palabras de los dos lados)
+    alza: ["sube", "suben", "subida", "subidas", "se dispara", "repunta", "repunte", "encarece", "se encarece",
+           "al alza", "récord", "máximo histórico", "rises", "rise", "surges", "soars", "jumps", "climbs",
+           "gains", "rally", "rallies", "record high", "higher", "rebounds", "recorte de producción",
+           "production cut", "output cut", "escasez", "shortage", "rate cut", "recorte de tipos", "surge",
+           "soar", "jump", "climb", "week high", "month high", "year high", "squeeze", "rebota"]
+    baja: ["baja", "bajan", "bajada", "bajadas", "cae", "caen", "caída", "caídas", "se desploma", "retrocede",
+           "abarata", "se abarata", "a la baja", "falls", "fall", "drops", "slumps", "plunges", "tumbles",
+           "slides", "sinks", "declines", "lower", "retreats", "glut", "exceso de oferta", "oversupply",
+           "rate hike", "subida de tipos", "plunge", "sink", "crash", "crashes", "drop", "slump", "tumble",
+           "week low", "month low", "year low", "ease", "eases", "dip", "dips", "se hunde", "peace", "paz"]
   comercial_requiere_confirmacion: true   # un medio que vende metales no basta por si solo
   nota_medio_desconocido: 50      # nota para medios que llegan via NewsData.io y no estan en la lista
   pesos:
@@ -1379,6 +1458,22 @@ noticias:
             "horóscopo", "lotería", "fútbol", "bitcoin price prediction", "casino",
             "tola", "carat", "quilates", "joyería", "jewellery", "jewelry", "throne", "medalla", "medal",
             "silver lining"]     # 6-nov-2026: expresion inglesa ("el lado bueno"), no habla de plata
+
+# -----------------------------------------------------------------------------
+# Previsiones de los metales (10-nov-2026, decision del usuario; solo mientras la web sea
+# privada). Media a partes iguales de "lo habitual" y de varios calculos sencillos, cada
+# uno con una idea (tendencia del ultimo anio, valor frente a hace cinco anios, dolar,
+# divisas de paises exportadores, tipos reales y, en oro y plata, su relacion). Cada
+# calculo usa solo datos anteriores. Se recalcula una vez al mes. Ver cedron/prevision.py.
+# -----------------------------------------------------------------------------
+previsiones:
+  metales:
+    activos: [oro, plata, platino, cobre]   # el paladio no tiene historia larga
+    desde: "1976-01"              # como el panel: antes el oro tenia precio fijo
+    corte: "2006-01"              # prueba a ciegas: se comprueba desde esta fecha
+    plazos: [3, 12]               # meses
+    remuestreos: 300
+    criba: false                  # true = solo los calculos que van acertando (probado: peor)
 
 # -----------------------------------------------------------------------------
 # Medios. 'nota' de 0 a 100 = calidad del medio. 'comercial: true' marca a quien

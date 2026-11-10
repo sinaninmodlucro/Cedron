@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import noticia %}
+{% from "_macros.html" import noticia, tabla_prevision %}
 {% block titulo %}Cadena de costes | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Cuánto y en cuánto tiempo se traslada el precio de la energía y las materias primas a abonos, alimentos y materiales, medido con datos.{% endblock %}
 {% block contenido %}
@@ -50,28 +50,9 @@
         {% if e.previsiones %}
         <div class="prevision">
           <h4 class="prevision__titulo">Nuestra previsión para {{ e.abajo_corto }}</h4>
-          <div class="desplazable">
-          <table class="tabla tabla--compacta">
-            <thead><tr><th>Plazo</th><th class="num">Previsión</th><th class="num">De ello, por {{ e.arriba_corto }}</th><th>En el pasado, ¿acertó si subía o bajaba?</th><th>¿Mejor que la media de siempre?</th></tr></thead>
-            <tbody>
-            {% for k, etq in (('3', 'En 3 meses'), ('12', 'En 1 año')) %}{% set v = e.previsiones[k] %}{% if v %}
-              <tr>
-                <th scope="row">{{ etq }}<span class="ambito">hasta {{ v.vence|mes }}</span></th>
-                <td class="num cifra {{ 'sube' if v.total > 0 else 'baja' }}"><strong>{{ v.total|porcentaje }}</strong></td>
-                <td class="num cifra">{{ v.traslado|porcentaje }}</td>
-                <td>{% if v.prueba.acierto_direccion is not none %}{{ (v.prueba.acierto_direccion * 100)|round|int }} de cada 100 veces<span class="ambito">decir siempre lo habitual: {{ (v.prueba.acierto_base * 100)|round|int }} · {{ v.prueba.casos }} casos</span>{% else %}Sin casos suficientes{% endif %}</td>
-                <td>{% if v.prueba.valido %}<strong>Sí</strong>, con seguridad{% elif v.prueba.r2 is not none and v.prueba.r2 > 0 %}Algo, sin seguridad{% else %}<span class="secundario">No</span>{% endif %}</td>
-              </tr>
-            {% endif %}{% endfor %}
-            </tbody>
-          </table>
-          </div>
           {% set p = e.previsiones['12'] or e.previsiones['3'] %}
-          <p class="pequeno secundario">Cambio previsto desde {{ p.desde_mes|mes }} (último dato {{ e.de_abajo }}), con {{ e.arriba_corto }} hasta {{ p.arriba_hasta|mes }}. Es lo que este precio suele cambiar en ese plazo más lo que falta por trasladarse de arriba. Las columnas de acierto salen de la prueba a ciegas (cada previsión hecha solo con datos anteriores).
-          {% set h = e.historial %}{% if h and h.vencidas %}<strong>Nuestro historial desde noviembre de 2026:</strong> {{ h.aciertos }} de {{ h.vencidas }} previsiones vencidas acertaron la dirección; error medio de {{ h.error_medio|numero(1) }} puntos.{% elif h and h.proxima %}<strong>Nuestro historial:</strong> {{ h.hechas }} {{ 'previsión apuntada' if h.hechas == 1 else 'previsiones apuntadas' }}; la primera se podrá comprobar con el dato de {{ h.proxima|mes }}.{% endif %}</p>
-          {% if h and h.ultimas %}
-          <ul class="pequeno secundario">{% for r in h.ultimas %}<li>{{ r.desde|mes }} → {{ r.vence|mes }}: previsto {{ r.previsto|porcentaje }}, real {{ r.real|porcentaje }} {{ '✓' if (r.previsto > 0) == (r.real > 0) else '✗' }}</li>{% endfor %}</ul>
-          {% endif %}
+          {{ tabla_prevision(e.previsiones, e.historial, nombres_piezas) }}
+          <p class="pequeno secundario">Cambio previsto desde {{ p.desde_mes|mes }} (último dato {{ e.de_abajo }}), con {{ e.arriba_corto }} hasta {{ p.arriba_hasta|mes }}. Las columnas de acierto salen de la prueba a ciegas: cada previsión del pasado se hizo solo con los datos que había entonces.</p>
         </div>
         {% endif %}
       {% elif e.clase == 'no_se_aprecia' %}

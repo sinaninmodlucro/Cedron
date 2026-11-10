@@ -75,7 +75,7 @@
 {%- endmacro %}
 
 {% macro noticia(n, raiz, nombres) -%}
-<li class="noticia" data-activos="{{ n.activos|join(' ') }}">
+<li class="noticia" data-activos="{{ n.activos|join(' ') }}" data-seccion="{{ (n.seccion or [])|join(' ') }}" data-nivel="{{ n.nivel or '' }}">
   <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>
   <p class="noticia__datos">
     <span>{{ n.medio }}{% if n.comercial %} <span class="etiqueta etiqueta--comercial" title="Este medio vende metales">medio comercial</span>{% endif %}</span>
@@ -83,6 +83,36 @@
     {% if n.idioma == 'en' %}<span class="etiqueta" title="Artículo en inglés">en inglés</span>{% endif %}
     {% if n.tambien_en %}<span>También en {{ n.tambien_en|join(', ') }}</span>{% endif %}
     {% for a in n.activos %}<span class="etiqueta">{{ nombres[a] }}</span>{% endfor %}
+    {% if n.nivel %}<span class="importancia importancia--{{ n.nivel }}" title="Importancia para el precio: {{ n.impacto }} sobre 100">Importancia {{ n.nivel }}{% if n.tipo_nombre %} · {{ n.tipo_nombre|lower }}{% endif %}{% if n.sentido %} · apunta {{ 'al alza' if n.sentido == 'alza' else 'a la baja' }}{% endif %}</span>{% endif %}
   </p>
 </li>
+{%- endmacro %}
+
+{# Tabla de «nuestra previsión» (cadena de costes y metales). previsiones: {"3": {...}, "12": {...}} #}
+{% macro tabla_prevision(previsiones, historial, nombres_piezas, desde_historial="noviembre de 2026") -%}
+<div class="desplazable">
+<table class="tabla tabla--compacta">
+  <thead><tr><th>Plazo</th><th class="num">Previsión</th><th class="num">Lo habitual</th><th>En el pasado, ¿acertó si subía o bajaba?</th><th>¿Mejor que decir «lo habitual»?</th></tr></thead>
+  <tbody>
+  {% for k, etq in (('3', 'En 3 meses'), ('12', 'En 1 año')) %}{% set v = previsiones[k] %}{% if v %}
+    <tr>
+      <th scope="row">{{ etq }}<span class="ambito">hasta {{ v.vence|mes }}</span></th>
+      <td class="num cifra {{ 'sube' if v.total > 0 else 'baja' }}"><strong>{{ v.total|porcentaje }}</strong></td>
+      <td class="num cifra">{{ v.habitual|porcentaje }}</td>
+      <td>{% if v.prueba.acierto_direccion is not none %}{{ (v.prueba.acierto_direccion * 100)|round|int }} de cada 100 veces<span class="ambito">decir siempre lo habitual: {{ (v.prueba.acierto_base * 100)|round|int }} · {{ v.prueba.casos }} casos</span>{% else %}Sin casos suficientes{% endif %}</td>
+      <td>{% if v.prueba.valido %}<strong>Sí</strong>, con seguridad{% elif v.prueba.r2 is not none and v.prueba.r2 > 0 %}Algo, sin seguridad{% else %}<span class="secundario">No</span>{% endif %}</td>
+    </tr>
+  {% endif %}{% endfor %}
+  </tbody>
+</table>
+</div>
+<ul class="pequeno secundario prevision__piezas">
+{% for k, etq in (('3', 'A 3 meses'), ('12', 'A 1 año')) %}{% set v = previsiones[k] %}{% if v and v.piezas %}
+  <li>{{ etq }}, la previsión es la media de lo habitual ({{ v.habitual|porcentaje }}) y de lo que sale mirando{% for q, x in v.piezas.items() %}{{ ' y' if loop.last and not loop.first else '' if loop.first else ',' }} {{ nombres_piezas[q] or q }} ({{ x|porcentaje }}){% endfor %}.</li>
+{% endif %}{% endfor %}
+</ul>
+{% set h = historial %}
+{% if h and h.vencidas %}<p class="pequeno secundario"><strong>Nuestro historial desde {{ desde_historial }}:</strong> {{ h.aciertos }} de {{ h.vencidas }} previsiones vencidas acertaron la dirección; error medio de {{ h.error_medio|numero(1) }} puntos.</p>
+<ul class="pequeno secundario">{% for r in h.ultimas %}<li>{{ r.desde|mes }} → {{ r.vence|mes }}: previsto {{ r.previsto|porcentaje }}, real {{ r.real|porcentaje }} {{ '✓' if (r.previsto > 0) == (r.real > 0) else '✗' }}</li>{% endfor %}</ul>
+{% elif h and h.proxima %}<p class="pequeno secundario"><strong>Nuestro historial:</strong> {{ h.hechas }} {{ 'previsión apuntada' if h.hechas == 1 else 'previsiones apuntadas' }}; la primera se podrá comprobar con el dato de {{ h.proxima|mes }}.</p>{% endif %}
 {%- endmacro %}

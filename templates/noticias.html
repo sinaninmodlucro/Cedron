@@ -4,57 +4,100 @@
 {% block contenido %}
 <div class="texto">
   <h1>Noticias seleccionadas</h1>
-  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas sobre metales, energía, abonos, alimentos y materiales que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación. Cada enlace lleva al artículo original. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
+  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas, separados en <strong>metales preciosos</strong> y <strong>materias primas</strong> (cobre, energía, abonos, alimentos y materiales). Solo salen los que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación. Cada uno lleva su <strong>importancia para el precio</strong>: alta, media o baja según el tipo de hecho que cuenta. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
 </div>
-<div class="filtros" role="group" aria-label="Filtrar por metal o por tema">
-  <button type="button" data-filtro="" aria-pressed="true">Todas</button>
-  {% for a in activos %}<button type="button" data-filtro="{{ a.id }}" aria-pressed="false">{{ a.nombre }}</button>{% endfor %}
-  {% for id, nombre in temas_noticias %}<button type="button" data-filtro="{{ id }}" aria-pressed="false">{{ nombre }}</button>{% endfor %}
+<div class="filtros filtros--seccion" role="group" aria-label="Sección" id="secciones">
+  <button type="button" data-seccion="" aria-pressed="true">Todo</button>
+  {% for id, nombre, _ in filtros_seccion %}<button type="button" data-seccion="{{ id }}" aria-pressed="false">{{ nombre }}</button>{% endfor %}
 </div>
-<p class="pequeno secundario">{{ noticias|length }} noticias, las más recientes arriba. Pulsa varios botones para ver esos temas juntos.</p>
+{% for id, nombre, lista in filtros_seccion %}
+<div class="filtros filtros--temas" role="group" aria-label="{{ nombre }}: filtrar" data-seccion="{{ id }}">
+  {% for f in lista %}<button type="button" data-filtro="{{ f }}" aria-pressed="false">{{ nombres[f] }}</button>{% endfor %}
+</div>
+{% endfor %}
+<div class="filtros" role="group" aria-label="Importancia para el precio">
+  <button type="button" id="solo-importantes" aria-pressed="false">Solo importancia alta o media</button>
+</div>
+<p class="pequeno secundario"><span id="cuenta">{{ noticias|length }}</span> noticias, las más recientes arriba. Pulsa varios botones para ver esos temas juntos.</p>
 {% if noticias %}
 <ul class="noticias" id="lista">{% for n in noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
 <p class="vacio" id="sin-resultados" hidden>Ninguna noticia seleccionada sobre lo que has elegido en este momento.</p>
 {% else %}
 <p class="vacio">Ahora mismo ninguna noticia supera el filtro de calidad. La lista se revisa cada hora.</p>
 {% endif %}
+
+{% if balance %}
+<section class="bloque" aria-labelledby="t-balance">
+  <h2 id="t-balance">Balance de titulares de las últimas 24 horas</h2>
+  <div class="desplazable">
+  <table class="tabla tabla--compacta">
+    <thead><tr><th>Tema</th><th class="num">Noticias</th><th class="num">Importantes</th><th class="num">Apuntan al alza</th><th class="num">Apuntan a la baja</th></tr></thead>
+    <tbody>
+    {% for id, b in balance %}
+      <tr><th scope="row">{{ nombres[id] }}</th><td class="num">{{ b.noticias }}</td><td class="num">{{ b.importantes }}</td><td class="num">{{ b.alza }}</td><td class="num">{{ b.baja }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <p class="pequeno secundario">«Apunta al alza o a la baja» sale de las palabras del titular (sube, cae, recorte de producción…); muchos titulares no apuntan a ningún lado. Casi siempre cuentan lo que el precio <em>ya</em> ha hecho. Este balance se guarda cada día para medir, cuando haya meses de datos, si de verdad se adelanta a los precios; hasta entonces es una descripción, no una previsión.</p>
+</section>
+{% endif %}
 {% endblock %}
 {% block scripts %}
 <script>
-// Igual que las pestañas de «Materias primas»: se pueden pulsar varios metales
-// para ver sus noticias juntas; pulsar uno ya elegido lo quita. Sin ninguno = todas.
+// Dos niveles: sección (metales preciosos / materias primas) y, dentro, metales o temas.
+// Se pueden pulsar varios; pulsar uno ya elegido lo quita. Sin ninguno = todos.
 (function () {
-  var botones = document.querySelectorAll(".filtros button");
-  var CLAVE = "cedron-noticias";
-  var todos = [].map.call(botones, function (b) { return b.dataset.filtro; }).filter(Boolean);
-  var elegidos = [];
+  var CLAVE = "cedron-noticias-2";
+  var bSec = document.querySelectorAll("#secciones button");
+  var bTem = document.querySelectorAll(".filtros--temas button");
+  var bImp = document.getElementById("solo-importantes");
+  var est = { seccion: "", temas: [], importantes: false };
   function aplicar() {
     var visibles = 0;
-    botones.forEach(function (b) {
-      var f = b.dataset.filtro;
-      b.setAttribute("aria-pressed", (f ? elegidos.indexOf(f) >= 0 : !elegidos.length) ? "true" : "false");
-    });
+    bSec.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.seccion === est.seccion ? "true" : "false"); });
+    document.querySelectorAll(".filtros--temas").forEach(function (g) { g.hidden = !!est.seccion && g.dataset.seccion !== est.seccion; });
+    bTem.forEach(function (b) { b.setAttribute("aria-pressed", est.temas.indexOf(b.dataset.filtro) >= 0 ? "true" : "false"); });
+    bImp.setAttribute("aria-pressed", est.importantes ? "true" : "false");
     document.querySelectorAll("#lista .noticia").forEach(function (n) {
       var suyos = n.dataset.activos.split(" ");
-      var ver = !elegidos.length || elegidos.some(function (f) { return suyos.indexOf(f) >= 0; });
+      var ver = (!est.seccion || n.dataset.seccion.split(" ").indexOf(est.seccion) >= 0)
+        && (!est.temas.length || est.temas.some(function (f) { return suyos.indexOf(f) >= 0; }))
+        && (!est.importantes || n.dataset.nivel === "alta" || n.dataset.nivel === "media");
       n.hidden = !ver; if (ver) visibles++;
     });
     var sin = document.getElementById("sin-resultados"); if (sin) sin.hidden = visibles > 0;
+    var c = document.getElementById("cuenta"); if (c) c.textContent = visibles;
+    try { localStorage.setItem(CLAVE, JSON.stringify(est)); } catch (e) {}
   }
-  botones.forEach(function (b) {
+  bSec.forEach(function (b) {
     b.addEventListener("click", function () {
-      var f = b.dataset.filtro;
-      if (!f) elegidos = [];
-      else if (elegidos.indexOf(f) >= 0) elegidos = elegidos.filter(function (x) { return x !== f; });
-      else elegidos = elegidos.concat([f]);
-      if (elegidos.length === todos.length) elegidos = [];
+      est.seccion = b.dataset.seccion;
+      // al cambiar de sección se quitan los temas de la otra
+      est.temas = est.temas.filter(function (f) {
+        var g = document.querySelector('.filtros--temas button[data-filtro="' + f + '"]').parentNode;
+        return !est.seccion || g.dataset.seccion === est.seccion;
+      });
       aplicar();
-      try { localStorage.setItem(CLAVE, JSON.stringify(elegidos)); } catch (e) {}
     });
   });
+  bTem.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.dataset.filtro, i = est.temas.indexOf(f);
+      if (i >= 0) est.temas.splice(i, 1); else est.temas.push(f);
+      aplicar();
+    });
+  });
+  bImp.addEventListener("click", function () { est.importantes = !est.importantes; aplicar(); });
   try {
-    elegidos = (JSON.parse(localStorage.getItem(CLAVE) || "[]") || []).filter(function (f) { return todos.indexOf(f) >= 0; });
-  } catch (e) { elegidos = []; }
+    var g = JSON.parse(localStorage.getItem(CLAVE) || "null");
+    if (g) {
+      var validos = [].map.call(bTem, function (b) { return b.dataset.filtro; });
+      est.seccion = g.seccion === "preciosos" || g.seccion === "materias" ? g.seccion : "";
+      est.temas = (g.temas || []).filter(function (f) { return validos.indexOf(f) >= 0; });
+      est.importantes = !!g.importantes;
+    }
+  } catch (e) {}
   aplicar();
 })();
 </script>

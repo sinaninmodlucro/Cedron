@@ -3,7 +3,7 @@ import math
 import random
 import unittest
 
-from cedron import build, cadena
+from cedron import build, cadena, prevision
 from cedron import indicators as ind
 
 
@@ -76,6 +76,7 @@ class Cadena(unittest.TestCase):
     def test_previsiones_e_historial(self):
         r = cadena.evaluar(self.arriba, self.abajo, remuestreos=0)
         self.assertEqual(set(r["previsiones"]), {"3", "12"})
+        self.assertEqual(set(r["previsiones"]["3"]["piezas"]), {"traslado", "inercia", "desfase"})
         p3 = r["previsiones"]["3"]
         self.assertEqual(p3["vence"], ind.restar_meses(p3["desde_mes"], -3))
         self.assertGreater(p3["prueba"]["acierto_direccion"], 0.5)   # el traslado es real: acierta
@@ -89,6 +90,36 @@ class Cadena(unittest.TestCase):
         self.assertAlmostEqual(hecho["real"], 10.0)
         res = cadena.resumen_previsiones(registro, "x")
         self.assertEqual((res["hechas"], res["vencidas"]), (2, 1))
+
+    def test_combinacion_de_calculos(self):
+        """Un rasgo que de verdad anticipa el precio mejora a la media; uno de ruido, no."""
+        rng = random.Random(5)
+        senal = [rng.gauss(0, 1) for _ in range(400)]
+        lp, x = {0: 0.0}, 0.0
+        for n in range(1, 400):
+            x += 0.02 * senal[n - 1] + rng.gauss(0, 0.02)      # el cambio de n depende de la senal de n-1
+            lp[n] = x
+        bueno = {n: [senal[n]] for n in range(400)}
+        ruido = {n: [rng.gauss(0, 1)] for n in range(400)}
+        c = prevision.combinar(lp, {"bueno": bueno}, 1, 200, remuestreos=100)
+        self.assertTrue(c["prueba"]["valido"])
+        self.assertGreater(c["prueba"]["acierto_direccion"], 0.6)
+        self.assertIn("bueno", c["prevision"]["piezas"])
+        c = prevision.combinar(lp, {"ruido": ruido}, 1, 200, remuestreos=100)
+        self.assertFalse(c["prueba"]["valido"])
+        # Sin rasgos, la prevision es la media historica
+        c = prevision.combinar(lp, {}, 3, 200, remuestreos=0)
+        self.assertAlmostEqual(c["prevision"]["total"], c["prevision"]["media"])
+        # Un calculo externo (como el traslado pendiente) entra en la media a partes iguales
+        c = prevision.combinar(lp, {}, 3, 200, {"ext": {399: 0.01}}, 399, remuestreos=0)
+        self.assertAlmostEqual(c["prevision"]["total"], c["prevision"]["media"] + 0.005)
+
+    def test_rasgos_de_metal_usan_el_mes_anterior(self):
+        lp = {n: 0.01 * n for n in range(100)}
+        r = prevision.rasgos_metal(lp, {})
+        self.assertAlmostEqual(r["tendencia"][50][0], lp[49] - lp[37])
+        self.assertNotIn(12, r["tendencia"])
+        self.assertEqual(prevision.mes(prevision.num("2026-11")), "2026-11")
 
     def test_huecos(self):
         """Los meses que faltan no se cuentan como cambios de un mes."""

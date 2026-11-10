@@ -12,6 +12,8 @@ from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 
 from . import apoyo
 from . import indicators as ind
+from .news import balance
+from .prevision import NOMBRES as NOMBRES_PIEZAS
 from .store import RAIZ, ahora, iso, leer, parse_iso
 
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -353,6 +355,23 @@ def _contraer(texto: str) -> str:
     return texto
 
 
+def resumen_previsiones(cadena: dict | None, metales: dict | None) -> list[dict]:
+    """Para la metodologia: cuantas previsiones mejoran a «lo habitual» en la prueba a ciegas."""
+    grupos = (("Cadena de costes", [e.get("previsiones") or {} for c in (cadena or {}).get("cadenas", [])
+                                    for e in c["eslabones"]]),
+              ("Metales", [a.get("previsiones") or {} for a in ((metales or {}).get("activos") or {}).values()]))
+    filas = []
+    for que, lista in grupos:
+        for k, plazo in (("3", "3 meses"), ("12", "1 año")):
+            ps = [p[k]["prueba"] for p in lista if k in p]
+            if ps:
+                si = sum(1 for x in ps if x.get("valido"))
+                algo = sum(1 for x in ps if not x.get("valido") and (x.get("r2") or 0) > 0)
+                filas.append({"que": que, "plazo": plazo, "n": len(ps), "si": si, "algo": algo,
+                              "no": len(ps) - si - algo})
+    return filas
+
+
 def datos_cadena(cadena: dict | None) -> dict | None:
     """Prepara la cadena de costes: todo en «por cada 10 % que sube el precio de arriba»."""
     if not cadena or not cadena.get("cadenas"):
@@ -391,11 +410,16 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     noticias = (leer("noticias.json", {}) or {}).get("noticias", [])
     # La pagina de noticias y las listas por tema: lo mas nuevo arriba. La portada elige
     # las de mejor nota entre las de las ultimas horas (si no hay, entre todas).
+    tipos = (cfg["noticias"].get("impacto") or {}).get("tipos") or {}
+    for n in noticias:
+        n["tipo_nombre"] = (tipos.get(n.get("tipo")) or {}).get("nombre", "")
     por_nota = noticias
     noticias = sorted(noticias, key=lambda n: n.get("fecha") or "", reverse=True)
     corte = iso(ahora() - timedelta(hours=int(cfg["noticias"].get("horas_portada", 12))))
     portada = [n for n in por_nota if (n.get("fecha") or "") >= corte] or por_nota
     temas = dict(cfg["noticias"].get("temas") or {})
+    # Portada: por seccion, primero las de mas importancia para el precio y, a igualdad, la nota
+    importantes = sorted(portada, key=lambda n: (n.get("impacto") or 0, n["nota"]), reverse=True)
     macro = (leer("macro.json", {}) or {}).get("series", {})
     estado = leer("estado.json", {}) or {}
     pink = leer("pink.json", {}) or {}
@@ -405,6 +429,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     historicos = {a["id"]: [tuple(x) for x in (leer(f"historico/{a['id']}.json", []) or [])]
                   for a in cfg["activos"]}
 
+    prev_metales = leer("metales_prevision.json") or {}
     prueba_h = leer("prueba_historica.json") or {}
     paneles = prueba_h.get("panel") or {}
     activos = []
@@ -416,6 +441,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         pan = paneles.get(a["id"])
         activos.append({
             **a, "precio": p, "lectura": l, "articulo": art, "de_art": de_art,
+            "prevision": ({**prev_metales["activos"][a["id"]], "corte": prev_metales.get("corte")}
+                          if a["id"] in (prev_metales.get("activos") or {}) else None),
             "panel": pan, "situacion": situacion_actual(l.get("tendencia"), pan),
             "frase": frase_panel(a["nombre"], de_art, l.get("tendencia"), pan),
             "precio_eur": (p["precio"] / eurusd[1]) if p.get("precio") and eurusd else None,
@@ -446,7 +473,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     proxima = _proxima_hora(cfg, tz)
     comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, privado=privado, cfg=cfg, eurusd=eurusd,
                  nombres={**{a["id"]: a["nombre"] for a in cfg["activos"]}, **temas},
-                 temas_noticias=list(temas.items()),
+                 temas_noticias=list(temas.items()), nombres_piezas=NOMBRES_PIEZAS,
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),
                  anio=datetime.now(tz).year, grupos_apoyo=grupos_apoyo,
@@ -464,7 +491,9 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         (destino / ruta).write_text(html, encoding="utf-8")
 
     pagina("index.html", "index.html", seccion="mercado", datos_metales=datos_metales(activos),
-           noticias=portada[: cfg["noticias"]["maximo_portada"]])
+           noticias=portada[: cfg["noticias"]["maximo_portada"]],
+           portada_secciones=[(titulo, [n for n in importantes if s in n.get("seccion", [])][: cfg["noticias"]["maximo_portada"]])
+                              for s, titulo in (("preciosos", "Metales preciosos"), ("materias", "Materias primas"))])
     for a in activos:
         pagina("activo.html", f"activos/{a['id']}.html", seccion="mercado", a=a)
     pagina("materias.html", "materias.html", seccion="materias")
@@ -472,12 +501,19 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         for m in g["materias"]:
             pagina("materia.html", f"materias/{m['id']}.html", seccion="materias", m=m, g=g)
     pagina("comparar.html", "comparar.html", seccion="comparar", datos_comparar=datos_comparar)
-    pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias)
+    preciosos = cfg["noticias"].get("preciosos", [])
+    ids = [a["id"] for a in cfg["activos"]] + list(temas)
+    bal = balance(noticias, iso(ahora() - timedelta(hours=24)))
+    pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias,
+           filtros_seccion=[("preciosos", "Metales preciosos", [i for i in ids if i in preciosos]),
+                            ("materias", "Materias primas", [i for i in ids if i not in preciosos])],
+           balance=[(i, bal[i]) for i in ids if i in bal])
     pagina("cadena.html", "cadena.html", seccion="cadena", cadena=datos_cadena(leer("cadena.json")),
            noticias_tema={t: [n for n in noticias if t in n["activos"]][:6] for t in temas})
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],
-           prueba=datos_prueba(leer("prueba_historica.json"), cfg))
+           prueba=datos_prueba(leer("prueba_historica.json"), cfg),
+           resumen_previsiones=resumen_previsiones(leer("cadena.json"), prev_metales))
     pagina("fuentes.html", "fuentes.html", seccion="fuentes", fuentes_estado=estado.get("fuentes", {}),
            pink_consultado=pink.get("consultado"))
     pagina("legal.html", "legal.html", seccion="")

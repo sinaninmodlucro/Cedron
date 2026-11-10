@@ -37,7 +37,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.cadena")
 
-VERSION = 2                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
+VERSION = 3                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
 PLAZOS = list(range(13))   # 0 a 12 meses
 PLAZO_PRINCIPAL = 6
 PLAZO_ASIMETRIA = 3
@@ -284,23 +284,62 @@ def evaluar(arriba: dict, abajo: dict, desde: str = "", remuestreos: int = 300) 
     # Previsiones (10-nov-2026, decision del usuario, web privada): se publican siempre,
     # con lo que acertaron en la prueba a ciegas al lado. Prevision = lo que el precio de
     # abajo suele cambiar en ese plazo (media historica) + lo que falta por trasladarse.
-    lb = [math.log(abajo[m]) for m in meses]
+    # Desde la version 3 la prevision es una combinacion (cedron/prevision.py): la media de
+    # lo habitual y de los calculos que hasta ahora han acertado mas que lo habitual, entre
+    # tres: el traslado pendiente, la inercia del propio precio (sus cambios de 3 y 12
+    # meses) y el desfase entre los dos precios (correccion del error en un paso).
+    from cedron import prevision as pv
+    lb = {pv.num(m): math.log(v) for m, v in abajo.items() if m >= meses[0] and v > 0}
+    la = {pv.num(m): math.log(v) for m, v in arriba.items() if v > 0}
+    ult = pv.num(ultimo_abajo)
+    for n in range(max(la) + 1, ult + 1):        # arriba puede ir un par de meses por detras
+        if n - max(la) <= 3:
+            la[n] = la[max(k for k in la if k < n)]
+    rasgos = {"inercia": {n: [lb[n] - lb[n - 3], lb[n] - lb[n - 12]] for n in lb if n - 3 in lb and n - 12 in lb},
+              "desfase": {n: [lb[n], la[n]] for n in lb if n in la}}
+    ciegos = pendientes_ciegos(arriba, abajo, meses, PLAZOS_PREVISION, min(mitad, MINIMO_MESES))
     previsiones = {}
     for k in PLAZOS_PREVISION:
-        pr = prueba if k == 12 else probar_pendiente(arriba, abajo, meses, remuestreos, horizonte=k)
         falta = pendiente(bs, cambios, ultimo_abajo, k)
-        hist = [lb[j + k] - lb[j] for j in range(len(lb) - k)]
-        if falta is None or not hist:
+        if falta is None:
             continue
-        media = sum(hist) / len(hist)
-        previsiones[str(k)] = {"total": (math.exp(media + falta) - 1) * 100,
-                               "traslado": (math.exp(falta) - 1) * 100,
-                               "habitual": (math.exp(media) - 1) * 100,
+        c = pv.combinar(lb, rasgos, k, pv.num(meses[mitad]), {"traslado": {**ciegos[k], ult: falta}},
+                        ult, remuestreos)
+        if "prevision" not in c:
+            continue
+        pr, pct = c["prevision"], lambda x: (math.exp(x) - 1) * 100
+        previsiones[str(k)] = {"total": pct(pr["total"]), "habitual": pct(pr["media"]),
+                               "traslado": pct(falta), "usadas": pr["usadas"],
+                               "piezas": {q: pct(v) for q, v in pr["piezas"].items()},
                                "desde_mes": ultimo_abajo, "vence": _mes_mas(ultimo_abajo, k),
                                "base": abajo[ultimo_abajo],
-                               "arriba_hasta": meses_arriba[-1], "prueba": pr}
+                               "arriba_hasta": meses_arriba[-1], "prueba": c["prueba"]}
     salida["previsiones"] = previsiones
     return salida
+
+
+def pendientes_ciegos(arriba: dict, abajo: dict, meses: list[str], plazos, desde: int) -> dict:
+    """{plazo: {mes en numero: traslado pendiente}} calculado, para cada mes desde el indice
+    'desde', solo con lo que entonces se conocia (el traslado se reestima cada enero)."""
+    from cedron import prevision as pv
+    la = {m: math.log(arriba[m]) for m in meses}
+    out = {k: {} for k in plazos}
+    b, anio = None, None
+    for t in range(desde, len(meses)):
+        m = meses[t]
+        if b is None or m[:4] != anio:
+            anio = m[:4]
+            conocidos = meses[:t + 1]
+            est = traslado({k: arriba[k] for k in conocidos}, {k: abajo[k] for k in conocidos},
+                           conocidos, errores=False)
+            b = {h: v[0] for h, v in est.items()}
+            if 12 not in b:
+                b = None
+                continue
+        cambios = [(meses[j], la[meses[j]] - la[meses[j - 1]]) for j in range(max(1, t - 12), t + 1)]
+        for k in plazos:
+            out[k][pv.num(m)] = pendiente(b, cambios, m, k) or 0.0
+    return out
 
 
 def _mes_mas(mes: str, k: int) -> str:
