@@ -7,9 +7,9 @@
   "id": "diesel:espana",
   "noticias": {
    "alza": 1,
-   "baja": 12,
+   "baja": 13,
    "importantes": 3,
-   "noticias": 53
+   "noticias": 54
   },
   "plazo": 3,
   "previsto": 0.1958514673226608,
@@ -24,9 +24,9 @@
   "id": "diesel:espana",
   "noticias": {
    "alza": 1,
-   "baja": 12,
+   "baja": 13,
    "importantes": 3,
-   "noticias": 53
+   "noticias": 54
   },
   "plazo": 12,
   "previsto": -2.0915145125936507,
@@ -41,9 +41,9 @@
   "id": "diesel:europa",
   "noticias": {
    "alza": 1,
-   "baja": 12,
+   "baja": 13,
    "importantes": 3,
-   "noticias": 53
+   "noticias": 54
   },
   "plazo": 3,
   "previsto": 0.4266294567794038,
@@ -58,9 +58,9 @@
   "id": "diesel:europa",
   "noticias": {
    "alza": 1,
-   "baja": 12,
+   "baja": 13,
    "importantes": 3,
-   "noticias": 53
+   "noticias": 54
   },
   "plazo": 12,
   "previsto": -1.8260919358430772,
@@ -75,9 +75,9 @@
   "id": "diesel:global",
   "noticias": {
    "alza": 1,
-   "baja": 12,
+   "baja": 13,
    "importantes": 3,
-   "noticias": 53
+   "noticias": 54
   },
   "plazo": 3,
   "previsto": 1.2923753985996989,
@@ -92,9 +92,9 @@
   "id": "diesel:global",
   "noticias": {
    "alza": 1,
-   "baja": 12,
+   "baja": 13,
    "importantes": 3,
-   "noticias": 53
+   "noticias": 54
   },
   "plazo": 12,
   "previsto": -0.5879834841911569,
@@ -397,7 +397,7 @@
    "noticias": 7
   },
   "plazo": 12,
-  "previsto": 0.5875257611819507,
+  "previsto": 0.7571162139151433,
   "real": null,
   "vence": "2027-10"
  },
@@ -431,7 +431,7 @@
    "noticias": 7
   },
   "plazo": 12,
-  "previsto": 5.90079536679371,
+  "previsto": 5.860106785574781,
   "real": null,
   "vence": "2027-10"
  },
@@ -489,7 +489,7 @@
    "noticias": 21
   },
   "plazo": 12,
-  "previsto": 3.2297676663449293,
+  "previsto": 3.4606342109521737,
   "real": null,
   "vence": "2027-10"
  },
@@ -547,7 +547,7 @@
    "noticias": 4
   },
   "plazo": 12,
-  "previsto": 1.4509263116729842,
+  "previsto": 1.6044044320806083,
   "real": null,
   "vence": "2027-10"
  },
@@ -581,7 +581,7 @@
    "noticias": 2
   },
   "plazo": 12,
-  "previsto": 4.10279976875656,
+  "previsto": 4.259208164072881,
   "real": null,
   "vence": "2027-10"
  },
@@ -615,7 +615,7 @@
    "noticias": 2
   },
   "plazo": 12,
-  "previsto": 3.21739733894828,
+  "previsto": 3.8484427797373266,
   "real": null,
   "vence": "2027-10"
  },
@@ -673,7 +673,7 @@
   "id": "azucar:europa",
   "noticias": null,
   "plazo": 12,
-  "previsto": -1.820905155700503,
+  "previsto": -1.855886758959091,
   "real": null,
   "vence": "2027-10"
  },
@@ -697,7 +697,7 @@
   "id": "azucar:global",
   "noticias": null,
   "plazo": 12,
-  "previsto": 2.9259472567408906,
+  "previsto": 3.1565972080178417,
   "real": null,
   "vence": "2027-10"
  },
@@ -743,7 +743,7 @@
    "noticias": 27
   },
   "plazo": 12,
-  "previsto": 3.6984968322609557,
+  "previsto": 3.9144636769138597,
   "real": null,
   "vence": "2027-10"
  },
@@ -801,7 +801,7 @@
    "noticias": 15
   },
   "plazo": 12,
-  "previsto": 3.212429265042527,
+  "previsto": 3.4724431208996487,
   "real": null,
   "vence": "2027-10"
  },
@@ -849,7 +849,7 @@
   "id": "cafe:global",
   "noticias": null,
   "plazo": 12,
-  "previsto": 5.138597486655905,
+  "previsto": 5.24503786779138,
   "real": null,
   "vence": "2027-10"
  },
@@ -897,7 +897,7 @@
   "id": "cacao:global",
   "noticias": null,
   "plazo": 12,
-  "previsto": 3.6958589339431303,
+  "previsto": 4.44286275054675,
   "real": null,
   "vence": "2027-10"
  },
@@ -945,7 +945,7 @@
   "id": "algodon:global",
   "noticias": null,
   "plazo": 12,
-  "previsto": 1.9509617610995011,
+  "previsto": 2.159759706443909,
   "real": null,
   "vence": "2027-10"
  },
@@ -1003,7 +1003,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 6.9540122493181755,
+  "previsto": 7.557243223355625,
   "real": null,
   "vence": "2027-07"
  },
@@ -1037,7 +1037,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 11.244810300698838,
+  "previsto": 11.021131971271657,
   "real": null,
   "vence": "2027-10"
  },
@@ -1071,7 +1071,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 7.066856245861719,
+  "previsto": 7.874895692988004,
   "real": null,
   "vence": "2027-07"
  },
@@ -1105,7 +1105,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 7.294515747358088,
+  "previsto": 8.451461934474192,
   "real": null,
   "vence": "2027-07"
  },
@@ -1139,7 +1139,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 6.208264576822309,
+  "previsto": 6.492006957991059,
   "real": null,
   "vence": "2027-10"
  },
@@ -1173,7 +1173,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 4.819754660192532,
+  "previsto": 5.5884505882338065,
   "real": null,
   "vence": "2027-07"
  },
@@ -1207,7 +1207,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 8.802320102644877,
+  "previsto": 9.671472377714796,
   "real": null,
   "vence": "2027-10"
  },
@@ -1241,7 +1241,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 6.928935944201409,
+  "previsto": 7.840589115524144,
   "real": null,
   "vence": "2027-07"
  },
@@ -1252,10 +1252,10 @@
   "habitual": 1.4260906569717013,
   "id": "acero:espana",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 1.129966793984294,
@@ -1269,13 +1269,13 @@
   "habitual": 4.829849509962503,
   "id": "acero:espana",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 6.90735740833448,
+  "previsto": 5.587928543904996,
   "real": null,
   "vence": "2027-09"
  },
@@ -1286,10 +1286,10 @@
   "habitual": 1.279453099499861,
   "id": "acero:europa",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 0.9886448640925805,
@@ -1303,13 +1303,13 @@
   "habitual": 4.704287254552475,
   "id": "acero:europa",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 6.787140786363,
+  "previsto": 5.428076298962337,
   "real": null,
   "vence": "2027-09"
  },
@@ -1343,7 +1343,7 @@
    "noticias": 7
   },
   "plazo": 12,
-  "previsto": 6.6457059458577605,
+  "previsto": 6.298117817549609,
   "real": null,
   "vence": "2027-09"
  },
@@ -1377,7 +1377,7 @@
    "noticias": 7
   },
   "plazo": 12,
-  "previsto": 6.799832485895241,
+  "previsto": 6.690623873737223,
   "real": null,
   "vence": "2027-09"
  },
@@ -1411,7 +1411,7 @@
    "noticias": 7
   },
   "plazo": 12,
-  "previsto": 2.4524372082564527,
+  "previsto": 2.223930682640285,
   "real": null,
   "vence": "2027-11"
  },
@@ -1434,10 +1434,10 @@
   "habitual": 2.2744021731911257,
   "id": "cobre_industrial:espana",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 3,
   "previsto": 3.0906868034502377,
@@ -1451,13 +1451,13 @@
   "habitual": 8.745063838584954,
   "id": "cobre_industrial:espana",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 12,
-  "previsto": 7.296307815273462,
+  "previsto": 5.901960823058783,
   "real": null,
   "vence": "2027-09"
  },
@@ -1468,10 +1468,10 @@
   "habitual": 2.1401729152380256,
   "id": "cobre_industrial:europa",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 3,
   "previsto": 2.8266323495173884,
@@ -1485,13 +1485,13 @@
   "habitual": 8.250355641372398,
   "id": "cobre_industrial:europa",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 12,
-  "previsto": 7.355862157078952,
+  "previsto": 6.447030865038372,
   "real": null,
   "vence": "2027-09"
  },
@@ -1502,10 +1502,10 @@
   "habitual": 2.1101275553982557,
   "id": "cobre_industrial:global",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 3,
   "previsto": 2.086708674755444,
@@ -1519,13 +1519,13 @@
   "habitual": 7.9778749068778465,
   "id": "cobre_industrial:global",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 12,
-  "previsto": 6.998908928515868,
+  "previsto": 6.913081807804167,
   "real": null,
   "vence": "2027-11"
  },
@@ -1583,7 +1583,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": 8.878975300612746,
+  "previsto": 6.853444522980023,
   "real": null,
   "vence": "2027-09"
  },
@@ -1617,7 +1617,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": 4.755706796935244,
+  "previsto": 3.743151462393124,
   "real": null,
   "vence": "2027-09"
  },
@@ -1651,7 +1651,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": 5.087064753796611,
+  "previsto": 4.522123044327087,
   "real": null,
   "vence": "2027-11"
  },
@@ -1685,7 +1685,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": 4.4086214028205895,
+  "previsto": 3.8235958705507445,
   "real": null,
   "vence": "2027-11"
  },
@@ -1719,7 +1719,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": 6.323276047577719,
+  "previsto": 6.0375649056299885,
   "real": null,
   "vence": "2027-11"
  },
@@ -1753,7 +1753,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": 6.1799987979522575,
+  "previsto": 6.3204323805400975,
   "real": null,
   "vence": "2027-10"
  },
@@ -1764,10 +1764,10 @@
   "habitual": 1.108849366224396,
   "id": "hierro:global",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 2.9582057300201026,
@@ -1781,13 +1781,13 @@
   "habitual": 4.632958250436436,
   "id": "hierro:global",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 6.467826205788496,
+  "previsto": 6.095970385357452,
   "real": null,
   "vence": "2027-10"
  },
@@ -1821,7 +1821,7 @@
    "noticias": 1
   },
   "plazo": 12,
-  "previsto": 5.915134799516952,
+  "previsto": 6.414000628553773,
   "real": null,
   "vence": "2027-09"
  },
@@ -1855,7 +1855,7 @@
    "noticias": 1
   },
   "plazo": 12,
-  "previsto": 8.541130557771726,
+  "previsto": 7.213995717012844,
   "real": null,
   "vence": "2027-09"
  },
@@ -2002,10 +2002,10 @@
   "habitual": 0.5129853275947838,
   "id": "estructuras:espana",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 0.9659133281537224,
@@ -2019,13 +2019,13 @@
   "habitual": 1.9962213209621549,
   "id": "estructuras:espana",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 4.190210144658857,
+  "previsto": 3.809045415062484,
   "real": null,
   "vence": "2027-09"
  }

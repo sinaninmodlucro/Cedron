@@ -35,7 +35,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prevision")
 
-VERSION = 4
+VERSION = 5
 MINIMO = 36           # casos minimos para estimar un calculo
 
 
@@ -122,9 +122,10 @@ def combinar(lp: dict[int, float], rasgos: dict[str, dict[int, list[float]]], h:
         for k, r in rasgos.items():
             b = estado["betas"].get(k)
             x = r.get(t)
-            if x is None and final and r and max(r) > t:
+            if x is None and final and r and max(r) > t - 4:
                 # Prevision de hoy de un precio que se publica con retraso: vale el dato mas
-                # reciente que ya se conoce (p. ej. la curva de futuros de hoy). Nunca en la prueba.
+                # reciente que ya se conoce (la curva de futuros de hoy, o un indice de hace hasta tres
+                # meses que aun no se ha actualizado). Nunca en la prueba.
                 x = r[max(r)]
             if b and x is not None:
                 piezas[k] = min(max(b[0] + sum(c * v for c, v in zip(b[1:], x)), lo), hi)
@@ -361,9 +362,18 @@ def calculos_extra(grupo: str, clave: str, cfg: dict | None = None) -> dict:
         definicion = (geo.get("materias") or {}).get(materia)
         for h in (geo.get("usar") or {}).get(familia, []) if definicion else []:
             out.setdefault(int(h), {})["geopolitica"] = indices.riesgo_geopolitico(series, definicion)
+        # Mas ideas (previsiones.ideas): cada una solo en las familias y plazos que superaron la prueba
+        for idea, d in (((cfg or {}).get("previsiones") or {}).get("ideas") or {}).items():
+            for h in (d.get("usar") or {}).get(familia, []):
+                rasgo = indices.rasgo_idea(series, idea, d, materia)
+                if rasgo:
+                    out.setdefault(int(h), {})[idea] = rasgo
     return out
 
 
+NOMBRES.update({"nino": "El Niño y La Niña (el clima del Pacífico)", "actividad": "la actividad económica mundial",
+                "inventarios": "lo llenos que están los almacenes frente a lo normal",
+                "comercio": "la incertidumbre sobre aranceles", "miedo": "el miedo en los mercados financieros"})
 NOMBRES["geopolitica"] = "el riesgo geopolítico de los países que lo exportan"
 NOMBRES["futuros_petroleo"] = "la curva de futuros del petróleo"
 

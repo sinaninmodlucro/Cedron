@@ -505,7 +505,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": -4.373622842823776,
+  "previsto": -1.9312566194428338,
   "real": null,
   "vence": "2027-07"
  },
@@ -539,7 +539,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 7.581681904885618,
+  "previsto": 8.887759864009425,
   "real": null,
   "vence": "2027-07"
  },
@@ -573,7 +573,7 @@
    "noticias": 8
   },
   "plazo": 12,
-  "previsto": 2.7598679322029307,
+  "previsto": 3.982988631480766,
   "real": null,
   "vence": "2027-07"
  },
@@ -607,7 +607,7 @@
    "noticias": 27
   },
   "plazo": 12,
-  "previsto": 2.031814440348434,
+  "previsto": 2.8155903073858735,
   "real": null,
   "vence": "2027-09"
  },
@@ -641,7 +641,7 @@
    "noticias": 15
   },
   "plazo": 12,
-  "previsto": 3.033036748720419,
+  "previsto": 3.621932077861567,
   "real": null,
   "vence": "2027-09"
  },
@@ -675,7 +675,7 @@
    "noticias": 21
   },
   "plazo": 12,
-  "previsto": 2.5737687464783,
+  "previsto": 3.252252678557377,
   "real": null,
   "vence": "2027-09"
  },
@@ -709,7 +709,7 @@
    "noticias": 2
   },
   "plazo": 12,
-  "previsto": 2.796151774046507,
+  "previsto": 2.8770928952760233,
   "real": null,
   "vence": "2027-09"
  },
@@ -743,7 +743,7 @@
    "noticias": 2
   },
   "plazo": 12,
-  "previsto": 1.7291439412738807,
+  "previsto": 2.0547723334729984,
   "real": null,
   "vence": "2027-09"
  },
@@ -777,7 +777,7 @@
    "noticias": 2
   },
   "plazo": 12,
-  "previsto": 2.364332260493218,
+  "previsto": 2.4492677757234516,
   "real": null,
   "vence": "2027-09"
  },
@@ -811,7 +811,7 @@
    "noticias": 4
   },
   "plazo": 12,
-  "previsto": 2.0618289846709326,
+  "previsto": 2.0913442002166382,
   "real": null,
   "vence": "2027-09"
  },
@@ -845,7 +845,7 @@
    "noticias": 27
   },
   "plazo": 12,
-  "previsto": 0.20799392878476652,
+  "previsto": 0.5250445687265737,
   "real": null,
   "vence": "2027-10"
  },
@@ -879,7 +879,7 @@
    "noticias": 27
   },
   "plazo": 12,
-  "previsto": 3.1898929151571442,
+  "previsto": 4.05480390227142,
   "real": null,
   "vence": "2027-09"
  },
@@ -913,7 +913,7 @@
    "noticias": 21
   },
   "plazo": 12,
-  "previsto": 3.914351948357675,
+  "previsto": 4.335104777404264,
   "real": null,
   "vence": "2027-09"
  },
@@ -947,7 +947,7 @@
    "noticias": 21
   },
   "plazo": 12,
-  "previsto": 1.2418694134776365,
+  "previsto": 1.6013454065675559,
   "real": null,
   "vence": "2027-09"
  },
@@ -981,7 +981,7 @@
    "noticias": 21
   },
   "plazo": 12,
-  "previsto": 1.2936221210477328,
+  "previsto": 1.6268603695340556,
   "real": null,
   "vence": "2027-09"
  },
@@ -1005,7 +1005,7 @@
   "id": "cacao_chocolate",
   "noticias": null,
   "plazo": 12,
-  "previsto": 4.725395074236816,
+  "previsto": 4.514570531059903,
   "real": null,
   "vence": "2027-09"
  },
@@ -1029,7 +1029,7 @@
   "id": "cafe_es",
   "noticias": null,
   "plazo": 12,
-  "previsto": 3.8837525426253627,
+  "previsto": 3.785349142162864,
   "real": null,
   "vence": "2027-09"
  },
@@ -1063,7 +1063,7 @@
    "noticias": 2
   },
   "plazo": 12,
-  "previsto": 1.3440083342387998,
+  "previsto": 2.799176138881765,
   "real": null,
   "vence": "2027-09"
  },
@@ -1244,10 +1244,10 @@
   "habitual": 0.7153598829898522,
   "id": "hierro_acero",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": -0.37592869489800895,
@@ -1261,13 +1261,13 @@
   "habitual": 2.799389997423618,
   "id": "hierro_acero",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 0.6772359491531876,
+  "previsto": 0.8465334727642881,
   "real": null,
   "vence": "2027-09"
  },
@@ -1278,10 +1278,10 @@
   "habitual": 0.6474881657756004,
   "id": "acero_tubos",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 1.126680770636801,
@@ -1295,13 +1295,13 @@
   "habitual": 2.653249559464821,
   "id": "acero_tubos",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 3.236799991886552,
+  "previsto": 3.103055535028343,
   "real": null,
   "vence": "2027-09"
  },
@@ -1312,10 +1312,10 @@
   "habitual": 0.31590059256889624,
   "id": "acero_estructuras",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 0.531728356662664,
@@ -1329,13 +1329,13 @@
   "habitual": 1.3378353119819941,
   "id": "acero_estructuras",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 2.0191046714467475,
+  "previsto": 1.9295995657931497,
   "real": null,
   "vence": "2027-09"
  },
@@ -1346,10 +1346,10 @@
   "habitual": 0.5900894556509995,
   "id": "acero_carpinteria",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 0.7281786048653371,
@@ -1363,13 +1363,13 @@
   "habitual": 2.333365317229097,
   "id": "acero_carpinteria",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 2.9015934611155147,
+  "previsto": 2.9023670360008413,
   "real": null,
   "vence": "2027-09"
  },
@@ -1380,10 +1380,10 @@
   "habitual": 0.5026317394285496,
   "id": "acero_alambre",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 0.48686870906380353,
@@ -1397,13 +1397,13 @@
   "habitual": 1.9001361802721162,
   "id": "acero_alambre",
   "noticias": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 4,
-   "noticias": 27
+   "noticias": 28
   },
   "plazo": 12,
-  "previsto": 0.9980990087528729,
+  "previsto": 1.1772236352191712,
   "real": null,
   "vence": "2027-09"
  },
@@ -1414,10 +1414,10 @@
   "habitual": 1.790899372292909,
   "id": "cobre_es",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 3,
   "previsto": 2.2425099533373016,
@@ -1431,13 +1431,13 @@
   "habitual": 6.48314817403044,
   "id": "cobre_es",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 12,
-  "previsto": 1.5130162650762058,
+  "previsto": 2.1044758296483224,
   "real": null,
   "vence": "2027-09"
  },
@@ -1448,10 +1448,10 @@
   "habitual": 1.369903807960049,
   "id": "cobre_cables",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 3,
   "previsto": 2.4106752440902435,
@@ -1465,13 +1465,13 @@
   "habitual": 5.369341798896188,
   "id": "cobre_cables",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 3,
-   "importantes": 8,
-   "noticias": 32
+   "importantes": 9,
+   "noticias": 33
   },
   "plazo": 12,
-  "previsto": 5.1938447962688095,
+  "previsto": 5.294390573436769,
   "real": null,
   "vence": "2027-09"
  },
@@ -1505,7 +1505,7 @@
    "noticias": 7
   },
   "plazo": 12,
-  "previsto": -0.4298251895389349,
+  "previsto": -0.0237411844347446,
   "real": null,
   "vence": "2027-09"
  },
@@ -1539,7 +1539,7 @@
    "noticias": 6
   },
   "plazo": 12,
-  "previsto": -0.00961055998456306,
+  "previsto": 0.0678270446604623,
   "real": null,
   "vence": "2027-09"
  },
@@ -1621,7 +1621,7 @@
    "noticias": 1
   },
   "plazo": 12,
-  "previsto": 3.478792606624914,
+  "previsto": 3.3481918497148655,
   "real": null,
   "vence": "2027-09"
  },
@@ -1655,7 +1655,7 @@
    "noticias": 1
   },
   "plazo": 12,
-  "previsto": 3.2249742084412114,
+  "previsto": 3.163203073776333,
   "real": null,
   "vence": "2027-09"
  },

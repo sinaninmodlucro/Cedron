@@ -36,6 +36,11 @@ YAHOO = {"wti": "wti", "gas": "gas", "gasoleo": "diesel"}     # contrato de futu
 URL_GPR = "https://www.matteoiacoviello.com/gpr_files/data_gpr_export.xls"
 URL_AIGPR = "https://www.matteoiacoviello.com/ai_gpr_files/ai_gpr_data_monthly.csv"
 URL_AIGPR_PAIS = "https://www.matteoiacoviello.com/ai_gpr_files/ai_gpr_country_monthly.csv"
+URL_ONI = "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt"
+URL_KILIAN = "https://www.dallasfed.org/-/media/Documents/research/igrea/igrea.xlsx"
+URL_TPU = "https://www.matteoiacoviello.com/tpu_files/tpu_web_latest.xlsx"
+URL_VIX = "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+EIA_EXISTENCIAS = {"crudo": ("pet", "MCESTUS1"), "gas": ("ng", "N5020US2")}
 URL_GSCPI = "https://www.newyorkfed.org/medialibrary/research/interactives/gscpi/downloads/gscpi_data.xlsx"
 
 
@@ -119,6 +124,16 @@ def descargar() -> dict:
                 fallos.append(f"AI-GPR: no esta el pais {pais}")
     except (src.FuenteError, ValueError, IndexError) as e:
         fallos.append(f"AI-GPR: {e}")
+    for nombre, f in (("oni", _oni), ("kilian", _kilian), ("tpu", _tpu), ("vix", _vix),
+                      ("ex_crudo", lambda: _eia(*EIA_EXISTENCIAS["crudo"])),
+                      ("ex_gas", lambda: _eia(*EIA_EXISTENCIAS["gas"]))):
+        try:
+            datos_nuevos = f()
+            if len(datos_nuevos) < 100:
+                raise ValueError("muy pocos datos")
+            series[nombre] = datos_nuevos
+        except (src.FuenteError, xlrd.XLRDError, ValueError, IndexError, KeyError) as e:
+            fallos.append(f"{nombre}: {e}")
     escribir("prevision/indices.json", {"series": series, "consultado": iso(), "fallos": fallos})
     if fallos:
         log.warning("Indices: %s", "; ".join(fallos))
@@ -202,3 +217,79 @@ def riesgo_geopolitico(series: dict, definicion: dict) -> dict[int, list[float]]
         if total >= 0.8 * sum(pesos.values()):        # al menos el 80 % del peso con dato
             out[n] = [sum(w * x[0] for w, x in presentes) / total, sum(w * x[1] for w, x in presentes) / total]
     return out
+
+
+# ---------------------------------------------------------------------------
+# Mas ideas (configuracion: previsiones.ideas)
+# ---------------------------------------------------------------------------
+def _oni() -> list[list]:
+    """El Nino: anomalia de temperatura del Pacifico, media de tres meses; se fecha en el mes
+    central (DJF = enero)."""
+    from cedron import sources as src
+    estaciones = ["DJF", "JFM", "FMA", "MAM", "AMJ", "MJJ", "JJA", "JAS", "ASO", "SON", "OND", "NDJ"]
+    out = []
+    for linea in src._get(URL_ONI).text.splitlines()[1:]:
+        p = linea.split()
+        if len(p) == 4 and p[0] in estaciones:
+            out.append([f"{int(p[1]):04d}-{estaciones.index(p[0]) + 1:02d}", float(p[3])])
+    return out
+
+
+def _libro_xlsx(url: str):
+    from openpyxl import load_workbook
+    from cedron import sources as src
+    return load_workbook(io.BytesIO(src._get(url).content), read_only=True, data_only=True)
+
+
+def _kilian() -> list[list]:
+    hoja = _libro_xlsx(URL_KILIAN).worksheets[0]
+    return [[f"{r[0].year:04d}-{r[0].month:02d}", float(r[1])] for r in hoja.iter_rows(values_only=True)
+            if r and hasattr(r[0], "year") and isinstance(r[1], (int, float))]
+
+
+def _tpu() -> list[list]:
+    hoja = _libro_xlsx(URL_TPU)["TPU_MONTHLY"]
+    filas = list(hoja.iter_rows(values_only=True))
+    i = list(filas[0]).index("TPU")
+    return [[f"{r[0].year:04d}-{r[0].month:02d}", float(r[i])] for r in filas[1:]
+            if r and hasattr(r[0], "year") and isinstance(r[i], (int, float))]
+
+
+def _vix() -> list[list]:
+    from cedron import sources as src
+    meses: dict[str, list[float]] = {}
+    for linea in src._get(URL_VIX).text.strip().splitlines()[1:]:
+        p = linea.split(",")
+        m, d, a = p[0].split("/")
+        meses.setdefault(f"{a}-{m}", []).append(float(p[4]))
+    return [[m, sum(v) / len(v)] for m, v in sorted(meses.items())]
+
+
+def _nivel_y_cambio(s: dict[int, float], retraso: int) -> dict[int, list[float]]:
+    return {n + retraso: [s[n], s[n] - s[n - 3]] for n in s if n - 3 in s}
+
+
+def _frente_a_lo_normal(s: dict[int, float], retraso: int) -> dict[int, list[float]]:
+    """ln del dato frente a la media del mismo mes en los cinco anios anteriores."""
+    out = {}
+    for n in s:
+        previos = [s[n - 12 * k] for k in range(1, 6) if n - 12 * k in s and s[n - 12 * k] > 0]
+        if len(previos) == 5 and s[n] > 0:
+            out[n + retraso] = [math.log(s[n]) - math.log(sum(previos) / 5)]
+    return out
+
+
+def rasgo_idea(series: dict, idea: str, definicion: dict, materia: str | None) -> dict[int, list[float]]:
+    """El rasgo de una idea de previsiones.ideas para una materia (vacio si no le toca)."""
+    if idea == "nino":
+        return _nivel_y_cambio(_mensual(series.get("oni")), 2)
+    if idea == "actividad":
+        return _nivel_y_cambio(_mensual(series.get("kilian")), 1)
+    if idea == "inventarios":
+        cual = (definicion.get("materias") or {}).get(materia)
+        return _frente_a_lo_normal(_mensual(series.get(f"ex_{cual}")), 2) if cual else {}
+    if idea == "comercio":
+        return noticias(series, "tpu")
+    if idea == "miedo":
+        return noticias(series, "vix")
+    return {}

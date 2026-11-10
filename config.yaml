@@ -1616,6 +1616,36 @@ previsiones:
   #    no entra: su indice mide su papel en los conflictos, no riesgo para su produccion.
   # Cada pais se mide frente a su propia historia: repunte (solo subidas frente a su media del
   # ultimo anio) y nivel frente a los cinco anios anteriores, con un mes de retraso.
+  # Mas ideas con historia larga (10-nov-2026, noche). Fijadas ANTES de probarlas: que mide
+  # cada una, en que familias tiene sentido economico y como se calcula. Regla de siempre:
+  # entra en una familia y plazo solo si sube el numero de previsiones seguras, sube la
+  # mediana del R2 fuera de muestra y mejora en al menos la mitad. 'usar' se rellena despues.
+  #  - nino: El Nino / La Nina (indice ONI de la NOAA, desde 1950). Cambia lluvias y cosechas
+  #    en medio mundo (Brunner 2002; Cashin, Mohaddes y Raissi 2017). Nivel y cambio en tres
+  #    meses, con dos meses de retraso (se publica asi).
+  #  - actividad: actividad economica mundial (indice de Kilian, Reserva Federal de Dallas,
+  #    desde 1968): la demanda mundial es lo que mas mueve energia y metales (Kilian 2009).
+  #    Nivel y cambio en tres meses, un mes de retraso.
+  #  - inventarios: existencias de crudo y de gas almacenado en EE. UU. (EIA) frente a lo
+  #    normal en ese mes del anio (media de los cinco anios anteriores): con almacenes llenos
+  #    los precios tienden a bajar (teoria del almacenamiento: Working 1949; Gorton, Hayashi
+  #    y Rouwenhorst 2013). Dos meses de retraso.
+  #  - comercio: incertidumbre sobre aranceles y politica comercial (indice TPU de Caldara y
+  #    otros 2020, noticias de 7 periodicos desde 1960), frente a su media del ultimo anio.
+  #  - miedo: volatilidad esperada de la bolsa (VIX, CBOE, desde 1990), frente a su media del
+  #    ultimo anio: mide el miedo financiero, para el oro y la plata como refugio (Baur y
+  #    Lucey 2010).
+  ideas:
+    nino: {familias: [agricolas], usar: {}}          # no pasa la regla
+    # Resultado (10-nov-2026): entra en industriales a 12 meses (seguras 3 -> 6 de 42, mejora 27)
+    actividad: {familias: [energia, industriales], usar: {industriales: [12]}}
+    inventarios:
+      familias: [energia]
+      usar: {}                                      # no pasa la regla
+      materias: {petroleo: crudo, diesel: crudo, plasticos: crudo, gas: gas, electricidad: gas}
+    # Resultado: entra en agricolas a 12 meses (seguras 3 -> 6 de 28; mejora justo la mitad, 14)
+    comercio: {familias: [industriales, agricolas], usar: {agricolas: [12]}}
+    miedo: {familias: [refugio], usar: {}}           # no pasa la regla
   geopolitica:
     # Resultado de la prueba a ciegas (10-nov-2026, regla fijada antes: sube el numero de
     # previsiones seguras, sube la mediana del R2 y mejora en al menos la mitad): entra en
