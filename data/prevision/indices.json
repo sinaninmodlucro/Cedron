@@ -1,6 +1,8 @@
 {
- "consultado": "2026-11-10T22:05:52Z",
- "fallos": [],
+ "consultado": "2026-11-10T22:12:27Z",
+ "fallos": [
+  "frio_eu: sin conexion con archive-api.open-meteo.com: ReadTimeout"
+ ],
  "series": {
   "ai:ACTS_GPR_AI": [
    [

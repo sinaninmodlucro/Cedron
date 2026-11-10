@@ -132,10 +132,10 @@
   "habitual": 2.117790511670936,
   "id": "brent:global",
   "noticias": {
-   "alza": 17,
-   "baja": 69,
-   "importantes": 70,
-   "noticias": 159
+   "alza": 18,
+   "baja": 72,
+   "importantes": 73,
+   "noticias": 163
   },
   "plazo": 3,
   "previsto": -0.43938443128705984,
@@ -149,10 +149,10 @@
   "habitual": 6.148438926823685,
   "id": "brent:global",
   "noticias": {
-   "alza": 17,
-   "baja": 69,
-   "importantes": 70,
-   "noticias": 159
+   "alza": 18,
+   "baja": 72,
+   "importantes": 73,
+   "noticias": 163
   },
   "plazo": 12,
   "previsto": -0.43431822358243055,
@@ -190,10 +190,10 @@
   "habitual": 1.851089626935165,
   "id": "wti:global",
   "noticias": {
-   "alza": 17,
-   "baja": 69,
-   "importantes": 70,
-   "noticias": 159
+   "alza": 18,
+   "baja": 72,
+   "importantes": 73,
+   "noticias": 163
   },
   "plazo": 3,
   "previsto": -0.5642603643866373,
@@ -207,10 +207,10 @@
   "habitual": 5.414435599318179,
   "id": "wti:global",
   "noticias": {
-   "alza": 17,
-   "baja": 69,
-   "importantes": 70,
-   "noticias": 159
+   "alza": 18,
+   "baja": 72,
+   "importantes": 73,
+   "noticias": 163
   },
   "plazo": 12,
   "previsto": -0.3561186870563393,
@@ -248,10 +248,10 @@
   "habitual": 2.295322482362505,
   "id": "gas:europa",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 1,
-   "importantes": 12,
-   "noticias": 27
+   "importantes": 13,
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 3.437985105380781,
@@ -265,10 +265,10 @@
   "habitual": 7.450443902087955,
   "id": "gas:europa",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 1,
-   "importantes": 12,
-   "noticias": 27
+   "importantes": 13,
+   "noticias": 28
   },
   "plazo": 12,
   "previsto": 9.823034595218028,
@@ -282,10 +282,10 @@
   "habitual": 0.4023826256986496,
   "id": "gas:global",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 1,
-   "importantes": 12,
-   "noticias": 27
+   "importantes": 13,
+   "noticias": 28
   },
   "plazo": 3,
   "previsto": 0.33709251380262817,
@@ -299,10 +299,10 @@
   "habitual": 1.1469102298633738,
   "id": "gas:global",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 1,
-   "importantes": 12,
-   "noticias": 27
+   "importantes": 13,
+   "noticias": 28
   },
   "plazo": 12,
   "previsto": 1.830870120840733,
@@ -1037,7 +1037,7 @@
    "noticias": 10
   },
   "plazo": 12,
-  "previsto": 8.317388689408522,
+  "previsto": 8.3173886894085,
   "real": null,
   "vence": "2027-10"
  },
@@ -1385,7 +1385,7 @@
   "apuntada": "2026-11-10",
   "base": 2725.2546645262037,
   "desde": "2026-11",
-  "habitual": 0.8674016705828125,
+  "habitual": 0.8673894063203402,
   "id": "aluminio:global",
   "noticias": {
    "alza": 2,
@@ -1394,7 +1394,7 @@
    "noticias": 9
   },
   "plazo": 3,
-  "previsto": 0.9299350104410742,
+  "previsto": 0.9299224629903957,
   "real": null,
   "vence": "2027-02"
  },
@@ -1402,7 +1402,7 @@
   "apuntada": "2026-11-10",
   "base": 2725.2546645262037,
   "desde": "2026-11",
-  "habitual": 2.982829501943751,
+  "habitual": 2.9828166315751803,
   "id": "aluminio:global",
   "noticias": {
    "alza": 2,
@@ -1411,7 +1411,7 @@
    "noticias": 9
   },
   "plazo": 12,
-  "previsto": 1.4688985965412238,
+  "previsto": 1.468872418643663,
   "real": null,
   "vence": "2027-11"
  },
@@ -1419,7 +1419,7 @@
   "apuntada": "2026-11-10",
   "base": 2725.2546645262037,
   "desde": "2026-11",
-  "habitual": 0.8674016705828125,
+  "habitual": 0.8673894063203402,
   "id": "futuros:aluminio:global",
   "noticias": null,
   "plazo": 3,
@@ -1499,7 +1499,7 @@
   "apuntada": "2026-11-10",
   "base": 12393.814689427616,
   "desde": "2026-11",
-  "habitual": 2.1101128964597704,
+  "habitual": 2.110223798459443,
   "id": "cobre_industrial:global",
   "noticias": {
    "alza": 12,
@@ -1508,7 +1508,7 @@
    "noticias": 40
   },
   "plazo": 3,
-  "previsto": 2.0866921733305066,
+  "previsto": 2.0868170146436604,
   "real": null,
   "vence": "2027-02"
  },
@@ -1516,7 +1516,7 @@
   "apuntada": "2026-11-10",
   "base": 12393.814689427616,
   "desde": "2026-11",
-  "habitual": 7.977858973639962,
+  "habitual": 7.977979516335965,
   "id": "cobre_industrial:global",
   "noticias": {
    "alza": 12,
@@ -1525,7 +1525,7 @@
    "noticias": 40
   },
   "plazo": 12,
-  "previsto": 6.715987444075822,
+  "previsto": 6.716241543079127,
   "real": null,
   "vence": "2027-11"
  },
@@ -1533,7 +1533,7 @@
   "apuntada": "2026-11-10",
   "base": 12393.814689427616,
   "desde": "2026-11",
-  "habitual": 2.1101128964597704,
+  "habitual": 2.110223798459443,
   "id": "futuros:cobre_industrial:global",
   "noticias": null,
   "plazo": 3,
@@ -1545,7 +1545,7 @@
   "apuntada": "2026-11-10",
   "base": 12393.814689427616,
   "desde": "2026-11",
-  "habitual": 7.977858973639962,
+  "habitual": 7.977979516335965,
   "id": "futuros:cobre_industrial:global",
   "noticias": null,
   "plazo": 12,
