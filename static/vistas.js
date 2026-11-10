@@ -27,7 +27,8 @@
 (function () {
   var enlaces = document.querySelectorAll(".vistas--grupos a[data-grupo]");
   if (!enlaces.length) return;
-  var CLAVE = "cedron-grupos";
+  // cada pagina recuerda su eleccion por separado (data-clave en el <nav>)
+  var CLAVE = enlaces[0].parentNode.dataset.clave || "cedron-grupos";
   var secciones = document.querySelectorAll("section[data-grupo]");
   var grupos = [].map.call(enlaces, function (a) { return a.dataset.grupo; })
                  .filter(function (g) { return g !== "todas"; });

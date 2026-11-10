@@ -4,31 +4,58 @@
 {% block contenido %}
 <div class="texto">
   <h1>Noticias seleccionadas</h1>
-  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación. Cada enlace lleva al artículo original. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
+  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas sobre metales, energía, abonos, alimentos y materiales que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación. Cada enlace lleva al artículo original. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
 </div>
-<div class="filtros" role="group" aria-label="Filtrar por metal">
+<div class="filtros" role="group" aria-label="Filtrar por metal o por tema">
   <button type="button" data-filtro="" aria-pressed="true">Todas</button>
   {% for a in activos %}<button type="button" data-filtro="{{ a.id }}" aria-pressed="false">{{ a.nombre }}</button>{% endfor %}
+  {% for id, nombre in temas_noticias %}<button type="button" data-filtro="{{ id }}" aria-pressed="false">{{ nombre }}</button>{% endfor %}
 </div>
+<p class="pequeno secundario">{{ noticias|length }} noticias, las más recientes arriba. Pulsa varios botones para ver esos temas juntos.</p>
 {% if noticias %}
 <ul class="noticias" id="lista">{% for n in noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
-<p class="vacio" id="sin-resultados" hidden>Ninguna noticia seleccionada sobre este metal en este momento.</p>
+<p class="vacio" id="sin-resultados" hidden>Ninguna noticia seleccionada sobre lo que has elegido en este momento.</p>
 {% else %}
 <p class="vacio">Ahora mismo ninguna noticia supera el filtro de calidad. La lista se revisa cada hora.</p>
 {% endif %}
 {% endblock %}
 {% block scripts %}
 <script>
-document.querySelectorAll(".filtros button").forEach(function (b) {
-  b.addEventListener("click", function () {
-    var f = b.dataset.filtro, visibles = 0;
-    document.querySelectorAll(".filtros button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+// Igual que las pestañas de «Materias primas»: se pueden pulsar varios metales
+// para ver sus noticias juntas; pulsar uno ya elegido lo quita. Sin ninguno = todas.
+(function () {
+  var botones = document.querySelectorAll(".filtros button");
+  var CLAVE = "cedron-noticias";
+  var todos = [].map.call(botones, function (b) { return b.dataset.filtro; }).filter(Boolean);
+  var elegidos = [];
+  function aplicar() {
+    var visibles = 0;
+    botones.forEach(function (b) {
+      var f = b.dataset.filtro;
+      b.setAttribute("aria-pressed", (f ? elegidos.indexOf(f) >= 0 : !elegidos.length) ? "true" : "false");
+    });
     document.querySelectorAll("#lista .noticia").forEach(function (n) {
-      var ver = !f || n.dataset.activos.split(" ").indexOf(f) >= 0;
+      var suyos = n.dataset.activos.split(" ");
+      var ver = !elegidos.length || elegidos.some(function (f) { return suyos.indexOf(f) >= 0; });
       n.hidden = !ver; if (ver) visibles++;
     });
     var sin = document.getElementById("sin-resultados"); if (sin) sin.hidden = visibles > 0;
+  }
+  botones.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.dataset.filtro;
+      if (!f) elegidos = [];
+      else if (elegidos.indexOf(f) >= 0) elegidos = elegidos.filter(function (x) { return x !== f; });
+      else elegidos = elegidos.concat([f]);
+      if (elegidos.length === todos.length) elegidos = [];
+      aplicar();
+      try { localStorage.setItem(CLAVE, JSON.stringify(elegidos)); } catch (e) {}
+    });
   });
-});
+  try {
+    elegidos = (JSON.parse(localStorage.getItem(CLAVE) || "[]") || []).filter(function (f) { return todos.indexOf(f) >= 0; });
+  } catch (e) { elegidos = []; }
+  aplicar();
+})();
 </script>
 {% endblock %}

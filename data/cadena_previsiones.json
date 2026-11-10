@@ -1,0 +1,1022 @@
+[
+ {
+  "base": 1898.318015,
+  "desde": "2026-11",
+  "habitual": 0.9423640099240682,
+  "id": "brent_diesel",
+  "plazo": 3,
+  "previsto": -2.18838037825142,
+  "real": null,
+  "vence": "2027-02"
+ },
+ {
+  "base": 1898.318015,
+  "desde": "2026-11",
+  "habitual": 2.8957640973852783,
+  "id": "brent_diesel",
+  "plazo": 12,
+  "previsto": 0.39773574532486755,
+  "real": null,
+  "vence": "2027-11"
+ },
+ {
+  "base": 1729.8897829999999,
+  "desde": "2026-11",
+  "habitual": 0.8328762203446693,
+  "id": "brent_gasolina",
+  "plazo": 3,
+  "previsto": 0.582497192768372,
+  "real": null,
+  "vence": "2027-02"
+ },
+ {
+  "base": 1729.8897829999999,
+  "desde": "2026-11",
+  "habitual": 2.406333716304898,
+  "id": "brent_gasolina",
+  "plazo": 12,
+  "previsto": 1.1627890817083708,
+  "real": null,
+  "vence": "2027-11"
+ },
+ {
+  "base": 1516.869,
+  "desde": "2026-11",
+  "habitual": 1.278312499478007,
+  "id": "brent_calefaccion",
+  "plazo": 3,
+  "previsto": -4.254915146401483,
+  "real": null,
+  "vence": "2027-02"
+ },
+ {
+  "base": 1516.869,
+  "desde": "2026-11",
+  "habitual": 3.5126908313833027,
+  "id": "brent_calefaccion",
+  "plazo": 12,
+  "previsto": -2.522984525205263,
+  "real": null,
+  "vence": "2027-11"
+ },
+ {
+  "base": 212.3,
+  "desde": "2026-09",
+  "habitual": 1.292286984769575,
+  "id": "brent_refino",
+  "plazo": 3,
+  "previsto": 24.711653468105887,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 212.3,
+  "desde": "2026-09",
+  "habitual": 3.6411374808413166,
+  "id": "brent_refino",
+  "plazo": 12,
+  "previsto": 17.903337075530267,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 28.5,
+  "desde": "2026-10",
+  "habitual": 1.4974280076259339,
+  "id": "brent_gas",
+  "plazo": 3,
+  "previsto": 6.873877455582389,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 28.5,
+  "desde": "2026-10",
+  "habitual": 4.928775812556041,
+  "id": "brent_gas",
+  "plazo": 12,
+  "previsto": 21.308741030436316,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
+  "base": 155.3,
+  "desde": "2026-09",
+  "habitual": 1.3827488221629602,
+  "id": "gas_electricidad",
+  "plazo": 3,
+  "previsto": 10.83862508468516,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 155.3,
+  "desde": "2026-09",
+  "habitual": 4.620840848404173,
+  "id": "gas_electricidad",
+  "plazo": 12,
+  "previsto": 28.525841653130037,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 155.3,
+  "desde": "2026-09",
+  "habitual": 1.3827488221629602,
+  "id": "carbon_electricidad",
+  "plazo": 3,
+  "previsto": 4.6834213232683775,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 155.3,
+  "desde": "2026-09",
+  "habitual": 4.620840848404173,
+  "id": "carbon_electricidad",
+  "plazo": 12,
+  "previsto": 13.830611069310761,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 242.2,
+  "desde": "2026-09",
+  "habitual": 1.5860613806885748,
+  "id": "gas_gas_es",
+  "plazo": 3,
+  "previsto": 16.303588521693293,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 242.2,
+  "desde": "2026-09",
+  "habitual": 5.580637764578467,
+  "id": "gas_gas_es",
+  "plazo": 12,
+  "previsto": 53.44981664636232,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 420.0,
+  "desde": "2026-10",
+  "habitual": 0.9133622886322135,
+  "id": "brent_urea",
+  "plazo": 3,
+  "previsto": 11.400064053155834,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 420.0,
+  "desde": "2026-10",
+  "habitual": 4.12892635794444,
+  "id": "brent_urea",
+  "plazo": 12,
+  "previsto": 16.721819959173388,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
+  "base": 420.0,
+  "desde": "2026-10",
+  "habitual": 0.9133622886322135,
+  "id": "gas_urea",
+  "plazo": 3,
+  "previsto": 17.69917249189095,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 420.0,
+  "desde": "2026-10",
+  "habitual": 4.12892635794444,
+  "id": "gas_urea",
+  "plazo": 12,
+  "previsto": 23.784186031244904,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
+  "base": 150.8,
+  "desde": "2026-09",
+  "habitual": 1.4503649003031027,
+  "id": "gas_abonos_fabrica",
+  "plazo": 3,
+  "previsto": 14.02915248708152,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 150.8,
+  "desde": "2026-09",
+  "habitual": 5.820638329478833,
+  "id": "gas_abonos_fabrica",
+  "plazo": 12,
+  "previsto": 37.64534305384473,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 102.6,
+  "desde": "2026-09",
+  "habitual": 0.4210987584305048,
+  "id": "brent_plasticos",
+  "plazo": 3,
+  "previsto": 12.384004647777115,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 102.6,
+  "desde": "2026-09",
+  "habitual": 1.491693656534454,
+  "id": "brent_plasticos",
+  "plazo": 12,
+  "previsto": 9.6560292983781,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 77.27,
+  "desde": "2026-07",
+  "habitual": 1.3795128430257986,
+  "id": "gas_urea_es",
+  "plazo": 3,
+  "previsto": 14.717422753667385,
+  "real": null,
+  "vence": "2026-10"
+ },
+ {
+  "base": 77.27,
+  "desde": "2026-07",
+  "habitual": 4.511712185871741,
+  "id": "gas_urea_es",
+  "plazo": 12,
+  "previsto": 43.69539804151768,
+  "real": null,
+  "vence": "2027-07"
+ },
+ {
+  "base": 45.76,
+  "desde": "2026-07",
+  "habitual": 1.0407063719078735,
+  "id": "gas_nac_es",
+  "plazo": 3,
+  "previsto": 21.615977622108517,
+  "real": null,
+  "vence": "2026-10"
+ },
+ {
+  "base": 45.76,
+  "desde": "2026-07",
+  "habitual": 3.7629238792484365,
+  "id": "gas_nac_es",
+  "plazo": 12,
+  "previsto": 61.944581984757875,
+  "real": null,
+  "vence": "2027-07"
+ },
+ {
+  "base": 77.27,
+  "desde": "2026-07",
+  "habitual": 1.3795128430257986,
+  "id": "urea_urea_es",
+  "plazo": 3,
+  "previsto": -13.870130905572498,
+  "real": null,
+  "vence": "2026-10"
+ },
+ {
+  "base": 77.27,
+  "desde": "2026-07",
+  "habitual": 4.511712185871741,
+  "id": "urea_urea_es",
+  "plazo": 12,
+  "previsto": -8.000122751685424,
+  "real": null,
+  "vence": "2027-07"
+ },
+ {
+  "base": 91.18,
+  "desde": "2026-07",
+  "habitual": 1.4518863666471926,
+  "id": "dap_dap_es",
+  "plazo": 3,
+  "previsto": 3.0135690172883534,
+  "real": null,
+  "vence": "2026-10"
+ },
+ {
+  "base": 91.18,
+  "desde": "2026-07",
+  "habitual": 5.628735105777416,
+  "id": "dap_dap_es",
+  "plazo": 12,
+  "previsto": 26.08706111058643,
+  "real": null,
+  "vence": "2027-07"
+ },
+ {
+  "base": 52.42,
+  "desde": "2026-07",
+  "habitual": 0.3858977064070679,
+  "id": "potasa_potasa_es",
+  "plazo": 3,
+  "previsto": 1.1425963294822816,
+  "real": null,
+  "vence": "2026-10"
+ },
+ {
+  "base": 52.42,
+  "desde": "2026-07",
+  "habitual": 1.7532641117615322,
+  "id": "potasa_potasa_es",
+  "plazo": 12,
+  "previsto": 0.8236763234305888,
+  "real": null,
+  "vence": "2027-07"
+ },
+ {
+  "base": 112.5,
+  "desde": "2026-09",
+  "habitual": 0.7065549679847738,
+  "id": "maiz_piensos",
+  "plazo": 3,
+  "previsto": 2.4323367036764854,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 112.5,
+  "desde": "2026-09",
+  "habitual": 2.790416612743929,
+  "id": "maiz_piensos",
+  "plazo": 12,
+  "previsto": 5.97131614557187,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 112.5,
+  "desde": "2026-09",
+  "habitual": 0.7065549679847738,
+  "id": "soja_piensos",
+  "plazo": 3,
+  "previsto": 4.086456411821349,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 112.5,
+  "desde": "2026-09",
+  "habitual": 2.790416612743929,
+  "id": "soja_piensos",
+  "plazo": 12,
+  "previsto": 7.918782025897353,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 112.5,
+  "desde": "2026-09",
+  "habitual": 0.7065549679847738,
+  "id": "trigo_piensos",
+  "plazo": 3,
+  "previsto": 3.0910649344002117,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 112.5,
+  "desde": "2026-09",
+  "habitual": 2.790416612743929,
+  "id": "trigo_piensos",
+  "plazo": 12,
+  "previsto": 6.224770639649768,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 124.9,
+  "desde": "2026-09",
+  "habitual": 0.5699771962457856,
+  "id": "piensos_carne",
+  "plazo": 3,
+  "previsto": 2.216441103710065,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 124.9,
+  "desde": "2026-09",
+  "habitual": 2.441917682408201,
+  "id": "piensos_carne",
+  "plazo": 12,
+  "previsto": 5.346223780414361,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 141.1,
+  "desde": "2026-09",
+  "habitual": 0.6439461041594319,
+  "id": "piensos_aves",
+  "plazo": 3,
+  "previsto": 2.9060512373625613,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 141.1,
+  "desde": "2026-09",
+  "habitual": 2.962873852426662,
+  "id": "piensos_aves",
+  "plazo": 12,
+  "previsto": 7.234940624633701,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 134.6,
+  "desde": "2026-09",
+  "habitual": 0.5387478005394408,
+  "id": "piensos_lacteos",
+  "plazo": 3,
+  "previsto": 1.6984235376796164,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 134.6,
+  "desde": "2026-09",
+  "habitual": 2.234743664385652,
+  "id": "piensos_lacteos",
+  "plazo": 12,
+  "previsto": 6.299332126469692,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 125.2,
+  "desde": "2026-09",
+  "habitual": 0.517678458996973,
+  "id": "carne_elaborados",
+  "plazo": 3,
+  "previsto": 0.5026759913840051,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 125.2,
+  "desde": "2026-09",
+  "habitual": 2.14870410160668,
+  "id": "carne_elaborados",
+  "plazo": 12,
+  "previsto": 2.191700827137888,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 1.84,
+  "desde": "2026-10",
+  "habitual": 0.34387283326451357,
+  "id": "maiz_pollo",
+  "plazo": 3,
+  "previsto": -0.3811106864715419,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 1.84,
+  "desde": "2026-10",
+  "habitual": 1.3776261846724758,
+  "id": "maiz_pollo",
+  "plazo": 12,
+  "previsto": 0.360009526135352,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
+  "base": 83.29203768136364,
+  "desde": "2026-09",
+  "habitual": 1.3262308753906993,
+  "id": "maiz_cerdo",
+  "plazo": 3,
+  "previsto": 5.079445243211866,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 83.29203768136364,
+  "desde": "2026-09",
+  "habitual": 3.272522494633723,
+  "id": "maiz_cerdo",
+  "plazo": 12,
+  "previsto": -3.181658171646562,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 119.2,
+  "desde": "2026-09",
+  "habitual": 0.7141637218804009,
+  "id": "trigo_harina",
+  "plazo": 3,
+  "previsto": 3.838564222782148,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 119.2,
+  "desde": "2026-09",
+  "habitual": 3.095064601686315,
+  "id": "trigo_harina",
+  "plazo": 12,
+  "previsto": 9.344812014039805,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 132.6,
+  "desde": "2026-09",
+  "habitual": 0.6912065859389971,
+  "id": "harina_pan",
+  "plazo": 3,
+  "previsto": -0.3361269442789694,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 132.6,
+  "desde": "2026-09",
+  "habitual": 2.803401820984397,
+  "id": "harina_pan",
+  "plazo": 12,
+  "previsto": 0.5870343196765271,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 128.2,
+  "desde": "2026-09",
+  "habitual": 0.6337610289828488,
+  "id": "harina_galletas",
+  "plazo": 3,
+  "previsto": -0.22032571412278212,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 128.2,
+  "desde": "2026-09",
+  "habitual": 2.6142660110442417,
+  "id": "harina_galletas",
+  "plazo": 12,
+  "previsto": 0.7321117744454542,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 154.3,
+  "desde": "2026-09",
+  "habitual": 0.8745476332772562,
+  "id": "cacao_chocolate",
+  "plazo": 3,
+  "previsto": 0.6961528949590567,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 154.3,
+  "desde": "2026-09",
+  "habitual": 3.7545517114111693,
+  "id": "cacao_chocolate",
+  "plazo": 12,
+  "previsto": 7.9631406571744945,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 154.7,
+  "desde": "2026-09",
+  "habitual": 0.976409720017668,
+  "id": "cafe_es",
+  "plazo": 3,
+  "previsto": 1.1456056615053,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 154.7,
+  "desde": "2026-09",
+  "habitual": 4.063605861152353,
+  "id": "cafe_es",
+  "plazo": 12,
+  "previsto": 4.508130296509294,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 118.7,
+  "desde": "2026-09",
+  "habitual": 0.5735037438525881,
+  "id": "girasol_aceites",
+  "plazo": 3,
+  "previsto": 0.5571083355748296,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 118.7,
+  "desde": "2026-09",
+  "habitual": 2.0513263962418593,
+  "id": "girasol_aceites",
+  "plazo": 12,
+  "previsto": 1.6304875472640257,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 118.2,
+  "desde": "2026-09",
+  "habitual": 0.3792416972399959,
+  "id": "gas_azulejos",
+  "plazo": 3,
+  "previsto": 1.5316824812371177,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 118.2,
+  "desde": "2026-09",
+  "habitual": 1.5364030201933998,
+  "id": "gas_azulejos",
+  "plazo": 12,
+  "previsto": 5.62276028037676,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 159.6,
+  "desde": "2026-09",
+  "habitual": 0.8589537236097566,
+  "id": "gas_yeso",
+  "plazo": 3,
+  "previsto": 3.8773679295620367,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 159.6,
+  "desde": "2026-09",
+  "habitual": 3.3119669118084616,
+  "id": "gas_yeso",
+  "plazo": 12,
+  "previsto": 14.4196544460101,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 155.9,
+  "desde": "2026-09",
+  "habitual": 0.6893403438147816,
+  "id": "cemento_hormigon",
+  "plazo": 3,
+  "previsto": 1.075532756702846,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 155.9,
+  "desde": "2026-09",
+  "habitual": 2.768177275586736,
+  "id": "cemento_hormigon",
+  "plazo": 12,
+  "previsto": 5.367065772422408,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 140.7,
+  "desde": "2026-09",
+  "habitual": 0.6353177552745226,
+  "id": "cemento_prefabricados",
+  "plazo": 3,
+  "previsto": 0.009613124348994972,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 140.7,
+  "desde": "2026-09",
+  "habitual": 2.4491949149417547,
+  "id": "cemento_prefabricados",
+  "plazo": 12,
+  "previsto": 2.768999720624188,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 146.4,
+  "desde": "2026-09",
+  "habitual": 0.6601166136044556,
+  "id": "cemento_mortero",
+  "plazo": 3,
+  "previsto": 1.333476067584627,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 146.4,
+  "desde": "2026-09",
+  "habitual": 2.5837083808826433,
+  "id": "cemento_mortero",
+  "plazo": 12,
+  "previsto": 5.186980205053615,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 107.5,
+  "desde": "2026-09",
+  "habitual": 0.7153598829898522,
+  "id": "hierro_acero",
+  "plazo": 3,
+  "previsto": -0.9480909854156505,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 107.5,
+  "desde": "2026-09",
+  "habitual": 2.799389997423618,
+  "id": "hierro_acero",
+  "plazo": 12,
+  "previsto": -0.5877108054241131,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 119.5,
+  "desde": "2026-09",
+  "habitual": 0.6474881657756004,
+  "id": "acero_tubos",
+  "plazo": 3,
+  "previsto": 3.25981347999027,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 119.5,
+  "desde": "2026-09",
+  "habitual": 2.653249559464821,
+  "id": "acero_tubos",
+  "plazo": 12,
+  "previsto": 6.714856569342853,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 108.5,
+  "desde": "2026-09",
+  "habitual": 0.31590059256889624,
+  "id": "acero_estructuras",
+  "plazo": 3,
+  "previsto": 1.433606231025708,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 108.5,
+  "desde": "2026-09",
+  "habitual": 1.3378353119819941,
+  "id": "acero_estructuras",
+  "plazo": 12,
+  "previsto": 3.70056847341953,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 126.4,
+  "desde": "2026-09",
+  "habitual": 0.5900894556509995,
+  "id": "acero_carpinteria",
+  "plazo": 3,
+  "previsto": 1.0283130567690257,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 126.4,
+  "desde": "2026-09",
+  "habitual": 2.333365317229097,
+  "id": "acero_carpinteria",
+  "plazo": 12,
+  "previsto": 3.7560562295694933,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 121.3,
+  "desde": "2026-09",
+  "habitual": 0.5026317394285496,
+  "id": "acero_alambre",
+  "plazo": 3,
+  "previsto": 1.865189738287909,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 121.3,
+  "desde": "2026-09",
+  "habitual": 1.9001361802721162,
+  "id": "acero_alambre",
+  "plazo": 12,
+  "previsto": 5.059973987627719,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 151.8,
+  "desde": "2026-09",
+  "habitual": 1.790899372292909,
+  "id": "cobre_es",
+  "plazo": 3,
+  "previsto": 7.938568807267887,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 151.8,
+  "desde": "2026-09",
+  "habitual": 6.48314817403044,
+  "id": "cobre_es",
+  "plazo": 12,
+  "previsto": 12.944086411734945,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 144.7,
+  "desde": "2026-09",
+  "habitual": 1.369903807960049,
+  "id": "cobre_cables",
+  "plazo": 3,
+  "previsto": 4.277393591572798,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 144.7,
+  "desde": "2026-09",
+  "habitual": 5.369341798896188,
+  "id": "cobre_cables",
+  "plazo": 12,
+  "previsto": 10.709283450122008,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 140.6,
+  "desde": "2026-09",
+  "habitual": 0.8192482431228942,
+  "id": "aluminio_es",
+  "plazo": 3,
+  "previsto": -1.403401198389731,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 140.6,
+  "desde": "2026-09",
+  "habitual": 2.907236304295968,
+  "id": "aluminio_es",
+  "plazo": 12,
+  "previsto": -1.0530780698202125,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 123.4,
+  "desde": "2026-09",
+  "habitual": 1.3307404004358148,
+  "id": "zinc_es",
+  "plazo": 3,
+  "previsto": 5.189559894439655,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 123.4,
+  "desde": "2026-09",
+  "habitual": 4.843987787263648,
+  "id": "zinc_es",
+  "plazo": 12,
+  "previsto": 13.505002889488527,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 117.0,
+  "desde": "2026-09",
+  "habitual": 0.5540535478616437,
+  "id": "plasticos_tubos",
+  "plazo": 3,
+  "previsto": 6.331277195728657,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 117.0,
+  "desde": "2026-09",
+  "habitual": 2.083335809814968,
+  "id": "plasticos_tubos",
+  "plazo": 12,
+  "previsto": 7.793698909288671,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 122.2,
+  "desde": "2026-09",
+  "habitual": 0.5400233892822515,
+  "id": "plasticos_construccion",
+  "plazo": 3,
+  "previsto": 2.1757956062071315,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 122.2,
+  "desde": "2026-09",
+  "habitual": 2.0936212727064474,
+  "id": "plasticos_construccion",
+  "plazo": 12,
+  "previsto": 5.382616814905106,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 120.9,
+  "desde": "2026-09",
+  "habitual": 0.5149358702132734,
+  "id": "madera_tableros",
+  "plazo": 3,
+  "previsto": 1.2267469472585946,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 120.9,
+  "desde": "2026-09",
+  "habitual": 2.047456810262216,
+  "id": "madera_tableros",
+  "plazo": 12,
+  "previsto": 3.542515194006035,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 123.4,
+  "desde": "2026-09",
+  "habitual": 0.5641322376379598,
+  "id": "madera_productos",
+  "plazo": 3,
+  "previsto": 1.1008005415158229,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 123.4,
+  "desde": "2026-09",
+  "habitual": 2.2699949796700203,
+  "id": "madera_productos",
+  "plazo": 12,
+  "previsto": 3.3112715045140684,
+  "real": null,
+  "vence": "2027-09"
+ },
+ {
+  "base": 119.3,
+  "desde": "2026-09",
+  "habitual": 0.5249802868793729,
+  "id": "brent_pinturas",
+  "plazo": 3,
+  "previsto": 1.8048764906229309,
+  "real": null,
+  "vence": "2026-12"
+ },
+ {
+  "base": 119.3,
+  "desde": "2026-09",
+  "habitual": 2.078892265974397,
+  "id": "brent_pinturas",
+  "plazo": 12,
+  "previsto": 5.272478093435695,
+  "real": null,
+  "vence": "2027-09"
+ }
+]

@@ -67,6 +67,29 @@ class Cadena(unittest.TestCase):
         # Un cambio posterior al ultimo dato de abajo queda entero
         self.assertAlmostEqual(cadena.pendiente(b, [("2026-03", 0.1)], "2026-02"), 0.05)
 
+    def test_pendiente_por_plazo(self):
+        b = {h: min(h / 4, 1) * 0.5 for h in range(13)}
+        # Visto hace 1 mes: en 2 meses mas llega hasta b[3]; en 12, todo
+        self.assertAlmostEqual(cadena.pendiente(b, [("2026-01", 0.1)], "2026-02", 2), 0.1 * (b[3] - b[1]))
+        self.assertAlmostEqual(cadena.pendiente(b, [("2026-01", 0.1)], "2026-02", 12), 0.1 * (0.5 - b[1]))
+
+    def test_previsiones_e_historial(self):
+        r = cadena.evaluar(self.arriba, self.abajo, remuestreos=0)
+        self.assertEqual(set(r["previsiones"]), {"3", "12"})
+        p3 = r["previsiones"]["3"]
+        self.assertEqual(p3["vence"], ind.restar_meses(p3["desde_mes"], -3))
+        self.assertGreater(p3["prueba"]["acierto_direccion"], 0.5)   # el traslado es real: acierta
+        # Se apunta una vez; al llegar el dato del mes de vencimiento se anota el resultado
+        registro = cadena.anotar_previsiones([], "x", r["previsiones"], self.abajo)
+        cadena.anotar_previsiones(registro, "x", r["previsiones"], self.abajo)
+        self.assertEqual(len(registro), 2)
+        futuro = {**self.abajo, p3["vence"]: p3["base"] * 1.10}
+        cadena.anotar_previsiones(registro, "x", {}, futuro)
+        hecho = [x for x in registro if x["plazo"] == 3][0]
+        self.assertAlmostEqual(hecho["real"], 10.0)
+        res = cadena.resumen_previsiones(registro, "x")
+        self.assertEqual((res["hechas"], res["vencidas"]), (2, 1))
+
     def test_huecos(self):
         """Los meses que faltan no se cuentan como cambios de un mes."""
         con_hueco = {m: v for i, (m, v) in enumerate(self.abajo.items()) if i % 25 != 0}

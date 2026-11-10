@@ -12,7 +12,7 @@ from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 
 from . import apoyo
 from . import indicators as ind
-from .store import RAIZ, leer, parse_iso
+from .store import RAIZ, ahora, iso, leer, parse_iso
 
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
          "septiembre", "octubre", "noviembre", "diciembre"]
@@ -389,6 +389,13 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     precios = leer("precios.json", {}) or {}
     lecturas = leer("lecturas.json", {}) or {}
     noticias = (leer("noticias.json", {}) or {}).get("noticias", [])
+    # La pagina de noticias y las listas por tema: lo mas nuevo arriba. La portada elige
+    # las de mejor nota entre las de las ultimas horas (si no hay, entre todas).
+    por_nota = noticias
+    noticias = sorted(noticias, key=lambda n: n.get("fecha") or "", reverse=True)
+    corte = iso(ahora() - timedelta(hours=int(cfg["noticias"].get("horas_portada", 12))))
+    portada = [n for n in por_nota if (n.get("fecha") or "") >= corte] or por_nota
+    temas = dict(cfg["noticias"].get("temas") or {})
     macro = (leer("macro.json", {}) or {}).get("series", {})
     estado = leer("estado.json", {}) or {}
     pink = leer("pink.json", {}) or {}
@@ -438,7 +445,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     ultima_precios = max((p.get("consultado", "") for p in precios.values()), default="") or None
     proxima = _proxima_hora(cfg, tz)
     comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, privado=privado, cfg=cfg, eurusd=eurusd,
-                 nombres={a["id"]: a["nombre"] for a in cfg["activos"]},
+                 nombres={**{a["id"]: a["nombre"] for a in cfg["activos"]}, **temas},
+                 temas_noticias=list(temas.items()),
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),
                  anio=datetime.now(tz).year, grupos_apoyo=grupos_apoyo,
@@ -456,7 +464,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         (destino / ruta).write_text(html, encoding="utf-8")
 
     pagina("index.html", "index.html", seccion="mercado", datos_metales=datos_metales(activos),
-           noticias=noticias[: cfg["noticias"]["maximo_portada"]])
+           noticias=portada[: cfg["noticias"]["maximo_portada"]])
     for a in activos:
         pagina("activo.html", f"activos/{a['id']}.html", seccion="mercado", a=a)
     pagina("materias.html", "materias.html", seccion="materias")
@@ -465,7 +473,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
             pagina("materia.html", f"materias/{m['id']}.html", seccion="materias", m=m, g=g)
     pagina("comparar.html", "comparar.html", seccion="comparar", datos_comparar=datos_comparar)
     pagina("noticias.html", "noticias.html", seccion="noticias", noticias=noticias)
-    pagina("cadena.html", "cadena.html", seccion="cadena", cadena=datos_cadena(leer("cadena.json")))
+    pagina("cadena.html", "cadena.html", seccion="cadena", cadena=datos_cadena(leer("cadena.json")),
+           noticias_tema={t: [n for n in noticias if t in n["activos"]][:6] for t in temas})
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],
            prueba=datos_prueba(leer("prueba_historica.json"), cfg))

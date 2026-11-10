@@ -1,16 +1,25 @@
 {% extends "base.html" %}
+{% from "_macros.html" import noticia %}
 {% block titulo %}Cadena de costes | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Cuánto y en cuánto tiempo se traslada el precio de la energía y las materias primas a abonos, alimentos y materiales, medido con datos.{% endblock %}
 {% block contenido %}
 <div class="texto">
   <h1>Cadena de costes</h1>
   <p>Cuando sube el petróleo o el gas, ¿cuánto acaban subiendo el diésel, los abonos, los alimentos o los materiales, y cuánto tardan? Aquí se mide con datos de muchos años. Cada eslabón se lee así: <strong>de cada 10 % que sube el precio de arriba, el de abajo sube de media tanto</strong>, al cabo de un mes, de seis meses y de un año.</p>
-  <p>Solo se muestran como comprobados los eslabones que aparecen con claridad en los datos y en las dos mitades del periodo; los demás se muestran en gris, para ver la cadena completa sin inventar. Son medias del pasado: cada vez puede ser distinta. <a href="{{ raiz }}metodologia.html#cadena">Cómo se calcula</a>.</p>
+  <p>Solo se muestran como comprobados los eslabones que aparecen con claridad en los datos y en las dos mitades del periodo; los demás se muestran en gris, para ver la cadena completa sin inventar. Cada eslabón comprobado lleva <strong>nuestra previsión</strong> a tres meses y a un año, con lo que acertó en el pasado al lado, y vamos apuntando cada previsión para comprobarla cuando llegue su fecha. Son medias del pasado: cada vez puede ser distinta. <a href="{{ raiz }}metodologia.html#cadena">Cómo se calcula</a>.</p>
 </div>
 
 {% if cadena %}
+{# Mismas pestañas que en «Materias primas»: una cadena, varias juntas o todas #}
+<nav class="vistas vistas--grupos" aria-label="Cadenas de costes" data-clave="cedron-cadenas">
+  {% for c in cadena.cadenas %}
+  <a href="#{{ c.id }}" data-grupo="{{ c.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ c.nombre }}</a>
+  {% endfor %}
+  <a href="#todas" data-grupo="todas" aria-pressed="false">Todas</a>
+</nav>
+<p class="pequeno secundario pista-grupos">Pulsa varias cadenas para verlas juntas; vuelve a pulsar una para quitarla.</p>
 {% for c in cadena.cadenas %}
-<section class="bloque cadena" aria-labelledby="c-{{ c.id }}">
+<section class="bloque cadena" aria-labelledby="c-{{ c.id }}" data-grupo="{{ c.id }}">
   <h2 id="c-{{ c.id }}">{{ c.nombre }}</h2>
   <ol class="eslabones">
   {% for e in c.eslabones %}
@@ -36,9 +45,35 @@
           {% elif e.asimetria %}
           <li><strong>Subidas y bajadas:</strong> no hay una diferencia clara entre cómo se trasladan las subidas y las bajadas.</li>
           {% endif %}
-          <li><strong>Lo que falta por trasladarse:</strong> {% if e.pendiente and e.pendiente.valor is not none %}según la media histórica, {{ e.a_abajo }} le quedaría por {{ 'subir' if e.pendiente.valor > 0 else 'bajar' }} un {{ e.pendiente.valor|abs|numero(1) }} % por los cambios recientes de {{ e.arriba_corto }}.{% else %}no se publica: en la prueba a ciegas, esta estimación no acertó más que la simple media histórica.{% endif %}</li>
           {% if e.nota %}<li>{{ e.nota }}</li>{% endif %}
         </ul>
+        {% if e.previsiones %}
+        <div class="prevision">
+          <h4 class="prevision__titulo">Nuestra previsión para {{ e.abajo_corto }}</h4>
+          <div class="desplazable">
+          <table class="tabla tabla--compacta">
+            <thead><tr><th>Plazo</th><th class="num">Previsión</th><th class="num">De ello, por {{ e.arriba_corto }}</th><th>En el pasado, ¿acertó si subía o bajaba?</th><th>¿Mejor que la media de siempre?</th></tr></thead>
+            <tbody>
+            {% for k, etq in (('3', 'En 3 meses'), ('12', 'En 1 año')) %}{% set v = e.previsiones[k] %}{% if v %}
+              <tr>
+                <th scope="row">{{ etq }}<span class="ambito">hasta {{ v.vence|mes }}</span></th>
+                <td class="num cifra {{ 'sube' if v.total > 0 else 'baja' }}"><strong>{{ v.total|porcentaje }}</strong></td>
+                <td class="num cifra">{{ v.traslado|porcentaje }}</td>
+                <td>{% if v.prueba.acierto_direccion is not none %}{{ (v.prueba.acierto_direccion * 100)|round|int }} de cada 100 veces<span class="ambito">decir siempre lo habitual: {{ (v.prueba.acierto_base * 100)|round|int }} · {{ v.prueba.casos }} casos</span>{% else %}Sin casos suficientes{% endif %}</td>
+                <td>{% if v.prueba.valido %}<strong>Sí</strong>, con seguridad{% elif v.prueba.r2 is not none and v.prueba.r2 > 0 %}Algo, sin seguridad{% else %}<span class="secundario">No</span>{% endif %}</td>
+              </tr>
+            {% endif %}{% endfor %}
+            </tbody>
+          </table>
+          </div>
+          {% set p = e.previsiones['12'] or e.previsiones['3'] %}
+          <p class="pequeno secundario">Cambio previsto desde {{ p.desde_mes|mes }} (último dato {{ e.de_abajo }}), con {{ e.arriba_corto }} hasta {{ p.arriba_hasta|mes }}. Es lo que este precio suele cambiar en ese plazo más lo que falta por trasladarse de arriba. Las columnas de acierto salen de la prueba a ciegas (cada previsión hecha solo con datos anteriores).
+          {% set h = e.historial %}{% if h and h.vencidas %}<strong>Nuestro historial desde noviembre de 2026:</strong> {{ h.aciertos }} de {{ h.vencidas }} previsiones vencidas acertaron la dirección; error medio de {{ h.error_medio|numero(1) }} puntos.{% elif h and h.proxima %}<strong>Nuestro historial:</strong> {{ h.hechas }} {{ 'previsión apuntada' if h.hechas == 1 else 'previsiones apuntadas' }}; la primera se podrá comprobar con el dato de {{ h.proxima|mes }}.{% endif %}</p>
+          {% if h and h.ultimas %}
+          <ul class="pequeno secundario">{% for r in h.ultimas %}<li>{{ r.desde|mes }} → {{ r.vence|mes }}: previsto {{ r.previsto|porcentaje }}, real {{ r.real|porcentaje }} {{ '✓' if (r.previsto > 0) == (r.real > 0) else '✗' }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+        {% endif %}
       {% elif e.clase == 'no_se_aprecia' %}
         {% set x6 = e.seis %}
         <p class="eslabon__frase secundario"><strong>No se aprecia en los datos.</strong> {% if x6 %}A seis meses, la subida media sería de {{ x6.valor|numero(1)|replace('-', '−') }} % por cada 10 %, con un margen de {{ x6.bajo|numero(1)|replace('-', '−') }} a {{ x6.alto|numero(1)|replace('-', '−') }}: no se distingue de cero{% if e.mitades_distintas %} o cambia de una época a otra{% endif %}.{% endif %} En este precio pesan más otros factores{% if c.id == "alimentos" %} (cosechas, el tiempo, la demanda){% endif %}.</p>
@@ -49,10 +84,19 @@
     </li>
   {% endfor %}
   </ol>
+  {% set nt = noticias_tema[c.id] if noticias_tema else [] %}
+  {% if nt %}
+  <h3>Últimas noticias de {{ c.nombre|lower }}</h3>
+  <ul class="noticias">{% for n in nt %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
+  <p class="pequeno"><a href="{{ raiz }}noticias.html">Todas las noticias</a></p>
+  {% endif %}
 </section>
 {% endfor %}
 <p class="pequeno secundario">Calculado {{ cadena.calculado|fecha_larga }}. Se recalcula cada mes. Que dos precios se muevan juntos no demuestra por sí solo que uno cause el otro; aquí solo se incluyen eslabones con una razón clara de coste (el gas es la materia prima de los abonos nitrogenados, el pienso es el principal coste del pollo…).</p>
 {% else %}
 <p class="vacio">La cadena de costes todavía no se ha calculado.</p>
 {% endif %}
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/vistas.js" defer></script>
 {% endblock %}

@@ -18,6 +18,10 @@ sobre su sus un una y the of to in and on for at as by is are with from its
 """.split())
 
 
+# Cirilico, hebreo, arabe, indios, tailandes, chino, japones y coreano (10-nov-2026)
+OTRO_ALFABETO = re.compile(r"[Ѐ-ӿ֐-ۿऀ-෿฀-๿぀-ヿ一-鿿가-힯]")
+
+
 def normalizar(t: str) -> str:
     t = unicodedata.normalize("NFKD", t.lower())
     return "".join(c for c in t if not unicodedata.combining(c))
@@ -89,6 +93,8 @@ def seleccionar(brutas: list[dict], cfg: dict, medios: dict[str, dict], nota_def
         vistas.add(n["enlace"])
         if normalizar(n["medio"]) in bloqueados:
             continue
+        if OTRO_ALFABETO.search(n["titulo"]) or OTRO_ALFABETO.search(n["medio"]):
+            continue                      # titulares en arabe, chino, coreano, ruso...: no se pueden leer
         texto = normalizar(n["titulo"] + " " + n.get("resumen", ""))
         if any(x in texto for x in excluir):
             continue

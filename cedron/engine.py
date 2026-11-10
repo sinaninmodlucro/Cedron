@@ -197,20 +197,30 @@ def actualizar_noticias(cfg, estado: Estado) -> None:
             continue
         try:
             for n in src.rss(m["rss"]):
-                nuevas.append({**n, "medio": m["nombre"], "idioma": m.get("idioma", "")})
+                medio = m["nombre"]
+                if m.get("google"):
+                    # Google Noticias escribe «Titular - Medio»: el medio real es el del final
+                    titulo, _, real = n["titulo"].rpartition(" - ")
+                    if not titulo or not real:
+                        continue
+                    n, medio = {**n, "titulo": titulo, "resumen": ""}, real.strip()
+                nuevas.append({**n, "medio": medio, "idioma": m.get("idioma", "")})
             estado.registrar_fuente(f"RSS {m['nombre']}", True)
         except src.FuenteError as e:
             estado.registrar_fuente(f"RSS {m['nombre']}", False, str(e))
             log.warning("RSS %s: %s", m["nombre"], e)
 
-    if estado.consultas_dia("newsdata") < cfg["presupuesto"]["newsdata_diario"]:
+    for consulta in cfg["noticias"].get("consultas_newsdata") or [CONSULTA_NEWSDATA]:
+        if estado.consultas_dia("newsdata") >= cfg["presupuesto"]["newsdata_diario"]:
+            break
         try:
-            nuevas += src.newsdata(os.environ.get("NEWSDATA_KEY", ""), CONSULTA_NEWSDATA)
+            nuevas += src.newsdata(os.environ.get("NEWSDATA_KEY", ""), consulta)
             estado.sumar_consulta_dia("newsdata")
             estado.registrar_fuente("NewsData.io", True)
         except src.FuenteError as e:
             estado.registrar_fuente("NewsData.io", False, str(e))
             log.warning("NewsData: %s", e)
+            break
 
     limite = iso(ahora() - timedelta(hours=cfg["noticias"]["horas_vigencia"]))
     por_enlace = {n["enlace"]: n for n in brutas + nuevas if (n.get("fecha") or "") >= limite}
@@ -219,8 +229,30 @@ def actualizar_noticias(cfg, estado: Estado) -> None:
 
     medios = {m["nombre"]: m for m in cfg["medios"]}
     nota_defecto = int(cfg["noticias"].get("nota_medio_desconocido", 50))
-    escribir("noticias.json", {"noticias": seleccionar(brutas, cfg["noticias"], medios, nota_defecto),
-                               "generado": iso()})
+    seleccion = seleccionar(brutas, cfg["noticias"], medios, nota_defecto)
+    escribir("noticias.json", {"noticias": seleccion, "generado": iso()})
+    if cfg["noticias"].get("archivo"):
+        archivar_noticias(seleccion)
+
+
+def archivar_noticias(seleccion: list[dict]) -> None:
+    """Guarda cada noticia publicada, una sola vez, en data/noticias_archivo/AAAA-MM.json.
+
+    Con los meses servira para medir que tipo de noticias se adelantan a los precios.
+    Se guarda lo minimo (sin resumen) y la primera vez que se vio, con su nota de entonces.
+    """
+    por_mes: dict[str, list[dict]] = {}
+    for n in seleccion:
+        por_mes.setdefault((n.get("fecha") or iso())[:7], []).append(n)
+    for mes, lista in por_mes.items():
+        ruta = f"noticias_archivo/{mes}.json"
+        archivo = leer(ruta, []) or []
+        vistos = {a["enlace"] for a in archivo}
+        nuevas = [{"fecha": n["fecha"], "titulo": n["titulo"], "medio": n["medio"], "enlace": n["enlace"],
+                   "temas": n["activos"], "nota": n["nota"], "idioma": n.get("idioma", ""),
+                   "visto": iso()} for n in lista if n["enlace"] not in vistos]
+        if nuevas:
+            escribir(ruta, sorted(archivo + nuevas, key=lambda a: a["fecha"]))
 
 
 # ---------------------------------------------------------------------------
@@ -293,6 +325,7 @@ def actualizar_cadena(cfg, estado: Estado, forzar=False) -> None:
     if not forzar and estado.get("cadena_mes") == mes:
         return
     try:
+        cadena.descargar(cfg, estado)
         cadena.ejecutar(cfg)
         estado.set("cadena_mes", mes)
     except (KeyError, ValueError, ZeroDivisionError) as e:

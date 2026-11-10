@@ -130,6 +130,11 @@ class Noticias(unittest.TestCase):
         self.assertEqual(sel[0]["medio"], "Otro")
         self.assertEqual(sel[0]["tambien_en"], ["Tienda"])
 
+    def test_otro_alfabeto_se_descarta(self):
+        sel = seleccionar([noticia("Gold 金价创新高 as Fed signals cuts", "Oficial"),
+                           noticia("Цена на золото: gold hits record", "Oficial")], CFG_NOT, MEDIOS, 50)
+        self.assertEqual(sel, [])
+
     def test_vieja_y_excluida(self):
         sel = seleccionar([noticia("Gold falls", "Oficial", horas=100),
                            noticia("Gold casino promo", "Oficial")], CFG_NOT, MEDIOS, 50)

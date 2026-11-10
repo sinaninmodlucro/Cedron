@@ -37,10 +37,11 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.cadena")
 
-VERSION = 1                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
+VERSION = 2                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
 PLAZOS = list(range(13))   # 0 a 12 meses
 PLAZO_PRINCIPAL = 6
 PLAZO_ASIMETRIA = 3
+PLAZOS_PREVISION = (3, 12)   # meses a los que se publica una prevision
 RETARDOS = 3
 MINIMO_MESES = 72          # seis anios de datos comunes como minimo
 Z95 = 1.959964
@@ -154,8 +155,10 @@ def asimetria(arriba: dict, abajo: dict, meses: list[str], plazos=(1, 3, 6)) -> 
     return out
 
 
-def pendiente(b: dict, cambios: list[tuple[str, float]], ultimo_abajo: str) -> float | None:
-    """Lo que falta por trasladarse abajo (en log) de los cambios recientes de arriba.
+def pendiente(b: dict, cambios: list[tuple[str, float]], ultimo_abajo: str,
+              horizonte: int = 12) -> float | None:
+    """Lo que falta por trasladarse abajo (en log) de los cambios recientes de arriba,
+    en los proximos 'horizonte' meses (12 = todo lo que queda).
 
     b: {h: traslado acumulado} con h de 0 a 12. cambios: [(mes, cambio en log de arriba)].
     Un cambio de arriba en el mes s ya deberia verse abajo en la parte b[ultimo_abajo - s]
@@ -171,7 +174,9 @@ def pendiente(b: dict, cambios: list[tuple[str, float]], ultimo_abajo: str) -> f
         if visto_hace >= 12:
             continue
         ya = 0.0 if visto_hace < 0 else b.get(visto_hace, 0.0)
-        total += d * (b[12] - ya)
+        fin = visto_hace + horizonte
+        hasta = 0.0 if fin < 0 else b.get(min(fin, 12), b[12])
+        total += d * (hasta - ya)
     return total
 
 
@@ -184,7 +189,7 @@ def _r2_fuera(casos) -> float | None:
 
 
 def probar_pendiente(arriba: dict, abajo: dict, meses: list[str], remuestreos: int = 300,
-                     semilla: int = 2026) -> dict:
+                     semilla: int = 2026, horizonte: int = 12) -> dict:
     """Prueba a ciegas del traslado pendiente en la segunda mitad del periodo.
 
     Cada enero se reestima el traslado solo con datos que ya se conocian; cada mes se
@@ -195,7 +200,7 @@ def probar_pendiente(arriba: dict, abajo: dict, meses: list[str], remuestreos: i
     lb = {m: math.log(abajo[m]) for m in meses}
     inicio = len(meses) // 2
     casos, b, anio = [], None, None
-    for t in range(inicio, len(meses) - 12):
+    for t in range(inicio, len(meses) - horizonte):
         m = meses[t]
         if b is None or m[:4] != anio:
             anio = m[:4]
@@ -207,13 +212,13 @@ def probar_pendiente(arriba: dict, abajo: dict, meses: list[str], remuestreos: i
             if 12 not in b:
                 b = None
                 continue
-        historia = [lb[meses[j + 12]] - lb[meses[j]] for j in range(0, t - 12)]
+        historia = [lb[meses[j + horizonte]] - lb[meses[j]] for j in range(0, t - horizonte)]
         if len(historia) < 24:
             continue
         media = sum(historia) / len(historia)
         cambios = [(meses[j], la[meses[j]] - la[meses[j - 1]]) for j in range(max(1, t - 12), t + 1)]
-        p = pendiente(b, cambios, m) or 0.0
-        y = lb[meses[t + 12]] - lb[m]
+        p = pendiente(b, cambios, m, horizonte) or 0.0
+        y = lb[meses[t + horizonte]] - lb[m]
         casos.append((y, media + p, media))
     r2 = _r2_fuera(casos)
     ic = None
@@ -231,7 +236,12 @@ def probar_pendiente(arriba: dict, abajo: dict, meses: list[str], remuestreos: i
         vals.sort()
         if vals:
             ic = (vals[int(len(vals) * 0.025)], vals[int(len(vals) * 0.975) - 1])
-    return {"r2": r2, "intervalo": ic, "casos": len(casos),
+    # Direccion: cuantas veces la prevision acerto si el precio subia o bajaba, frente a
+    # decir siempre lo habitual (el signo de la media historica)
+    def _signo(k):
+        return sum(1 for c in casos if (c[k] > 0) == (c[0] > 0)) / len(casos) if casos else None
+    return {"r2": r2, "intervalo": ic, "casos": len(casos), "horizonte": horizonte,
+            "acierto_direccion": _signo(1), "acierto_base": _signo(2),
             "desde": meses[inicio] if len(meses) > inicio else None,
             "valido": bool(r2 is not None and r2 > 0 and ic and ic[0] > 0)}
 
@@ -262,15 +272,70 @@ def evaluar(arriba: dict, abajo: dict, desde: str = "", remuestreos: int = 300) 
     salida["asimetria"] = {"plazos": asi, "clara": bool(asi.get(PLAZO_ASIMETRIA, {}).get("clara"))}
     prueba = probar_pendiente(arriba, abajo, meses, remuestreos)
     salida["prueba_pendiente"] = prueba
+    ultimo_abajo = max(abajo)
+    meses_arriba = sorted(arriba)
+    cambios = [(meses_arriba[j], math.log(arriba[meses_arriba[j]] / arriba[meses_arriba[j - 1]]))
+               for j in range(max(1, len(meses_arriba) - 24), len(meses_arriba))]
+    bs = {h: v[0] for h, v in t.items()}
     if prueba["valido"]:
-        ultimo_abajo = max(abajo)
-        meses_arriba = sorted(arriba)
-        cambios = [(meses_arriba[j], math.log(arriba[meses_arriba[j]] / arriba[meses_arriba[j - 1]]))
-                   for j in range(max(1, len(meses_arriba) - 24), len(meses_arriba))]
-        valor = pendiente({h: v[0] for h, v in t.items()}, cambios, ultimo_abajo)
+        valor = pendiente(bs, cambios, ultimo_abajo)
         salida["pendiente"] = {"valor": None if valor is None else (math.exp(valor) - 1) * 100,
                                "desde_mes": ultimo_abajo, "arriba_hasta": meses_arriba[-1]}
+    # Previsiones (10-nov-2026, decision del usuario, web privada): se publican siempre,
+    # con lo que acertaron en la prueba a ciegas al lado. Prevision = lo que el precio de
+    # abajo suele cambiar en ese plazo (media historica) + lo que falta por trasladarse.
+    lb = [math.log(abajo[m]) for m in meses]
+    previsiones = {}
+    for k in PLAZOS_PREVISION:
+        pr = prueba if k == 12 else probar_pendiente(arriba, abajo, meses, remuestreos, horizonte=k)
+        falta = pendiente(bs, cambios, ultimo_abajo, k)
+        hist = [lb[j + k] - lb[j] for j in range(len(lb) - k)]
+        if falta is None or not hist:
+            continue
+        media = sum(hist) / len(hist)
+        previsiones[str(k)] = {"total": (math.exp(media + falta) - 1) * 100,
+                               "traslado": (math.exp(falta) - 1) * 100,
+                               "habitual": (math.exp(media) - 1) * 100,
+                               "desde_mes": ultimo_abajo, "vence": _mes_mas(ultimo_abajo, k),
+                               "base": abajo[ultimo_abajo],
+                               "arriba_hasta": meses_arriba[-1], "prueba": pr}
+    salida["previsiones"] = previsiones
     return salida
+
+
+def _mes_mas(mes: str, k: int) -> str:
+    n = int(mes[:4]) * 12 + int(mes[5:7]) - 1 + k
+    return f"{n // 12:04d}-{n % 12 + 1:02d}"
+
+
+def anotar_previsiones(registro: list[dict], eslabon_id: str, previsiones: dict, abajo: dict) -> list[dict]:
+    """Historial propio de previsiones: apunta las nuevas y pone nota a las vencidas.
+
+    Cada entrada: eslabon, plazo, mes de partida y su precio, cambio previsto (%) y, cuando
+    ya existe el dato del mes de vencimiento, el cambio real (%). Nunca se reescribe una
+    prevision ya apuntada.
+    """
+    for r in registro:
+        if r["id"] == eslabon_id and r.get("real") is None and r["vence"] in abajo and r.get("base"):
+            r["real"] = (abajo[r["vence"]] / r["base"] - 1) * 100
+    hechas = {(r["id"], r["plazo"], r["desde"]) for r in registro}
+    for k, p in previsiones.items():
+        if (eslabon_id, int(k), p["desde_mes"]) not in hechas:
+            registro.append({"id": eslabon_id, "plazo": int(k), "desde": p["desde_mes"], "base": p["base"],
+                             "vence": _mes_mas(p["desde_mes"], int(k)), "previsto": p["total"],
+                             "habitual": p["habitual"], "real": None})
+    return registro
+
+
+def resumen_previsiones(registro: list[dict], eslabon_id: str) -> dict:
+    mias = [r for r in registro if r["id"] == eslabon_id]
+    vencidas = [r for r in mias if r.get("real") is not None]
+    pendientes = sorted(r["vence"] for r in mias if r.get("real") is None)
+    return {"hechas": len(mias), "vencidas": len(vencidas),
+            "aciertos": sum(1 for r in vencidas if (r["previsto"] > 0) == (r["real"] > 0)),
+            "error_medio": (sum(abs(r["previsto"] - r["real"]) for r in vencidas) / len(vencidas)) if vencidas else None,
+            "proxima": pendientes[0] if pendientes else None,
+            "ultimas": sorted(vencidas, key=lambda r: r["vence"], reverse=True)[:6]}
 
 
 # ---------------------------------------------------------------------------
@@ -289,7 +354,11 @@ def cargar_serie(ref: str, cambio: "apoyo.TipoCambio | None", en_euros: bool) ->
     origen, _, nombre = ref.partition(":")
     archivos = {"pink": "pink.json", "pagados": "apoyo/pagados.json", "boletin": "apoyo/boletin.json",
                 "eurostat": "apoyo/eurostat.json", "fred": "apoyo/fred.json"}
-    datos = ((leer(archivos[origen], {}) or {}).get("series", {}) or {}).get(nombre, [])
+    datos = []
+    if origen in PROPIOS:     # descarga propia de la cadena: mas series y mas anios
+        datos = ((leer(f"cadena/{origen}.json", {}) or {}).get("series", {}) or {}).get(nombre, [])
+    if not datos:
+        datos = ((leer(archivos[origen], {}) or {}).get("series", {}) or {}).get(nombre, [])
     serie = _mensual(datos)
     if en_euros:
         if not cambio:
@@ -298,8 +367,45 @@ def cargar_serie(ref: str, cambio: "apoyo.TipoCambio | None", en_euros: bool) ->
     return serie
 
 
+PROPIOS = ("eurostat", "boletin")
+
+
+def _referencias(cfg: dict, origen: str) -> list[str]:
+    refs = set()
+    for c in (cfg.get("cadena") or {}).get("cadenas", []):
+        for e in c.get("eslabones", []):
+            for lado in ("arriba", "abajo"):
+                o, _, nombre = e[lado]["serie"].partition(":")
+                if o == origen:
+                    refs.add(nombre)
+    return sorted(refs)
+
+
+def descargar(cfg: dict, estado=None) -> None:
+    """Baja las series de Eurostat y del Weekly Oil Bulletin que usa la cadena, con toda
+    su historia, a data/cadena/. Si una fuente falla se sigue con lo que hubiera guardado."""
+    from cedron import sources as src
+    desde = str((cfg.get("cadena") or {}).get("eurostat_desde", "2000-01"))
+    tareas = (("eurostat", "Eurostat (cadena de costes)", lambda refs: src.eurostat_indices(refs, desde)),
+              ("boletin", "Comisión Europea (Oil Bulletin, cadena)", src.boletin_petroleo))
+    for origen, nombre, pedir in tareas:
+        refs = _referencias(cfg, origen)
+        if not refs:
+            continue
+        try:
+            series = {k: [list(x) for x in v] for k, v in pedir(refs).items()}
+            escribir(f"cadena/{origen}.json", {"series": series, "consultado": iso()})
+            if estado:
+                estado.registrar_fuente(nombre, True)
+        except src.FuenteError as e:
+            if estado:
+                estado.registrar_fuente(nombre, False, str(e))
+            log.warning("%s: %s", nombre, e)
+
+
 def ejecutar(cfg: dict) -> dict:
     ccfg = cfg.get("cadena") or {}
+    registro = leer("cadena_previsiones.json", []) or []
     cambio = apoyo.TipoCambio(apoyo.cambio_usd())
     remuestreos = int(ccfg.get("remuestreos", 300))
     cadenas = []
@@ -313,6 +419,9 @@ def ejecutar(cfg: dict) -> dict:
             except (ValueError, ZeroDivisionError) as err:
                 log.warning("Cadena %s: %s", e["id"], err)
                 r = {"clase": "pocos", "meses": 0}
+            if r.get("previsiones"):
+                anotar_previsiones(registro, e["id"], r["previsiones"], abajo)
+            r["historial"] = resumen_previsiones(registro, e["id"])
             eslabones.append({"id": e["id"], "arriba": e["arriba"]["nombre"], "abajo": e["abajo"]["nombre"],
                               "arriba_corto": e["arriba"].get("corto", e["arriba"]["nombre"].lower()),
                               "abajo_corto": e["abajo"].get("corto", e["abajo"]["nombre"].lower()),
@@ -321,4 +430,5 @@ def ejecutar(cfg: dict) -> dict:
     resultado = {"cadenas": cadenas, "calculado": iso(), "plazo_principal": PLAZO_PRINCIPAL,
                  "plazo_asimetria": PLAZO_ASIMETRIA}
     escribir("cadena.json", resultado)
+    escribir("cadena_previsiones.json", registro)
     return resultado

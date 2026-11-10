@@ -919,6 +919,7 @@ indicadores:
 # -----------------------------------------------------------------------------
 cadena:
   remuestreos: 300
+  eurostat_desde: "2000-01"       # la cadena baja sus propias series de Eurostat, con toda la historia
   cadenas:
     - id: energia
       nombre: "Energía"
@@ -929,23 +930,72 @@ cadena:
           desde: "2005-01"
           fuentes: "Banco Mundial; Comisión Europea (Weekly Oil Bulletin); BCE"
           nota: "Los impuestos fijos por litro hacen que el diésel suba en porcentaje menos que el petróleo."
+        - id: brent_gasolina
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent (en euros)", corto: "el petróleo", en_euros: true}
+          abajo: {serie: "boletin:ES_price_with_tax_euro95", nombre: "Gasolina 95 en España (con impuestos)", corto: "la gasolina"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Comisión Europea (Weekly Oil Bulletin); BCE"
+        - id: brent_calefaccion
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent (en euros)", corto: "el petróleo", en_euros: true}
+          abajo: {serie: "boletin:ES_price_with_tax_heating_oil", nombre: "Gasóleo de calefacción en España (con impuestos)", corto: "el gasóleo de calefacción"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Comisión Europea (Weekly Oil Bulletin); BCE"
+        - id: brent_refino
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent (en euros)", corto: "el petróleo", en_euros: true}
+          abajo: {serie: "eurostat:ES|C192", nombre: "Carburantes al salir de la refinería en España", corto: "los carburantes de refinería"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+          nota: "Precio al salir de la refinería, antes de impuestos y de la distribución."
+        - id: brent_gas
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent", corto: "el petróleo"}
+          abajo: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa", corto: "el gas"}
+          desde: "1990-01"
+          fuentes: "Banco Mundial"
+          nota: "Durante años, muchos contratos de gas en Europa se fijaban según el precio del petróleo."
+        - id: gas_electricidad
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|D351", nombre: "Electricidad (precio de producción) en España", corto: "la electricidad"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+          nota: "Las centrales de gas suelen marcar el precio de la electricidad en las horas caras."
+        - id: carbon_electricidad
+          arriba: {serie: "pink:Coal, Australian", nombre: "Carbón (en euros)", corto: "el carbón", en_euros: true}
+          abajo: {serie: "eurostat:ES|D351", nombre: "Electricidad (precio de producción) en España", corto: "la electricidad"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: gas_gas_es
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|D352", nombre: "Gas distribuido en España", corto: "el gas distribuido"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
         - id: brent_urea
           arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent", corto: "el petróleo"}
-          abajo: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea"}
+          abajo: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea mundial"}
           desde: "1990-01"
           fuentes: "Banco Mundial"
         - id: gas_urea
           arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa", corto: "el gas"}
-          abajo: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea"}
+          abajo: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea mundial"}
           desde: "1990-01"
           fuentes: "Banco Mundial"
           nota: "El gas es entre el 70 y el 90 % del coste de fabricar abonos nitrogenados."
+        - id: gas_abonos_fabrica
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2015", nombre: "Abonos (precio de fábrica en España)", corto: "los abonos de fábrica"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: brent_plasticos
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent (en euros)", corto: "el petróleo", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2016", nombre: "Plásticos en bruto (precio de fábrica en España)", corto: "los plásticos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+          nota: "Los plásticos se fabrican a partir de derivados del petróleo."
     - id: alimentos
       nombre: "Abonos y alimentos"
       eslabones:
         - id: gas_urea_es
           arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
-          abajo: {serie: "pagados:UREA 46%", nombre: "Urea que paga el agricultor en España", corto: "la urea"}
+          abajo: {serie: "pagados:UREA 46%", nombre: "Urea que paga el agricultor en España", corto: "la urea en España"}
           desde: "2005-01"
           fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
         - id: gas_nac_es
@@ -953,49 +1003,264 @@ cadena:
           abajo: {serie: "pagados:NITRATO AMONICO CALCICO 26%", nombre: "Nitrato amónico cálcico que paga el agricultor en España", corto: "el nitrato amónico cálcico"}
           desde: "2005-01"
           fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
+        - id: urea_urea_es
+          arriba: {serie: "pink:Urea", nombre: "Urea (precio mundial, en euros)", corto: "la urea mundial", en_euros: true}
+          abajo: {serie: "pagados:UREA 46%", nombre: "Urea que paga el agricultor en España", corto: "la urea en España"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
+        - id: dap_dap_es
+          arriba: {serie: "pink:DAP", nombre: "Fosfato diamónico, DAP (precio mundial, en euros)", corto: "el DAP mundial", en_euros: true}
+          abajo: {serie: "pagados:DAP", nombre: "DAP que paga el agricultor en España", corto: "el DAP en España"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
+        - id: potasa_potasa_es
+          arriba: {serie: "pink:Potassium chloride **", nombre: "Potasa (precio mundial, en euros)", corto: "la potasa mundial", en_euros: true}
+          abajo: {serie: "pagados:CLORURO POTASICO 60%", nombre: "Cloruro potásico que paga el agricultor en España", corto: "la potasa en España"}
+          desde: "2010-01"
+          fuentes: "Banco Mundial; Ministerio de Agricultura; BCE"
         - id: urea_trigo
-          arriba: {serie: "pink:Urea", nombre: "Urea", corto: "la urea"}
+          arriba: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea mundial"}
           abajo: {serie: "pink:Wheat, US HRW", nombre: "Trigo", corto: "el trigo"}
           desde: "1990-01"
           fuentes: "Banco Mundial"
         - id: urea_maiz
-          arriba: {serie: "pink:Urea", nombre: "Urea", corto: "la urea"}
+          arriba: {serie: "pink:Urea", nombre: "Urea (precio mundial)", corto: "la urea mundial"}
           abajo: {serie: "pink:Maize", nombre: "Maíz", corto: "el maíz"}
           desde: "1990-01"
           fuentes: "Banco Mundial"
+        - id: maiz_piensos
+          arriba: {serie: "pink:Maize", nombre: "Maíz (en euros)", corto: "el maíz", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1091", nombre: "Piensos (precio de fábrica en España)", corto: "los piensos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: soja_piensos
+          arriba: {serie: "pink:Soybean meal", nombre: "Harina de soja (en euros)", corto: "la harina de soja", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1091", nombre: "Piensos (precio de fábrica en España)", corto: "los piensos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: trigo_piensos
+          arriba: {serie: "pink:Wheat, US HRW", nombre: "Trigo (en euros)", corto: "el trigo", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1091", nombre: "Piensos (precio de fábrica en España)", corto: "los piensos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: piensos_carne
+          arriba: {serie: "eurostat:ES|C1091", nombre: "Piensos (precio de fábrica en España)", corto: "los piensos"}
+          abajo: {serie: "eurostat:ES|C1011", nombre: "Carne (precio de fábrica en España)", corto: "la carne"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+          nota: "El pienso es el principal coste de criar ganado."
+        - id: piensos_aves
+          arriba: {serie: "eurostat:ES|C1091", nombre: "Piensos (precio de fábrica en España)", corto: "los piensos"}
+          abajo: {serie: "eurostat:ES|C1012", nombre: "Carne de ave (precio de fábrica en España)", corto: "la carne de ave"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: piensos_lacteos
+          arriba: {serie: "eurostat:ES|C1091", nombre: "Piensos (precio de fábrica en España)", corto: "los piensos"}
+          abajo: {serie: "eurostat:ES|C1051", nombre: "Lácteos (precio de fábrica en España)", corto: "los lácteos"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: carne_elaborados
+          arriba: {serie: "eurostat:ES|C1011", nombre: "Carne (precio de fábrica en España)", corto: "la carne"}
+          abajo: {serie: "eurostat:ES|C1013", nombre: "Embutidos y elaborados cárnicos (precio de fábrica en España)", corto: "los elaborados cárnicos"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
         - id: maiz_pollo
-          arriba: {serie: "pink:Maize", nombre: "Maíz (pienso)", corto: "el maíz"}
+          arriba: {serie: "pink:Maize", nombre: "Maíz", corto: "el maíz"}
           abajo: {serie: "pink:Chicken **", nombre: "Pollo", corto: "el pollo"}
           desde: "1990-01"
-          fuentes: "Banco Mundial (pollo: precio de EE. UU.)"
+          fuentes: "Banco Mundial"
+          nota: "Precio del pollo de EE. UU."
         - id: soja_pollo
-          arriba: {serie: "pink:Soybean meal", nombre: "Harina de soja (pienso)", corto: "la harina de soja"}
+          arriba: {serie: "pink:Soybean meal", nombre: "Harina de soja", corto: "la harina de soja"}
           abajo: {serie: "pink:Chicken **", nombre: "Pollo", corto: "el pollo"}
           desde: "1990-01"
-          fuentes: "Banco Mundial (pollo: precio de EE. UU.)"
+          fuentes: "Banco Mundial"
+          nota: "Precio del pollo de EE. UU."
         - id: maiz_vacuno
-          arriba: {serie: "pink:Maize", nombre: "Maíz (pienso)", corto: "el maíz"}
+          arriba: {serie: "pink:Maize", nombre: "Maíz", corto: "el maíz"}
           abajo: {serie: "pink:Beef **", nombre: "Vacuno", corto: "el vacuno"}
           desde: "1990-01"
           fuentes: "Banco Mundial"
+        - id: maiz_cerdo
+          arriba: {serie: "pink:Maize", nombre: "Maíz", corto: "el maíz"}
+          abajo: {serie: "fred:PPORKUSDM", nombre: "Cerdo (precio mundial)", corto: "el cerdo"}
+          fuentes: "Banco Mundial; FMI (vía FRED)"
+          nota: "Solo hay datos del cerdo desde 2016: tómalo con cautela."
+        - id: trigo_harina
+          arriba: {serie: "pink:Wheat, US HRW", nombre: "Trigo (en euros)", corto: "el trigo", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1061", nombre: "Harina (precio de fábrica en España)", corto: "la harina"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: harina_pan
+          arriba: {serie: "eurostat:ES|C1061", nombre: "Harina (precio de fábrica en España)", corto: "la harina"}
+          abajo: {serie: "eurostat:ES|C1071", nombre: "Pan y bollería fresca (precio de fábrica en España)", corto: "el pan"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: harina_galletas
+          arriba: {serie: "eurostat:ES|C1061", nombre: "Harina (precio de fábrica en España)", corto: "la harina"}
+          abajo: {serie: "eurostat:ES|C1072", nombre: "Galletas y bollería envasada (precio de fábrica en España)", corto: "las galletas"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: trigo_pasta
+          arriba: {serie: "pink:Wheat, US HRW", nombre: "Trigo (en euros)", corto: "el trigo", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1073", nombre: "Pasta (precio de fábrica en España)", corto: "la pasta"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: azucar_es
+          arriba: {serie: "pink:Sugar, world", nombre: "Azúcar (precio mundial, en euros)", corto: "el azúcar mundial", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1081", nombre: "Azúcar (precio de fábrica en España)", corto: "el azúcar de fábrica"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: azucar_refrescos
+          arriba: {serie: "eurostat:ES|C1081", nombre: "Azúcar (precio de fábrica en España)", corto: "el azúcar de fábrica"}
+          abajo: {serie: "eurostat:ES|C1107", nombre: "Refrescos y aguas (precio de fábrica en España)", corto: "los refrescos"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: cacao_chocolate
+          arriba: {serie: "pink:Cocoa", nombre: "Cacao (en euros)", corto: "el cacao", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1082", nombre: "Chocolate y cacao (precio de fábrica en España)", corto: "el chocolate"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: cafe_es
+          arriba: {serie: "pink:Coffee, Arabica", nombre: "Café arábica (en euros)", corto: "el café en grano", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1083", nombre: "Café y té (precio de fábrica en España)", corto: "el café envasado"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: girasol_aceites
+          arriba: {serie: "pink:Sunflower oil", nombre: "Aceite de girasol (precio mundial, en euros)", corto: "el aceite de girasol", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1041", nombre: "Aceites y grasas (precio de fábrica en España)", corto: "los aceites"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+          nota: "En España este índice incluye sobre todo el aceite de oliva, que tiene su propio mercado."
+        - id: naranja_zumos
+          arriba: {serie: "pink:Orange", nombre: "Naranja (en euros)", corto: "la naranja", en_euros: true}
+          abajo: {serie: "eurostat:ES|C1032", nombre: "Zumos (precio de fábrica en España)", corto: "los zumos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
     - id: construccion
       nombre: "Construcción"
       eslabones:
         - id: gas_cemento
           arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
-          abajo: {serie: "eurostat:EU27_2020|C235", nombre: "Cemento (precio de fábrica en la UE)", corto: "el cemento"}
+          abajo: {serie: "eurostat:EU27_2020|C235", nombre: "Cemento (precio de fábrica en la UE)", corto: "el cemento de la UE"}
           fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: gas_cemento_es
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2351", nombre: "Cemento (precio de fábrica en España)", corto: "el cemento"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: electricidad_cemento
+          arriba: {serie: "eurostat:ES|D351", nombre: "Electricidad (precio de producción) en España", corto: "la electricidad"}
+          abajo: {serie: "eurostat:ES|C2351", nombre: "Cemento (precio de fábrica en España)", corto: "el cemento"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: gas_ladrillos
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2332", nombre: "Ladrillos y tejas (precio de fábrica en España)", corto: "los ladrillos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+          nota: "Los hornos de ladrillos, azulejos y vidrio funcionan con gas."
+        - id: gas_azulejos
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2331", nombre: "Azulejos y baldosas (precio de fábrica en España)", corto: "los azulejos"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: gas_vidrio
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|C231", nombre: "Vidrio (precio de fábrica en España)", corto: "el vidrio"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: gas_yeso
+          arriba: {serie: "pink:Natural gas, Europe", nombre: "Gas natural en Europa (en euros)", corto: "el gas", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2352", nombre: "Cal y yeso (precio de fábrica en España)", corto: "el yeso"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: cemento_hormigon
+          arriba: {serie: "eurostat:ES|C2351", nombre: "Cemento (precio de fábrica en España)", corto: "el cemento"}
+          abajo: {serie: "eurostat:ES|C2363", nombre: "Hormigón fresco (precio de fábrica en España)", corto: "el hormigón"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: cemento_prefabricados
+          arriba: {serie: "eurostat:ES|C2351", nombre: "Cemento (precio de fábrica en España)", corto: "el cemento"}
+          abajo: {serie: "eurostat:ES|C2361", nombre: "Prefabricados de hormigón (precio de fábrica en España)", corto: "los prefabricados de hormigón"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: cemento_mortero
+          arriba: {serie: "eurostat:ES|C2351", nombre: "Cemento (precio de fábrica en España)", corto: "el cemento"}
+          abajo: {serie: "eurostat:ES|C2364", nombre: "Mortero (precio de fábrica en España)", corto: "el mortero"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
         - id: hierro_acero
           arriba: {serie: "pink:Iron ore, cfr spot", nombre: "Mineral de hierro (en euros)", corto: "el mineral de hierro", en_euros: true}
           abajo: {serie: "eurostat:ES|C241", nombre: "Acero (precio de fábrica en España)", corto: "el acero"}
           fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: acero_tubos
+          arriba: {serie: "eurostat:ES|C241", nombre: "Acero (precio de fábrica en España)", corto: "el acero"}
+          abajo: {serie: "eurostat:ES|C242", nombre: "Tubos de acero (precio de fábrica en España)", corto: "los tubos de acero"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: acero_estructuras
+          arriba: {serie: "eurostat:ES|C241", nombre: "Acero (precio de fábrica en España)", corto: "el acero"}
+          abajo: {serie: "eurostat:ES|C2511", nombre: "Estructuras metálicas (precio de fábrica en España)", corto: "las estructuras metálicas"}
+          fuentes: "Eurostat"
+        - id: acero_carpinteria
+          arriba: {serie: "eurostat:ES|C241", nombre: "Acero (precio de fábrica en España)", corto: "el acero"}
+          abajo: {serie: "eurostat:ES|C2512", nombre: "Puertas y ventanas de metal (precio de fábrica en España)", corto: "la carpintería metálica"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: acero_alambre
+          arriba: {serie: "eurostat:ES|C241", nombre: "Acero (precio de fábrica en España)", corto: "el acero"}
+          abajo: {serie: "eurostat:ES|C2593", nombre: "Alambre, mallas y muelles (precio de fábrica en España)", corto: "el alambre"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
         - id: cobre_es
           arriba: {serie: "pink:Copper", nombre: "Cobre mundial (en euros)", corto: "el cobre mundial", en_euros: true}
           abajo: {serie: "eurostat:ES|C2444", nombre: "Cobre (precio de fábrica en España)", corto: "el cobre de fábrica"}
           fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: cobre_cables
+          arriba: {serie: "eurostat:ES|C2444", nombre: "Cobre (precio de fábrica en España)", corto: "el cobre de fábrica"}
+          abajo: {serie: "eurostat:ES|C2732", nombre: "Cables eléctricos (precio de fábrica en España)", corto: "los cables"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
         - id: aluminio_es
           arriba: {serie: "pink:Aluminum", nombre: "Aluminio mundial (en euros)", corto: "el aluminio mundial", en_euros: true}
           abajo: {serie: "eurostat:ES|C2442", nombre: "Aluminio (precio de fábrica en España)", corto: "el aluminio de fábrica"}
+          fuentes: "Banco Mundial; Eurostat; BCE"
+        - id: zinc_es
+          arriba: {serie: "pink:Zinc", nombre: "Zinc mundial (en euros)", corto: "el zinc mundial", en_euros: true}
+          abajo: {serie: "eurostat:ES|C2443", nombre: "Plomo, zinc y estaño (precio de fábrica en España)", corto: "el zinc de fábrica"}
+          desde: "2005-01"
+          fuentes: "Banco Mundial; Eurostat; BCE"
+          nota: "El índice de Eurostat junta plomo, zinc y estaño."
+        - id: plasticos_tubos
+          arriba: {serie: "eurostat:ES|C2016", nombre: "Plásticos en bruto (precio de fábrica en España)", corto: "los plásticos"}
+          abajo: {serie: "eurostat:ES|C2221", nombre: "Tubos y perfiles de plástico (precio de fábrica en España)", corto: "los tubos de plástico"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: plasticos_construccion
+          arriba: {serie: "eurostat:ES|C2016", nombre: "Plásticos en bruto (precio de fábrica en España)", corto: "los plásticos"}
+          abajo: {serie: "eurostat:ES|C2223", nombre: "Plásticos para la construcción (precio de fábrica en España)", corto: "los plásticos de construcción"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: madera_es
+          arriba: {serie: "fred:PSAWOREUSDM", nombre: "Madera aserrada (precio mundial, en euros)", corto: "la madera mundial", en_euros: true}
+          abajo: {serie: "eurostat:ES|C161", nombre: "Madera aserrada (precio de fábrica en España)", corto: "la madera de fábrica"}
+          fuentes: "FMI (vía FRED); Eurostat; BCE"
+          nota: "Solo hay datos de la madera mundial desde 2016: tómalo con cautela."
+        - id: madera_tableros
+          arriba: {serie: "eurostat:ES|C161", nombre: "Madera aserrada (precio de fábrica en España)", corto: "la madera de fábrica"}
+          abajo: {serie: "eurostat:ES|C1621", nombre: "Tableros de madera (precio de fábrica en España)", corto: "los tableros"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: madera_productos
+          arriba: {serie: "eurostat:ES|C161", nombre: "Madera aserrada (precio de fábrica en España)", corto: "la madera de fábrica"}
+          abajo: {serie: "eurostat:ES|C162", nombre: "Productos de madera (precio de fábrica en España)", corto: "los productos de madera"}
+          desde: "2005-01"
+          fuentes: "Eurostat"
+        - id: brent_pinturas
+          arriba: {serie: "pink:Crude oil, Brent", nombre: "Petróleo Brent (en euros)", corto: "el petróleo", en_euros: true}
+          abajo: {serie: "eurostat:ES|C203", nombre: "Pinturas y barnices (precio de fábrica en España)", corto: "las pinturas"}
+          desde: "2005-01"
           fuentes: "Banco Mundial; Eurostat; BCE"
 
 # -----------------------------------------------------------------------------
@@ -1053,8 +1318,24 @@ prueba_historica:
 noticias:
   umbral_publicacion: 55          # solo se publican las que superan esta nota (6-nov-2026: bajado de 60)
   maximo_portada: 5
-  maximo_pagina: 60
-  horas_vigencia: 72              # noticias mas antiguas no se muestran
+  maximo_pagina: 250              # 60 hasta el 10-nov-2026
+  horas_vigencia: 48              # noticias mas antiguas no se muestran (72 hasta el 10-nov-2026)
+  horas_portada: 12               # la portada elige las mejores de las ultimas horas (10-nov-2026)
+  archivo: true                   # guarda cada noticia publicada en data/noticias_archivo/AAAA-MM.json (10-nov-2026)
+  # Consultas a NewsData.io en cada ejecucion (maximo 100 caracteres cada una; 4 x 24 h = 96
+  # creditos al dia, por debajo del tope de presupuesto.newsdata_diario). 10-nov-2026.
+  consultas_newsdata:
+    - "gold OR silver OR copper OR platinum OR palladium OR oro OR plata OR cobre"
+    - "oil OR Brent OR \"natural gas\" OR diesel OR petróleo OR gasolina OR electricidad"
+    - "wheat OR corn OR fertilizer OR soybean OR trigo OR maíz OR fertilizantes OR piensos"
+    - "steel OR aluminium OR \"iron ore\" OR cement OR acero OR aluminio OR cemento"
+  # Temas (10-nov-2026): ademas de los metales, cada noticia se etiqueta con los temas de
+  # la cadena de costes (mismos identificadores que cadena.cadenas). Sus palabras estan
+  # en palabras_clave, mas abajo.
+  temas:
+    energia: "Energía"
+    alimentos: "Abonos y alimentos"
+    construccion: "Construcción"
   comercial_requiere_confirmacion: true   # un medio que vende metales no basta por si solo
   nota_medio_desconocido: 50      # nota para medios que llegan via NewsData.io y no estan en la lista
   pesos:
@@ -1071,6 +1352,18 @@ noticias:
     platino: ["platino", "platinum", "PGM"]
     paladio: ["paladio", "palladium", "PGM"]
     cobre: ["cobre", "copper", "LME"]
+    energia: ["petróleo", "crudo", "Brent", "WTI", "OPEP", "OPEC", "diésel", "gasóleo", "gasolina",
+              "carburantes", "gas natural", "GNL", "LNG", "electricidad", "precio de la luz", "carbón",
+              "oil", "crude", "diesel", "gasoline", "natural gas", "coal", "power prices", "refinery"]
+    alimentos: ["fertilizantes", "abonos", "urea", "potasa", "trigo", "maíz", "cereales", "cebada", "soja",
+                "arroz", "piensos", "aceite de oliva", "girasol", "porcino", "cerdo", "vacuno", "pollo",
+                "huevos", "leche", "lácteos", "azúcar", "cacao", "café", "cosecha", "lonja", "cítricos",
+                "fertilizer", "fertilizers", "wheat", "corn", "maize", "grain", "grains", "soybean",
+                "soybeans", "rice", "feed", "pork", "hog", "hogs", "cattle", "beef", "poultry", "dairy",
+                "sugar", "cocoa", "coffee", "olive oil", "harvest", "crop", "crops"]
+    construccion: ["acero", "aluminio", "zinc", "níquel", "mineral de hierro", "chatarra", "cemento",
+                   "hormigón", "madera", "materiales de construcción", "steel", "aluminium", "aluminum",
+                   "nickel", "iron ore", "scrap", "cement", "lumber", "timber"]
   # Para medios que NO estan en la lista de abajo, el titular debe incluir al menos
   # uno de estos terminos de mercado (ademas del metal).
   contexto_mercado: ["precio", "precios", "cotiza", "cotización", "mercado", "mercados", "onza", "futuros",
@@ -1200,3 +1493,236 @@ medios:
     nota: 80
     idioma: es
     activo: true         # 6-nov-2026: la seccion se llama ahora "mercados-financieros"; direccion nueva validada
+  # ---- 10-nov-2026 (peticion del usuario: muchas mas noticias y de todos los temas de la
+  # cadena de costes). Todos validados ese dia. Solo uso privado: si la web se abre al
+  # publico, revisar las condiciones de cada RSS (FT, CNBC, Investing y Google sobre todo).
+  - nombre: "Financial Times - Petróleo"
+    rss: "https://www.ft.com/oil?format=rss"
+    nota: 90
+    idioma: en
+    activo: true         # RSS para uso personal
+  - nombre: "Financial Times - Energía"
+    rss: "https://www.ft.com/energy?format=rss"
+    nota: 90
+    idioma: en
+    activo: true         # RSS para uso personal
+  - nombre: "Financial Times - Agrícolas"
+    rss: "https://www.ft.com/agricultural-commodities?format=rss"
+    nota: 90
+    idioma: en
+    activo: true         # RSS para uso personal
+  - nombre: "Financial Times - Metales industriales"
+    rss: "https://www.ft.com/industrial-metals?format=rss"
+    nota: 90
+    idioma: en
+    activo: true         # RSS para uso personal
+  - nombre: "Financial Times - Oro"
+    rss: "https://www.ft.com/gold?format=rss"
+    nota: 90
+    idioma: en
+    activo: true         # RSS para uso personal
+  - nombre: "CNBC - Materias primas"
+    rss: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664"
+    nota: 80
+    idioma: en
+    activo: true
+  - nombre: "CNBC - Energía"
+    rss: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19836768"
+    nota: 80
+    idioma: en
+    activo: true
+  - nombre: "EIA (Agencia de energía de EE. UU.)"
+    rss: "https://www.eia.gov/rss/todayinenergy.xml"
+    nota: 95
+    idioma: en
+    activo: true         # organismo oficial
+  - nombre: "OilPrice.com"
+    rss: "https://oilprice.com/rss/main"
+    nota: 65
+    idioma: en
+    activo: true         # web de noticias; no confundir con OilPriceAPI (descartada)
+  - nombre: "Rigzone"
+    rss: "https://www.rigzone.com/news/rss/rigzone_latest.aspx"
+    nota: 65
+    idioma: en
+    activo: true
+  - nombre: "Natural Gas Intelligence"
+    rss: "https://www.naturalgasintel.com/feed/"
+    nota: 70
+    idioma: en
+    activo: true
+  - nombre: "El Periódico de la Energía"
+    rss: "https://elperiodicodelaenergia.com/feed/"
+    nota: 70
+    idioma: es
+    activo: true
+  - nombre: "Expansión - Energía"
+    rss: "https://e00-expansion.uecdn.es/rss/empresas/energia.xml"
+    nota: 80
+    idioma: es
+    activo: true
+  - nombre: "Expansión - Economía"
+    rss: "https://e00-expansion.uecdn.es/rss/economia.xml"
+    nota: 80
+    idioma: es
+    activo: true
+  - nombre: "Europa Press - Economía"
+    rss: "https://www.europapress.es/rss/rss.aspx?ch=00136"
+    nota: 80
+    idioma: es
+    activo: true
+  - nombre: "Investing.com - Economía"
+    rss: "https://www.investing.com/rss/news_14.rss"
+    nota: 60
+    idioma: en
+    activo: true
+  - nombre: "Investing.com España - Economía"
+    rss: "https://es.investing.com/rss/news_14.rss"
+    nota: 60
+    idioma: es
+    activo: true
+  - nombre: "EFEAgro"
+    rss: "https://efeagro.com/feed/"
+    nota: 80
+    idioma: es
+    activo: true         # agencia EFE, sección agroalimentaria
+  - nombre: "Agroinformación"
+    rss: "https://agroinformacion.com/feed/"
+    nota: 65
+    idioma: es
+    activo: true
+  - nombre: "Agropopular"
+    rss: "https://www.agropopular.com/feed/"
+    nota: 65
+    idioma: es
+    activo: true
+  - nombre: "3tres3 (porcino)"
+    rss: "https://www.3tres3.com/rss/ultima-hora"
+    nota: 65
+    idioma: es
+    activo: true
+  - nombre: "Valencia Fruits"
+    rss: "https://valenciafruits.com/feed/"
+    nota: 55
+    idioma: es
+    activo: true         # lonjas y cítricos
+  - nombre: "FreshPlaza España"
+    rss: "https://www.freshplaza.es/rss.xml"
+    nota: 55
+    idioma: es
+    activo: true         # frutas y hortalizas
+  - nombre: "World-Grain"
+    rss: "https://www.world-grain.com/rss/articles"
+    nota: 70
+    idioma: en
+    activo: true         # cereales
+  - nombre: "Feed Navigator"
+    rss: "https://www.feednavigator.com/arc/outboundfeeds/rss/"
+    nota: 65
+    idioma: en
+    activo: true         # piensos
+  - nombre: "Dairy Reporter"
+    rss: "https://www.dairyreporter.com/arc/outboundfeeds/rss/"
+    nota: 60
+    idioma: en
+    activo: true         # lácteos
+  - nombre: "Farm Progress"
+    rss: "https://www.farmprogress.com/rss.xml"
+    nota: 60
+    idioma: en
+    activo: true
+  - nombre: "Mining Weekly"
+    rss: "https://www.miningweekly.com/page/home/feed"
+    nota: 70
+    idioma: en
+    activo: true
+  - nombre: "GMK Center (acero)"
+    rss: "https://gmk.center/en/feed/"
+    nota: 65
+    idioma: en
+    activo: true         # acero y mineral de hierro
+  - nombre: "Hellenic Shipping News"
+    rss: "https://www.hellenicshippingnews.com/feed/"
+    nota: 60
+    idioma: en
+    activo: true         # transporte marítimo y materias primas
+  - nombre: "Recycling Today"
+    rss: "https://www.recyclingtoday.com/rss/"
+    nota: 55
+    idioma: en
+    activo: true         # chatarra y metales
+  # Google Noticias: busquedas de las ultimas 24 horas. 'google: true' = el medio de cada
+  # titular es el que indica Google (no esta en esta lista: nota de medio desconocido y
+  # debe hablar de mercado). Los enlaces pasan por Google. SOLO USO PRIVADO.
+  - nombre: "Google Noticias - oro y plata"
+    rss: "https://news.google.com/rss/search?q=precio%20%28oro%20OR%20plata%20OR%20platino%20OR%20paladio%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - petróleo y gas"
+    rss: "https://news.google.com/rss/search?q=precio%20%28petr%C3%B3leo%20OR%20Brent%20OR%20%22gas%20natural%22%20OR%20di%C3%A9sel%20OR%20gasolina%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - electricidad"
+    rss: "https://news.google.com/rss/search?q=precio%20%28luz%20OR%20electricidad%29%20mercado%20mayorista%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - abonos y cereales"
+    rss: "https://news.google.com/rss/search?q=precio%20%28fertilizantes%20OR%20trigo%20OR%20ma%C3%ADz%20OR%20cereales%20OR%20soja%20OR%20piensos%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - carne, leche y huevos"
+    rss: "https://news.google.com/rss/search?q=precio%20%28porcino%20OR%20vacuno%20OR%20pollo%20OR%20huevos%20OR%20leche%29%20%28lonja%20OR%20ganaderos%20OR%20mercado%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - aceite y frutas"
+    rss: "https://news.google.com/rss/search?q=precio%20%28%22aceite%20de%20oliva%22%20OR%20girasol%20OR%20naranja%20OR%20patata%20OR%20tomate%29%20%28origen%20OR%20lonja%20OR%20mercado%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - metales industriales"
+    rss: "https://news.google.com/rss/search?q=precio%20%28cobre%20OR%20aluminio%20OR%20acero%20OR%20zinc%20OR%20n%C3%ADquel%20OR%20%22mineral%20de%20hierro%22%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - construcción"
+    rss: "https://news.google.com/rss/search?q=precio%20%28cemento%20OR%20hormig%C3%B3n%20OR%20madera%20OR%20%22materiales%20de%20construcci%C3%B3n%22%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - gold and silver"
+    rss: "https://news.google.com/rss/search?q=%28gold%20OR%20silver%20OR%20platinum%20OR%20palladium%29%20price%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
+  - nombre: "Google Noticias - oil and gas"
+    rss: "https://news.google.com/rss/search?q=%28oil%20OR%20Brent%20OR%20%22natural%20gas%22%20OR%20LNG%29%20prices%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
+  - nombre: "Google Noticias - metals"
+    rss: "https://news.google.com/rss/search?q=%28copper%20OR%20aluminium%20OR%20steel%20OR%20%22iron%20ore%22%20OR%20nickel%20OR%20zinc%29%20prices%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
+  - nombre: "Google Noticias - crops and fertilizer"
+    rss: "https://news.google.com/rss/search?q=%28wheat%20OR%20corn%20OR%20soybean%20OR%20fertilizer%20OR%20urea%29%20prices%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
