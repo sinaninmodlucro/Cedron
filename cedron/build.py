@@ -375,6 +375,35 @@ def resumen_previsiones(cadena: dict | None, metales: dict | None, apoyo: dict |
     return filas
 
 
+def datos_historial(cfg: dict) -> dict:
+    """Pagina «Previsiones»: cada prevision apuntada, con la de los futuros al lado."""
+    from cedron import seguimiento
+    nombres = {}
+    for c in (leer("cadena.json") or {}).get("cadenas", []):
+        for e in c["eslabones"]:
+            nombres[("cadena", e["id"])] = f"{e['arriba']} → {e['abajo']}"
+    for a in cfg["activos"]:
+        nombres[("metales", a["id"])] = a["nombre"]
+    for g in (cfg.get("apoyo") or {}).get("grupos", []):
+        for m in g.get("materias", []):
+            for amb in (m.get("ambitos") or {}):
+                nombres[("apoyo", f"{m['id']}:{amb}")] = f"{m['nombre']} ({apoyo.NOMBRES_AMBITO[amb]})"
+    grupos = []
+    for gid, titulo in (("metales", "Metales"), ("apoyo", "Materias primas de apoyo"), ("cadena", "Cadena de costes")):
+        registro = leer(seguimiento.ARCHIVOS[gid], []) or []
+        futuros = {(r["id"][len("futuros:"):], r["plazo"], r["desde"]): r for r in registro if r["id"].startswith("futuros:")}
+        filas = []
+        for r in registro:
+            if r["id"].startswith("futuros:"):
+                continue
+            f = futuros.get((r["id"], r["plazo"], r["desde"]))
+            filas.append({**r, "nombre": nombres.get((gid, r["id"]), r["id"]), "a_tiempo": seguimiento.a_tiempo(r),
+                          "futuros": f["previsto"] if f else None})
+        filas.sort(key=lambda r: (r["real"] is None, r["vence"], r["nombre"], r["plazo"]))
+        grupos.append({"id": gid, "titulo": titulo, "filas": filas})
+    return {"grupos": grupos, "resumen": leer("previsiones_resumen.json") or {}}
+
+
 def datos_cadena(cadena: dict | None) -> dict | None:
     """Prepara la cadena de costes: todo en «por cada 10 % que sube el precio de arriba»."""
     if not cadena or not cadena.get("cadenas"):
@@ -523,12 +552,19 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
            filtros_seccion=[("preciosos", "Metales preciosos", [i for i in ids if i in preciosos]),
                             ("materias", "Materias primas", [i for i in ids if i not in preciosos])],
            balance=[(i, bal[i]) for i in ids if i in bal])
-    pagina("cadena.html", "cadena.html", seccion="cadena", cadena=datos_cadena(leer("cadena.json")),
+    pagina("previsiones.html", "previsiones.html", seccion="previsiones", hist=datos_historial(cfg))
+    mats = ncfg.get("materias") or {}
+    noticias_materia = {k: sorted([n for n in noticias if k in (n.get("materias") or news.materias(n["titulo"], mats))],
+                                  key=lambda n: (n.get("impacto") or 0, n["fecha"]), reverse=True) for k in mats}
+    pagina("cadena.html", "cadena.html", seccion="cadena", noticias_materia=noticias_materia,
+           nombres_materia={k: v["nombre"] for k, v in mats.items()},
+           materia_de_serie=ncfg.get("materia_de_serie") or {}, cadena=datos_cadena(leer("cadena.json")),
            noticias_tema={t: [n for n in noticias if t in n["activos"]][:6] for t in temas})
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],
            prueba=datos_prueba(leer("prueba_historica.json"), cfg),
-           resumen_previsiones=resumen_previsiones(leer("cadena.json"), prev_metales, leer("apoyo_prevision.json")))
+           resumen_previsiones=resumen_previsiones(leer("cadena.json"), prev_metales, leer("apoyo_prevision.json")),
+           candidatas=(leer("prevision/candidatas.json") or {}).get("filas") or [])
     pagina("fuentes.html", "fuentes.html", seccion="fuentes", fuentes_estado=estado.get("fuentes", {}),
            pink_consultado=pink.get("consultado"))
     pagina("legal.html", "legal.html", seccion="")

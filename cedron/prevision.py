@@ -35,7 +35,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prevision")
 
-VERSION = 2
+VERSION = 3
 MINIMO = 36           # casos minimos para estimar un calculo
 
 
@@ -105,7 +105,7 @@ def combinar(lp: dict[int, float], rasgos: dict[str, dict[int, list[float]]], h:
     orden = sorted(ys)
     estado = {"anio": None, "betas": {}}
 
-    def prever(t: int):
+    def prever(t: int, final: bool = False):
         pasado = [ys[n] for n in orden if n + h <= t]
         if len(pasado) < MINIMO:
             return None
@@ -121,8 +121,13 @@ def combinar(lp: dict[int, float], rasgos: dict[str, dict[int, list[float]]], h:
         piezas = {}
         for k, r in rasgos.items():
             b = estado["betas"].get(k)
-            if b and t in r:
-                piezas[k] = min(max(b[0] + sum(c * x for c, x in zip(b[1:], r[t])), lo), hi)
+            x = r.get(t)
+            if x is None and final and r and max(r) > t:
+                # Prevision de hoy de un precio que se publica con retraso: vale el dato mas
+                # reciente que ya se conoce (p. ej. la curva de futuros de hoy). Nunca en la prueba.
+                x = r[max(r)]
+            if b and x is not None:
+                piezas[k] = min(max(b[0] + sum(c * v for c, v in zip(b[1:], x)), lo), hi)
         for k, e in externas.items():
             if t in e:
                 piezas[k] = min(max(media + e[t], lo), hi)
@@ -157,7 +162,7 @@ def combinar(lp: dict[int, float], rasgos: dict[str, dict[int, list[float]]], h:
     salida = {"prueba": prueba, "casos": por_calculo}
     ultimo = max(lp) if ultimo is None else ultimo
     estado["anio"] = None                      # la prevision de hoy usa todo lo conocido
-    p = prever(ultimo)
+    p = prever(ultimo, final=True)
     if p:
         salida["prevision"] = {"media": p[0], "piezas": p[1], "total": p[2], "usadas": p[3]}
     return salida
@@ -245,7 +250,9 @@ def prever_metal(lp: dict[int, float], rasgos: dict, plazos, corte: str, remuest
 
 
 def descargar(cfg: dict) -> dict:
+    from cedron import indices
     from cedron import sources as src
+    indices.descargar()        # futuros de la EIA e indices de noticias (para los calculos extra)
     clave = os.environ.get("FRED_KEY", "")
     macro = {}
     for s in list(FRED_MATERIAS) + list(FRED_DOLAR) + list(FRED_TIPOS):
@@ -273,6 +280,8 @@ def ejecutar(cfg: dict, descargar_datos: bool = True) -> dict:
         serie = ind.serie_mensual([tuple(x) for x in pink.get(a.get("pink_sheet") or "", [])], [], factor)
         logs[a["id"]] = {num(m): math.log(v) for m, v in serie if v and v > 0 and num(m) >= desde}
     registro = leer("metales_previsiones.json", []) or []
+    from cedron.news import balance_reciente
+    recientes = balance_reciente(cfg["noticias"])
     activos = {}
     for aid, lp in logs.items():
         if len(lp) < 240:
@@ -282,7 +291,7 @@ def ejecutar(cfg: dict, descargar_datos: bool = True) -> dict:
                                    str(pcfg.get("corte", "2006-01")), int(pcfg.get("remuestreos", 300)),
                                    bool(pcfg.get("criba", False)))
         precios = {mes(n): math.exp(v) for n, v in lp.items()}
-        cadena.anotar_previsiones(registro, aid, previsiones, precios)
+        cadena.anotar_previsiones(registro, aid, previsiones, precios, recientes.get(aid))
         activos[aid] = {"previsiones": previsiones, "historial": cadena.resumen_previsiones(registro, aid),
                         "futuros": futuros_de(aid, previsiones, registro, precios)}
     resultado = {"activos": activos, "calculado": iso(), "datos_consultados": entrada.get("consultado"),
@@ -327,10 +336,29 @@ def estacion_ciega(lp: dict[int, float], h: int) -> dict[int, float]:
 NOMBRES["estacion"] = "la temporada (lo que suele cambiar en estos meses del año)"
 
 
-def prever_serie(lp: dict[int, float], rasgos: dict, plazos, inicio: int, remuestreos: int = 300) -> dict:
+def calculos_extra(grupo: str, clave: str) -> dict:
+    """Calculos que superaron la prueba a ciegas solo en algunos precios y plazos (10-nov-2026):
+    la pendiente de la curva de futuros del petroleo, a 3 meses, en el petroleo y en los
+    eslabones de la cadena que parten del Brent. Devuelve {plazo: {calculo: rasgo}}."""
+    from cedron import indices
+    petroleo = (grupo == "apoyo" and clave.split(":")[0] in ("brent", "wti")) or                (grupo == "cadena" and clave == "pink:Crude oil, Brent")
+    if not petroleo:
+        return {}
+    series = (leer("prevision/indices.json", {}) or {}).get("series") or {}
+    if not series.get("wti_c1"):
+        return {}
+    return {3: {"futuros_petroleo": indices.pendiente_futuros(series, "wti")}}
+
+
+NOMBRES["futuros_petroleo"] = "la curva de futuros del petróleo"
+
+
+def prever_serie(lp: dict[int, float], rasgos: dict, plazos, inicio: int, remuestreos: int = 300,
+                 extra_por_plazo: dict | None = None) -> dict:
     out = {}
     for h in plazos:
-        c = combinar(lp, rasgos, h, inicio, {"estacion": estacion_ciega(lp, h)}, remuestreos=remuestreos)
+        r = {**rasgos, **((extra_por_plazo or {}).get(h) or {})}
+        c = combinar(lp, r, h, inicio, {"estacion": estacion_ciega(lp, h)}, remuestreos=remuestreos)
         if "prevision" not in c or c["prueba"]["r2"] is None:
             continue
         p, u = c["prevision"], max(lp)
@@ -354,6 +382,8 @@ def ejecutar_apoyo(cfg: dict) -> dict:
     fuentes = apoyo.cargar_fuentes()
     cambio = apoyo.TipoCambio(apoyo.cambio_usd())
     registro = leer("apoyo_previsiones.json", []) or []
+    from cedron.news import balance_reciente
+    recientes = balance_reciente(cfg["noticias"])
     materias = {}
     for g in acfg.get("grupos", []):
         for m in g.get("materias", []):
@@ -369,11 +399,13 @@ def ejecutar_apoyo(cfg: dict) -> dict:
                 orden = sorted(lp)
                 inicio = orden[max(len(orden) // 2, 60)]
                 previsiones = prever_serie(lp, rasgos_generales(lp, macro, a == "global"), plazos,
-                                           inicio, remuestreos)
+                                           inicio, remuestreos, calculos_extra("apoyo", f"{m['id']}:{a}"))
                 if not previsiones:
                     continue
                 ident = f"{m['id']}:{a}"
-                cadena.anotar_previsiones(registro, ident, previsiones, {mes(n): math.exp(v) for n, v in lp.items()})
+                materia = (cfg["noticias"].get("materia_de_apoyo") or {}).get(m["id"])
+                cadena.anotar_previsiones(registro, ident, previsiones, {mes(n): math.exp(v) for n, v in lp.items()},
+                                          recientes.get(f"m:{materia}") if materia else None)
                 fut = futuros_de(m["id"], previsiones, registro, {mes(n): math.exp(v) for n, v in lp.items()},
                                  f"futuros:{ident}") if a == "global" else None
                 materias.setdefault(m["id"], {})[a] = {

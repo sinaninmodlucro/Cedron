@@ -2,5 +2,6 @@ requests>=2.31,<3
 PyYAML>=6.0,<7
 Jinja2>=3.1,<4
 openpyxl>=3.1,<4
+xlrd>=2.0,<3          # Excel antiguos (.xls) de la EIA, el indice geopolitico y la Fed de Nueva York
 cryptography>=42
 tzdata; sys_platform == "win32"   # Windows no trae los husos horarios (Europe/Madrid)

@@ -1,0 +1,121 @@
+{
+ "actualizado": "2026-11-10T17:37:59Z",
+ "calendario": [
+  [
+   "2026-12",
+   54
+  ],
+  [
+   "2027-01",
+   40
+  ],
+  [
+   "2027-02",
+   20
+  ],
+  [
+   "2027-07",
+   10
+  ],
+  [
+   "2027-09",
+   54
+  ],
+  [
+   "2027-10",
+   41
+  ],
+  [
+   "2027-11",
+   19
+  ]
+ ],
+ "grupos": {
+  "apoyo": {
+   "futuros": {
+    "a_tiempo": 26,
+    "apuntadas": 26,
+    "atrasadas": {
+     "n": 0
+    },
+    "pendientes": 26,
+    "plazos": {
+     "12": {
+      "n": 0
+     },
+     "3": {
+      "n": 0
+     }
+    }
+   },
+   "nuestras": {
+    "a_tiempo": 99,
+    "apuntadas": 104,
+    "atrasadas": {
+     "n": 0
+    },
+    "pendientes": 99,
+    "plazos": {
+     "12": {
+      "n": 0
+     },
+     "3": {
+      "n": 0
+     }
+    }
+   }
+  },
+  "cadena": {
+   "nuestras": {
+    "a_tiempo": 97,
+    "apuntadas": 102,
+    "atrasadas": {
+     "n": 0
+    },
+    "pendientes": 97,
+    "plazos": {
+     "12": {
+      "n": 0
+     },
+     "3": {
+      "n": 0
+     }
+    }
+   }
+  },
+  "metales": {
+   "futuros": {
+    "a_tiempo": 8,
+    "apuntadas": 8,
+    "atrasadas": {
+     "n": 0
+    },
+    "pendientes": 8,
+    "plazos": {
+     "12": {
+      "n": 0
+     },
+     "3": {
+      "n": 0
+     }
+    }
+   },
+   "nuestras": {
+    "a_tiempo": 8,
+    "apuntadas": 8,
+    "atrasadas": {
+     "n": 0
+    },
+    "pendientes": 8,
+    "plazos": {
+     "12": {
+      "n": 0
+     },
+     "3": {
+      "n": 0
+     }
+    }
+   }
+  }
+ }
+}

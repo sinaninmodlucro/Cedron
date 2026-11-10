@@ -46,6 +46,7 @@
       "vencidas": 0
      },
      "id": "brent_diesel",
+     "materia": "petroleo",
      "meses": 262,
      "mitades": {
       "antes": 0.5495731857020597,
@@ -188,16 +189,21 @@
        "habitual": 0.9520750424961699,
        "piezas": {
         "desfase": -2.4808256879197965,
+        "futuros_petroleo": 0.632091837503812,
         "inercia": -0.0896860804204258,
         "traslado": -2.178970534986968
        },
        "prueba": {
         "acierto_base": 0.5968992248062015,
-        "acierto_direccion": 0.5038759689922481,
+        "acierto_direccion": 0.5271317829457365,
         "calculos": {
          "desfase": {
           "casos": 129,
           "r2": -0.14843084101597648
+         },
+         "futuros_petroleo": {
+          "casos": 101,
+          "r2": -0.0022637311284152695
          },
          "inercia": {
           "casos": 129,
@@ -212,17 +218,18 @@
         "desde": "2015-12",
         "horizonte": 3,
         "intervalo": [
-         -0.09178822398499564,
-         0.1252525152487205
+         -0.07483675642803322,
+         0.10847995516751663
         ],
-        "r2": -0.014596581443343082,
-        "r2_sin_cambio": -0.006002942230943775,
+        "r2": -0.012371584420925341,
+        "r2_sin_cambio": -0.0037967909468312744,
         "valido": false
        },
-       "total": -0.9596983205363285,
+       "total": -0.6433674502542841,
        "traslado": -3.1015168099963297,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -288,6 +295,7 @@
       "vencidas": 0
      },
      "id": "brent_gasolina",
+     "materia": "petroleo",
      "meses": 262,
      "mitades": {
       "antes": 0.3966046676530941,
@@ -430,6 +438,7 @@
        "habitual": 0.8340735475239391,
        "piezas": {
         "desfase": -2.641890145009418,
+        "futuros_petroleo": -0.5162138320394027,
         "inercia": 0.05917915447108957,
         "traslado": 0.583691546853693
        },
@@ -440,6 +449,10 @@
          "desfase": {
           "casos": 129,
           "r2": -0.06660063745447431
+         },
+         "futuros_petroleo": {
+          "casos": 101,
+          "r2": -0.023215957515772434
          },
          "inercia": {
           "casos": 129,
@@ -454,17 +467,18 @@
         "desde": "2015-12",
         "horizonte": 3,
         "intervalo": [
-         -0.13481093213330175,
-         0.12872223652156534
+         -0.12190831396456336,
+         0.1338970937515781
         ],
-        "r2": -0.02344525096082206,
-        "r2_sin_cambio": -0.016546137779167136,
+        "r2": -0.016040699516228996,
+        "r2_sin_cambio": -0.009191500913226625,
         "valido": false
        },
-       "total": -0.3009573262554688,
+       "total": -0.3440458558369164,
        "traslado": -0.24831090509523923,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -530,6 +544,7 @@
       "vencidas": 0
      },
      "id": "brent_calefaccion",
+     "materia": "petroleo",
      "meses": 262,
      "mitades": {
       "antes": 0.8773912927016421,
@@ -672,16 +687,21 @@
        "habitual": 1.3301796874198857,
        "piezas": {
         "desfase": -6.807308435128389,
+        "futuros_petroleo": 0.741906101762968,
         "inercia": 0.2774160134522363,
         "traslado": -4.205881664424405
        },
        "prueba": {
         "acierto_base": 0.5581395348837209,
-        "acierto_direccion": 0.5426356589147286,
+        "acierto_direccion": 0.5503875968992248,
         "calculos": {
          "desfase": {
           "casos": 129,
           "r2": -0.2779227929885384
+         },
+         "futuros_petroleo": {
+          "casos": 101,
+          "r2": -0.009684657506781935
          },
          "inercia": {
           "casos": 129,
@@ -696,17 +716,18 @@
         "desde": "2015-12",
         "horizonte": 3,
         "intervalo": [
-         -0.07281540348361837,
-         0.1886436178105222
+         -0.05990394416807887,
+         0.1742600606802689
         ],
-        "r2": -0.006927578500348197,
-        "r2_sin_cambio": -0.005168767919040418,
+        "r2": -0.006281889480630465,
+        "r2_sin_cambio": -0.004524206730861291,
         "valido": false
        },
-       "total": -2.407675643104823,
+       "total": -1.7857369833790493,
        "traslado": -5.463388468195507,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -772,6 +793,7 @@
       "vencidas": 0
      },
      "id": "brent_refino",
+     "materia": "petroleo",
      "meses": 261,
      "mitades": {
       "antes": 0.8100172365024566,
@@ -914,6 +936,7 @@
        "habitual": 1.292286984769575,
        "piezas": {
         "desfase": -5.6659161086195065,
+        "futuros_petroleo": -1.2058449575739871,
         "inercia": -1.0818627260699043,
         "traslado": 24.711653468105887
        },
@@ -924,6 +947,10 @@
          "desfase": {
           "casos": 128,
           "r2": -0.46059873715593325
+         },
+         "futuros_petroleo": {
+          "casos": 102,
+          "r2": 0.0119281027318755
          },
          "inercia": {
           "casos": 128,
@@ -938,17 +965,18 @@
         "desde": "2015-11",
         "horizonte": 3,
         "intervalo": [
-         -0.23684321135231823,
-         0.1046607574505567
+         -0.2010752486297971,
+         0.12275847097266779
         ],
-        "r2": -0.03757714196961781,
-        "r2_sin_cambio": -0.03994349106725403,
+        "r2": -0.018199786631557524,
+        "r2_sin_cambio": -0.020521942786361658,
         "valido": false
        },
-       "total": 4.197427029858858,
+       "total": 3.093633441873367,
        "traslado": 23.120582208650966,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -1014,6 +1042,7 @@
       "vencidas": 0
      },
      "id": "brent_gas",
+     "materia": "petroleo",
      "meses": 442,
      "mitades": {
       "antes": 0.5121889790033588,
@@ -1156,16 +1185,21 @@
        "habitual": 1.4974280076259339,
        "piezas": {
         "desfase": -9.454535771375772,
+        "futuros_petroleo": 4.446397993270845,
         "inercia": 15.249342186520964,
         "traslado": 6.873877455582389
        },
        "prueba": {
         "acierto_base": 0.5137614678899083,
-        "acierto_direccion": 0.6697247706422018,
+        "acierto_direccion": 0.6605504587155964,
         "calculos": {
          "desfase": {
           "casos": 218,
           "r2": -0.012304483436081037
+         },
+         "futuros_petroleo": {
+          "casos": 191,
+          "r2": 0.01334508489883035
          },
          "inercia": {
           "casos": 218,
@@ -1180,17 +1214,18 @@
         "desde": "2008-06",
         "horizonte": 3,
         "intervalo": [
-         0.018958813851561507,
-         0.1813658751456041
+         0.02460509150834178,
+         0.1675196998118288
         ],
-        "r2": 0.10425241102210214,
-        "r2_sin_cambio": 0.094876141047462,
+        "r2": 0.09205620449363527,
+        "r2_sin_cambio": 0.08255227029027223,
         "valido": true
        },
-       "total": 3.1473178771962207,
+       "total": 3.4058348125621363,
        "traslado": 5.297128758329217,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -1256,6 +1291,7 @@
       "vencidas": 0
      },
      "id": "gas_electricidad",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.09652927887939415,
@@ -1498,6 +1534,7 @@
       "vencidas": 0
      },
      "id": "carbon_electricidad",
+     "materia": "carbon",
      "meses": 261,
      "mitades": {
       "antes": 0.05128669220430494,
@@ -1740,6 +1777,7 @@
       "vencidas": 0
      },
      "id": "gas_gas_es",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.6641666478920677,
@@ -1982,6 +2020,7 @@
       "vencidas": 0
      },
      "id": "brent_urea",
+     "materia": "petroleo",
      "meses": 442,
      "mitades": {
       "antes": 0.4766280728192826,
@@ -2124,16 +2163,21 @@
        "habitual": 0.9133622886322135,
        "piezas": {
         "desfase": 4.608136245673555,
+        "futuros_petroleo": 2.8451840484530866,
         "inercia": 0.20776327645346537,
         "traslado": 11.400064053155834
        },
        "prueba": {
         "acierto_base": 0.47706422018348627,
-        "acierto_direccion": 0.573394495412844,
+        "acierto_direccion": 0.5825688073394495,
         "calculos": {
          "desfase": {
           "casos": 218,
           "r2": 0.09367573254389372
+         },
+         "futuros_petroleo": {
+          "casos": 191,
+          "r2": 0.005805714261763351
          },
          "inercia": {
           "casos": 218,
@@ -2148,17 +2192,18 @@
         "desde": "2008-06",
         "horizonte": 3,
         "intervalo": [
-         -0.01675298953909432,
-         0.16337243463022133
+         -0.0015694198969755657,
+         0.1418266733007948
         ],
-        "r2": 0.08683069371382668,
-        "r2_sin_cambio": 0.0709361901467419,
+        "r2": 0.0761394906544669,
+        "r2_sin_cambio": 0.060058897428001856,
         "valido": false
        },
-       "total": 4.189807947228563,
+       "total": 3.9194840738711934,
        "traslado": 10.391787100036943,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -2224,6 +2269,7 @@
       "vencidas": 0
      },
      "id": "gas_urea",
+     "materia": "gas",
      "meses": 442,
      "mitades": {
       "antes": 1.4861300266483604,
@@ -2466,6 +2512,7 @@
       "vencidas": 0
      },
      "id": "gas_abonos_fabrica",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.4183778929473179,
@@ -2708,6 +2755,7 @@
       "vencidas": 0
      },
      "id": "brent_plasticos",
+     "materia": "petroleo",
      "meses": 261,
      "mitades": {
       "antes": 0.3319880842170924,
@@ -2850,6 +2898,7 @@
        "habitual": 0.4210987584305048,
        "piezas": {
         "desfase": -0.6744329870475019,
+        "futuros_petroleo": 0.26760066482953704,
         "inercia": -0.3745300094460946,
         "traslado": 12.384004647777115
        },
@@ -2860,6 +2909,10 @@
          "desfase": {
           "casos": 128,
           "r2": -0.1718829974220104
+         },
+         "futuros_petroleo": {
+          "casos": 102,
+          "r2": -0.03492713877237885
          },
          "inercia": {
           "casos": 128,
@@ -2874,17 +2927,18 @@
         "desde": "2015-11",
         "horizonte": 3,
         "intervalo": [
-         0.0016973259044235078,
-         0.18807547886675213
+         0.011286733193920262,
+         0.18710084027133844
         ],
-        "r2": 0.07735601485401788,
-        "r2_sin_cambio": 0.06758458747938989,
+        "r2": 0.07810825357503715,
+        "r2_sin_cambio": 0.06834479292012896,
         "valido": true
        },
-       "total": 2.799316512413408,
+       "total": 2.287910304340768,
        "traslado": 11.91274148286723,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -2950,12 +3004,13 @@
      "historial": {
       "aciertos": 0,
       "error_medio": null,
-      "hechas": 2,
-      "proxima": "2026-10",
+      "hechas": 1,
+      "proxima": "2027-07",
       "ultimas": [],
       "vencidas": 0
      },
      "id": "gas_urea_es",
+     "materia": "gas",
      "meses": 259,
      "mitades": {
       "antes": 0.10065138665440394,
@@ -3192,12 +3247,13 @@
      "historial": {
       "aciertos": 0,
       "error_medio": null,
-      "hechas": 2,
-      "proxima": "2026-10",
+      "hechas": 1,
+      "proxima": "2027-07",
       "ultimas": [],
       "vencidas": 0
      },
      "id": "gas_nac_es",
+     "materia": "gas",
      "meses": 259,
      "mitades": {
       "antes": 0.7126654870119852,
@@ -3434,12 +3490,13 @@
      "historial": {
       "aciertos": 0,
       "error_medio": null,
-      "hechas": 2,
-      "proxima": "2026-10",
+      "hechas": 1,
+      "proxima": "2027-07",
       "ultimas": [],
       "vencidas": 0
      },
      "id": "urea_urea_es",
+     "materia": "fertilizantes",
      "meses": 259,
      "mitades": {
       "antes": 0.25727665991513393,
@@ -3681,12 +3738,13 @@
      "historial": {
       "aciertos": 0,
       "error_medio": null,
-      "hechas": 2,
-      "proxima": "2026-10",
+      "hechas": 1,
+      "proxima": "2027-07",
       "ultimas": [],
       "vencidas": 0
      },
      "id": "dap_dap_es",
+     "materia": "fertilizantes",
      "meses": 259,
      "mitades": {
       "antes": 0.8710410031231621,
@@ -3923,12 +3981,13 @@
      "historial": {
       "aciertos": 0,
       "error_medio": null,
-      "hechas": 2,
-      "proxima": "2026-10",
+      "hechas": 1,
+      "proxima": "2027-07",
       "ultimas": [],
       "vencidas": 0
      },
      "id": "potasa_potasa_es",
+     "materia": "fertilizantes",
      "meses": 199,
      "mitades": {
       "antes": 0.0523565788694711,
@@ -4150,6 +4209,7 @@
       "vencidas": 0
      },
      "id": "urea_trigo",
+     "materia": "fertilizantes",
      "meses": 442,
      "mitades": {
       "antes": 0.006008478953081807,
@@ -4256,6 +4316,7 @@
       "vencidas": 0
      },
      "id": "urea_maiz",
+     "materia": "fertilizantes",
      "meses": 442,
      "mitades": {
       "antes": -0.16590070798378612,
@@ -4388,6 +4449,7 @@
       "vencidas": 0
      },
      "id": "maiz_piensos",
+     "materia": "maiz",
      "meses": 261,
      "mitades": {
       "antes": 0.2526357719140638,
@@ -4579,7 +4641,7 @@
       "horizonte": 12,
       "intervalo": [
        -0.09889495287430461,
-       0.24447240154740157
+       0.24447240154740169
       ],
       "r2": 0.11408033502428516,
       "valido": false
@@ -4630,6 +4692,7 @@
       "vencidas": 0
      },
      "id": "soja_piensos",
+     "materia": "soja",
      "meses": 261,
      "mitades": {
       "antes": 0.5133287712347422,
@@ -4872,6 +4935,7 @@
       "vencidas": 0
      },
      "id": "trigo_piensos",
+     "materia": "trigo",
      "meses": 261,
      "mitades": {
       "antes": 0.36832388610770656,
@@ -5068,7 +5132,7 @@
       "horizonte": 12,
       "intervalo": [
        0.05536101981809294,
-       0.22099660705326474
+       0.22099660705326496
       ],
       "r2": 0.14345726345317156,
       "valido": true
@@ -5119,6 +5183,7 @@
       "vencidas": 0
      },
      "id": "piensos_carne",
+     "materia": "piensos",
      "meses": 261,
      "mitades": {
       "antes": 0.5518635787380703,
@@ -5361,6 +5426,7 @@
       "vencidas": 0
      },
      "id": "piensos_aves",
+     "materia": "piensos",
      "meses": 261,
      "mitades": {
       "antes": 0.170426940720147,
@@ -5603,6 +5669,7 @@
       "vencidas": 0
      },
      "id": "piensos_lacteos",
+     "materia": "piensos",
      "meses": 261,
      "mitades": {
       "antes": 0.7061381996927574,
@@ -5845,6 +5912,7 @@
       "vencidas": 0
      },
      "id": "carne_elaborados",
+     "materia": "cerdo",
      "meses": 261,
      "mitades": {
       "antes": 0.1798244684565196,
@@ -6036,7 +6104,7 @@
       "horizonte": 12,
       "intervalo": [
        -0.1920569124641922,
-       0.23300186028396652
+       0.23300186028396663
       ],
       "r2": 0.0895744424126933,
       "valido": false
@@ -6055,8 +6123,8 @@
         "bajadas": 0.2143457438001311,
         "clara": false,
         "diferencia": -0.18912265784572307,
-        "error": 0.17246830071893224,
-        "subidas": 0.025223085954408028
+        "error": 0.17246830071893227,
+        "subidas": 0.025223085954408024
        },
        "3": {
         "bajadas": 0.30307508621086815,
@@ -6069,7 +6137,7 @@
         "bajadas": 0.3525120598766561,
         "clara": false,
         "diferencia": -0.13651448169441321,
-        "error": 0.30829637609124916,
+        "error": 0.30829637609124927,
         "subidas": 0.2159975781822429
        }
       }
@@ -6087,9 +6155,10 @@
       "vencidas": 0
      },
      "id": "maiz_pollo",
+     "materia": "maiz",
      "meses": 442,
      "mitades": {
-      "antes": 0.19637341422572024,
+      "antes": 0.19637341422572022,
       "corte": "2008-06",
       "despues": 0.39018151232494036
      },
@@ -6120,9 +6189,9 @@
        "h": 3
       },
       {
-       "alto": 0.40637386869568487,
+       "alto": 0.4063738686956848,
        "b": 0.21818902284407096,
-       "bajo": 0.030004176992457054,
+       "bajo": 0.030004176992457082,
        "h": 4
       },
       {
@@ -6157,7 +6226,7 @@
       },
       {
        "alto": 0.33252809438765396,
-       "b": 0.17828593715383118,
+       "b": 0.17828593715383115,
        "bajo": 0.024043779920008362,
        "h": 10
       },
@@ -6303,9 +6372,10 @@
       "vencidas": 0
      },
      "id": "soja_pollo",
+     "materia": "soja",
      "meses": 442,
      "mitades": {
-      "antes": 0.016701549372587457,
+      "antes": 0.01670154937258746,
       "corte": "2008-06",
       "despues": 0.15289862934919274
      },
@@ -6336,15 +6406,15 @@
        "h": 3
       },
       {
-       "alto": 0.23840104495360054,
-       "b": 0.03369296906027881,
-       "bajo": -0.17101510683304288,
+       "alto": 0.2384010449536005,
+       "b": 0.0336929690602788,
+       "bajo": -0.1710151068330429,
        "h": 4
       },
       {
-       "alto": 0.22705981644090778,
-       "b": 0.005168262543864318,
-       "bajo": -0.21672329135317914,
+       "alto": 0.22705981644090775,
+       "b": 0.005168262543864306,
+       "bajo": -0.21672329135317916,
        "h": 5
       },
       {
@@ -6384,9 +6454,9 @@
        "h": 11
       },
       {
-       "alto": 0.42775245457729305,
+       "alto": 0.4277524545772931,
        "b": 0.2484363358202413,
-       "bajo": 0.06912021706318952,
+       "bajo": 0.06912021706318949,
        "h": 12
       }
      ]
@@ -6409,6 +6479,7 @@
       "vencidas": 0
      },
      "id": "maiz_vacuno",
+     "materia": "maiz",
      "meses": 442,
      "mitades": {
       "antes": -0.12097836691516374,
@@ -6541,6 +6612,7 @@
       "vencidas": 0
      },
      "id": "maiz_cerdo",
+     "materia": "maiz",
      "meses": 119,
      "mitades": {
       "antes": 1.8063876757195028,
@@ -6783,6 +6855,7 @@
       "vencidas": 0
      },
      "id": "trigo_harina",
+     "materia": "trigo",
      "meses": 261,
      "mitades": {
       "antes": 0.3095045955226449,
@@ -7030,6 +7103,7 @@
       "vencidas": 0
      },
      "id": "harina_pan",
+     "materia": "trigo",
      "meses": 261,
      "mitades": {
       "antes": 0.6387617587877841,
@@ -7272,6 +7346,7 @@
       "vencidas": 0
      },
      "id": "harina_galletas",
+     "materia": "trigo",
      "meses": 261,
      "mitades": {
       "antes": 0.6544010709036452,
@@ -7488,6 +7563,7 @@
       "vencidas": 0
      },
      "id": "trigo_pasta",
+     "materia": "trigo",
      "meses": 261,
      "mitades": {
       "antes": 0.20857518925169174,
@@ -7594,6 +7670,7 @@
       "vencidas": 0
      },
      "id": "azucar_es",
+     "materia": "azucar",
      "meses": 261,
      "mitades": {
       "antes": 0.042258118227211226,
@@ -7700,6 +7777,7 @@
       "vencidas": 0
      },
      "id": "azucar_refrescos",
+     "materia": "azucar",
      "meses": 261,
      "mitades": {
       "antes": 0.04187146215398757,
@@ -7797,25 +7875,25 @@
       "clara": false,
       "plazos": {
        "1": {
-        "bajadas": 0.018414875501528098,
+        "bajadas": 0.01841487550152809,
         "clara": false,
-        "diferencia": 0.012240096338981824,
+        "diferencia": 0.012240096338981831,
         "error": 0.031804127654494016,
         "subidas": 0.03065497184050992
        },
        "3": {
-        "bajadas": 0.05092171437951212,
+        "bajadas": 0.05092171437951214,
         "clara": false,
-        "diferencia": 0.05392816709638601,
-        "error": 0.05917644061605431,
+        "diferencia": 0.053928167096385995,
+        "error": 0.059176440616054315,
         "subidas": 0.10484988147589813
        },
        "6": {
-        "bajadas": 0.09545424429267914,
+        "bajadas": 0.09545424429267915,
         "clara": false,
-        "diferencia": 0.06277078299062401,
-        "error": 0.0740541960600829,
-        "subidas": 0.15822502728330315
+        "diferencia": 0.06277078299062397,
+        "error": 0.07405419606008289,
+        "subidas": 0.15822502728330312
        }
       }
      },
@@ -7832,11 +7910,12 @@
       "vencidas": 0
      },
      "id": "cacao_chocolate",
+     "materia": "cacao",
      "meses": 261,
      "mitades": {
       "antes": 0.07439816379686208,
       "corte": "2015-11",
-      "despues": 0.13292983364629934
+      "despues": 0.13292983364629937
      },
      "nota": "",
      "pendiente": {
@@ -7854,7 +7933,7 @@
       {
        "alto": 0.04203413371887629,
        "b": 0.02465091664824065,
-       "bajo": 0.007267699577605008,
+       "bajo": 0.0072676995776050045,
        "h": 1
       },
       {
@@ -7864,27 +7943,27 @@
        "h": 2
       },
       {
-       "alto": 0.11401999977423509,
+       "alto": 0.1140199997742351,
        "b": 0.0773868192497266,
-       "bajo": 0.0407536387252181,
+       "bajo": 0.040753638725218096,
        "h": 3
       },
       {
-       "alto": 0.1285030351030787,
+       "alto": 0.12850303510307873,
        "b": 0.09306149740453602,
-       "bajo": 0.05761995970599333,
+       "bajo": 0.057619959705993325,
        "h": 4
       },
       {
-       "alto": 0.14961318510885177,
-       "b": 0.11222608699891036,
+       "alto": 0.14961318510885174,
+       "b": 0.11222608699891035,
        "bajo": 0.07483898888896895,
        "h": 5
       },
       {
-       "alto": 0.16632114239798404,
+       "alto": 0.166321142397984,
        "b": 0.12562459077833021,
-       "bajo": 0.08492803915867639,
+       "bajo": 0.0849280391586764,
        "h": 6
       },
       {
@@ -7900,9 +7979,9 @@
        "h": 8
       },
       {
-       "alto": 0.2290737074919201,
+       "alto": 0.22907370749192008,
        "b": 0.1717142838122434,
-       "bajo": 0.11435486013256671,
+       "bajo": 0.11435486013256675,
        "h": 9
       },
       {
@@ -7912,15 +7991,15 @@
        "h": 10
       },
       {
-       "alto": 0.28009061223263937,
+       "alto": 0.2800906122326394,
        "b": 0.20503551524857877,
-       "bajo": 0.12998041826451817,
+       "bajo": 0.12998041826451814,
        "h": 11
       },
       {
-       "alto": 0.3288015342607909,
+       "alto": 0.32880153426079095,
        "b": 0.2376202556116205,
-       "bajo": 0.14643897696245012,
+       "bajo": 0.14643897696245006,
        "h": 12
       }
      ],
@@ -7941,7 +8020,7 @@
         "calculos": {
          "desfase": {
           "casos": 119,
-          "r2": -0.40925357871498713
+          "r2": -0.4092535787149143
          },
          "inercia": {
           "casos": 119,
@@ -7959,8 +8038,8 @@
          -0.07521035835186485,
          0.2854587055273975
         ],
-        "r2": 0.06900611675966617,
-        "r2_sin_cambio": 0.2989476912210123,
+        "r2": 0.06900611675967883,
+        "r2_sin_cambio": 0.2989476912210218,
         "valido": false
        },
        "total": 4.725395074236816,
@@ -7996,7 +8075,7 @@
          },
          "traslado": {
           "casos": 128,
-          "r2": 0.28589112602121924
+          "r2": 0.28589112602121936
          }
         },
         "casos": 128,
@@ -8004,14 +8083,14 @@
         "horizonte": 3,
         "intervalo": [
          0.045308170285278115,
-         0.4195023456371193
+         0.4195023456371192
         ],
         "r2": 0.23737374646929255,
         "r2_sin_cambio": 0.3600710934807435,
         "valido": true
        },
        "total": 0.6223962165783137,
-       "traslado": -0.17684811729390404,
+       "traslado": -0.17684811729391514,
        "usadas": [
         "desfase",
         "inercia",
@@ -8079,6 +8158,7 @@
       "vencidas": 0
      },
      "id": "cafe_es",
+     "materia": "cafe",
      "meses": 261,
      "mitades": {
       "antes": 0.08537357473987332,
@@ -8321,6 +8401,7 @@
       "vencidas": 0
      },
      "id": "girasol_aceites",
+     "materia": "girasol",
      "meses": 261,
      "mitades": {
       "antes": 0.5198615004061595,
@@ -8537,6 +8618,7 @@
       "vencidas": 0
      },
      "id": "naranja_zumos",
+     "materia": "naranja",
      "meses": 261,
      "mitades": {
       "antes": 0.02405655023105083,
@@ -8547,19 +8629,19 @@
      "perfil": [
       {
        "alto": 0.010156328801596426,
-       "b": 0.00021818540909096875,
+       "b": 0.00021818540909096886,
        "bajo": -0.009719957983414488,
        "h": 0
       },
       {
        "alto": 0.018929869565791263,
-       "b": 0.00258781307977399,
-       "bajo": -0.013754243406243281,
+       "b": 0.002587813079773989,
+       "bajo": -0.013754243406243283,
        "h": 1
       },
       {
        "alto": 0.030695928737931043,
-       "b": 0.00742184912556674,
+       "b": 0.007421849125566739,
        "bajo": -0.015852230486797566,
        "h": 2
       },
@@ -8570,9 +8652,9 @@
        "h": 3
       },
       {
-       "alto": 0.05582488755394671,
-       "b": 0.02147859528544258,
-       "bajo": -0.01286769698306155,
+       "alto": 0.0558248875539467,
+       "b": 0.021478595285442575,
+       "bajo": -0.012867696983061547,
        "h": 4
       },
       {
@@ -8582,9 +8664,9 @@
        "h": 5
       },
       {
-       "alto": 0.06621218193890041,
-       "b": 0.02790399870878612,
-       "bajo": -0.010404184521328179,
+       "alto": 0.06621218193890042,
+       "b": 0.027903998708786116,
+       "bajo": -0.01040418452132819,
        "h": 6
       },
       {
@@ -8618,9 +8700,9 @@
        "h": 11
       },
       {
-       "alto": 0.09601294941919397,
-       "b": 0.03576721570389954,
-       "bajo": -0.024478518011394883,
+       "alto": 0.09601294941919399,
+       "b": 0.03576721570389955,
+       "bajo": -0.02447851801139489,
        "h": 12
       }
      ]
@@ -8649,6 +8731,7 @@
       "vencidas": 0
      },
      "id": "gas_cemento",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.033039325488583605,
@@ -8755,6 +8838,7 @@
       "vencidas": 0
      },
      "id": "gas_cemento_es",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.0903558029181238,
@@ -8861,6 +8945,7 @@
       "vencidas": 0
      },
      "id": "electricidad_cemento",
+     "materia": "electricidad",
      "meses": 261,
      "mitades": {
       "antes": 0.04901998297193196,
@@ -8967,6 +9052,7 @@
       "vencidas": 0
      },
      "id": "gas_ladrillos",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": -0.019857937101824187,
@@ -9099,6 +9185,7 @@
       "vencidas": 0
      },
      "id": "gas_azulejos",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.03630518847215737,
@@ -9315,6 +9402,7 @@
       "vencidas": 0
      },
      "id": "gas_vidrio",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.018808551773786805,
@@ -9447,6 +9535,7 @@
       "vencidas": 0
      },
      "id": "gas_yeso",
+     "materia": "gas",
      "meses": 261,
      "mitades": {
       "antes": 0.04452477336381055,
@@ -9689,6 +9778,7 @@
       "vencidas": 0
      },
      "id": "cemento_hormigon",
+     "materia": "cemento",
      "meses": 261,
      "mitades": {
       "antes": 0.7261018660917872,
@@ -9931,6 +10021,7 @@
       "vencidas": 0
      },
      "id": "cemento_prefabricados",
+     "materia": "cemento",
      "meses": 261,
      "mitades": {
       "antes": 0.4601930062839767,
@@ -10173,6 +10264,7 @@
       "vencidas": 0
      },
      "id": "cemento_mortero",
+     "materia": "cemento",
      "meses": 261,
      "mitades": {
       "antes": 0.7565943284487534,
@@ -10415,6 +10507,7 @@
       "vencidas": 0
      },
      "id": "hierro_acero",
+     "materia": "acero",
      "meses": 261,
      "mitades": {
       "antes": 0.40720770414485674,
@@ -10657,6 +10750,7 @@
       "vencidas": 0
      },
      "id": "acero_tubos",
+     "materia": "acero",
      "meses": 261,
      "mitades": {
       "antes": 1.4209428203739538,
@@ -10899,6 +10993,7 @@
       "vencidas": 0
      },
      "id": "acero_estructuras",
+     "materia": "acero",
      "meses": 165,
      "mitades": {
       "antes": 0.1860680757085265,
@@ -11141,6 +11236,7 @@
       "vencidas": 0
      },
      "id": "acero_carpinteria",
+     "materia": "acero",
      "meses": 261,
      "mitades": {
       "antes": 0.027231828880395773,
@@ -11383,6 +11479,7 @@
       "vencidas": 0
      },
      "id": "acero_alambre",
+     "materia": "acero",
      "meses": 261,
      "mitades": {
       "antes": 0.9456241108732603,
@@ -11625,6 +11722,7 @@
       "vencidas": 0
      },
      "id": "cobre_es",
+     "materia": "cobre",
      "meses": 261,
      "mitades": {
       "antes": 1.1507121965513942,
@@ -11867,6 +11965,7 @@
       "vencidas": 0
      },
      "id": "cobre_cables",
+     "materia": "cobre",
      "meses": 261,
      "mitades": {
       "antes": 0.7280221789018521,
@@ -12109,6 +12208,7 @@
       "vencidas": 0
      },
      "id": "aluminio_es",
+     "materia": "aluminio",
      "meses": 261,
      "mitades": {
       "antes": 0.6330387481330637,
@@ -12356,6 +12456,7 @@
       "vencidas": 0
      },
      "id": "zinc_es",
+     "materia": "zinc",
      "meses": 261,
      "mitades": {
       "antes": 1.519490488632473,
@@ -12598,6 +12699,7 @@
       "vencidas": 0
      },
      "id": "plasticos_tubos",
+     "materia": "plasticos",
      "meses": 261,
      "mitades": {
       "antes": 0.7077154326854089,
@@ -12840,6 +12942,7 @@
       "vencidas": 0
      },
      "id": "plasticos_construccion",
+     "materia": "plasticos",
      "meses": 261,
      "mitades": {
       "antes": 0.230726431814311,
@@ -13056,6 +13159,7 @@
       "vencidas": 0
      },
      "id": "madera_es",
+     "materia": "madera",
      "meses": 119,
      "mitades": {
       "antes": 0.04018423550874119,
@@ -13188,6 +13292,7 @@
       "vencidas": 0
      },
      "id": "madera_tableros",
+     "materia": "madera",
      "meses": 261,
      "mitades": {
       "antes": 0.7684206150133429,
@@ -13430,6 +13535,7 @@
       "vencidas": 0
      },
      "id": "madera_productos",
+     "materia": "madera",
      "meses": 261,
      "mitades": {
       "antes": 0.4806165415768446,
@@ -13672,6 +13778,7 @@
       "vencidas": 0
      },
      "id": "brent_pinturas",
+     "materia": "petroleo",
      "meses": 261,
      "mitades": {
       "antes": 0.010729154308899735,
@@ -13814,16 +13921,21 @@
        "habitual": 0.5249802868793729,
        "piezas": {
         "desfase": 0.49322382117451546,
+        "futuros_petroleo": 0.7334012333469753,
         "inercia": 0.8002254784035712,
         "traslado": 1.8048764906229309
        },
        "prueba": {
         "acierto_base": 0.625,
-        "acierto_direccion": 0.5703125,
+        "acierto_direccion": 0.625,
         "calculos": {
          "desfase": {
           "casos": 128,
           "r2": -0.3183703207378632
+         },
+         "futuros_petroleo": {
+          "casos": 102,
+          "r2": -0.045551243504320604
          },
          "inercia": {
           "casos": 128,
@@ -13838,17 +13950,18 @@
         "desde": "2015-11",
         "horizonte": 3,
         "intervalo": [
-         -0.02355804107845616,
-         0.15547638617872928
+         -0.007307042896676164,
+         0.1331257469519982
         ],
-        "r2": 0.10892137774608646,
-        "r2_sin_cambio": 0.23193345476033944,
+        "r2": 0.08761808318543063,
+        "r2_sin_cambio": 0.21357104829384999,
         "valido": false
        },
-       "total": 0.90442572128977,
+       "total": 0.8701976103242082,
        "traslado": 1.2732120912543277,
        "usadas": [
         "desfase",
+        "futuros_petroleo",
         "inercia",
         "traslado"
        ],
@@ -13875,7 +13988,7 @@
    "nombre": "Construcción"
   }
  ],
- "calculado": "2026-11-10T17:13:17Z",
+ "calculado": "2026-11-10T17:37:49Z",
  "plazo_asimetria": 3,
  "plazo_principal": 6
 }

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block titulo %}Historial de previsiones | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}Todas nuestras previsiones apuntadas, con lo que pasó de verdad, frente a «lo habitual» y a los futuros.{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Historial de previsiones</h1>
+  <p>Cada mes se apuntan aquí todas nuestras previsiones (metales, materias primas de apoyo y cadena de costes) <strong>y no se vuelven a tocar</strong>. Cada día se comprueba si ya se ha publicado el dato del mes en que vencen y se anota lo que pasó de verdad. Así, con los meses, se ve con datos si acertamos más que decir «lo habitual» (lo que suele cambiar ese precio en ese plazo) y más que el mercado de futuros.</p>
+  <p>Con cada previsión se guarda también <strong>lo que decían las noticias</strong> de esa materia esa semana (cuántas, cuántas importantes, cuántas apuntaban al alza y a la baja). Así se podrá medir si las noticias se adelantan a los precios y si conviene meterlas en la previsión.</p>
+  <p class="secundario">Solo cuentan las previsiones <strong>hechas a tiempo</strong>: las que vencen después del mes en que se apuntaron. Cuando un dato se publica con meses de retraso, la previsión puede apuntarse con el plazo ya pasado; esas se separan como «atrasadas», porque se parecen más a adivinar un dato ya ocurrido que a prever.</p>
+</div>
+
+{% set res = hist.resumen %}
+{% if res.calendario %}
+<section class="bloque" aria-labelledby="t-cal">
+  <h2 id="t-cal">Cuándo se podrán comprobar</h2>
+  <div class="desplazable"><table class="tabla tabla--compacta">
+    <thead><tr><th>Mes del dato</th><th class="num">Previsiones que vencen</th></tr></thead>
+    <tbody>{% for m, n in res.calendario %}<tr><th scope="row">{{ m|mes }}</th><td class="num">{{ n }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+  <p class="pequeno secundario">Cada dato llega con su retraso habitual (los precios de fábrica, uno o dos meses; los abonos de España, unos tres), así que el resultado aparece unas semanas después del mes indicado.</p>
+</section>
+{% endif %}
+
+<nav class="vistas vistas--grupos" aria-label="Grupos de previsiones" data-clave="cedron-previsiones">
+  {% for g in hist.grupos %}<a href="#{{ g.id }}" data-grupo="{{ g.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ g.titulo }}</a>{% endfor %}
+  <a href="#todas" data-grupo="todas" aria-pressed="false">Todas</a>
+</nav>
+<p class="pequeno secundario pista-grupos">Pulsa varios grupos para verlos juntos; vuelve a pulsar uno para quitarlo.</p>
+
+{% for g in hist.grupos %}{% set r = (res.grupos or {}).get(g.id) or {} %}
+<section class="bloque" aria-labelledby="t-{{ g.id }}" data-grupo="{{ g.id }}">
+  <h2 id="t-{{ g.id }}">{{ g.titulo }}</h2>
+  {% set nu = r.nuestras %}
+  {% if nu %}
+  <p>{{ nu.apuntadas }} previsiones apuntadas, {{ nu.a_tiempo }} hechas a tiempo; {{ nu.pendientes }} esperan su dato.</p>
+  <div class="desplazable"><table class="tabla tabla--compacta">
+    <thead><tr><th>Plazo</th><th class="num">Comprobadas</th><th class="num">Acertamos si subía o bajaba</th><th class="num">«Lo habitual» acertó</th><th class="num">Error medio (nuestro / habitual)</th><th class="num">Más cerca que lo habitual</th></tr></thead>
+    <tbody>
+    {% for k, etq in (('3', '3 meses'), ('12', '1 año')) %}{% set m = nu.plazos[k] %}
+      <tr><th scope="row">{{ etq }}</th>
+      {% if m.n %}<td class="num">{{ m.n }}</td><td class="num">{{ m.aciertos }} de {{ m.n }}</td><td class="num">{{ m.aciertos_habitual }} de {{ m.n }}</td><td class="num">{{ m.error|numero(1) }} / {{ m.error_habitual|numero(1) }} puntos</td><td class="num">{{ m.mejor_que_habitual }} de {{ m.n }}</td>
+      {% else %}<td class="num">0</td><td colspan="4" class="secundario">Todavía ninguna ha vencido.</td>{% endif %}</tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% for k, etq in (('3', 'a 3 meses'), ('12', 'a 1 año')) %}{% set m = nu.plazos[k] %}{% if m.con_noticias %}
+  <p class="pequeno"><strong>Noticias frente a nuestra previsión ({{ etq }}):</strong> en {{ m.con_noticias }} casos los titulares de esa semana apuntaban claramente a un lado. Las noticias acertaron la dirección {{ m.aciertos_noticias }} veces; nuestra previsión, {{ m.aciertos_nuestra_con_noticias }}.</p>
+  {% endif %}{% endfor %}
+  {% if nu.atrasadas.n %}<p class="pequeno secundario">Atrasadas (no cuentan arriba): {{ nu.atrasadas.aciertos }} de {{ nu.atrasadas.n }} acertaron si subía o bajaba.</p>{% endif %}
+  {% if r.frente_futuros %}{% set ff = r.frente_futuros %}<p><strong>Frente a los futuros</strong> (mismas materias, plazos y meses): acertamos la dirección {{ ff.nuestra }} de {{ ff.n }} veces; los futuros, {{ ff.futuros }}. Nuestra previsión quedó más cerca del dato real {{ ff.nuestra_mas_cerca }} de {{ ff.n }} veces.</p>
+  {% elif r.futuros %}<p class="pequeno secundario">También se apuntan {{ r.futuros.apuntadas }} previsiones de los futuros para compararlas cuando venzan.</p>{% endif %}
+  {% else %}
+  <p class="vacio">Todavía no hay previsiones apuntadas en este grupo.</p>
+  {% endif %}
+
+  {% if g.filas %}
+  <details class="pequeno"{% if g.filas|selectattr('real', 'ne', none)|list %} open{% endif %}>
+    <summary>Ver las {{ g.filas|length }} previsiones</summary>
+    <div class="desplazable"><table class="tabla tabla--compacta">
+      <thead><tr><th>Qué</th><th>Plazo</th><th>Desde → vence</th><th class="num">Nuestra</th><th class="num">Lo habitual</th><th class="num">Futuros</th><th class="num">Real</th><th>¿Acertó?</th></tr></thead>
+      <tbody>
+      {% for f in g.filas %}
+        <tr{% if not f.a_tiempo %} class="secundario"{% endif %}>
+          <th scope="row">{{ f.nombre }}</th><td>{{ '3 meses' if f.plazo == 3 else '1 año' }}</td>
+          <td>{{ f.desde|mes }} → {{ f.vence|mes }}{% if not f.a_tiempo %} (atrasada){% endif %}</td>
+          <td class="num cifra">{{ f.previsto|porcentaje }}</td>
+          <td class="num cifra">{{ f.habitual|porcentaje if f.habitual is not none else '—' }}</td>
+          <td class="num cifra">{{ f.futuros|porcentaje if f.futuros is not none else '—' }}</td>
+          <td class="num cifra">{{ f.real|porcentaje if f.real is not none else 'pendiente' }}</td>
+          <td>{% if f.real is not none %}{{ '✓' if (f.previsto > 0) == (f.real > 0) else '✗' }}{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+  </details>
+  {% endif %}
+</section>
+{% endfor %}
+{% if res.actualizado %}<p class="pequeno secundario">Comprobado por última vez {{ res.actualizado|fecha_hora }}. <a href="{{ raiz }}metodologia.html#previsiones">Cómo se hacen las previsiones</a>.</p>{% endif %}
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/vistas.js" defer></script>
+{% endblock %}

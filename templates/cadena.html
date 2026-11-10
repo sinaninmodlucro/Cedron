@@ -61,6 +61,13 @@
       {% else %}
         <p class="eslabon__frase secundario">Todavía no hay datos suficientes para medirlo.</p>
       {% endif %}
+      {% set mt = e.materia %}{% set nm = noticias_materia[mt] if mt and noticias_materia else [] %}
+      {% if mt %}
+      <details class="pequeno noticias-eslabon">
+        <summary><strong>Noticias de {{ nombres_materia[mt]|lower }}</strong> (lo que mueve el precio de arriba), últimas {{ cfg.noticias.horas_vigencia }} horas: {{ nm|length }}{% if nm %}, {{ nm|selectattr('nivel', 'in', ['alta', 'media'])|list|length }} importantes; {{ nm|selectattr('sentido', 'equalto', 'alza')|list|length }} apuntan al alza y {{ nm|selectattr('sentido', 'equalto', 'baja')|list|length }} a la baja{% endif %}.</summary>
+        {% if nm %}<ul class="noticias">{% for n in nm[:5] %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>{% else %}<p class="secundario">Ninguna en este momento.</p>{% endif %}
+      </details>
+      {% endif %}
       <p class="pequeno secundario">{% if e.desde %}Datos mensuales de {{ e.desde|mes }} a {{ e.hasta|mes }}. {% endif %}Fuentes: {{ e.fuentes }}.</p>
     </li>
   {% endfor %}

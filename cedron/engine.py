@@ -236,7 +236,8 @@ def actualizar_noticias(cfg, estado: Estado) -> None:
         # Balance de titulares del dia (UTC), por metal y tema: se sobrescribe durante el dia
         hoy = iso()[:10]
         indice = leer("noticias_indice.json", {}) or {}
-        indice[hoy] = balance(seleccion, hoy)
+        indice[hoy] = {**balance(seleccion, hoy),
+                       **{f"m:{k}": v for k, v in balance(seleccion, hoy, "materias").items()}}
         escribir("noticias_indice.json", indice)
 
 
@@ -256,6 +257,7 @@ def archivar_noticias(seleccion: list[dict]) -> None:
         nuevas = [{"fecha": n["fecha"], "titulo": n["titulo"], "medio": n["medio"], "enlace": n["enlace"],
                    "temas": n["activos"], "nota": n["nota"], "idioma": n.get("idioma", ""),
                    "tipo": n.get("tipo"), "impacto": n.get("impacto"), "sentido": n.get("sentido", ""),
+                   "materias": n.get("materias", []),
                    "visto": iso()} for n in lista if n["enlace"] not in vistos]
         if nuevas:
             escribir(ruta, sorted(archivo + nuevas, key=lambda a: a["fecha"]))
@@ -334,8 +336,24 @@ def actualizar_cadena(cfg, estado: Estado, forzar=False) -> None:
         cadena.descargar(cfg, estado)
         cadena.ejecutar(cfg)
         estado.set("cadena_mes", mes)
+        estado.registrar_fuente("Cadena de costes (cálculo y previsiones)", True)
     except (KeyError, ValueError, ZeroDivisionError) as e:
+        estado.registrar_fuente("Cadena de costes (cálculo y previsiones)", False, str(e))
         log.warning("Cadena de costes: %s", e)
+
+
+def revisar_previsiones(cfg, estado: Estado, forzar=False) -> None:
+    """Cada dia: pone el resultado real a las previsiones vencidas y resume el historial."""
+    from cedron import seguimiento
+    if not forzar and not _una_vez_al_dia(estado, "revision_dia"):
+        return
+    try:
+        seguimiento.revisar(cfg)
+        estado.set("revision_dia", date.today().isoformat())
+        estado.registrar_fuente("Historial de previsiones", True)
+    except (KeyError, ValueError, ZeroDivisionError, TypeError) as e:
+        estado.registrar_fuente("Historial de previsiones", False, str(e))
+        log.warning("Historial de previsiones: %s", e)
 
 
 def actualizar_futuros(cfg, estado: Estado, forzar=False) -> None:
@@ -352,6 +370,7 @@ def actualizar_futuros(cfg, estado: Estado, forzar=False) -> None:
         for ident, curva in curvas.items():
             contratos[ident] = {"curva": [list(x) for x in curva], "consultado": iso()}
         estado.registrar_fuente("Futuros (Yahoo Finance)", True)
+        estado.set("futuros_dia", date.today().isoformat())
     except src.FuenteError as e:
         estado.registrar_fuente("Futuros (Yahoo Finance)", False, str(e))
         log.warning("Futuros: %s", e)
@@ -424,6 +443,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     actualizar_futuros(cfg, estado, forzar)
     actualizar_cadena(cfg, estado, forzar)
     actualizar_previsiones(cfg, estado, forzar)
+    revisar_previsiones(cfg, estado, forzar)
     estado.set("ultima_ejecucion", iso())
     avisos = revisar_salud(cfg, estado)
     estado.guardar()

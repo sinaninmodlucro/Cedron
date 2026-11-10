@@ -84,6 +84,9 @@ class Cadena(unittest.TestCase):
         registro = cadena.anotar_previsiones([], "x", r["previsiones"], self.abajo)
         cadena.anotar_previsiones(registro, "x", r["previsiones"], self.abajo)
         self.assertEqual(len(registro), 2)
+        self.assertTrue(all(r["apuntada"] for r in registro))
+        for r in registro:                       # los datos de prueba son de los anios noventa
+            r["apuntada"] = "1990-01-01"
         futuro = {**self.abajo, p3["vence"]: p3["base"] * 1.10}
         cadena.anotar_previsiones(registro, "x", {}, futuro)
         hecho = [x for x in registro if x["plazo"] == 3][0]
@@ -138,6 +141,22 @@ class Cadena(unittest.TestCase):
         casos = [(0.1 * (i % 3 - 1), 0.1 * (i % 3 - 1), 0.0) for i in range(60)]   # prevision perfecta
         self.assertFalse(prevision.evaluar_casos(casos, remuestreos=50)["valido"])
         self.assertTrue(prevision.evaluar_casos(casos * 2, remuestreos=50)["valido"])
+
+    def test_seguimiento(self):
+        from cedron import seguimiento
+        reg = [{"id": "x", "plazo": 3, "desde": "2026-10", "vence": "2027-01", "base": 100.0,
+                "previsto": 5.0, "habitual": 1.0, "real": None, "apuntada": "2026-11-10"},
+               {"id": "futuros:x", "plazo": 3, "desde": "2026-10", "vence": "2027-01", "base": 100.0,
+                "previsto": -2.0, "habitual": 1.0, "real": None, "apuntada": "2026-11-10"},
+               {"id": "x", "plazo": 3, "desde": "2026-07", "vence": "2026-10", "base": 100.0,
+                "previsto": 1.0, "habitual": 1.0, "real": None, "apuntada": "2026-11-10"}]
+        self.assertEqual(seguimiento.rellenar(reg, {"x": {"2026-10": 99.0, "2027-01": 104.0}}), 3)
+        self.assertAlmostEqual(reg[0]["real"], 4.0)
+        res = seguimiento.resumir({"cadena": reg})["grupos"]["cadena"]
+        self.assertEqual(res["nuestras"]["a_tiempo"], 1)                 # la de 2026-07 ya habia vencido al apuntarla
+        self.assertEqual(res["nuestras"]["plazos"]["3"]["aciertos"], 1)
+        self.assertEqual(res["nuestras"]["atrasadas"]["n"], 1)
+        self.assertEqual(res["frente_futuros"], {"n": 1, "nuestra": 1, "futuros": 0, "nuestra_mas_cerca": 1})
 
     def test_huecos(self):
         """Los meses que faltan no se cuentan como cambios de un mes."""

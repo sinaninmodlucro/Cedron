@@ -37,7 +37,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.cadena")
 
-VERSION = 4                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
+VERSION = 5                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
 PLAZOS = list(range(13))   # 0 a 12 meses
 PLAZO_PRINCIPAL = 6
 PLAZO_ASIMETRIA = 3
@@ -246,7 +246,8 @@ def probar_pendiente(arriba: dict, abajo: dict, meses: list[str], remuestreos: i
             "valido": bool(r2 is not None and r2 > 0 and ic and ic[0] > 0)}
 
 
-def evaluar(arriba: dict, abajo: dict, desde: str = "", remuestreos: int = 300) -> dict:
+def evaluar(arriba: dict, abajo: dict, desde: str = "", remuestreos: int = 300,
+            extra: dict | None = None, extra_por_plazo: dict | None = None) -> dict:
     """Todo lo que se publica de un eslabon."""
     meses = _comunes(arriba, abajo, desde)
     if len(meses) < MINIMO_MESES:
@@ -296,14 +297,14 @@ def evaluar(arriba: dict, abajo: dict, desde: str = "", remuestreos: int = 300) 
         if n - max(la) <= 3:
             la[n] = la[max(k for k in la if k < n)]
     rasgos = {"inercia": {n: [lb[n] - lb[n - 3], lb[n] - lb[n - 12]] for n in lb if n - 3 in lb and n - 12 in lb},
-              "desfase": {n: [lb[n], la[n]] for n in lb if n in la}}
+              "desfase": {n: [lb[n], la[n]] for n in lb if n in la}, **(extra or {})}
     ciegos = pendientes_ciegos(arriba, abajo, meses, PLAZOS_PREVISION, min(mitad, MINIMO_MESES))
     previsiones = {}
     for k in PLAZOS_PREVISION:
         falta = pendiente(bs, cambios, ultimo_abajo, k)
         if falta is None:
             continue
-        c = pv.combinar(lb, rasgos, k, pv.num(meses[mitad]), {"traslado": {**ciegos[k], ult: falta}},
+        c = pv.combinar(lb, {**rasgos, **((extra_por_plazo or {}).get(k) or {})}, k, pv.num(meses[mitad]), {"traslado": {**ciegos[k], ult: falta}},
                         ult, remuestreos)
         if "prevision" not in c:
             continue
@@ -347,7 +348,8 @@ def _mes_mas(mes: str, k: int) -> str:
     return f"{n // 12:04d}-{n % 12 + 1:02d}"
 
 
-def anotar_previsiones(registro: list[dict], eslabon_id: str, previsiones: dict, abajo: dict) -> list[dict]:
+def anotar_previsiones(registro: list[dict], eslabon_id: str, previsiones: dict, abajo: dict,
+                       noticias: dict | None = None) -> list[dict]:
     """Historial propio de previsiones: apunta las nuevas y pone nota a las vencidas.
 
     Cada entrada: eslabon, plazo, mes de partida y su precio, cambio previsto (%) y, cuando
@@ -357,17 +359,28 @@ def anotar_previsiones(registro: list[dict], eslabon_id: str, previsiones: dict,
     for r in registro:
         if r["id"] == eslabon_id and r.get("real") is None and r["vence"] in abajo and r.get("base"):
             r["real"] = (abajo[r["vence"]] / r["base"] - 1) * 100
-    hechas = {(r["id"], r["plazo"], r["desde"]) for r in registro}
+    hechas = {(r["id"], r["plazo"], r["desde"]): r for r in registro}
+    hoy = iso()[:10]
     for k, p in previsiones.items():
-        if (eslabon_id, int(k), p["desde_mes"]) not in hechas:
+        previa = hechas.get((eslabon_id, int(k), p["desde_mes"]))
+        if previa is not None:
+            # Solo el mismo dia en que se apunto puede corregirse (p. ej. si el calculo se repite
+            # tras un arreglo); despues, nunca.
+            if (previa.get("apuntada") or "2026-11-10") == hoy and previa.get("real") is None:
+                previa.update({"previsto": p["total"], "habitual": p["habitual"], "apuntada": hoy,
+                               **({"noticias": noticias} if noticias is not None or "noticias" not in previa else {})})
+            continue
+        if True:
             registro.append({"id": eslabon_id, "plazo": int(k), "desde": p["desde_mes"], "base": p["base"],
                              "vence": _mes_mas(p["desde_mes"], int(k)), "previsto": p["total"],
-                             "habitual": p["habitual"], "real": None})
+                             "habitual": p["habitual"], "real": None, "apuntada": iso()[:10],
+                             # lo que decian las noticias de su materia esa semana (para comparar)
+                             "noticias": noticias})
     return registro
 
 
 def resumen_previsiones(registro: list[dict], eslabon_id: str) -> dict:
-    mias = [r for r in registro if r["id"] == eslabon_id]
+    mias = [r for r in registro if r["id"] == eslabon_id and r["vence"] > (r.get("apuntada") or "2026-11-10")[:7]]
     vencidas = [r for r in mias if r.get("real") is not None]
     pendientes = sorted(r["vence"] for r in mias if r.get("real") is None)
     return {"hechas": len(mias), "vencidas": len(vencidas),
@@ -443,8 +456,11 @@ def descargar(cfg: dict, estado=None) -> None:
 
 
 def ejecutar(cfg: dict) -> dict:
+    from cedron import prevision as pv_extra
     ccfg = cfg.get("cadena") or {}
     registro = leer("cadena_previsiones.json", []) or []
+    from cedron.news import balance_reciente
+    noticias_recientes = balance_reciente(cfg["noticias"])
     cambio = apoyo.TipoCambio(apoyo.cambio_usd())
     remuestreos = int(ccfg.get("remuestreos", 300))
     cadenas = []
@@ -454,17 +470,21 @@ def ejecutar(cfg: dict) -> dict:
             arriba = cargar_serie(e["arriba"]["serie"], cambio, e["arriba"].get("en_euros", False))
             abajo = cargar_serie(e["abajo"]["serie"], cambio, e["abajo"].get("en_euros", False))
             try:
-                r = evaluar(arriba, abajo, str(e.get("desde", "")), remuestreos)
+                r = evaluar(arriba, abajo, str(e.get("desde", "")), remuestreos,
+                            extra_por_plazo=pv_extra.calculos_extra("cadena", e["arriba"]["serie"]))
             except (ValueError, ZeroDivisionError) as err:
                 log.warning("Cadena %s: %s", e["id"], err)
                 r = {"clase": "pocos", "meses": 0}
+            materia = (cfg["noticias"].get("materia_de_serie") or {}).get(e["arriba"]["serie"])
             if r.get("previsiones"):
-                anotar_previsiones(registro, e["id"], r["previsiones"], abajo)
+                anotar_previsiones(registro, e["id"], r["previsiones"], abajo,
+                                   noticias_recientes.get(f"m:{materia}") if materia else None)
             r["historial"] = resumen_previsiones(registro, e["id"])
             eslabones.append({"id": e["id"], "arriba": e["arriba"]["nombre"], "abajo": e["abajo"]["nombre"],
                               "arriba_corto": e["arriba"].get("corto", e["arriba"]["nombre"].lower()),
                               "abajo_corto": e["abajo"].get("corto", e["abajo"]["nombre"].lower()),
-                              "fuentes": e.get("fuentes", ""), "nota": e.get("nota", ""), **r})
+                              "fuentes": e.get("fuentes", ""), "nota": e.get("nota", ""),
+                              "materia": materia, **r})
         cadenas.append({"id": c["id"], "nombre": c["nombre"], "eslabones": eslabones})
     resultado = {"cadenas": cadenas, "calculado": iso(), "plazo_principal": PLAZO_PRINCIPAL,
                  "plazo_asimetria": PLAZO_ASIMETRIA}

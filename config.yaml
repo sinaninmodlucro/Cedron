@@ -1415,6 +1415,136 @@ noticias:
            "slides", "sinks", "declines", "lower", "retreats", "glut", "exceso de oferta", "oversupply",
            "rate hike", "subida de tipos", "plunge", "sink", "crash", "crashes", "drop", "slump", "tumble",
            "week low", "month low", "year low", "ease", "eases", "dip", "dips", "se hunde", "peace", "paz"]
+  # Materias de cada noticia (10-nov-2026): ademas de los temas, cada titular se etiqueta
+  # con la materia prima concreta de la que habla (solo por el titular, para no errar). Sirve
+  # para unir noticias y cadena de costes: cada eslabon muestra las noticias de su precio de
+  # arriba, y cada prevision guarda el balance de esas noticias el mes en que se hizo.
+  materias:
+    petroleo:
+      nombre: "Petróleo"
+      palabras: ["petróleo", "crudo", "Brent", "WTI", "OPEP", "OPEC", "oil price", "oil prices", "crude", "barrel", "barril"]
+    diesel:
+      nombre: "Diésel y gasolina"
+      palabras: ["diésel", "gasóleo", "gasolina", "carburantes", "diesel", "gasoline", "fuel prices", "refinery", "refinería"]
+    gas:
+      nombre: "Gas natural"
+      palabras: ["gas natural", "natural gas", "GNL", "LNG", "TTF", "Henry Hub", "MIBGAS", "gasoducto", "pipeline gas"]
+    electricidad:
+      nombre: "Electricidad"
+      palabras: ["electricidad", "precio de la luz", "mercado eléctrico", "electricity", "power prices", "power price", "OMIE"]
+    carbon:
+      nombre: "Carbón"
+      palabras: ["carbón", "coal"]
+    trigo:
+      nombre: "Trigo"
+      palabras: ["trigo", "wheat", "harina", "flour"]
+    maiz:
+      nombre: "Maíz"
+      palabras: ["maíz", "corn", "maize"]
+    soja:
+      nombre: "Soja"
+      palabras: ["soja", "soybean", "soybeans", "soymeal", "soybean meal"]
+    piensos:
+      nombre: "Piensos"
+      palabras: ["pienso", "piensos", "animal feed", "feed prices"]
+    cebada:
+      nombre: "Cebada"
+      palabras: ["cebada", "barley"]
+    arroz:
+      nombre: "Arroz"
+      palabras: ["arroz", "rice"]
+    aove:
+      nombre: "Aceite de oliva"
+      palabras: ["aceite de oliva", "olive oil", "AOVE"]
+    girasol:
+      nombre: "Girasol"
+      palabras: ["girasol", "sunflower"]
+    azucar:
+      nombre: "Azúcar"
+      palabras: ["azúcar", "sugar"]
+    cacao:
+      nombre: "Cacao"
+      palabras: ["cacao", "cocoa", "chocolate"]
+    cafe:
+      nombre: "Café"
+      palabras: ["café", "coffee"]
+    algodon:
+      nombre: "Algodón"
+      palabras: ["algodón", "cotton"]
+    naranja:
+      nombre: "Cítricos"
+      palabras: ["naranja", "naranjas", "cítricos", "orange juice", "citrus"]
+    frutas:
+      nombre: "Frutas y hortalizas"
+      palabras: ["patata", "tomate", "plátano", "manzana", "cebolla", "frutas", "hortalizas", "potato", "tomato", "banana", "apple"]
+    cerdo:
+      nombre: "Cerdo"
+      palabras: ["cerdo", "porcino", "pork", "hog", "hogs", "peste porcina", "swine"]
+    pollo:
+      nombre: "Pollo y huevos"
+      palabras: ["pollo", "avícola", "huevos", "chicken", "poultry", "eggs", "gripe aviar", "bird flu"]
+    vacuno:
+      nombre: "Vacuno"
+      palabras: ["vacuno", "ternera", "beef", "cattle"]
+    leche:
+      nombre: "Leche"
+      palabras: ["leche", "lácteos", "milk", "dairy"]
+    fertilizantes:
+      nombre: "Abonos"
+      palabras: ["fertilizantes", "abonos agrícolas", "urea", "potasa", "fosfato", "fosfatos", "nitrato", "fertilizer", "fertilizers", "potash", "phosphate", "DAP", "ammonia", "amoníaco"]
+    acero:
+      nombre: "Acero y hierro"
+      palabras: ["acero", "siderurgia", "chatarra", "mineral de hierro", "steel", "iron ore", "scrap"]
+    aluminio:
+      nombre: "Aluminio"
+      palabras: ["aluminio", "aluminium", "aluminum", "bauxita", "alumina"]
+    cobre:
+      nombre: "Cobre"
+      palabras: ["cobre", "copper"]
+    zinc:
+      nombre: "Zinc, plomo, estaño y níquel"
+      palabras: ["zinc", "níquel", "nickel", "estaño", "tin price", "plomo", "lead price"]
+    cemento:
+      nombre: "Cemento"
+      palabras: ["cemento", "hormigón", "cement", "concrete", "clinker"]
+    madera:
+      nombre: "Madera"
+      palabras: ["madera", "lumber", "timber", "wood prices"]
+    plasticos:
+      nombre: "Plásticos"
+      palabras: ["plásticos", "plástico", "polietileno", "plastics", "polymer", "polímeros", "petroquímica", "petrochemical"]
+  # Que materia de noticias corresponde a cada precio (de arriba en la cadena; de cada materia de apoyo)
+  materia_de_serie:
+    "pink:Crude oil, Brent": petroleo
+    "pink:Natural gas, Europe": gas
+    "pink:Coal, Australian": carbon
+    "pink:Wheat, US HRW": trigo
+    "pink:Maize": maiz
+    "pink:Soybean meal": soja
+    "pink:Sunflower oil": girasol
+    "pink:Sugar, world": azucar
+    "pink:Cocoa": cacao
+    "pink:Coffee, Arabica": cafe
+    "pink:Orange": naranja
+    "pink:Urea": fertilizantes
+    "pink:DAP": fertilizantes
+    "pink:Potassium chloride **": fertilizantes
+    "pink:Aluminum": aluminio
+    "pink:Copper": cobre
+    "pink:Zinc": zinc
+    "pink:Iron ore, cfr spot": acero
+    "fred:PSAWOREUSDM": madera
+    "eurostat:ES|C1011": cerdo
+    "eurostat:ES|C1061": trigo
+    "eurostat:ES|C1081": azucar
+    "eurostat:ES|C1091": piensos
+    "eurostat:ES|C161": madera
+    "eurostat:ES|C2016": plasticos
+    "eurostat:ES|C2351": cemento
+    "eurostat:ES|C241": acero
+    "eurostat:ES|C2444": cobre
+    "eurostat:ES|D351": electricidad
+  materia_de_apoyo: {diesel: diesel, brent: petroleo, wti: petroleo, gas: gas, carbon: carbon, cerdo: cerdo, pollo: pollo, huevos: pollo, ternera: vacuno, leche: leche, trigo: trigo, arroz: arroz, aove: aove, girasol: girasol, patata: frutas, tomate: frutas, naranja: naranja, platano: frutas, manzana: frutas, cebolla: frutas, azucar: azucar, maiz: maiz, cebada: cebada, soja: soja, cafe: cafe, cacao: cacao, algodon: algodon, urea: fertilizantes, nitrato: fertilizantes, fosfatos: fertilizantes, potasa: fertilizantes, complejo: fertilizantes, acero: acero, aluminio: aluminio, cobre_industrial: cobre, zinc: zinc, niquel: zinc, plomo: zinc, estano: zinc, hierro: acero, madera: madera, cemento: cemento, hormigon: cemento, estructuras: acero}
   comercial_requiere_confirmacion: true   # un medio que vende metales no basta por si solo
   nota_medio_desconocido: 50      # nota para medios que llegan via NewsData.io y no estan en la lista
   pesos:

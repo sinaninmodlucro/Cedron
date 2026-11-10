@@ -1,161 +1,233 @@
 [
  {
+  "apuntada": "2026-11-10",
   "base": 4105.000000000003,
   "desde": "2026-10",
   "habitual": 1.7351207206704133,
   "id": "oro",
+  "noticias": {
+   "alza": 34,
+   "baja": 23,
+   "importantes": 34,
+   "noticias": 162
+  },
   "plazo": 3,
   "previsto": 1.7684757542739016,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 4105.000000000003,
   "desde": "2026-10",
   "habitual": 7.436626345725572,
   "id": "oro",
+  "noticias": {
+   "alza": 34,
+   "baja": 23,
+   "importantes": 34,
+   "noticias": 162
+  },
   "plazo": 12,
   "previsto": 7.69614685737845,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 4105.000000000003,
   "desde": "2026-10",
   "habitual": 1.7351207206704133,
   "id": "futuros:oro",
+  "noticias": null,
   "plazo": 3,
-  "previsto": 0.8229130628181647,
+  "previsto": 0.815951985317831,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 4105.000000000003,
   "desde": "2026-10",
   "habitual": 7.436626345725572,
   "id": "futuros:oro",
+  "noticias": null,
   "plazo": 12,
-  "previsto": 4.2578955172243305,
+  "previsto": 4.764266759256963,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 57.00000000000001,
   "desde": "2026-10",
   "habitual": 1.3491734265077326,
   "id": "plata",
+  "noticias": {
+   "alza": 5,
+   "baja": 4,
+   "importantes": 14,
+   "noticias": 51
+  },
   "plazo": 3,
   "previsto": 1.0451737489849844,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 57.00000000000001,
   "desde": "2026-10",
   "habitual": 5.672175597195683,
   "id": "plata",
+  "noticias": {
+   "alza": 5,
+   "baja": 4,
+   "importantes": 14,
+   "noticias": 51
+  },
   "plazo": 12,
   "previsto": 5.546207271757564,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 57.00000000000001,
   "desde": "2026-10",
   "habitual": 1.3491734265077326,
   "id": "futuros:plata",
+  "noticias": null,
   "plazo": 3,
-  "previsto": 1.2330218668721749,
+  "previsto": 1.2182048533281309,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 57.00000000000001,
   "desde": "2026-10",
   "habitual": 5.672175597195683,
   "id": "futuros:plata",
+  "noticias": null,
   "plazo": 12,
-  "previsto": 5.924284750987363,
+  "previsto": 7.163044537569441,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 1621.0000000000002,
   "desde": "2026-10",
   "habitual": 1.1825985169428899,
   "id": "platino",
+  "noticias": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 4
+  },
   "plazo": 3,
   "previsto": 0.9848627381835673,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 1621.0000000000002,
   "desde": "2026-10",
   "habitual": 5.063585684217808,
   "id": "platino",
+  "noticias": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 4
+  },
   "plazo": 12,
   "previsto": 4.158855737715461,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 1621.0000000000002,
   "desde": "2026-10",
   "habitual": 1.1825985169428899,
   "id": "futuros:platino",
+  "noticias": null,
   "plazo": 3,
-  "previsto": 1.0965619557504969,
+  "previsto": 1.0653501364167761,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 1621.0000000000002,
   "desde": "2026-10",
   "habitual": 5.063585684217808,
   "id": "futuros:platino",
+  "noticias": null,
   "plazo": 12,
-  "previsto": 3.7734632006708457,
+  "previsto": 4.508249967519795,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 6.580718109478527,
   "desde": "2026-10",
   "habitual": 1.218267487853586,
   "id": "cobre",
+  "noticias": {
+   "alza": 10,
+   "baja": 4,
+   "importantes": 9,
+   "noticias": 35
+  },
   "plazo": 3,
   "previsto": 1.0614100120580616,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 6.580718109478527,
   "desde": "2026-10",
   "habitual": 4.603036958175699,
   "id": "cobre",
+  "noticias": {
+   "alza": 10,
+   "baja": 4,
+   "importantes": 9,
+   "noticias": 35
+  },
   "plazo": 12,
   "previsto": 4.138104159038525,
   "real": null,
   "vence": "2027-10"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 6.580718109478527,
   "desde": "2026-10",
   "habitual": 1.218267487853586,
   "id": "futuros:cobre",
+  "noticias": null,
   "plazo": 3,
-  "previsto": 1.611230756959392,
+  "previsto": 1.6388174807197897,
   "real": null,
   "vence": "2027-01"
  },
  {
+  "apuntada": "2026-11-10",
   "base": 6.580718109478527,
   "desde": "2026-10",
   "habitual": 4.603036958175699,
   "id": "futuros:cobre",
+  "noticias": null,
   "plazo": 12,
-  "previsto": 7.792932918561046,
+  "previsto": 6.796272493573263,
   "real": null,
   "vence": "2027-10"
  }

@@ -1,0 +1,150 @@
+{
+ "calculado": "2026-11-10",
+ "regla": "entra solo si sube el numero de previsiones seguras y la mediana del R2 fuera de muestra",
+ "filas": [
+  {
+   "idea": "gpr",
+   "nombre": "Riesgo geopolítico (noticias, Caldara e Iacoviello)",
+   "plazo": 3,
+   "series": 22,
+   "seguras_antes": 4,
+   "seguras_con": 5,
+   "r2_antes": 0.003641272633433168,
+   "r2_con": 0.0036779437201212017,
+   "mejora_en": 7,
+   "entra": true
+  },
+  {
+   "idea": "gpr",
+   "nombre": "Riesgo geopolítico (noticias, Caldara e Iacoviello)",
+   "plazo": 12,
+   "series": 22,
+   "seguras_antes": 5,
+   "seguras_con": 5,
+   "r2_antes": 0.07934357059955166,
+   "r2_con": 0.07533700502103347,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "epu",
+   "nombre": "Incertidumbre económica (noticias, Baker, Bloom y Davis)",
+   "plazo": 3,
+   "series": 4,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.0077940212480136495,
+   "r2_con": -0.0066144643543706305,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "epu",
+   "nombre": "Incertidumbre económica (noticias, Baker, Bloom y Davis)",
+   "plazo": 12,
+   "series": 4,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.032467598500585115,
+   "r2_con": -0.02585408110670695,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "gscpi",
+   "nombre": "Tensiones en las cadenas de suministro (Fed de Nueva York)",
+   "plazo": 3,
+   "series": 103,
+   "seguras_antes": 27,
+   "seguras_con": 31,
+   "r2_antes": 0.03339725650384706,
+   "r2_con": 0.030549728873801252,
+   "mejora_en": 56,
+   "entra": false
+  },
+  {
+   "idea": "gscpi",
+   "nombre": "Tensiones en las cadenas de suministro (Fed de Nueva York)",
+   "plazo": 12,
+   "series": 103,
+   "seguras_antes": 14,
+   "seguras_con": 19,
+   "r2_antes": 0.05623584060670894,
+   "r2_con": 0.02650476018615311,
+   "mejora_en": 26,
+   "entra": false
+  },
+  {
+   "idea": "fut_gasoleo",
+   "nombre": "Curva de futuros del gasóleo (EIA)",
+   "plazo": 3,
+   "series": 3,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.00858310382629468,
+   "r2_con": -0.012256546852292827,
+   "mejora_en": 0,
+   "entra": false
+  },
+  {
+   "idea": "fut_gasoleo",
+   "nombre": "Curva de futuros del gasóleo (EIA)",
+   "plazo": 12,
+   "series": 3,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": 0.04649235401347529,
+   "r2_con": 0.0730015947377306,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "fut_wti",
+   "nombre": "Curva de futuros del petróleo (EIA)",
+   "plazo": 3,
+   "series": 10,
+   "seguras_antes": 2,
+   "seguras_con": 3,
+   "r2_antes": 0.018289840723890727,
+   "r2_con": 0.02942970717047222,
+   "mejora_en": 7,
+   "entra": true
+  },
+  {
+   "idea": "fut_wti",
+   "nombre": "Curva de futuros del petróleo (EIA)",
+   "plazo": 12,
+   "series": 10,
+   "seguras_antes": 2,
+   "seguras_con": 1,
+   "r2_antes": 0.12354488758590976,
+   "r2_con": 0.10547350382368559,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "fut_gas",
+   "nombre": "Curva de futuros del gas natural (EIA)",
+   "plazo": 3,
+   "series": 10,
+   "seguras_antes": 5,
+   "seguras_con": 5,
+   "r2_antes": 0.10027869868811323,
+   "r2_con": 0.08457632278954663,
+   "mejora_en": 4,
+   "entra": false
+  },
+  {
+   "idea": "fut_gas",
+   "nombre": "Curva de futuros del gas natural (EIA)",
+   "plazo": 12,
+   "series": 10,
+   "seguras_antes": 6,
+   "seguras_con": 6,
+   "r2_antes": 0.14895979779803348,
+   "r2_con": 0.12969251019706807,
+   "mejora_en": 3,
+   "entra": false
+  }
+ ]
+}

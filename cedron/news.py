@@ -78,7 +78,13 @@ def impacto(texto_norm: str, cfg: dict, calidad: float, confirmacion: float) -> 
             "sentido": "alza" if sube and not baja else "baja" if baja and not sube else ""}
 
 
-def balance(seleccion: list[dict], desde: str) -> dict:
+def materias(titulo: str, cfg: dict) -> list[str]:
+    """Materias primas concretas que nombra el titular (noticias.materias)."""
+    t = normalizar(titulo)
+    return [k for k, m in (cfg or {}).items() if any(_contiene(t, p) for p in m["palabras"])]
+
+
+def balance(seleccion: list[dict], desde: str, campo: str = "activos") -> dict:
     """Por metal o tema, desde una fecha: cuantas noticias, cuantas importantes (alta o
     media) y cuantos titulares apuntan al alza o a la baja. Es el dato que se guarda cada
     dia para medir, con los meses, si las noticias se adelantan a los precios."""
@@ -86,7 +92,7 @@ def balance(seleccion: list[dict], desde: str) -> dict:
     for n in seleccion:
         if (n.get("fecha") or "") < desde:
             continue
-        for a in n["activos"]:
+        for a in n.get(campo) or []:
             b = out.setdefault(a, {"noticias": 0, "importantes": 0, "alza": 0, "baja": 0})
             b["noticias"] += 1
             b["importantes"] += n.get("nivel") in ("alta", "media")
@@ -174,7 +180,8 @@ def seleccionar(brutas: list[dict], cfg: dict, medios: dict[str, dict], nota_def
         if nota < cfg["umbral_publicacion"]:
             continue
         activos = sorted({a for n in grupo for a in n["activos"]})
-        extra = {"seccion": seccion(activos, cfg.get("preciosos", []))}
+        extra = {"seccion": seccion(activos, cfg.get("preciosos", [])),
+                 "materias": materias(rep["titulo"], cfg.get("materias"))}
         if cfg.get("impacto"):
             # el tipo y el sentido salen del titular: el resumen mezcla demasiadas cosas
             extra.update(impacto(normalizar(rep["titulo"]), cfg["impacto"], rep["calidad"], confirmacion))
@@ -188,3 +195,29 @@ def seleccionar(brutas: list[dict], cfg: dict, medios: dict[str, dict], nota_def
         })
     seleccion.sort(key=lambda n: (n["nota"], n["fecha"]), reverse=True)
     return seleccion[: cfg["maximo_pagina"]]
+
+
+def balance_reciente(cfg: dict, dias: int = 7) -> dict:
+    """Balance de las noticias publicadas en los ultimos 'dias' dias, desde el archivo:
+    por metal o tema (claves de 'activos') y por materia («m:trigo»...). Las noticias
+    archivadas antes de guardar la materia se etiquetan aqui por su titular."""
+    from datetime import timedelta
+    from .store import iso, leer
+    desde = iso(ahora() - timedelta(days=dias))
+    meses = sorted({desde[:7], iso()[:7]})
+    media = (cfg.get("impacto") or {}).get("media_desde", 50)
+    out: dict[str, dict] = {}
+    for mes in meses:
+        for n in leer(f"noticias_archivo/{mes}.json", []) or []:
+            if (n.get("fecha") or "") < desde:
+                continue
+            mats = n.get("materias")
+            if mats is None:
+                mats = materias(n["titulo"], cfg.get("materias"))
+            for clave in list(n.get("temas") or []) + [f"m:{m}" for m in mats]:
+                b = out.setdefault(clave, {"noticias": 0, "importantes": 0, "alza": 0, "baja": 0})
+                b["noticias"] += 1
+                b["importantes"] += (n.get("impacto") or 0) >= media
+                if n.get("sentido") in ("alza", "baja"):
+                    b[n["sentido"]] += 1
+    return out
