@@ -12,6 +12,7 @@ from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 
 from . import apoyo
 from . import indicators as ind
+from . import news
 from .news import balance
 from .prevision import NOMBRES as NOMBRES_PIEZAS
 from .store import RAIZ, ahora, iso, leer, parse_iso
@@ -355,11 +356,13 @@ def _contraer(texto: str) -> str:
     return texto
 
 
-def resumen_previsiones(cadena: dict | None, metales: dict | None) -> list[dict]:
+def resumen_previsiones(cadena: dict | None, metales: dict | None, apoyo: dict | None = None) -> list[dict]:
     """Para la metodologia: cuantas previsiones mejoran a «lo habitual» en la prueba a ciegas."""
     grupos = (("Cadena de costes", [e.get("previsiones") or {} for c in (cadena or {}).get("cadenas", [])
                                     for e in c["eslabones"]]),
-              ("Metales", [a.get("previsiones") or {} for a in ((metales or {}).get("activos") or {}).values()]))
+              ("Metales", [a.get("previsiones") or {} for a in ((metales or {}).get("activos") or {}).values()]),
+              ("Materias primas de apoyo", [d.get("previsiones") or {} for m in ((apoyo or {}).get("materias") or {}).values()
+                                            for d in m.values()]))
     filas = []
     for que, lista in grupos:
         for k, plazo in (("3", "3 meses"), ("12", "1 año")):
@@ -408,6 +411,17 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     precios = leer("precios.json", {}) or {}
     lecturas = leer("lecturas.json", {}) or {}
     noticias = (leer("noticias.json", {}) or {}).get("noticias", [])
+    # Noticias guardadas antes de un cambio de reglas (por ejemplo, al regenerar solo la web):
+    # se completan la seccion y la importancia aqui para que los filtros funcionen siempre.
+    ncfg = cfg["noticias"]
+    calidades = {m["nombre"]: m.get("nota", ncfg.get("nota_medio_desconocido", 50)) for m in cfg["medios"]}
+    for n in noticias:
+        if "seccion" not in n:
+            n["seccion"] = news.seccion(n.get("activos", []), ncfg.get("preciosos", []))
+        if "nivel" not in n and ncfg.get("impacto"):
+            conf = 0.0 if not n.get("tambien_en") else 0.5 if len(n["tambien_en"]) == 1 else 1.0
+            calidad = calidades.get(n["medio"], ncfg.get("nota_medio_desconocido", 50)) / 100
+            n.update(news.impacto(news.normalizar(n["titulo"]), ncfg["impacto"], calidad, conf))
     # La pagina de noticias y las listas por tema: lo mas nuevo arriba. La portada elige
     # las de mejor nota entre las de las ultimas horas (si no hay, entre todas).
     tipos = (cfg["noticias"].get("impacto") or {}).get("tipos") or {}
@@ -474,6 +488,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     comun = dict(sitio=cfg["sitio"], activos=activos, demo=demo, privado=privado, cfg=cfg, eurusd=eurusd,
                  nombres={**{a["id"]: a["nombre"] for a in cfg["activos"]}, **temas},
                  temas_noticias=list(temas.items()), nombres_piezas=NOMBRES_PIEZAS,
+                 prev_apoyo=(leer("apoyo_prevision.json") or {}).get("materias") or {},
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),
                  anio=datetime.now(tz).year, grupos_apoyo=grupos_apoyo,
@@ -513,7 +528,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],
            prueba=datos_prueba(leer("prueba_historica.json"), cfg),
-           resumen_previsiones=resumen_previsiones(leer("cadena.json"), prev_metales))
+           resumen_previsiones=resumen_previsiones(leer("cadena.json"), prev_metales, leer("apoyo_prevision.json")))
     pagina("fuentes.html", "fuentes.html", seccion="fuentes", fuentes_estado=estado.get("fuentes", {}),
            pink_consultado=pink.get("consultado"))
     pagina("legal.html", "legal.html", seccion="")

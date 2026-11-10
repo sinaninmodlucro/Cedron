@@ -489,6 +489,32 @@ def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dic
             "fuente_nombre": FUENTES_NOMBRE["panel"]}
 
 
+def serie_ambito(amb: dict, fuentes: dict, cfg, cambio, en_euros: bool) -> dict:
+    """La serie que se muestra de un ambito (historia + actual, en euros si toca y, en los
+    indices con referencia, como precio estimado). La usan la web y las previsiones."""
+    actual = _serie(amb, fuentes, cfg)
+    historia = _serie(amb["historia"], fuentes, cfg) if amb.get("historia") else []
+    unidad, usd = amb["unidad"], None
+    if en_euros and unidad.startswith("$") and cambio:
+        # Se guarda el ultimo dato en dolares para mostrarlo al lado
+        ult = (combinar(historia, actual) if actual else historia)[-1:]
+        usd = {"valor": ult[0][1], "unidad": unidad} if ult else None
+        actual, historia = cambio.a_euros(actual), cambio.a_euros(historia)
+        unidad = "€" + unidad[1:]
+    serie = combinar(historia, actual) if actual else historia
+    # Indices (2021 = 100): si hay un precio de referencia mundial, se pasan a
+    # precio estimado en euros; si no, se muestran como cambio frente a 2021
+    indice = None
+    if unidad.startswith("puntos") and serie:
+        indice = {"valor": serie[-1][1], "base": amb.get("base_indice", 2021)}
+        estimada = precio_estimado(serie, amb.get("referencia"), fuentes, cfg, cambio)
+        if estimada:
+            serie, unidad = estimada, amb["referencia"].get("unidad_eur", "€/tonelada")
+            actual = serie
+    return {"actual": actual, "historia": historia, "serie": serie, "unidad": unidad,
+            "usd": usd, "indice": indice}
+
+
 def preparar(cfg, hoy: date | None = None) -> list[dict]:
     """Estructura lista para las plantillas: grupos -> materias -> ambitos y vistas."""
     hoy = hoy or date.today()
@@ -511,25 +537,9 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                 amb = m.get("ambitos", {}).get(a)
                 if not amb:
                     continue
-                actual = _serie(amb, fuentes, cfg)
-                historia = _serie(amb["historia"], fuentes, cfg) if amb.get("historia") else []
-                unidad, usd = amb["unidad"], None
-                if en_euros and unidad.startswith("$") and cambio:
-                    # Se guarda el ultimo dato en dolares para mostrarlo al lado
-                    ult = (combinar(historia, actual) if actual else historia)[-1:]
-                    usd = {"valor": ult[0][1], "unidad": unidad} if ult else None
-                    actual, historia = cambio.a_euros(actual), cambio.a_euros(historia)
-                    unidad = "€" + unidad[1:]
-                serie = combinar(historia, actual) if actual else historia
-                # Indices (2021 = 100): si hay un precio de referencia mundial, se pasan a
-                # precio estimado en euros; si no, se muestran como cambio frente a 2021
-                indice = None
-                if unidad.startswith("puntos") and serie:
-                    indice = {"valor": serie[-1][1], "base": amb.get("base_indice", 2021)}
-                    estimada = precio_estimado(serie, amb.get("referencia"), fuentes, cfg, cambio)
-                    if estimada:
-                        serie, unidad = estimada, amb["referencia"].get("unidad_eur", "€/tonelada")
-                        actual = serie
+                s = serie_ambito(amb, fuentes, cfg, cambio, en_euros)
+                actual, historia, serie = s["actual"], s["historia"], s["serie"]
+                unidad, usd, indice = s["unidad"], s["usd"], s["indice"]
                 fuentes_usadas = [FUENTES_NOMBRE.get(amb["fuente"], amb["fuente"])]
                 if amb.get("historia") and historia:
                     h = FUENTES_NOMBRE.get(amb["historia"]["fuente"], amb["historia"]["fuente"])

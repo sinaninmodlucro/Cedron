@@ -121,6 +121,24 @@ class Cadena(unittest.TestCase):
         self.assertNotIn(12, r["tendencia"])
         self.assertEqual(prevision.mes(prevision.num("2026-11")), "2026-11")
 
+    def test_temporada_y_futuros(self):
+        # Un precio que sube un 10 % cada enero y lo deshace en febrero: la temporada lo ve
+        lp = {n: (0.1 if n % 12 == 1 else 0.0) for n in range(120)}
+        est = prevision.estacion_ciega(lp, 1)
+        self.assertGreater(est[108], 0.05)          # enero (mes 0) -> febrero (mes 1): sube
+        self.assertLess(est[109], -0.05)
+        self.assertNotIn(10, est)                    # sin cinco anios del mismo mes, nada
+        from cedron.sources import implicito
+        curva = [("2026-12", 100.0, ""), ("2027-03", 102.0, ""), ("2027-11", 110.0, "")]
+        self.assertAlmostEqual(implicito(curva, "2026-11", 3)["cambio"], 2.0)
+        self.assertEqual(implicito(curva, "2026-11", 12)["contrato"], "2027-11")
+        self.assertIsNone(implicito(curva[:2], "2026-11", 12))   # ningun contrato cerca del plazo
+
+    def test_pocos_casos_nunca_con_seguridad(self):
+        casos = [(0.1 * (i % 3 - 1), 0.1 * (i % 3 - 1), 0.0) for i in range(60)]   # prevision perfecta
+        self.assertFalse(prevision.evaluar_casos(casos, remuestreos=50)["valido"])
+        self.assertTrue(prevision.evaluar_casos(casos * 2, remuestreos=50)["valido"])
+
     def test_huecos(self):
         """Los meses que faltan no se cuentan como cambios de un mes."""
         con_hueco = {m: v for i, (m, v) in enumerate(self.abajo.items()) if i % 25 != 0}

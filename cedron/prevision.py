@@ -35,7 +35,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prevision")
 
-VERSION = 1
+VERSION = 2
 MINIMO = 36           # casos minimos para estimar un calculo
 
 
@@ -54,6 +54,9 @@ def _r2(casos, k=2) -> float | None:
     sse_m = sum((c[0] - c[1]) ** 2 for c in casos)
     sse_b = sum((c[0] - (c[k] if k is not None else 0.0)) ** 2 for c in casos)
     return 1 - sse_m / sse_b if sse_b else None
+
+
+MINIMO_CASOS_SEGURO = 96    # con menos de 8 anios de casos nunca se dice «con seguridad» (10-nov-2026)
 
 
 def evaluar_casos(casos: list[tuple], remuestreos: int = 300, semilla: int = 2026) -> dict:
@@ -79,7 +82,7 @@ def evaluar_casos(casos: list[tuple], remuestreos: int = 300, semilla: int = 202
         return sum(1 for c in casos if (c[k] > 0) == (c[0] > 0)) / len(casos) if casos else None
     return {"r2": r2, "intervalo": ic, "casos": len(casos), "r2_sin_cambio": _r2(casos, None),
             "acierto_direccion": _signo(1), "acierto_base": _signo(2),
-            "valido": bool(r2 is not None and r2 > 0 and ic and ic[0] > 0)}
+            "valido": bool(r2 is not None and r2 > 0 and ic and ic[0] > 0 and len(casos) >= MINIMO_CASOS_SEGURO)}
 
 
 def combinar(lp: dict[int, float], rasgos: dict[str, dict[int, list[float]]], h: int, inicio: int,
@@ -280,9 +283,128 @@ def ejecutar(cfg: dict, descargar_datos: bool = True) -> dict:
                                    bool(pcfg.get("criba", False)))
         precios = {mes(n): math.exp(v) for n, v in lp.items()}
         cadena.anotar_previsiones(registro, aid, previsiones, precios)
-        activos[aid] = {"previsiones": previsiones, "historial": cadena.resumen_previsiones(registro, aid)}
+        activos[aid] = {"previsiones": previsiones, "historial": cadena.resumen_previsiones(registro, aid),
+                        "futuros": futuros_de(aid, previsiones, registro, precios)}
     resultado = {"activos": activos, "calculado": iso(), "datos_consultados": entrada.get("consultado"),
                  "corte": str(pcfg.get("corte", "2006-01"))}
     escribir("metales_prevision.json", resultado)
     escribir("metales_previsiones.json", registro)
     return resultado
+
+
+# ---------------------------------------------------------------------------
+# Materias primas de apoyo (10-nov-2026)
+# ---------------------------------------------------------------------------
+def rasgos_generales(lp: dict[int, float], macro: dict, con_dolar: bool) -> dict:
+    """Tendencia del ultimo anio, valor frente a hace cinco anios, inercia de tres meses y,
+    en los precios mundiales, el dolar y las divisas de paises exportadores. Todos con datos
+    hasta el mes anterior (un mes de separacion, como en los metales)."""
+    r = rasgos_metal(lp, macro if con_dolar else {})
+    r["inercia"] = {n: [lp[n - 1] - lp[n - 4]] for n in lp if n - 1 in lp and n - 4 in lp}
+    if not con_dolar:
+        for k in ("divisas", "dolar", "tipo_real"):
+            r.pop(k, None)
+    else:
+        r.pop("tipo_real", None)     # los tipos reales se probaron para los metales; aqui no hay razon
+    return {k: v for k, v in r.items() if v}
+
+
+def estacion_ciega(lp: dict[int, float], h: int) -> dict[int, float]:
+    """Calculo de temporada: cuanto cambia de media este precio en los h meses que empiezan
+    en el mismo mes del anio, frente a su cambio medio de cualquier mes. Solo con cambios ya
+    conocidos en cada momento y con al menos 5 anios del mismo mes (frutas, hortalizas,
+    huevos, electricidad... tienen temporadas marcadas)."""
+    ys = {n: lp[n + h] - lp[n] for n in lp if n + h in lp}
+    out = {}
+    for t in lp:
+        pasado = [(n, y) for n, y in ys.items() if n + h <= t]
+        mismo = [y for n, y in pasado if n % 12 == t % 12]
+        if len(mismo) >= 5:
+            out[t] = sum(mismo) / len(mismo) - sum(y for _, y in pasado) / len(pasado)
+    return out
+
+
+NOMBRES["estacion"] = "la temporada (lo que suele cambiar en estos meses del año)"
+
+
+def prever_serie(lp: dict[int, float], rasgos: dict, plazos, inicio: int, remuestreos: int = 300) -> dict:
+    out = {}
+    for h in plazos:
+        c = combinar(lp, rasgos, h, inicio, {"estacion": estacion_ciega(lp, h)}, remuestreos=remuestreos)
+        if "prevision" not in c or c["prueba"]["r2"] is None:
+            continue
+        p, u = c["prevision"], max(lp)
+        out[str(h)] = {"total": _pct(p["total"]), "habitual": _pct(p["media"]),
+                       "piezas": {k: _pct(v) for k, v in p["piezas"].items()}, "usadas": p["usadas"],
+                       "desde_mes": mes(u), "vence": mes(u + h), "base": math.exp(lp[u]),
+                       "prueba": c["prueba"]}
+    return out
+
+
+def ejecutar_apoyo(cfg: dict) -> dict:
+    """Previsiones de cada materia de apoyo y cada ambito con historia suficiente. Escribe
+    data/apoyo_prevision.json y el historial propio en data/apoyo_previsiones.json."""
+    from cedron import apoyo
+    pcfg = (cfg.get("previsiones") or {}).get("apoyo") or {}
+    acfg = cfg.get("apoyo", {})
+    minimo = int(pcfg.get("minimo_meses", 120))
+    plazos = pcfg.get("plazos", (3, 12))
+    remuestreos = int(pcfg.get("remuestreos", 300))
+    macro = (leer("prevision/entrada.json") or {}).get("macro") or {}
+    fuentes = apoyo.cargar_fuentes()
+    cambio = apoyo.TipoCambio(apoyo.cambio_usd())
+    registro = leer("apoyo_previsiones.json", []) or []
+    materias = {}
+    for g in acfg.get("grupos", []):
+        for m in g.get("materias", []):
+            for a, amb in (m.get("ambitos") or {}).items():
+                try:
+                    s = apoyo.serie_ambito(amb, fuentes, cfg, cambio, acfg.get("en_euros", True))
+                except (KeyError, ValueError, ZeroDivisionError) as e:
+                    log.warning("Prevision %s/%s: %s", m["id"], a, e)
+                    continue
+                lp = {num(f): math.log(v) for f, v in apoyo.mensualizar(s["serie"]) if v and v > 0}
+                if len(lp) < minimo or max(lp) < num(iso()[:7]) - 18:      # poca historia o serie parada
+                    continue
+                orden = sorted(lp)
+                inicio = orden[max(len(orden) // 2, 60)]
+                previsiones = prever_serie(lp, rasgos_generales(lp, macro, a == "global"), plazos,
+                                           inicio, remuestreos)
+                if not previsiones:
+                    continue
+                ident = f"{m['id']}:{a}"
+                cadena.anotar_previsiones(registro, ident, previsiones, {mes(n): math.exp(v) for n, v in lp.items()})
+                fut = futuros_de(m["id"], previsiones, registro, {mes(n): math.exp(v) for n, v in lp.items()},
+                                 f"futuros:{ident}") if a == "global" else None
+                materias.setdefault(m["id"], {})[a] = {
+                    "previsiones": previsiones, "historial": cadena.resumen_previsiones(registro, ident),
+                    "futuros": fut,
+                    "unidad": s["unidad"], "corte": mes(inicio)}
+    resultado = {"materias": materias, "calculado": iso()}
+    escribir("apoyo_prevision.json", resultado)
+    escribir("apoyo_previsiones.json", registro)
+    return resultado
+
+
+def futuros_de(ident: str, previsiones: dict, registro: list, precios: dict, clave: str | None = None) -> dict | None:
+    """Lo que descuentan los futuros a 3 y 12 meses y, para compararlo con nuestra
+    prevision, se apunta en el mismo historial (id «futuros:...») con la misma base."""
+    from cedron import sources as src
+    c = ((leer("futuros.json", {}) or {}).get("contratos") or {}).get(ident)
+    if not c or not c.get("curva"):
+        return None
+    curva = [tuple(x) for x in c["curva"]]
+    hoy_mes = c["consultado"][:7]
+    salida = {"consultado": c["consultado"], "plazos": {}}
+    para_anotar = {}
+    for k, p in previsiones.items():
+        imp = src.implicito(curva, hoy_mes, int(k))
+        if imp:
+            salida["plazos"][k] = imp
+            para_anotar[k] = {**p, "total": imp["cambio"]}
+    if not salida["plazos"]:
+        return None
+    clave = clave or f"futuros:{ident}"
+    cadena.anotar_previsiones(registro, clave, para_anotar, precios)
+    salida["historial"] = cadena.resumen_previsiones(registro, clave)
+    return salida

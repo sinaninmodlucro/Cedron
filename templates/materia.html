@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, nota_indice %}
+{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, nota_indice, tabla_prevision %}
 {% block titulo %}{{ m.nombre }}: precio en España, Europa y el mundo | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}{{ m.nombre }}: último precio, cambios, tendencia y diez años de historia por ámbito.{% endblock %}
 {% block contenido %}
@@ -69,6 +69,15 @@
     <p class="vacio">Aún no hay historia suficiente para dibujar el gráfico.</p>
     {% endif %}
     </div>
+
+    {% set pv = (prev_apoyo.get(m.id) or {}).get(id) %}
+    {% if pv and pv.previsiones %}{% set p1 = pv.previsiones['12'] or pv.previsiones['3'] %}
+    <div class="prevision{% if hay_tienda %} solo-origen{% endif %}">
+      <h3 class="prevision__titulo">Nuestra previsión ({{ amb.nombre }})</h3>
+      {{ tabla_prevision(pv.previsiones, pv.historial, nombres_piezas, futuros=pv.futuros) }}
+      <p class="pequeno secundario">Cambio previsto del precio medio mensual{% if hay_tienda %} en origen{% endif %} desde {{ p1.desde_mes|mes }} ({{ p1.base|numero(amb.decimales if amb.decimales is not none else 2) }} {{ pv.unidad }}). Las columnas de acierto salen de la prueba a ciegas desde {{ pv.corte|mes }}: cada previsión del pasado se hizo solo con los datos que había entonces. {% if not p1.prueba.valido %}Si dice «no», la previsión no ha mejorado hasta ahora a «lo habitual»: tómala como referencia, no como pronóstico. {% endif %}<a href="{{ raiz }}metodologia.html#previsiones">Cómo se calcula</a>.</p>
+    </div>
+    {% endif %}
 
     {% set t = amb.tienda %}
     {% if t and t.resumen %}{% set rt = t.resumen %}

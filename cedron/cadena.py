@@ -37,7 +37,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.cadena")
 
-VERSION = 3                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
+VERSION = 4                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
 PLAZOS = list(range(13))   # 0 a 12 meses
 PLAZO_PRINCIPAL = 6
 PLAZO_ASIMETRIA = 3

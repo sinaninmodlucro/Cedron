@@ -4,21 +4,24 @@
 {% block contenido %}
 <div class="texto">
   <h1>Noticias seleccionadas</h1>
-  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas, separados en <strong>metales preciosos</strong> y <strong>materias primas</strong> (cobre, energía, abonos, alimentos y materiales). Solo salen los que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación. Cada uno lleva su <strong>importancia para el precio</strong>: alta, media o baja según el tipo de hecho que cuenta. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
+  <p class="secundario">Titulares de las últimas {{ cfg.noticias.horas_vigencia }} horas, separados en <strong>metales preciosos</strong> y <strong>materias primas</strong> (cobre, energía, abonos, alimentos y materiales). Solo salen los que superan {{ cfg.noticias.umbral_publicacion }} puntos sobre 100 en relevancia, calidad del medio, actualidad y confirmación; esa <strong>puntuación</strong> va al principio de cada noticia. Cada una lleva también su <strong>importancia para el precio</strong>: alta, media o baja según el tipo de hecho que cuenta. <a href="{{ raiz }}metodologia.html#noticias">Cómo se puntúan</a>.</p>
 </div>
 <div class="filtros filtros--seccion" role="group" aria-label="Sección" id="secciones">
-  <button type="button" data-seccion="" aria-pressed="true">Todo</button>
   {% for id, nombre, _ in filtros_seccion %}<button type="button" data-seccion="{{ id }}" aria-pressed="false">{{ nombre }}</button>{% endfor %}
+  <button type="button" data-seccion="" aria-pressed="true">Todas</button>
 </div>
 {% for id, nombre, lista in filtros_seccion %}
 <div class="filtros filtros--temas" role="group" aria-label="{{ nombre }}: filtrar" data-seccion="{{ id }}">
   {% for f in lista %}<button type="button" data-filtro="{{ f }}" aria-pressed="false">{{ nombres[f] }}</button>{% endfor %}
 </div>
 {% endfor %}
-<div class="filtros" role="group" aria-label="Importancia para el precio">
+<div class="filtros" role="group" aria-label="Orden e importancia">
+  <button type="button" data-orden="fecha" aria-pressed="true">Más recientes</button>
+  <button type="button" data-orden="nota" aria-pressed="false">Mejor puntuadas</button>
+  <button type="button" data-orden="impacto" aria-pressed="false">Más importantes para el precio</button>
   <button type="button" id="solo-importantes" aria-pressed="false">Solo importancia alta o media</button>
 </div>
-<p class="pequeno secundario"><span id="cuenta">{{ noticias|length }}</span> noticias, las más recientes arriba. Pulsa varios botones para ver esos temas juntos.</p>
+<p class="pequeno secundario"><span id="cuenta">{{ noticias|length }}</span> noticias. Puedes pulsar una sección, las dos, o varios metales y temas a la vez; vuelve a pulsar uno para quitarlo.</p>
 {% if noticias %}
 <ul class="noticias" id="lista">{% for n in noticias %}{{ noticia(n, raiz, nombres) }}{% endfor %}</ul>
 <p class="vacio" id="sin-resultados" hidden>Ninguna noticia seleccionada sobre lo que has elegido en este momento.</p>
@@ -45,56 +48,71 @@
 {% endblock %}
 {% block scripts %}
 <script>
-// Dos niveles: sección (metales preciosos / materias primas) y, dentro, metales o temas.
-// Se pueden pulsar varios; pulsar uno ya elegido lo quita. Sin ninguno = todos.
+// Como el resto de la web: secciones, metales y temas se pueden combinar (pulsar uno ya
+// elegido lo quita; ninguno = todos). Ademas se elige el orden de la lista.
 (function () {
-  var CLAVE = "cedron-noticias-2";
-  var bSec = document.querySelectorAll("#secciones button");
+  var CLAVE = "cedron-noticias-3";
+  var lista = document.getElementById("lista");
+  if (!lista) return;
+  var bSec = document.querySelectorAll("#secciones button[data-seccion]");
   var bTem = document.querySelectorAll(".filtros--temas button");
+  var bOrd = document.querySelectorAll("button[data-orden]");
   var bImp = document.getElementById("solo-importantes");
-  var est = { seccion: "", temas: [], importantes: false };
+  var secciones = [].map.call(bSec, function (b) { return b.dataset.seccion; }).filter(Boolean);
+  var est = { secciones: [], temas: [], orden: "fecha", importantes: false };
+  var items = [].slice.call(lista.querySelectorAll(".noticia"));
+  function seccionDe(f) {
+    var b = document.querySelector('.filtros--temas button[data-filtro="' + f + '"]');
+    return b ? b.parentNode.dataset.seccion : "";
+  }
   function aplicar() {
-    var visibles = 0;
-    bSec.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.seccion === est.seccion ? "true" : "false"); });
-    document.querySelectorAll(".filtros--temas").forEach(function (g) { g.hidden = !!est.seccion && g.dataset.seccion !== est.seccion; });
+    var todas = !est.secciones.length || est.secciones.length === secciones.length;
+    bSec.forEach(function (b) {
+      var s = b.dataset.seccion;
+      b.setAttribute("aria-pressed", (s ? est.secciones.indexOf(s) >= 0 : todas) ? "true" : "false");
+    });
+    document.querySelectorAll(".filtros--temas").forEach(function (g) {
+      g.hidden = est.secciones.length > 0 && est.secciones.indexOf(g.dataset.seccion) < 0;
+    });
+    // un tema de una seccion que ya no se ve deja de contar
+    est.temas = est.temas.filter(function (f) { return !est.secciones.length || est.secciones.indexOf(seccionDe(f)) >= 0; });
     bTem.forEach(function (b) { b.setAttribute("aria-pressed", est.temas.indexOf(b.dataset.filtro) >= 0 ? "true" : "false"); });
+    bOrd.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.orden === est.orden ? "true" : "false"); });
     bImp.setAttribute("aria-pressed", est.importantes ? "true" : "false");
-    document.querySelectorAll("#lista .noticia").forEach(function (n) {
-      var suyos = n.dataset.activos.split(" ");
-      var ver = (!est.seccion || n.dataset.seccion.split(" ").indexOf(est.seccion) >= 0)
+    var k = est.orden;
+    items.sort(function (a, b) {
+      var x = k === "fecha" ? 0 : (+b.dataset[k]) - (+a.dataset[k]);
+      return x || (b.dataset.fecha > a.dataset.fecha ? 1 : b.dataset.fecha < a.dataset.fecha ? -1 : 0);
+    }).forEach(function (n) { lista.appendChild(n); });
+    var visibles = 0;
+    items.forEach(function (n) {
+      var suyos = n.dataset.activos.split(" "), sec = n.dataset.seccion.split(" ");
+      var ver = (todas || est.secciones.some(function (s) { return sec.indexOf(s) >= 0; }))
         && (!est.temas.length || est.temas.some(function (f) { return suyos.indexOf(f) >= 0; }))
         && (!est.importantes || n.dataset.nivel === "alta" || n.dataset.nivel === "media");
       n.hidden = !ver; if (ver) visibles++;
     });
     var sin = document.getElementById("sin-resultados"); if (sin) sin.hidden = visibles > 0;
-    var c = document.getElementById("cuenta"); if (c) c.textContent = visibles;
+    document.getElementById("cuenta").textContent = visibles;
     try { localStorage.setItem(CLAVE, JSON.stringify(est)); } catch (e) {}
   }
+  function alternar(lista, v) { var i = lista.indexOf(v); if (i >= 0) lista.splice(i, 1); else lista.push(v); }
   bSec.forEach(function (b) {
     b.addEventListener("click", function () {
-      est.seccion = b.dataset.seccion;
-      // al cambiar de sección se quitan los temas de la otra
-      est.temas = est.temas.filter(function (f) {
-        var g = document.querySelector('.filtros--temas button[data-filtro="' + f + '"]').parentNode;
-        return !est.seccion || g.dataset.seccion === est.seccion;
-      });
+      if (!b.dataset.seccion) est.secciones = []; else alternar(est.secciones, b.dataset.seccion);
       aplicar();
     });
   });
-  bTem.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var f = b.dataset.filtro, i = est.temas.indexOf(f);
-      if (i >= 0) est.temas.splice(i, 1); else est.temas.push(f);
-      aplicar();
-    });
-  });
+  bTem.forEach(function (b) { b.addEventListener("click", function () { alternar(est.temas, b.dataset.filtro); aplicar(); }); });
+  bOrd.forEach(function (b) { b.addEventListener("click", function () { est.orden = b.dataset.orden; aplicar(); }); });
   bImp.addEventListener("click", function () { est.importantes = !est.importantes; aplicar(); });
   try {
     var g = JSON.parse(localStorage.getItem(CLAVE) || "null");
     if (g) {
-      var validos = [].map.call(bTem, function (b) { return b.dataset.filtro; });
-      est.seccion = g.seccion === "preciosos" || g.seccion === "materias" ? g.seccion : "";
-      est.temas = (g.temas || []).filter(function (f) { return validos.indexOf(f) >= 0; });
+      var temas = [].map.call(bTem, function (b) { return b.dataset.filtro; });
+      est.secciones = (g.secciones || []).filter(function (s) { return secciones.indexOf(s) >= 0; });
+      est.temas = (g.temas || []).filter(function (f) { return temas.indexOf(f) >= 0; });
+      est.orden = ["fecha", "nota", "impacto"].indexOf(g.orden) >= 0 ? g.orden : "fecha";
       est.importantes = !!g.importantes;
     }
   } catch (e) {}

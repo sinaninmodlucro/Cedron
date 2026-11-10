@@ -20,6 +20,26 @@
   "vence": "2027-10"
  },
  {
+  "base": 4105.000000000003,
+  "desde": "2026-10",
+  "habitual": 1.7351207206704133,
+  "id": "futuros:oro",
+  "plazo": 3,
+  "previsto": 0.8229130628181647,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 4105.000000000003,
+  "desde": "2026-10",
+  "habitual": 7.436626345725572,
+  "id": "futuros:oro",
+  "plazo": 12,
+  "previsto": 4.2578955172243305,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
   "base": 57.00000000000001,
   "desde": "2026-10",
   "habitual": 1.3491734265077326,
@@ -36,6 +56,26 @@
   "id": "plata",
   "plazo": 12,
   "previsto": 5.546207271757564,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
+  "base": 57.00000000000001,
+  "desde": "2026-10",
+  "habitual": 1.3491734265077326,
+  "id": "futuros:plata",
+  "plazo": 3,
+  "previsto": 1.2330218668721749,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 57.00000000000001,
+  "desde": "2026-10",
+  "habitual": 5.672175597195683,
+  "id": "futuros:plata",
+  "plazo": 12,
+  "previsto": 5.924284750987363,
   "real": null,
   "vence": "2027-10"
  },
@@ -60,6 +100,26 @@
   "vence": "2027-10"
  },
  {
+  "base": 1621.0000000000002,
+  "desde": "2026-10",
+  "habitual": 1.1825985169428899,
+  "id": "futuros:platino",
+  "plazo": 3,
+  "previsto": 1.0965619557504969,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 1621.0000000000002,
+  "desde": "2026-10",
+  "habitual": 5.063585684217808,
+  "id": "futuros:platino",
+  "plazo": 12,
+  "previsto": 3.7734632006708457,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
   "base": 6.580718109478527,
   "desde": "2026-10",
   "habitual": 1.218267487853586,
@@ -76,6 +136,26 @@
   "id": "cobre",
   "plazo": 12,
   "previsto": 4.138104159038525,
+  "real": null,
+  "vence": "2027-10"
+ },
+ {
+  "base": 6.580718109478527,
+  "desde": "2026-10",
+  "habitual": 1.218267487853586,
+  "id": "futuros:cobre",
+  "plazo": 3,
+  "previsto": 1.611230756959392,
+  "real": null,
+  "vence": "2027-01"
+ },
+ {
+  "base": 6.580718109478527,
+  "desde": "2026-10",
+  "habitual": 4.603036958175699,
+  "id": "futuros:cobre",
+  "plazo": 12,
+  "previsto": 7.792932918561046,
   "real": null,
   "vence": "2027-10"
  }

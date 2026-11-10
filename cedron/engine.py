@@ -338,6 +338,26 @@ def actualizar_cadena(cfg, estado: Estado, forzar=False) -> None:
         log.warning("Cadena de costes: %s", e)
 
 
+def actualizar_futuros(cfg, estado: Estado, forzar=False) -> None:
+    """Curvas de futuros, una vez al dia. Solo uso privado (Yahoo Finance)."""
+    fcfg = cfg.get("futuros") or {}
+    if not fcfg.get("activo"):
+        return
+    if not forzar and not _una_vez_al_dia(estado, "futuros_dia"):
+        return
+    guardado = leer("futuros.json", {}) or {}
+    contratos = dict(guardado.get("contratos") or {})
+    try:
+        curvas = src.yahoo_futuros(fcfg.get("contratos") or {}, date.today(), int(fcfg.get("meses", 15)))
+        for ident, curva in curvas.items():
+            contratos[ident] = {"curva": [list(x) for x in curva], "consultado": iso()}
+        estado.registrar_fuente("Futuros (Yahoo Finance)", True)
+    except src.FuenteError as e:
+        estado.registrar_fuente("Futuros (Yahoo Finance)", False, str(e))
+        log.warning("Futuros: %s", e)
+    escribir("futuros.json", {"contratos": contratos, "consultado": iso()})
+
+
 def actualizar_previsiones(cfg, estado: Estado, forzar=False) -> None:
     """Previsiones de los metales: una vez al mes (o con --forzar, o si cambia el metodo)."""
     from cedron import prevision
@@ -348,6 +368,8 @@ def actualizar_previsiones(cfg, estado: Estado, forzar=False) -> None:
         return
     try:
         prevision.ejecutar(cfg)
+        if (cfg.get("previsiones") or {}).get("apoyo"):
+            prevision.ejecutar_apoyo(cfg)
         estado.set("prevision_mes", mes)
         estado.registrar_fuente("Previsiones de metales (FRED)", True)
     except (src.FuenteError, KeyError, ValueError, ZeroDivisionError) as e:
@@ -399,6 +421,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     actualizar_noticias(cfg, estado)
     calcular_lecturas(cfg)
     actualizar_prueba(cfg, estado, forzar)
+    actualizar_futuros(cfg, estado, forzar)
     actualizar_cadena(cfg, estado, forzar)
     actualizar_previsiones(cfg, estado, forzar)
     estado.set("ultima_ejecucion", iso())

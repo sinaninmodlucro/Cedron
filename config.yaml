@@ -1318,7 +1318,7 @@ prueba_historica:
 noticias:
   umbral_publicacion: 55          # solo se publican las que superan esta nota (6-nov-2026: bajado de 60)
   maximo_portada: 5
-  maximo_pagina: 250              # 60 hasta el 10-nov-2026
+  maximo_pagina: 600              # 60 hasta el 10-nov-2026; 250 hasta la tarde del 10-nov (dejaba fuera la mitad de las que pasan)
   horas_vigencia: 48              # noticias mas antiguas no se muestran (72 hasta el 10-nov-2026)
   horas_portada: 12               # la portada elige las mejores de las ultimas horas (10-nov-2026)
   archivo: true                   # guarda cada noticia publicada en data/noticias_archivo/AAAA-MM.json (10-nov-2026)
@@ -1474,6 +1474,47 @@ previsiones:
     plazos: [3, 12]               # meses
     remuestreos: 300
     criba: false                  # true = solo los calculos que van acertando (probado: peor)
+  # Materias primas de apoyo (10-nov-2026): cada ambito con historia suficiente. Mismos
+  # calculos que los metales salvo los tipos reales, mas la inercia de tres meses y la
+  # temporada; el dolar y las divisas solo en los precios mundiales.
+  apoyo:
+    plazos: [3, 12]
+    minimo_meses: 120             # diez anios de datos mensuales como minimo
+    remuestreos: 300
+
+# -----------------------------------------------------------------------------
+# Futuros (10-nov-2026). Lo que descuenta el mercado de futuros a 3 y 12 meses: el precio
+# del contrato que vence en ese plazo frente al del primer contrato. Una vez al dia, de
+# Yahoo Finance. SOLO USO PRIVADO: sus condiciones no permiten publicar los datos; si la
+# web se abre al publico, poner activo: false. Se apunta en el historial de previsiones
+# junto a la nuestra para comparar cual acierta mas. raiz = codigo del contrato; mercado =
+# sufijo de Yahoo; meses = letras de los meses con contrato (F ene, G feb, H mar, J abr,
+# K may, M jun, N jul, Q ago, U sep, V oct, X nov, Z dic).
+# -----------------------------------------------------------------------------
+futuros:
+  activo: true
+  meses: 15
+  contratos:
+    oro: {raiz: GC, mercado: CMX, meses: GJMQVZ}
+    plata: {raiz: SI, mercado: CMX, meses: HKNUZ}
+    platino: {raiz: PL, mercado: NYM, meses: FJNV}
+    paladio: {raiz: PA, mercado: NYM, meses: HMUZ}
+    cobre: {raiz: HG, mercado: CMX, meses: HKNUZ}
+    cobre_industrial: {raiz: HG, mercado: CMX, meses: HKNUZ}
+    aluminio: {raiz: ALI, mercado: CMX, meses: FGHJKMNQUVXZ}
+    brent: {raiz: BZ, mercado: NYM, meses: FGHJKMNQUVXZ}
+    wti: {raiz: CL, mercado: NYM, meses: FGHJKMNQUVXZ}
+    gas: {raiz: NG, mercado: NYM, meses: FGHJKMNQUVXZ}
+    diesel: {raiz: HO, mercado: NYM, meses: FGHJKMNQUVXZ}
+    cerdo: {raiz: HE, mercado: CME, meses: GJKMNQVZ}
+    ternera: {raiz: LE, mercado: CME, meses: GJMQVZ}
+    trigo: {raiz: KE, mercado: CBT, meses: HKNUZ}
+    maiz: {raiz: ZC, mercado: CBT, meses: HKNUZ}
+    soja: {raiz: ZM, mercado: CBT, meses: FHKNQUVZ}
+    cafe: {raiz: KC, mercado: NYB, meses: HKNUZ}
+    cacao: {raiz: CC, mercado: NYB, meses: HKNUZ}
+    azucar: {raiz: SB, mercado: NYB, meses: HKNV}
+    algodon: {raiz: CT, mercado: NYB, meses: HKNVZ}
 
 # -----------------------------------------------------------------------------
 # Medios. 'nota' de 0 a 100 = calidad del medio. 'comercial: true' marca a quien
@@ -1749,6 +1790,42 @@ medios:
   # Google Noticias: busquedas de las ultimas 24 horas. 'google: true' = el medio de cada
   # titular es el que indica Google (no esta en esta lista: nota de medio desconocido y
   # debe hablar de mercado). Los enlaces pasan por Google. SOLO USO PRIVADO.
+  - nombre: "Google Noticias - platino y paladio (inglés)"   # 10-nov-2026 (tarde)
+    rss: "https://news.google.com/rss/search?q=%28platinum%20OR%20palladium%29%20price%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
+  - nombre: "Google Noticias - platino y paladio"   # 10-nov-2026 (tarde)
+    rss: "https://news.google.com/rss/search?q=%28platino%20OR%20paladio%29%20precio%20when%3A2d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - plata (inglés)"   # 10-nov-2026 (tarde)
+    rss: "https://news.google.com/rss/search?q=silver%20price%20ounce%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
+  - nombre: "Google Noticias - cobre (inglés)"   # 10-nov-2026 (tarde)
+    rss: "https://news.google.com/rss/search?q=copper%20price%20LME%20OR%20Comex%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+    nota: 50
+    idioma: en
+    google: true
+    activo: true
+  - nombre: "Google Noticias - alimentos en España"   # 10-nov-2026 (tarde)
+    rss: "https://news.google.com/rss/search?q=precio%20%28aceite%20de%20oliva%20OR%20huevos%20OR%20leche%20OR%20pollo%20OR%20cerdo%20OR%20fruta%20OR%20hortalizas%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
+  - nombre: "Google Noticias - construcción y materiales"   # 10-nov-2026 (tarde)
+    rss: "https://news.google.com/rss/search?q=precio%20%28acero%20OR%20cemento%20OR%20aluminio%20OR%20madera%20OR%20materiales%20de%20construcci%C3%B3n%29%20when%3A2d&hl=es&gl=ES&ceid=ES:es"
+    nota: 50
+    idioma: es
+    google: true
+    activo: true
   - nombre: "Google Noticias - oro y plata"
     rss: "https://news.google.com/rss/search?q=precio%20%28oro%20OR%20plata%20OR%20platino%20OR%20paladio%29%20when%3A1d&hl=es&gl=ES&ceid=ES:es"
     nota: 50

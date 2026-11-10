@@ -174,6 +174,7 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
 .importancia--alta { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
 .importancia--media { border-color: var(--tinta); color: var(--tinta); }
 .filtros[hidden] { display: none; }
+.nota-noticia { font-weight: 700; color: var(--tinta); }
 .filtros--seccion { margin-bottom: 0.75rem; font-size: var(--t-m); }
 .filtros + .filtros { margin-top: -0.75rem; }
 .subtitulo { font-size: var(--t-m); margin: 1.2rem 0 0.6rem; }

@@ -75,9 +75,10 @@
 {%- endmacro %}
 
 {% macro noticia(n, raiz, nombres) -%}
-<li class="noticia" data-activos="{{ n.activos|join(' ') }}" data-seccion="{{ (n.seccion or [])|join(' ') }}" data-nivel="{{ n.nivel or '' }}">
+<li class="noticia" data-activos="{{ n.activos|join(' ') }}" data-seccion="{{ (n.seccion or [])|join(' ') }}" data-nivel="{{ n.nivel or '' }}" data-nota="{{ n.nota }}" data-impacto="{{ n.impacto or 0 }}" data-fecha="{{ n.fecha }}">
   <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>
   <p class="noticia__datos">
+    <span class="nota-noticia" title="Puntuación de la noticia: relevancia, calidad del medio, actualidad y confirmación">{{ n.nota }}/100</span>
     <span>{{ n.medio }}{% if n.comercial %} <span class="etiqueta etiqueta--comercial" title="Este medio vende metales">medio comercial</span>{% endif %}</span>
     <span>{{ n.fecha|hace }}</span>
     {% if n.idioma == 'en' %}<span class="etiqueta" title="Artículo en inglés">en inglés</span>{% endif %}
@@ -89,7 +90,7 @@
 {%- endmacro %}
 
 {# Tabla de «nuestra previsión» (cadena de costes y metales). previsiones: {"3": {...}, "12": {...}} #}
-{% macro tabla_prevision(previsiones, historial, nombres_piezas, desde_historial="noviembre de 2026") -%}
+{% macro tabla_prevision(previsiones, historial, nombres_piezas, desde_historial="noviembre de 2026", futuros=none, almacen=false) -%}
 <div class="desplazable">
 <table class="tabla tabla--compacta">
   <thead><tr><th>Plazo</th><th class="num">Previsión</th><th class="num">Lo habitual</th><th>En el pasado, ¿acertó si subía o bajaba?</th><th>¿Mejor que decir «lo habitual»?</th></tr></thead>
@@ -111,6 +112,10 @@
   <li>{{ etq }}, la previsión es la media de lo habitual ({{ v.habitual|porcentaje }}) y de lo que sale mirando{% for q, x in v.piezas.items() %}{{ ' y' if loop.last and not loop.first else '' if loop.first else ',' }} {{ nombres_piezas[q] or q }} ({{ x|porcentaje }}){% endfor %}.</li>
 {% endif %}{% endfor %}
 </ul>
+{% if futuros and futuros.plazos %}{% set fp = futuros.plazos %}
+<p class="pequeno"><strong>Lo que descuenta el mercado de futuros</strong> (en dólares, {{ futuros.consultado|fecha_larga }}):{% for k, etq in (('3', 'en 3 meses'), ('12', 'en 1 año')) %}{% if fp[k] %} <span class="cifra {{ 'sube' if fp[k].cambio > 0 else 'baja' }}">{{ fp[k].cambio|porcentaje }}</span> {{ etq }} (contrato de {{ fp[k].contrato|mes }}){{ ';' if not loop.last and fp['12'] else '.' }}{% endif %}{% endfor %}
+<span class="secundario">Es el precio de los contratos que vencen más adelante frente al del primero.{% if almacen %} En los metales preciosos esa diferencia refleja sobre todo el coste de guardar el metal y los tipos de interés, no lo que espera el mercado.{% endif %} Se apunta cada mes junto a nuestra previsión para ver cuál acierta más{% set hf = futuros.historial %}{% if hf and hf.vencidas %}: hasta ahora acertó la dirección {{ hf.aciertos }} de {{ hf.vencidas }} veces, con un error medio de {{ hf.error_medio|numero(1) }} puntos{% endif %}. Fuente: Yahoo Finance (solo uso privado).</span></p>
+{% endif %}
 {% set h = historial %}
 {% if h and h.vencidas %}<p class="pequeno secundario"><strong>Nuestro historial desde {{ desde_historial }}:</strong> {{ h.aciertos }} de {{ h.vencidas }} previsiones vencidas acertaron la dirección; error medio de {{ h.error_medio|numero(1) }} puntos.</p>
 <ul class="pequeno secundario">{% for r in h.ultimas %}<li>{{ r.desde|mes }} → {{ r.vence|mes }}: previsto {{ r.previsto|porcentaje }}, real {{ r.real|porcentaje }} {{ '✓' if (r.previsto > 0) == (r.real > 0) else '✗' }}</li>{% endfor %}</ul>

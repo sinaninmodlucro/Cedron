@@ -708,3 +708,64 @@ def newsdata(clave: str, consulta: str, idiomas: str = "es,en") -> list[dict]:
                        "resumen": _limpiar(a.get("description") or "")[:300],
                        "medio": a.get("source_name") or a.get("source_id") or "Desconocido"})
     return salida
+
+
+# ---------------------------------------------------------------------------
+# Futuros (Yahoo Finance): curva de precios de cada contrato. SOLO USO PRIVADO:
+# las condiciones de Yahoo permiten el uso personal, no publicar sus datos.
+# ---------------------------------------------------------------------------
+CODIGOS_MES = "FGHJKMNQUVXZ"
+
+
+def yahoo_futuros(contratos: dict, hoy, n: int = 15, dias_max: int = 4) -> dict:
+    """{id: [(mes de entrega AAAA-MM, precio, fecha del precio)]} de los contratos de los
+    proximos n meses. contratos = {id: {raiz, mercado, meses}}. Se piden de 20 en 20 y se
+    descartan los contratos sin operaciones en los ultimos dias_max dias."""
+    import time
+    from datetime import datetime, timezone
+    simbolos: dict[str, list[tuple[str, str]]] = {}         # simbolo -> [(id, mes)]
+    for ident, c in contratos.items():
+        for k in range(n):
+            num = hoy.year * 12 + hoy.month - 1 + k
+            anio, m = divmod(num, 12)
+            if CODIGOS_MES[m] in c["meses"]:
+                s = f"{c['raiz']}{CODIGOS_MES[m]}{anio % 100:02d}.{c['mercado']}"
+                simbolos.setdefault(s, []).append((ident, f"{anio:04d}-{m + 1:02d}"))
+    lista, curvas, errores = sorted(simbolos), {}, 0
+    for i in range(0, len(lista), 20):
+        try:
+            r = _get("https://query1.finance.yahoo.com/v7/finance/spark",
+                     params={"symbols": ",".join(lista[i:i + 20]), "range": "5d", "interval": "1d"},
+                     headers={"User-Agent": "Mozilla/5.0"})
+            res = (r.json().get("spark") or {}).get("result") or []
+        except (FuenteError, ValueError):
+            errores += 1
+            continue
+        finally:
+            time.sleep(0.5)
+        for x in res:
+            meta = ((x.get("response") or [{}])[0] or {}).get("meta") or {}
+            precio, cuando = meta.get("regularMarketPrice"), meta.get("regularMarketTime")
+            if not precio or not cuando or x.get("symbol") not in simbolos:
+                continue
+            fecha = datetime.fromtimestamp(cuando, timezone.utc).date()
+            if (hoy - fecha).days <= dias_max:
+                for ident, mes in simbolos[x["symbol"]]:
+                    curvas.setdefault(ident, []).append((mes, float(precio), fecha.isoformat()))
+    if not curvas:
+        raise FuenteError(f"Yahoo no devolvio ningun contrato de futuros ({errores} peticiones fallidas)")
+    return {k: sorted(v) for k, v in curvas.items()}
+
+
+def implicito(curva: list, desde_mes: str, h: int) -> dict | None:
+    """Cambio que descuentan los futuros en h meses: precio del contrato que vence mas cerca
+    de desde_mes + h frente al del primer contrato."""
+    if len(curva) < 2:
+        return None
+    def n(m):
+        return int(m[:4]) * 12 + int(m[5:7]) - 1
+    objetivo = n(desde_mes) + h
+    cerca = min(curva[1:], key=lambda c: (abs(n(c[0]) - objetivo), n(c[0])))
+    if abs(n(cerca[0]) - objetivo) > 2:
+        return None
+    return {"cambio": (cerca[1] / curva[0][1] - 1) * 100, "contrato": cerca[0], "primero": curva[0][0]}
