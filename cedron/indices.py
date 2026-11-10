@@ -34,6 +34,8 @@ EIA = {  # nombre: (carpeta, contrato 1, contrato 4)
 }
 YAHOO = {"wti": "wti", "gas": "gas", "gasoleo": "diesel"}     # contrato de futuros.json para el valor de hoy
 URL_GPR = "https://www.matteoiacoviello.com/gpr_files/data_gpr_export.xls"
+URL_AIGPR = "https://www.matteoiacoviello.com/ai_gpr_files/ai_gpr_data_monthly.csv"
+URL_AIGPR_PAIS = "https://www.matteoiacoviello.com/ai_gpr_files/ai_gpr_country_monthly.csv"
 URL_GSCPI = "https://www.newyorkfed.org/medialibrary/research/interactives/gscpi/downloads/gscpi_data.xlsx"
 
 
@@ -99,6 +101,24 @@ def descargar() -> dict:
         series["epu"] = [[f[:7], v] for f, v in epu]
     except src.FuenteError as e:
         fallos.append(f"EPU: {e}")
+    # Riesgo geopolitico con inteligencia artificial (Iacoviello y Tong 2026), desde 1960
+    try:
+        filas = [l.split(",") for l in src._get(URL_AIGPR).text.strip().splitlines()]
+        cab = filas[0]
+        for nombre in ("GPR_AI", "GPR_OIL", "ACTS_GPR_AI", "THREATS_GPR_AI"):
+            i = cab.index(nombre)
+            series[f"ai:{nombre}"] = [[f[0][:7], float(f[i])] for f in filas[1:] if len(f) > i and f[i]]
+        filas = [l.split(",") for l in src._get(URL_AIGPR_PAIS).text.strip().splitlines()]
+        cab = filas[0]
+        for pais in paises_necesarios():
+            col = f"{pais}_all"
+            if col in cab:
+                i = cab.index(col)
+                series[f"pais:{pais}"] = [[f[0][:7], float(f[i])] for f in filas[1:] if len(f) > i and f[i]]
+            else:
+                fallos.append(f"AI-GPR: no esta el pais {pais}")
+    except (src.FuenteError, ValueError, IndexError) as e:
+        fallos.append(f"AI-GPR: {e}")
     escribir("prevision/indices.json", {"series": series, "consultado": iso(), "fallos": fallos})
     if fallos:
         log.warning("Indices: %s", "; ".join(fallos))
@@ -137,4 +157,48 @@ def noticias(series: dict, nombre: str) -> dict[int, list[float]]:
         previos = [s[j] for j in range(n - 12, n) if j in s and s[j] > 0]
         if len(previos) == 12 and s[n] > 0:
             out[n + 1] = [math.log(s[n]) - math.log(sum(previos) / 12)]
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Riesgo geopolitico por materia (configuracion: previsiones.geopolitica)
+# ---------------------------------------------------------------------------
+def _config_geo() -> dict:
+    import yaml
+    from cedron.store import RAIZ
+    with open(RAIZ / "config.yaml", encoding="utf-8") as f:
+        return ((yaml.safe_load(f).get("previsiones") or {}).get("geopolitica")) or {}
+
+
+def paises_necesarios(cfg_geo: dict | None = None) -> list[str]:
+    cfg_geo = cfg_geo if cfg_geo is not None else _config_geo()
+    return sorted({p for m in (cfg_geo.get("materias") or {}).values() for p in (m.get("paises") or {})})
+
+
+def _medidas(s: dict[int, float]) -> dict[int, tuple[float, float]]:
+    """Para cada mes n, con datos hasta n-1: (repunte, nivel). Repunte = subida (solo si sube)
+    del ultimo mes frente a la media de los 12 anteriores; nivel = frente a los 60 anteriores."""
+    out = {}
+    for n in s:
+        a12 = [s[j] for j in range(n - 12, n) if j in s]
+        a60 = [s[j] for j in range(n - 60, n) if j in s]
+        if len(a12) == 12 and len(a60) >= 48:
+            v = math.log(s[n] + 1)
+            out[n + 1] = (max(0.0, v - math.log(sum(a12) / 12 + 1)), v - math.log(sum(a60) / len(a60) + 1))
+    return out
+
+
+def riesgo_geopolitico(series: dict, definicion: dict) -> dict[int, list[float]]:
+    """Rasgo de dos numeros (repunte, nivel) para una materia: el de un indice de los autores
+    o la media ponderada por cuota exportadora de los de cada pais."""
+    if definicion.get("indice"):
+        return {n: list(v) for n, v in _medidas(_mensual(series.get(f"ai:{definicion['indice']}"))).items()}
+    pesos = definicion.get("paises") or {}
+    medidas = {p: _medidas(_mensual(series.get(f"pais:{p}"))) for p in pesos}
+    out = {}
+    for n in set().union(*[set(m) for m in medidas.values()]) if medidas else ():
+        presentes = [(pesos[p], m[n]) for p, m in medidas.items() if n in m]
+        total = sum(w for w, _ in presentes)
+        if total >= 0.8 * sum(pesos.values()):        # al menos el 80 % del peso con dato
+            out[n] = [sum(w * x[0] for w, x in presentes) / total, sum(w * x[1] for w, x in presentes) / total]
     return out

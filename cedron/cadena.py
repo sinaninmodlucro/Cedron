@@ -37,7 +37,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.cadena")
 
-VERSION = 5                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
+VERSION = 6                # subirla al cambiar el metodo: se recalcula sin esperar al mes siguiente
 PLAZOS = list(range(13))   # 0 a 12 meses
 PLAZO_PRINCIPAL = 6
 PLAZO_ASIMETRIA = 3
@@ -471,7 +471,7 @@ def ejecutar(cfg: dict) -> dict:
             abajo = cargar_serie(e["abajo"]["serie"], cambio, e["abajo"].get("en_euros", False))
             try:
                 r = evaluar(arriba, abajo, str(e.get("desde", "")), remuestreos,
-                            extra_por_plazo=pv_extra.calculos_extra("cadena", e["arriba"]["serie"]))
+                            extra_por_plazo=pv_extra.calculos_extra("cadena", e["arriba"]["serie"], cfg))
             except (ValueError, ZeroDivisionError) as err:
                 log.warning("Cadena %s: %s", e["id"], err)
                 r = {"clase": "pocos", "meses": 0}

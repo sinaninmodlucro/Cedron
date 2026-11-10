@@ -35,7 +35,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prevision")
 
-VERSION = 3
+VERSION = 4
 MINIMO = 36           # casos minimos para estimar un calculo
 
 
@@ -235,10 +235,11 @@ def _pct(x: float) -> float:
 
 
 def prever_metal(lp: dict[int, float], rasgos: dict, plazos, corte: str, remuestreos: int = 300,
-                 criba: bool = False) -> dict:
+                 criba: bool = False, extra_por_plazo: dict | None = None) -> dict:
     out = {}
     for h in plazos:
-        c = combinar(lp, rasgos, h, num(corte), remuestreos=remuestreos, criba=criba)
+        r = {**rasgos, **((extra_por_plazo or {}).get(int(h)) or {})}
+        c = combinar(lp, r, h, num(corte), remuestreos=remuestreos, criba=criba)
         if "prevision" not in c:
             continue
         p, u = c["prevision"], max(lp)
@@ -289,7 +290,7 @@ def ejecutar(cfg: dict, descargar_datos: bool = True) -> dict:
         otro = logs.get({"oro": "plata", "plata": "oro"}.get(aid, ""))
         previsiones = prever_metal(lp, rasgos_metal(lp, macro, otro), pcfg.get("plazos", (3, 12)),
                                    str(pcfg.get("corte", "2006-01")), int(pcfg.get("remuestreos", 300)),
-                                   bool(pcfg.get("criba", False)))
+                                   bool(pcfg.get("criba", False)), calculos_extra("metales", aid, cfg))
         precios = {mes(n): math.exp(v) for n, v in lp.items()}
         cadena.anotar_previsiones(registro, aid, previsiones, precios, recientes.get(aid))
         activos[aid] = {"previsiones": previsiones, "historial": cadena.resumen_previsiones(registro, aid),
@@ -336,20 +337,34 @@ def estacion_ciega(lp: dict[int, float], h: int) -> dict[int, float]:
 NOMBRES["estacion"] = "la temporada (lo que suele cambiar en estos meses del año)"
 
 
-def calculos_extra(grupo: str, clave: str) -> dict:
-    """Calculos que superaron la prueba a ciegas solo en algunos precios y plazos (10-nov-2026):
-    la pendiente de la curva de futuros del petroleo, a 3 meses, en el petroleo y en los
-    eslabones de la cadena que parten del Brent. Devuelve {plazo: {calculo: rasgo}}."""
+def calculos_extra(grupo: str, clave: str, cfg: dict | None = None) -> dict:
+    """Calculos que superaron la prueba a ciegas solo en algunos precios y plazos (10-nov-2026).
+    Devuelve {plazo: {calculo: rasgo}}.
+      - Curva de futuros del petroleo, a 3 meses: petroleo y eslabones que parten del Brent.
+      - Riesgo geopolitico de los exportadores, en las familias y plazos de
+        previsiones.geopolitica.usar (energia e industriales a 12 meses).
+    grupo: «apoyo» (clave = «materia:ambito»), «cadena» (clave = serie de arriba) o «metales»."""
     from cedron import indices
-    petroleo = (grupo == "apoyo" and clave.split(":")[0] in ("brent", "wti")) or                (grupo == "cadena" and clave == "pink:Crude oil, Brent")
-    if not petroleo:
-        return {}
     series = (leer("prevision/indices.json", {}) or {}).get("series") or {}
-    if not series.get("wti_c1"):
-        return {}
-    return {3: {"futuros_petroleo": indices.pendiente_futuros(series, "wti")}}
+    out: dict[int, dict] = {}
+    petroleo = ((grupo == "apoyo" and clave.split(":")[0] in ("brent", "wti"))
+                or (grupo == "cadena" and clave == "pink:Crude oil, Brent"))
+    if petroleo and series.get("wti_c1"):
+        out.setdefault(3, {})["futuros_petroleo"] = indices.pendiente_futuros(series, "wti")
+    geo = ((cfg or {}).get("previsiones") or {}).get("geopolitica") or {}
+    if geo and series:
+        ncfg = (cfg or {}).get("noticias") or {}
+        materia = {"apoyo": (ncfg.get("materia_de_apoyo") or {}).get(clave.split(":")[0]),
+                   "cadena": (ncfg.get("materia_de_serie") or {}).get(clave),
+                   "metales": clave}.get(grupo)
+        familia = next((f for f, ms in (geo.get("familias") or {}).items() if materia in ms), None)
+        definicion = (geo.get("materias") or {}).get(materia)
+        for h in (geo.get("usar") or {}).get(familia, []) if definicion else []:
+            out.setdefault(int(h), {})["geopolitica"] = indices.riesgo_geopolitico(series, definicion)
+    return out
 
 
+NOMBRES["geopolitica"] = "el riesgo geopolítico de los países que lo exportan"
 NOMBRES["futuros_petroleo"] = "la curva de futuros del petróleo"
 
 
@@ -399,7 +414,7 @@ def ejecutar_apoyo(cfg: dict) -> dict:
                 orden = sorted(lp)
                 inicio = orden[max(len(orden) // 2, 60)]
                 previsiones = prever_serie(lp, rasgos_generales(lp, macro, a == "global"), plazos,
-                                           inicio, remuestreos, calculos_extra("apoyo", f"{m['id']}:{a}"))
+                                           inicio, remuestreos, calculos_extra("apoyo", f"{m['id']}:{a}", cfg))
                 if not previsiones:
                     continue
                 ident = f"{m['id']}:{a}"

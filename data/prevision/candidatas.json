@@ -1,31 +1,7 @@
 {
  "calculado": "2026-11-10",
- "regla": "entra solo si sube el numero de previsiones seguras y la mediana del R2 fuera de muestra",
+ "regla": "entra solo si sube el numero de previsiones seguras, sube la mediana del R2 fuera de muestra y mejora en al menos la mitad",
  "filas": [
-  {
-   "idea": "gpr",
-   "nombre": "Riesgo geopolítico (noticias, Caldara e Iacoviello)",
-   "plazo": 3,
-   "series": 22,
-   "seguras_antes": 4,
-   "seguras_con": 5,
-   "r2_antes": 0.003641272633433168,
-   "r2_con": 0.0036779437201212017,
-   "mejora_en": 7,
-   "entra": true
-  },
-  {
-   "idea": "gpr",
-   "nombre": "Riesgo geopolítico (noticias, Caldara e Iacoviello)",
-   "plazo": 12,
-   "series": 22,
-   "seguras_antes": 5,
-   "seguras_con": 5,
-   "r2_antes": 0.07934357059955166,
-   "r2_con": 0.07533700502103347,
-   "mejora_en": 3,
-   "entra": false
-  },
   {
    "idea": "epu",
    "nombre": "Incertidumbre económica (noticias, Baker, Bloom y Davis)",
@@ -144,6 +120,102 @@
    "r2_antes": 0.14895979779803348,
    "r2_con": 0.12969251019706807,
    "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "geo_energia",
+   "nombre": "Riesgo geopolítico de los exportadores: energía",
+   "plazo": 3,
+   "series": 27,
+   "seguras_antes": 10,
+   "seguras_con": 10,
+   "r2_antes": 0.038973048404030486,
+   "r2_con": 0.035891486870301526,
+   "mejora_en": 18,
+   "entra": false
+  },
+  {
+   "idea": "geo_energia",
+   "nombre": "Riesgo geopolítico de los exportadores: energía",
+   "plazo": 12,
+   "series": 27,
+   "seguras_antes": 8,
+   "seguras_con": 15,
+   "r2_antes": 0.09827280471249655,
+   "r2_con": 0.11837090714937104,
+   "mejora_en": 17,
+   "entra": true
+  },
+  {
+   "idea": "geo_agricolas",
+   "nombre": "Riesgo geopolítico de los exportadores: agrícolas",
+   "plazo": 3,
+   "series": 28,
+   "seguras_antes": 10,
+   "seguras_con": 11,
+   "r2_antes": 0.042426003670874346,
+   "r2_con": 0.05068228703097044,
+   "mejora_en": 10,
+   "entra": false
+  },
+  {
+   "idea": "geo_agricolas",
+   "nombre": "Riesgo geopolítico de los exportadores: agrícolas",
+   "plazo": 12,
+   "series": 28,
+   "seguras_antes": 3,
+   "seguras_con": 4,
+   "r2_antes": 0.04597391077763524,
+   "r2_con": 0.04501498095142886,
+   "mejora_en": 12,
+   "entra": false
+  },
+  {
+   "idea": "geo_industriales",
+   "nombre": "Riesgo geopolítico de los exportadores: metales industriales y abonos",
+   "plazo": 3,
+   "series": 42,
+   "seguras_antes": 6,
+   "seguras_con": 6,
+   "r2_antes": 0.012848215777587546,
+   "r2_con": 0.025329575052342457,
+   "mejora_en": 29,
+   "entra": false
+  },
+  {
+   "idea": "geo_industriales",
+   "nombre": "Riesgo geopolítico de los exportadores: metales industriales y abonos",
+   "plazo": 12,
+   "series": 42,
+   "seguras_antes": 2,
+   "seguras_con": 3,
+   "r2_antes": 0.04375450017364091,
+   "r2_con": 0.056152227348076234,
+   "mejora_en": 24,
+   "entra": true
+  },
+  {
+   "idea": "geo_refugio",
+   "nombre": "Riesgo geopolítico de los exportadores: oro y plata (refugio)",
+   "plazo": 3,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.0077940212480136495,
+   "r2_con": -0.007415743263643693,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "geo_refugio",
+   "nombre": "Riesgo geopolítico de los exportadores: oro y plata (refugio)",
+   "plazo": 12,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.02055398122850538,
+   "r2_con": -0.021363872599704736,
+   "mejora_en": 1,
    "entra": false
   }
  ]

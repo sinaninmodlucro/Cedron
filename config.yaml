@@ -1604,6 +1604,60 @@ previsiones:
     plazos: [3, 12]               # meses
     remuestreos: 300
     criba: false                  # true = solo los calculos que van acertando (probado: peor)
+  # Riesgo geopolitico (10-nov-2026). Fijado ANTES de probarlo. Idea economica: el riesgo
+  # geopolitico MUNDIAL tiende a bajar las materias primas (frena la economia y la demanda);
+  # el de los PAISES QUE LAS EXPORTAN tiende a subirlas (miedo a cortes de suministro). Ver
+  # BCE, Boletin Economico 8/2023 y 4/2026; Iacoviello y Tong 2026; Verduzco-Bustos y
+  # Zanetti 2026. Datos: indice AI-GPR (Iacoviello y Tong), mensual desde 1960.
+  #  - indice: un indice ya hecho por los autores (GPR_OIL = sucesos que afectan a la energia;
+  #    ACTS_GPR_AI = actos (guerras, ataques), no amenazas, para el oro y la plata como refugio).
+  #  - paises: cuota aproximada de las exportaciones mundiales (%, media de la ultima decada,
+  #    redondeada; incluye pasos estrechos: Iran-Ormuz, Yemen-mar Rojo, Egipto-Suez). EE. UU.
+  #    no entra: su indice mide su papel en los conflictos, no riesgo para su produccion.
+  # Cada pais se mide frente a su propia historia: repunte (solo subidas frente a su media del
+  # ultimo anio) y nivel frente a los cinco anios anteriores, con un mes de retraso.
+  geopolitica:
+    # Resultado de la prueba a ciegas (10-nov-2026, regla fijada antes: sube el numero de
+    # previsiones seguras, sube la mediana del R2 y mejora en al menos la mitad): entra en
+    # energia a 12 meses (seguras 8 -> 15 de 27) e industriales a 12 meses (2 -> 3 de 42,
+    # mejora 24). No entra a 3 meses ni en agricolas ni en oro y plata.
+    usar: {energia: [12], industriales: [12]}
+    familias:            # se decide por familia y plazo con la misma regla que las demas ideas
+      energia: [petroleo, diesel, plasticos, gas, electricidad, carbon]
+      agricolas: [trigo, maiz, soja, piensos, girasol, cebada, arroz, azucar, cacao, cafe, algodon, naranja, vacuno, cerdo, pollo]
+      industriales: [fertilizantes, aluminio, cobre, acero, zinc, madera, platino]
+      refugio: [oro, plata]
+    materias:
+      petroleo: {indice: GPR_OIL}
+      diesel: {indice: GPR_OIL}
+      plasticos: {indice: GPR_OIL}
+      gas: {paises: {Russia: 35, Norway: 25, Qatar: 12, Algeria: 10, Azerbaijan: 4, Libya: 2, Iran: 5, Egypt: 4}}
+      electricidad: {paises: {Russia: 35, Norway: 25, Qatar: 12, Algeria: 10, Azerbaijan: 4, Libya: 2, Iran: 5, Egypt: 4}}
+      carbon: {paises: {Indonesia: 35, Australia: 28, Russia: 15, Colombia: 6, South Africa: 6}}
+      trigo: {paises: {Russia: 20, Canada: 12, Australia: 11, Ukraine: 9, France: 9, Argentina: 6, Kazakhstan: 4, Egypt: 3}}
+      maiz: {paises: {Brazil: 22, Argentina: 18, Ukraine: 13, Russia: 2}}
+      soja: {paises: {Argentina: 40, Brazil: 25, Paraguay: 5, India: 5}}
+      piensos: {paises: {Brazil: 25, Argentina: 25, Ukraine: 10}}
+      girasol: {paises: {Ukraine: 45, Russia: 25, Argentina: 5, Turkey: 5}}
+      cebada: {paises: {Australia: 20, France: 15, Russia: 15, Ukraine: 12, Argentina: 8, Canada: 8}}
+      arroz: {paises: {India: 40, Thailand: 15, Vietnam: 15, Pakistan: 8, Myanmar: 4}}
+      azucar: {paises: {Brazil: 45, Thailand: 10, India: 8, Australia: 5}}
+      cacao: {paises: {Ivory Coast: 45, Ghana: 15, Ecuador: 7, Cameroon: 5, Nigeria: 5}}
+      cafe: {paises: {Brazil: 35, Vietnam: 17, Colombia: 10, Indonesia: 6, Ethiopia: 4, Honduras: 4}}
+      algodon: {paises: {Brazil: 25, India: 8, Australia: 8, Benin: 3, Burkina Faso: 2}}
+      naranja: {paises: {Brazil: 70, Mexico: 5}}
+      vacuno: {paises: {Brazil: 25, Australia: 15, Argentina: 8, Uruguay: 4}}
+      cerdo: {paises: {Germany: 10, Denmark: 8, Brazil: 10, Canada: 10, Netherlands: 6}}
+      pollo: {paises: {Brazil: 35, Thailand: 8, Ukraine: 5, Netherlands: 5, Poland: 6}}
+      fertilizantes: {paises: {Russia: 18, China: 12, Canada: 15, Belarus: 10, Morocco: 8, Qatar: 5, Saudi Arabia: 5, Egypt: 4, Oman: 3}}
+      aluminio: {paises: {Guinea: 15, Canada: 12, Russia: 10, China: 10, India: 6, UAE: 6, Australia: 5, Bahrain: 3}}
+      cobre: {paises: {Chile: 30, Peru: 12, DRC: 10, China: 8, Zambia: 5, Indonesia: 4, Russia: 4}}
+      acero: {paises: {Australia: 40, Brazil: 18, China: 15, Russia: 6, India: 5, Turkey: 4, South Africa: 4, Ukraine: 3}}
+      zinc: {paises: {Indonesia: 25, Australia: 10, Peru: 10, Russia: 10, China: 10, Philippines: 8, Myanmar: 5, Bolivia: 5}}
+      madera: {paises: {Canada: 20, Russia: 15, Sweden: 8, Finland: 8, Germany: 6}}
+      platino: {paises: {South Africa: 70, Russia: 12, Zimbabwe: 8}}
+      oro: {indice: ACTS_GPR_AI}
+      plata: {indice: ACTS_GPR_AI}
   # Materias primas de apoyo (10-nov-2026): cada ambito con historia suficiente. Mismos
   # calculos que los metales salvo los tipos reales, mas la inercia de tres meses y la
   # temporada; el dolar y las divisas solo en los precios mundiales.
