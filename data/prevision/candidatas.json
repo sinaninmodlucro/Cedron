@@ -1,5 +1,5 @@
 {
- "calculado": "2026-11-10",
+ "calculado": "2026-11-11",
  "regla": "entra solo si sube el numero de previsiones seguras, sube la mediana del R2 fuera de muestra y mejora en al menos la mitad",
  "filas": [
   {
@@ -385,6 +385,174 @@
    "r2_con": -0.018304851637425346,
    "mejora_en": 1,
    "entra": false
+  },
+  {
+   "idea": "adelantado:energia",
+   "nombre": "Indicadores adelantados de la OCDE (G20 y China): energía",
+   "plazo": 3,
+   "series": 27,
+   "seguras_antes": 10,
+   "seguras_con": 9,
+   "r2_antes": 0.038973048404030486,
+   "r2_con": 0.03451373161323057,
+   "mejora_en": 11,
+   "entra": false
+  },
+  {
+   "idea": "adelantado:energia",
+   "nombre": "Indicadores adelantados de la OCDE (G20 y China): energía",
+   "plazo": 12,
+   "series": 27,
+   "seguras_antes": 15,
+   "seguras_con": 16,
+   "r2_antes": 0.11837090714937104,
+   "r2_con": 0.11048372186514288,
+   "mejora_en": 13,
+   "entra": false
+  },
+  {
+   "idea": "adelantado:industriales",
+   "nombre": "Indicadores adelantados de la OCDE (G20 y China): metales industriales y abonos",
+   "plazo": 3,
+   "series": 42,
+   "seguras_antes": 6,
+   "seguras_con": 6,
+   "r2_antes": 0.012848215777587546,
+   "r2_con": 0.018953898826332027,
+   "mejora_en": 27,
+   "entra": false
+  },
+  {
+   "idea": "adelantado:industriales",
+   "nombre": "Indicadores adelantados de la OCDE (G20 y China): metales industriales y abonos",
+   "plazo": 12,
+   "series": 42,
+   "seguras_antes": 6,
+   "seguras_con": 9,
+   "r2_antes": 0.07034211901899923,
+   "r2_con": 0.07901811316763208,
+   "mejora_en": 28,
+   "entra": true
+  },
+  {
+   "idea": "inflacion:refugio",
+   "nombre": "Inflación esperada por los hogares (Univ. de Michigan): oro y plata",
+   "plazo": 3,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.0077940212480136495,
+   "r2_con": -0.009547646987057679,
+   "mejora_en": 0,
+   "entra": false
+  },
+  {
+   "idea": "inflacion:refugio",
+   "nombre": "Inflación esperada por los hogares (Univ. de Michigan): oro y plata",
+   "plazo": 12,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.02055398122850538,
+   "r2_con": -0.01984882893575457,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "sequia:todo",
+   "nombre": "Lluvia del último año en España (alimentos de fábrica y luz)",
+   "plazo": 3,
+   "series": 15,
+   "seguras_antes": 7,
+   "seguras_con": 7,
+   "r2_antes": 0.1964245366645332,
+   "r2_con": 0.16401576288008268,
+   "mejora_en": 4,
+   "entra": false
+  },
+  {
+   "idea": "sequia:todo",
+   "nombre": "Lluvia del último año en España (alimentos de fábrica y luz)",
+   "plazo": 12,
+   "series": 15,
+   "seguras_antes": 3,
+   "seguras_con": 4,
+   "r2_antes": 0.08875361385601366,
+   "r2_con": 0.0780848939043659,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "frio:todo",
+   "nombre": "Frío en Europa (eslabones que parten del gas)",
+   "plazo": 3,
+   "series": 8,
+   "seguras_antes": 4,
+   "seguras_con": 5,
+   "r2_antes": 0.17172992968550693,
+   "r2_con": 0.15733742853799082,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "frio:todo",
+   "nombre": "Frío en Europa (eslabones que parten del gas)",
+   "plazo": 12,
+   "series": 8,
+   "seguras_antes": 6,
+   "seguras_con": 6,
+   "r2_antes": 0.15621740615749968,
+   "r2_con": 0.1399094170422882,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "existencias:todo",
+   "nombre": "Existencias mundiales de cereales y soja (USDA)",
+   "plazo": 3,
+   "series": 15,
+   "seguras_antes": 6,
+   "seguras_con": 7,
+   "r2_antes": 0.16258757324279316,
+   "r2_con": 0.1387356580839587,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "existencias:todo",
+   "nombre": "Existencias mundiales de cereales y soja (USDA)",
+   "plazo": 12,
+   "series": 15,
+   "seguras_antes": 3,
+   "seguras_con": 1,
+   "r2_antes": 0.05909104747145799,
+   "r2_con": 0.04883485357719353,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "mundial:todo",
+   "nombre": "Precio mundial para prever el de España y Europa",
+   "plazo": 3,
+   "series": 15,
+   "seguras_antes": 1,
+   "seguras_con": 1,
+   "r2_antes": -0.014734312434836472,
+   "r2_con": 0.018500347862684396,
+   "mejora_en": 10,
+   "entra": false
+  },
+  {
+   "idea": "mundial:todo",
+   "nombre": "Precio mundial para prever el de España y Europa",
+   "plazo": 12,
+   "series": 15,
+   "seguras_antes": 3,
+   "seguras_con": 4,
+   "r2_antes": 0.09557699982079138,
+   "r2_con": 0.10421303451198405,
+   "mejora_en": 10,
+   "entra": true
   }
  ]
 }

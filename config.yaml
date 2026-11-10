@@ -1645,6 +1645,40 @@ previsiones:
       materias: {petroleo: crudo, diesel: crudo, plasticos: crudo, gas: gas, electricidad: gas}
     # Resultado: entra en agricolas a 12 meses (seguras 3 -> 6 de 28; mejora justo la mitad, 14)
     comercio: {familias: [industriales, agricolas], usar: {agricolas: [12]}}
+    # --- Tercera tanda (11-nov-2026), fijada ANTES de probar. Donde se aplica cada idea:
+    # 'familias' (por materia), 'abajo_empieza' (eslabones de la cadena cuyo precio de abajo
+    # empieza asi), 'ambitos' (materias de apoyo de esos ambitos) o las claves de 'materias'
+    # ('grupos' limita a cadena / apoyo / metales). En estas, 'usar' lleva la clave «todo».
+    #  - adelantado: indicadores adelantados de la OCDE (G20 y China), hechos para anticipar
+    #    la economia 6-9 meses. Nivel frente a 100 de cada uno, dos meses de retraso. Ojo: la
+    #    OCDE los revisa hacia atras, asi que la prueba puede salir algo mejor que la realidad.
+    #  - inflacion: inflacion esperada por los hogares de EE. UU. a un anio (Universidad de
+    #    Michigan, desde 1978): el oro como proteccion. Nivel frente a su media de cinco anios
+    #    y cambio en un anio; un mes de retraso.
+    #  - sequia: lluvia de los ultimos doce meses en cinco zonas agricolas de Espana (Jaen,
+    #    Cordoba, Valladolid, Albacete, Zaragoza; Open-Meteo, reanalisis ERA5 desde 1960)
+    #    frente a lo normal (media de los diez anios anteriores). Menos lluvia = peores
+    #    cosechas y menos agua en los embalses. En los alimentos de fabrica de Espana y la luz.
+    #  - frio: grados-dia de calefaccion de los ultimos tres meses en cinco ciudades europeas
+    #    (Londres, Paris, Berlin, Milan, Madrid) frente a lo normal: un invierno frio vacia
+    #    los almacenes de gas. En los eslabones de la cadena que parten del gas.
+    #  - existencias: existencias mundiales frente al consumo (Departamento de Agricultura de
+    #    EE. UU., desde 1960), el dato clasico de los cereales (teoria del almacenamiento).
+    #    Solo se publica la cifra ya corregida, no la que se conocia en cada momento: para no
+    #    mirar al futuro se usa la campana cerrada hace mas de seis meses (la de dos anios
+    #    antes). Nivel frente a las diez campanas anteriores y cambio frente a la anterior.
+    #  - mundial: el precio mundial de la misma materia (en euros) en los ultimos 3 y 12
+    #    meses, para prever su precio en Espana y Europa (el de fuera llega con retraso).
+    # Resultado (11-nov-2026): entra en industriales a 12 meses (seguras 6 -> 9 de 42, mejora 28)
+    adelantado: {familias: [energia, industriales], usar: {industriales: [12]}}
+    inflacion: {familias: [refugio], usar: {}}   # no pasa la regla
+    sequia: {abajo_empieza: ["eurostat:ES|C10", "eurostat:ES|C11", "eurostat:ES|D351"], usar: {}}   # no pasa la regla
+    frio: {grupos: [cadena], materias: {gas: x, electricidad: x}, usar: {}}   # no pasa la regla
+    existencias:
+      materias: {trigo: "Wheat", maiz: "Corn", piensos: "Corn", arroz: "Rice, Milled", cebada: "Barley", soja: "Oilseed, Soybean"}
+      usar: {}       # no pasa la regla (con el retraso de seguridad el dato llega demasiado viejo)
+    # Resultado: entra a 12 meses (seguras 3 -> 4 de 15, mejora 10)
+    mundial: {ambitos: [espana, europa], usar: {todo: [12]}}
     miedo: {familias: [refugio], usar: {}}           # no pasa la regla
   geopolitica:
     # Resultado de la prueba a ciegas (10-nov-2026, regla fijada antes: sube el numero de

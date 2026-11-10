@@ -35,7 +35,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prevision")
 
-VERSION = 5
+VERSION = 6
 MINIMO = 36           # casos minimos para estimar un calculo
 
 
@@ -338,13 +338,44 @@ def estacion_ciega(lp: dict[int, float], h: int) -> dict[int, float]:
 NOMBRES["estacion"] = "la temporada (lo que suele cambiar en estos meses del año)"
 
 
-def calculos_extra(grupo: str, clave: str, cfg: dict | None = None) -> dict:
-    """Calculos que superaron la prueba a ciegas solo en algunos precios y plazos (10-nov-2026).
+def ideas_aplicables(cfg: dict, grupo: str, materia: str | None, ambito: str | None = None,
+                      abajo: str | None = None) -> dict[str, str]:
+    """{idea: clave de 'usar'} de las ideas de previsiones.ideas que tocan a este precio."""
+    p = (cfg or {}).get("previsiones") or {}
+    familia = next((f for f, ms in ((p.get("geopolitica") or {}).get("familias") or {}).items() if materia in ms), None)
+    out = {}
+    for idea, d in (p.get("ideas") or {}).items():
+        if d.get("grupos") and grupo not in d["grupos"]:
+            continue
+        if d.get("familias"):
+            if familia in d["familias"]:
+                out[idea] = familia
+        elif d.get("abajo_empieza"):
+            if grupo == "cadena" and abajo and any(abajo.startswith(x) for x in d["abajo_empieza"]):
+                out[idea] = "todo"
+        elif d.get("ambitos"):
+            if grupo == "apoyo" and ambito in d["ambitos"]:
+                out[idea] = "todo"
+        elif materia in (d.get("materias") or {}):
+            out[idea] = "todo"
+    return out
+
+
+def rasgo_mundial(lp_mundial: dict[int, float] | None) -> dict[int, list[float]]:
+    """Idea «mundial»: cambio del precio mundial de la misma materia en 3 y 12 meses."""
+    lp = lp_mundial or {}
+    return {n: [lp[n] - lp[n - 3], lp[n] - lp[n - 12]] for n in lp if n - 3 in lp and n - 12 in lp}
+
+
+def calculos_extra(grupo: str, clave: str, cfg: dict | None = None, abajo: str | None = None,
+                   lp_mundial: dict | None = None) -> dict:
+    """Calculos que superaron la prueba a ciegas solo en algunos precios y plazos.
     Devuelve {plazo: {calculo: rasgo}}.
       - Curva de futuros del petroleo, a 3 meses: petroleo y eslabones que parten del Brent.
-      - Riesgo geopolitico de los exportadores, en las familias y plazos de
-        previsiones.geopolitica.usar (energia e industriales a 12 meses).
-    grupo: «apoyo» (clave = «materia:ambito»), «cadena» (clave = serie de arriba) o «metales»."""
+      - Riesgo geopolitico de los exportadores (previsiones.geopolitica.usar).
+      - Las ideas de previsiones.ideas, cada una donde diga su 'usar'.
+    grupo: «apoyo» (clave = «materia:ambito»), «cadena» (clave = serie de arriba; abajo = la de
+    abajo) o «metales» (clave = metal)."""
     from cedron import indices
     series = (leer("prevision/indices.json", {}) or {}).get("series") or {}
     out: dict[int, dict] = {}
@@ -352,25 +383,32 @@ def calculos_extra(grupo: str, clave: str, cfg: dict | None = None) -> dict:
                 or (grupo == "cadena" and clave == "pink:Crude oil, Brent"))
     if petroleo and series.get("wti_c1"):
         out.setdefault(3, {})["futuros_petroleo"] = indices.pendiente_futuros(series, "wti")
-    geo = ((cfg or {}).get("previsiones") or {}).get("geopolitica") or {}
-    if geo and series:
-        ncfg = (cfg or {}).get("noticias") or {}
-        materia = {"apoyo": (ncfg.get("materia_de_apoyo") or {}).get(clave.split(":")[0]),
-                   "cadena": (ncfg.get("materia_de_serie") or {}).get(clave),
-                   "metales": clave}.get(grupo)
-        familia = next((f for f, ms in (geo.get("familias") or {}).items() if materia in ms), None)
-        definicion = (geo.get("materias") or {}).get(materia)
-        for h in (geo.get("usar") or {}).get(familia, []) if definicion else []:
-            out.setdefault(int(h), {})["geopolitica"] = indices.riesgo_geopolitico(series, definicion)
-        # Mas ideas (previsiones.ideas): cada una solo en las familias y plazos que superaron la prueba
-        for idea, d in (((cfg or {}).get("previsiones") or {}).get("ideas") or {}).items():
-            for h in (d.get("usar") or {}).get(familia, []):
-                rasgo = indices.rasgo_idea(series, idea, d, materia)
-                if rasgo:
-                    out.setdefault(int(h), {})[idea] = rasgo
+    p = (cfg or {}).get("previsiones") or {}
+    geo = p.get("geopolitica") or {}
+    if not series or not cfg:
+        return out
+    ncfg = cfg.get("noticias") or {}
+    materia = {"apoyo": (ncfg.get("materia_de_apoyo") or {}).get(clave.split(":")[0]),
+               "cadena": (ncfg.get("materia_de_serie") or {}).get(clave),
+               "metales": clave}.get(grupo)
+    ambito = clave.split(":")[1] if grupo == "apoyo" and ":" in clave else None
+    familia = next((f for f, ms in (geo.get("familias") or {}).items() if materia in ms), None)
+    definicion = (geo.get("materias") or {}).get(materia)
+    for h in (geo.get("usar") or {}).get(familia, []) if definicion else []:
+        out.setdefault(int(h), {})["geopolitica"] = indices.riesgo_geopolitico(series, definicion)
+    for idea, donde in ideas_aplicables(cfg, grupo, materia, ambito, abajo).items():
+        d = p["ideas"][idea]
+        for h in (d.get("usar") or {}).get(donde, []):
+            rasgo = rasgo_mundial(lp_mundial) if idea == "mundial" else indices.rasgo_idea(series, idea, d, materia)
+            if rasgo:
+                out.setdefault(int(h), {})[idea] = rasgo
     return out
 
 
+NOMBRES.update({"adelantado": "los indicadores adelantados de la economía (OCDE)",
+                "inflacion": "la inflación que espera la gente", "sequia": "la lluvia del último año en España",
+                "frio": "lo frío que ha sido el tiempo en Europa", "existencias": "las existencias mundiales frente al consumo",
+                "mundial": "el precio mundial de los últimos meses"})
 NOMBRES.update({"nino": "El Niño y La Niña (el clima del Pacífico)", "actividad": "la actividad económica mundial",
                 "inventarios": "lo llenos que están los almacenes frente a lo normal",
                 "comercio": "la incertidumbre sobre aranceles", "miedo": "el miedo en los mercados financieros"})
@@ -394,6 +432,23 @@ def prever_serie(lp: dict[int, float], rasgos: dict, plazos, inicio: int, remues
     return out
 
 
+def series_apoyo(cfg: dict, fuentes: dict, cambio) -> dict:
+    """{(materia, ambito): (serie preparada, {mes: ln precio})} de todas las materias de apoyo."""
+    from cedron import apoyo
+    acfg = cfg.get("apoyo", {})
+    out = {}
+    for g in acfg.get("grupos", []):
+        for m in g.get("materias", []):
+            for a, amb in (m.get("ambitos") or {}).items():
+                try:
+                    s = apoyo.serie_ambito(amb, fuentes, cfg, cambio, acfg.get("en_euros", True))
+                except (KeyError, ValueError, ZeroDivisionError) as e:
+                    log.warning("Prevision %s/%s: %s", m["id"], a, e)
+                    continue
+                out[(m["id"], a)] = (s, {num(f): math.log(v) for f, v in apoyo.mensualizar(s["serie"]) if v and v > 0})
+    return out
+
+
 def ejecutar_apoyo(cfg: dict) -> dict:
     """Previsiones de cada materia de apoyo y cada ambito con historia suficiente. Escribe
     data/apoyo_prevision.json y el historial propio en data/apoyo_previsiones.json."""
@@ -410,21 +465,20 @@ def ejecutar_apoyo(cfg: dict) -> dict:
     from cedron.news import balance_reciente
     recientes = balance_reciente(cfg["noticias"])
     materias = {}
+    todas = series_apoyo(cfg, fuentes, cambio)
     for g in acfg.get("grupos", []):
         for m in g.get("materias", []):
-            for a, amb in (m.get("ambitos") or {}).items():
-                try:
-                    s = apoyo.serie_ambito(amb, fuentes, cfg, cambio, acfg.get("en_euros", True))
-                except (KeyError, ValueError, ZeroDivisionError) as e:
-                    log.warning("Prevision %s/%s: %s", m["id"], a, e)
+            for a in (m.get("ambitos") or {}):
+                if (m["id"], a) not in todas:
                     continue
-                lp = {num(f): math.log(v) for f, v in apoyo.mensualizar(s["serie"]) if v and v > 0}
+                s, lp = todas[(m["id"], a)]
                 if len(lp) < minimo or max(lp) < num(iso()[:7]) - 18:      # poca historia o serie parada
                     continue
+                mundial = todas.get((m["id"], "global"), (None, None))[1] if a != "global" else None
                 orden = sorted(lp)
                 inicio = orden[max(len(orden) // 2, 60)]
                 previsiones = prever_serie(lp, rasgos_generales(lp, macro, a == "global"), plazos,
-                                           inicio, remuestreos, calculos_extra("apoyo", f"{m['id']}:{a}", cfg))
+                                           inicio, remuestreos, calculos_extra("apoyo", f"{m['id']}:{a}", cfg, lp_mundial=mundial))
                 if not previsiones:
                     continue
                 ident = f"{m['id']}:{a}"
