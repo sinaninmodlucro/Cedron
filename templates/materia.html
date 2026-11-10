@@ -19,6 +19,13 @@
   </div>
   {% endif %}
 
+  {% for md in medidas if md.materia == m.id %}
+  <aside class="medida" aria-label="Medida regulatoria en vigor">
+    <p class="medida__titulo"><strong>Medida en vigor:</strong> {{ md.titulo }}</p>
+    <p class="pequeno">{{ md.texto }}</p>
+    <p class="pequeno secundario">Efecto esperado en el precio: <strong>{{ 'al alza' if md.sentido == 'alza' else 'a la baja' }}</strong>. En vigor hasta el {{ md.hasta|fecha_larga }}. Nuestra previsión no incluye esta medida de forma directa (sí el exceso de oferta que la provoca, cuando ese cálculo se usa). Fuente: {% if md.enlace %}<a href="{{ md.enlace }}" rel="noopener nofollow" target="_blank">{{ md.fuente }}</a>{% else %}{{ md.fuente }}{% endif %}.</p>
+  </aside>
+  {% endfor %}
   {% for id, _ in ambitos %}{% set amb = m.ambitos.get(id) %}
   {% if amb and amb.resumen %}{% set r = amb.resumen %}
   <section class="bloque" aria-labelledby="t-{{ id }}">

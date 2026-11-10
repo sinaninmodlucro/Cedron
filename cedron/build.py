@@ -518,6 +518,8 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
                  nombres={**{a["id"]: a["nombre"] for a in cfg["activos"]}, **temas},
                  temas_noticias=list(temas.items()), nombres_piezas=NOMBRES_PIEZAS,
                  prev_apoyo=(leer("apoyo_prevision.json") or {}).get("materias") or {},
+                 medidas=[x for x in (cfg.get("medidas") or [])
+                          if str(x.get("desde", "")) <= iso()[:10] <= str(x.get("hasta", "9999"))],
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),
                  anio=datetime.now(tz).year, grupos_apoyo=grupos_apoyo,

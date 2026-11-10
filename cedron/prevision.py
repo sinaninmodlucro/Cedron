@@ -35,7 +35,7 @@ from cedron.store import escribir, iso, leer
 
 log = logging.getLogger("cedron.prevision")
 
-VERSION = 6
+VERSION = 7
 MINIMO = 36           # casos minimos para estimar un calculo
 
 
@@ -354,7 +354,7 @@ def ideas_aplicables(cfg: dict, grupo: str, materia: str | None, ambito: str | N
             if grupo == "cadena" and abajo and any(abajo.startswith(x) for x in d["abajo_empieza"]):
                 out[idea] = "todo"
         elif d.get("ambitos"):
-            if grupo == "apoyo" and ambito in d["ambitos"]:
+            if grupo == "apoyo" and ambito in d["ambitos"] and (not d.get("materias") or materia in d["materias"]):
                 out[idea] = "todo"
         elif materia in (d.get("materias") or {}):
             out[idea] = "todo"
@@ -405,6 +405,9 @@ def calculos_extra(grupo: str, clave: str, cfg: dict | None = None, abajo: str |
     return out
 
 
+NOMBRES.update({"oferta": "el exceso o la falta de oferta mundial (existencias y cosecha)",
+                "sequia_campo": "la lluvia del último año en España", "bancos": "el oro que compran los bancos centrales",
+                "dinero": "el dinero en circulación"})
 NOMBRES.update({"adelantado": "los indicadores adelantados de la economía (OCDE)",
                 "inflacion": "la inflación que espera la gente", "sequia": "la lluvia del último año en España",
                 "frio": "lo frío que ha sido el tiempo en Europa", "existencias": "las existencias mundiales frente al consumo",

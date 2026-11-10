@@ -47,9 +47,14 @@ URL_MICH = "https://www.sca.isr.umich.edu/files/tbmpx1px5.csv"
 URL_METEO = "https://archive-api.open-meteo.com/v1/archive"       # uso no comercial
 ZONAS_ES = [(37.77, -3.79), (37.88, -4.78), (41.65, -4.72), (39.00, -1.86), (41.65, -0.89)]
 CIUDADES_EU = [(51.51, -0.13), (48.85, 2.35), (52.52, 13.40), (45.46, 9.19), (40.42, -3.70)]
-URL_PSD = {"granos": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
-           "oleaginosas": "https://apps.fas.usda.gov/psdonline/downloads/psd_oilseeds_csv.zip"}
-PSD_PRODUCTOS = ("Wheat", "Corn", "Rice, Milled", "Barley", "Oilseed, Soybean")
+_PSD = "https://apps.fas.usda.gov/psdonline/downloads/psd_%s_csv.zip"
+URL_PSD = {"granos": _PSD % "grains_pulses", "oleaginosas": _PSD % "oilseeds", "azucar": _PSD % "sugar",
+           "cafe": _PSD % "coffee", "algodon": _PSD % "cotton"}
+PSD_PRODUCTOS = ("Wheat", "Corn", "Rice, Milled", "Barley", "Oilseed, Soybean", "Oilseed, Sunflowerseed",
+                 "Oil, Olive", "Sugar, Centrifugal", "Coffee, Green", "Cotton")
+PSD_CONSUMO = ("Domestic Consumption", "Human Dom. Consumption", "Domestic Use")
+URL_DBNOMICS = "https://api.db.nomics.world/v22/series/"
+DBNOMICS = {"oro_bancos": "IMF/IFS/M.W00.RAFAGOLDV_OZT", "m2": "FED/H6_H6_M2/M2.M"}
 URL_GSCPI = "https://www.newyorkfed.org/medialibrary/research/interactives/gscpi/downloads/gscpi_data.xlsx"
 
 
@@ -147,8 +152,10 @@ def descargar() -> dict:
         except (src.FuenteError, xlrd.XLRDError, ValueError, IndexError, KeyError) as e:
             fallos.append(f"{nombre}: {e}")
     try:
-        for producto, serie in _existencias().items():
-            series[f"stu:{producto}"] = serie
+        for clave, serie in _existencias().items():
+            series[clave] = serie
+        for nombre, codigo in DBNOMICS.items():
+            series[nombre] = _dbnomics(codigo)
     except (src.FuenteError, ValueError, KeyError, IndexError, OSError) as e:
         fallos.append(f"existencias: {e}")
     escribir("prevision/indices.json", {"series": series, "consultado": iso(), "fallos": fallos})
@@ -316,7 +323,22 @@ def rasgo_idea(series: dict, idea: str, definicion: dict, materia: str | None) -
             if len(previos) >= 48 and n - 12 in s:
                 out[n + 1] = [s[n] - sum(previos) / len(previos), s[n] - s[n - 12]]
         return out
-    if idea in ("sequia", "frio"):
+    if idea == "oferta":
+        producto = (definicion.get("materias") or {}).get(materia)
+        por_campana = {int(a): v for a, v in series.get(f"oferta:{producto}") or [] if v and v > 0}
+        out = {}
+        for c in por_campana:                      # campana c: se usa durante el anio natural c + 1
+            previas = [por_campana[c - k] for k in range(1, 7) if c - k in por_campana]
+            if len(previas) == 6:
+                for m in range(12):
+                    out[(c + 1) * 12 + m] = [math.log(por_campana[c] / (sum(previas) / 6))]
+        return out
+    if idea in ("bancos", "dinero"):
+        s = _mensual(series.get("oro_bancos" if idea == "bancos" else "m2"))
+        retraso = 3 if idea == "bancos" else 2
+        return {n + retraso: [math.log(s[n] / s[n - 12])] for n in s if n - 12 in s and s[n] > 0 and s[n - 12] > 0}
+    if idea in ("sequia", "frio", "sequia_campo"):
+        idea = "sequia" if idea == "sequia_campo" else idea
         s = _mensual(series.get("lluvia_es" if idea == "sequia" else "frio_eu"))
         meses = 12 if idea == "sequia" else 3
         acum = {n: sum(s[n - k] for k in range(meses)) for n in s if all(n - k in s for k in range(meses))}
@@ -399,8 +421,18 @@ def _meteo(puntos: list, variable: str) -> list[list]:
     return [[m, sum(por_mes[m]) / len(datos)] for m in completos]
 
 
+def _dbnomics(codigo: str) -> list[list]:
+    from cedron import sources as src
+    d = src._get(URL_DBNOMICS + codigo, params={"observations": "1"}).json()["series"]["docs"][0]
+    return [[p[:7], float(v)] for p, v in zip(d["period"], d["value"]) if isinstance(v, (int, float))]
+
+
 def _existencias() -> dict[str, list[list]]:
-    """Existencias finales / consumo del mundo por campana (suma de todos los paises)."""
+    """Del Departamento de Agricultura de EE. UU., sumando todos los paises, por campana:
+    «stu:<producto>» = existencias finales / consumo; «oferta:<producto>» = existencias
+    iniciales + produccion. Ademas guarda cada mes, en data/prevision/existencias_epoca.json,
+    las cifras de las ultimas campanas tal como se publican hoy: con los anios habra una
+    historia «de epoca» (lo que se sabia en cada momento) que el USDA no ofrece."""
     import csv
     import zipfile
     from cedron import sources as src
@@ -409,13 +441,26 @@ def _existencias() -> dict[str, list[list]]:
         z = zipfile.ZipFile(io.BytesIO(src._get(url).content))
         with z.open(z.namelist()[0]) as f:
             for fila in csv.DictReader(io.TextIOWrapper(f, encoding="utf-8")):
+                atributo = fila["Attribute_Description"]
+                if atributo in PSD_CONSUMO:
+                    atributo = "Consumo"
                 if fila["Commodity_Description"] in PSD_PRODUCTOS and \
-                        fila["Attribute_Description"] in ("Ending Stocks", "Domestic Consumption"):
-                    k = (fila["Commodity_Description"], fila["Market_Year"], fila["Attribute_Description"])
+                        atributo in ("Ending Stocks", "Beginning Stocks", "Production", "Consumo"):
+                    k = (fila["Commodity_Description"], fila["Market_Year"], atributo)
                     sumas[k] = sumas.get(k, 0.0) + float(fila["Value"] or 0)
     out: dict[str, list[list]] = {}
-    for (producto, campana, atributo), v in sorted(sumas.items()):
-        consumo = sumas.get((producto, campana, "Domestic Consumption"), 0)
-        if atributo == "Ending Stocks" and consumo > 0 and v > 0:
-            out.setdefault(producto, []).append([campana, v / consumo])
+    epoca: dict[str, dict] = {}
+    for producto in PSD_PRODUCTOS:
+        campanas = sorted({c for (p, c, _) in sumas if p == producto})
+        for c in campanas:
+            v = {a: sumas.get((producto, c, a), 0.0) for a in ("Ending Stocks", "Beginning Stocks", "Production", "Consumo")}
+            if v["Ending Stocks"] > 0 and v["Consumo"] > 0:
+                out.setdefault(f"stu:{producto}", []).append([c, v["Ending Stocks"] / v["Consumo"]])
+            if v["Production"] > 0:
+                out.setdefault(f"oferta:{producto}", []).append([c, v["Beginning Stocks"] + v["Production"]])
+            if c in campanas[-3:]:
+                epoca.setdefault(producto, {})[c] = [round(v[a], 1) for a in ("Beginning Stocks", "Production", "Consumo", "Ending Stocks")]
+    archivo = leer("prevision/existencias_epoca.json", {}) or {}
+    archivo[iso()[:7]] = epoca
+    escribir("prevision/existencias_epoca.json", archivo)
     return out

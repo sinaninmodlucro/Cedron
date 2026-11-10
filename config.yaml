@@ -108,6 +108,9 @@ activos:
 # -----------------------------------------------------------------------------
 apoyo:
   # Antiguedad maxima (dias) para considerar "reciente" un dato segun su frecuencia
+  # Precios percibidos como historia (11-nov-2026): solo donde coinciden bien con la serie semanal
+  # (correlacion de niveles >= 0,90 en los meses comunes). Fuera: arroz 0,44, tomate 0,64, cebolla
+  # 0,82 y patata 0,89 (otra variedad o categoria).
   dias_reciente: {horaria: 2, diaria: 10, semanal: 21, mensual: 75}
   grupos:
     - id: energia
@@ -208,6 +211,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Porcino >60% magro (S)"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "CERDOS CEBADOS OTRAS RAZAS", empalme: true}
               factor: 0.01
               unidad: "€/kg canal"
               frecuencia: semanal
@@ -227,6 +233,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Pollo ("
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "POLLOS GRANJA", empalme: true}
               factor: 0.01
               unidad: "€/kg canal"
               frecuencia: semanal
@@ -244,6 +253,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Terneras 180-300 kg"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "TERNEROS/AS<12M|TERNERAS MENOR UN ANO", empalme: true}
               factor: 0.01
               unidad: "€/kg canal"
               frecuencia: semanal
@@ -261,6 +273,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Huevos tipo jaula acondicionada - Clase M"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "HUEVOS DE GALLINA", empalme: true}
               factor: 0.0833333      # de euros por docena a euros por huevo
               unidad: "€/unidad"
               decimales: 3
@@ -297,6 +312,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Trigo blando"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "TRIGO", empalme: true}
               unidad: "€/tonelada"
               frecuencia: semanal
               nota: "Precio en origen: trigo blando panificable, media nacional"
@@ -332,6 +350,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Aceite de oliva virgen extra"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "ACEITE DE OLIVA VIRGEN", empalme: true}
               factor: 0.00916        # de €/100 kg a €/litro
               unidad: "€/litro"
               decimales: 2
@@ -351,6 +372,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Aceite de girasol refinado convencional"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "GIRASOL", empalme: true}
               factor: 0.0092         # de €/100 kg a €/litro
               unidad: "€/litro"
               frecuencia: semanal
@@ -391,6 +415,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Naranja ("
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "NARANJA", empalme: true}
               factor: 0.01
               unidad: "€/kg"
               frecuencia: semanal
@@ -408,6 +435,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Plátano"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "PLATANO", empalme: true}
               factor: 0.01
               unidad: "€/kg"
               frecuencia: semanal
@@ -425,6 +455,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Manzana Golden"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "MANZANA", empalme: true}
               factor: 0.01
               unidad: "€/kg"
               frecuencia: semanal
@@ -476,6 +509,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Maíz grano"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "MAIZ", empalme: true}
               unidad: "€/tonelada"
               frecuencia: semanal
               nota: "Precio en origen: maíz grano, base del pienso"
@@ -491,6 +527,9 @@ apoyo:
             espana:
               fuente: mapa
               producto: "Cebada pienso"
+              # Historia desde 2005 (11-nov-2026): precios percibidos por los agricultores, puestos al
+              # nivel de la serie semanal en los meses comunes (otra categoria o unidad del mismo producto)
+              historia: {fuente: percibidos, producto: "CEBADA", empalme: true}
               unidad: "€/tonelada"
               frecuencia: semanal
               nota: "Precio en origen: cebada para pienso"
@@ -1399,6 +1438,16 @@ noticias:
                    "surges", "soars", "jumps", "se desploma", "plunges", "tumbles", "slumps", "mínimo",
                    "lowest since", "highest since", "rally", "plunge", "crash", "crashes", "sink", "surge", "soar",
                    "week low", "month low", "week high", "month high", "year high", "year low", "se hunde"]
+      regulacion:            # 11-nov-2026: medidas que cambian la oferta o el precio por norma
+        nombre: "Regulación"
+        peso: 85
+        palabras: ["retirada", "retirar del mercado", "norma de comercialización", "almacenamiento privado",
+                   "private storage", "cuota", "cuotas", "cupo", "contingente", "intervención", "precio mínimo",
+                   "precio máximo", "tope de precios", "tope al precio", "price cap", "export quota", "export curbs",
+                   "export restrictions", "restricciones a la exportación", "veto", "moratoria", "reserva estratégica",
+                   "strategic reserve", "reservas estratégicas", "subsidy", "subsidies", "subvención", "ayudas de la PAC",
+                   "rebaja del IVA", "IVA de los alimentos", "impuesto especial", "windfall tax", "mandato de biocombustibles",
+                   "biofuel mandate", "reglamento", "real decreto", "BOE", "antidumping", "salvaguardia", "safeguard"]
       opinion:
         nombre: "Opinión y previsiones de otros"
         peso: 30
@@ -1590,6 +1639,28 @@ noticias:
             "silver lining"]     # 6-nov-2026: expresion inglesa ("el lado bueno"), no habla de plata
 
 # -----------------------------------------------------------------------------
+# Medidas regulatorias en vigor (11-nov-2026). Se apuntan a mano, con su fuente oficial, las
+# medidas que cambian la oferta o el precio de una materia; salen en la ficha de la materia
+# hasta la fecha 'hasta'. No entran en el calculo de la prevision (no hay forma de probarlas
+# a ciegas: son pocas y cada una distinta), pero hay que leerla sabiendo que existen.
+# materia = id de la materia de apoyo; sentido = alza | baja (efecto esperado en el precio).
+# -----------------------------------------------------------------------------
+medidas:
+  - materia: aove
+    titulo: "Retirada obligatoria del 12 % del aceite de oliva de la campaña 2026/27"
+    texto: >
+      El Ministerio de Agricultura obliga a las almazaras a guardar sin vender el 12 % del aceite
+      que produzcan (unas 188.000 toneladas) hasta el 30 de septiembre de 2027, porque las
+      existencias iniciales más la cosecha prevista superan el 120 % de la media de las seis
+      campañas anteriores. El porcentaje puede revisarse a partir del 31 de diciembre de 2026.
+      El tope legal es el 20 %. La CNMC advirtió de riesgos para la competencia y los consumidores.
+    sentido: alza
+    desde: "2026-11-01"
+    hasta: "2027-09-30"
+    fuente: "Orden APA/1145/2026, de 29 de octubre (BOE), y resolución de la Dirección General de Producciones y Mercados Agrarios"
+    enlace: "https://agroinformacion.com/el-ministerio-opta-finalmente-por-establecer-una-retirada-del-12-del-aceite-de-oliva-en-la-campana-2026-2027-188-000-toneladas/"
+
+# -----------------------------------------------------------------------------
 # Previsiones de los metales (10-nov-2026, decision del usuario; solo mientras la web sea
 # privada). Media a partes iguales de "lo habitual" y de varios calculos sencillos, cada
 # uno con una idea (tendencia del ultimo anio, valor frente a hace cinco anios, dolar,
@@ -1679,6 +1750,32 @@ previsiones:
       usar: {}       # no pasa la regla (con el retraso de seguridad el dato llega demasiado viejo)
     # Resultado: entra a 12 meses (seguras 3 -> 4 de 15, mejora 10)
     mundial: {ambitos: [espana, europa], usar: {todo: [12]}}
+    # --- Cuarta tanda (11-nov-2026), fijada ANTES de probar.
+    #  - oferta: exceso o falta de oferta mundial. Existencias al empezar la campana + cosecha,
+    #    frente a la media de las seis campanas anteriores: es la misma formula con la que el
+    #    Ministerio decide retirar aceite de oliva del mercado (Orden APA/1145/2026: se activa
+    #    al llegar al 120 %). Datos del Departamento de Agricultura de EE. UU. (suma de todos
+    #    los paises). La campana c se usa durante el anio natural c + 1, cuando la cosecha ya
+    #    esta recogida; se usa la cifra definitiva, no la estimacion de entonces (suelen
+    #    diferir poco frente a los vaivenes de las cosechas, pero favorece algo a la prueba).
+    #  - sequia_campo: la misma lluvia de 'sequia', pero en los precios en ORIGEN de Espana de
+    #    los cultivos (ahora con historia desde 2005).
+    #  - bancos: oro en manos de los bancos centrales del mundo (FMI), cambio en doce meses,
+    #    tres meses de retraso. El FMI dejo de publicar esta serie en junio de 2025: solo
+    #    sirve para saber si merece la pena buscar otra fuente.
+    #  - dinero: dinero en circulacion en EE. UU. (M2, Reserva Federal), crecimiento en doce
+    #    meses, dos meses de retraso: mas dinero, mas demanda de oro como reserva de valor.
+    oferta:
+      materias: {trigo: "Wheat", maiz: "Corn", piensos: "Corn", arroz: "Rice, Milled", cebada: "Barley",
+                 soja: "Oilseed, Soybean", girasol: "Oilseed, Sunflowerseed", aove: "Oil, Olive",
+                 azucar: "Sugar, Centrifugal", cafe: "Coffee, Green", algodon: "Cotton"}
+      usar: {}       # no pasa la regla (mejora 10 de 27 a un anio; algo en aceite de oliva y cebada de Espana)
+    sequia_campo:
+      ambitos: [espana]
+      materias: {aove: x, trigo: x, cebada: x, maiz: x, girasol: x, naranja: x, frutas: x}
+      usar: {}       # no pasa la regla
+    bancos: {familias: [refugio], usar: {}}          # no pasa la regla
+    dinero: {familias: [refugio], usar: {}}          # no pasa la regla
     miedo: {familias: [refugio], usar: {}}           # no pasa la regla
   geopolitica:
     # Resultado de la prueba a ciegas (10-nov-2026, regla fijada antes: sube el numero de

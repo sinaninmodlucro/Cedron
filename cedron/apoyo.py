@@ -73,7 +73,7 @@ def pares_panel(cfg) -> list[tuple[str, str]]:
 # Nombre con el que cada tipo de fuente se registra en el estado (avisos de salud)
 NOMBRE_ESTADO = {"carburantes": "Ministerio (carburantes)", "boletin": "Comisión Europea (Oil Bulletin)",
                  "mapa": "MAPA (precios semanales)", "panel": "MAPA (panel de consumo)",
-                 "pagados": "MAPA (precios pagados)", "fred": "FRED (materias de apoyo)",
+                 "pagados": "MAPA (precios pagados)", "percibidos": "MAPA (precios percibidos)", "fred": "FRED (materias de apoyo)",
                  "eurostat": "Eurostat (precios industriales)"}
 
 
@@ -185,6 +185,21 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
             estado.registrar_fuente("MAPA (precios pagados)", False, str(e))
             log.warning("Precios pagados: %s", e)
 
+    # Precios percibidos (historia de los precios en origen de Espana desde 2005): cambia una
+    # vez al anio; se mira una vez al mes
+    productos = _fuentes_de(cfg, "percibidos", "producto")
+    guardadas = (leer("apoyo/percibidos.json", {}) or {}).get("series", {})
+    if productos and (forzar or estado.get("apoyo_percibidos_mes") != hoy.isoformat()[:7]
+                      or any(p not in guardadas for p in productos)):
+        try:
+            series = {p: [list(x) for x in s] for p, s in src.precios_percibidos(productos).items()}
+            escribir("apoyo/percibidos.json", {"series": series, "consultado": iso()})
+            estado.set("apoyo_percibidos_mes", hoy.isoformat()[:7])
+            estado.registrar_fuente("MAPA (precios percibidos)", True)
+        except src.FuenteError as e:
+            estado.registrar_fuente("MAPA (precios percibidos)", False, str(e))
+            log.warning("Precios percibidos: %s", e)
+
     # Eurostat (indices de precios industriales de Espana y la UE): mensual; una vez al dia
     series_eu = _fuentes_de(cfg, "eurostat", "serie")
     if series_eu and (forzar or _una_vez_al_dia(estado, "apoyo_eurostat_dia")):
@@ -225,11 +240,12 @@ FUENTES_NOMBRE = {
     "fred": "FRED",
     "panel": "Ministerio de Agricultura, panel de consumo en hogares",
     "pagados": "Ministerio de Agricultura, precios pagados por los agricultores",
+    "percibidos": "Ministerio de Agricultura, precios percibidos por los agricultores (mensual)",
     "eurostat": "Eurostat, índices de precios industriales",
     "metalcharts": "MetalCharts",
 }
 CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
-                "pagados": "producto", "eurostat": "serie", "metalcharts": "simbolo"}
+                "pagados": "producto", "percibidos": "producto", "eurostat": "serie", "metalcharts": "simbolo"}
 
 
 def cargar_fuentes() -> dict:
@@ -244,6 +260,7 @@ def cargar_fuentes() -> dict:
         "pink": (leer("pink.json", {}) or {}).get("series", {}),
         "panel": (leer("apoyo/panel.json", {}) or {}).get("series", {}),
         "pagados": (leer("apoyo/pagados.json", {}) or {}).get("series", {}),
+        "percibidos": (leer("apoyo/percibidos.json", {}) or {}).get("series", {}),
         "eurostat": (leer("apoyo/eurostat.json", {}) or {}).get("series", {}),
         # MetalCharts: 6 precios por dia laborable; se queda el ultimo de cada dia
         "metalcharts": {s: sorted({f[:10]: v for f, v in serie}.items())
@@ -489,11 +506,26 @@ def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dic
             "fuente_nombre": FUENTES_NOMBRE["panel"]}
 
 
+def empalmar(historia: list, actual: list, minimo: int = 12) -> list:
+    """Pone la historia (otra estadistica del mismo producto, con otra unidad o categoria) al
+    nivel de la serie actual: se multiplica por la media del cociente actual / historia en
+    los meses en que coinciden. Sin al menos 'minimo' meses comunes no se usa la historia."""
+    h = dict(mensualizar(historia))
+    a = dict(mensualizar(actual))
+    comunes = [m for m in h if m in a and h[m] > 0]
+    if len(comunes) < minimo:
+        return []
+    k = sum(a[m] / h[m] for m in comunes) / len(comunes)
+    return [(f, v * k) for f, v in historia]
+
+
 def serie_ambito(amb: dict, fuentes: dict, cfg, cambio, en_euros: bool) -> dict:
     """La serie que se muestra de un ambito (historia + actual, en euros si toca y, en los
     indices con referencia, como precio estimado). La usan la web y las previsiones."""
     actual = _serie(amb, fuentes, cfg)
     historia = _serie(amb["historia"], fuentes, cfg) if amb.get("historia") else []
+    if historia and actual and amb["historia"].get("empalme"):
+        historia = empalmar(historia, actual)
     unidad, usd = amb["unidad"], None
     if en_euros and unidad.startswith("$") and cambio:
         # Se guarda el ultimo dato en dolares para mostrarlo al lado

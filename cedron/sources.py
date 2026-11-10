@@ -433,7 +433,7 @@ def _norm_pagados(t) -> str:
     """Nombre comparable: mayusculas, sin acentos, sin '(100kg)' ni espacios dobles."""
     import unicodedata
     t = unicodedata.normalize("NFKD", str(t or "")).encode("ascii", "ignore").decode().upper()
-    t = re.sub(r"\(\s*100\s*KG\s*\)", "", t)
+    t = re.sub(r"\(\s*100\s*KG\s*[.,]?\s*\)", "", t)
     return re.sub(r"\s+", " ", t).strip()
 
 
@@ -468,12 +468,47 @@ def precios_pagados(productos: list[str]) -> dict[str, list[tuple[str, float]]]:
     return {p: sorted(s.items()) for p, s in salida.items()}
 
 
-def _pagados_excel(contenido: bytes, buscados: dict[str, str]) -> dict[str, dict[str, float]]:
+PAGINA_PERCIBIDOS = ("https://www.mapa.gob.es/es/estadistica/temas/estadisticas-agrarias/economia/"
+                     "precios-percibidos-pagados/precios-percibidos-por-los-agricultores-y-ganaderos")
+
+
+def precios_percibidos(productos: list[str]) -> dict[str, list[tuple[str, float]]]:
+    """Precio medio mensual percibido por los agricultores y ganaderos de Espana (euros por
+    100 kg, 100 litros o 100 docenas, segun el producto), desde 2005. Llega con cerca de un
+    anio de retraso: sirve de HISTORIA de los precios semanales, no de dato actual.
+
+    'productos' = principio del nombre; con «A|B» valen varios nombres (el MAPA los ha cambiado).
+    """
+    pagina = _get(PAGINA_PERCIBIDOS, verify=CERT_FNMT).text
+    enlaces = []
+    for url in re.findall(r'href="([^"]*percibidos[^"]*\.xlsx)"', pagina, flags=re.I):
+        url = html.unescape(url)
+        if url not in enlaces:
+            enlaces.append(url)
+    if not enlaces:
+        raise FuenteError("no se encuentran los Excel de precios percibidos del MAPA")
+    alias = {f"{p}#{k}": _norm_pagados(a) for p in productos for k, a in enumerate(p.split("|"))}
+    por_archivo = []
+    for url in enlaces:
+        if url.startswith("/"):
+            url = "https://www.mapa.gob.es" + url
+        fin = max([int(a) for a in re.findall(r"(20\d\d)", url.rsplit("/", 1)[-1])] or [0])
+        por_archivo.append((fin, _pagados_excel(_get(url, verify=CERT_FNMT).content, alias, hojas="PrePer")))
+    salida: dict[str, dict[str, float]] = {p: {} for p in productos}
+    for _, datos in sorted(por_archivo, key=lambda x: x[0]):          # manda el archivo mas reciente
+        for clave, s in datos.items():
+            salida[clave.split("#")[0]].update(s)
+    return {p: sorted(s.items()) for p, s in salida.items()}
+
+
+def _pagados_excel(contenido: bytes, buscados: dict[str, str], hojas: str = "") -> dict[str, dict[str, float]]:
     from openpyxl import load_workbook
     libro = load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
     salida: dict[str, dict[str, float]] = {}
     for hoja in libro.worksheets:
-        filas = list(hoja.iter_rows(values_only=True, max_row=600))
+        if hojas and not hoja.title.startswith(hojas):
+            continue
+        filas = list(hoja.iter_rows(values_only=True, max_row=800))
         cab = next((i for i, f in enumerate(filas[:15])
                     if f and any(_norm_pagados(c) == "PRODUCTOS" for c in f[:3])
                     and any(_norm_pagados(c) == "ANO" for c in f[:4])), None)
@@ -486,7 +521,9 @@ def _pagados_excel(contenido: bytes, buscados: dict[str, str]) -> dict[str, dict
                 continue
             if isinstance(f[0], str) and f[0].strip():
                 nombre = _norm_pagados(f[0])
-                actual = next((p for p, b in buscados.items() if nombre.startswith(b)), None)
+                # el nombre mas largo que encaje (para no confundir «TRIGO» con otro mas concreto)
+                actual = max((p for p, b in buscados.items() if nombre.startswith(b)),
+                             key=lambda p: len(buscados[p]), default=None)
             anio = f[j_anio] if j_anio < len(f) else None
             if actual is None or not isinstance(anio, (int, float)) or not 1990 < anio < 2100:
                 continue

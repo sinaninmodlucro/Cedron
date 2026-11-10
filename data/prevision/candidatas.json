@@ -553,6 +553,102 @@
    "r2_con": 0.10421303451198405,
    "mejora_en": 10,
    "entra": true
+  },
+  {
+   "idea": "oferta:todo",
+   "nombre": "Exceso o falta de oferta mundial (existencias y cosecha, USDA)",
+   "plazo": 3,
+   "series": 27,
+   "seguras_antes": 7,
+   "seguras_con": 8,
+   "r2_antes": 0.029013391111464837,
+   "r2_con": 0.02519767946292939,
+   "mejora_en": 8,
+   "entra": false
+  },
+  {
+   "idea": "oferta:todo",
+   "nombre": "Exceso o falta de oferta mundial (existencias y cosecha, USDA)",
+   "plazo": 12,
+   "series": 27,
+   "seguras_antes": 4,
+   "seguras_con": 5,
+   "r2_antes": 0.0410289077874072,
+   "r2_con": 0.036500415375796735,
+   "mejora_en": 10,
+   "entra": false
+  },
+  {
+   "idea": "sequia_campo:todo",
+   "nombre": "Lluvia en España (precios en origen de los cultivos)",
+   "plazo": 3,
+   "series": 8,
+   "seguras_antes": 2,
+   "seguras_con": 2,
+   "r2_antes": 0.014825381798574844,
+   "r2_con": 0.018570215686566027,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "sequia_campo:todo",
+   "nombre": "Lluvia en España (precios en origen de los cultivos)",
+   "plazo": 12,
+   "series": 8,
+   "seguras_antes": 3,
+   "seguras_con": 3,
+   "r2_antes": 0.05865804952671272,
+   "r2_con": 0.049784289355261135,
+   "mejora_en": 3,
+   "entra": false
+  },
+  {
+   "idea": "bancos:todo",
+   "nombre": "Oro de los bancos centrales (FMI): oro y plata",
+   "plazo": 3,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.0077940212480136495,
+   "r2_con": -0.010787003817201768,
+   "mejora_en": 1,
+   "entra": false
+  },
+  {
+   "idea": "bancos:todo",
+   "nombre": "Oro de los bancos centrales (FMI): oro y plata",
+   "plazo": 12,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.02055398122850538,
+   "r2_con": -0.033320428626177234,
+   "mejora_en": 0,
+   "entra": false
+  },
+  {
+   "idea": "dinero:todo",
+   "nombre": "Dinero en circulación (M2): oro y plata",
+   "plazo": 3,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.0077940212480136495,
+   "r2_con": -0.006258901759723212,
+   "mejora_en": 2,
+   "entra": false
+  },
+  {
+   "idea": "dinero:todo",
+   "nombre": "Dinero en circulación (M2): oro y plata",
+   "plazo": 12,
+   "series": 2,
+   "seguras_antes": 0,
+   "seguras_con": 0,
+   "r2_antes": -0.02055398122850538,
+   "r2_con": -0.004763827906497431,
+   "mejora_en": 1,
+   "entra": false
   }
  ]
 }

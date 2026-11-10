@@ -158,6 +158,22 @@ class Cadena(unittest.TestCase):
         self.assertEqual(res["nuestras"]["atrasadas"]["n"], 1)
         self.assertEqual(res["frente_futuros"], {"n": 1, "nuestra": 1, "futuros": 0, "nuestra_mas_cerca": 1})
 
+    def test_empalme_y_donde_se_aplica_cada_idea(self):
+        from cedron import apoyo
+        historia = [(f"2019-{m:02d}", 10.0) for m in range(1, 13)] + [(f"2020-{m:02d}", 12.0) for m in range(1, 13)]
+        actual = [(f"2020-{m:02d}-15", 24.0) for m in range(1, 13)]
+        h = apoyo.empalmar(historia, actual)
+        self.assertAlmostEqual(h[0][1], 20.0)                    # la historia se pone al nivel de la serie actual
+        self.assertEqual(apoyo.empalmar(historia, actual[:5]), [])   # pocos meses comunes: no se usa
+        cfg = {"previsiones": {"geopolitica": {"familias": {"energia": ["gas"]}},
+                               "ideas": {"a": {"familias": ["energia"]}, "b": {"ambitos": ["espana"], "materias": {"aove": 1}},
+                                         "c": {"abajo_empieza": ["eurostat:ES|C10"]}, "d": {"grupos": ["cadena"], "materias": {"gas": 1}}}}}
+        self.assertEqual(prevision.ideas_aplicables(cfg, "apoyo", "gas", "global"), {"a": "energia"})
+        self.assertEqual(prevision.ideas_aplicables(cfg, "apoyo", "aove", "espana"), {"b": "todo"})
+        self.assertEqual(prevision.ideas_aplicables(cfg, "apoyo", "trigo", "espana"), {})
+        self.assertEqual(prevision.ideas_aplicables(cfg, "cadena", "gas", abajo="eurostat:ES|C1061"),
+                         {"a": "energia", "c": "todo", "d": "todo"})
+
     def test_huecos(self):
         """Los meses que faltan no se cuentan como cambios de un mes."""
         con_hueco = {m: v for i, (m, v) in enumerate(self.abajo.items()) if i % 25 != 0}
