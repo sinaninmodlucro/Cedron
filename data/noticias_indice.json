@@ -2,45 +2,45 @@
  "2026-11-10": {
   "alimentos": {
    "alza": 4,
-   "baja": 4,
-   "importantes": 5,
-   "noticias": 27
+   "baja": 6,
+   "importantes": 6,
+   "noticias": 30
   },
   "cobre": {
    "alza": 3,
    "baja": 1,
    "importantes": 1,
-   "noticias": 8
+   "noticias": 9
   },
   "construccion": {
    "alza": 2,
    "baja": 0,
-   "importantes": 2,
-   "noticias": 15
+   "importantes": 1,
+   "noticias": 17
   },
   "energia": {
    "alza": 12,
-   "baja": 32,
-   "importantes": 35,
-   "noticias": 101
+   "baja": 35,
+   "importantes": 36,
+   "noticias": 104
   },
   "oro": {
-   "alza": 7,
+   "alza": 5,
    "baja": 10,
-   "importantes": 10,
-   "noticias": 40
+   "importantes": 13,
+   "noticias": 45
   },
   "plata": {
    "alza": 0,
-   "baja": 4,
+   "baja": 3,
    "importantes": 5,
-   "noticias": 15
+   "noticias": 14
   },
   "platino": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
   }
  }
 }
