@@ -7,12 +7,12 @@
   "id": "brent_diesel",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": -0.6433674502542841,
+  "previsto": -0.6432527631727969,
   "real": null,
   "vence": "2027-02"
  },
@@ -24,9 +24,9 @@
   "id": "brent_diesel",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": -3.1319290334941186,
@@ -41,12 +41,12 @@
   "id": "brent_gasolina",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": -0.3440458558369164,
+  "previsto": -0.3428109527450207,
   "real": null,
   "vence": "2027-02"
  },
@@ -58,9 +58,9 @@
   "id": "brent_gasolina",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": -1.622253900254178,
@@ -75,12 +75,12 @@
   "id": "brent_calefaccion",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": -1.7857369833790493,
+  "previsto": -1.785524805042138,
   "real": null,
   "vence": "2027-02"
  },
@@ -92,9 +92,9 @@
   "id": "brent_calefaccion",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": -9.149120362712726,
@@ -109,12 +109,12 @@
   "id": "brent_refino",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": 3.093633441873367,
+  "previsto": 3.095788102731678,
   "real": null,
   "vence": "2026-12"
  },
@@ -126,9 +126,9 @@
   "id": "brent_refino",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": -1.4558017320165706,
@@ -143,12 +143,12 @@
   "id": "brent_gas",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": 3.4058348125621363,
+  "previsto": 3.401558781987246,
   "real": null,
   "vence": "2027-01"
  },
@@ -160,9 +160,9 @@
   "id": "brent_gas",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": -1.9388781228791285,
@@ -176,10 +176,10 @@
   "habitual": 1.3827488221629602,
   "id": "gas_electricidad",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 1.8896351610725004,
@@ -193,10 +193,10 @@
   "habitual": 4.620840848404173,
   "id": "gas_electricidad",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 5.013201160471792,
@@ -244,10 +244,10 @@
   "habitual": 1.5860613806885748,
   "id": "gas_gas_es",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 6.703581293151695,
@@ -261,10 +261,10 @@
   "habitual": 5.580637764578467,
   "id": "gas_gas_es",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 12.512803913689163,
@@ -279,12 +279,12 @@
   "id": "brent_urea",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": 3.9194840738711934,
+  "previsto": 3.9169441017665285,
   "real": null,
   "vence": "2027-01"
  },
@@ -296,9 +296,9 @@
   "id": "brent_urea",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": 6.953916464337917,
@@ -312,10 +312,10 @@
   "habitual": 0.9133622886322135,
   "id": "gas_urea",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 6.766012851780534,
@@ -329,10 +329,10 @@
   "habitual": 4.12892635794444,
   "id": "gas_urea",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 7.065202380874114,
@@ -346,10 +346,10 @@
   "habitual": 1.4503649003031027,
   "id": "gas_abonos_fabrica",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 4.5659519034026985,
@@ -363,10 +363,10 @@
   "habitual": 5.820638329478833,
   "id": "gas_abonos_fabrica",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 8.114939291683143,
@@ -381,12 +381,12 @@
   "id": "brent_plasticos",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": 2.287910304340768,
+  "previsto": 2.288052609104607,
   "real": null,
   "vence": "2026-12"
  },
@@ -398,9 +398,9 @@
   "id": "brent_plasticos",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": -1.7280313247946988,
@@ -414,10 +414,10 @@
   "habitual": 1.3795128430257986,
   "id": "gas_urea_es",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 3.9687126767097736,
@@ -431,10 +431,10 @@
   "habitual": 4.511712185871741,
   "id": "gas_urea_es",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 2.908060917413624,
@@ -448,10 +448,10 @@
   "habitual": 1.0407063719078735,
   "id": "gas_nac_es",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 5.180360835444087,
@@ -465,10 +465,10 @@
   "habitual": 3.7629238792484365,
   "id": "gas_nac_es",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 7.157162333694056,
@@ -485,7 +485,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 3,
   "previsto": -5.484514316329225,
@@ -502,7 +502,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 12,
   "previsto": -11.826196570259473,
@@ -519,7 +519,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 3,
   "previsto": 1.8045694140223612,
@@ -536,7 +536,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 12,
   "previsto": 3.314844187096,
@@ -553,7 +553,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 3,
   "previsto": 0.07401214197921835,
@@ -570,7 +570,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 12,
   "previsto": -1.7565291151128815,
@@ -587,7 +587,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 10,
-   "noticias": 25
+   "noticias": 26
   },
   "plazo": 3,
   "previsto": 1.0190901375570993,
@@ -604,7 +604,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 10,
-   "noticias": 25
+   "noticias": 26
   },
   "plazo": 12,
   "previsto": 2.031814440348434,
@@ -655,7 +655,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 3,
   "previsto": 1.458379415902633,
@@ -672,7 +672,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 12,
   "previsto": 2.5737687464783,
@@ -825,7 +825,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 10,
-   "noticias": 25
+   "noticias": 26
   },
   "plazo": 3,
   "previsto": -0.07131871406419465,
@@ -842,7 +842,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 10,
-   "noticias": 25
+   "noticias": 26
   },
   "plazo": 12,
   "previsto": 0.20799392878476652,
@@ -859,7 +859,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 10,
-   "noticias": 25
+   "noticias": 26
   },
   "plazo": 3,
   "previsto": 3.6454941395990925,
@@ -876,7 +876,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 10,
-   "noticias": 25
+   "noticias": 26
   },
   "plazo": 12,
   "previsto": 3.1898929151571442,
@@ -893,7 +893,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 3,
   "previsto": 1.4106211117963285,
@@ -910,7 +910,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 12,
   "previsto": 3.914351948357675,
@@ -927,7 +927,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 3,
   "previsto": 0.12394400061386257,
@@ -944,7 +944,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 12,
   "previsto": 1.2418694134776365,
@@ -961,7 +961,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 3,
   "previsto": 0.1299732804554754,
@@ -978,7 +978,7 @@
    "alza": 4,
    "baja": 5,
    "importantes": 7,
-   "noticias": 18
+   "noticias": 20
   },
   "plazo": 12,
   "previsto": 1.2936221210477328,
@@ -1074,10 +1074,10 @@
   "habitual": 0.3792416972399959,
   "id": "gas_azulejos",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 0.7985581736638991,
@@ -1091,10 +1091,10 @@
   "habitual": 1.5364030201933998,
   "id": "gas_azulejos",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 2.628833040710976,
@@ -1108,10 +1108,10 @@
   "habitual": 0.8589537236097566,
   "id": "gas_yeso",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 3,
   "previsto": 2.200570624756848,
@@ -1125,10 +1125,10 @@
   "habitual": 3.3119669118084616,
   "id": "gas_yeso",
   "noticias": {
-   "alza": 7,
+   "alza": 8,
    "baja": 0,
    "importantes": 9,
-   "noticias": 20
+   "noticias": 21
   },
   "plazo": 12,
   "previsto": 6.176848204222085,
@@ -1247,7 +1247,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 3,
   "previsto": -0.37592869489800895,
@@ -1264,7 +1264,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 12,
   "previsto": -1.3095557335468855,
@@ -1281,7 +1281,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 3,
   "previsto": 1.126680770636801,
@@ -1298,7 +1298,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 12,
   "previsto": 2.616389636166727,
@@ -1315,7 +1315,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 3,
   "previsto": 0.531728356662664,
@@ -1332,7 +1332,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 12,
   "previsto": 1.4908415156206,
@@ -1349,7 +1349,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 3,
   "previsto": 0.7281786048653371,
@@ -1366,7 +1366,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 12,
   "previsto": 2.4578715213492197,
@@ -1383,7 +1383,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 3,
   "previsto": 0.48686870906380353,
@@ -1400,7 +1400,7 @@
    "alza": 2,
    "baja": 0,
    "importantes": 4,
-   "noticias": 26
+   "noticias": 27
   },
   "plazo": 12,
   "previsto": -0.06637993036140433,
@@ -1414,10 +1414,10 @@
   "habitual": 1.790899372292909,
   "id": "cobre_es",
   "noticias": {
-   "alza": 9,
+   "alza": 10,
    "baja": 3,
    "importantes": 8,
-   "noticias": 30
+   "noticias": 32
   },
   "plazo": 3,
   "previsto": 2.2425099533373016,
@@ -1431,10 +1431,10 @@
   "habitual": 6.48314817403044,
   "id": "cobre_es",
   "noticias": {
-   "alza": 9,
+   "alza": 10,
    "baja": 3,
    "importantes": 8,
-   "noticias": 30
+   "noticias": 32
   },
   "plazo": 12,
   "previsto": -0.24842042813942866,
@@ -1448,10 +1448,10 @@
   "habitual": 1.369903807960049,
   "id": "cobre_cables",
   "noticias": {
-   "alza": 9,
+   "alza": 10,
    "baja": 3,
    "importantes": 8,
-   "noticias": 30
+   "noticias": 32
   },
   "plazo": 3,
   "previsto": 2.4106752440902435,
@@ -1465,10 +1465,10 @@
   "habitual": 5.369341798896188,
   "id": "cobre_cables",
   "noticias": {
-   "alza": 9,
+   "alza": 10,
    "baja": 3,
    "importantes": 8,
-   "noticias": 30
+   "noticias": 32
   },
   "plazo": 12,
   "previsto": 4.516431787591557,
@@ -1483,9 +1483,9 @@
   "id": "aluminio_es",
   "noticias": {
    "alza": 2,
-   "baja": 2,
+   "baja": 3,
    "importantes": 4,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 3,
   "previsto": -0.1557474689454108,
@@ -1500,9 +1500,9 @@
   "id": "aluminio_es",
   "noticias": {
    "alza": 2,
-   "baja": 2,
+   "baja": 3,
    "importantes": 4,
-   "noticias": 6
+   "noticias": 7
   },
   "plazo": 12,
   "previsto": -2.059293291515396,
@@ -1667,12 +1667,12 @@
   "id": "brent_pinturas",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 3,
-  "previsto": 0.8701976103242082,
+  "previsto": 0.8700212446708822,
   "real": null,
   "vence": "2026-12"
  },
@@ -1684,9 +1684,9 @@
   "id": "brent_pinturas",
   "noticias": {
    "alza": 13,
-   "baja": 56,
-   "importantes": 59,
-   "noticias": 127
+   "baja": 57,
+   "importantes": 60,
+   "noticias": 128
   },
   "plazo": 12,
   "previsto": 2.601964183861649,

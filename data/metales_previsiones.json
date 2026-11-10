@@ -7,9 +7,9 @@
   "id": "oro",
   "noticias": {
    "alza": 34,
-   "baja": 23,
-   "importantes": 34,
-   "noticias": 162
+   "baja": 24,
+   "importantes": 36,
+   "noticias": 168
   },
   "plazo": 3,
   "previsto": 1.7684757542739016,
@@ -24,9 +24,9 @@
   "id": "oro",
   "noticias": {
    "alza": 34,
-   "baja": 23,
-   "importantes": 34,
-   "noticias": 162
+   "baja": 24,
+   "importantes": 36,
+   "noticias": 168
   },
   "plazo": 12,
   "previsto": 7.69614685737845,
@@ -41,7 +41,7 @@
   "id": "futuros:oro",
   "noticias": null,
   "plazo": 3,
-  "previsto": 0.815951985317831,
+  "previsto": 0.8215438073963632,
   "real": null,
   "vence": "2027-01"
  },
@@ -53,7 +53,7 @@
   "id": "futuros:oro",
   "noticias": null,
   "plazo": 12,
-  "previsto": 4.764266759256963,
+  "previsto": 4.844874658724252,
   "real": null,
   "vence": "2027-10"
  },
@@ -65,9 +65,9 @@
   "id": "plata",
   "noticias": {
    "alza": 5,
-   "baja": 4,
-   "importantes": 14,
-   "noticias": 51
+   "baja": 5,
+   "importantes": 15,
+   "noticias": 52
   },
   "plazo": 3,
   "previsto": 1.0451737489849844,
@@ -82,9 +82,9 @@
   "id": "plata",
   "noticias": {
    "alza": 5,
-   "baja": 4,
-   "importantes": 14,
-   "noticias": 51
+   "baja": 5,
+   "importantes": 15,
+   "noticias": 52
   },
   "plazo": 12,
   "previsto": 5.546207271757564,
@@ -99,7 +99,7 @@
   "id": "futuros:plata",
   "noticias": null,
   "plazo": 3,
-  "previsto": 1.2182048533281309,
+  "previsto": 1.2191553691602408,
   "real": null,
   "vence": "2027-01"
  },
@@ -111,7 +111,7 @@
   "id": "futuros:plata",
   "noticias": null,
   "plazo": 12,
-  "previsto": 7.163044537569441,
+  "previsto": 7.246659514288489,
   "real": null,
   "vence": "2027-10"
  },
@@ -157,7 +157,7 @@
   "id": "futuros:platino",
   "noticias": null,
   "plazo": 3,
-  "previsto": 1.0653501364167761,
+  "previsto": 0.967469644828256,
   "real": null,
   "vence": "2027-01"
  },
@@ -169,7 +169,7 @@
   "id": "futuros:platino",
   "noticias": null,
   "plazo": 12,
-  "previsto": 4.508249967519795,
+  "previsto": 4.460749301993383,
   "real": null,
   "vence": "2027-10"
  },
@@ -180,10 +180,10 @@
   "habitual": 1.218267487853586,
   "id": "cobre",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 4,
    "importantes": 9,
-   "noticias": 35
+   "noticias": 38
   },
   "plazo": 3,
   "previsto": 1.0614100120580616,
@@ -197,10 +197,10 @@
   "habitual": 4.603036958175699,
   "id": "cobre",
   "noticias": {
-   "alza": 10,
+   "alza": 11,
    "baja": 4,
    "importantes": 9,
-   "noticias": 35
+   "noticias": 38
   },
   "plazo": 12,
   "previsto": 4.138104159038525,
@@ -215,7 +215,7 @@
   "id": "futuros:cobre",
   "noticias": null,
   "plazo": 3,
-  "previsto": 1.6388174807197897,
+  "previsto": 1.6451328143808785,
   "real": null,
   "vence": "2027-01"
  },
@@ -227,7 +227,7 @@
   "id": "futuros:cobre",
   "noticias": null,
   "plazo": 12,
-  "previsto": 6.796272493573263,
+  "previsto": 6.684856753069579,
   "real": null,
   "vence": "2027-10"
  }

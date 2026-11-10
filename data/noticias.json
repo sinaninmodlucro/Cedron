@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-10T17:12:34Z",
+ "generado": "2026-11-10T17:41:19Z",
  "noticias": [
   {
    "activos": [
@@ -10,6 +10,9 @@
    "fecha": "2026-11-10T15:22:10Z",
    "idioma": "en",
    "impacto": 50,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "media",
    "nota": 98,
@@ -35,6 +38,9 @@
    "fecha": "2026-11-10T00:04:04Z",
    "idioma": "en",
    "impacto": 92,
+   "materias": [
+    "aluminio"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 98,
@@ -56,9 +62,12 @@
    ],
    "comercial": false,
    "enlace": "https://www.expansion.com/mercados/materias-primas/2026/11/10/petroleo-baja-90-dolares-primera-vez-agosto.html",
-   "fecha": "2026-11-10T15:27:21Z",
+   "fecha": "2026-11-10T16:56:00Z",
    "idioma": "es",
    "impacto": 47,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Expansión - Economía",
    "nivel": "baja",
    "nota": 95,
@@ -69,6 +78,7 @@
    "sentido": "baja",
    "tambien_en": [
     "Europa Press - Economía",
+    "Infobae",
     "La Razón"
    ],
    "tipo": null,
@@ -83,6 +93,9 @@
    "fecha": "2026-11-10T12:23:32Z",
    "idioma": "es",
    "impacto": 84,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Periódico de la Energía",
    "nivel": "alta",
    "nota": 92,
@@ -108,6 +121,7 @@
    "fecha": "2026-11-10T12:02:00Z",
    "idioma": "en",
    "impacto": 44,
+   "materias": [],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 92,
@@ -136,6 +150,9 @@
    "fecha": "2026-11-10T12:41:16Z",
    "idioma": "en",
    "impacto": 82,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "OilPrice.com",
    "nivel": "alta",
    "nota": 91,
@@ -162,6 +179,9 @@
    "fecha": "2026-11-10T17:08:20Z",
    "idioma": "en",
    "impacto": 42,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 90,
@@ -178,6 +198,32 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://www.bloomberg.com/news/articles/2026-11-10/us-raises-forecasts-for-2027-gasoline-and-diesel-prices",
+   "fecha": "2026-11-10T17:07:15Z",
+   "idioma": "en",
+   "impacto": 42,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "Bloomberg - Mercados",
+   "nivel": "baja",
+   "nota": 90,
+   "resumen": "The US raised its projections for the price of diesel and gasoline next year, indicating that consumer relief will be limited even as oil flows pick up from the Middle East.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Bloomberg.com"
+   ],
+   "tipo": null,
+   "titulo": "US Raises Forecasts for 2027 Gasoline and Diesel Prices"
+  },
+  {
+   "activos": [
     "oro"
    ],
    "comercial": false,
@@ -185,6 +231,7 @@
    "fecha": "2026-11-10T14:37:23Z",
    "idioma": "en",
    "impacto": 72,
+   "materias": [],
    "medio": "Investing.com - Materias primas",
    "nivel": "alta",
    "nota": 90,
@@ -209,6 +256,9 @@
    "fecha": "2026-11-10T12:41:54Z",
    "idioma": "en",
    "impacto": 42,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 90,
@@ -232,6 +282,9 @@
    "fecha": "2026-11-09T19:56:37Z",
    "idioma": "en",
    "impacto": 81,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Financial Times - Petróleo",
    "nivel": "alta",
    "nota": 90,
@@ -255,6 +308,9 @@
    "fecha": "2026-11-09T19:14:44Z",
    "idioma": "en",
    "impacto": 72,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 90,
@@ -278,6 +334,9 @@
    "fecha": "2026-11-10T13:58:10Z",
    "idioma": "en",
    "impacto": 78,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "MSN",
    "nivel": "alta",
    "nota": 88,
@@ -303,6 +362,7 @@
    "fecha": "2026-11-10T13:26:28Z",
    "idioma": "en",
    "impacto": 40,
+   "materias": [],
    "medio": "USA Today",
    "nivel": "baja",
    "nota": 88,
@@ -327,6 +387,9 @@
    "fecha": "2026-11-10T13:20:07Z",
    "idioma": "es",
    "impacto": 40,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Los Tiempos",
    "nivel": "baja",
    "nota": 88,
@@ -344,6 +407,34 @@
   },
   {
    "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZVo1UnB5cG1veE9Obkd6SW1Kd0UyNVdETjFDV0NCRGF0UUZLLXEwRGkyV05sMm05cEpMQUpmRlBWd01LLTBIMmVGTHl5WE5tMDRjdVo2eXhpVnctLUFFUkx5eUlJS3Q0czhrWEpheDhBdmxOWXpKM1RIejQ0YlZmbjFzVjZMbl9XTmRvaEFBcDkyeXViUkgtSVk4SEJDaTYwcmduQlNGcVVMWEVXaGN4c2c5SGFfOW1xT2Vtcy1STQ?oc=5",
+   "fecha": "2026-11-10T11:03:00Z",
+   "idioma": "en",
+   "impacto": 40,
+   "materias": [
+    "trigo",
+    "leche"
+   ],
+   "medio": "India's News.Net",
+   "nivel": "baja",
+   "nota": 88,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "The Statesman",
+    "Venezuelastar"
+   ],
+   "tipo": null,
+   "titulo": "Global food prices fall 1.2% in October as wheat, dairy and meat become cheaper: FAO"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -351,6 +442,9 @@
    "fecha": "2026-11-10T10:11:56Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Yahoo Finance",
    "nivel": "media",
    "nota": 88,
@@ -376,6 +470,9 @@
    "fecha": "2026-11-10T09:27:27Z",
    "idioma": "es",
    "impacto": 40,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Expansión - Energía",
    "nivel": "baja",
    "nota": 88,
@@ -399,6 +496,9 @@
    "fecha": "2026-11-10T09:20:45Z",
    "idioma": "es",
    "impacto": 40,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Expansión - Energía",
    "nivel": "baja",
    "nota": 88,
@@ -422,6 +522,7 @@
    "fecha": "2026-11-10T08:28:12Z",
    "idioma": "en",
    "impacto": 40,
+   "materias": [],
    "medio": "Hyderabad Mail",
    "nivel": "baja",
    "nota": 88,
@@ -447,6 +548,7 @@
    "fecha": "2026-11-10T07:24:00Z",
    "idioma": "en",
    "impacto": 40,
+   "materias": [],
    "medio": "TradingView",
    "nivel": "baja",
    "nota": 88,
@@ -473,6 +575,7 @@
    "fecha": "2026-11-10T06:32:47Z",
    "idioma": "en",
    "impacto": 70,
+   "materias": [],
    "medio": "marketscreener.com",
    "nivel": "alta",
    "nota": 88,
@@ -498,6 +601,7 @@
    "fecha": "2026-11-10T05:10:10Z",
    "idioma": "",
    "impacto": 40,
+   "materias": [],
    "medio": "Investing Nigeria",
    "nivel": "baja",
    "nota": 88,
@@ -526,6 +630,9 @@
    "fecha": "2026-11-09T22:04:25Z",
    "idioma": "en",
    "impacto": 38,
+   "materias": [
+    "zinc"
+   ],
    "medio": "Mining.com",
    "nivel": "baja",
    "nota": 86,
@@ -549,6 +656,9 @@
    "fecha": "2026-11-10T16:00:00Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "diesel"
+   ],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 84,
@@ -573,6 +683,9 @@
    "fecha": "2026-11-10T12:27:59Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "acero"
+   ],
    "medio": "GMK Center (acero)",
    "nivel": "baja",
    "nota": 84,
@@ -596,6 +709,7 @@
    "fecha": "2026-11-10T17:05:30Z",
    "idioma": "en",
    "impacto": 76,
+   "materias": [],
    "medio": "Financial Times - Petróleo",
    "nivel": "alta",
    "nota": 82,
@@ -617,6 +731,9 @@
    "fecha": "2026-11-10T16:18:39Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "alta",
    "nota": 82,
@@ -640,6 +757,9 @@
    "fecha": "2026-11-10T15:05:28Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 82,
@@ -661,6 +781,9 @@
    "fecha": "2026-11-10T14:41:07Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "alta",
    "nota": 82,
@@ -684,6 +807,9 @@
    "fecha": "2026-11-10T14:36:50Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [
+    "gas"
+   ],
    "medio": "Bloomberg - Industrias",
    "nivel": "alta",
    "nota": 82,
@@ -705,6 +831,9 @@
    "fecha": "2026-11-10T14:14:06Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -726,6 +855,9 @@
    "fecha": "2026-11-10T14:00:00Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -747,6 +879,7 @@
    "fecha": "2026-11-10T12:42:13Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 82,
@@ -768,6 +901,7 @@
    "fecha": "2026-11-10T11:30:53Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 82,
@@ -789,6 +923,7 @@
    "fecha": "2026-11-10T11:12:17Z",
    "idioma": "en",
    "impacto": 46,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -810,6 +945,9 @@
    "fecha": "2026-11-10T08:39:50Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -831,6 +969,7 @@
    "fecha": "2026-11-10T07:48:22Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -852,6 +991,9 @@
    "fecha": "2026-11-10T07:25:33Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [
+    "gas"
+   ],
    "medio": "Bloomberg - Industrias",
    "nivel": "alta",
    "nota": 82,
@@ -873,6 +1015,7 @@
    "fecha": "2026-11-10T06:35:11Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 82,
@@ -894,6 +1037,9 @@
    "fecha": "2026-11-10T05:46:54Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "carbon"
+   ],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 82,
@@ -915,6 +1061,9 @@
    "fecha": "2026-11-10T03:42:53Z",
    "idioma": "en",
    "impacto": 62,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "media",
    "nota": 82,
@@ -936,6 +1085,7 @@
    "fecha": "2026-11-10T03:00:10Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -957,6 +1107,7 @@
    "fecha": "2026-11-10T00:04:12Z",
    "idioma": "en",
    "impacto": 46,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -978,6 +1129,7 @@
    "fecha": "2026-11-10T00:01:02Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -999,6 +1151,7 @@
    "fecha": "2026-11-09T23:01:44Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -1020,6 +1173,7 @@
    "fecha": "2026-11-09T20:12:15Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -1041,6 +1195,9 @@
    "fecha": "2026-11-09T17:07:08Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
@@ -1062,6 +1219,9 @@
    "fecha": "2026-11-09T16:37:29Z",
    "idioma": "en",
    "impacto": 76,
+   "materias": [
+    "acero"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 82,
@@ -1083,6 +1243,7 @@
    "fecha": "2026-11-10T16:54:38Z",
    "idioma": "en",
    "impacto": 44,
+   "materias": [],
    "medio": "FOREX.com",
    "nivel": "baja",
    "nota": 80,
@@ -1106,6 +1267,9 @@
    "fecha": "2026-11-10T16:39:37Z",
    "idioma": "es",
    "impacto": 32,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Cinco Días - Mercados",
    "nivel": "baja",
    "nota": 80,
@@ -1127,6 +1291,7 @@
    "fecha": "2026-11-10T14:56:28Z",
    "idioma": "es",
    "impacto": 32,
+   "materias": [],
    "medio": "Cryptonews.net",
    "nivel": "baja",
    "nota": 80,
@@ -1150,6 +1315,7 @@
    "fecha": "2026-11-10T14:28:15Z",
    "idioma": "en",
    "impacto": 44,
+   "materias": [],
    "medio": "Bilyonaryo Business",
    "nivel": "baja",
    "nota": 80,
@@ -1174,6 +1340,7 @@
    "fecha": "2026-11-10T14:18:00Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [],
    "medio": "Fortune",
    "nivel": "baja",
    "nota": 80,
@@ -1198,6 +1365,9 @@
    "fecha": "2026-11-10T14:02:04Z",
    "idioma": "es",
    "impacto": 62,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Expansión - Economía",
    "nivel": "media",
    "nota": 80,
@@ -1219,6 +1389,9 @@
    "fecha": "2026-11-10T13:49:32Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "City AM",
    "nivel": "baja",
    "nota": 80,
@@ -1242,6 +1415,7 @@
    "fecha": "2026-11-10T13:47:59Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [],
    "medio": "www.tmgm.com",
    "nivel": "baja",
    "nota": 80,
@@ -1265,6 +1439,9 @@
    "fecha": "2026-11-10T13:37:49Z",
    "idioma": "es",
    "impacto": 32,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Telemundo Miami (51)",
    "nivel": "baja",
    "nota": 80,
@@ -1288,6 +1465,9 @@
    "fecha": "2026-11-10T13:16:31Z",
    "idioma": "en",
    "impacto": 38,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Kitco",
    "nivel": "baja",
    "nota": 80,
@@ -1311,6 +1491,9 @@
    "fecha": "2026-11-10T13:02:50Z",
    "idioma": "es",
    "impacto": 32,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Telemundo Chicago",
    "nivel": "baja",
    "nota": 80,
@@ -1334,6 +1517,7 @@
    "fecha": "2026-11-10T12:29:08Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [],
    "medio": "Idaho Statesman",
    "nivel": "baja",
    "nota": 80,
@@ -1357,6 +1541,9 @@
    "fecha": "2026-11-10T11:30:00Z",
    "idioma": "en",
    "impacto": 71,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow",
    "nivel": "alta",
    "nota": 80,
@@ -1380,6 +1567,9 @@
    "fecha": "2026-11-10T11:18:11Z",
    "idioma": "es",
    "impacto": 32,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Europa Press - Economía",
    "nivel": "baja",
    "nota": 80,
@@ -1394,29 +1584,6 @@
   },
   {
    "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZVo1UnB5cG1veE9Obkd6SW1Kd0UyNVdETjFDV0NCRGF0UUZLLXEwRGkyV05sMm05cEpMQUpmRlBWd01LLTBIMmVGTHl5WE5tMDRjdVo2eXhpVnctLUFFUkx5eUlJS3Q0czhrWEpheDhBdmxOWXpKM1RIejQ0YlZmbjFzVjZMbl9XTmRvaEFBcDkyeXViUkgtSVk4SEJDaTYwcmduQlNGcVVMWEVXaGN4c2c5SGFfOW1xT2Vtcy1STQ?oc=5",
-   "fecha": "2026-11-10T11:03:00Z",
-   "idioma": "en",
-   "impacto": 32,
-   "medio": "India's News.Net",
-   "nivel": "baja",
-   "nota": 80,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [
-    "The Statesman"
-   ],
-   "tipo": null,
-   "titulo": "Global food prices fall 1.2% in October as wheat, dairy and meat become cheaper: FAO"
-  },
-  {
-   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -1424,6 +1591,9 @@
    "fecha": "2026-11-10T11:01:00Z",
    "idioma": "es",
    "impacto": 32,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 80,
@@ -1447,6 +1617,7 @@
    "fecha": "2026-11-10T06:12:00Z",
    "idioma": "en",
    "impacto": 38,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "baja",
    "nota": 80,
@@ -1470,6 +1641,9 @@
    "fecha": "2026-11-10T06:05:36Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [
+    "acero"
+   ],
    "medio": "Yahoo Finance Singapore",
    "nivel": "baja",
    "nota": 80,
@@ -1489,10 +1663,118 @@
     "alimentos"
    ],
    "comercial": false,
+   "enlace": "https://www.livemint.com/focus/supply-of-about-2-700-tons-of-npk-fertilizer-resumes-in-himachal-ahead-of-wheat-sowing-season-11794289232996.html",
+   "fecha": "2026-11-10T05:40:32Z",
+   "idioma": "",
+   "impacto": 32,
+   "materias": [
+    "trigo",
+    "fertilizantes"
+   ],
+   "medio": "Mint",
+   "nivel": "baja",
+   "nota": 80,
+   "resumen": "Supply of about 2,700 tons of NPK fertilizer resumes in Himachal ahead of wheat-sowing season",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Ptinews"
+   ],
+   "tipo": null,
+   "titulo": "Supply of about 2,700 tons of NPK fertilizer resumes in Himachal ahead of wheat-sowing season"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://ph.investing.com/news/stock-market-news/asia-stocks-rally-as-korean-chips-surge-and-oil-retreat-lifts-sentiment-2687979",
+   "fecha": "2026-11-10T05:40:09Z",
+   "idioma": "",
+   "impacto": 44,
+   "materias": [],
+   "medio": "Investing Philippines",
+   "nivel": "baja",
+   "nota": 80,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [
+    "Investing Nigeria"
+   ],
+   "tipo": "precio",
+   "titulo": "Asia stocks rally as Korean chips surge and oil retreat lifts sentiment"
+  },
+  {
+   "activos": [
+    "construccion",
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://econotimes.com/Canada-Extends-Tariff-Relief-for-Some-U-S-Imports-Through-June-2028-1774228",
+   "fecha": "2026-11-10T05:38:07Z",
+   "idioma": "",
+   "impacto": 65,
+   "materias": [],
+   "medio": "Econotimes",
+   "nivel": "media",
+   "nota": 80,
+   "resumen": "New eligibility includes non-steel goods used in mining, quarrying and oil and gas extraction, plus all goods used by public education entities.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Anadolu Agency"
+   ],
+   "tipo": "comercio",
+   "titulo": "Canada Extends Tariff Relief for Some U.S. Imports Through June 2028"
+  },
+  {
+   "activos": [
+    "energia",
+    "oro",
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNaUtsMVJJalpIbFB4WHV2THNkX1NIb3hPQzBob3J4aTY2U015UnhnMW5XQ2lEUi1reFdfV084XzdQXzNMVFZYOWxDc3cxclltQVlXc0FyUF9pUTBMV2hHTmlQeUViSFFFa3pYMGdJM3ctX3dKOFk2UDJHM2ZaNjF0LUg2LS1Gb1U1RmZuVHVmSjc4alZWRUJqYUJVb3V0RTdvZ3pMZnJBelFRRFVuOHo3TXI2TUswVER0M0oxV0daMUx2QmNZNWNPUDE0b1E0c09fb3owYjVxZnZyNnRsYU1hRUhOTdIB6AFBVV95cUxPejhjYTRrbExTNm5FMjItaXpnTU9nbUVBSzNPRFZCWXhCaHF3UGFiUVh6VGxaRUduXzJudE43WEYwcEN0MXZTRWdsblhMMG5PUjNnd3BWZWZSM0VvNC1obHhHMzdacS1YRGtsalRBWVpyMnUzZ3BIdm5qQ2RzWk16NmNzZVlxcmxnOG53ellnTjBOdjZxcnlYMnQtLTNPcHdzaEtXZlVJdG95WE1DNkVMd19aY3pQVkIzaEVieGdMREE2TUhocGIydlpYUE9CYU1heFhDRnpuampyUVAzQno2NFU4aF9BUlA1?oc=5",
+   "fecha": "2026-11-10T05:31:09Z",
+   "idioma": "en",
+   "impacto": 38,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "Business Today",
+   "nivel": "baja",
+   "nota": 80,
+   "resumen": "",
+   "seccion": [
+    "preciosos",
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Business News India"
+   ],
+   "tipo": "opinion",
+   "titulo": "Gold, silver outlook: Can falling crude oil prices support precious metals' recovery?"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOb2trYV80U01ZNmswcEpPZmhLZ19CbTctQjFlMWFrZ0JjWF9iX1JiOHJhS0hpMUxMSVZFTjMzZEcxWWJvakFMZHE5UUZMcG5CRS1PTmJxZjJpbk5MRDAxczN3THV3R19TWnEzRTlvOEs5ck50ak8wd2Q2dUtreGhWdGh0T29uY2xaYVM2SWx3N1RuZUFXbmtlM0R3S3gtUFFhN19QUGtFX3hBTF96aWV0UlFIWVcxMGFIeUxuRkFzT2FLOUpXSnhWV21JVQ?oc=5",
    "fecha": "2026-11-10T03:30:05Z",
    "idioma": "es",
    "impacto": 38,
+   "materias": [
+    "maiz"
+   ],
    "medio": "laparadoja.com.mx",
    "nivel": "baja",
    "nota": 80,
@@ -1516,6 +1798,9 @@
    "fecha": "2026-11-10T03:05:32Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [
+    "acero"
+   ],
    "medio": "Business Today",
    "nivel": "baja",
    "nota": 80,
@@ -1539,6 +1824,9 @@
    "fecha": "2026-11-10T03:04:14Z",
    "idioma": "",
    "impacto": 44,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Bloomberg",
    "nivel": "baja",
    "nota": 80,
@@ -1562,6 +1850,7 @@
    "fecha": "2026-11-09T23:44:55Z",
    "idioma": "en",
    "impacto": 32,
+   "materias": [],
    "medio": "Business Recorder",
    "nivel": "baja",
    "nota": 80,
@@ -1585,6 +1874,7 @@
    "fecha": "2026-11-09T20:00:04Z",
    "idioma": "en",
    "impacto": 62,
+   "materias": [],
    "medio": "Barchart.com",
    "nivel": "media",
    "nota": 80,
@@ -1608,6 +1898,9 @@
    "fecha": "2026-11-09T19:01:20Z",
    "idioma": "en",
    "impacto": 59,
+   "materias": [
+    "soja"
+   ],
    "medio": "St Joseph Post",
    "nivel": "media",
    "nota": 80,
@@ -1631,6 +1924,9 @@
    "fecha": "2026-11-09T14:47:05Z",
    "idioma": "en",
    "impacto": 76,
+   "materias": [
+    "gas"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 80,
@@ -1645,24 +1941,27 @@
   },
   {
    "activos": [
-    "alimentos"
+    "construccion"
    ],
    "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/articles/2026-11-09/tyson-to-boost-beef-processing-after-a-year-of-cuts",
-   "fecha": "2026-11-09T14:00:00Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOc0puS0NFMEs1TU9BQ2kxbzkzNnZtR0ktNUp1RFUxbVpBSVhTVUNCdDhUNi13Qkdnc0s5QktoOU51SHIyamZEMklrNHhEaE4tTHJkdk9ZQ3BQMmlobVV6c3Vtdk4tYTEyTHRRVldPdjdzendnRlFCQ3NtVzZHTUU0MUtOTzlRaVkxUW81SUNZR0doNS0zbmVzUkttSmk2X0FrUFlkSzR3YndHdw?oc=5",
+   "fecha": "2026-11-10T17:13:56Z",
    "idioma": "en",
-   "impacto": 34,
-   "medio": "Bloomberg - Mercados",
+   "impacto": 43,
+   "materias": [
+    "aluminio"
+   ],
+   "medio": "Mining.com",
    "nivel": "baja",
-   "nota": 80,
-   "resumen": "Tyson Foods Inc. is increasing its beef processing capacity, following a year of steep cutbacks as it grappled with a historic domestic cattle shortage.",
+   "nota": 79,
+   "resumen": "",
    "seccion": [
     "materias"
    ],
-   "sentido": "",
+   "sentido": "baja",
    "tambien_en": [],
-   "tipo": null,
-   "titulo": "Tyson to Boost Beef Processing After a Year of Cuts"
+   "tipo": "precio",
+   "titulo": "Firmer dollar, Middle East de-escalation hopes push aluminium to three-week low"
   },
   {
    "activos": [
@@ -1673,6 +1972,9 @@
    "fecha": "2026-11-09T19:39:06Z",
    "idioma": "en",
    "impacto": 31,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Mining.com",
    "nivel": "baja",
    "nota": 79,
@@ -1694,6 +1996,9 @@
    "fecha": "2026-11-09T16:27:05Z",
    "idioma": "es",
    "impacto": 74,
+   "materias": [
+    "piensos"
+   ],
    "medio": "EFEAgro",
    "nivel": "alta",
    "nota": 79,
@@ -1708,28 +2013,27 @@
   },
   {
    "activos": [
-    "cobre",
-    "oro"
+    "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQTRUNHQ0eVMzQ3FDaDlZY2RsM3M1RE05Ukp6Y3lCVkpqOVhUVkhZbTI4VW5zVlNXNWJfWkdfTTJwV0lJZXlNNGNCbkZhRlF6ajZRTUFNZ1FranBPWFB6Y0FxRDVVUDRuZ2lvaWloR1lnaG9nTzVWazlRNkJkcGdrbVI1T2ZVcF9kaF9ISmFEeERYSmxsbGsySGFqYlpPYXJQSHhBY1dNUXd3R3ppb0RkY0hLMXQtdVdTX3dnZ2VCU1kwSXFkd0RSRmY1T1VYckE?oc=5",
-   "fecha": "2026-11-09T15:31:02Z",
+   "enlace": "https://www.bloomberg.com/news/articles/2026-11-09/tyson-to-boost-beef-processing-after-a-year-of-cuts",
+   "fecha": "2026-11-09T14:00:00Z",
    "idioma": "en",
-   "impacto": 32,
-   "medio": "StreetInsider",
+   "impacto": 34,
+   "materias": [
+    "vacuno"
+   ],
+   "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 79,
-   "resumen": "",
+   "resumen": "Tyson Foods Inc. is increasing its beef processing capacity, following a year of steep cutbacks as it grappled with a historic domestic cattle shortage.",
    "seccion": [
-    "preciosos",
     "materias"
    ],
-   "sentido": "alza",
-   "tambien_en": [
-    "Financialcontent"
-   ],
+   "sentido": "",
+   "tambien_en": [],
    "tipo": null,
-   "titulo": "As Copper Prices Rise, Not All Industry Players are Striking Gold"
+   "titulo": "Tyson to Boost Beef Processing After a Year of Cuts"
   },
   {
    "activos": [
@@ -1740,6 +2044,7 @@
    "fecha": "2026-11-09T13:30:17Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 79,
@@ -1754,6 +2059,30 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://naturalgasintel.com/news/natural-gas-extending-gains-as-forecasters-tease-cooldown/",
+   "fecha": "2026-11-10T17:23:17Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Natural Gas Intelligence",
+   "nivel": "baja",
+   "nota": 78,
+   "resumen": "Hefty heating degree day (HDD) gains in the two-week weather outlook helped natural gas futures extend early-week gains into midday Tuesday.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Natural Gas Extending Gains as Forecasters Tease Cooldown"
+  },
+  {
+   "activos": [
     "cobre",
     "construccion",
     "oro"
@@ -1763,10 +2092,11 @@
    "fecha": "2026-11-10T16:45:25Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
-   "resumen": "A gold-copper intercept below old workings in Montana and a U.S. defence award for nickel exploration in Michigan show two ways early-stage projects can advance.... The post Spotlight: Four early US exploration bets appeared first on The Northern Miner .",
+   "resumen": "A gold-copper intercept below old workings in Montana and a U.S. defence award for nickel exploration in Michigan show two ways early-stage projects can advance.... The post Spotlight: Four US early exploration bets appeared first on The Northern Miner .",
    "seccion": [
     "preciosos",
     "materias"
@@ -1774,7 +2104,31 @@
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Spotlight: Four early US exploration bets"
+   "titulo": "Spotlight: Four US early exploration bets"
+  },
+  {
+   "activos": [
+    "cobre",
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.northernminer.com/news/meridian-weighs-400m-cabacal-financing-offers/1003897638/",
+   "fecha": "2026-11-10T16:40:23Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [],
+   "medio": "The Northern Miner",
+   "nivel": "baja",
+   "nota": 78,
+   "resumen": "Meridian Mining (TSX: MNO; LSE: MNO) is weighing indicative financing packages of $400 million (C$565 million) as it begins pre-construction work at its Cabaçal copper-gold... The post Meridian weighs $400M Cabaçal financing offers appeared first on The Northern Miner .",
+   "seccion": [
+    "preciosos",
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Meridian weighs $400M Cabaçal financing offers"
   },
   {
    "activos": [
@@ -1785,6 +2139,9 @@
    "fecha": "2026-11-10T16:30:01Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "acero"
+   ],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -1806,6 +2163,7 @@
    "fecha": "2026-11-10T16:00:42Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -1827,6 +2185,7 @@
    "fecha": "2026-11-10T15:34:26Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -1849,6 +2208,10 @@
    "fecha": "2026-11-10T15:17:02Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "cobre",
+    "zinc"
+   ],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -1870,6 +2233,9 @@
    "fecha": "2026-11-10T14:56:06Z",
    "idioma": "en",
    "impacto": 56,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "media",
    "nota": 78,
@@ -1891,6 +2257,7 @@
    "fecha": "2026-11-10T14:27:35Z",
    "idioma": "en",
    "impacto": 42,
+   "materias": [],
    "medio": "World-Grain",
    "nivel": "baja",
    "nota": 78,
@@ -1912,6 +2279,9 @@
    "fecha": "2026-11-10T14:17:27Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "trigo"
+   ],
    "medio": "World-Grain",
    "nivel": "baja",
    "nota": 78,
@@ -1933,6 +2303,9 @@
    "fecha": "2026-11-10T13:59:38Z",
    "idioma": "en",
    "impacto": 72,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "alta",
    "nota": 78,
@@ -1954,6 +2327,9 @@
    "fecha": "2026-11-10T13:59:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
    "nota": 78,
@@ -1975,6 +2351,9 @@
    "fecha": "2026-11-10T13:35:05Z",
    "idioma": "en",
    "impacto": 42,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
    "nota": 78,
@@ -1998,6 +2377,9 @@
    "fecha": "2026-11-10T13:13:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "zinc"
+   ],
    "medio": "Mining Weekly",
    "nivel": "baja",
    "nota": 78,
@@ -2020,6 +2402,9 @@
    "fecha": "2026-11-10T11:50:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "zinc"
+   ],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -2041,6 +2426,7 @@
    "fecha": "2026-11-10T11:49:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "Mining Weekly",
    "nivel": "baja",
    "nota": 78,
@@ -2062,6 +2448,9 @@
    "fecha": "2026-11-10T06:00:00Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Periódico de la Energía",
    "nivel": "baja",
    "nota": 78,
@@ -2083,6 +2472,9 @@
    "fecha": "2026-11-09T22:19:22Z",
    "idioma": "en",
    "impacto": 42,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
    "nota": 78,
@@ -2104,6 +2496,9 @@
    "fecha": "2026-11-09T21:45:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "cobre"
+   ],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -2125,6 +2520,7 @@
    "fecha": "2026-11-09T21:30:05Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 78,
@@ -2146,6 +2542,9 @@
    "fecha": "2026-11-09T20:55:00Z",
    "idioma": "es",
    "impacto": 68,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Periódico de la Energía",
    "nivel": "media",
    "nota": 78,
@@ -2167,6 +2566,9 @@
    "fecha": "2026-11-09T20:08:37Z",
    "idioma": "en",
    "impacto": 56,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "media",
    "nota": 78,
@@ -2188,6 +2590,9 @@
    "fecha": "2026-11-09T18:46:58Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
    "nota": 78,
@@ -2209,6 +2614,9 @@
    "fecha": "2026-11-09T18:28:02Z",
    "idioma": "en",
    "impacto": 56,
+   "materias": [
+    "gas"
+   ],
    "medio": "Natural Gas Intelligence",
    "nivel": "media",
    "nota": 78,
@@ -2223,24 +2631,31 @@
   },
   {
    "activos": [
-    "energia"
+    "cobre",
+    "oro"
    ],
    "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/soaring-lng-hdds-trigger-natural-gas-rally/",
-   "fecha": "2026-11-09T17:19:13Z",
+   "enlace": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQTRUNHQ0eVMzQ3FDaDlZY2RsM3M1RE05Ukp6Y3lCVkpqOVhUVkhZbTI4VW5zVlNXNWJfWkdfTTJwV0lJZXlNNGNCbkZhRlF6ajZRTUFNZ1FranBPWFB6Y0FxRDVVUDRuZ2lvaWloR1lnaG9nTzVWazlRNkJkcGdrbVI1T2ZVcF9kaF9ISmFEeERYSmxsbGsySGFqYlpPYXJQSHhBY1dNUXd3R3ppb0RkY0hLMXQtdVdTX3dnZ2VCU1kwSXFkd0RSRmY1T1VYckE?oc=5",
+   "fecha": "2026-11-09T15:31:02Z",
    "idioma": "en",
-   "impacto": 42,
-   "medio": "Natural Gas Intelligence",
+   "impacto": 32,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "StreetInsider",
    "nivel": "baja",
    "nota": 78,
-   "resumen": "Bullish two-week forecast trends and record LNG feedgas demand catapulted December natural gas futures comfortably above the psychological $3.00/MMBtu threshold on Monday.",
+   "resumen": "",
    "seccion": [
+    "preciosos",
     "materias"
    ],
    "sentido": "alza",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Soaring LNG, HDDs Trigger Natural Gas Rally"
+   "tambien_en": [
+    "Financialcontent"
+   ],
+   "tipo": null,
+   "titulo": "As Copper Prices Rise, Not All Industry Players are Striking Gold"
   },
   {
    "activos": [
@@ -2251,6 +2666,7 @@
    "fecha": "2026-11-09T12:00:00Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 78,
@@ -2268,13 +2684,38 @@
     "energia"
    ],
    "comercial": false,
+   "enlace": "https://naturalgasintel.com/news/soaring-lng-hdds-trigger-natural-gas-rally/",
+   "fecha": "2026-11-09T17:19:13Z",
+   "idioma": "en",
+   "impacto": 42,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Natural Gas Intelligence",
+   "nivel": "baja",
+   "nota": 77,
+   "resumen": "Bullish two-week forecast trends and record LNG feedgas demand catapulted December natural gas futures comfortably above the psychological $3.00/MMBtu threshold on Monday.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "Soaring LNG, HDDs Trigger Natural Gas Rally"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
    "enlace": "https://www.bloomberg.com/news/articles/2026-11-09/oil-falls-on-unconfirmed-report-that-iran-eased-hormuz-demands",
    "fecha": "2026-11-09T11:34:07Z",
    "idioma": "en",
    "impacto": 74,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "alta",
-   "nota": 78,
+   "nota": 77,
    "resumen": "Oil fell to the lowest since August amid optimism around diplomatic efforts to end the war in the Middle East, even as attacks in the region continue.",
    "seccion": [
     "materias"
@@ -2293,9 +2734,12 @@
    "fecha": "2026-11-09T11:30:43Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "acero"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
-   "nota": 78,
+   "nota": 77,
    "resumen": "An explosion at a steel mill near Turkey’s western city of Izmir has killed 16 workers, President Recep Tayyip Erdogan said on Monday.",
    "seccion": [
     "materias"
@@ -2314,6 +2758,7 @@
    "fecha": "2026-11-10T16:34:00Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 76,
@@ -2335,6 +2780,9 @@
    "fecha": "2026-11-10T15:30:00Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "carbon"
+   ],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 76,
@@ -2356,6 +2804,10 @@
    "fecha": "2026-11-10T15:16:25Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "maiz",
+    "soja"
+   ],
    "medio": "Feed Navigator",
    "nivel": "baja",
    "nota": 76,
@@ -2377,6 +2829,9 @@
    "fecha": "2026-11-10T14:30:46Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "acero"
+   ],
    "medio": "GMK Center (acero)",
    "nivel": "baja",
    "nota": 76,
@@ -2398,6 +2853,7 @@
    "fecha": "2026-11-10T13:30:00Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 76,
@@ -2419,6 +2875,9 @@
    "fecha": "2026-11-10T13:12:21Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "acero"
+   ],
    "medio": "GMK Center (acero)",
    "nivel": "baja",
    "nota": 76,
@@ -2440,6 +2899,7 @@
    "fecha": "2026-11-10T12:30:00Z",
    "idioma": "en",
    "impacto": 58,
+   "materias": [],
    "medio": "OilPrice.com",
    "nivel": "media",
    "nota": 76,
@@ -2461,6 +2921,9 @@
    "fecha": "2026-11-10T12:14:28Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "acero"
+   ],
    "medio": "Mining Technology",
    "nivel": "baja",
    "nota": 76,
@@ -2482,6 +2945,7 @@
    "fecha": "2026-11-10T11:30:00Z",
    "idioma": "en",
    "impacto": 67,
+   "materias": [],
    "medio": "OilPrice.com",
    "nivel": "media",
    "nota": 76,
@@ -2503,6 +2967,9 @@
    "fecha": "2026-11-10T10:33:22Z",
    "idioma": "es",
    "impacto": 67,
+   "materias": [
+    "piensos"
+   ],
    "medio": "Agroinformación",
    "nivel": "media",
    "nota": 76,
@@ -2524,6 +2991,9 @@
    "fecha": "2026-11-10T10:01:15Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Mining Technology",
    "nivel": "baja",
    "nota": 76,
@@ -2545,6 +3015,9 @@
    "fecha": "2026-11-10T08:58:53Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "gas"
+   ],
    "medio": "Rigzone",
    "nivel": "baja",
    "nota": 76,
@@ -2566,6 +3039,9 @@
    "fecha": "2026-11-10T07:56:12Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "acero"
+   ],
    "medio": "GMK Center (acero)",
    "nivel": "baja",
    "nota": 76,
@@ -2587,6 +3063,9 @@
    "fecha": "2026-11-10T06:45:00Z",
    "idioma": "en",
    "impacto": 67,
+   "materias": [
+    "gas"
+   ],
    "medio": "OilPrice.com",
    "nivel": "media",
    "nota": 76,
@@ -2608,6 +3087,9 @@
    "fecha": "2026-11-10T03:38:52Z",
    "idioma": "en",
    "impacto": 40,
+   "materias": [
+    "arroz"
+   ],
    "medio": "Feed Navigator",
    "nivel": "baja",
    "nota": 76,
@@ -2629,6 +3111,9 @@
    "fecha": "2026-11-10T01:00:00Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "diesel"
+   ],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 76,
@@ -2650,6 +3135,7 @@
    "fecha": "2026-11-09T23:00:00Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 76,
@@ -2671,6 +3157,9 @@
    "fecha": "2026-11-09T21:27:55Z",
    "idioma": "en",
    "impacto": 67,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Rigzone",
    "nivel": "media",
    "nota": 76,
@@ -2692,6 +3181,9 @@
    "fecha": "2026-11-09T20:10:55Z",
    "idioma": "en",
    "impacto": 70,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "OilPrice.com",
    "nivel": "alta",
    "nota": 76,
@@ -2706,6 +3198,28 @@
   },
   {
    "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPMy1vZzVpZ2NFUDlaMENFZEpWbFMtMmZiU1E5ZFNIUGQzUXR2azFIV3NuNlBrdUZqT0tmdFRXMHdzdzh2d050Z0RqdnBKRVJEM2RHeVVYZHhFVDg5a2puYk5WWFRPODBMZ0gwbWhDVHNieVp0bVRxc2xJUjN2VzAzY3VmbGVkdF9jLXhHUFk3UU9Ebkc5M2VETVB3Zk9EVENlQXR5cVlaNEQ1VXRNazg2S09tMGN1UQ?oc=5",
+   "fecha": "2026-11-10T17:07:42Z",
+   "idioma": "en",
+   "impacto": 39,
+   "materias": [],
+   "medio": "FXStreet",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "Gold supply falls in Q3 despite record mine production; What happened?"
+  },
+  {
+   "activos": [
     "alimentos"
    ],
    "comercial": false,
@@ -2713,6 +3227,9 @@
    "fecha": "2026-11-10T16:42:27Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "soja"
+   ],
    "medio": "Farm Progress",
    "nivel": "baja",
    "nota": 75,
@@ -2734,6 +3251,9 @@
    "fecha": "2026-11-10T16:37:19Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "leche"
+   ],
    "medio": "Dairy Reporter",
    "nivel": "baja",
    "nota": 75,
@@ -2755,6 +3275,7 @@
    "fecha": "2026-11-10T16:31:15Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com - Materias primas",
    "nivel": "baja",
    "nota": 75,
@@ -2776,6 +3297,7 @@
    "fecha": "2026-11-10T16:11:00Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "media",
    "nota": 75,
@@ -2797,6 +3319,10 @@
    "fecha": "2026-11-10T14:59:55Z",
    "idioma": "en",
    "impacto": 57,
+   "materias": [
+    "maiz",
+    "soja"
+   ],
    "medio": "Farm Progress",
    "nivel": "media",
    "nota": 75,
@@ -2818,6 +3344,7 @@
    "fecha": "2026-11-10T14:09:10Z",
    "idioma": "es",
    "impacto": 27,
+   "materias": [],
    "medio": "FXStreet",
    "nivel": "baja",
    "nota": 75,
@@ -2839,6 +3366,9 @@
    "fecha": "2026-11-10T13:12:21Z",
    "idioma": "es",
    "impacto": 27,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "FXStreet",
    "nivel": "baja",
    "nota": 75,
@@ -2862,6 +3392,7 @@
    "fecha": "2026-11-10T13:00:49Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -2883,6 +3414,9 @@
    "fecha": "2026-11-10T12:15:16Z",
    "idioma": "es",
    "impacto": 27,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com España - Materias primas",
    "nivel": "baja",
    "nota": 75,
@@ -2904,6 +3438,7 @@
    "fecha": "2026-11-10T11:54:32Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com - Materias primas",
    "nivel": "baja",
    "nota": 75,
@@ -2925,6 +3460,9 @@
    "fecha": "2026-11-10T11:46:01Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "leche"
+   ],
    "medio": "Dairy Reporter",
    "nivel": "baja",
    "nota": 75,
@@ -2946,6 +3484,7 @@
    "fecha": "2026-11-10T11:16:12Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [],
    "medio": "FXStreet",
    "nivel": "media",
    "nota": 75,
@@ -2967,6 +3506,7 @@
    "fecha": "2026-11-10T11:15:53Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [],
    "medio": "FXStreet",
    "nivel": "media",
    "nota": 75,
@@ -2988,6 +3528,9 @@
    "fecha": "2026-11-10T11:00:55Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3009,6 +3552,9 @@
    "fecha": "2026-11-10T11:00:53Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "gas"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3030,6 +3576,9 @@
    "fecha": "2026-11-10T11:00:48Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "acero"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3051,6 +3600,9 @@
    "fecha": "2026-11-10T11:00:43Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "gas"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3072,6 +3624,9 @@
    "fecha": "2026-11-10T11:00:37Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3093,6 +3648,9 @@
    "fecha": "2026-11-10T11:00:35Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "acero"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3114,6 +3672,9 @@
    "fecha": "2026-11-10T11:00:33Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "acero"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3136,6 +3697,7 @@
    "fecha": "2026-11-10T11:00:31Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3157,6 +3719,9 @@
    "fecha": "2026-11-10T11:00:29Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Hellenic Shipping News",
    "nivel": "baja",
    "nota": 75,
@@ -3178,6 +3743,7 @@
    "fecha": "2026-11-10T11:00:27Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [],
    "medio": "Hellenic Shipping News",
    "nivel": "media",
    "nota": 75,
@@ -3199,6 +3765,7 @@
    "fecha": "2026-11-10T10:56:58Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "FXStreet",
    "nivel": "baja",
    "nota": 75,
@@ -3220,6 +3787,7 @@
    "fecha": "2026-11-10T09:08:34Z",
    "idioma": "es",
    "impacto": 57,
+   "materias": [],
    "medio": "FXStreet",
    "nivel": "media",
    "nota": 75,
@@ -3234,6 +3802,30 @@
   },
   {
    "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPcXNmT1pXRkpBQkZ4RVpZVE5TMXY5VDhBYTZmZElMUXViVGxUVnZGMENJVG9xZGhEVjBpNzNPWVZ2bHE5cWo0ZzBoQ1lFV1pBNlF1NExjZktiSWVkb2hQWmh5UTJnQjJ2cGJ2R3pfTDdDUFRZNkJ5RVNYUTRYR0UyTl91NWZmd1hWVjYxWmZYbHdvZw?oc=5",
+   "fecha": "2026-11-10T08:05:50Z",
+   "idioma": "en",
+   "impacto": 33,
+   "materias": [
+    "trigo"
+   ],
+   "medio": "Farm Progress",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "opinion",
+   "titulo": "Could 2027 bring a bounce-back for U.S. wheat growers?"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -3241,6 +3833,9 @@
    "fecha": "2026-11-10T08:00:50Z",
    "idioma": "es",
    "impacto": 27,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "FXStreet",
    "nivel": "baja",
    "nota": 75,
@@ -3255,27 +3850,6 @@
   },
   {
    "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.farmprogress.com/wheat/could-2027-bring-a-bounce-back-for-u-s-wheat-growers-",
-   "fecha": "2026-11-10T08:00:00Z",
-   "idioma": "en",
-   "impacto": 33,
-   "medio": "Farm Progress",
-   "nivel": "baja",
-   "nota": 75,
-   "resumen": "Wheat Outlook: Receding drought and bigger insurance payouts favor more winter wheat acres, but prices face an uphill battle.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "opinion",
-   "titulo": "Could 2027 bring a bounce-back for U.S. wheat growers?"
-  },
-  {
-   "activos": [
     "oro"
    ],
    "comercial": false,
@@ -3283,6 +3857,7 @@
    "fecha": "2026-11-10T07:36:00Z",
    "idioma": "en",
    "impacto": 57,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3304,6 +3879,7 @@
    "fecha": "2026-11-10T07:19:00Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "baja",
    "nota": 75,
@@ -3325,6 +3901,7 @@
    "fecha": "2026-11-10T07:06:00Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3346,6 +3923,7 @@
    "fecha": "2026-11-10T06:40:00Z",
    "idioma": "en",
    "impacto": 57,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3367,6 +3945,9 @@
    "fecha": "2026-11-10T05:19:07Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3388,6 +3969,9 @@
    "fecha": "2026-11-10T01:25:06Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "FXStreet",
    "nivel": "media",
    "nota": 75,
@@ -3409,6 +3993,7 @@
    "fecha": "2026-11-10T01:12:29Z",
    "idioma": "es",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com España - Materias primas",
    "nivel": "baja",
    "nota": 75,
@@ -3430,6 +4015,7 @@
    "fecha": "2026-11-10T01:01:04Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [],
    "medio": "FXStreet",
    "nivel": "media",
    "nota": 75,
@@ -3451,6 +4037,9 @@
    "fecha": "2026-11-10T00:03:35Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com España - Materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3473,6 +4062,9 @@
    "fecha": "2026-11-09T22:47:12Z",
    "idioma": "en",
    "impacto": 57,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3495,6 +4087,9 @@
    "fecha": "2026-11-09T21:48:34Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3516,6 +4111,9 @@
    "fecha": "2026-11-09T21:03:52Z",
    "idioma": "en",
    "impacto": 57,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Farm Progress",
    "nivel": "media",
    "nota": 75,
@@ -3537,6 +4135,9 @@
    "fecha": "2026-11-09T20:07:10Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "media",
    "nota": 75,
@@ -3558,6 +4159,9 @@
    "fecha": "2026-11-09T19:41:33Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "soja"
+   ],
    "medio": "Farm Progress",
    "nivel": "baja",
    "nota": 75,
@@ -3579,6 +4183,9 @@
    "fecha": "2026-11-09T19:27:45Z",
    "idioma": "en",
    "impacto": 39,
+   "materias": [
+    "gas"
+   ],
    "medio": "Investing.com - Materias primas",
    "nivel": "baja",
    "nota": 75,
@@ -3600,6 +4207,9 @@
    "fecha": "2026-11-09T16:00:38Z",
    "idioma": "es",
    "impacto": 28,
+   "materias": [
+    "fertilizantes"
+   ],
    "medio": "Agropopular",
    "nivel": "baja",
    "nota": 75,
@@ -3621,6 +4231,9 @@
    "fecha": "2026-11-09T15:54:21Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "vacuno"
+   ],
    "medio": "Feed Navigator",
    "nivel": "baja",
    "nota": 75,
@@ -3642,6 +4255,7 @@
    "fecha": "2026-11-09T14:05:18Z",
    "idioma": "en",
    "impacto": 42,
+   "materias": [],
    "medio": "World-Grain",
    "nivel": "baja",
    "nota": 75,
@@ -3656,27 +4270,6 @@
   },
   {
    "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.northernminer.com/news/codelco-needs-partners-to-halt-copper-decline-chair/1003897573/",
-   "fecha": "2026-11-09T14:03:00Z",
-   "idioma": "en",
-   "impacto": 30,
-   "medio": "The Northern Miner",
-   "nivel": "baja",
-   "nota": 75,
-   "resumen": "Chile’s state-owned Codelco needs more partnerships with private miners to halt its copper production decline, chairman Bernardo Fontaine told Santiago radio station Duna on Monday.... The post Codelco needs partners to halt copper decline: chair appeared first on The Northern Miner .",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Codelco needs partners to halt copper decline: chair"
-  },
-  {
-   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -3684,6 +4277,9 @@
    "fecha": "2026-11-09T08:27:13Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 75,
@@ -3705,6 +4301,7 @@
    "fecha": "2026-11-10T14:48:00Z",
    "idioma": "es",
    "impacto": 26,
+   "materias": [],
    "medio": "FreshPlaza España",
    "nivel": "baja",
    "nota": 74,
@@ -3726,6 +4323,7 @@
    "fecha": "2026-11-10T14:48:00Z",
    "idioma": "es",
    "impacto": 68,
+   "materias": [],
    "medio": "FreshPlaza España",
    "nivel": "media",
    "nota": 74,
@@ -3747,6 +4345,9 @@
    "fecha": "2026-11-10T12:50:00Z",
    "idioma": "es",
    "impacto": 26,
+   "materias": [
+    "naranja"
+   ],
    "medio": "Valencia Fruits",
    "nivel": "baja",
    "nota": 74,
@@ -3768,6 +4369,9 @@
    "fecha": "2026-11-10T11:00:00Z",
    "idioma": "es",
    "impacto": 26,
+   "materias": [
+    "naranja"
+   ],
    "medio": "Valencia Fruits",
    "nivel": "baja",
    "nota": 74,
@@ -3789,6 +4393,9 @@
    "fecha": "2026-11-10T06:30:00Z",
    "idioma": "en",
    "impacto": 26,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Recycling Today",
    "nivel": "baja",
    "nota": 74,
@@ -3810,6 +4417,7 @@
    "fecha": "2026-11-09T15:03:45Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [],
    "medio": "Rigzone",
    "nivel": "baja",
    "nota": 74,
@@ -3824,45 +4432,27 @@
   },
   {
    "activos": [
-    "alimentos"
+    "cobre"
    ],
    "comercial": false,
-   "enlace": "https://www.world-grain.com/articles/23432-canadian-wheat-output-expected-to-fall-by-10",
-   "fecha": "2026-11-09T12:45:44Z",
+   "enlace": "https://www.northernminer.com/news/codelco-needs-partners-to-halt-copper-decline-chair/1003897573/",
+   "fecha": "2026-11-09T14:03:00Z",
    "idioma": "en",
    "impacto": 30,
-   "medio": "World-Grain",
+   "materias": [
+    "cobre"
+   ],
+   "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 74,
-   "resumen": "FAS: Country’s 2026-27 output will still be the second largest",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Canadian wheat output expected to fall by 10%"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://elperiodicodelaenergia.com/los-vehiculos-electricos-sustituyen-mas-de-cinco-veces-el-petroleo-que-hace-cinco-anos/",
-   "fecha": "2026-11-09T12:39:00Z",
-   "idioma": "es",
-   "impacto": 30,
-   "medio": "El Periódico de la Energía",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "Los autobuses eléctricos representan ya el 5% de la flota mundial, mientras que los camiones eléctricos de batería alcanzan el 1%, aunque en algunos países superan el 50% de las ventas de vehículos nuevos.",
+   "resumen": "Chile’s state-owned Codelco needs more partnerships with private miners to halt its copper production decline, chairman Bernardo Fontaine told Santiago radio station Duna on Monday.... The post Codelco needs partners to halt copper decline: chair appeared first on The Northern Miner .",
    "seccion": [
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Los vehículos eléctricos sustituyen más de cinco veces el petróleo que hace cinco años,"
+   "titulo": "Codelco needs partners to halt copper decline: chair"
   },
   {
    "activos": [
@@ -3873,6 +4463,7 @@
    "fecha": "2026-11-09T15:21:00Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "baja",
    "nota": 73,
@@ -3894,6 +4485,9 @@
    "fecha": "2026-11-09T14:55:18Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [
+    "leche"
+   ],
    "medio": "Dairy Reporter",
    "nivel": "baja",
    "nota": 73,
@@ -3908,24 +4502,51 @@
   },
   {
    "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://www.world-grain.com/articles/23432-canadian-wheat-output-expected-to-fall-by-10",
+   "fecha": "2026-11-09T12:45:44Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [
+    "trigo"
+   ],
+   "medio": "World-Grain",
+   "nivel": "baja",
+   "nota": 73,
+   "resumen": "FAS: Country’s 2026-27 output will still be the second largest",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Canadian wheat output expected to fall by 10%"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://www.rigzone.com/news/which_usa_oil_major_produced_the_most_in_q3_2026-09-nov-2026-185040-article/?rss=true",
-   "fecha": "2026-11-09T13:05:00Z",
-   "idioma": "en",
-   "impacto": 28,
-   "medio": "Rigzone",
+   "enlace": "https://elperiodicodelaenergia.com/los-vehiculos-electricos-sustituyen-mas-de-cinco-veces-el-petroleo-que-hace-cinco-anos/",
+   "fecha": "2026-11-09T12:39:00Z",
+   "idioma": "es",
+   "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "El Periódico de la Energía",
    "nivel": "baja",
    "nota": 73,
-   "resumen": "Which U.S. oil major produced the most in the third quarter of 2026 - ExxonMobil, Chevron, or ConocoPhillips?",
+   "resumen": "Los autobuses eléctricos representan ya el 5% de la flota mundial, mientras que los camiones eléctricos de batería alcanzan el 1%, aunque en algunos países superan el 50% de las ventas de vehículos nuevos.",
    "seccion": [
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Which USA Oil Major Produced the Most in Q3 2026?"
+   "titulo": "Los vehículos eléctricos sustituyen más de cinco veces el petróleo que hace cinco años,"
   },
   {
    "activos": [
@@ -3936,6 +4557,9 @@
    "fecha": "2026-11-09T06:00:21Z",
    "idioma": "en",
    "impacto": 46,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 73,
@@ -3950,6 +4574,126 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNV3JWNW5FVUpEMVVydGtlX1lWRWVWRnNCcV9fc0FHam5KcGdoSXo3Y0NoeVJOX3BlV0JSYzlGdS1FdEF0N0Y3WUdkV082S3Z3R3o4VWR2dmZKZnA2WWR1OHRvcmI0S21YQTQwLXB6TVVsemRkOEx1VWRnNDNQYzRSa2Rwc1JsNnZLNldXWUdWVnlOWEU2Q3Bnc1RmQ25nZmpqMTNVbHpuR0xFV0poaVBKZ0hPQ3pOMkcwTnZsSi1RenZvUdIBwgFBVV95cUxNV3JWNW5FVUpEMVVydGtlX1lWRWVWRnNCcV9fc0FHam5KcGdoSXo3Y0NoeVJOX3BlV0JSYzlGdS1FdEF0N0Y3WUdkV082S3Z3R3o4VWR2dmZKZnA2WWR1OHRvcmI0S21YQTQwLXB6TVVsemRkOEx1VWRnNDNQYzRSa2Rwc1JsNnZLNldXWUdWVnlOWEU2Q3Bnc1RmQ25nZmpqMTNVbHpuR0xFV0poaVBKZ0hPQ3pOMkcwTnZsSi1RenZvUQ?oc=5",
+   "fecha": "2026-11-10T17:33:25Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "Periódico Cubano",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "La gasolina en EEUU cae a su precio más bajo desde julio: así está el costo en Florida"
+  },
+  {
+   "activos": [
+    "alimentos",
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTmFGRHVYUHBKOFFmT09NZHZqUGtqYkk0MlViSW5FUktEc0FBZlI2YmpnVDRON2hMRjExb2hlMzlma0p0MXZwM2tsdWpSWWs1SkhVMFRmYVdSUzVsa1N1eE5DVUtrSm1Ddk40NUsyVlB6QURpcWJWYUhsSHlCRjdVRG8ySE1SdUV1cUk2c01rYzJ2UQ?oc=5",
+   "fecha": "2026-11-10T17:15:00Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "aove"
+   ],
+   "medio": "Newser",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Spain Tells Olive Oil Mills to Hold Back Supply"
+  },
+  {
+   "activos": [
+    "oro",
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiggJBVV95cUxOMkg0OTlkeHprSnZQcDl2cjB1djJ6bnNCMW9GdzZMR0hhcTh0VWppbGVLOEs4SkJyamtxQnpNUTBHQm9FcUFkRFJHZ3NDam9mUGVIV01aZWp4b1dMWVRYYkpwN1R3UDZHSlZ4QjloY0VVQndSVHRmbHBLQi0yMW5RQWlrd2E4V3hqaHhDZi1LY3RRTDlCcXVxSngweWlTWElwdTBmMFN0WVpnOGJnbFY5SS0wcDJCa3JyWmN3bF9vX0NhYWRwUFdxN0NLLWEzTjZzY0FNUTRKdVc1ZjVxN0FwSkdYX09vc2xEWHlRaGlJV1NBZU91ck9ublZsRlhCZGh0bXfSAYcCQVVfeXFMT1VqQmJSbGREWlVsOGNIQnVwRDhGcEUtU0ZQSm5lVk03dXNKNnRIX1QwRUtacVAxSE1ySm13NVdlQS0zb2xOaEdEYWNEQU9CeUFRQVVDbjNhV2FwWXduZnJlQVhaS19xVThMZHducTZJYkJsMmRfWHBPNDFBeVoxSzJQcjVwVDRmRTBYOHM1Z09HSmNzLXJ2TC1tS0ZiRHRLSDBMOTZzRWlJMHVOTnlaSkZ1ODR3eTIxVVNjbEp6SWlFVUR0NmZmNHFHdV9Ndm1yWDNzZmZtTUEwaHVBX1F5Yk5rbDVfSjZ4dFQ3TzdtN09QUTNyZjVpNTlUdFNRWG5sME0xYmllVVE?oc=5",
+   "fecha": "2026-11-10T17:12:26Z",
+   "idioma": "en",
+   "impacto": 52,
+   "materias": [],
+   "medio": "Moneycontrol.com",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": "demanda",
+   "titulo": "Gold prices fall Rs 500 per 10 gm on subdued festive demand, weak global cues; silver remains steady"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQZEprSUhYSXVoYUc5STNwVndibnZDX0N4UVJtdnNOSEN1U2tYVTlKbzczY0VvNG03aFBzY1MtdW1XVGJkUF85TVczalUwanNZWVhEZVZOdTlxMTZ3cUxOZ0tQZzBrU0hZVkcxcEhBbmotYjNqTkg2b1NsakhrUFUwZDNOT0xuemxuVTFxOTlHMWppVmtobllZelhWd2RBYjNiTE00dDg1WFE4RzdCZ2Q0UDJ0U3BUeU5vTnF0cUpiZ0ZsbDZnT3kxbzRQWXVkS2hnMXdNZnRsWko2alFjRkZGYTM0VDA1VzlxdG9YaA?oc=5",
+   "fecha": "2026-11-10T17:09:00Z",
+   "idioma": "en",
+   "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "Economies.com",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": "geopolitica",
+   "titulo": "Oil prices fall to two-month lows as easing Iran tensions and US inflation weigh on demand outlook"
+  },
+  {
+   "activos": [
+    "construccion"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOS2EyaEhEMUxySHZCX3EtS0ZHQm1OeDFLVkJMUE5fS3VOMU9ObEJWcG9hU2dQS0Etc3lfcVdEYnY5Z3JqWEpVSzhIaHdxN0gzOWN6YWd1VDR1WGNodkdYbnZCWHVGU2ZuRnloSUkwYklzYkJhWXJSSGlBbFUtMWdRQ1FmRmV6ajZIOXBsdjUwWVJyZzVYV2lWRHdCSEJmQXcwNHc?oc=5",
+   "fecha": "2026-11-10T17:00:51Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "acero"
+   ],
+   "medio": "IndexBox",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "MEPS Details Assumptions Behind Five-Year Steel Price Forecasts - News and Statistics"
+  },
+  {
+   "activos": [
     "alimentos"
    ],
    "comercial": false,
@@ -3957,6 +4701,10 @@
    "fecha": "2026-11-10T16:54:19Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz",
+    "cerdo"
+   ],
    "medio": "Vos TV",
    "nivel": "baja",
    "nota": 72,
@@ -3974,10 +4722,33 @@
     "oro"
    ],
    "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcnMwUHdaakNobncwZG8wWE41M290UThlMmQxQV84UkRuNThLMDdwcU9JWWVKTVUtN0hiWS1nNDNqYUVocXdYZVdjSlpUN0FjamdpRGtFSmNIbk9ITGl3Q0Q4LTJ0WC1BTW03cDBIaTY5MldITlJDVVlsdVZQZkpqelJfSnpSeF9MWGRnOTZXWndsdmFIVjc5bEVNZ28zWThaaXI4VVVuVWxGbmtVOUZfZ24tdmlZX1RUbTA0?oc=5",
+   "fecha": "2026-11-10T16:50:34Z",
+   "idioma": "en",
+   "impacto": 52,
+   "materias": [],
+   "medio": "Kitco",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "demanda",
+   "titulo": "China buys gold for two straight years as central bank demand remains a key pillar of support"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPYUktSmRpV0NYa1Z5UC1JeXpfOFp3UWJvRjVOWURSa2lLX1ZjdFRDNm9yR3lKLVVHZmRzcFhRNFNFTjFPWkk0cTJJc1FGSWpfYWRrMTFLUDJXUEN3X21Hem1LUmlDel8zTGdkQlpBQk5mZS0wQTdUTUxiRzI5aU8xdzAtVmFvRGhMam5MSm9JMmFqcFFM?oc=5",
    "fecha": "2026-11-10T16:45:57Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "media",
    "nota": 72,
@@ -3999,6 +4770,7 @@
    "fecha": "2026-11-10T16:41:15Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "MundoNOW",
    "nivel": "baja",
    "nota": 72,
@@ -4020,6 +4792,9 @@
    "fecha": "2026-11-10T16:41:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -4041,6 +4816,7 @@
    "fecha": "2026-11-10T16:40:52Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "JournalArta",
    "nivel": "baja",
    "nota": 72,
@@ -4048,10 +4824,10 @@
    "seccion": [
     "preciosos"
    ],
-   "sentido": "baja",
+   "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Gold Price Today: Gold Falls 2.6% to $4,026 on Yields"
+   "titulo": "Gold Price Today: Spot Gold Slides 2.6% to $4,026 as Treasury Yields and the Dollar Climb"
   },
   {
    "activos": [
@@ -4062,6 +4838,9 @@
    "fecha": "2026-11-10T16:35:11Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Barchart.com",
    "nivel": "media",
    "nota": 72,
@@ -4083,6 +4862,9 @@
    "fecha": "2026-11-10T16:29:39Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "CMB News",
    "nivel": "baja",
    "nota": 72,
@@ -4104,6 +4886,9 @@
    "fecha": "2026-11-10T16:28:14Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Reforma",
    "nivel": "baja",
    "nota": 72,
@@ -4125,6 +4910,7 @@
    "fecha": "2026-11-10T16:24:57Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "www.tmgm.com",
    "nivel": "baja",
    "nota": 72,
@@ -4146,6 +4932,9 @@
    "fecha": "2026-11-10T16:18:21Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Truthdig",
    "nivel": "baja",
    "nota": 72,
@@ -4167,6 +4956,7 @@
    "fecha": "2026-11-10T16:17:18Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "GuruFocus",
    "nivel": "baja",
    "nota": 72,
@@ -4188,6 +4978,7 @@
    "fecha": "2026-11-10T16:12:18Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [],
    "medio": "FXLeaders",
    "nivel": "media",
    "nota": 72,
@@ -4209,6 +5000,9 @@
    "fecha": "2026-11-10T16:09:47Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Ultima Hora",
    "nivel": "baja",
    "nota": 72,
@@ -4230,6 +5024,9 @@
    "fecha": "2026-11-10T16:06:12Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "WKMG",
    "nivel": "baja",
    "nota": 72,
@@ -4251,6 +5048,7 @@
    "fecha": "2026-11-10T15:56:50Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [],
    "medio": "Mining.com.au",
    "nivel": "media",
    "nota": 72,
@@ -4272,6 +5070,9 @@
    "fecha": "2026-11-10T15:53:39Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 72,
@@ -4293,6 +5094,7 @@
    "fecha": "2026-11-10T15:50:19Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -4314,6 +5116,9 @@
    "fecha": "2026-11-10T15:45:13Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "TradingView",
    "nivel": "baja",
    "nota": 72,
@@ -4335,6 +5140,9 @@
    "fecha": "2026-11-10T15:45:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Scientific American",
    "nivel": "baja",
    "nota": 72,
@@ -4358,6 +5166,7 @@
    "fecha": "2026-11-10T15:34:59Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Eje Central",
    "nivel": "baja",
    "nota": 72,
@@ -4380,6 +5189,9 @@
    "fecha": "2026-11-10T15:33:16Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "maiz"
+   ],
    "medio": "AgroLatam",
    "nivel": "media",
    "nota": 72,
@@ -4401,6 +5213,9 @@
    "fecha": "2026-11-10T15:32:44Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "vacuno"
+   ],
    "medio": "Faro de Vigo",
    "nivel": "baja",
    "nota": 72,
@@ -4423,6 +5238,7 @@
    "fecha": "2026-11-10T15:32:00Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [],
    "medio": "oro.bullionvault.es",
    "nivel": "media",
    "nota": 72,
@@ -4444,6 +5260,9 @@
    "fecha": "2026-11-10T15:29:38Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "Ministerio de Agricultura, Pesca y Alimentación",
    "nivel": "baja",
    "nota": 72,
@@ -4465,6 +5284,9 @@
    "fecha": "2026-11-10T15:29:35Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Urgentebo",
    "nivel": "baja",
    "nota": 72,
@@ -4486,6 +5308,9 @@
    "fecha": "2026-11-10T15:28:49Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "La Tercera",
    "nivel": "media",
    "nota": 72,
@@ -4507,6 +5332,7 @@
    "fecha": "2026-11-10T15:26:16Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 72,
@@ -4529,6 +5355,10 @@
    "fecha": "2026-11-10T15:24:25Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo",
+    "soja"
+   ],
    "medio": "Barchart.com",
    "nivel": "baja",
    "nota": 72,
@@ -4550,6 +5380,9 @@
    "fecha": "2026-11-10T15:20:14Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "RoadShow",
    "nivel": "baja",
    "nota": 72,
@@ -4571,6 +5404,7 @@
    "fecha": "2026-11-10T15:19:26Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 72,
@@ -4592,6 +5426,7 @@
    "fecha": "2026-11-10T15:18:31Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Yahoo Finance",
    "nivel": "baja",
    "nota": 72,
@@ -4613,6 +5448,9 @@
    "fecha": "2026-11-10T15:16:26Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "fertilizantes"
+   ],
    "medio": "Global Agriculture",
    "nivel": "baja",
    "nota": 72,
@@ -4635,6 +5473,7 @@
    "fecha": "2026-11-10T15:13:06Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "BullionVault",
    "nivel": "media",
    "nota": 72,
@@ -4656,6 +5495,7 @@
    "fecha": "2026-11-10T15:11:15Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [],
    "medio": "Punch Newspapers",
    "nivel": "media",
    "nota": 72,
@@ -4677,6 +5517,9 @@
    "fecha": "2026-11-10T15:06:58Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Agencia Boliviana de Información",
    "nivel": "baja",
    "nota": 72,
@@ -4698,6 +5541,9 @@
    "fecha": "2026-11-10T15:05:38Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Inspenet",
    "nivel": "media",
    "nota": 72,
@@ -4719,6 +5565,9 @@
    "fecha": "2026-11-10T15:05:38Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Inspenet",
    "nivel": "media",
    "nota": 72,
@@ -4740,6 +5589,9 @@
    "fecha": "2026-11-10T15:05:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "Noticias Trabajo",
    "nivel": "baja",
    "nota": 72,
@@ -4761,6 +5613,9 @@
    "fecha": "2026-11-10T15:01:47Z",
    "idioma": "es",
    "impacto": 36,
+   "materias": [
+    "aove"
+   ],
    "medio": "MONCLOA.COM",
    "nivel": "baja",
    "nota": 72,
@@ -4782,6 +5637,7 @@
    "fecha": "2026-11-10T15:00:32Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Yahoo Finance Singapore",
    "nivel": "baja",
    "nota": 72,
@@ -4803,6 +5659,9 @@
    "fecha": "2026-11-10T15:00:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "leche"
+   ],
    "medio": "techpress.es",
    "nivel": "baja",
    "nota": 72,
@@ -4824,6 +5683,9 @@
    "fecha": "2026-11-10T14:59:06Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "La Vanguardia",
    "nivel": "media",
    "nota": 72,
@@ -4838,6 +5700,30 @@
   },
   {
    "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPTmpxSDRManBCRDc1enprSFZiTXlfX1A1QnVHemxYaUNfQ2RMdm5OU1poRHQ0YXVSVldXNFFaUGV2OU1GTjVpRHMwdlppb0RXbTlETE9JcE91aDVXWm45Q201V3pKMGlxenRjNXI1UHlGUVdrZTJfRHlpc3RpdFNzVF9vdFY2SGs?oc=5",
+   "fecha": "2026-11-10T14:54:44Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
+   "medio": "AgroLatam",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Maíz: la siembra ya cubre el 50,5% y los precios de los granos enfrentan nuevas presiones"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -4845,6 +5731,9 @@
    "fecha": "2026-11-10T14:43:58Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Financiero",
    "nivel": "media",
    "nota": 72,
@@ -4866,6 +5755,9 @@
    "fecha": "2026-11-10T14:39:51Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "upi",
    "nivel": "media",
    "nota": 72,
@@ -4887,6 +5779,9 @@
    "fecha": "2026-11-10T14:37:37Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "The Tribune",
    "nivel": "baja",
    "nota": 72,
@@ -4908,6 +5803,9 @@
    "fecha": "2026-11-10T14:34:09Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Revista Digital Minera REDIMIN",
    "nivel": "baja",
    "nota": 72,
@@ -4929,6 +5827,9 @@
    "fecha": "2026-11-10T14:27:51Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "soja"
+   ],
    "medio": "Oklahoma Farm Report",
    "nivel": "baja",
    "nota": 72,
@@ -4950,6 +5851,10 @@
    "fecha": "2026-11-10T14:27:51Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "trigo",
+    "vacuno"
+   ],
    "medio": "Oklahoma Farm Report",
    "nivel": "media",
    "nota": 72,
@@ -4971,6 +5876,9 @@
    "fecha": "2026-11-10T14:26:33Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "TheTrucker.com",
    "nivel": "baja",
    "nota": 72,
@@ -4992,6 +5900,9 @@
    "fecha": "2026-11-10T14:24:25Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "La Patria Bolivia",
    "nivel": "baja",
    "nota": 72,
@@ -5013,6 +5924,7 @@
    "fecha": "2026-11-10T14:20:42Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "www.stl.news",
    "nivel": "baja",
    "nota": 72,
@@ -5035,6 +5947,7 @@
    "fecha": "2026-11-10T14:20:24Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "Kitco",
    "nivel": "media",
    "nota": 72,
@@ -5056,6 +5969,7 @@
    "fecha": "2026-11-10T14:20:18Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [],
    "medio": "Bloomberg - Mercados",
    "nivel": "media",
    "nota": 72,
@@ -5077,6 +5991,9 @@
    "fecha": "2026-11-10T14:11:23Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Yahoo! Finance Canada",
    "nivel": "baja",
    "nota": 72,
@@ -5098,6 +6015,9 @@
    "fecha": "2026-11-10T14:06:17Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Infocampo",
    "nivel": "baja",
    "nota": 72,
@@ -5119,6 +6039,9 @@
    "fecha": "2026-11-10T14:04:44Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Yahoo Finance UK",
    "nivel": "baja",
    "nota": 72,
@@ -5140,6 +6063,7 @@
    "fecha": "2026-11-10T14:04:20Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "LiteFinance",
    "nivel": "baja",
    "nota": 72,
@@ -5161,6 +6085,7 @@
    "fecha": "2026-11-10T14:01:52Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Fortune",
    "nivel": "baja",
    "nota": 72,
@@ -5182,6 +6107,9 @@
    "fecha": "2026-11-10T14:01:14Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Quantum Commodity Intelligence",
    "nivel": "media",
    "nota": 72,
@@ -5203,6 +6131,9 @@
    "fecha": "2026-11-10T14:01:07Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Texas Border Business",
    "nivel": "baja",
    "nota": 72,
@@ -5224,6 +6155,7 @@
    "fecha": "2026-11-10T14:00:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Rumbo Minero",
    "nivel": "baja",
    "nota": 72,
@@ -5245,6 +6177,9 @@
    "fecha": "2026-11-10T13:48:15Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "TarifaLuzHora",
    "nivel": "baja",
    "nota": 72,
@@ -5266,6 +6201,10 @@
    "fecha": "2026-11-10T13:46:36Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "petroleo",
+    "diesel"
+   ],
    "medio": "AftermarketNews",
    "nivel": "baja",
    "nota": 72,
@@ -5288,6 +6227,7 @@
    "fecha": "2026-11-10T13:45:56Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "The Economic Times",
    "nivel": "baja",
    "nota": 72,
@@ -5309,6 +6249,7 @@
    "fecha": "2026-11-10T13:45:07Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Linea Directa",
    "nivel": "baja",
    "nota": 72,
@@ -5330,6 +6271,9 @@
    "fecha": "2026-11-10T13:44:37Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Telemundo Miami (51)",
    "nivel": "baja",
    "nota": 72,
@@ -5351,6 +6295,9 @@
    "fecha": "2026-11-10T13:36:47Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "T Informas Bolivia",
    "nivel": "baja",
    "nota": 72,
@@ -5372,6 +6319,7 @@
    "fecha": "2026-11-10T13:30:46Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "Kitco",
    "nivel": "media",
    "nota": 72,
@@ -5393,6 +6341,7 @@
    "fecha": "2026-11-10T13:30:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "TMX Newsfile",
    "nivel": "baja",
    "nota": 72,
@@ -5414,6 +6363,9 @@
    "fecha": "2026-11-10T13:26:52Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "MARCA",
    "nivel": "baja",
    "nota": 72,
@@ -5435,6 +6387,7 @@
    "fecha": "2026-11-10T13:24:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "The Statesman",
    "nivel": "baja",
    "nota": 72,
@@ -5457,6 +6410,7 @@
    "fecha": "2026-11-10T13:23:14Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Sociedad Noticias",
    "nivel": "baja",
    "nota": 72,
@@ -5478,6 +6432,9 @@
    "fecha": "2026-11-10T13:22:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "zinc"
+   ],
    "medio": "Substack",
    "nivel": "baja",
    "nota": 72,
@@ -5499,6 +6456,9 @@
    "fecha": "2026-11-10T13:20:19Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "Unión de Uniones",
    "nivel": "baja",
    "nota": 72,
@@ -5520,6 +6480,9 @@
    "fecha": "2026-11-10T13:19:23Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Opanoticias",
    "nivel": "baja",
    "nota": 72,
@@ -5541,6 +6504,9 @@
    "fecha": "2026-11-10T13:16:36Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Mundo Petróleo",
    "nivel": "baja",
    "nota": 72,
@@ -5562,6 +6528,9 @@
    "fecha": "2026-11-10T13:13:46Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Transport Topics",
    "nivel": "baja",
    "nota": 72,
@@ -5583,6 +6552,9 @@
    "fecha": "2026-11-10T13:08:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "Ideal",
    "nivel": "baja",
    "nota": 72,
@@ -5604,6 +6576,7 @@
    "fecha": "2026-11-10T13:04:45Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -5625,6 +6598,9 @@
    "fecha": "2026-11-10T13:01:36Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "AgroLatam",
    "nivel": "baja",
    "nota": 72,
@@ -5646,6 +6622,7 @@
    "fecha": "2026-11-10T12:55:39Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "El Economista",
    "nivel": "baja",
    "nota": 72,
@@ -5667,6 +6644,7 @@
    "fecha": "2026-11-10T12:45:44Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Editorial RN",
    "nivel": "baja",
    "nota": 72,
@@ -5688,6 +6666,7 @@
    "fecha": "2026-11-10T12:42:16Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "SunCrypto",
    "nivel": "media",
    "nota": 72,
@@ -5709,6 +6688,9 @@
    "fecha": "2026-11-10T12:41:24Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "El Economista",
    "nivel": "baja",
    "nota": 72,
@@ -5730,6 +6712,9 @@
    "fecha": "2026-11-10T12:40:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "NL Times",
    "nivel": "baja",
    "nota": 72,
@@ -5751,6 +6736,9 @@
    "fecha": "2026-11-10T12:39:00Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "The Guardian",
    "nivel": "media",
    "nota": 72,
@@ -5773,6 +6761,7 @@
    "fecha": "2026-11-10T12:33:49Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Rediff MoneyWiz",
    "nivel": "baja",
    "nota": 72,
@@ -5794,6 +6783,9 @@
    "fecha": "2026-11-10T12:31:47Z",
    "idioma": "es",
    "impacto": 36,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Noticias Trabajo",
    "nivel": "baja",
    "nota": 72,
@@ -5815,6 +6807,9 @@
    "fecha": "2026-11-10T12:30:18Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "diesel"
+   ],
    "medio": "PortalPortuario",
    "nivel": "media",
    "nota": 72,
@@ -5836,6 +6831,9 @@
    "fecha": "2026-11-10T12:27:38Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com",
    "nivel": "media",
    "nota": 72,
@@ -5857,6 +6855,7 @@
    "fecha": "2026-11-10T12:27:06Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Yahoo Finance",
    "nivel": "baja",
    "nota": 72,
@@ -5878,6 +6877,9 @@
    "fecha": "2026-11-10T12:25:55Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "trigo"
+   ],
    "medio": "PSU Watch",
    "nivel": "baja",
    "nota": 72,
@@ -5899,6 +6901,10 @@
    "fecha": "2026-11-10T12:21:03Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [
+    "trigo",
+    "fertilizantes"
+   ],
    "medio": "CMB News",
    "nivel": "media",
    "nota": 72,
@@ -5920,6 +6926,7 @@
    "fecha": "2026-11-10T12:19:34Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Rediff MoneyWiz",
    "nivel": "baja",
    "nota": 72,
@@ -5941,6 +6948,7 @@
    "fecha": "2026-11-10T12:17:34Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Yahoo Finance",
    "nivel": "baja",
    "nota": 72,
@@ -5962,6 +6970,9 @@
    "fecha": "2026-11-10T12:16:36Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "La Razón Digital Bolivia",
    "nivel": "baja",
    "nota": 72,
@@ -5983,6 +6994,9 @@
    "fecha": "2026-11-10T12:16:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -6004,6 +7018,9 @@
    "fecha": "2026-11-10T12:11:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Servimedia",
    "nivel": "baja",
    "nota": 72,
@@ -6027,6 +7044,9 @@
    "fecha": "2026-11-10T12:10:09Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Moneycontrol.com",
    "nivel": "media",
    "nota": 72,
@@ -6049,6 +7069,9 @@
    "fecha": "2026-11-10T12:08:20Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "Plataforma Tierra",
    "nivel": "baja",
    "nota": 72,
@@ -6070,6 +7093,7 @@
    "fecha": "2026-11-10T12:07:36Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -6091,6 +7115,9 @@
    "fecha": "2026-11-10T12:07:21Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Coinpedia",
    "nivel": "media",
    "nota": 72,
@@ -6112,6 +7139,7 @@
    "fecha": "2026-11-10T12:07:00Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "kalkine.ca",
    "nivel": "baja",
    "nota": 72,
@@ -6133,6 +7161,7 @@
    "fecha": "2026-11-10T12:07:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "kalkine.ca",
    "nivel": "baja",
    "nota": 72,
@@ -6154,6 +7183,9 @@
    "fecha": "2026-11-10T12:07:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "kalkine.ca",
    "nivel": "baja",
    "nota": 72,
@@ -6175,6 +7207,7 @@
    "fecha": "2026-11-10T12:06:32Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "NDTV Profit",
    "nivel": "baja",
    "nota": 72,
@@ -6196,6 +7229,9 @@
    "fecha": "2026-11-10T12:03:19Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "AgroLatam",
    "nivel": "media",
    "nota": 72,
@@ -6217,6 +7253,9 @@
    "fecha": "2026-11-10T12:01:39Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "KMVU FOX 26 Medford",
    "nivel": "baja",
    "nota": 72,
@@ -6238,6 +7277,9 @@
    "fecha": "2026-11-10T11:57:42Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Plataforma Media",
    "nivel": "media",
    "nota": 72,
@@ -6260,6 +7302,7 @@
    "fecha": "2026-11-10T11:56:07Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "IBTimes India",
    "nivel": "media",
    "nota": 72,
@@ -6281,6 +7324,7 @@
    "fecha": "2026-11-10T11:55:00Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "BigGo Finance",
    "nivel": "baja",
    "nota": 72,
@@ -6302,6 +7346,9 @@
    "fecha": "2026-11-10T11:43:14Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "bitacora.com.uy",
    "nivel": "baja",
    "nota": 72,
@@ -6323,6 +7370,9 @@
    "fecha": "2026-11-10T11:33:58Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Confidencial Digital",
    "nivel": "baja",
    "nota": 72,
@@ -6344,6 +7394,9 @@
    "fecha": "2026-11-10T11:33:14Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "fertilizantes"
+   ],
    "medio": "UkrAgroConsult",
    "nivel": "baja",
    "nota": 72,
@@ -6365,6 +7418,9 @@
    "fecha": "2026-11-10T11:30:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Motor16",
    "nivel": "baja",
    "nota": 72,
@@ -6375,7 +7431,7 @@
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "EVO Cross 4: precio de del pick-up 4×4 con motor diésel, reductora y gran capacidad de carga"
+   "titulo": "EVO Cross 4: precio de del pick-up 4x4 con motor diésel, reductora y gran capacidad de carga"
   },
   {
    "activos": [
@@ -6386,6 +7442,7 @@
    "fecha": "2026-11-10T11:27:10Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Alerta",
    "nivel": "baja",
    "nota": 72,
@@ -6400,35 +7457,16 @@
   },
   {
    "activos": [
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNUTdMNUJBdThJNTZEZkJ1bnh6WVdmeWRzYkFlOHFxaU9DbmZSS0lNTlg2ZHcwSzZqSEJRa3pNbFR2R01FdnhzVlhkMWNUYXVKMmhHcjBEMklvMnpIXzFsZmVmU094YUc3N1A5QnM3RkJaQmM5LWxOVHNKUy0tY2tRdU1GNkYtY1pJNk1NMV96emt3WlE1Vk03TzNzcUJNMUQ5VFR1TmRaVHdxYnhDbkwwclR0UUxfZkZRTUl0UHdWNUdHOGljVnFtQUJNTdIB0gFBVV95cUxQanZrTV85MWRvdTc4c3R6VEl5eEczb2w3SktSYmtUT0N0ZFhCUEp1d28tdnpqMlB2ek1LdTF5MFA5bnZiR2R6Y2UzOTROc193MmtmUG1zM3dENnVWTVVtS3lwNnpsWW4wMjI4QTZaS1RDR3Z5Q1BqUjRMR0hTV3I0ZDFSRlV2Z2NDSHA5NTRBakhyTTdaQTNNWFVQdmhuVFpydVJhY05fcDBEYUZNSVZiYVoyektxUnY1QTgtR3pvR1J4VXJ5THdUNzVxRHJUVzFKYVE?oc=5",
-   "fecha": "2026-11-10T11:15:41Z",
-   "idioma": "en",
-   "impacto": 64,
-   "medio": "The Financial Express",
-   "nivel": "media",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "tipos_interes",
-   "titulo": "Gold, silver prices await US CPI data today as Fed rate hike bets jump to 99%"
-  },
-  {
-   "activos": [
     "construccion"
    ],
    "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOelFEcUw1WDk5ZTNQRkJOckc5SlpRYmcxTXFxUlVoR2F2Ul9pU2lsNWhKTWVQQVFCek1UY1MyTXljVXFvN0lfc3RKdzA0MXhrQ1RmM2w1Rk5LZ3dySUk3MDFvMWFxQkZ5WW5QbTNsZmNlVVU4eHYtT2dNQThkV1FfLVJBT0Q4S01NN0VaX3Mtb18wUTdVYVYxREZvMGZOcWpvUlJESlQ5eWhFcjRWWTExano5S2N3alBfWThnbWtrTjVUY0xhcEczbFNleDczaWl1dUxMQ2R2OXM?oc=5",
-   "fecha": "2026-11-10T11:15:00Z",
+   "fecha": "2026-11-10T11:18:12Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "aluminio"
+   ],
    "medio": "AL Circle",
    "nivel": "media",
    "nota": 72,
@@ -6443,6 +7481,29 @@
   },
   {
    "activos": [
+    "oro",
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNUTdMNUJBdThJNTZEZkJ1bnh6WVdmeWRzYkFlOHFxaU9DbmZSS0lNTlg2ZHcwSzZqSEJRa3pNbFR2R01FdnhzVlhkMWNUYXVKMmhHcjBEMklvMnpIXzFsZmVmU094YUc3N1A5QnM3RkJaQmM5LWxOVHNKUy0tY2tRdU1GNkYtY1pJNk1NMV96emt3WlE1Vk03TzNzcUJNMUQ5VFR1TmRaVHdxYnhDbkwwclR0UUxfZkZRTUl0UHdWNUdHOGljVnFtQUJNTdIB0gFBVV95cUxQanZrTV85MWRvdTc4c3R6VEl5eEczb2w3SktSYmtUT0N0ZFhCUEp1d28tdnpqMlB2ek1LdTF5MFA5bnZiR2R6Y2UzOTROc193MmtmUG1zM3dENnVWTVVtS3lwNnpsWW4wMjI4QTZaS1RDR3Z5Q1BqUjRMR0hTV3I0ZDFSRlV2Z2NDSHA5NTRBakhyTTdaQTNNWFVQdmhuVFpydVJhY05fcDBEYUZNSVZiYVoyektxUnY1QTgtR3pvR1J4VXJ5THdUNzVxRHJUVzFKYVE?oc=5",
+   "fecha": "2026-11-10T11:15:41Z",
+   "idioma": "en",
+   "impacto": 64,
+   "materias": [],
+   "medio": "The Financial Express",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "tipos_interes",
+   "titulo": "Gold, silver prices await US CPI data today as Fed rate hike bets jump to 99%"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -6450,6 +7511,9 @@
    "fecha": "2026-11-10T11:15:00Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "The Independent",
    "nivel": "media",
    "nota": 72,
@@ -6471,6 +7535,9 @@
    "fecha": "2026-11-10T11:11:30Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "XTB.com",
    "nivel": "baja",
    "nota": 72,
@@ -6492,6 +7559,9 @@
    "fecha": "2026-11-10T11:04:33Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [
+    "aove"
+   ],
    "medio": "AgroCLM",
    "nivel": "baja",
    "nota": 72,
@@ -6514,6 +7584,7 @@
    "fecha": "2026-11-10T11:00:08Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "JournalArta",
    "nivel": "media",
    "nota": 72,
@@ -6535,6 +7606,7 @@
    "fecha": "2026-11-10T11:00:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Tiempo Sur",
    "nivel": "baja",
    "nota": 72,
@@ -6556,6 +7628,9 @@
    "fecha": "2026-11-10T10:48:32Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "MarketForces Africa",
    "nivel": "baja",
    "nota": 72,
@@ -6577,6 +7652,9 @@
    "fecha": "2026-11-10T10:41:43Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "www.tmgm.com",
    "nivel": "media",
    "nota": 72,
@@ -6598,6 +7676,9 @@
    "fecha": "2026-11-10T10:40:07Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "unitel.bo",
    "nivel": "baja",
    "nota": 72,
@@ -6619,6 +7700,9 @@
    "fecha": "2026-11-10T10:34:08Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "COPE",
    "nivel": "baja",
    "nota": 72,
@@ -6640,6 +7724,9 @@
    "fecha": "2026-11-10T10:25:56Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "The Tribune",
    "nivel": "baja",
    "nota": 72,
@@ -6661,6 +7748,9 @@
    "fecha": "2026-11-10T10:22:51Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "TradingKey",
    "nivel": "baja",
    "nota": 72,
@@ -6675,6 +7765,28 @@
   },
   {
    "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPSWxiLXliekFwX0JwaDl5WkRMWkp5cjJ5bzY4Z01Xc3JkRWlXR29La1Y0OGlUZk9ZUW1FTUtaSDg1SnpLOTRfTnlNanhHYU1oR1dRQWpTcVJFQ2UtX01EZFl3Qmx0M1VkS2hZbmQ3amNLYzY1QlNBVURDSHZnbGtfWHhWYVJ5Q3U2ZXFxNmU0NVp2N01CNUlBWDNGNA?oc=5",
+   "fecha": "2026-11-10T10:22:38Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Mitrade",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Gold Price Analysis Today | Forex Gold Analysis | XAU/USD Analysis - November 10, 2026"
+  },
+  {
+   "activos": [
     "alimentos"
    ],
    "comercial": false,
@@ -6682,6 +7794,9 @@
    "fecha": "2026-11-10T10:20:11Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "soja"
+   ],
    "medio": "https://novanews.co.za/",
    "nivel": "baja",
    "nota": 72,
@@ -6703,6 +7818,7 @@
    "fecha": "2026-11-10T10:17:01Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "Yahoo Finance UK",
    "nivel": "baja",
    "nota": 72,
@@ -6724,6 +7840,9 @@
    "fecha": "2026-11-10T10:16:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -6745,6 +7864,9 @@
    "fecha": "2026-11-10T10:16:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -6766,6 +7888,9 @@
    "fecha": "2026-11-10T10:14:44Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "trigo"
+   ],
    "medio": "Milling Middle East & Africa",
    "nivel": "media",
    "nota": 72,
@@ -6787,6 +7912,9 @@
    "fecha": "2026-11-10T10:13:40Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Revista ADVFN",
    "nivel": "media",
    "nota": 72,
@@ -6808,6 +7936,9 @@
    "fecha": "2026-11-10T10:13:05Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "unitel.bo",
    "nivel": "baja",
    "nota": 72,
@@ -6829,6 +7960,9 @@
    "fecha": "2026-11-10T10:11:22Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Yahoo Finance",
    "nivel": "media",
    "nota": 72,
@@ -6850,6 +7984,7 @@
    "fecha": "2026-11-10T10:06:38Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Finance Magnates",
    "nivel": "baja",
    "nota": 72,
@@ -6871,6 +8006,7 @@
    "fecha": "2026-11-10T10:05:30Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Nhan Dan Online",
    "nivel": "baja",
    "nota": 72,
@@ -6892,6 +8028,9 @@
    "fecha": "2026-11-10T10:05:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "BigGo Finance",
    "nivel": "baja",
    "nota": 72,
@@ -6913,6 +8052,9 @@
    "fecha": "2026-11-10T10:01:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -6934,6 +8076,7 @@
    "fecha": "2026-11-10T09:57:28Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "baja",
    "nota": 72,
@@ -6955,6 +8098,9 @@
    "fecha": "2026-11-10T09:55:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "roams.es",
    "nivel": "baja",
    "nota": 72,
@@ -6976,6 +8122,9 @@
    "fecha": "2026-11-10T09:54:35Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Telemundo New York",
    "nivel": "baja",
    "nota": 72,
@@ -6997,6 +8146,9 @@
    "fecha": "2026-11-10T09:52:00Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "The Guardian",
    "nivel": "media",
    "nota": 72,
@@ -7018,6 +8170,9 @@
    "fecha": "2026-11-10T09:44:35Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "Construction World",
    "nivel": "baja",
    "nota": 72,
@@ -7039,6 +8194,9 @@
    "fecha": "2026-11-10T09:33:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "Shanghai Metals Market",
    "nivel": "baja",
    "nota": 72,
@@ -7060,6 +8218,9 @@
    "fecha": "2026-11-10T09:27:53Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "upi",
    "nivel": "baja",
    "nota": 72,
@@ -7081,6 +8242,9 @@
    "fecha": "2026-11-10T09:27:35Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "TradingView",
    "nivel": "media",
    "nota": 72,
@@ -7102,6 +8266,9 @@
    "fecha": "2026-11-10T09:27:00Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow",
    "nivel": "media",
    "nota": 72,
@@ -7123,6 +8290,7 @@
    "fecha": "2026-11-10T09:26:01Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7144,6 +8312,7 @@
    "fecha": "2026-11-10T09:26:01Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7165,6 +8334,9 @@
    "fecha": "2026-11-10T09:25:14Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "GuruFocus",
    "nivel": "media",
    "nota": 72,
@@ -7186,6 +8358,9 @@
    "fecha": "2026-11-10T09:25:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "kalkine.ca",
    "nivel": "baja",
    "nota": 72,
@@ -7207,6 +8382,9 @@
    "fecha": "2026-11-10T09:21:26Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "MarineLink",
    "nivel": "media",
    "nota": 72,
@@ -7228,6 +8406,7 @@
    "fecha": "2026-11-10T09:12:34Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Traders Union",
    "nivel": "baja",
    "nota": 72,
@@ -7249,6 +8428,9 @@
    "fecha": "2026-11-10T09:10:27Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Demócrata",
    "nivel": "baja",
    "nota": 72,
@@ -7270,6 +8452,9 @@
    "fecha": "2026-11-10T09:01:59Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Negocios.com",
    "nivel": "media",
    "nota": 72,
@@ -7291,6 +8476,9 @@
    "fecha": "2026-11-10T08:54:28Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Rankia",
    "nivel": "baja",
    "nota": 72,
@@ -7312,6 +8500,7 @@
    "fecha": "2026-11-10T08:52:21Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7333,6 +8522,9 @@
    "fecha": "2026-11-10T08:48:32Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7354,6 +8546,7 @@
    "fecha": "2026-11-10T08:47:45Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7375,6 +8568,7 @@
    "fecha": "2026-11-10T08:44:10Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7396,6 +8590,9 @@
    "fecha": "2026-11-10T08:37:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Nacional.cat",
    "nivel": "baja",
    "nota": 72,
@@ -7417,6 +8614,9 @@
    "fecha": "2026-11-10T08:36:05Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Rankia",
    "nivel": "baja",
    "nota": 72,
@@ -7438,6 +8638,9 @@
    "fecha": "2026-11-10T08:33:54Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 72,
@@ -7459,6 +8662,9 @@
    "fecha": "2026-11-10T08:33:27Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "El Periódico",
    "nivel": "baja",
    "nota": 72,
@@ -7480,6 +8686,9 @@
    "fecha": "2026-11-10T08:33:22Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Periódico",
    "nivel": "media",
    "nota": 72,
@@ -7501,6 +8710,9 @@
    "fecha": "2026-11-10T08:32:48Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Motorpasión",
    "nivel": "baja",
    "nota": 72,
@@ -7522,6 +8734,9 @@
    "fecha": "2026-11-10T08:30:45Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Córdoba Buenas Noticias",
    "nivel": "media",
    "nota": 72,
@@ -7543,6 +8758,9 @@
    "fecha": "2026-11-10T08:29:24Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 72,
@@ -7564,6 +8782,7 @@
    "fecha": "2026-11-10T08:28:44Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "baja",
    "nota": 72,
@@ -7585,6 +8804,9 @@
    "fecha": "2026-11-10T08:27:50Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "aluminio"
+   ],
    "medio": "The Edge Malaysia",
    "nivel": "baja",
    "nota": 72,
@@ -7606,6 +8828,7 @@
    "fecha": "2026-11-10T08:27:45Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "El Economista",
    "nivel": "baja",
    "nota": 72,
@@ -7628,6 +8851,7 @@
    "fecha": "2026-11-10T08:26:14Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 72,
@@ -7649,6 +8873,9 @@
    "fecha": "2026-11-10T08:25:14Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Breaking News, Latest News and Videos",
    "nivel": "media",
    "nota": 72,
@@ -7670,6 +8897,9 @@
    "fecha": "2026-11-10T08:24:26Z",
    "idioma": "es",
    "impacto": 58,
+   "materias": [
+    "acero"
+   ],
    "medio": "Merca2.es",
    "nivel": "media",
    "nota": 72,
@@ -7692,6 +8922,7 @@
    "fecha": "2026-11-10T08:22:37Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 72,
@@ -7713,6 +8944,7 @@
    "fecha": "2026-11-10T08:21:42Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "IG",
    "nivel": "baja",
    "nota": 72,
@@ -7734,6 +8966,9 @@
    "fecha": "2026-11-10T08:21:38Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "XTB.com",
    "nivel": "baja",
    "nota": 72,
@@ -7755,6 +8990,7 @@
    "fecha": "2026-11-10T08:13:28Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -7776,6 +9012,9 @@
    "fecha": "2026-11-10T08:02:27Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Axios",
    "nivel": "baja",
    "nota": 72,
@@ -7798,6 +9037,7 @@
    "fecha": "2026-11-10T08:01:32Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Bhaskar English",
    "nivel": "baja",
    "nota": 72,
@@ -7819,6 +9059,7 @@
    "fecha": "2026-11-10T08:01:03Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "BusinessLine",
    "nivel": "baja",
    "nota": 72,
@@ -7840,6 +9081,9 @@
    "fecha": "2026-11-10T08:00:58Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "NAI500",
    "nivel": "baja",
    "nota": 72,
@@ -7861,6 +9105,9 @@
    "fecha": "2026-11-10T08:00:05Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "OkDiario",
    "nivel": "baja",
    "nota": 72,
@@ -7882,6 +9129,9 @@
    "fecha": "2026-11-10T08:00:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Híbridos y Eléctricos",
    "nivel": "baja",
    "nota": 72,
@@ -7903,6 +9153,7 @@
    "fecha": "2026-11-10T07:59:48Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "BusinessToday Malaysia",
    "nivel": "media",
    "nota": 72,
@@ -7924,6 +9175,7 @@
    "fecha": "2026-11-10T07:54:14Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Daily News",
    "nivel": "baja",
    "nota": 72,
@@ -7945,6 +9197,9 @@
    "fecha": "2026-11-10T07:53:01Z",
    "idioma": "es",
    "impacto": 36,
+   "materias": [
+    "girasol"
+   ],
    "medio": "CMB News",
    "nivel": "baja",
    "nota": 72,
@@ -7967,6 +9222,9 @@
    "fecha": "2026-11-10T07:52:40Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "aluminio"
+   ],
    "medio": "AL Circle",
    "nivel": "baja",
    "nota": 72,
@@ -7988,6 +9246,9 @@
    "fecha": "2026-11-10T07:50:00Z",
    "idioma": "en",
    "impacto": 58,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Modern Diplomacy",
    "nivel": "media",
    "nota": 72,
@@ -8009,6 +9270,9 @@
    "fecha": "2026-11-10T07:48:54Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "acero"
+   ],
    "medio": "Yieh Corp.",
    "nivel": "baja",
    "nota": 72,
@@ -8030,6 +9294,9 @@
    "fecha": "2026-11-10T07:46:37Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "CMB News",
    "nivel": "baja",
    "nota": 72,
@@ -8051,6 +9318,9 @@
    "fecha": "2026-11-10T07:46:00Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "La Región",
    "nivel": "media",
    "nota": 72,
@@ -8072,6 +9342,9 @@
    "fecha": "2026-11-10T07:45:02Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "gas"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "baja",
    "nota": 72,
@@ -8093,6 +9366,9 @@
    "fecha": "2026-11-10T07:43:56Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "trigo"
+   ],
    "medio": "CMB News",
    "nivel": "baja",
    "nota": 72,
@@ -8114,6 +9390,7 @@
    "fecha": "2026-11-10T07:38:45Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "www.tmgm.com",
    "nivel": "baja",
    "nota": 72,
@@ -8135,6 +9412,9 @@
    "fecha": "2026-11-10T07:29:46Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "El Sol de México",
    "nivel": "baja",
    "nota": 72,
@@ -8156,6 +9436,9 @@
    "fecha": "2026-11-10T07:26:05Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "SevillaInfo",
    "nivel": "baja",
    "nota": 72,
@@ -8177,6 +9460,9 @@
    "fecha": "2026-11-10T07:21:51Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "pollo"
+   ],
    "medio": "Diario La Tribuna",
    "nivel": "baja",
    "nota": 72,
@@ -8198,6 +9484,9 @@
    "fecha": "2026-11-10T07:15:05Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "media",
    "nota": 72,
@@ -8219,6 +9508,9 @@
    "fecha": "2026-11-10T07:14:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "pollo"
+   ],
    "medio": "El Confidencial",
    "nivel": "baja",
    "nota": 72,
@@ -8240,6 +9532,9 @@
    "fecha": "2026-11-10T07:10:07Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Canarias7",
    "nivel": "baja",
    "nota": 72,
@@ -8261,6 +9556,7 @@
    "fecha": "2026-11-10T07:07:08Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8282,6 +9578,7 @@
    "fecha": "2026-11-10T07:07:08Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8303,6 +9600,9 @@
    "fecha": "2026-11-10T07:06:33Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "media",
    "nota": 72,
@@ -8324,6 +9624,7 @@
    "fecha": "2026-11-10T07:04:42Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "GuruFocus",
    "nivel": "media",
    "nota": 72,
@@ -8345,6 +9646,9 @@
    "fecha": "2026-11-10T07:04:33Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "media",
    "nota": 72,
@@ -8367,6 +9671,9 @@
    "fecha": "2026-11-10T07:04:23Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Market Index",
    "nivel": "baja",
    "nota": 72,
@@ -8389,6 +9696,9 @@
    "fecha": "2026-11-10T06:53:03Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "fertilizantes"
+   ],
    "medio": "Sunsirs",
    "nivel": "baja",
    "nota": 72,
@@ -8411,6 +9721,7 @@
    "fecha": "2026-11-10T06:53:02Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "BusinessLine",
    "nivel": "baja",
    "nota": 72,
@@ -8432,6 +9743,9 @@
    "fecha": "2026-11-10T06:45:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -8446,6 +9760,30 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBTako0aTRyQ2tPQV92ZG1USmtVRlRmelJTeTZZOW5ibjFNbENZSDhUdEsycjBMeHVhQ0tleU9OT3piSkc3NjhWQWRVUHhxektqMk1JQ2N2d1QyRmFwMFZzcEQ5WmN2WGplLWstZjgwZUFkXy1m?oc=5",
+   "fecha": "2026-11-10T06:45:00Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "Canarias en Pleno",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Precio Gasolina hoy Fuerteventura"
+  },
+  {
+   "activos": [
     "plata"
    ],
    "comercial": false,
@@ -8453,6 +9791,7 @@
    "fecha": "2026-11-10T06:41:58Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "www.tmgm.com",
    "nivel": "media",
    "nota": 72,
@@ -8474,6 +9813,7 @@
    "fecha": "2026-11-10T06:32:47Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "MarketScreener España",
    "nivel": "baja",
    "nota": 72,
@@ -8495,6 +9835,9 @@
    "fecha": "2026-11-10T06:30:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "aove"
+   ],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -8518,6 +9861,7 @@
    "fecha": "2026-11-10T06:30:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Analytics Insight",
    "nivel": "baja",
    "nota": 72,
@@ -8540,6 +9884,7 @@
    "fecha": "2026-11-10T06:18:54Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Analytics Insight",
    "nivel": "baja",
    "nota": 72,
@@ -8561,6 +9906,7 @@
    "fecha": "2026-11-10T06:14:23Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Daily Observer",
    "nivel": "baja",
    "nota": 72,
@@ -8582,6 +9928,7 @@
    "fecha": "2026-11-10T06:13:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "baja",
    "nota": 72,
@@ -8603,6 +9950,9 @@
    "fecha": "2026-11-10T06:12:37Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8624,6 +9974,9 @@
    "fecha": "2026-11-10T06:12:21Z",
    "idioma": "es",
    "impacto": 52,
+   "materias": [
+    "trigo"
+   ],
    "medio": "CRprensa.com",
    "nivel": "media",
    "nota": 72,
@@ -8645,6 +9998,9 @@
    "fecha": "2026-11-10T06:05:09Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Benzinga",
    "nivel": "baja",
    "nota": 72,
@@ -8666,6 +10022,9 @@
    "fecha": "2026-11-10T06:03:00Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "acero"
+   ],
    "medio": "Kalkine",
    "nivel": "baja",
    "nota": 72,
@@ -8687,6 +10046,7 @@
    "fecha": "2026-11-10T05:53:40Z",
    "idioma": "es",
    "impacto": 36,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8708,6 +10068,7 @@
    "fecha": "2026-11-10T05:49:05Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Khaleej Times",
    "nivel": "baja",
    "nota": 72,
@@ -8729,6 +10090,7 @@
    "fecha": "2026-11-10T05:46:25Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "Latest news from Azerbaijan",
    "nivel": "media",
    "nota": 72,
@@ -8750,6 +10112,9 @@
    "fecha": "2026-11-10T05:46:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Artículo 14",
    "nivel": "baja",
    "nota": 72,
@@ -8771,6 +10136,7 @@
    "fecha": "2026-11-10T05:42:20Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8792,6 +10158,9 @@
    "fecha": "2026-11-10T05:40:22Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "soja"
+   ],
    "medio": "Yahoo Finance UK",
    "nivel": "baja",
    "nota": 72,
@@ -8813,6 +10182,9 @@
    "fecha": "2026-11-10T05:37:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "Telemundo",
    "nivel": "baja",
    "nota": 72,
@@ -8827,30 +10199,6 @@
   },
   {
    "activos": [
-    "energia",
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNaUtsMVJJalpIbFB4WHV2THNkX1NIb3hPQzBob3J4aTY2U015UnhnMW5XQ2lEUi1reFdfV084XzdQXzNMVFZYOWxDc3cxclltQVlXc0FyUF9pUTBMV2hHTmlQeUViSFFFa3pYMGdJM3ctX3dKOFk2UDJHM2ZaNjF0LUg2LS1Gb1U1RmZuVHVmSjc4alZWRUJqYUJVb3V0RTdvZ3pMZnJBelFRRFVuOHo3TXI2TUswVER0M0oxV0daMUx2QmNZNWNPUDE0b1E0c09fb3owYjVxZnZyNnRsYU1hRUhOTdIB6AFBVV95cUxPejhjYTRrbExTNm5FMjItaXpnTU9nbUVBSzNPRFZCWXhCaHF3UGFiUVh6VGxaRUduXzJudE43WEYwcEN0MXZTRWdsblhMMG5PUjNnd3BWZWZSM0VvNC1obHhHMzdacS1YRGtsalRBWVpyMnUzZ3BIdm5qQ2RzWk16NmNzZVlxcmxnOG53ellnTjBOdjZxcnlYMnQtLTNPcHdzaEtXZlVJdG95WE1DNkVMd19aY3pQVkIzaEVieGdMREE2TUhocGIydlpYUE9CYU1heFhDRnpuampyUVAzQno2NFU4aF9BUlA1?oc=5",
-   "fecha": "2026-11-10T05:31:09Z",
-   "idioma": "en",
-   "impacto": 30,
-   "medio": "Business Today",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "opinion",
-   "titulo": "Gold, silver outlook: Can falling crude oil prices support precious metals' recovery?"
-  },
-  {
-   "activos": [
     "construccion"
    ],
    "comercial": false,
@@ -8858,6 +10206,9 @@
    "fecha": "2026-11-10T05:31:03Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "IndexBox",
    "nivel": "baja",
    "nota": 72,
@@ -8872,6 +10223,30 @@
   },
   {
    "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://www.cnbctv18.com/market/commodities/copper-prices-extend-rebound-as-global-tech-shares-resume-rally-20030837.htm",
+   "fecha": "2026-11-10T05:30:42Z",
+   "idioma": "",
+   "impacto": 36,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Cnbctv18",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "Copper has moved in tandem with AI stocks in recent months. Last week, it had declined 2.7% to a three-month low as concerns arose after the Democrats' sweeping victory in the US midterm elections, which could mean greater regulation of AI.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "Copper prices extend rebound as global tech shares resume rally"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -8879,6 +10254,9 @@
    "fecha": "2026-11-10T05:30:14Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "La Razón",
    "nivel": "baja",
    "nota": 72,
@@ -8900,6 +10278,9 @@
    "fecha": "2026-11-10T05:26:22Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Simply Wall St",
    "nivel": "baja",
    "nota": 72,
@@ -8921,6 +10302,7 @@
    "fecha": "2026-11-10T05:23:29Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8942,6 +10324,9 @@
    "fecha": "2026-11-10T05:11:10Z",
    "idioma": "",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Menafn",
    "nivel": "baja",
    "nota": 72,
@@ -8963,6 +10348,7 @@
    "fecha": "2026-11-10T05:09:05Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -8984,6 +10370,9 @@
    "fecha": "2026-11-10T05:04:48Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Investing.com",
    "nivel": "media",
    "nota": 72,
@@ -9005,6 +10394,7 @@
    "fecha": "2026-11-10T05:03:51Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9026,6 +10416,9 @@
    "fecha": "2026-11-10T05:01:00Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "gas"
+   ],
    "medio": "Economies.com",
    "nivel": "media",
    "nota": 72,
@@ -9047,6 +10440,9 @@
    "fecha": "2026-11-10T05:00:17Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [
+    "arroz"
+   ],
    "medio": "Itbusinessnet",
    "nivel": "baja",
    "nota": 72,
@@ -9068,6 +10464,9 @@
    "fecha": "2026-11-10T05:00:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Crónica Global",
    "nivel": "baja",
    "nota": 72,
@@ -9089,6 +10488,9 @@
    "fecha": "2026-11-10T04:57:11Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9110,6 +10512,7 @@
    "fecha": "2026-11-10T04:57:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "Economies.com",
    "nivel": "baja",
    "nota": 72,
@@ -9131,6 +10534,9 @@
    "fecha": "2026-11-10T04:57:00Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Economies.com",
    "nivel": "baja",
    "nota": 72,
@@ -9152,6 +10558,7 @@
    "fecha": "2026-11-10T04:52:47Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9173,6 +10580,9 @@
    "fecha": "2026-11-10T04:51:06Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "TipRanks",
    "nivel": "baja",
    "nota": 72,
@@ -9194,6 +10604,9 @@
    "fecha": "2026-11-10T04:51:04Z",
    "idioma": "es",
    "impacto": 52,
+   "materias": [
+    "acero"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 72,
@@ -9216,6 +10629,9 @@
    "fecha": "2026-11-10T04:51:01Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [
+    "fertilizantes"
+   ],
    "medio": "Pr Sync",
    "nivel": "baja",
    "nota": 72,
@@ -9237,6 +10653,7 @@
    "fecha": "2026-11-10T04:40:02Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9258,6 +10675,7 @@
    "fecha": "2026-11-10T04:38:50Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "VnExpress International",
    "nivel": "baja",
    "nota": 72,
@@ -9279,6 +10697,7 @@
    "fecha": "2026-11-10T04:37:42Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9300,6 +10719,7 @@
    "fecha": "2026-11-10T04:29:42Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9321,6 +10741,7 @@
    "fecha": "2026-11-10T04:20:55Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9342,6 +10763,7 @@
    "fecha": "2026-11-10T04:12:41Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [],
    "medio": "TradingKey",
    "nivel": "media",
    "nota": 72,
@@ -9363,6 +10785,9 @@
    "fecha": "2026-11-10T04:10:54Z",
    "idioma": "",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Daijiworld",
    "nivel": "media",
    "nota": 72,
@@ -9384,6 +10809,9 @@
    "fecha": "2026-11-10T04:09:41Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Latest Nigerian News",
    "nivel": "baja",
    "nota": 72,
@@ -9405,6 +10833,9 @@
    "fecha": "2026-11-10T04:02:44Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Mining.com.au",
    "nivel": "baja",
    "nota": 72,
@@ -9426,6 +10857,7 @@
    "fecha": "2026-11-10T03:54:55Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "TradingKey",
    "nivel": "media",
    "nota": 72,
@@ -9447,6 +10879,10 @@
    "fecha": "2026-11-10T03:53:28Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz",
+    "soja"
+   ],
    "medio": "Todo El Campo Uy",
    "nivel": "baja",
    "nota": 72,
@@ -9468,6 +10904,9 @@
    "fecha": "2026-11-10T03:49:44Z",
    "idioma": "es",
    "impacto": 36,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Imagen Radio",
    "nivel": "baja",
    "nota": 72,
@@ -9489,6 +10928,7 @@
    "fecha": "2026-11-10T03:47:17Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9510,6 +10950,9 @@
    "fecha": "2026-11-10T03:40:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "IDNFinancials",
    "nivel": "baja",
    "nota": 72,
@@ -9531,6 +10974,7 @@
    "fecha": "2026-11-10T03:36:28Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9552,6 +10996,7 @@
    "fecha": "2026-11-10T03:32:14Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9573,6 +11018,7 @@
    "fecha": "2026-11-10T03:32:11Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9594,6 +11040,9 @@
    "fecha": "2026-11-10T03:31:48Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "The Motley Fool Australia",
    "nivel": "baja",
    "nota": 72,
@@ -9615,6 +11064,9 @@
    "fecha": "2026-11-10T03:31:00Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Shanghai Metals Market",
    "nivel": "media",
    "nota": 72,
@@ -9636,6 +11088,7 @@
    "fecha": "2026-11-10T03:29:56Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9657,6 +11110,7 @@
    "fecha": "2026-11-10T03:09:07Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9671,28 +11125,6 @@
   },
   {
    "activos": [
-    "construccion",
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://www.aa.com.tr/en/americas/canada-extends-some-tariff-relief-measures-on-us-imports/4118103",
-   "fecha": "2026-11-10T03:05:50Z",
-   "idioma": "",
-   "impacto": 58,
-   "medio": "Anadolu Agency",
-   "nivel": "media",
-   "nota": 72,
-   "resumen": "Relief now runs to June 30, 2028 and covers non-steel goods used in mining and extraction of oil and gas and all goods used by public education bodies",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "comercio",
-   "titulo": "Canada extends some tariff relief measures on US imports"
-  },
-  {
-   "activos": [
     "plata"
    ],
    "comercial": false,
@@ -9700,6 +11132,7 @@
    "fecha": "2026-11-10T03:05:02Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "Mitrade",
    "nivel": "baja",
    "nota": 72,
@@ -9721,6 +11154,7 @@
    "fecha": "2026-11-10T03:03:08Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9743,6 +11177,9 @@
    "fecha": "2026-11-10T03:00:54Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "El Economista",
    "nivel": "baja",
    "nota": 72,
@@ -9765,6 +11202,7 @@
    "fecha": "2026-11-10T02:59:39Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9787,6 +11225,11 @@
    "fecha": "2026-11-10T02:59:06Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel",
+    "electricidad",
+    "arroz"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9808,6 +11251,7 @@
    "fecha": "2026-11-10T02:52:23Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [],
    "medio": "News Hub - Medianet News Hub Archive",
    "nivel": "baja",
    "nota": 72,
@@ -9829,6 +11273,9 @@
    "fecha": "2026-11-10T02:52:01Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Business Recorder",
    "nivel": "baja",
    "nota": 72,
@@ -9850,6 +11297,9 @@
    "fecha": "2026-11-10T02:49:40Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "El Economista",
    "nivel": "baja",
    "nota": 72,
@@ -9871,6 +11321,7 @@
    "fecha": "2026-11-10T02:49:05Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [],
    "medio": "Durango Herald",
    "nivel": "baja",
    "nota": 72,
@@ -9892,6 +11343,7 @@
    "fecha": "2026-11-10T02:40:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "IDNFinancials",
    "nivel": "baja",
    "nota": 72,
@@ -9913,6 +11365,7 @@
    "fecha": "2026-11-10T02:24:20Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9934,6 +11387,9 @@
    "fecha": "2026-11-10T02:21:45Z",
    "idioma": "es",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "TradingKey",
    "nivel": "baja",
    "nota": 72,
@@ -9955,6 +11411,7 @@
    "fecha": "2026-11-10T02:20:51Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9976,6 +11433,7 @@
    "fecha": "2026-11-10T02:17:52Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -9997,6 +11455,9 @@
    "fecha": "2026-11-10T02:08:44Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Agencia de Noticias Yonhap",
    "nivel": "baja",
    "nota": 72,
@@ -10018,6 +11479,7 @@
    "fecha": "2026-11-10T02:04:46Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10039,6 +11501,9 @@
    "fecha": "2026-11-10T01:44:00Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Shanghai Metals Market",
    "nivel": "media",
    "nota": 72,
@@ -10060,6 +11525,9 @@
    "fecha": "2026-11-10T01:42:45Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "media",
    "nota": 72,
@@ -10081,6 +11549,7 @@
    "fecha": "2026-11-10T01:37:25Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Aktualita.co",
    "nivel": "baja",
    "nota": 72,
@@ -10102,6 +11571,7 @@
    "fecha": "2026-11-10T01:18:32Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10124,6 +11594,9 @@
    "fecha": "2026-11-10T01:16:36Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10146,6 +11619,7 @@
    "fecha": "2026-11-10T01:16:23Z",
    "idioma": "",
    "impacto": 24,
+   "materias": [],
    "medio": "Blockchain News",
    "nivel": "baja",
    "nota": 72,
@@ -10167,6 +11641,7 @@
    "fecha": "2026-11-10T01:16:23Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "blockchain.news",
    "nivel": "baja",
    "nota": 72,
@@ -10188,6 +11663,7 @@
    "fecha": "2026-11-10T01:14:38Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10209,6 +11685,7 @@
    "fecha": "2026-11-10T01:10:33Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10230,6 +11707,7 @@
    "fecha": "2026-11-10T01:07:39Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Mecardo",
    "nivel": "baja",
    "nota": 72,
@@ -10251,6 +11729,7 @@
    "fecha": "2026-11-10T01:03:17Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10272,6 +11751,7 @@
    "fecha": "2026-11-10T01:03:15Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10293,6 +11773,9 @@
    "fecha": "2026-11-10T00:55:20Z",
    "idioma": "es",
    "impacto": 52,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Viva la Noticia",
    "nivel": "media",
    "nota": 72,
@@ -10314,6 +11797,9 @@
    "fecha": "2026-11-10T00:52:00Z",
    "idioma": "es",
    "impacto": 52,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Shanghai Metals Market",
    "nivel": "media",
    "nota": 72,
@@ -10335,6 +11821,9 @@
    "fecha": "2026-11-10T00:52:00Z",
    "idioma": "en",
    "impacto": 58,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Shanghai Metals Market",
    "nivel": "media",
    "nota": 72,
@@ -10356,6 +11845,9 @@
    "fecha": "2026-11-10T00:29:54Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10377,6 +11869,9 @@
    "fecha": "2026-11-10T00:23:04Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "pollo"
+   ],
    "medio": "Por Esto!",
    "nivel": "media",
    "nota": 72,
@@ -10398,6 +11893,7 @@
    "fecha": "2026-11-10T00:22:39Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Michigan Farm News",
    "nivel": "baja",
    "nota": 72,
@@ -10419,6 +11915,9 @@
    "fecha": "2026-11-10T00:15:39Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Proactive Investors Australia",
    "nivel": "baja",
    "nota": 72,
@@ -10440,6 +11939,7 @@
    "fecha": "2026-11-10T00:07:47Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10461,6 +11961,9 @@
    "fecha": "2026-11-10T00:00:00Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "IDNFinancials",
    "nivel": "media",
    "nota": 72,
@@ -10482,6 +11985,9 @@
    "fecha": "2026-11-09T23:44:56Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "Business Recorder",
    "nivel": "baja",
    "nota": 72,
@@ -10503,6 +12009,11 @@
    "fecha": "2026-11-09T23:44:56Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "trigo",
+    "maiz",
+    "soja"
+   ],
    "medio": "Business Recorder",
    "nivel": "baja",
    "nota": 72,
@@ -10524,6 +12035,9 @@
    "fecha": "2026-11-09T23:44:56Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "trigo"
+   ],
    "medio": "Business Recorder",
    "nivel": "baja",
    "nota": 72,
@@ -10545,6 +12059,9 @@
    "fecha": "2026-11-09T23:23:00Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Seeking Alpha",
    "nivel": "media",
    "nota": 72,
@@ -10566,6 +12083,7 @@
    "fecha": "2026-11-09T23:22:21Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "Yahoo Finance Singapore",
    "nivel": "baja",
    "nota": 72,
@@ -10587,6 +12105,7 @@
    "fecha": "2026-11-09T23:15:00Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10608,6 +12127,9 @@
    "fecha": "2026-11-09T23:06:21Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "WLOS",
    "nivel": "baja",
    "nota": 72,
@@ -10622,6 +12144,28 @@
   },
   {
    "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNb29UUWFpR2JyQmFONThLQ0tBcjFFZV9ZbGlpaVJMVlBjUFJMbEtFN3RRLXZKMGxfT1h0R3FJVW9lODJIbUt6Vm9Wemp6MExrdmpMMktpZGtQNXRBcHhMdkI4a1Y1bUhSaDBuY1RGRkoxSVlvTzdfNVRpbGNTeUxIUUs3ZU1NOGFrWldZUlpQVEFGcVI1V2t4bTd2QQ?oc=5",
+   "fecha": "2026-11-09T23:04:51Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Vietnam.vn",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Actualización del precio del oro, mañana del 10 de noviembre de 2026: SJC, anillos de oro de 9999, DOJI BTMC, PNJ, Phu Quy."
+  },
+  {
+   "activos": [
     "oro",
     "plata",
     "platino"
@@ -10631,6 +12175,7 @@
    "fecha": "2026-11-09T23:00:00Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "Laodong.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10652,6 +12197,9 @@
    "fecha": "2026-11-09T22:57:27Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
    "medio": "El Universo",
    "nivel": "baja",
    "nota": 72,
@@ -10673,6 +12221,10 @@
    "fecha": "2026-11-09T22:53:14Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "trigo",
+    "leche"
+   ],
    "medio": "The Tribune",
    "nivel": "baja",
    "nota": 72,
@@ -10694,6 +12246,9 @@
    "fecha": "2026-11-09T22:38:16Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "media",
    "nota": 72,
@@ -10715,6 +12270,7 @@
    "fecha": "2026-11-09T22:28:59Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 72,
@@ -10729,6 +12285,30 @@
   },
   {
    "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOb3VDNUNSZ3NoYWtaN2dwT2VxRHV2a2RraVRJYU5hMVctaGZMekJMSE5QNVNxQ1VYNjRrbW5KYXRNNDN4U1V4OVNpQnpmTDhjZGtNVHA2Rk16eXY0T3Q4bEpOUWVYWU0tZ3VaWU5Ncm9LOGtzNlBXYnJiYUY3UjRPb3JxWU10eVBNZzdqbmxuSWpHbUp6Y2xhUUZLamRjMFcwN1JkMjd2eXRlT3JkTGtNWDRvTF9WWW9JZDZqQmpn?oc=5",
+   "fecha": "2026-11-09T22:27:56Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "citybuzz -",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "opinion",
+   "titulo": "Copper Price Forecast Hike to $13,000 a Ton Creates Opportunities for Exploration Firms"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -10736,6 +12316,9 @@
    "fecha": "2026-11-09T22:11:05Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "baja",
    "nota": 72,
@@ -10757,6 +12340,9 @@
    "fecha": "2026-11-09T22:07:25Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "The Business Journal",
    "nivel": "baja",
    "nota": 72,
@@ -10779,6 +12365,7 @@
    "fecha": "2026-11-09T22:03:15Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "Kitco",
    "nivel": "baja",
    "nota": 72,
@@ -10800,6 +12387,9 @@
    "fecha": "2026-11-09T22:00:00Z",
    "idioma": "en",
    "impacto": 66,
+   "materias": [
+    "aluminio"
+   ],
    "medio": "AL Circle",
    "nivel": "media",
    "nota": 72,
@@ -10821,6 +12411,9 @@
    "fecha": "2026-11-09T21:52:30Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "YODeportivo",
    "nivel": "baja",
    "nota": 72,
@@ -10842,6 +12435,9 @@
    "fecha": "2026-11-09T21:51:00Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "AP News",
    "nivel": "baja",
    "nota": 72,
@@ -10863,6 +12459,9 @@
    "fecha": "2026-11-09T21:41:04Z",
    "idioma": "es",
    "impacto": 52,
+   "materias": [
+    "leche"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 72,
@@ -10884,6 +12483,11 @@
    "fecha": "2026-11-09T21:38:18Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "trigo",
+    "maiz",
+    "soja"
+   ],
    "medio": "AgroLatam",
    "nivel": "media",
    "nota": 72,
@@ -10905,6 +12509,9 @@
    "fecha": "2026-11-09T21:37:52Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "girasol"
+   ],
    "medio": "CMB News",
    "nivel": "baja",
    "nota": 72,
@@ -10926,6 +12533,9 @@
    "fecha": "2026-11-09T21:29:42Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Reuters",
    "nivel": "baja",
    "nota": 72,
@@ -10947,6 +12557,11 @@
    "fecha": "2026-11-09T21:29:36Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "trigo",
+    "maiz",
+    "soja"
+   ],
    "medio": "AgroLatam",
    "nivel": "media",
    "nota": 72,
@@ -10968,6 +12583,9 @@
    "fecha": "2026-11-09T20:56:59Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Mining.com.au",
    "nivel": "baja",
    "nota": 72,
@@ -10989,6 +12607,9 @@
    "fecha": "2026-11-09T20:51:32Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "leche"
+   ],
    "medio": "FEDELECHE F.G.",
    "nivel": "baja",
    "nota": 72,
@@ -11010,6 +12631,7 @@
    "fecha": "2026-11-09T20:50:00Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [],
    "medio": "WSJ",
    "nivel": "media",
    "nota": 72,
@@ -11031,6 +12653,9 @@
    "fecha": "2026-11-09T20:45:43Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Revista Digital Minera REDIMIN",
    "nivel": "media",
    "nota": 72,
@@ -11052,6 +12677,9 @@
    "fecha": "2026-11-09T20:42:47Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "Steel Market Update",
    "nivel": "baja",
    "nota": 72,
@@ -11074,6 +12702,7 @@
    "fecha": "2026-11-09T20:38:02Z",
    "idioma": "en",
    "impacto": 64,
+   "materias": [],
    "medio": "www.tmgm.com",
    "nivel": "media",
    "nota": 72,
@@ -11096,6 +12725,9 @@
    "fecha": "2026-11-09T20:31:36Z",
    "idioma": "es",
    "impacto": 30,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Xpectro FM",
    "nivel": "baja",
    "nota": 72,
@@ -11117,6 +12749,9 @@
    "fecha": "2026-11-09T20:21:04Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz"
+   ],
    "medio": "IndexBox",
    "nivel": "baja",
    "nota": 72,
@@ -11138,6 +12773,9 @@
    "fecha": "2026-11-09T20:20:51Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "vacuno"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 72,
@@ -11159,6 +12797,9 @@
    "fecha": "2026-11-09T20:20:35Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "pollo"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 72,
@@ -11180,6 +12821,9 @@
    "fecha": "2026-11-09T20:04:37Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "acero"
+   ],
    "medio": "Upstox",
    "nivel": "baja",
    "nota": 72,
@@ -11201,6 +12845,9 @@
    "fecha": "2026-11-09T19:55:13Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "baja",
    "nota": 72,
@@ -11222,6 +12869,10 @@
    "fecha": "2026-11-09T19:32:59Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "maiz",
+    "cerdo"
+   ],
    "medio": "radiolaprimerisima.com",
    "nivel": "baja",
    "nota": 72,
@@ -11243,6 +12894,9 @@
    "fecha": "2026-11-09T19:26:53Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "cemento"
+   ],
    "medio": "2001 Online",
    "nivel": "baja",
    "nota": 72,
@@ -11264,6 +12918,9 @@
    "fecha": "2026-11-09T19:23:28Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "maiz"
+   ],
    "medio": "Farms.com",
    "nivel": "media",
    "nota": 72,
@@ -11285,6 +12942,9 @@
    "fecha": "2026-11-09T19:18:42Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "AEI",
    "nivel": "baja",
    "nota": 72,
@@ -11306,6 +12966,9 @@
    "fecha": "2026-11-09T19:09:07Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
    "medio": "Las Provincias",
    "nivel": "baja",
    "nota": 72,
@@ -11327,6 +12990,9 @@
    "fecha": "2026-11-09T19:05:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "pollo"
+   ],
    "medio": "La Revista Peninsular",
    "nivel": "baja",
    "nota": 72,
@@ -11348,6 +13014,9 @@
    "fecha": "2026-11-09T19:04:55Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "pollo"
+   ],
    "medio": "Por Esto!",
    "nivel": "media",
    "nota": 72,
@@ -11369,6 +13038,9 @@
    "fecha": "2026-11-09T19:02:05Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "trigo"
+   ],
    "medio": "El Diario de Ciudad Victoria",
    "nivel": "baja",
    "nota": 72,
@@ -11390,6 +13062,9 @@
    "fecha": "2026-11-09T19:00:46Z",
    "idioma": "es",
    "impacto": 66,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Rumbo Minero",
    "nivel": "media",
    "nota": 72,
@@ -11411,6 +13086,9 @@
    "fecha": "2026-11-09T18:38:00Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "Clarin.com",
    "nivel": "media",
    "nota": 72,
@@ -11432,6 +13110,9 @@
    "fecha": "2026-11-09T18:19:01Z",
    "idioma": "es",
    "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "TradingKey",
    "nivel": "media",
    "nota": 72,
@@ -11453,6 +13134,7 @@
    "fecha": "2026-11-09T18:06:45Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "MLQ.ai",
    "nivel": "baja",
    "nota": 72,
@@ -11474,6 +13156,9 @@
    "fecha": "2026-11-09T18:01:02Z",
    "idioma": "en",
    "impacto": 52,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Investing.com Australia",
    "nivel": "media",
    "nota": 72,
@@ -11495,6 +13180,7 @@
    "fecha": "2026-11-09T18:01:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Infobae",
    "nivel": "baja",
    "nota": 72,
@@ -11516,6 +13202,7 @@
    "fecha": "2026-11-09T18:00:51Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "iProUP",
    "nivel": "baja",
    "nota": 72,
@@ -11537,6 +13224,11 @@
    "fecha": "2026-11-09T17:41:30Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [
+    "trigo",
+    "maiz",
+    "soja"
+   ],
    "medio": "AgroLatam",
    "nivel": "media",
    "nota": 72,
@@ -11558,6 +13250,7 @@
    "fecha": "2026-11-09T17:24:45Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [],
    "medio": "MiningMX",
    "nivel": "baja",
    "nota": 72,
@@ -11579,6 +13272,7 @@
    "fecha": "2026-11-09T17:10:30Z",
    "idioma": "en",
    "impacto": 30,
+   "materias": [],
    "medio": "www.tmgm.com",
    "nivel": "baja",
    "nota": 72,
@@ -11600,6 +13294,7 @@
    "fecha": "2026-11-09T17:05:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "TradingKey",
    "nivel": "baja",
    "nota": 72,
@@ -11621,6 +13316,9 @@
    "fecha": "2026-11-09T17:00:27Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "cerdo"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 72,
@@ -11642,6 +13340,9 @@
    "fecha": "2026-11-09T16:59:58Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "baja",
    "nota": 72,
@@ -11663,6 +13364,9 @@
    "fecha": "2026-11-09T16:46:53Z",
    "idioma": "en",
    "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
    "medio": "EnergyNow.com",
    "nivel": "baja",
    "nota": 72,
@@ -11684,6 +13388,9 @@
    "fecha": "2026-11-09T16:30:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "pollo"
+   ],
    "medio": "Noticias Trabajo",
    "nivel": "baja",
    "nota": 72,
@@ -11698,193 +13405,25 @@
   },
   {
    "activos": [
-    "alimentos"
+    "energia"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPNnc3MDNJZXBxQ1Z2Y0hIc2J1dUJBTnpxcmhzTmpoS3ExVW9DQTJ6a21iS0FXNDhJY3QxNWdqSTA2YWZfajZJMjl6ZmpTU2dLNlZ2VUFZN2N5VG13by1NaDFZNzJodUowcDlIN3dab25UT1NFVzVGbWNRbW5JSkctcFRSZjFhSVRfWUNYeEo1SmYxdw?oc=5",
-   "fecha": "2026-11-09T16:26:50Z",
-   "idioma": "es",
-   "impacto": 30,
-   "medio": "Traders Union",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "opinion",
-   "titulo": "Previsión del precio del trigo de Kansas City: se espera volatilidad a corto plazo ante señales divergentes"
-  },
-  {
-   "activos": [
-    "construccion"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNeDRsVkRteml1ZGhJMFpzVkp6aDNzWkg3NnZMSWlmV2NKWmVBdGQwYnVxM1NCcHcyU2dMd2V1RXhhWnZlYmpXdm51cWlCRkRnUllyS2RLdWxDaVhjelJPQkZrV21CX1FRV0RkVUYwdEk3NG80eV94R1R5YjAzYkJYUE5SVWRNcEhLVnYwWmhqZVdaTkd2NzI5N1hLaUVVVzdMTUlRYjl0N2RCclNkTlBmbnlUcTBEb1ZNYUJWeWRSVE44ZVhXRURCS3hUOEw0LXdHNjBwajFRZ1VuQVBGcGM0bHluVEFRdw?oc=5",
-   "fecha": "2026-11-09T16:26:03Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "IndexBox",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Mercado de baterías recargables de níquel-zinc hasta 2035: las ventajas de seguridad impulsan su adopción en bicicletas eléctricas y almacenamiento en el borde de la red - Noticias y Estadísticas"
-  },
-  {
-   "activos": [
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1CVG9rSVlYZldGblVreFUwVnZ6MU0ySm5hXzhqR2djZlI5ajFPdTRTZ0pRTHZENlpBSURZZUNtMHFiWGJvdzZpMEFGUjMydkpuRXctaC14MXFLcGVuNGVUYVRhRFhlVTgtTUlpQXppN2c?oc=5",
-   "fecha": "2026-11-09T16:02:56Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "Vietnam.vn",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "En la tarde del 9 de noviembre, los precios del oro y la plata subieron rápidamente."
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.freshplaza.es/article/9890045/la-cosecha-de-papa-de-idaho-es-la-mas-escasa-en-anos/",
-   "fecha": "2026-11-09T14:32:00Z",
-   "idioma": "es",
-   "impacto": 26,
-   "medio": "FreshPlaza España",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "Idaho ha concluido la campaña con lo que se considera la cosecha de papa más pequeña en mucho tiempo, en parte debido a una reducción considerable de la superficie cultivada. Ryan Wahlen, de Pleasant Valley Potato, señala que la superficie dedicada a la papa en el estado se redujo a 88.570 hectáreas",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "La cosecha de papa de Idaho es la más escasa en años"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.freshplaza.es/article/9890472/la-cosecha-de-manzana-en-la-ue-caera-un-13-5-y-aumentaran-los-volumenes-de-pera-y-uva/",
-   "fecha": "2026-11-09T14:32:00Z",
-   "idioma": "es",
-   "impacto": 26,
-   "medio": "FreshPlaza España",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "Según un informe del Servicio Agrícola Exterior del USDA (FAS) publicado el 4 de noviembre de 2026, la cosecha comercial de manzana de la Unión Europea descenderá un 13,5% hasta los 9,8 millones de toneladas en la campaña de comercialización 2026/27, mientras que se espera que los volúmenes de pera ",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "La cosecha de manzana en la UE caerá un 13,5% y aumentarán los volúmenes de pera y uva"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.freshplaza.es/article/9890477/se-preve-que-la-cosecha-de-uva-de-mesa-de-egipto-aumente-un-1-1-hasta-1-82-millones-de-toneladas/",
-   "fecha": "2026-11-09T14:32:00Z",
-   "idioma": "es",
-   "impacto": 32,
-   "medio": "FreshPlaza España",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "Según un informe del Servicio Agrícola Exterior del USDA (FAS) publicado el 4 de noviembre de 2026, la cosecha de uva de mesa de Egipto podría alcanzar 1,82 millones de toneladas en el año de comercialización 2026/27 (octubre-septiembre), lo que supone un incremento del 1,1% respecto a la campaña…",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "opinion",
-   "titulo": "Se prevé que la cosecha de uva de mesa de Egipto aumente un 1,1% hasta 1,82 millones de toneladas"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.freshplaza.es/article/9890483/la-estimacion-de-la-cosecha-de-cerezas-de-chile-se-reduce-casi-un-18/",
-   "fecha": "2026-11-09T14:32:00Z",
-   "idioma": "es",
-   "impacto": 26,
-   "medio": "FreshPlaza España",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "Las perspectivas de la cosecha de cerezas de Chile han sido revisadas tras las lluvias y granizadas registradas en el país, lo que genera preocupación por el suministro y los precios en China de cara al Año Nuevo Lunar del 6 de febrero de 2027, según EastFruit. En 2025, China importó 585.000 tonelad",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "La estimación de la cosecha de cerezas de Chile se reduce casi un 18%"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.freshplaza.es/article/9890489/la-cosecha-de-manzana-en-canada-se-mantiene-estable-mientras-crece-la-produccion-de-uva-de-mesa/",
-   "fecha": "2026-11-09T14:32:00Z",
-   "idioma": "es",
-   "impacto": 26,
-   "medio": "FreshPlaza España",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "Según un informe del Servicio Agrícola Exterior del USDA (FAS) publicado el 4 de noviembre de 2026, la cosecha de manzana en Canadá registrará un ligero descenso en la campaña 2026/27, mientras que la producción de uva de mesa aumentará. En el caso de la pera, las perspectivas difieren entre las…",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "La cosecha de manzana en Canadá se mantiene estable mientras crece la producción de uva de mesa"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.farmprogress.com/tv-and-radio/u-s-beef-exports-stay-strong-despite-record-high-prices-in-september",
-   "fecha": "2026-11-09T13:21:33Z",
+   "enlace": "https://www.rigzone.com/news/which_usa_oil_major_produced_the_most_in_q3_2026-09-nov-2026-185040-article/?rss=true",
+   "fecha": "2026-11-09T13:05:00Z",
    "idioma": "en",
-   "impacto": 39,
-   "medio": "Farm Progress",
+   "impacto": 28,
+   "materias": [],
+   "medio": "Rigzone",
    "nivel": "baja",
    "nota": 72,
-   "resumen": "Farm Progress America: U.S. beef exports continue to climb in value and volume as global buyers prioritize quality protein even amid rising household costs worldwide.",
+   "resumen": "Which U.S. oil major produced the most in the third quarter of 2026 - ExxonMobil, Chevron, or ConocoPhillips?",
    "seccion": [
     "materias"
    ],
-   "sentido": "alza",
+   "sentido": "",
    "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "U.S. beef exports stay strong despite record-high prices in September"
+   "tipo": null,
+   "titulo": "Which USA Oil Major Produced the Most in Q3 2026?"
   },
   {
    "activos": [
@@ -11896,6 +13435,7 @@
    "fecha": "2026-11-09T12:21:20Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [],
    "medio": "Mining Technology",
    "nivel": "baja",
    "nota": 72,
@@ -11917,6 +13457,7 @@
    "fecha": "2026-11-09T04:48:39Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [],
    "medio": "Bloomberg - Industrias",
    "nivel": "baja",
    "nota": 72,
@@ -11931,6 +13472,77 @@
   },
   {
    "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPNnc3MDNJZXBxQ1Z2Y0hIc2J1dUJBTnpxcmhzTmpoS3ExVW9DQTJ6a21iS0FXNDhJY3QxNWdqSTA2YWZfajZJMjl6ZmpTU2dLNlZ2VUFZN2N5VG13by1NaDFZNzJodUowcDlIN3dab25UT1NFVzVGbWNRbW5JSkctcFRSZjFhSVRfWUNYeEo1SmYxdw?oc=5",
+   "fecha": "2026-11-09T16:26:50Z",
+   "idioma": "es",
+   "impacto": 30,
+   "materias": [
+    "trigo"
+   ],
+   "medio": "Traders Union",
+   "nivel": "baja",
+   "nota": 71,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "opinion",
+   "titulo": "Previsión del precio del trigo de Kansas City: se espera volatilidad a corto plazo ante señales divergentes"
+  },
+  {
+   "activos": [
+    "construccion"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNeDRsVkRteml1ZGhJMFpzVkp6aDNzWkg3NnZMSWlmV2NKWmVBdGQwYnVxM1NCcHcyU2dMd2V1RXhhWnZlYmpXdm51cWlCRkRnUllyS2RLdWxDaVhjelJPQkZrV21CX1FRV0RkVUYwdEk3NG80eV94R1R5YjAzYkJYUE5SVWRNcEhLVnYwWmhqZVdaTkd2NzI5N1hLaUVVVzdMTUlRYjl0N2RCclNkTlBmbnlUcTBEb1ZNYUJWeWRSVE44ZVhXRURCS3hUOEw0LXdHNjBwajFRZ1VuQVBGcGM0bHluVEFRdw?oc=5",
+   "fecha": "2026-11-09T16:26:03Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "zinc"
+   ],
+   "medio": "IndexBox",
+   "nivel": "baja",
+   "nota": 71,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Mercado de baterías recargables de níquel-zinc hasta 2035: las ventajas de seguridad impulsan su adopción en bicicletas eléctricas y almacenamiento en el borde de la red - Noticias y Estadísticas"
+  },
+  {
+   "activos": [
+    "oro",
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1CVG9rSVlYZldGblVreFUwVnZ6MU0ySm5hXzhqR2djZlI5ajFPdTRTZ0pRTHZENlpBSURZZUNtMHFiWGJvdzZpMEFGUjMydkpuRXctaC14MXFLcGVuNGVUYVRhRFhlVTgtTUlpQXppN2c?oc=5",
+   "fecha": "2026-11-09T16:02:56Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Vietnam.vn",
+   "nivel": "baja",
+   "nota": 71,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "En la tarde del 9 de noviembre, los precios del oro y la plata subieron rápidamente."
+  },
+  {
+   "activos": [
     "cobre"
    ],
    "comercial": false,
@@ -11938,6 +13550,9 @@
    "fecha": "2026-11-09T16:00:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
    "medio": "Madero CL",
    "nivel": "baja",
    "nota": 71,
@@ -11959,6 +13574,7 @@
    "fecha": "2026-11-09T15:30:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [],
    "medio": "Vietnam.vn",
    "nivel": "baja",
    "nota": 71,
@@ -11980,6 +13596,9 @@
    "fecha": "2026-11-09T15:27:00Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "leche"
+   ],
    "medio": "Diario Lechero",
    "nivel": "baja",
    "nota": 71,
@@ -12001,6 +13620,9 @@
    "fecha": "2026-11-09T15:20:36Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [
+    "cerdo"
+   ],
    "medio": "IndexBox",
    "nivel": "media",
    "nota": 71,
@@ -12022,6 +13644,7 @@
    "fecha": "2026-11-09T15:19:49Z",
    "idioma": "en",
    "impacto": 36,
+   "materias": [],
    "medio": "Crux Investor",
    "nivel": "baja",
    "nota": 71,
@@ -12043,6 +13666,7 @@
    "fecha": "2026-11-09T15:19:24Z",
    "idioma": "es",
    "impacto": 54,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 71,
@@ -12064,6 +13688,9 @@
    "fecha": "2026-11-09T15:19:18Z",
    "idioma": "es",
    "impacto": 24,
+   "materias": [
+    "leche"
+   ],
    "medio": "El Mundo",
    "nivel": "baja",
    "nota": 71,
@@ -12085,6 +13712,7 @@
    "fecha": "2026-11-09T15:18:01Z",
    "idioma": "en",
    "impacto": 54,
+   "materias": [],
    "medio": "FXEmpire",
    "nivel": "media",
    "nota": 71,
@@ -12099,111 +13727,141 @@
   },
   {
    "activos": [
-    "plata"
+    "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNeEtxNmlZeE1hU2VXT2VaNWs5V3BER1RLQzJaeXFnNTd3QzRPWXBoMFhqdGUzeHlwWXo2dGI0VzFwdFp3ZF9SeFkydlBmQnVxYXVMSjZXT1Rnb2w0VmFUQWNzNVg4WExvMVM3YmMtWE50Qm1VZzRKSVY1QTNsUlJ1eEE4VlBFUG9QQ1JmS3BzblJVNjNjTUw4Zkc5ZWNlRkVNNndxQ3Rhb3JldWFJMjNCWEZTWUlCZ19JNk8tc0pncl9yU3BUWXpzV0FsM1FheGlnY2tDMDRZZU5fU0Q2azJLOFFlSVNMbFQ1T3BDMUM4YlhFQQ?oc=5",
-   "fecha": "2026-11-09T15:07:14Z",
+   "enlace": "https://www.freshplaza.es/article/9890045/la-cosecha-de-papa-de-idaho-es-la-mas-escasa-en-anos/",
+   "fecha": "2026-11-09T14:32:00Z",
    "idioma": "es",
-   "impacto": 24,
-   "medio": "FXEmpire",
+   "impacto": 26,
+   "materias": [],
+   "medio": "FreshPlaza España",
    "nivel": "baja",
    "nota": 71,
-   "resumen": "",
+   "resumen": "Idaho ha concluido la campaña con lo que se considera la cosecha de papa más pequeña en mucho tiempo, en parte debido a una reducción considerable de la superficie cultivada. Ryan Wahlen, de Pleasant Valley Potato, señala que la superficie dedicada a la papa en el estado se redujo a 88.570 hectáreas",
    "seccion": [
-    "preciosos"
+    "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Perspectiva del precio de la plata: La plata sigue equilibrándose entre influencias monetarias e industriales"
+   "titulo": "La cosecha de papa de Idaho es la más escasa en años"
   },
   {
    "activos": [
-    "plata"
+    "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUzZQSVlyOUl4TmRRTjI3RTB1amlTYnNIX0Q1d3UxM1FwSXRScTJVaUQxcUhrdUcyQ1ZxNHlWS2p1QmNNeGpjUkRvbUVKVF8tNV9lMlZFYU5QUm1ueG16b0ZsWkNaQTljOEhGelBIQ2I3czdGS0d4ZFNXa1BDWXYzRGtubHVpUmpDSzA3TFg3X180MUtlUGlWVUQ1VXZnLWhlNnp0UWs4UlBmSTJ5MDc2c2JLWl9meXdQaGtPM2VxenRuNklTaW5sQ25tNEE3ZnFmaXl4ZE5NamZsdw?oc=5",
-   "fecha": "2026-11-09T15:06:06Z",
-   "idioma": "en",
-   "impacto": 30,
-   "medio": "FXEmpire",
+   "enlace": "https://www.freshplaza.es/article/9890472/la-cosecha-de-manzana-en-la-ue-caera-un-13-5-y-aumentaran-los-volumenes-de-pera-y-uva/",
+   "fecha": "2026-11-09T14:32:00Z",
+   "idioma": "es",
+   "impacto": 26,
+   "materias": [
+    "frutas"
+   ],
+   "medio": "FreshPlaza España",
    "nivel": "baja",
    "nota": 71,
-   "resumen": "",
+   "resumen": "Según un informe del Servicio Agrícola Exterior del USDA (FAS) publicado el 4 de noviembre de 2026, la cosecha comercial de manzana de la Unión Europea descenderá un 13,5% hasta los 9,8 millones de toneladas en la campaña de comercialización 2026/27, mientras que se espera que los volúmenes de pera ",
    "seccion": [
-    "preciosos"
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "La cosecha de manzana en la UE caerá un 13,5% y aumentarán los volúmenes de pera y uva"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://www.freshplaza.es/article/9890477/se-preve-que-la-cosecha-de-uva-de-mesa-de-egipto-aumente-un-1-1-hasta-1-82-millones-de-toneladas/",
+   "fecha": "2026-11-09T14:32:00Z",
+   "idioma": "es",
+   "impacto": 32,
+   "materias": [],
+   "medio": "FreshPlaza España",
+   "nivel": "baja",
+   "nota": 71,
+   "resumen": "Según un informe del Servicio Agrícola Exterior del USDA (FAS) publicado el 4 de noviembre de 2026, la cosecha de uva de mesa de Egipto podría alcanzar 1,82 millones de toneladas en el año de comercialización 2026/27 (octubre-septiembre), lo que supone un incremento del 1,1% respecto a la campaña…",
+   "seccion": [
+    "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": "opinion",
-   "titulo": "Silver Price Outlook: Silver Continues to Balance Between Monetary and Industrial Influences"
+   "titulo": "Se prevé que la cosecha de uva de mesa de Egipto aumente un 1,1% hasta 1,82 millones de toneladas"
   },
   {
    "activos": [
-    "oro",
-    "plata"
+    "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbjlfT0RwLTdkTFh2ZFY2TklJYUFHZ2JFYjZtR1JaQldGOFJrSXVFUS1hUXFyMVEwaUhSRm1mdzEyMm1NeUhVQjUtTEZobWFtQ0FoUkxWMHE1WDFFOVVLQlM2c1FXMHhCSU83QWxVUkM2UU1XdnZ6THMtNmtudGlNajBEb1VNczdZUmdZRERfWWROUkJYaTNoeDhheFd6cHBnX0toOUVuS2pDNXZxVXJPdnBFMkNCUG5SMG1iX0NR?oc=5",
-   "fecha": "2026-11-09T15:02:11Z",
+   "enlace": "https://www.freshplaza.es/article/9890483/la-estimacion-de-la-cosecha-de-cerezas-de-chile-se-reduce-casi-un-18/",
+   "fecha": "2026-11-09T14:32:00Z",
+   "idioma": "es",
+   "impacto": 26,
+   "materias": [],
+   "medio": "FreshPlaza España",
+   "nivel": "baja",
+   "nota": 71,
+   "resumen": "Las perspectivas de la cosecha de cerezas de Chile han sido revisadas tras las lluvias y granizadas registradas en el país, lo que genera preocupación por el suministro y los precios en China de cara al Año Nuevo Lunar del 6 de febrero de 2027, según EastFruit. En 2025, China importó 585.000 tonelad",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "La estimación de la cosecha de cerezas de Chile se reduce casi un 18%"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://www.freshplaza.es/article/9890489/la-cosecha-de-manzana-en-canada-se-mantiene-estable-mientras-crece-la-produccion-de-uva-de-mesa/",
+   "fecha": "2026-11-09T14:32:00Z",
+   "idioma": "es",
+   "impacto": 26,
+   "materias": [
+    "frutas"
+   ],
+   "medio": "FreshPlaza España",
+   "nivel": "baja",
+   "nota": 71,
+   "resumen": "Según un informe del Servicio Agrícola Exterior del USDA (FAS) publicado el 4 de noviembre de 2026, la cosecha de manzana en Canadá registrará un ligero descenso en la campaña 2026/27, mientras que la producción de uva de mesa aumentará. En el caso de la pera, las perspectivas difieren entre las…",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "La cosecha de manzana en Canadá se mantiene estable mientras crece la producción de uva de mesa"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://www.farmprogress.com/tv-and-radio/u-s-beef-exports-stay-strong-despite-record-high-prices-in-september",
+   "fecha": "2026-11-09T13:21:33Z",
    "idioma": "en",
-   "impacto": 24,
-   "medio": "Kitco",
+   "impacto": 39,
+   "materias": [
+    "vacuno"
+   ],
+   "medio": "Farm Progress",
    "nivel": "baja",
    "nota": 71,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Gold and silver prices extend post-election rebound, central banks on pace to beat 2025 purchases – Heraeus"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQY3dEQzV6aVgxRkdxM3lLVFdtUnpHVnpuRmE3MkwxTGhaVTlWUEwtZlR1NnBZMXFRdlBXSkMzOUduZWpVTjRvRTliTDNxVFZub2MzcUVJb3BOOTEtdm93OUJlNkZ5OHpKUlY4ZWNQRHA1MF9STEJCSjIyX1NIc2Q2WklpcFlxNVdTVzlsZF8yRHVibWlYbDhleHlqWVdpM0YzVEpwODZIcldVOTJCOWs5N1h0alFVRTZnWm41bmRIMWMwdlFWTEpF0gHMAUFVX3lxTFBMWnI2NGl2UVVKV0htYnlQc2xfY2FNRndPaHV6X2NZOXNGRXRIUnU4UHdHVnFXYmp3SUN6ZzJJbUJvRVlDc0Nvckxfa3VYY01YMUhERzI5TWExWjZYRUk0ZTV2VVdaYjY2ZWg3Rm10cng1NE9reHgwZkN3WXRDT1hjLXV0Wm02NlFJSUd1S3plWTRlQUNOOUlDQlltb3d2LVlHRWdMZkw5a09YVmtmWHFKUWsxRnIzY25OMUc3bXRlNWRvTUpyeGhwS2xndg?oc=5",
-   "fecha": "2026-11-09T14:59:12Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "Consumidor Global",
-   "nivel": "baja",
-   "nota": 71,
-   "resumen": "",
+   "resumen": "Farm Progress America: U.S. beef exports continue to climb in value and volume as global buyers prioritize quality protein even amid rising household costs worldwide.",
    "seccion": [
     "materias"
    ],
-   "sentido": "baja",
+   "sentido": "alza",
    "tambien_en": [],
-   "tipo": null,
-   "titulo": "El precio de la luz se abarata este martes, 10 de noviembre: estas son las horas más baratas"
-  },
-  {
-   "activos": [
-    "energia",
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPYUUwZ1hTbW13b3RneE9SUTZoNEtTeDRkSjd2OXhzaVhrZU8tZGJoT0YxNGdidGkxYjgxeEJMTFhrd0ZzN00zQWRxOTZDcU95OGwxNWl5WUx0cE95R1lVMVpnV2lCSFRCdzZ0cUJfTTRVYkJjM3NxTG1WYW1pV3lpRWdqR3B3RzRjMDNnbzVaNTVfMDNR0gGcAUFVX3lxTE1HWXBpblp1RXY1TlZ3ZzhzaUprUGVORjFWS3hxc3JHdVg3ZTZPNzl4WGdiRGlqd2otQzJPSDNHZEZBQ3ptaHQ5alpjTFgxMDN4bnJuUE5BWkFCbU53Nmc5ZkxoOEEzMjFsR3hLZjJZZ3Y5cHI0M3FGVk01MXJZeTZ2MmFNMUhZd21VRk9jbjBOcDlIcDZ6RWV6azhPdQ?oc=5",
-   "fecha": "2026-11-09T14:58:50Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "RCC Media",
-   "nivel": "baja",
-   "nota": 71,
-   "resumen": "",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Precio del oro sube a US$4,094 impulsado por caída del petróleo y debilidad del dólar"
+   "tipo": "precio",
+   "titulo": "U.S. beef exports stay strong despite record-high prices in September"
   },
   {
    "activos": [
@@ -12214,6 +13872,7 @@
    "fecha": "2026-11-09T12:41:00Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "baja",
    "nota": 71,
@@ -12235,6 +13894,7 @@
    "fecha": "2026-11-09T11:07:03Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [],
    "medio": "Rigzone",
    "nivel": "baja",
    "nota": 71,
@@ -12256,6 +13916,9 @@
    "fecha": "2026-11-09T03:50:23Z",
    "idioma": "en",
    "impacto": 40,
+   "materias": [
+    "soja"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 71,
@@ -12270,6 +13933,123 @@
   },
   {
    "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNeEtxNmlZeE1hU2VXT2VaNWs5V3BER1RLQzJaeXFnNTd3QzRPWXBoMFhqdGUzeHlwWXo2dGI0VzFwdFp3ZF9SeFkydlBmQnVxYXVMSjZXT1Rnb2w0VmFUQWNzNVg4WExvMVM3YmMtWE50Qm1VZzRKSVY1QTNsUlJ1eEE4VlBFUG9QQ1JmS3BzblJVNjNjTUw4Zkc5ZWNlRkVNNndxQ3Rhb3JldWFJMjNCWEZTWUlCZ19JNk8tc0pncl9yU3BUWXpzV0FsM1FheGlnY2tDMDRZZU5fU0Q2azJLOFFlSVNMbFQ1T3BDMUM4YlhFQQ?oc=5",
+   "fecha": "2026-11-09T15:07:14Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [],
+   "medio": "FXEmpire",
+   "nivel": "baja",
+   "nota": 70,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Perspectiva del precio de la plata: La plata sigue equilibrándose entre influencias monetarias e industriales"
+  },
+  {
+   "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUzZQSVlyOUl4TmRRTjI3RTB1amlTYnNIX0Q1d3UxM1FwSXRScTJVaUQxcUhrdUcyQ1ZxNHlWS2p1QmNNeGpjUkRvbUVKVF8tNV9lMlZFYU5QUm1ueG16b0ZsWkNaQTljOEhGelBIQ2I3czdGS0d4ZFNXa1BDWXYzRGtubHVpUmpDSzA3TFg3X180MUtlUGlWVUQ1VXZnLWhlNnp0UWs4UlBmSTJ5MDc2c2JLWl9meXdQaGtPM2VxenRuNklTaW5sQ25tNEE3ZnFmaXl4ZE5NamZsdw?oc=5",
+   "fecha": "2026-11-09T15:06:06Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [],
+   "medio": "FXEmpire",
+   "nivel": "baja",
+   "nota": 70,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "opinion",
+   "titulo": "Silver Price Outlook: Silver Continues to Balance Between Monetary and Industrial Influences"
+  },
+  {
+   "activos": [
+    "oro",
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbjlfT0RwLTdkTFh2ZFY2TklJYUFHZ2JFYjZtR1JaQldGOFJrSXVFUS1hUXFyMVEwaUhSRm1mdzEyMm1NeUhVQjUtTEZobWFtQ0FoUkxWMHE1WDFFOVVLQlM2c1FXMHhCSU83QWxVUkM2UU1XdnZ6THMtNmtudGlNajBEb1VNczdZUmdZRERfWWROUkJYaTNoeDhheFd6cHBnX0toOUVuS2pDNXZxVXJPdnBFMkNCUG5SMG1iX0NR?oc=5",
+   "fecha": "2026-11-09T15:02:11Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Kitco",
+   "nivel": "baja",
+   "nota": 70,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Gold and silver prices extend post-election rebound, central banks on pace to beat 2025 purchases – Heraeus"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQY3dEQzV6aVgxRkdxM3lLVFdtUnpHVnpuRmE3MkwxTGhaVTlWUEwtZlR1NnBZMXFRdlBXSkMzOUduZWpVTjRvRTliTDNxVFZub2MzcUVJb3BOOTEtdm93OUJlNkZ5OHpKUlY4ZWNQRHA1MF9STEJCSjIyX1NIc2Q2WklpcFlxNVdTVzlsZF8yRHVibWlYbDhleHlqWVdpM0YzVEpwODZIcldVOTJCOWs5N1h0alFVRTZnWm41bmRIMWMwdlFWTEpF0gHMAUFVX3lxTFBMWnI2NGl2UVVKV0htYnlQc2xfY2FNRndPaHV6X2NZOXNGRXRIUnU4UHdHVnFXYmp3SUN6ZzJJbUJvRVlDc0Nvckxfa3VYY01YMUhERzI5TWExWjZYRUk0ZTV2VVdaYjY2ZWg3Rm10cng1NE9reHgwZkN3WXRDT1hjLXV0Wm02NlFJSUd1S3plWTRlQUNOOUlDQlltb3d2LVlHRWdMZkw5a09YVmtmWHFKUWsxRnIzY25OMUc3bXRlNWRvTUpyeGhwS2xndg?oc=5",
+   "fecha": "2026-11-09T14:59:12Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
+   "medio": "Consumidor Global",
+   "nivel": "baja",
+   "nota": 70,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "El precio de la luz se abarata este martes, 10 de noviembre: estas son las horas más baratas"
+  },
+  {
+   "activos": [
+    "energia",
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPYUUwZ1hTbW13b3RneE9SUTZoNEtTeDRkSjd2OXhzaVhrZU8tZGJoT0YxNGdidGkxYjgxeEJMTFhrd0ZzN00zQWRxOTZDcU95OGwxNWl5WUx0cE95R1lVMVpnV2lCSFRCdzZ0cUJfTTRVYkJjM3NxTG1WYW1pV3lpRWdqR3B3RzRjMDNnbzVaNTVfMDNR0gGcAUFVX3lxTE1HWXBpblp1RXY1TlZ3ZzhzaUprUGVORjFWS3hxc3JHdVg3ZTZPNzl4WGdiRGlqd2otQzJPSDNHZEZBQ3ptaHQ5alpjTFgxMDN4bnJuUE5BWkFCbU53Nmc5ZkxoOEEzMjFsR3hLZjJZZ3Y5cHI0M3FGVk01MXJZeTZ2MmFNMUhZd21VRk9jbjBOcDlIcDZ6RWV6azhPdQ?oc=5",
+   "fecha": "2026-11-09T14:58:50Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "RCC Media",
+   "nivel": "baja",
+   "nota": 70,
+   "resumen": "",
+   "seccion": [
+    "preciosos",
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Precio del oro sube a US$4,094 impulsado por caída del petróleo y debilidad del dólar"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -12277,6 +14057,7 @@
    "fecha": "2026-11-09T11:43:00Z",
    "idioma": "en",
    "impacto": 27,
+   "materias": [],
    "medio": "Investing.com - Análisis de materias primas",
    "nivel": "baja",
    "nota": 70,
@@ -12291,27 +14072,6 @@
   },
   {
    "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.dairyreporter.com/Article/2026/11/09/climate-change-poses-growing-threat-to-competitiveness-of-europes-dairy-sector/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS",
-   "fecha": "2026-11-09T10:52:02Z",
-   "idioma": "en",
-   "impacto": 27,
-   "medio": "Dairy Reporter",
-   "nivel": "baja",
-   "nota": 70,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Climate change poses growing threat to competitiveness of Europe’s dairy sector"
-  },
-  {
-   "activos": [
     "oro"
    ],
    "comercial": false,
@@ -12319,6 +14079,7 @@
    "fecha": "2026-11-09T10:15:27Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [],
    "medio": "Mining Technology",
    "nivel": "baja",
    "nota": 70,
@@ -12340,6 +14101,9 @@
    "fecha": "2026-11-09T09:36:19Z",
    "idioma": "en",
    "impacto": 28,
+   "materias": [
+    "acero"
+   ],
    "medio": "GMK Center (acero)",
    "nivel": "baja",
    "nota": 70,
@@ -12361,6 +14125,9 @@
    "fecha": "2026-11-09T02:20:24Z",
    "idioma": "en",
    "impacto": 34,
+   "materias": [
+    "gas"
+   ],
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 70,
@@ -12382,6 +14149,7 @@
    "fecha": "2026-11-09T13:25:48Z",
    "idioma": "",
    "impacto": 64,
+   "materias": [],
    "medio": "Zerohedge",
    "nivel": "media",
    "nota": 69,
@@ -12396,406 +14164,27 @@
   },
   {
    "activos": [
-    "energia",
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/asian-tech-stocks-close-higher-oil-prices-fall-on-hopes-of-progress-in-peace-talk-200691222",
-   "fecha": "2026-11-09T11:52:00Z",
-   "idioma": "",
-   "impacto": 64,
-   "medio": "Investing Us",
-   "nivel": "media",
-   "nota": 68,
-   "resumen": "Market Analysis by Ghassan Albohtori covering: Nasdaq 100, Gold Spot US Dollar, Gold Futures, Brent Oil Futures. Read Ghassan Albohtori's Market Analysis on Investing.com",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "geopolitica",
-   "titulo": "Asian Tech Stocks Close Higher, Oil Prices Fall on Hopes of Progress in Peace Talk"
-  },
-  {
-   "activos": [
-    "construccion"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZW1IUjFCZDZDMzI0d1U5akJoUXVBamxNVnppbk4tUHlWdGYwWWtqZ1ZBTnRqRDU0di1kODdsN1p5ak0xSTJZLTBDOFdqWDZNTktfc0YyUE4ybksxM3N1RU11YVhfaksxUEp1NzZIWE03QkNzMldDXzJGaTdXRG5WSHF3RjlNa3RLTHItRU9UOGhacEVtOWxNbW9DVGtFSjFtNHN3?oc=5",
-   "fecha": "2026-11-09T11:51:18Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "Vietnam.vn",
-   "nivel": "baja",
-   "nota": 68,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Dirigir el fortalecimiento de la gestión de precios de los materiales de construcción en la provincia."
-  },
-  {
-   "activos": [
-    "energia",
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNUXUwZWlwNW44cjNHcUcyZWMxcHdSS0d2a25NMWVQNVZZeXE5UXpRSnF0OHVaMFpiRFhwcW5oWHBMNFRaUHdmNTJnRUNzR3VtZUFWM3A5b2Y5YnJPMnROVVJMTDRfTkxiMHlJbXpUZ2xKY3VmNDhaVnhpNkJUd284NENEenVxSlJxR0h1eWdqbTBJTDlLOWZkVzZyNnRlN2pqQlZRVFJXUy1yTDdneGRqcTZSMzVMVDVXZFIyT1FGZy05ZmlzTndPYkdubkRDeUXSAc8BQVVfeXFMT3RRb0QyNE95Z1lKcFY5QnRkTlBnT3U0UjMxV3lNakRGcW9NRXlIcjdEcTdoNXRqZTZrYWlwRUQ3aFNEN1BBc3U1SzM1NkZpcXNsUDlxenNUeVFVYU5wM01iWXVFZWItTUlScXk0S3FRUjdaUDcxcnNFek5yV2NmRzRUQWVWdEZRQlNfU0phOWR4QXRHUUhMcVhVdjk4NThZUmRQbHRVdzJJaGxQb3pOYlB0aHJkMjNxeHhPcXdCUDJPaHdpeWZFT0hqU2JEcGpR?oc=5",
-   "fecha": "2026-11-09T11:29:34Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "LaRepublica.co",
-   "nivel": "baja",
-   "nota": 68,
-   "resumen": "",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Oro subió, mientras que la bajada de los precios del crudo moderó los temores inflacionistas"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/oil-futures-decline-amid-market-downplaying-of-escalation-return-risks-200691205",
-   "fecha": "2026-11-09T09:02:00Z",
-   "idioma": "en",
-   "impacto": 27,
-   "medio": "Investing.com - Análisis de materias primas",
-   "nivel": "baja",
-   "nota": 68,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Oil Futures Decline Amid Market Downplaying of Escalation Return Risks"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.mining-technology.com/news/relevant-gold-us-approval-lewiston-drilling/",
-   "fecha": "2026-11-09T07:53:45Z",
-   "idioma": "en",
-   "impacto": 28,
-   "medio": "Mining Technology",
-   "nivel": "baja",
-   "nota": 68,
-   "resumen": "Relevant Gold has secured approval from the US Bureau of Land Management (BLM) to expand exploration drilling at its wholly owned Lewiston Project in Fremont County, Wyoming. The post Relevant Gold secures US approval for expanded Lewiston drilling appeared first on Mining Technology .",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Relevant Gold secures US approval for expanded Lewiston drilling"
-  },
-  {
-   "activos": [
-    "construccion",
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://gmk.center/en/posts/oman-s-steel-consumption-towards-a-new-milestone/",
-   "fecha": "2026-11-09T06:50:25Z",
-   "idioma": "en",
-   "impacto": 55,
-   "medio": "GMK Center (acero)",
-   "nivel": "media",
-   "nota": 68,
-   "resumen": "The steel market of the Sultanate of Oman is demonstrating strong resilience. This is supported by the country’s location outside the Persian Gulf and a reduced budget dependence on oil prices as a result of structural reforms. Sales of steel products are growing amid peak activity in the infrastruc",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "demanda",
-   "titulo": "Oman’s steel consumption: towards a new milestone"
-  },
-  {
-   "activos": [
-    "energia",
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/articles/2026-11-08/gold-holds-decline-as-us-jobs-data-fan-december-rate-hike-bets",
-   "fecha": "2026-11-08T23:40:10Z",
-   "idioma": "en",
-   "impacto": 34,
-   "medio": "Bloomberg - Mercados",
-   "nivel": "baja",
-   "nota": 68,
-   "resumen": "Gold rose as oil prices and the US dollar slid, while a rebound in equities bolstered risk appetite.",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Gold Advances as Oil, Dollar Retreat and Equities Rebound"
-  },
-  {
-   "activos": [
-    "construccion"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNWHNfSzRqZjhRMXhZYnJaWEV0S2x3SlFINUFSZy1BTkR3MkpEME9kdzdlSTNyU3JHdndRLUNJeXhKOFJTbDhaSGxQMU1oQXhhZ2R5TnZVeGI3ZktqUHNwQm1PSFZYbEFoNjYxdFl2bkxCUWhPNUVKeFF1R2hsZE92OXlweVB2YVl5RVJ5RVZfSVpvcHluYTM3LTg2XzdCOEtKU2pwT3lGVVh1cXdtMWpjc3dLeDBLdzFscnctRHUwYm4td2JiWGJPRUlHMDV3Vkpv?oc=5",
-   "fecha": "2026-11-09T11:06:04Z",
-   "idioma": "es",
-   "impacto": 24,
-   "medio": "IndexBox",
-   "nivel": "baja",
-   "nota": 67,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Mercado de materiales de construcción de madera hasta 2035: la construcción sostenible y la madera estructural impulsan el crecimiento - Noticias y Estadísticas"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/gold-chuffed-stocks-stuffed-200691196",
-   "fecha": "2026-11-09T07:47:00Z",
-   "idioma": "en",
-   "impacto": 27,
-   "medio": "Investing.com - Análisis de materias primas",
-   "nivel": "baja",
-   "nota": 67,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Gold Chuffed, Stocks Stuffed"
-  },
-  {
-   "activos": [
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/silver-holds-vc-pmi-support-with-54095623-targets-in-focus-200691192",
-   "fecha": "2026-11-09T07:10:00Z",
-   "idioma": "en",
-   "impacto": 57,
-   "medio": "Investing.com - Análisis de materias primas",
-   "nivel": "media",
-   "nota": 67,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "datos",
-   "titulo": "Silver Holds VC PMI Support With $54.09–$56.23 Targets in Focus"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/the-range-trade-parade--when-the-options-crowd-stops-chasing-gold-200691191",
-   "fecha": "2026-11-09T07:01:00Z",
-   "idioma": "en",
-   "impacto": 27,
-   "medio": "Investing.com - Análisis de materias primas",
-   "nivel": "baja",
-   "nota": 67,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "The Range Trade Parade — When the Options Crowd Stops Chasing Gold"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://odishastand.com/nse-electronic-gold-receipts-egrs-witnesses-record-trading-volumes-on-the-occasion-of-dhanteras",
-   "fecha": "2026-11-09T10:00:03Z",
-   "idioma": "",
-   "impacto": 36,
-   "medio": "Odisha Stand",
-   "nivel": "baja",
-   "nota": 66,
-   "resumen": "Bhubaneswar: The National Stock Exchange of India (NSE) recorded its highest-ever trading volumes in the Electronic Gold Receipts (EGR) segment, marking a significant milestone for the development of India’s organised gold market. The occasion of Dhanteras, traditionally considered an auspicious day",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "NSE Electronic Gold Receipts (EGRs) Witnesses Record Trading Volumes on the occasion of Dhanteras"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.investing.com/analysis/gold-may-test-2026-lows-sooner-than-anticipated--heres-why-200691190",
-   "fecha": "2026-11-09T06:08:00Z",
-   "idioma": "en",
-   "impacto": 33,
-   "medio": "Investing.com - Análisis de materias primas",
-   "nivel": "baja",
-   "nota": 66,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "opinion",
-   "titulo": "Gold May Test 2026 Lows Sooner Than Anticipated - Here’s Why"
-  },
-  {
-   "activos": [],
-   "comercial": false,
-   "enlace": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261110_1~9725b7aa07.en.html",
-   "fecha": "2026-11-10T16:45:00Z",
-   "idioma": "en",
-   "impacto": 76,
-   "medio": "Banco Central Europeo",
-   "nivel": "alta",
-   "nota": 65,
-   "resumen": "",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "tipos_interes",
-   "titulo": "Philip R. Lane: The science and practice of monetary policy communication: the ECB experience"
-  },
-  {
-   "activos": [
     "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://www.agnavigator.com/Article/2026/11/09/fewer-herds-richer-milk-genetic-gains-help-drive-new-zealand-dairy-to-record-production/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS",
-   "fecha": "2026-11-09T01:50:16Z",
+   "enlace": "https://www.dairyreporter.com/Article/2026/11/09/climate-change-poses-growing-threat-to-competitiveness-of-europes-dairy-sector/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS",
+   "fecha": "2026-11-09T10:52:02Z",
    "idioma": "en",
-   "impacto": 40,
-   "medio": "Feed Navigator",
+   "impacto": 27,
+   "materias": [
+    "leche"
+   ],
+   "medio": "Dairy Reporter",
    "nivel": "baja",
-   "nota": 63,
+   "nota": 69,
    "resumen": "",
    "seccion": [
-    "materias"
-   ],
-   "sentido": "alza",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Fewer herds, richer milk: Genetic gains help drive New Zealand dairy to record production"
-  },
-  {
-   "activos": [],
-   "comercial": false,
-   "enlace": "https://www.investing.com/news/economy-news/brazil-central-bank-flags-oil-el-nino-labor-and-fx-shocks-behind-inflation-rebound-5015065",
-   "fecha": "2026-11-10T16:42:55Z",
-   "idioma": "en",
-   "impacto": 34,
-   "medio": "Investing.com - Economía",
-   "nivel": "baja",
-   "nota": 62,
-   "resumen": "",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Reuters"
-   ],
-   "tipo": null,
-   "titulo": "Brazil’s central bank signals high bar for rate hikes despite inflation risks"
-  },
-  {
-   "activos": [],
-   "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/videos/2026-11-10/fed-needs-to-raise-rates-two-more-times-logan-says-video",
-   "fecha": "2026-11-10T16:36:43Z",
-   "idioma": "en",
-   "impacto": 34,
-   "medio": "Bloomberg - Mercados",
-   "nivel": "baja",
-   "nota": 62,
-   "resumen": "\"It remains clear to me, given the current outlook, that the FOMC needs to implement at least two more 25-basis-point rate increases,\" Federal Reserve Bank of Dallas President Lorie Logan says during a conference in Houston. (Source: Bloomberg)",
-   "seccion": [
-    "preciosos",
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Fed Needs to Raise Rates at Least Two More Times, Logan Says"
-  },
-  {
-   "activos": [],
-   "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/videos/2026-11-10/nagel-ecb-rate-hike-in-december-looks-rather-obvious-video",
-   "fecha": "2026-11-10T16:11:37Z",
-   "idioma": "en",
-   "impacto": 74,
-   "medio": "Bloomberg - Mercados",
-   "nivel": "alta",
-   "nota": 62,
-   "resumen": "European Central Bank Governing Council member Joachim Nagel said there’s a strong case to raise interest rates in December to tame inflation. In an interview with Bloomberg Television in Riga on Tuesday, he said inflation is “too high.\" (Source: Bloomberg)",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "tipos_interes",
-   "titulo": "Nagel: ECB Rate Hike in December Looks ‘Rather Obvious’"
-  },
-  {
-   "activos": [],
-   "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/videos/2026-11-10/fed-s-waller-sparks-larger-rate-hike-debate-on-hot-cpi-video",
-   "fecha": "2026-11-10T16:04:03Z",
-   "idioma": "en",
-   "impacto": 74,
-   "medio": "Bloomberg - Mercados",
-   "nivel": "alta",
-   "nota": 62,
-   "resumen": "Federal Reserve Governor Christopher Waller on Tuesday lit up debate around a possible half-percentage-point interest rate increase by the central bank in December after inflation data came in hotter than expected. PIMCO Economist Tiffany Wilding discusses Waller's comments and reacts to the October",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "tipos_interes",
-   "titulo": "Fed’s Waller Sparks Larger Rate Hike Debate After Hot Inflation"
+   "titulo": "Climate change poses growing threat to competitiveness of Europe’s dairy sector"
   }
  ]
 }

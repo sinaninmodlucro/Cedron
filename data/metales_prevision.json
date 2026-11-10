@@ -2,7 +2,7 @@
  "activos": {
   "cobre": {
    "futuros": {
-    "consultado": "2026-11-10T17:12:39Z",
+    "consultado": "2026-11-10T17:41:25Z",
     "historial": {
      "aciertos": 0,
      "error_medio": null,
@@ -13,12 +13,12 @@
     },
     "plazos": {
      "12": {
-      "cambio": 6.796272493573263,
+      "cambio": 6.684856753069579,
       "contrato": "2027-12",
       "primero": "2026-12"
      },
      "3": {
-      "cambio": 1.6388174807197897,
+      "cambio": 1.6451328143808785,
       "contrato": "2027-03",
       "primero": "2026-12"
      }
@@ -62,7 +62,7 @@
        },
        "tipo_real": {
         "casos": 238,
-        "r2": -0.10190000656915221
+        "r2": -0.10190000656915243
        },
        "valor": {
         "casos": 238,
@@ -151,7 +151,7 @@
   },
   "oro": {
    "futuros": {
-    "consultado": "2026-11-10T17:12:39Z",
+    "consultado": "2026-11-10T17:41:25Z",
     "historial": {
      "aciertos": 0,
      "error_medio": null,
@@ -162,12 +162,12 @@
     },
     "plazos": {
      "12": {
-      "cambio": 4.764266759256963,
+      "cambio": 4.844874658724252,
       "contrato": "2027-10",
       "primero": "2026-12"
      },
      "3": {
-      "cambio": 0.815951985317831,
+      "cambio": 0.8215438073963632,
       "contrato": "2027-02",
       "primero": "2026-12"
      }
@@ -312,7 +312,7 @@
   },
   "plata": {
    "futuros": {
-    "consultado": "2026-11-10T17:12:39Z",
+    "consultado": "2026-11-10T17:41:25Z",
     "historial": {
      "aciertos": 0,
      "error_medio": null,
@@ -323,12 +323,12 @@
     },
     "plazos": {
      "12": {
-      "cambio": 7.163044537569441,
+      "cambio": 7.246659514288489,
       "contrato": "2027-12",
       "primero": "2026-12"
      },
      "3": {
-      "cambio": 1.2182048533281309,
+      "cambio": 1.2191553691602408,
       "contrato": "2027-03",
       "primero": "2026-12"
      }
@@ -473,7 +473,7 @@
   },
   "platino": {
    "futuros": {
-    "consultado": "2026-11-10T17:12:39Z",
+    "consultado": "2026-11-10T17:41:25Z",
     "historial": {
      "aciertos": 0,
      "error_medio": null,
@@ -484,12 +484,12 @@
     },
     "plazos": {
      "12": {
-      "cambio": 4.508249967519795,
+      "cambio": 4.460749301993383,
       "contrato": "2027-10",
       "primero": "2027-01"
      },
      "3": {
-      "cambio": 1.0653501364167761,
+      "cambio": 0.967469644828256,
       "contrato": "2027-04",
       "primero": "2027-01"
      }
@@ -578,7 +578,7 @@
       "calculos": {
        "divisas": {
         "casos": 247,
-        "r2": -0.01124694471208132
+        "r2": -0.011246944712081541
        },
        "dolar": {
         "casos": 247,
@@ -621,7 +621,7 @@
    }
   }
  },
- "calculado": "2026-11-10T17:37:51Z",
+ "calculado": "2026-11-10T17:42:17Z",
  "corte": "2006-01",
- "datos_consultados": "2026-11-10T17:13:24Z"
+ "datos_consultados": "2026-11-10T17:42:16Z"
 }
