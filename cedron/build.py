@@ -13,7 +13,7 @@ from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 from . import apoyo
 from . import indicators as ind
 from . import calendario, ipc, novedades, news
-from . import salud
+from . import salud, traduccion
 from .news import balance
 from .prevision import NOMBRES as NOMBRES_PIEZAS
 from .store import RAIZ, ahora, iso, leer, parse_iso
@@ -506,6 +506,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
     precios = leer("precios.json", {}) or {}
     lecturas = leer("lecturas.json", {}) or {}
     noticias = (leer("noticias.json", {}) or {}).get("noticias", [])
+    traduccion.completar(noticias)        # titulares traducidos despues de guardar la lista
     # Noticias guardadas antes de un cambio de reglas (por ejemplo, al regenerar solo la web):
     # se completan la seccion y la importancia aqui para que los filtros funcionen siempre.
     ncfg = cfg["noticias"]

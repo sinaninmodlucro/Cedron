@@ -76,12 +76,17 @@
 
 {% macro noticia(n, raiz, nombres) -%}
 <li class="noticia" data-activos="{{ n.activos|join(' ') }}" data-seccion="{{ (n.seccion or [])|join(' ') }}" data-nivel="{{ n.nivel or '' }}" data-nota="{{ n.nota }}" data-impacto="{{ n.impacto or 0 }}" data-fecha="{{ n.fecha }}">
+  {% if n.titulo_es %}
+  <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank" hreflang="en">{{ n.titulo_es }}</a></h3>
+  <p class="noticia__original" lang="en"><span class="noticia__traducida" lang="es" title="Traducido automáticamente por un programa: puede tener errores. El titular original es el que va detrás.">Traducción automática · original:</span> {{ n.titulo }}</p>
+  {% else %}
   <h3 class="noticia__titulo"><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.idioma == 'en' %} hreflang="en"{% endif %}>{{ n.titulo }}</a></h3>
+  {% endif %}
   <p class="noticia__datos">
     <span class="nota-noticia" title="Puntuación de la noticia: relevancia, calidad del medio, actualidad y confirmación">{{ n.nota }}/100</span>
     <span>{{ n.medio }}{% if n.comercial %} <span class="etiqueta etiqueta--comercial" title="Este medio vende metales">medio comercial</span>{% endif %}</span>
     <span>{{ n.fecha|hace }}</span>
-    {% if n.idioma == 'en' %}<span class="etiqueta" title="Artículo en inglés">en inglés</span>{% endif %}
+    {% if n.idioma == 'en' or n.titulo_es %}<span class="etiqueta" title="Artículo en inglés">en inglés</span>{% endif %}
     {% if n.tambien_en %}<span>También en {{ n.tambien_en|join(', ') }}</span>{% endif %}
     {% for a in n.activos %}<span class="etiqueta">{{ nombres[a] }}</span>{% endfor %}
     {% if n.nivel %}<span class="importancia importancia--{{ n.nivel }}" title="Importancia para el precio: {{ n.impacto }} sobre 100">Importancia {{ n.nivel }}{% if n.tipo_nombre %} · {{ n.tipo_nombre|lower }}{% endif %}{% if n.sentido %} · apunta {{ 'al alza' if n.sentido == 'alza' else 'a la baja' }}{% endif %}</span>{% endif %}
@@ -131,7 +136,7 @@
   <ul class="por-que__lista">
   {% for s in saltos %}
     <li><strong>{{ s.fecha|mes }}</strong>: <span class="cifra {{ 'sube' if s.cambio_pct > 0 else 'baja' }}">{{ s.cambio_pct|porcentaje }}</span> frente al dato anterior ({{ s.veces|numero(1) }} veces lo habitual).
-      {% if s.noticias %}<ul>{% for n in s.noticias %}<li><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank">{{ n.titulo }}</a> <span class="secundario pequeno">({{ n.medio }})</span></li>{% endfor %}</ul>
+      {% if s.noticias %}<ul>{% for n in s.noticias %}<li><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.titulo_es %} title="Original: {{ n.titulo }}"{% endif %}>{{ n.titulo_es or n.titulo }}</a> <span class="secundario pequeno">({{ n.medio }}{% if n.titulo_es %}, traducción automática{% endif %})</span></li>{% endfor %}</ul>
       {% else %}<span class="secundario pequeno">No hay noticias guardadas de esos días sobre esto.</span>{% endif %}</li>
   {% endfor %}
   </ul>

@@ -168,6 +168,9 @@ main.envoltura { padding-top: 2.5rem; padding-bottom: 4rem; }
 .noticia__titulo { font-family: var(--f-texto); font-weight: 600; font-size: var(--t-m); line-height: 1.4; margin: 0 0 0.3rem; }
 .noticia__titulo a { color: var(--tinta); text-decoration: none; }
 .noticia__titulo a:hover { text-decoration: underline; }
+/* titular original de las noticias traducidas: pequeno y en gris, debajo de la traduccion */
+.noticia__original { font-size: var(--t-s); color: var(--tinta-2); margin: -0.15rem 0 0.35rem; line-height: 1.4; }
+.noticia__traducida { font-style: italic; }
 .noticia__datos { font-family: var(--f-cifra); font-size: var(--t-xs); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
 .etiqueta { border: 1px solid var(--linea); border-radius: 3px; padding: 0 0.4em; }
 .importancia { border-radius: 3px; padding: 0 0.4em; border: 1px solid var(--linea); }

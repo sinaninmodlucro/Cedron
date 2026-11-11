@@ -7,7 +7,7 @@ from dataclasses import asdict
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-from . import apoyo, calendario, ipc
+from . import apoyo, calendario, ipc, traduccion
 from . import indicators as ind
 from . import sources as src
 from .news import balance, seleccionar
@@ -230,6 +230,15 @@ def actualizar_noticias(cfg, estado: Estado) -> None:
     medios = {m["nombre"]: m for m in cfg["medios"]}
     nota_defecto = int(cfg["noticias"].get("nota_medio_desconocido", 50))
     seleccion = seleccionar(brutas, cfg["noticias"], medios, nota_defecto)
+    if (cfg.get("traduccion") or {}).get("activo"):
+        try:
+            hechas = traduccion.traducir_noticias(seleccion, cfg)
+            estado.registrar_fuente("Traductor de titulares", True)
+            log.info("Titulares traducidos: %d (quedan %d sin traducir)", hechas, traduccion.completar(seleccion))
+        except RuntimeError as e:
+            traduccion.completar(seleccion)       # al menos, las ya traducidas
+            estado.registrar_fuente("Traductor de titulares", False, str(e))
+            log.warning("Traductor: %s", e)
     escribir("noticias.json", {"noticias": seleccion, "generado": iso()})
     if cfg["noticias"].get("archivo"):
         archivar_noticias(seleccion)
@@ -255,11 +264,19 @@ def archivar_noticias(seleccion: list[dict]) -> None:
         archivo = leer(ruta, []) or []
         vistos = {a["enlace"] for a in archivo}
         nuevas = [{"fecha": n["fecha"], "titulo": n["titulo"], "medio": n["medio"], "enlace": n["enlace"],
+                   **({"titulo_es": n["titulo_es"]} if n.get("titulo_es") else {}),
                    "temas": n["activos"], "nota": n["nota"], "idioma": n.get("idioma", ""),
                    "tipo": n.get("tipo"), "impacto": n.get("impacto"), "sentido": n.get("sentido", ""),
                    "materias": n.get("materias", []),
                    "visto": iso()} for n in lista if n["enlace"] not in vistos]
-        if nuevas:
+        # la traduccion puede llegar en una ejecucion posterior: se anade a lo ya archivado
+        traducidas = {n["enlace"]: n["titulo_es"] for n in lista if n.get("titulo_es")}
+        anadidas = 0
+        for a in archivo:
+            if not a.get("titulo_es") and a["enlace"] in traducidas:
+                a["titulo_es"] = traducidas[a["enlace"]]
+                anadidas += 1
+        if nuevas or anadidas:
             escribir(ruta, sorted(archivo + nuevas, key=lambda a: a["fecha"]))
 
 

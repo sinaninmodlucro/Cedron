@@ -13,7 +13,7 @@ from __future__ import annotations
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from . import apoyo
+from . import apoyo, traduccion
 from . import indicators as ind
 from .store import RAIZ, escribir, iso, leer
 
@@ -233,6 +233,7 @@ def noticias_destacadas(desde: str, n: int = 5) -> list[dict]:
         out.append(x)
         if len(out) >= n:
             break
+    traduccion.completar(out)
     return out
 
 
@@ -280,7 +281,7 @@ def texto_correo(cfg: dict, r: dict, fuentes_mal: list[dict], proximas: list[dic
                 que = "en la semana" if m.get("periodo") else f"dato de {_fecha_es(m['dato'])} frente al anterior"
                 L.append(f"- **{_nombre(m)}**: {_pct(m['cambio_pct'])} ({que})")
                 for n in (m.get("noticias") or [])[:1]:
-                    L.append(f"  - Por qué: [{n['titulo']}]({n['enlace']})")
+                    L.append(f"  - Por qué: [{n.get('titulo_es') or n['titulo']}]({n['enlace']})")
             L.append("")
     luz = luz_semanal(cfg)
     if luz:
@@ -311,7 +312,8 @@ def texto_correo(cfg: dict, r: dict, fuentes_mal: list[dict], proximas: list[dic
     if proximas:
         L += ["## Próximas fechas", ""] + [f"- {_fecha_es(x['fecha'])}: {x['titulo']}" for x in proximas[:10]] + [""]
     if noticias:
-        L += ["## Noticias más importantes", ""] + [f"- [{x['titulo']}]({x['enlace']}) ({x['medio']})" for x in noticias] + [""]
+        L += ["## Noticias más importantes", ""] + [f"- [{x.get('titulo_es') or x['titulo']}]({x['enlace']}) ({x['medio']}"
+                                                       f"{', traducción automática' if x.get('titulo_es') else ''})" for x in noticias] + [""]
     if fuentes_mal:
         L += ["## Fuentes con avisos", ""] + [f"- {f['nombre']}: {f['texto'].lower()}" for f in fuentes_mal] + [""]
     if r["vacio"] and not r["previsiones"]:
@@ -374,7 +376,9 @@ def noticias_de(cfg: dict, desde: str, hasta: str, metal: str | None = None, mat
         vistas.add(x["titulo"])
         out.append(x)
     out.sort(key=lambda x: (x.get("impacto") or 0, x.get("nota") or 0), reverse=True)
-    return out[:n]
+    out = out[:n]
+    traduccion.completar(out)
+    return out
 
 
 def saltos(serie: list, veces: float = 2.5, dias: int = 60, minimo: int = 30, hoy: str | None = None) -> list[dict]:

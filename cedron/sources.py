@@ -743,7 +743,9 @@ def newsdata(clave: str, consulta: str, idiomas: str = "es,en") -> list[dict]:
         salida.append({"titulo": _limpiar(a["title"]), "enlace": a["link"],
                        "fecha": _fecha(fecha) if fecha else None,
                        "resumen": _limpiar(a.get("description") or "")[:300],
-                       "medio": a.get("source_name") or a.get("source_id") or "Desconocido"})
+                       "medio": a.get("source_name") or a.get("source_id") or "Desconocido",
+                       # NewsData da el idioma con su nombre en ingles («english», «spanish»)
+                       "idioma": {"english": "en", "spanish": "es"}.get(str(a.get("language") or "").lower(), "")})
     return salida
 
 

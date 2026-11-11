@@ -54,6 +54,15 @@ jobs:
       - name: Pruebas
         run: python -m unittest discover tests
 
+      # Modelo de traduccion de titulares (~3 GB): se guarda entre ejecuciones para no
+      # bajarlo cada hora. La clave lleva la version fijada en config.yaml.
+      - name: Modelo de traduccion (guardado)
+        if: github.event_name != 'push'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/cedron/modelos
+          key: traductor-madlad-aa32bbdeba7880eff2096ec044cb155a340a9400
+
       - name: Recoger datos y generar la web
         env:
           METALCHARTS_KEY: ${{ secrets.METALCHARTS_KEY }}

@@ -33,7 +33,7 @@
         {% for m in lista %}
           <li>{{ nombre(m) }} <span class="cifra {{ 'sube' if m.cambio_pct > 0 else 'baja' }}">{{ m.cambio_pct|porcentaje }}</span>
             <span class="pequeno secundario">{% if m.periodo %}{{ 'en el día' if dias == 1 else 'en la semana' }}{% else %}dato de {{ m.dato|mes }}{% endif %}</span>
-            {% if m.noticias %}<span class="novedades__motivo pequeno">Por qué: {% for n in m.noticias %}<a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank">{{ n.titulo }}</a>{{ '; ' if not loop.last }}{% endfor %}</span>{% endif %}</li>
+            {% if m.noticias %}<span class="novedades__motivo pequeno">Por qué: {% for n in m.noticias %}<a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank"{% if n.titulo_es %} title="Original: {{ n.titulo }} (traducción automática)"{% endif %}>{{ n.titulo_es or n.titulo }}</a>{{ '; ' if not loop.last }}{% endfor %}</span>{% endif %}</li>
         {% endfor %}
         </ul>
       </div>

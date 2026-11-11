@@ -1679,6 +1679,36 @@ noticias:
             "silver lining"]     # 6-nov-2026: expresion inglesa ("el lado bueno"), no habla de plata
 
 # -----------------------------------------------------------------------------
+# Traduccion automatica de los titulares al espanol (11-nov-2026, peticion del usuario).
+# Se hace en la propia automatizacion con un modelo abierto, sin claves ni limites
+# (cedron/traduccion.py). Comparados con 45 titulares reales el 11-nov-2026:
+#   - Argos en->es 1.0: errores graves («Gold Tumbles» -> «Tornillos de oro»).
+#   - OPUS-MT tc-big en->es: rapido (0,2 s/titular) pero a veces invierte el sentido
+#     («Peace Hopes Grow» -> «crece la paz»).
+#   - MADLAD-400 3B de Google (Apache 2.0; conversion de Nextcloud): el mas fiel; a veces
+#     resume el final del titular. ~2 s/titular. ELEGIDO. El original se muestra siempre al lado.
+# Se fija la version exacta (revision) y la huella SHA-256 de cada archivo: si no coincide,
+# no se usa. Cada titular se traduce una vez (data/traducciones.json).
+# -----------------------------------------------------------------------------
+traduccion:
+  activo: true
+  max_por_ejecucion: 60           # titulares nuevos por hora (llegan ~25); los atrasados, en las siguientes
+  segundos_max: 300               # tiempo maximo de traduccion por ejecucion (la automatizacion tiene 15 min)
+  dias_memoria: 60                # se olvidan las traducciones de titulares que no se ven en 60 dias
+  modelo:
+    repo: Nextcloud-AI/madlad400-3b-mt-ct2-int8
+    revision: aa32bbdeba7880eff2096ec044cb155a340a9400
+    prefijo: "<2es> "             # MADLAD: idioma de destino
+    vocab_origen: spiece.model
+    vocab_destino: spiece.model
+    haz: 2                        # busqueda en haz (2 = casi igual de bien que 4 y el doble de rapido)
+    archivos:                     # nombre: huella SHA-256 (comprobada el 11-nov-2026)
+      config.json: 90fb54962455a4e0a0bc7235c0f063d7e46d9c1a1ae003af8059809abd6aeece
+      shared_vocabulary.json: c327551ce3ca6efc7b437e11a267f79979893332dda8a1d146e2c950815193f8
+      spiece.model: ef11ac9a22c7503492f56d48dce53be20e339b63605983e9f27d2cd0e0f3922c
+      model.bin: 77b9fd9ab97c1259d07089b5f854393dad81bc5fb5647d3f9a5d101c94f40daa
+
+# -----------------------------------------------------------------------------
 # Medidas regulatorias en vigor (11-nov-2026). Se apuntan a mano, con su fuente oficial, las
 # medidas que cambian la oferta o el precio de una materia; salen en la ficha de la materia
 # hasta la fecha 'hasta'. No entran en el calculo de la prevision (no hay forma de probarlas
