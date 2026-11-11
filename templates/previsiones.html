@@ -36,7 +36,7 @@
   <p class="pequeno secundario">Cambio previsto del precio de abajo de cada eslabón comprobado. Las columnas de acierto salen de la prueba a ciegas: cada previsión del pasado se hizo solo con los datos que había entonces. Cuánto y en cuánto tiempo se traslada cada precio está en <a href="{{ raiz }}cadena.html#{{ g.id }}">Cadena de costes</a>.</p>
   <ol class="eslabones">
   {% for e in g.eslabones %}{% set p = e.previsiones['12'] or e.previsiones['3'] %}
-    <li class="eslabon">
+    <li class="eslabon" id="p-{{ e.id }}">
       <h3 class="eslabon__titulo">{{ e.arriba }} <span aria-hidden="true">→</span><span class="oculto"> hacia </span> {{ e.abajo }}</h3>
       <div class="prevision">
         <h4 class="prevision__titulo">Nuestra previsión para {{ e.abajo_corto }}</h4>

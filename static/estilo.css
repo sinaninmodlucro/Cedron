@@ -336,6 +336,9 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
 /* ------------------------------------------------------- cadena de costes */
 .eslabones { list-style: none; margin: 0; padding: 0; }
 .eslabon { padding: 1.25rem 0 1rem; border-bottom: 1px solid var(--linea); max-width: 46rem; }
+.eslabon[id] { scroll-margin-top: 1rem; }
+/* el eslabon al que se llega desde «Cadena de costes» se marca con una raya a la izquierda */
+.eslabon:target { box-shadow: -0.9rem 0 0 -0.6rem var(--verdin, #2F7D6B); }
 .eslabon__titulo { font-family: var(--f-cifra); font-weight: 600; font-size: var(--t-m); margin: 0 0 0.4rem; }
 .eslabon__frase { margin: 0 0 0.6rem; }
 .eslabon__notas { margin: 0.6rem 0; padding-left: 1.1rem; font-size: var(--t-s); }

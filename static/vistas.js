@@ -34,9 +34,22 @@
                  .filter(function (g) { return g !== "todas"; });
 
   function validos(lista) { return (lista || []).filter(function (g) { return grupos.indexOf(g) >= 0; }); }
+  // Enlace a un elemento concreto dentro de un grupo (p. ej. #p-brent_diesel desde
+  // «Cadena de costes»): se abre su grupo y se baja hasta el.
+  function destino() {
+    var h = decodeURIComponent(location.hash.slice(1));
+    var el = h && document.getElementById(h);
+    var s = el && el.closest && el.closest("section[data-grupo]");
+    return s && grupos.indexOf(s.dataset.grupo) >= 0 ? { el: el, grupo: s.dataset.grupo } : null;
+  }
+  function irA(d) {
+    try { d.el.scrollIntoView({ block: "start" }); } catch (e) { d.el.scrollIntoView(); }
+  }
   function leerHash() {
     var h = decodeURIComponent(location.hash.slice(1));
-    return h === "todas" ? grupos.slice() : validos(h.split("+"));
+    if (h === "todas") return grupos.slice();
+    var d = destino();
+    return d ? [d.grupo] : validos(h.split("+"));
   }
   function aplicar(elegidos) {
     var todas = elegidos.length === grupos.length;
@@ -71,6 +84,13 @@
     });
   });
   window.addEventListener("hashchange", function () {
+    var d = destino();
+    if (d) {                 // se deja la direccion como esta para que el enlace siga valiendo
+      actual = [d.grupo];
+      aplicar(actual);
+      irA(d);
+      return;
+    }
     var l = leerHash();
     if (l.length) elegir(l);
   });
@@ -80,6 +100,9 @@
   }
   actual = inicial.length ? grupos.filter(function (g) { return inicial.indexOf(g) >= 0; }) : [grupos[0]];
   aplicar(actual);
+  // el navegador intenta bajar al ancla antes de mostrar su grupo: se repite ya visible
+  var d0 = destino();
+  if (d0) irA(d0);
 })();
 // Selector de precio: origen y tienda / solo origen / solo tienda.
 // Funciona con una marca en <html> que lee la hoja de estilos, asi sirve igual

@@ -48,7 +48,7 @@
           {% if e.nota %}<li>{{ e.nota }}</li>{% endif %}
         </ul>
         {% if e.previsiones %}
-        <p class="pequeno"><a href="{{ raiz }}previsiones.html#{{ c.id }}">Nuestra previsión para {{ e.abajo_corto }}</a> está en la página «Previsiones».</p>
+        <p class="pequeno"><a href="{{ raiz }}previsiones.html#p-{{ e.id }}">Nuestra previsión para {{ e.abajo_corto }}</a> está en la página «Previsiones».</p>
         {% endif %}
       {% elif e.clase == 'no_se_aprecia' %}
         {% set x6 = e.seis %}
