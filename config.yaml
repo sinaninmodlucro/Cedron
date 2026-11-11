@@ -1692,7 +1692,8 @@ noticias:
 # -----------------------------------------------------------------------------
 traduccion:
   activo: true
-  max_por_ejecucion: 60           # titulares nuevos por hora (llegan ~25); los atrasados, en las siguientes
+  max_por_ejecucion: 120          # titulares nuevos por hora (llegan ~25); los atrasados, en las siguientes.
+                                  # 60 hasta el 11-nov-2026: en GitHub 60 tardan ~1,5 min; con 120 se pone al dia antes
   segundos_max: 300               # tiempo maximo de traduccion por ejecucion (la automatizacion tiene 15 min)
   dias_memoria: 60                # se olvidan las traducciones de titulares que no se ven en 60 dias
   modelo:
