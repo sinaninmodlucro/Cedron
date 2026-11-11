@@ -20,7 +20,7 @@ import html
 import io
 import re
 import xml.etree.ElementTree as ET
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from email.utils import parsedate_to_datetime
 
@@ -806,3 +806,176 @@ def implicito(curva: list, desde_mes: str, h: int) -> dict | None:
     if abs(n(cerca[0]) - objetivo) > 2:
         return None
     return {"cambio": (cerca[1] / curva[0][1] - 1) * 100, "contrato": cerca[0], "primero": curva[0][0]}
+
+
+# ---------------------------------------------------------------------------
+# Red Electrica (REData, apidatos.ree.es): precio de la electricidad en Espana
+# (11-nov-2026). Sin clave. Condiciones de ree.es: uso con fines informativos y no
+# comerciales citando a Red Electrica y la fecha de actualizacion.
+# La API solo responde por horas (por dias da error), como mucho un mes por consulta:
+#   - «Precio mercado spot»: mercado mayorista diario (OMIE), desde 2014.
+#   - «PVPC»: termino de energia de la tarifa regulada 2.0TD (peajes y cargos incluidos,
+#     sin impuestos), desde junio de 2021.
+# ---------------------------------------------------------------------------
+REE_SERIES = {"Precio mercado spot": "spot", "PVPC": "pvpc"}
+
+
+def ree_precios_mes(anio: int, mes: int) -> dict[str, list[tuple[str, float]]]:
+    """Media diaria (€/MWh) de cada serie en un mes."""
+    fin = date(anio + (mes == 12), mes % 12 + 1, 1)
+    url = ("https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real"
+           f"?start_date={anio}-{mes:02d}-01T00:00&end_date={(fin - timedelta(days=1)).isoformat()}T23:59"
+           "&time_trunc=hour")
+    try:
+        cuerpo = _get(url).json()
+    except ValueError as e:
+        raise FuenteError("Red Eléctrica: respuesta no válida") from e
+    if cuerpo.get("errors"):
+        raise FuenteError(f"Red Eléctrica: {cuerpo['errors'][0].get('detail', 'error')[:120]}")
+    salida = {}
+    for inc in cuerpo.get("included", []):
+        clave = REE_SERIES.get(inc.get("attributes", {}).get("title"))
+        if not clave:
+            continue
+        por_dia: dict[str, list[float]] = {}
+        for v in inc["attributes"].get("values", []):
+            x = _num(v.get("value"))
+            if x is not None and v.get("datetime"):
+                por_dia.setdefault(v["datetime"][:10], []).append(x)
+        salida[clave] = [(d, round(sum(xs) / len(xs), 3)) for d, xs in sorted(por_dia.items()) if len(xs) >= 20]
+    return salida
+
+
+# ---------------------------------------------------------------------------
+# MIBGAS: precio del gas natural en Espana (11-nov-2026). Un Excel por anio desde 2015.
+# Condiciones (hoja «Disclaimer»): la informacion publica y gratuita puede usarse
+# libremente respetando su contenido original y citando la fuente.
+# Se usa el «MIBGAS-ES Index» (€/MWh, por dia de entrega) de la hoja «MIBGAS Indexes»;
+# en los anios en que no existe, el indice medio del dia siguiente (Day-Ahead) del PVB.
+# ---------------------------------------------------------------------------
+def mibgas_indice(anio: int) -> list[tuple[str, float]]:
+    import openpyxl
+    url = f"https://www.mibgas.es/es/file-access/MIBGAS_Data_{anio}.xlsx?path=AGNO_{anio}/XLS"
+    r = _get(url, headers={"User-Agent": "Mozilla/5.0 (compatible; Cedron/1.0)"})
+    try:
+        wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+    except Exception as e:  # noqa: BLE001  (archivo dañado o con otro formato)
+        raise FuenteError(f"MIBGAS {anio}: el Excel no se puede leer ({e.__class__.__name__})") from e
+    hoja = next((ws for ws in wb.worksheets if ws.title.lower().startswith(("indice", "index", "mibgas index"))), None)
+    if hoja is None:
+        raise FuenteError(f"MIBGAS {anio}: no está la hoja de índices")
+    filas = hoja.iter_rows(values_only=True)
+    cab = [re.sub(r"\s+", " ", str(c or "")).strip() for c in next(filas)]
+    # El nombre de la columna cambia segun el anio: «MIBGAS Index», «MIBGAS-ES Index»...
+    col = next((i for i, c in enumerate(cab) if c in ("MIBGAS-ES Index [EUR/MWh]", "MIBGAS Index [EUR/MWh]")), None)
+    respaldo = next((i for i, c in enumerate(cab) if "PVB" in c and "Average" in c), None)
+    area = next((i for i, c in enumerate(cab) if c == "Area"), None)
+    if col is None and respaldo is None:
+        raise FuenteError(f"MIBGAS {anio}: cambió el formato (columnas: {cab[:6]})")
+    salida = {}
+    for f in filas:
+        if not f or not isinstance(f[0], datetime) or (area is not None and f[area] != "ES"):
+            continue
+        # El indice del propio dia se publica despues: el de respaldo solo si no hay columna de indice
+        v = _num(f[col]) if col is not None else _num(f[respaldo])
+        if v is not None and 0 < v < 1000:
+            salida[f[0].date().isoformat()] = v
+    wb.close()
+    return sorted(salida.items())
+
+
+# ---------------------------------------------------------------------------
+# INE, Indice de Precios de Consumo (11-nov-2026). API JSON «Tempus», sin clave.
+# Reutilizacion libre citando al INE como fuente. Base 2025 (ECOICOP v2), series desde 2002.
+# ---------------------------------------------------------------------------
+def ine_serie(codigo: str, n: int = 400) -> list[tuple[str, float]]:
+    """Ultimos 'n' datos mensuales de una serie del INE: [('AAAA-MM', valor)]."""
+    r = _get(f"https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{codigo}", params={"nult": n})
+    try:
+        datos = r.json().get("Data") or []
+    except (ValueError, AttributeError) as e:
+        raise FuenteError(f"INE {codigo}: respuesta no válida") from e
+    salida = []
+    for d in datos:
+        v = _num(d.get("Valor"))
+        if v is None or d.get("Secreto"):
+            continue
+        f = datetime.fromtimestamp(d["Fecha"] / 1000, tz=timezone.utc) + timedelta(hours=12)
+        salida.append((f.strftime("%Y-%m"), v))
+    if not salida:
+        raise FuenteError(f"INE {codigo}: serie vacía")
+    return sorted(dict(salida).items())
+
+
+def normalizar_ine(nombre: str) -> str:
+    t = re.sub(r"^(Total )?Nacional\.\s*", "", nombre or "")
+    t = re.sub(r"\.\s*(Ponderación|Índice)\.?\s*$", "", t.strip())
+    return re.sub(r"\s+", " ", t).strip().lower()
+
+
+def ine_pesos(tablas: list[int]) -> dict[str, float]:
+    """Ponderaciones (por mil) del IPC del anio en curso, por nombre normalizado."""
+    pesos = {}
+    for t in tablas:
+        r = _get(f"https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/{t}", params={"nult": 1})
+        try:
+            filas = r.json()
+        except ValueError as e:
+            raise FuenteError(f"INE tabla {t}: respuesta no válida") from e
+        for x in filas:
+            if x.get("Data"):
+                v = _num(x["Data"][-1].get("Valor"))
+                if v is not None:
+                    pesos[normalizar_ine(x.get("Nombre", ""))] = v
+    if not pesos:
+        raise FuenteError("INE: no hay ponderaciones")
+    return pesos
+
+
+# ---------------------------------------------------------------------------
+# Calendarios de bancos centrales (11-nov-2026): reuniones de politica monetaria.
+# ---------------------------------------------------------------------------
+_MESES_EN = {m: i + 1 for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July",
+                                             "August", "September", "October", "November", "December"])}
+_MESES_EN.update({m[:3]: i for m, i in list(_MESES_EN.items())})
+
+
+def fed_reuniones() -> list[str]:
+    """Ultimo dia (el del anuncio) de cada reunion del FOMC publicada."""
+    t = _get("https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm").text
+    bloques = re.split(r"(\d{4}) FOMC Meetings", t)
+    fechas = []
+    for i in range(1, len(bloques) - 1, 2):
+        anio = int(bloques[i])
+        for mes, dias in re.findall(r'fomc-meeting__month[^>]*>\s*<strong>([^<]+)</strong>.*?fomc-meeting__date[^>]*>([^<]+)<',
+                                    bloques[i + 1], flags=re.S):
+            if "notation" in dias or "unscheduled" in dias.lower():
+                continue
+            nums = re.findall(r"\d+", dias)
+            if not nums:
+                continue
+            m = mes.split("/")[-1].strip()
+            if m not in _MESES_EN:
+                continue
+            try:
+                fechas.append(date(anio, _MESES_EN[m], int(nums[-1])).isoformat())
+            except ValueError:
+                continue
+    if not fechas:
+        raise FuenteError("Reserva Federal: no se encontraron reuniones (¿cambió la página?)")
+    return sorted(set(fechas))
+
+
+def bce_reuniones() -> list[str]:
+    """Dia de la decision (con rueda de prensa) de cada reunion de politica monetaria del BCE."""
+    t = _get("https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html").text
+    fechas = []
+    for f, texto in re.findall(r"<dt[^>]*>(.*?)</dt>\s*<dd[^>]*>(.*?)</dd>", t, flags=re.S):
+        texto = re.sub(r"<[^>]+>", " ", texto)
+        if "monetary policy meeting" in texto and "non-monetary" not in texto and "press conference" in texto:
+            d = re.search(r"(\d{2})/(\d{2})/(\d{4})", f)
+            if d:
+                fechas.append(f"{d.group(3)}-{d.group(2)}-{d.group(1)}")
+    if not fechas:
+        raise FuenteError("BCE: no se encontraron reuniones (¿cambió la página?)")
+    return sorted(set(fechas))

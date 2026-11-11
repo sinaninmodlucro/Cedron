@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import contraste, noticia, tabla_prevision %}
+{% from "_macros.html" import contraste, noticia, tabla_prevision, por_que %}
 {% block titulo %}{{ a.nombre }}: precio y contexto | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Precio {{ a.de_art }} {{ a.nombre|lower }} en dólares y euros, gráfico de 10 años, tendencia en varios plazos y contexto.{% endblock %}
 {% block contenido %}
@@ -25,6 +25,7 @@
   </header>
 
   {% if a.frase %}<p class="ficha__frase">{{ a.frase }}</p>{% endif %}
+  {{ por_que(a.saltos, cfg.novedades.salto_veces) }}
 
   <div class="columnas">
     <section class="bloque" aria-labelledby="t-graf">

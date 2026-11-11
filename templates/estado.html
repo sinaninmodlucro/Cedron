@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block titulo %}Estado de los datos | {{ sitio.nombre }}{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Estado de los datos</h1>
+  <p>De cada fuente: la fecha de su dato más nuevo y si va con retraso según lo que suele tardar en publicar. Un dato de septiembre publicado en noviembre puede estar al día: muchos organismos publican con meses de retraso.</p>
+  {% set malas = salud_fuentes|rejectattr('clase', 'in', ['al_dia', 'fallo'])|list %}
+  <p>{% if malas %}<span class="estado-mal">{{ malas|length }} {{ 'fuente necesita' if malas|length == 1 else 'fuentes necesitan' }} atención.</span>{% else %}<span class="estado-ok">Todas las fuentes están al día.</span>{% endif %}
+  {% if ultima_ejecucion %} Última comprobación: {{ ultima_ejecucion|fecha_hora }}.{% endif %}</p>
+</div>
+
+<h2 class="bloque">Fuentes de datos</h2>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Fuente</th><th>Dato más nuevo</th><th>Publica</th><th class="num">Margen</th><th>Última respuesta</th><th>Estado</th></tr></thead>
+  <tbody>
+  {% for f in salud_fuentes %}
+    <tr>
+      <td>{{ f.nombre }}</td>
+      <td>{{ f.fecha|mes if f.fecha else '—' }}{% if f.edad is not none %} <span class="secundario pequeno">({{ f.edad }} {{ 'día' if f.edad == 1 else 'días' }})</span>{% endif %}</td>
+      <td>{{ f.frecuencia }}</td>
+      <td class="num">{{ f.max_dias }} {{ 'día' if f.max_dias == 1 else 'días' }}</td>
+      <td>{{ f.ultimo_ok|fecha_hora if f.ultimo_ok else '—' }}</td>
+      <td>{% if f.clase in ['al_dia'] %}<span class="estado-ok">{{ f.texto }}</span>{% else %}<span class="estado-mal">{{ f.texto }}</span>{% endif %}
+        {% if f.paradas %}<br><span class="pequeno secundario">{{ f.paradas }} de {{ f.series }} series sin dato reciente</span>{% endif %}
+        {% if f.fallos and f.error %}<br><span class="pequeno secundario">{{ f.error }}</span>{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<p class="pequeno secundario">«Margen» es cuántos días puede tener el dato más nuevo antes de marcarse con retraso (se cuenta desde el final del periodo: un dato de septiembre, desde el 30 de septiembre). Si una fuente falla tres veces seguidas, se abre un aviso que llega por correo. Los márgenes se ajustan en <code>config.yaml</code> (<code>estado_fuentes</code>).</p>
+
+<h2 class="bloque">Historial de previsiones</h2>
+<p class="texto">Es lo único de Cedron que no se puede reconstruir. Está protegido: ninguna previsión apuntada se puede borrar, lo apuntado solo se corrige el mismo día y el resultado real, una vez puesto, no cambia. Si un cambio lo intentara, la actualización se detendría y llegaría un aviso.</p>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Historial</th><th class="num">Apuntadas</th><th class="num">De ellas, de futuros</th><th class="num">Comprobadas</th><th>Última apuntada</th><th>Próxima en vencer</th></tr></thead>
+  <tbody>
+  {% for h in salud_historiales %}
+    <tr><td>{{ h.nombre }}</td><td class="num">{{ h.total }}</td><td class="num">{{ h.futuros }}</td><td class="num">{{ h.comprobadas }}</td>
+      <td>{{ h.ultima|mes if h.ultima else '—' }}</td><td>{{ h.proxima|mes if h.proxima else '—' }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<h2 class="bloque">Otras comprobaciones</h2>
+<div class="desplazable">
+<table class="tabla">
+  <thead><tr><th>Proceso</th><th>Última vez correcta</th><th>Estado</th></tr></thead>
+  <tbody>
+  {% for nombre, e in fuentes_estado|dictsort if not nombre.startswith('RSS ') and nombre not in nombres_estado %}
+    <tr><td>{{ nombre }}</td><td>{{ e.ultimo_ok|fecha_hora if e.ultimo_ok else '—' }}</td>
+      <td>{% if e.fallos_seguidos %}<span class="estado-mal">Fallando ({{ e.fallos_seguidos }} intentos): {{ e.ultimo_error }}</span>{% else %}<span class="estado-ok">Correcto</span>{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<p class="pequeno secundario">El estado de cada medio de noticias está en <a href="{{ raiz }}fuentes.html">Fuentes y licencias</a>.</p>
+{% endblock %}

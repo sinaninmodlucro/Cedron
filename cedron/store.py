@@ -37,9 +37,52 @@ def leer(nombre: str, defecto: Any = None) -> Any:
         return json.load(f)
 
 
+# ---------------------------------------------------------------------------
+# Historiales de previsiones: lo unico que no se puede reconstruir (11-nov-2026).
+# Nunca se borra una entrada; lo apuntado solo se puede corregir el mismo dia en que se
+# apunto, y el resultado real, una vez puesto, no cambia.
+# ---------------------------------------------------------------------------
+HISTORIALES = ("cadena_previsiones.json", "metales_previsiones.json", "apoyo_previsiones.json")
+CAMPOS_FIJOS = ("previsto", "base", "habitual", "vence", "apuntada")
+
+
+class HistorialError(ValueError):
+    """Un cambio que borraria o reescribiria previsiones ya apuntadas (ValueError: el motor
+    lo anota como fallo de la fuente y, si se repite 3 veces, abre una incidencia)."""
+
+
+def clave_prevision(r: dict) -> tuple:
+    return (r.get("id"), r.get("plazo"), r.get("desde"))
+
+
+def problemas_historial(antiguo: list, nuevo: list, hoy: str | None = None) -> list[str]:
+    """Que se perderia o reescribiria al pasar de 'antiguo' a 'nuevo' (vacio = todo bien)."""
+    hoy = hoy or iso()[:10]
+    nuevos = {clave_prevision(r): r for r in nuevo or []}
+    fallos = []
+    for r in antiguo or []:
+        k = clave_prevision(r)
+        n = nuevos.get(k)
+        nombre = f"{k[0]} a {k[1]} meses desde {k[2]}"
+        if n is None:
+            fallos.append(f"desaparece {nombre}")
+            continue
+        if (r.get("apuntada") or "")[:10] != hoy:
+            for c in CAMPOS_FIJOS:
+                if c in r and n.get(c) != r[c]:
+                    fallos.append(f"cambia «{c}» de {nombre}")
+        if r.get("real") is not None and n.get("real") != r["real"]:
+            fallos.append(f"cambia el resultado real de {nombre}")
+    return fallos
+
+
 def escribir(nombre: str, contenido: Any) -> None:
     """Escritura atomica: si el proceso se corta, nunca deja un archivo a medias."""
     ruta = DATA / nombre
+    if nombre in HISTORIALES and ruta.exists():
+        fallos = problemas_historial(leer(nombre, []) or [], contenido)
+        if fallos:
+            raise HistorialError(f"{nombre}: no se guarda ({len(fallos)} problemas: {'; '.join(fallos[:5])})")
     ruta.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=ruta.parent, suffix=".tmp")
     with os.fdopen(fd, "w", encoding="utf-8") as f:

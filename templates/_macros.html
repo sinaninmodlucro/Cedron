@@ -121,3 +121,21 @@
 <ul class="pequeno secundario">{% for r in h.ultimas %}<li>{{ r.desde|mes }} → {{ r.vence|mes }}: previsto {{ r.previsto|porcentaje }}, real {{ r.real|porcentaje }} {{ '✓' if (r.previsto > 0) == (r.real > 0) else '✗' }}</li>{% endfor %}</ul>
 {% elif h and h.proxima %}<p class="pequeno secundario"><strong>Nuestro historial:</strong> {{ h.hechas }} {{ 'previsión apuntada' if h.hechas == 1 else 'previsiones apuntadas' }}; la primera se podrá comprobar con el dato de {{ h.proxima|mes }}.</p>{% endif %}
 {%- endmacro %}
+
+
+{# «Por qué se movió»: saltos fuertes recientes y las noticias de esos días #}
+{% macro por_que(saltos, veces=2.5) %}
+{% if saltos %}
+<details class="por-que">
+  <summary>Por qué se movió: {{ saltos|length }} {{ 'salto fuerte' if saltos|length == 1 else 'saltos fuertes' }} en los últimos dos meses</summary>
+  <ul class="por-que__lista">
+  {% for s in saltos %}
+    <li><strong>{{ s.fecha|mes }}</strong>: <span class="cifra {{ 'sube' if s.cambio_pct > 0 else 'baja' }}">{{ s.cambio_pct|porcentaje }}</span> frente al dato anterior ({{ s.veces|numero(1) }} veces lo habitual).
+      {% if s.noticias %}<ul>{% for n in s.noticias %}<li><a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank">{{ n.titulo }}</a> <span class="secundario pequeno">({{ n.medio }})</span></li>{% endfor %}</ul>
+      {% else %}<span class="secundario pequeno">No hay noticias guardadas de esos días sobre esto.</span>{% endif %}</li>
+  {% endfor %}
+  </ul>
+  <p class="pequeno secundario">Un salto es fuerte si el cambio entre dos datos seguidos supera {{ veces|numero(1) }} veces lo que suele moverse esta serie (su desviación típica del último año). Las noticias son las más importantes de esos días sobre este producto: ayudan a entender el movimiento, pero no prueban que lo causaran.</p>
+</details>
+{% endif %}
+{% endmacro %}

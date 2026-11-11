@@ -13,6 +13,10 @@ on:
         description: "Pedir todas las fuentes aunque no toque"
         type: boolean
         default: false
+      resumen:
+        description: "Enviar ahora el resumen semanal (prueba)"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: ["config.yaml", "templates/**", "static/**", "cedron/**"]
@@ -36,6 +40,8 @@ jobs:
       url: ${{ steps.publicar.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2       # la version anterior, para comprobar que no se pierde ninguna prevision
 
       - uses: actions/setup-python@v5
         with:
@@ -54,6 +60,7 @@ jobs:
           FRED_KEY: ${{ secrets.FRED_KEY }}
           NEWSDATA_KEY: ${{ secrets.NEWSDATA_KEY }}
           CEDRON_PASSWORD: ${{ secrets.CEDRON_PASSWORD }}
+          CEDRON_RESUMEN: ${{ inputs.resumen && '1' || '' }}
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             python run.py --solo-web
@@ -89,6 +96,18 @@ jobs:
           elif [ -n "$abierta" ]; then
             gh issue close "$abierta" --comment "Todas las fuentes vuelven a responder."
           fi
+
+      # Resumen semanal: los lunes (config.yaml, novedades.correo) se abre una incidencia con
+      # lo que ha cambiado; GitHub la envia por correo. Se cierra la de la semana anterior.
+      - name: Enviar el resumen semanal
+        if: hashFiles('resumen_semanal.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create resumen-semanal --color 2F7D6B --description "Resumen semanal de Cedron" 2>/dev/null || true
+          anteriores=$(gh issue list --state open --label resumen-semanal --json number --jq '.[].number')
+          gh issue create --title "Cedron: resumen semanal ($(TZ=Europe/Madrid date +'%d/%m/%Y'))" --label resumen-semanal --body-file resumen_semanal.md
+          for n in $anteriores; do gh issue close "$n"; done
 
       # La web solo se publica si existe la contrasena (secreto CEDRON_PASSWORD):
       # sin ella, nunca se publica nada sin cifrar.

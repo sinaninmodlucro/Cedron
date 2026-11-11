@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block titulo %}Calendario de fechas clave | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}Reuniones de bancos centrales, datos oficiales, informes de cosechas y medidas: cuándo puede moverse algo.{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>Calendario de fechas clave</h1>
+  <p>Cuándo puede moverse algo: decisiones de tipos de interés, datos oficiales, informes de cosechas y energía, y fechas de las medidas regulatorias. Las reuniones de la Reserva Federal y del BCE se leen solas de sus webs cada semana; las demás fechas llevan su fuente. Las citas que se repiten (cada semana o cada mes) se marcan «habitualmente»: un festivo puede moverlas.</p>
+</div>
+<div class="filtros filtros--calendario" role="group" aria-label="Qué mostrar">
+  <button type="button" data-tipo="todos" aria-pressed="true">Todo</button>
+  {% for id, t in cfg.calendario.tipos.items() %}<button type="button" data-tipo="{{ id }}" aria-pressed="false">{{ t.nombre }}</button>{% endfor %}
+</div>
+{% for mes_id, lista in calendario_meses %}
+<section class="bloque calendario-mes" aria-labelledby="t-{{ mes_id }}">
+  <h2 id="t-{{ mes_id }}">{{ mes_id|mes|capitalize }}</h2>
+  <ul class="calendario">
+  {% for e in lista %}
+    <li class="calendario__fila" data-tipo="{{ e.tipo }}">
+      <span class="calendario__fecha cifra">{% if e.mes_entero %}Todo el mes{% else %}{{ e.dia }} {{ e.fecha[8:10]|int }}{% endif %}</span>
+      <span class="calendario__que">{{ e.titulo }}{% if e.aprox %} <span class="secundario pequeno">(habitualmente)</span>{% endif %}
+        <span class="pequeno secundario">{{ e.tipo_nombre }}{% for mid in e.materias if mid in materias_nombres %} · <a href="{{ raiz }}materias/{{ mid }}.html">{{ materias_nombres[mid] }}</a>{% endfor %}{% if e.fuente %} · Fuente: {% if e.enlace %}<a href="{{ e.enlace }}" rel="noopener nofollow" target="_blank">{{ e.fuente }}</a>{% else %}{{ e.fuente }}{% endif %}{% endif %}</span>
+      </span>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+{% else %}
+<p class="vacio">Todavía no hay fechas.</p>
+{% endfor %}
+<p class="pequeno secundario bloque">Las fechas fijas y las periódicas se ajustan en <code>config.yaml</code> (sección <code>calendario</code>). El USDA bloquea los lectores automáticos: sus fechas se añaden a mano cuando las publica. Las citas semanales se muestran solo para las próximas cuatro semanas.</p>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  var bs = document.querySelectorAll(".filtros--calendario button");
+  bs.forEach(function (b) {
+    b.addEventListener("click", function () {
+      bs.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      document.querySelectorAll(".calendario__fila").forEach(function (f) {
+        f.hidden = b.dataset.tipo !== "todos" && f.dataset.tipo !== b.dataset.tipo;
+      });
+      document.querySelectorAll(".calendario-mes").forEach(function (s) {
+        s.hidden = !s.querySelector(".calendario__fila:not([hidden])");
+      });
+    });
+  });
+})();
+</script>
+{% endblock %}

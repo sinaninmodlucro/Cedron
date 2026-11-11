@@ -9,6 +9,7 @@ sitio:
   nombre: "Cedron"
   lema: "Análisis independiente de metales preciosos y materias primas"
   url: "https://cedron.example"        # cambiar cuando tengamos dominio
+  web: "https://sinaninmodlucro.github.io/Cedron/"   # direccion actual (enlace del resumen semanal)
   autor: "Equipo Cedron"               # quien firma los analisis (exigido por MAR)
   contacto: "contacto@cedron.example"
   idioma: "es"
@@ -172,7 +173,15 @@ apoyo:
         - id: gas
           nombre: "Gas natural"
           ambitos:
-            # espana: pendiente (MIBGAS, el mercado ibérico; falta confirmar sus condiciones)
+            # Gas en Espana (11-nov-2026): indice diario MIBGAS-ES del mercado iberico, desde
+            # dic-2015. Condiciones de MIBGAS: la informacion publica se puede usar citando la fuente.
+            espana:
+              fuente: mibgas
+              serie: "MIBGAS-ES"
+              unidad: "€/MWh"
+              frecuencia: diaria
+              etiqueta: "España"
+              nota: "Índice MIBGAS-ES: precio medio del gas con entrega en la red española (PVB) cada día"
             europa:
               fuente: pink
               serie: "Natural gas, Europe"
@@ -187,6 +196,37 @@ apoyo:
               etiqueta: "EE. UU."
               nota: "Henry Hub, referencia estadounidense (EIA)"
               historia: {fuente: pink, serie: "Natural gas, US"}
+        # Electricidad (11-nov-2026). Red Electrica (REData): uso informativo y no comercial
+        # citando la fuente y la fecha (condiciones de ree.es; revisar si la web se abre al publico).
+        - id: electricidad
+          nombre: "Electricidad"
+          semanal: true      # medias semanales en su ficha, la portada y el resumen (11-nov-2026, peticion del usuario)
+          ambitos:
+            espana:
+              fuente: ree
+              serie: spot
+              unidad: "€/MWh"
+              frecuencia: diaria
+              nota: "Precio medio del mercado mayorista diario (OMIE) en España: lo que cobran las centrales, sin peajes ni impuestos"
+              # Lo que paga un hogar con la tarifa regulada: termino de energia de la 2.0TD
+              # (incluye peajes y cargos; sin impuestos ni termino de potencia). Desde junio de 2021.
+              tienda:
+                fuente: ree
+                serie: pvpc
+                unidad: "€/MWh"
+                frecuencia: diaria
+                nombre: "tarifa regulada (PVPC)"
+                canal: "la tarifa regulada (PVPC)"
+                texto: "Precio medio del día de la energía en la tarifa regulada (PVPC 2.0TD) de los hogares: incluye peajes y cargos, sin impuestos ni término de potencia."
+                pie: "La tarifa regulada se calcula a partir del mercado mayorista (y, desde 2024, en parte de los mercados a plazo) más peajes y cargos. La diferencia con el mercado mayorista no es el margen de nadie: son sobre todo peajes de las redes y cargos del sistema."
+            europa:
+              fuente: eurostat
+              serie: "EU27_2020|D351"
+              unidad: "puntos (2021 = 100)"
+              decimales: 1
+              frecuencia: mensual
+              etiqueta: "UE"
+              nota: "Índice de precios de producción de electricidad en la UE (Eurostat), 2021 = 100"
         - id: carbon
           nombre: "Carbón"
           ambitos:
@@ -1593,7 +1633,7 @@ noticias:
     "eurostat:ES|C241": acero
     "eurostat:ES|C2444": cobre
     "eurostat:ES|D351": electricidad
-  materia_de_apoyo: {diesel: diesel, brent: petroleo, wti: petroleo, gas: gas, carbon: carbon, cerdo: cerdo, pollo: pollo, huevos: pollo, ternera: vacuno, leche: leche, trigo: trigo, arroz: arroz, aove: aove, girasol: girasol, patata: frutas, tomate: frutas, naranja: naranja, platano: frutas, manzana: frutas, cebolla: frutas, azucar: azucar, maiz: maiz, cebada: cebada, soja: soja, cafe: cafe, cacao: cacao, algodon: algodon, urea: fertilizantes, nitrato: fertilizantes, fosfatos: fertilizantes, potasa: fertilizantes, complejo: fertilizantes, acero: acero, aluminio: aluminio, cobre_industrial: cobre, zinc: zinc, niquel: zinc, plomo: zinc, estano: zinc, hierro: acero, madera: madera, cemento: cemento, hormigon: cemento, estructuras: acero}
+  materia_de_apoyo: {diesel: diesel, electricidad: electricidad, brent: petroleo, wti: petroleo, gas: gas, carbon: carbon, cerdo: cerdo, pollo: pollo, huevos: pollo, ternera: vacuno, leche: leche, trigo: trigo, arroz: arroz, aove: aove, girasol: girasol, patata: frutas, tomate: frutas, naranja: naranja, platano: frutas, manzana: frutas, cebolla: frutas, azucar: azucar, maiz: maiz, cebada: cebada, soja: soja, cafe: cafe, cacao: cacao, algodon: algodon, urea: fertilizantes, nitrato: fertilizantes, fosfatos: fertilizantes, potasa: fertilizantes, complejo: fertilizantes, acero: acero, aluminio: aluminio, cobre_industrial: cobre, zinc: zinc, niquel: zinc, plomo: zinc, estano: zinc, hierro: acero, madera: madera, cemento: cemento, hormigon: cemento, estructuras: acero}
   comercial_requiere_confirmacion: true   # un medio que vende metales no basta por si solo
   nota_medio_desconocido: 50      # nota para medios que llegan via NewsData.io y no estan en la lista
   pesos:
@@ -1656,6 +1696,7 @@ medidas:
       El tope legal es el 20 %. La CNMC advirtió de riesgos para la competencia y los consumidores.
     sentido: alza
     desde: "2026-11-01"
+    revision: "2026-12-31"      # desde esta fecha el Ministerio puede revisar el porcentaje
     hasta: "2027-09-30"
     fuente: "Orden APA/1145/2026, de 29 de octubre (BOE), y resolución de la Dirección General de Producciones y Mercados Agrarios"
     enlace: "https://agroinformacion.com/el-ministerio-opta-finalmente-por-establecer-una-retirada-del-12-del-aceite-de-oliva-en-la-campana-2026-2027-188-000-toneladas/"
@@ -2243,3 +2284,161 @@ medios:
     idioma: en
     google: true
     activo: true
+
+# =============================================================================
+# Estado de las fuentes (11-nov-2026). Pagina «Estado»: de cada fuente, cuando llego su
+# ultimo dato y si va con retraso. 'max_dias' = cuantos dias puede tener el dato mas nuevo
+# (contados desde el final del periodo al que se refiere: un dato de septiembre cuenta
+# desde el 30 de septiembre) antes de marcarse «con retraso». Se fijaron segun lo que
+# tarda cada organismo en publicar. 'modo': series (dentro de "series"), lista (lista de
+# fechas), cot (posiciones de la CFTC), consultado (hora de la ultima descarga) o noticias.
+# 'estado' es el nombre con que el motor anota los fallos de esa fuente.
+# =============================================================================
+estado_fuentes:
+  - {nombre: "Precios de los metales (MetalCharts)", estado: "MetalCharts", archivo: apoyo/metalcharts.json, max_dias: 4, frecuencia: "6 veces por día laborable"}
+  - {nombre: "Histórico mensual (Banco Mundial)", estado: "Banco Mundial", archivo: pink.json, max_dias: 45, frecuencia: "mensual"}
+  - {nombre: "Tipos de interés y dólar (FRED)", estado: "FRED", archivo: macro.json, max_dias: 8, frecuencia: "diaria"}
+  - {nombre: "Euro/dólar (BCE)", estado: "BCE (tipo de cambio)", archivo: cambio.json, max_dias: 5, frecuencia: "diaria (laborables)"}
+  - {nombre: "Posicionamiento (CFTC)", estado: "CFTC", archivo: cot.json, modo: cot, max_dias: 14, frecuencia: "semanal"}
+  - {nombre: "Energía y otros (FRED)", estado: "FRED (materias de apoyo)", archivo: apoyo/fred.json, max_dias: 12, frecuencia: "diaria"}
+  - {nombre: "Diésel y carburantes (Oil Bulletin)", estado: "Comisión Europea (Oil Bulletin)", archivo: apoyo/boletin.json, max_dias: 16, frecuencia: "semanal"}
+  - {nombre: "Precios en origen semanales (MAPA)", estado: "MAPA (precios semanales)", archivo: apoyo/mapa.json, max_dias: 30, frecuencia: "semanal"}
+  - {nombre: "Precios en tienda (MAPA, panel de consumo)", estado: "MAPA (panel de consumo)", archivo: apoyo/panel.json, max_dias: 125, frecuencia: "mensual, 2-3 meses de retraso"}
+  - {nombre: "Fertilizantes (MAPA, precios pagados)", estado: "MAPA (precios pagados)", archivo: apoyo/pagados.json, max_dias: 150, frecuencia: "mensual, unos 3 meses de retraso"}
+  - {nombre: "Precios en origen mensuales (MAPA, percibidos)", estado: "MAPA (precios percibidos)", archivo: apoyo/percibidos.json, max_dias: 150, frecuencia: "mensual, unos 3 meses de retraso"}
+  - {nombre: "Precios de fábrica (Eurostat)", estado: "Eurostat (precios industriales)", archivo: apoyo/eurostat.json, max_dias: 80, frecuencia: "mensual, 1-2 meses de retraso"}
+  - {nombre: "Cadena de costes (Eurostat)", estado: "Eurostat (cadena de costes)", archivo: cadena/eurostat.json, max_dias: 80, frecuencia: "se descarga una vez al mes"}
+  - {nombre: "Electricidad en España (Red Eléctrica)", estado: "Red Eléctrica (electricidad)", archivo: apoyo/ree.json, max_dias: 3, frecuencia: "diaria"}
+  - {nombre: "Gas en España (MIBGAS)", estado: "MIBGAS (gas)", archivo: apoyo/mibgas.json, max_dias: 5, frecuencia: "diaria"}
+  - {nombre: "IPC por producto (INE)", estado: "INE (IPC)", archivo: ipc.json, max_dias: 50, frecuencia: "mensual, hacia mediados del mes siguiente"}
+  - {nombre: "Futuros (Yahoo Finance)", estado: "Futuros (Yahoo Finance)", archivo: futuros.json, modo: consultado, max_dias: 4, frecuencia: "diaria"}
+  - {nombre: "Noticias", estado: "NewsData.io", archivo: noticias.json, modo: noticias, max_dias: 1, frecuencia: "cada hora"}
+
+# =============================================================================
+# «Qué ha cambiado» y resumen semanal por correo (11-nov-2026).
+# El motor apunta en data/novedades.json cada dato nuevo que llega y cada cambio de
+# tendencia (al alza, mixta, a la baja: la misma regla que los metales, precio frente a su
+# media de hace 1, 3 y 12 meses). La portada muestra lo de ayer y la ultima semana.
+# El resumen semanal se envia como incidencia de GitHub (llega por correo) el dia y la
+# hora indicados (hora de Madrid). El repositorio es publico: el resumen solo lleva datos
+# de mercado, nada personal.
+# =============================================================================
+novedades:
+  dias_registro: 60          # dias de cambios que se guardan
+  maximo_movimientos: 6      # subidas y bajadas que se muestran de cada lado
+  movimiento_minimo_pct: 1.0 # por debajo de este cambio no se considera «movimiento»
+  # «Por qué se movió»: un salto es fuerte si el cambio entre dos datos seguidos supera
+  # este numero de veces la desviacion tipica de los cambios del ultimo anio de esa serie
+  salto_veces: 2.5
+  correo:
+    activo: true
+    dia: 0                   # 0 = lunes ... 6 = domingo
+    hora: 8                  # desde esta hora (Madrid); la primera ejecucion que toque lo envia
+
+# =============================================================================
+# IPC del INE por producto (11-nov-2026). Lo que sube en la tienda segun el dato oficial,
+# junto al precio en origen de cada materia, y la base de «La cesta». Indices mensuales
+# base 2025 (ECOICOP v2) desde 2002; publicacion hacia mediados del mes siguiente.
+# Reutilizacion libre citando al INE.
+#   serie: codigo de la serie del indice en el INE (servicios.ine.es/wstempus)
+#   materia: id de la materia de apoyo en cuya ficha se muestra (opcional)
+#   cesta: alimentos | energia (entra en «La cesta» con la ponderacion oficial del INE);
+#          sin 'cesta', solo se muestra en la ficha de la materia
+#   peso_nombre: nombre con que el INE publica su ponderacion, si no coincide con 'nombre'
+# Las ponderaciones (por mil del gasto de los hogares) se descargan de las tablas indicadas
+# una vez al mes. Si el INE no publica la de una serie (p. ej. gas natural, por secreto
+# estadistico), esa serie no entra en la cesta: no se inventa.
+# =============================================================================
+ipc:
+  general: IPC290751
+  tablas_pesos: [76159, 76160, 76161]   # subclases, rubricas y grupos especiales
+  series:
+    # Alimentos (rubricas del INE: no se solapan entre si)
+    - {id: cereales, serie: IPC292215, nombre: "Cereales y derivados", cesta: alimentos, materia: arroz}
+    - {id: pan, serie: IPC292219, nombre: "Pan", cesta: alimentos, materia: trigo}
+    - {id: vacuno, serie: IPC292223, nombre: "Carne de vacuno", cesta: alimentos, materia: ternera}
+    - {id: ovino, serie: IPC292227, nombre: "Carne de ovino", cesta: alimentos}
+    - {id: porcino, serie: IPC292231, nombre: "Carne de porcino", cesta: alimentos, materia: cerdo}
+    - {id: ave, serie: IPC292235, nombre: "Carne de ave", cesta: alimentos, materia: pollo}
+    - {id: otras_carnes, serie: IPC292239, nombre: "Otras carnes", cesta: alimentos}
+    - {id: pescado, serie: IPC292363, nombre: "Pescado fresco y congelado", cesta: alimentos}
+    - {id: marisco, serie: IPC292367, nombre: "Crustáceos, moluscos y preparados de pescado", cesta: alimentos}
+    - {id: huevos, serie: IPC292243, nombre: "Huevos", cesta: alimentos, materia: huevos}
+    - {id: leche, serie: IPC292247, nombre: "Leche", cesta: alimentos, materia: leche}
+    - {id: lacteos, serie: IPC292251, nombre: "Productos lácteos", cesta: alimentos}
+    - {id: aceites, serie: IPC292255, nombre: "Aceites y grasas", cesta: alimentos}
+    - {id: frutas, serie: IPC292259, nombre: "Frutas frescas", cesta: alimentos}
+    - {id: frutas_conserva, serie: IPC292371, nombre: "Frutas en conserva y frutos secos", cesta: alimentos}
+    - {id: hortalizas, serie: IPC292263, nombre: "Legumbres y hortalizas frescas", cesta: alimentos, materia: cebolla}
+    - {id: preparados_hortalizas, serie: IPC292267, nombre: "Preparados de legumbres y hortalizas", cesta: alimentos}
+    - {id: patatas, serie: IPC292375, nombre: "Patatas y sus preparados", cesta: alimentos, materia: patata}
+    - {id: cafe_cacao, serie: IPC292275, nombre: "Café, cacao e infusiones", cesta: alimentos}
+    - {id: azucar, serie: IPC292271, nombre: "Azúcar", cesta: alimentos, materia: azucar}
+    - {id: otros_alimentos, serie: IPC292379, nombre: "Otros preparados alimenticios", cesta: alimentos}
+    - {id: bebidas, serie: IPC292279, nombre: "Agua mineral, refrescos y zumos", cesta: alimentos}
+    # Energia del hogar y carburantes (subclases)
+    - {id: luz, serie: IPC291483, nombre: "Electricidad", cesta: energia, materia: electricidad}
+    - {id: gas_hogar, serie: IPC291843, nombre: "Gas natural", cesta: energia, materia: gas}
+    - {id: butano, serie: IPC291847, nombre: "Hidrocarburos licuados", cesta: energia, etiqueta: "Butano y propano"}
+    - {id: gasoleo_calefaccion, serie: IPC291487, nombre: "Combustibles líquidos", cesta: energia, etiqueta: "Gasóleo de calefacción"}
+    - {id: gasoleo, serie: IPC291535, nombre: "Gasóleo", cesta: energia, materia: diesel}
+    - {id: gasolina, serie: IPC291539, nombre: "Gasolina", cesta: energia}
+    # Solo en la ficha de su materia (mas detalle que la rubrica; no entran en la cesta)
+    - {id: aceite_oliva, serie: IPC292563, nombre: "Aceite de oliva", materia: aove}
+    - {id: aceites_vegetales, serie: IPC291663, nombre: "Aceites vegetales", materia: girasol}
+    - {id: hortalizas_fruto, serie: IPC291703, nombre: "Hortalizas cultivadas por su fruto, frescas o refrigeradas", etiqueta: "Hortalizas de fruto (tomate, pimiento...)", materia: tomate}
+    - {id: citricos, serie: IPC291675, nombre: "Cítricos frescos", materia: naranja}
+    - {id: tropicales, serie: IPC291671, nombre: "Frutas tropicales, dátiles e higos", etiqueta: "Frutas tropicales (plátano...)", materia: platano}
+    - {id: pepita, serie: IPC291679, nombre: "Frutas de hueso y frutas de pepita, frescas", etiqueta: "Frutas de hueso y pepita (manzana...)", materia: manzana}
+    - {id: cafe, serie: IPC291767, nombre: "Café y sucedáneos de café", etiqueta: "Café", materia: cafe}
+    - {id: chocolate, serie: IPC291739, nombre: "Chocolate, cacao y productos alimenticios a base de cacao", etiqueta: "Chocolate y cacao", materia: cacao}
+    - {id: materiales_vivienda, serie: IPC291819, nombre: "Materiales para mantenimiento y reparación de la vivienda", etiqueta: "Materiales para reparar la vivienda", materia: cemento}
+
+# =============================================================================
+# Calendario de fechas clave (11-nov-2026). Pagina «Calendario» y «Próximas fechas» de la
+# portada y del resumen semanal. Las reuniones de la Fed y del BCE se leen solas de sus
+# webs cada semana. Aqui van las fechas fijas (siempre con su fuente: no se inventa
+# ninguna) y las publicaciones periodicas (dia_semana: 0 = lunes; dia_mes: numero o
+# «ultimo_laborable»), que se muestran como «habitualmente» porque los festivos las mueven.
+# Las fechas de las medidas regulatorias salen de la seccion 'medidas'.
+# Pendiente: el USDA bloquea los lectores automaticos; sus fechas de 2027 se anaden a mano
+# cuando las publique (usda.gov/wasde). El INE publica su calendario de 2027 en diciembre.
+# =============================================================================
+calendario:
+  tipos:
+    banco_central: {nombre: "Bancos centrales"}
+    datos: {nombre: "Datos oficiales"}
+    cosechas: {nombre: "Cosechas y alimentos"}
+    energia: {nombre: "Energía"}
+    medida: {nombre: "Medidas regulatorias"}
+    prevision: {nombre: "Nuestras previsiones"}
+  fechas:
+    - fecha: "2026-12-10"
+      titulo: "USDA: informe mundial de oferta y demanda agrícola (WASDE)"
+      tipo: cosechas
+      materias: [trigo, maiz, soja, arroz, algodon, azucar]
+      fuente: "USDA, calendario WASDE de 2026"
+      enlace: "https://www.usda.gov/oce/commodity/wasde"
+  periodicas:
+    - titulo: "EIA: existencias semanales de petróleo en EE. UU."
+      tipo: energia
+      dia_semana: 2
+      materias: [brent, wti, diesel]
+      fuente: "EIA, Weekly Petroleum Status Report"
+      enlace: "https://www.eia.gov/petroleum/supply/weekly/"
+    - titulo: "CFTC: posiciones de los especuladores en futuros"
+      tipo: datos
+      dia_semana: 4
+      fuente: "CFTC, Commitments of Traders"
+      enlace: "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    - titulo: "Comisión Europea: precios semanales de los carburantes (Oil Bulletin)"
+      tipo: energia
+      dia_semana: 1
+      materias: [diesel]
+      fuente: "Comisión Europea, Weekly Oil Bulletin"
+      enlace: "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en"
+    - titulo: "INE: IPC adelantado del mes"
+      tipo: datos
+      dia_mes: ultimo_laborable
+      fuente: "INE, calendario de estadísticas coyunturales"
+      enlace: "https://www.ine.es/prensa/prensa.htm"

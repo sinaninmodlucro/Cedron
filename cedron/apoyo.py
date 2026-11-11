@@ -13,7 +13,8 @@ from __future__ import annotations
 import calendar
 import logging
 import os
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from . import sources as src
 from .store import Estado, escribir, iso, leer
@@ -74,7 +75,8 @@ def pares_panel(cfg) -> list[tuple[str, str]]:
 NOMBRE_ESTADO = {"carburantes": "Ministerio (carburantes)", "boletin": "Comisión Europea (Oil Bulletin)",
                  "mapa": "MAPA (precios semanales)", "panel": "MAPA (panel de consumo)",
                  "pagados": "MAPA (precios pagados)", "percibidos": "MAPA (precios percibidos)", "fred": "FRED (materias de apoyo)",
-                 "eurostat": "Eurostat (precios industriales)"}
+                 "eurostat": "Eurostat (precios industriales)", "ree": "Red Eléctrica (electricidad)",
+                 "mibgas": "MIBGAS (gas)"}
 
 
 def fuentes_sin_uso(cfg) -> set[str]:
@@ -226,7 +228,75 @@ def recoger(cfg, estado: Estado, forzar: bool = False) -> None:
         except src.FuenteError as e:
             estado.registrar_fuente("FRED (materias de apoyo)", False, str(e))
             log.warning("FRED apoyo: %s", e)
+    recoger_energia_es(cfg, estado, forzar)
     # El Banco Mundial (pink) lo descarga engine.actualizar_diarios junto con los metales.
+
+
+REE_DESDE = "2014-01"            # primer mes con precio del mercado mayorista en REData
+MIBGAS_DESDE = 2015              # primer anio con indice de MIBGAS
+TANDA_REE = 24                   # meses de historia que se bajan por ejecucion (la primera vez)
+TANDA_MIBGAS = 4                 # anios de historia de MIBGAS por ejecucion
+
+
+def _meses_entre(desde: str, hasta: str) -> list[str]:
+    out, a, m = [], int(desde[:4]), int(desde[5:7])
+    while f"{a}-{m:02d}" <= hasta:
+        out.append(f"{a}-{m:02d}")
+        a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+    return out
+
+
+def recoger_energia_es(cfg, estado: Estado, forzar: bool = False) -> None:
+    """Electricidad (Red Electrica) y gas (MIBGAS) en Espana (11-nov-2026).
+
+    La electricidad se mira dos veces al dia (el precio del dia siguiente se conoce hacia
+    las 14:00); el gas, una. La historia se baja por tandas para no alargar la ejecucion.
+    """
+    hoy = date.today()
+    if _fuentes_de(cfg, "ree", "serie"):
+        hora = datetime.now(ZoneInfo(cfg["sitio"]["zona_horaria"])).hour
+        tramo = f"{hoy.isoformat()}/{int(hora >= 14)}"
+        if forzar or estado.get("apoyo_ree") != tramo:
+            try:
+                guardado = leer("apoyo/ree.json", {}) or {}
+                series = guardado.get("series", {})
+                hecho = guardado.get("historia_desde")          # hasta donde llega la historia ya bajada
+                actual = hoy.isoformat()[:7]
+                meses = _meses_entre(f"{hoy.year - (hoy.month == 1)}-{(hoy.month - 2) % 12 + 1:02d}", actual)
+                if hecho != REE_DESDE:
+                    fin = _meses_entre(REE_DESDE, hecho or actual)[:-1]
+                    meses = fin[-TANDA_REE:] + meses
+                    hecho = (fin[-TANDA_REE:] or [REE_DESDE])[0]
+                for mes in meses:
+                    for clave, serie in src.ree_precios_mes(int(mes[:4]), int(mes[5:7])).items():
+                        series[clave] = _fusionar(series.get(clave, []), [list(x) for x in serie])
+                escribir("apoyo/ree.json", {"series": series, "consultado": iso(), "historia_desde": hecho})
+                estado.set("apoyo_ree", tramo)
+                estado.registrar_fuente("Red Eléctrica (electricidad)", True)
+            except src.FuenteError as e:
+                estado.registrar_fuente("Red Eléctrica (electricidad)", False, str(e))
+                log.warning("Red Eléctrica: %s", e)
+
+    if _fuentes_de(cfg, "mibgas", "serie") and (forzar or _una_vez_al_dia(estado, "apoyo_mibgas_dia")):
+        try:
+            guardado = leer("apoyo/mibgas.json", {}) or {}
+            serie = guardado.get("series", {}).get("MIBGAS-ES", [])
+            hechos = set(guardado.get("anios", []))
+            # Los anios cerrados se bajan una vez; el anterior se sigue leyendo en enero
+            anios = [a for a in range(MIBGAS_DESDE, hoy.year) if a not in hechos][-TANDA_MIBGAS:]
+            if hoy.month == 1 and hoy.year - 1 not in anios:
+                anios.append(hoy.year - 1)
+            for a in anios + [hoy.year]:
+                serie = _fusionar(serie, [list(x) for x in src.mibgas_indice(a)])
+                if a < hoy.year and not (hoy.month == 1 and a == hoy.year - 1):
+                    hechos.add(a)
+            escribir("apoyo/mibgas.json", {"series": {"MIBGAS-ES": serie}, "anios": sorted(hechos),
+                                           "consultado": iso()})
+            estado.set("apoyo_mibgas_dia", hoy.isoformat())
+            estado.registrar_fuente("MIBGAS (gas)", True)
+        except src.FuenteError as e:
+            estado.registrar_fuente("MIBGAS (gas)", False, str(e))
+            log.warning("MIBGAS: %s", e)
 
 
 # ---------------------------------------------------------------------------
@@ -243,9 +313,12 @@ FUENTES_NOMBRE = {
     "percibidos": "Ministerio de Agricultura, precios percibidos por los agricultores (mensual)",
     "eurostat": "Eurostat, índices de precios industriales",
     "metalcharts": "MetalCharts",
+    "ree": "Red Eléctrica (REData)",
+    "mibgas": "MIBGAS, mercado ibérico del gas",
 }
 CLAVE_FUENTE = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
-                "pagados": "producto", "percibidos": "producto", "eurostat": "serie", "metalcharts": "simbolo"}
+                "pagados": "producto", "percibidos": "producto", "eurostat": "serie", "metalcharts": "simbolo",
+                "ree": "serie", "mibgas": "serie"}
 
 
 def cargar_fuentes() -> dict:
@@ -262,6 +335,8 @@ def cargar_fuentes() -> dict:
         "pagados": (leer("apoyo/pagados.json", {}) or {}).get("series", {}),
         "percibidos": (leer("apoyo/percibidos.json", {}) or {}).get("series", {}),
         "eurostat": (leer("apoyo/eurostat.json", {}) or {}).get("series", {}),
+        "ree": (leer("apoyo/ree.json", {}) or {}).get("series", {}),
+        "mibgas": (leer("apoyo/mibgas.json", {}) or {}).get("series", {}),
         # MetalCharts: 6 precios por dia laborable; se queda el ultimo de cada dia
         "metalcharts": {s: sorted({f[:10]: v for f, v in serie}.items())
                         for s, serie in metalcharts.get("series", {}).items()},
@@ -477,6 +552,16 @@ def tienda(cfg, amb: dict, origen: list, fuentes: dict, meses_media: int) -> dic
     t = amb.get("tienda")
     if not t:
         return None
+    if t.get("fuente", "panel") != "panel":
+        # Precio al consumidor de otra fuente (p. ej. la tarifa regulada de la luz, 11-nov-2026)
+        serie = _serie(t, fuentes, cfg)
+        r = resumen(serie, meses_media) if serie else None
+        if r:
+            r["interanual_base"] = t.get("canal", "tienda")
+        return {"decimales": decimales_por_defecto(t["unidad"]), **t, "resumen": r,
+                "frecuencia": t.get("frecuencia", "mensual"), "canal_ultimo": t.get("canal", "tienda"),
+                "multiplicador": None, "fuente_nombre": FUENTES_NOMBRE.get(t["fuente"], t["fuente"]),
+                "recientes": [list(x) for x in serie[-300:]] if serie and len(serie[-1][0]) == 10 else []}
     definicion = {"fuente": "panel", **t}
     serie = _serie(definicion, fuentes, cfg)
     if not serie:
@@ -596,7 +681,10 @@ def preparar(cfg, hoy: date | None = None) -> list[dict]:
                               # Que mide el precio principal: en origen (lo que cobra el
                               # productor) o en tienda (panel de consumo, lo que paga el hogar)
                               "medida": "tienda" if amb["fuente"] == "panel" else "origen",
-                              "tienda": tienda(cfg, amb, serie, fuentes, meses_media)}
+                              "tienda": tienda(cfg, amb, serie, fuentes, meses_media),
+                              # Ultimo anio de datos diarios o semanales («Por que se movio»)
+                              "recientes": ([list(x) for x in actual[-300:]]
+                                            if actual and len(actual[-1][0]) == 10 else [])}
             vistas = {}
             for v in AMBITOS:
                 mostrado, motivo = elegir(ambitos, v, dias, hoy)

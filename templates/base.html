@@ -28,9 +28,11 @@
       <a href="{{ raiz }}index.html"{% if seccion == 'mercado' %} aria-current="page"{% endif %}>Mercado</a>
       <a href="{{ raiz }}materias.html"{% if seccion == 'materias' %} aria-current="page"{% endif %}>Materias primas</a>
       <a href="{{ raiz }}comparar.html"{% if seccion == 'comparar' %} aria-current="page"{% endif %}>Comparar</a>
+      <a href="{{ raiz }}cesta.html"{% if seccion == 'cesta' %} aria-current="page"{% endif %}>La cesta</a>
       <a href="{{ raiz }}cadena.html"{% if seccion == 'cadena' %} aria-current="page"{% endif %}>Cadena de costes</a>
       <a href="{{ raiz }}previsiones.html"{% if seccion == 'previsiones' %} aria-current="page"{% endif %}>Previsiones</a>
       <a href="{{ raiz }}noticias.html"{% if seccion == 'noticias' %} aria-current="page"{% endif %}>Noticias</a>
+      <a href="{{ raiz }}calendario.html"{% if seccion == 'calendario' %} aria-current="page"{% endif %}>Calendario</a>
       <a href="{{ raiz }}metodologia.html"{% if seccion == 'metodologia' %} aria-current="page"{% endif %}>Metodología</a>
       <a href="{{ raiz }}fuentes.html"{% if seccion == 'fuentes' %} aria-current="page"{% endif %}>Fuentes</a>
     </nav>
@@ -51,10 +53,11 @@
     <p class="pie__enlaces">
       <a href="{{ raiz }}legal.html">Aviso legal y privacidad</a>
       <a href="{{ raiz }}fuentes.html">Fuentes y licencias</a>
+      <a href="{{ raiz }}estado.html">Estado de los datos{% if fuentes_con_problemas %} ({{ fuentes_con_problemas }} con avisos){% endif %}</a>
       <a href="mailto:{{ sitio.contacto }}">Contacto</a>
       {% if privado %}<a href="#" id="cerrar-sesion">Cerrar sesión en este dispositivo</a>{% endif %}
     </p>
-    <p class="pie__nota">© {{ anio }} {{ sitio.nombre }}. Datos históricos: Banco Mundial (CC BY 4.0), FRED, CFTC. Precios actuales: MetalCharts. Energía, ganadería y precios en tienda: Ministerio para la Transición Ecológica, Ministerio de Agricultura, Comisión Europea.</p>
+    <p class="pie__nota">© {{ anio }} {{ sitio.nombre }}. Datos históricos: Banco Mundial (CC BY 4.0), FRED, CFTC. Precios actuales: MetalCharts. Energía, ganadería y precios en tienda: Red Eléctrica, MIBGAS, Ministerio de Agricultura, INE, Comisión Europea.</p>
   </div>
 </footer>
 {% if privado %}

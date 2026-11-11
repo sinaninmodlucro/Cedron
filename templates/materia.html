@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, nota_indice, tabla_prevision %}
+{% from "_macros.html" import valor_apoyo, fecha_dato, tendencia, nota_indice, tabla_prevision, por_que %}
 {% block titulo %}{{ m.nombre }}: precio en España, Europa y el mundo | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}{{ m.nombre }}: último precio, cambios, tendencia y diez años de historia por ámbito.{% endblock %}
 {% block contenido %}
@@ -26,6 +26,39 @@
     <p class="pequeno secundario">Efecto esperado en el precio: <strong>{{ 'al alza' if md.sentido == 'alza' else 'a la baja' }}</strong>. En vigor hasta el {{ md.hasta|fecha_larga }}. Nuestra previsión no incluye esta medida de forma directa (sí el exceso de oferta que la provoca, cuando ese cálculo se usa). Fuente: {% if md.enlace %}<a href="{{ md.enlace }}" rel="noopener nofollow" target="_blank">{{ md.fuente }}</a>{% else %}{{ md.fuente }}{% endif %}.</p>
   </aside>
   {% endfor %}
+  {% if m.ipc %}
+  <aside class="ipc-tienda" aria-label="Precio en la tienda según el IPC">
+    <p class="prevision__titulo">En la tienda, según el IPC del INE</p>
+    {% for x in m.ipc %}
+    <p>{{ x.nombre }}: <span class="cifra {{ 'sube' if x.anual and x.anual > 0 else 'baja' if x.anual and x.anual < 0 }}">{{ x.anual|porcentaje }}</span> en un año y <span class="cifra">{{ x.mensual|porcentaje }}</span> en el último mes ({{ x.mes|mes }}).
+      {% if x.frente %}En origen en España, en el mismo periodo{% if not x.frente.mismo_mes %} (hasta {{ x.frente.mes|mes }}){% endif %}: <span class="cifra {{ 'sube' if x.frente.origen > 0 else 'baja' if x.frente.origen < 0 }}">{{ x.frente.origen|porcentaje }}</span>.{% endif %}</p>
+    {% endfor %}
+    <p class="pequeno secundario">El IPC mide lo que pagan los hogares por ese grupo de productos (con impuestos), no el precio de un producto concreto; el precio en origen es lo que cobra el productor. Suelen moverse en el mismo sentido, con retraso y menos intensidad en la tienda. <a href="{{ raiz }}cesta.html">La cesta y la comparación de todos los productos</a>. Fuente: INE.</p>
+  </aside>
+  {% endif %}
+
+  {% if m.semanas and m.semanas.origen %}{% set sm = m.semanas %}
+  <section class="bloque" aria-labelledby="t-semanal">
+    <h2 id="t-semanal">Semana a semana</h2>
+    <p class="texto secundario">El precio de la luz cambia mucho de un día a otro (viento, sol, demanda). La media de cada semana, de lunes a domingo, deja ver mejor cómo va en el corto plazo. El cambio es frente a la semana anterior.</p>
+    <div class="desplazable">
+    <table class="tabla">
+      <thead><tr><th>Semana</th><th class="num">Mercado mayorista</th><th class="num">Cambio</th>{% if sm.tienda %}<th class="num">Tarifa regulada (PVPC)</th><th class="num">Cambio</th>{% endif %}</tr></thead>
+      <tbody>
+      {% for s in sm.origen|reverse %}{% set t = sm.tienda.get(s.desde) %}
+        <tr><td>Del {{ s.desde|mes|replace(' de ' ~ s.desde[:4], '') }} al {{ s.hasta|mes }}{% if s.en_curso %} <span class="secundario pequeno">(en curso, {{ s.dias }} {{ 'día' if s.dias == 1 else 'días' }})</span>{% endif %}</td>
+          <td class="num cifra">{{ s.media|numero(1) }} {{ sm.unidad }}</td>
+          <td class="num cifra {{ 'sube' if s.cambio_pct and s.cambio_pct > 0 else 'baja' if s.cambio_pct and s.cambio_pct < 0 }}">{{ s.cambio_pct|porcentaje }}</td>
+          {% if sm.tienda %}<td class="num cifra">{{ (t.media|numero(1) ~ ' ' ~ sm.unidad) if t else '—' }}</td>
+          <td class="num cifra {{ 'sube' if t and t.cambio_pct and t.cambio_pct > 0 else 'baja' if t and t.cambio_pct and t.cambio_pct < 0 }}">{{ t.cambio_pct|porcentaje if t else '—' }}</td>{% endif %}</tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <p class="pequeno secundario">Mercado mayorista: lo que cobran las centrales (OMIE). Tarifa regulada: lo que paga un hogar con PVPC por la energía, con peajes y cargos y sin impuestos. La semana en curso puede incluir el precio de mañana, que ya se conoce. Fuente: Red Eléctrica.</p>
+  </section>
+  {% endif %}
+
   {% for id, _ in ambitos %}{% set amb = m.ambitos.get(id) %}
   {% if amb and amb.resumen %}{% set r = amb.resumen %}
   <section class="bloque" aria-labelledby="t-{{ id }}">
@@ -43,6 +76,7 @@
     </p>
     <p class="pequeno">{{ tendencia(r) }}.</p>
     {% if amb.nota %}<p class="pequeno secundario">{{ amb.nota }}. Fuente: {{ amb.fuentes|join(' y, para los datos más antiguos, ') }}.</p>{% endif %}
+    {{ por_que(amb.saltos, cfg.novedades.salto_veces) }}
 
     {% if amb.grafico %}{% set gr = amb.grafico %}
     <figure class="grafico">
@@ -89,18 +123,19 @@
     {% set t = amb.tienda %}
     {% if t and t.resumen %}{% set rt = t.resumen %}
     <div class="solo-tienda">
-    <h3 class="bloque-pequeno">En la tienda{% if t.nombre %}: {{ t.nombre }}{% endif %}</h3>
+    <h3 class="bloque-pequeno">{% if t.texto %}Para el consumidor{% else %}En la tienda{% endif %}{% if t.nombre %}: {{ t.nombre }}{% endif %}</h3>
     {% if t.explicacion %}<p class="pequeno secundario">{{ t.explicacion }}</p>{% endif %}
     <p class="ficha__precio ficha__precio--medio cifra">{{ rt.valor|numero(t.decimales if t.decimales is not none else 2) }} {{ t.unidad }}</p>
     <p class="ficha__datos">
-      Precio medio que pagaron los hogares en {{ t.canal_ultimo }} en {{ rt.fecha|mes }}, IVA incluido.
+      {% if t.texto %}{{ t.texto }} Dato de {{ rt.fecha|mes }}.{% else %}Precio medio que pagaron los hogares en {{ t.canal_ultimo }} en {{ rt.fecha|mes }}, IVA incluido.{% endif %}
       {% if rt.interanual_pct is not none %}En un año: <span class="cifra {{ 'sube' if rt.interanual_pct > 0 else 'baja' if rt.interanual_pct < 0 }}">{{ rt.interanual_pct|porcentaje }}</span>{% if rt.interanual_base != t.canal_ultimo %} (comparando la media de {{ rt.interanual_base }}){% endif %}.{% endif %}
       {% if t.multiplicador %} Es <strong>{{ t.multiplicador.veces|numero(1) }} veces</strong> el precio en origen de ese mes ({{ t.multiplicador.origen|numero(amb.decimales if amb.decimales is not none else 2) }} {{ amb.unidad }}).{% endif %}
     </p>
-    <p class="pequeno secundario">El precio en tienda es del producto ya preparado para la venta, con IVA; el de origen es lo que cobra el productor, sin IVA. La diferencia incluye transformación (despiece, molienda, envasado), mermas, transporte, conservación, distribución, márgenes e impuestos: no es el beneficio de nadie. Fuente: {{ t.fuente_nombre }}, mensual, con unos dos o tres meses de retraso.</p>
+    {% if t.pie %}<p class="pequeno secundario">{{ t.pie }} Fuente: {{ t.fuente_nombre }}.</p>{% else %}
+    <p class="pequeno secundario">El precio en tienda es del producto ya preparado para la venta, con IVA; el de origen es lo que cobra el productor, sin IVA. La diferencia incluye transformación (despiece, molienda, envasado), mermas, transporte, conservación, distribución, márgenes e impuestos: no es el beneficio de nadie. Fuente: {{ t.fuente_nombre }}, mensual, con unos dos o tres meses de retraso.</p>{% endif %}
     {% if t.grafico %}{% set gr = t.grafico %}
     <figure class="grafico">
-      <div class="leyenda" aria-hidden="true"><span>Precio medio en tienda</span><span class="l-media">Media de {{ gr.meses_media }} meses</span></div>
+      <div class="leyenda" aria-hidden="true"><span>{{ "Media mensual" if t.texto else "Precio medio en tienda" }}</span><span class="l-media">Media de {{ gr.meses_media }} meses</span></div>
       <div class="grafico__marco">
       <svg viewBox="0 0 {{ gr.ancho }} {{ gr.alto }}" role="img" aria-labelledby="gt-{{ id }}" data-puntos='{{ gr.puntos_json }}' data-simbolo="€">
         <desc id="gt-{{ id }}">{{ m.nombre }}: precio medio en tienda en {{ t.unidad }} por mes. Último dato: {{ gr.ultimo.mes }}, {{ gr.ultimo.precio }}.</desc>
@@ -119,7 +154,7 @@
       </svg>
       <div class="globo" hidden></div>
       </div>
-      <figcaption>Precio medio mensual en tienda. Supermercados desde 2025; antes, media de todas las tiendas (incluidos supermercados), porque hasta entonces el Ministerio agrupaba los tipos de tienda de otra forma.</figcaption>
+      <figcaption>{% if t.texto %}Media mensual de {{ t.canal_ultimo }}.{% else %}Precio medio mensual en tienda. Supermercados desde 2025; antes, media de todas las tiendas (incluidos supermercados), porque hasta entonces el Ministerio agrupaba los tipos de tienda de otra forma.{% endif %}</figcaption>
     </figure>
     {% endif %}
     </div>

@@ -12,7 +12,8 @@ from jinja2 import Environment, FileSystemLoader, Undefined, select_autoescape
 
 from . import apoyo
 from . import indicators as ind
-from . import news
+from . import calendario, ipc, novedades, news
+from . import salud
 from .news import balance
 from .prevision import NOMBRES as NOMBRES_PIEZAS
 from .store import RAIZ, ahora, iso, leer, parse_iso
@@ -148,6 +149,32 @@ def datos_metales(activos: list) -> str:
                              "ambitos": {"global": {"nombre": "Global", "unidad": unidad, "decimales": 2,
                                                     "serie": [[f, _redondear(v)] for f, v in serie[-132:]]}}}
     pestanas = [g for g in grupos.values() if g["materias"]]
+    return json.dumps({"pestanas": pestanas, "materias": materias},
+                      ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+def datos_cesta(cesta: dict | None, ipc_datos: dict) -> str:
+    """Series de la cesta para el comparador: la cesta, sus dos partes, el IPC general y cada producto."""
+    if not cesta:
+        return "null"
+    def entrada(nombre, pestana, serie):
+        return {"nombre": nombre, "pestana": pestana, "vistas": {v: "global" for v in apoyo.AMBITOS},
+                "ambitos": {"global": {"nombre": "España", "unidad": "índice (2025 = 100)", "decimales": 1,
+                                       "serie": serie[-132:]}}}
+    materias = {"cesta": entrada("La cesta (alimentos y energía)", "cesta", cesta["total"]["serie"])}
+    for g, d in cesta["grupos"].items():
+        materias[f"cesta_{g}"] = entrada(d["nombre"], "cesta", d["serie"])
+    general = (ipc_datos.get("series") or {}).get("general") or []
+    if general:
+        materias["ipc_general"] = entrada("IPC general (todo el gasto)", "cesta", general)
+    productos = []
+    for f in cesta["filas"]:
+        serie = (ipc_datos.get("series") or {}).get(f["id"]) or []
+        if serie:
+            materias[f"ipc_{f['id']}"] = entrada(f["nombre"], "productos", serie)
+            productos.append(f"ipc_{f['id']}")
+    pestanas = [{"id": "cesta", "nombre": "La cesta", "materias": [k for k in materias if not k.startswith("ipc_") or k == "ipc_general"]},
+                {"id": "productos", "nombre": "Productos", "materias": productos}]
     return json.dumps({"pestanas": pestanas, "materias": materias},
                       ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
@@ -375,9 +402,8 @@ def resumen_previsiones(cadena: dict | None, metales: dict | None, apoyo: dict |
     return filas
 
 
-def datos_historial(cfg: dict) -> dict:
-    """Pagina «Previsiones»: cada prevision apuntada, con la de los futuros al lado."""
-    from cedron import seguimiento
+def nombres_previsiones(cfg: dict) -> dict:
+    """(grupo, id) -> nombre legible de cada prevision del historial."""
     nombres = {}
     for c in (leer("cadena.json") or {}).get("cadenas", []):
         for e in c["eslabones"]:
@@ -388,6 +414,13 @@ def datos_historial(cfg: dict) -> dict:
         for m in g.get("materias", []):
             for amb in (m.get("ambitos") or {}):
                 nombres[("apoyo", f"{m['id']}:{amb}")] = f"{m['nombre']} ({apoyo.NOMBRES_AMBITO[amb]})"
+    return nombres
+
+
+def datos_historial(cfg: dict) -> dict:
+    """Pagina «Previsiones»: cada prevision apuntada, con la de los futuros al lado."""
+    from cedron import seguimiento
+    nombres = nombres_previsiones(cfg)
     grupos = []
     for gid, titulo in (("metales", "Metales"), ("apoyo", "Materias primas de apoyo"), ("cadena", "Cadena de costes")):
         registro = leer(seguimiento.ARCHIVOS[gid], []) or []
@@ -511,6 +544,40 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
                     t["grafico"] = grafico(t["resumen"]["mensual"], meses_media, t["unidad"], "€")
 
     datos_comparar = datos_comparacion(grupos_apoyo)
+    # Medias semanales (la luz): del ambito de Espana y de su precio para el consumidor
+    luz_semanal = None
+    for g in grupos_apoyo:
+        for m in g["materias"]:
+            es = m["ambitos"].get("espana")
+            if not m.get("semanal") or not es:
+                continue
+            t = es.get("tienda") or {}
+            m["semanas"] = {"origen": novedades.semanas(es.get("recientes") or []),
+                            "tienda": {x["desde"]: x for x in novedades.semanas(t.get("recientes") or [])},
+                            "unidad": es["unidad"], "nombre_tienda": t.get("nombre")}
+            ult = novedades.ultima_completa(m["semanas"]["origen"])
+            if ult and luz_semanal is None:
+                luz_semanal = {"materia": m, "origen": ult, "tienda": m["semanas"]["tienda"].get(ult["desde"])}
+    # «Por que se movio»: saltos fuertes recientes con las noticias de esos dias
+    for a in activos:
+        a["saltos"] = novedades.por_que(cfg, historicos.get(a["id"], []), metal=a["id"])
+    for g in grupos_apoyo:
+        for m in g["materias"]:
+            for amb in m["ambitos"].values():
+                amb["saltos"] = novedades.por_que(cfg, amb.get("recientes") or [], materia=m["id"])
+    # IPC del INE en la ficha de cada materia, junto al cambio en origen en Espana
+    ipc_datos = leer("ipc.json") or {}
+    por_materia = ipc.de_materia(cfg, ipc_datos)
+    origen_ipc = []
+    for g in grupos_apoyo:
+        for m in g["materias"]:
+            es = (m["ambitos"].get("espana") or {}).get("resumen") or {}
+            m["ipc"] = [{**{k: v for k, v in x.items() if k != "serie"},
+                         "frente": ipc.origen_frente_tienda(x, es.get("mensual"))} for x in por_materia.get(m["id"], [])]
+            for x in m["ipc"]:
+                origen_ipc.append({"materia": m["nombre"], "enlace": f"materias/{m['id']}.html", **x})
+    cesta = ipc.cesta(cfg, ipc_datos)
+    salud_fuentes = salud.fuentes(cfg, estado)
 
     ultima_precios = max((p.get("consultado", "") for p in precios.values()), default="") or None
     proxima = _proxima_hora(cfg, tz)
@@ -522,6 +589,7 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
                           if str(x.get("desde", "")) <= iso()[:10] <= str(x.get("hasta", "9999"))],
                  ultima_precios=ultima_precios, proxima=proxima,
                  ultima_ejecucion=estado.get("ultima_ejecucion"),
+                 fuentes_con_problemas=len(salud.problemas(salud_fuentes)),
                  anio=datetime.now(tz).year, grupos_apoyo=grupos_apoyo,
                  ambitos=[(a, apoyo.NOMBRES_AMBITO[a]) for a in apoyo.AMBITOS])
 
@@ -536,7 +604,10 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         html = env.get_template(plantilla).render(**comun, raiz="../" * profundidad, **extra)
         (destino / ruta).write_text(html, encoding="utf-8")
 
+    nombres_prev = nombres_previsiones(cfg)
     pagina("index.html", "index.html", seccion="mercado", datos_metales=datos_metales(activos),
+           novedades_periodos=[(d, novedades.resumen(cfg, d, nombres_prev=nombres_prev)) for d in (1, 7)],
+           proximas_fechas=calendario.proximas(cfg, 14), luz_semanal=luz_semanal,
            noticias=portada[: cfg["noticias"]["maximo_portada"]],
            portada_secciones=[(titulo, [n for n in importantes if s in n.get("seccion", [])][: cfg["noticias"]["maximo_portada"]])
                               for s, titulo in (("preciosos", "Metales preciosos"), ("materias", "Materias primas"))])
@@ -547,6 +618,18 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
         for m in g["materias"]:
             pagina("materia.html", f"materias/{m['id']}.html", seccion="materias", m=m, g=g)
     pagina("comparar.html", "comparar.html", seccion="comparar", datos_comparar=datos_comparar)
+    hoy_d = datetime.now(tz).date()
+    eventos = [e for e in calendario.eventos(cfg, hoy_d)
+               if not e.get("aprox") or e["fecha"] <= (hoy_d + timedelta(days=28)).isoformat()]
+    for e in eventos:
+        e["dia"] = calendario.dia_semana(e["fecha"]).capitalize()
+    pagina("calendario.html", "calendario.html", seccion="calendario",
+           calendario_meses=calendario.por_meses(eventos),
+           materias_nombres={m["id"]: m["nombre"] for g in grupos_apoyo for m in g["materias"]})
+    pagina("cesta.html", "cesta.html", seccion="cesta", cesta=cesta, origen_ipc=origen_ipc,
+           datos_cesta=datos_cesta(cesta, ipc_datos),
+           cesta_json=json.dumps((cesta or {}).get("personal"), ensure_ascii=False,
+                                 separators=(",", ":")).replace("</", "<\\/"))
     preciosos = cfg["noticias"].get("preciosos", [])
     ids = [a["id"] for a in cfg["activos"]] + list(temas)
     bal = balance(noticias, iso(ahora() - timedelta(hours=24)))
@@ -569,6 +652,9 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
            candidatas=(leer("prevision/candidatas.json") or {}).get("filas") or [])
     pagina("fuentes.html", "fuentes.html", seccion="fuentes", fuentes_estado=estado.get("fuentes", {}),
            pink_consultado=pink.get("consultado"))
+    pagina("estado.html", "estado.html", seccion="estado", salud_fuentes=salud_fuentes,
+           salud_historiales=salud.historiales(), fuentes_estado=estado.get("fuentes", {}),
+           nombres_estado={f.get("estado") for f in salud_fuentes})
     pagina("legal.html", "legal.html", seccion="")
     pagina("404.html", "404.html", seccion="")
     (destino / ".nojekyll").write_text("")

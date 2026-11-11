@@ -2,6 +2,8 @@
 {% from "_macros.html" import contraste, noticia %}
 {% block titulo %}{{ sitio.nombre }}: cotizaciones y contexto de los metales{% endblock %}
 {% block contenido %}
+{% include "_novedades.html" %}
+
 <section class="cotizaciones" aria-labelledby="t-cot">
   <div class="cotizaciones__cab">
     <div>

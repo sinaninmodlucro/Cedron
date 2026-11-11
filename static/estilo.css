@@ -349,3 +349,50 @@ html[data-precio="origen"] .nota-precio--origen { display: block; }
 .eslabon--no_se_aprecia .eslabon__titulo, .eslabon--pocos .eslabon__titulo { color: var(--tinta-2); font-weight: 500; }
 .tabla--compacta { max-width: 34rem; }
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* -------------------------------------------------- qué ha cambiado (portada) */
+.novedades { margin: 0 0 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--linea); }
+.novedades__cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.5rem; }
+.novedades__cab h2 { margin: 0; }
+.novedades__cab .vistas { margin: 0.5rem 0; }
+.novedades__rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0 2.5rem; }
+.novedades__lista { list-style: none; margin: 0; padding: 0; }
+.novedades__lista li { padding: 0.3rem 0; border-bottom: 1px solid var(--linea); line-height: 1.45; }
+.novedades__lista a { color: var(--tinta); }
+.novedades__periodo[hidden] { display: none; }
+.novedades__pie p { margin: 0.8rem 0 0; }
+
+/* -------------------------------------------------- IPC en la ficha de materia */
+.ipc-tienda { margin: 1.5rem 0; padding: 0.7rem 0.9rem; border-left: 3px solid var(--tinta); max-width: var(--medida); }
+.ipc-tienda p { margin: 0.3rem 0; }
+
+/* -------------------------------------------------------------- la cesta */
+.cesta-cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem 2rem; margin: 1.5rem 0; }
+.cesta-cifra p { margin: 0.2rem 0; }
+.cesta-cifra__nombre { font-family: var(--f-cifra); font-size: var(--t-s); }
+.cesta-cifra__valor { font-family: var(--f-cifra); font-size: 1.8rem; font-weight: 700; font-stretch: 125%; }
+.cesta-cifra--grande .cesta-cifra__valor { font-size: 2.6rem; }
+.mi-cesta__controles { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; align-items: center; margin: 1rem 0; font-size: var(--t-s); }
+.mi-cesta input, .mi-cesta select { font: inherit; color: var(--tinta); background: var(--papel); border: 1px solid var(--linea); border-radius: 3px; padding: 0.2rem 0.4rem; }
+.mi-cesta__tabla input { width: 6rem; text-align: right; }
+.mi-cesta__resultado { margin: 1rem 0; max-width: var(--medida); }
+.mi-cesta__cifra { font-family: var(--f-cifra); font-size: var(--t-m, 1.1rem); }
+.mi-cesta__cifra .cifra { font-size: 1.8rem; font-weight: 700; }
+
+/* -------------------------------------------------------------- calendario */
+.calendario { list-style: none; margin: 0; padding: 0; max-width: 52rem; }
+.calendario__fila { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--linea); }
+.calendario__fila[hidden], .calendario-mes[hidden] { display: none; }
+.calendario__fecha { font-family: var(--f-cifra); font-weight: 600; white-space: nowrap; }
+.calendario__que .pequeno { display: block; }
+@media (max-width: 30rem) { .calendario__fila { grid-template-columns: 1fr; } }
+
+/* -------------------------------------------------------- por qué se movió */
+.por-que { margin: 1rem 0; max-width: var(--medida); }
+.por-que summary { cursor: pointer; font-family: var(--f-cifra); font-size: var(--t-s); }
+.por-que__lista { padding-left: 1.1rem; }
+.por-que__lista li { margin: 0.5rem 0; line-height: 1.5; }
+.novedades__motivo { display: block; color: var(--tinta-2); margin-top: 0.15rem; }
+.novedades__motivo a { color: var(--tinta-2); }
+.novedades__luz { margin: 1rem 0 0; max-width: var(--medida); }
+.novedades__luz a { color: var(--tinta); }

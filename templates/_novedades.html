@@ -1,0 +1,86 @@
+{# Bloque «Qué ha cambiado» de la portada: lo de ayer y lo de la ultima semana #}
+{% set TEND = {'alza': 'al alza', 'mixta': 'mixta', 'baja': 'a la baja'} %}
+{% macro nombre(e) %}<a href="{{ raiz }}{{ e.enlace }}">{{ e.nombre }}</a>{% if e.ambito %} <span class="secundario">({{ e.ambito }})</span>{% endif %}{% endmacro %}
+<section class="novedades" aria-labelledby="t-nov">
+  <div class="novedades__cab">
+    <h2 id="t-nov">Qué ha cambiado</h2>
+    <div class="vistas vistas--novedades" role="group" aria-label="Periodo">
+      <button type="button" data-periodo="1" aria-pressed="false">Desde ayer</button>
+      <button type="button" data-periodo="7" aria-pressed="true">Última semana</button>
+    </div>
+  </div>
+  {% for dias, r in novedades_periodos %}
+  <div class="novedades__periodo" data-periodo="{{ dias }}"{% if dias != 7 %} hidden{% endif %}>
+    {% if r.vacio and not r.previsiones %}
+    <p class="vacio">{% if dias == 1 %}Nada destacable desde ayer.{% else %}Semana tranquila: sin cambios de tendencia ni movimientos destacados.{% endif %}</p>
+    {% endif %}
+    <div class="novedades__rejilla">
+      {% if r.tendencias %}
+      <div>
+        <h3 class="subtitulo">Cambios de tendencia</h3>
+        <ul class="novedades__lista">
+        {% for t in r.tendencias[:8] %}
+          <li>{{ nombre(t) }}: de {{ TEND.get(t.antes, t.antes) }} a <strong class="{{ 'sube' if t.ahora == 'alza' else 'baja' if t.ahora == 'baja' else '' }}">{{ TEND.get(t.ahora, t.ahora) }}</strong></li>
+        {% endfor %}
+        </ul>
+        {% if r.tendencias|length > 8 %}<p class="pequeno secundario">Y {{ r.tendencias|length - 8 }} más.</p>{% endif %}
+      </div>
+      {% endif %}
+      {% for titulo, lista in [('Lo que más sube', r.subidas), ('Lo que más baja', r.bajadas)] if lista %}
+      <div>
+        <h3 class="subtitulo">{{ titulo }}</h3>
+        <ul class="novedades__lista">
+        {% for m in lista %}
+          <li>{{ nombre(m) }} <span class="cifra {{ 'sube' if m.cambio_pct > 0 else 'baja' }}">{{ m.cambio_pct|porcentaje }}</span>
+            <span class="pequeno secundario">{% if m.periodo %}{{ 'en el día' if dias == 1 else 'en la semana' }}{% else %}dato de {{ m.dato|mes }}{% endif %}</span>
+            {% if m.noticias %}<span class="novedades__motivo pequeno">Por qué: {% for n in m.noticias %}<a href="{{ n.enlace }}" rel="noopener nofollow" target="_blank">{{ n.titulo }}</a>{{ '; ' if not loop.last }}{% endfor %}</span>{% endif %}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+      {% if r.medidas or r.previsiones %}
+      <div>
+        {% if r.medidas %}
+        <h3 class="subtitulo">Medidas nuevas</h3>
+        <ul class="novedades__lista">{% for m in r.medidas %}<li><a href="{{ raiz }}{{ m.enlace }}">{{ m.nombre }}</a></li>{% endfor %}</ul>
+        {% endif %}
+        {% if r.previsiones %}{% set hechas = r.previsiones|selectattr('a_tiempo')|list %}
+        <h3 class="subtitulo">Previsiones vencidas</h3>
+        <p>{% if hechas %}Acertaron la dirección {{ hechas|selectattr('acierto')|list|length }} de {{ hechas|length }}.{% else %}{{ r.previsiones|length }} comprobadas (apuntadas con el dato ya vencido: no cuentan).{% endif %}
+          <a href="{{ raiz }}previsiones.html">Ver el historial</a>.</p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% if r.datos_nuevos %}<p class="pequeno secundario">{{ r.datos_nuevos }} {{ 'dato nuevo publicado' if r.datos_nuevos == 1 else 'datos nuevos publicados' }} {{ 'desde ayer' if dias == 1 else 'esta semana' }}. Los cambios de los datos mensuales y semanales son frente al dato anterior de la misma fuente.</p>{% endif %}
+  </div>
+  {% endfor %}
+  {% if luz_semanal %}{% set lz = luz_semanal %}
+  <p class="novedades__luz"><strong><a href="{{ raiz }}materias/{{ lz.materia.id }}.html#t-semanal">La luz, semana a semana</a>:</strong>
+    media del {{ lz.origen.desde|mes|replace(' de ' ~ lz.origen.desde[:4], '') }} al {{ lz.origen.hasta|mes|replace(' de ' ~ lz.origen.hasta[:4], '') }} en el mercado mayorista, <span class="cifra">{{ lz.origen.media|numero(1) }} €/MWh</span>{% if lz.origen.cambio_pct is not none %} (<span class="cifra {{ 'sube' if lz.origen.cambio_pct > 0 else 'baja' }}">{{ lz.origen.cambio_pct|porcentaje }}</span> frente a la semana anterior){% endif %}{% if lz.tienda %}; tarifa regulada, <span class="cifra">{{ lz.tienda.media|numero(1) }} €/MWh</span>{% if lz.tienda.cambio_pct is not none %} (<span class="cifra {{ 'sube' if lz.tienda.cambio_pct > 0 else 'baja' }}">{{ lz.tienda.cambio_pct|porcentaje }}</span>){% endif %}{% endif %}.</p>
+  {% endif %}
+  <div class="novedades__pie">
+    {% if proximas_fechas %}
+    <p><strong>Próximas fechas:</strong>
+      {% for e in proximas_fechas[:4] %}{{ e.fecha|mes|replace(' de ' ~ e.fecha[:4], '') }}, {{ e.titulo }}{{ '; ' if not loop.last else '.' }}{% endfor %}
+      <a href="{{ raiz }}calendario.html">Calendario</a>.</p>
+    {% endif %}
+    {% if fuentes_con_problemas %}<p class="aviso"><a href="{{ raiz }}estado.html">{{ fuentes_con_problemas }} {{ 'fuente con avisos' if fuentes_con_problemas == 1 else 'fuentes con avisos' }}</a>: algunos datos pueden no estar al día.</p>{% endif %}
+  </div>
+</section>
+<script>
+(function () {
+  var bs = document.querySelectorAll(".vistas--novedades button");
+  bs.forEach(function (b) {
+    b.addEventListener("click", function () {
+      bs.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      document.querySelectorAll(".novedades__periodo").forEach(function (p) { p.hidden = p.dataset.periodo !== b.dataset.periodo; });
+      try { localStorage.setItem("cedron-novedades", b.dataset.periodo); } catch (e) {}
+    });
+  });
+  var g = null;
+  try { g = localStorage.getItem("cedron-novedades"); } catch (e) {}
+  var b = g && document.querySelector('.vistas--novedades button[data-periodo="' + g + '"]');
+  if (b) b.click();
+})();
+</script>

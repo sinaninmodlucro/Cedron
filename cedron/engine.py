@@ -7,7 +7,7 @@ from dataclasses import asdict
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-from . import apoyo
+from . import apoyo, calendario, ipc
 from . import indicators as ind
 from . import sources as src
 from .news import balance, seleccionar
@@ -412,6 +412,25 @@ def actualizar_prueba(cfg, estado: Estado, forzar=False) -> None:
         log.warning("Prueba historica: %s", e)
 
 
+def anotar_novedades(cfg, estado: Estado) -> None:
+    """Apunta datos nuevos y cambios de tendencia; los lunes escribe el resumen semanal."""
+    from cedron import build, novedades, salud
+    try:
+        novedades.anotar(cfg)
+        if novedades.toca_correo(cfg, estado, forzar=os.environ.get("CEDRON_RESUMEN") == "1"):
+            r = novedades.resumen(cfg, 7, nombres_prev=build.nombres_previsiones(cfg))
+            texto = novedades.texto_correo(cfg, r, salud.problemas(salud.fuentes(cfg, estado.datos)),
+                                           calendario.proximas(cfg, 14), novedades.noticias_destacadas(r["desde"]),
+                                           cfg["sitio"].get("web", ""))
+            novedades.escribir_correo(texto)
+            novedades.marcar_correo(cfg, estado)
+            log.info("Resumen semanal preparado")
+        estado.registrar_fuente("Novedades y resumen semanal", True)
+    except (KeyError, ValueError, TypeError, OSError) as e:
+        estado.registrar_fuente("Novedades y resumen semanal", False, str(e))
+        log.warning("Novedades: %s", e)
+
+
 # ---------------------------------------------------------------------------
 # Avisos de salud
 # ---------------------------------------------------------------------------
@@ -437,6 +456,8 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     actualizar_diarios(cfg, estado, forzar)
     actualizar_precios(cfg, estado, forzar)
     apoyo.recoger(cfg, estado, forzar)
+    ipc.recoger(cfg, estado, forzar)
+    calendario.recoger(cfg, estado, forzar)
     actualizar_noticias(cfg, estado)
     calcular_lecturas(cfg)
     actualizar_prueba(cfg, estado, forzar)
@@ -444,6 +465,7 @@ def ejecutar(cfg, forzar=False) -> list[str]:
     actualizar_cadena(cfg, estado, forzar)
     actualizar_previsiones(cfg, estado, forzar)
     revisar_previsiones(cfg, estado, forzar)
+    anotar_novedades(cfg, estado)
     estado.set("ultima_ejecucion", iso())
     avisos = revisar_salud(cfg, estado)
     estado.guardar()

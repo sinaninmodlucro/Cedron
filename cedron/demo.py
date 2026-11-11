@@ -48,9 +48,11 @@ def _fechas(hoy: date, frecuencia: str, anios: int) -> list[str]:
 
 def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
     from .apoyo import _canales_panel, materias
-    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}, "pagados": {}, "eurostat": {}, "metalcharts": {}}
+    caches = {"carburantes": {}, "boletin": {}, "mapa": {}, "fred": {}, "panel": {}, "pagados": {}, "eurostat": {}, "metalcharts": {},
+              "ree": {}, "mibgas": {}, "percibidos": {}}
     clave = {"carburantes": "campo", "boletin": "columna", "mapa": "producto", "pink": "serie", "fred": "serie",
-             "pagados": "producto", "eurostat": "serie", "metalcharts": "simbolo"}
+             "pagados": "producto", "eurostat": "serie", "metalcharts": "simbolo", "ree": "serie", "mibgas": "serie",
+             "percibidos": "producto"}
     semilla = 700
 
     def panel(d, nivel):
@@ -64,8 +66,13 @@ def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
     for m in materias(cfg):
         for ambito, amb in m.get("ambitos", {}).items():
             nivel = NIVELES_APOYO.get(amb["unidad"], 10) * (4 if ambito == "europa" and "MMBtu" in amb["unidad"] else 1)
-            if amb.get("tienda"):
-                panel(amb["tienda"], NIVELES_APOYO.get(amb["tienda"]["unidad"], 5))
+            t = amb.get("tienda")
+            if t and t.get("fuente", "panel") == "panel":
+                panel(t, NIVELES_APOYO.get(t["unidad"], 5))
+            elif t:
+                fechas = _fechas(hoy, t.get("frecuencia", "mensual"), 4)
+                caches[t["fuente"]][t[clave[t["fuente"]]]] = [[f, round(v, 4)] for f, v in zip(
+                    fechas, _paseo(len(fechas), nivel * 1.6, 0.01, 0.001, sum(map(ord, t["serie"]))))]
             if amb["fuente"] == "panel":
                 panel(amb, NIVELES_APOYO.get(amb["unidad"], 1) * (0.6 if "litro" in amb["unidad"] else 1))
                 continue
@@ -86,7 +93,7 @@ def _demo_apoyo(cfg, pink: dict, hoy: date) -> None:
                 else:
                     caches[d["fuente"]][d[clave[d["fuente"]]]] = serie
     escribir("apoyo/carburantes.json", {"series": caches["carburantes"], "dato": iso(), "consultado": iso()})
-    for f in ("boletin", "mapa", "fred", "panel", "pagados", "eurostat", "metalcharts"):
+    for f in ("boletin", "mapa", "fred", "panel", "pagados", "eurostat", "metalcharts", "ree", "mibgas", "percibidos"):
         escribir(f"apoyo/{f}.json", {"series": caches[f], "consultado": iso()})
 
 

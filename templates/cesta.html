@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block titulo %}La cesta: alimentos y energía de un hogar | {{ sitio.nombre }}{% endblock %}
+{% block descripcion %}Cuánto suben los alimentos y la energía de un hogar español según el IPC del INE, y tu propia cesta.{% endblock %}
+{% block contenido %}
+<div class="texto">
+  <h1>La cesta</h1>
+  <p>Alimentos, bebidas sin alcohol y energía (luz, gas, butano, gasóleo de calefacción y carburantes) de un hogar español, cada uno con el peso que le da el INE en el IPC según lo que gastan los hogares. Para ver de un vistazo si la vida sube o baja.</p>
+</div>
+
+{% if cesta %}
+<section class="cesta-cifras" aria-labelledby="t-cifras">
+  <h2 id="t-cifras" class="oculto">Resumen</h2>
+  <div class="cesta-cifra cesta-cifra--grande">
+    <p class="cesta-cifra__nombre">La cesta, en un año</p>
+    <p class="cifra cesta-cifra__valor {{ 'sube' if cesta.total.anual > 0 else 'baja' }}">{{ cesta.total.anual|porcentaje }}</p>
+    <p class="pequeno secundario">{{ cesta.total.mensual|porcentaje }} en el último mes · dato de {{ cesta.mes|mes }}</p>
+  </div>
+  {% for g, d in cesta.grupos.items() %}
+  <div class="cesta-cifra">
+    <p class="cesta-cifra__nombre">{{ d.nombre }} <span class="secundario">({{ d.peso_pct|numero(0) }} % de la cesta)</span></p>
+    <p class="cifra cesta-cifra__valor {{ 'sube' if d.anual > 0 else 'baja' }}">{{ d.anual|porcentaje }}</p>
+    <p class="pequeno secundario">{{ d.mensual|porcentaje }} en el último mes</p>
+  </div>
+  {% endfor %}
+  {% if cesta.general %}
+  <div class="cesta-cifra">
+    <p class="cesta-cifra__nombre">IPC general <span class="secundario">(todo el gasto)</span></p>
+    <p class="cifra cesta-cifra__valor">{{ cesta.general.anual|porcentaje }}</p>
+    <p class="pequeno secundario">{{ cesta.general.mensual|porcentaje }} en el último mes</p>
+  </div>
+  {% endif %}
+</section>
+<p class="texto">
+  {% set t = cesta.total.anual %}{% set gen = cesta.general.anual if cesta.general else none %}
+  En un año, lo que un hogar gasta en comer y en energía {{ 'ha subido' if t > 0.05 else 'ha bajado' if t < -0.05 else 'apenas ha cambiado' }}{% if t|abs > 0.05 %} un {{ t|abs|numero(1) }} %{% endif %}{% if gen is not none %}, {{ 'más' if t > gen + 0.3 else 'menos' if t < gen - 0.3 else 'casi lo mismo' }} que el conjunto de los precios ({{ gen|porcentaje }}){% endif %}.
+  {% set suben = cesta.filas|selectattr('aporta')|selectattr('aporta', 'gt', 0)|list %}
+  {% if suben %}{% set ns = namespace(t=[]) %}{% for f in suben[:3] %}{% set ns.t = ns.t + [f.nombre|lower ~ ' (' ~ f.anual|porcentaje ~ ')'] %}{% endfor %}
+  Lo que más empuja: {{ ns.t[:-1]|join(', ') ~ ' y ' ~ ns.t[-1] if ns.t|length > 1 else ns.t[0] }}.{% endif %}
+</p>
+
+<section class="bloque" aria-labelledby="t-evol">
+  <h2 id="t-evol">Cómo ha evolucionado</h2>
+  {% set cmp_id = "cmp-cesta" %}
+  {% set cmp_datos = datos_cesta %}
+  {% set cmp_clave = "cedron-comparar-cesta" %}
+  {% set cmp_inicial = '["m:cesta", "m:cesta_alimentos", "m:cesta_energia", "m:ipc_general"]' %}
+  {% set cmp_ambitos = false %}
+  {% set cmp_pie = "Índices del IPC del INE (2025 = 100), en base 100 al principio del periodo. La cesta y sus partes se calculan con las ponderaciones oficiales de " ~ (cesta.pesos_mes[:4] if cesta.pesos_mes else "este año") ~ " para todo el periodo: es una aproximación (el INE cambia las ponderaciones cada año)." %}
+  {% include "_comparador.html" %}
+</section>
+
+<section class="bloque" aria-labelledby="t-empuja">
+  <h2 id="t-empuja">Qué empuja la cesta</h2>
+  <p class="texto secundario">«Aporta» es cuántos puntos del cambio anual de la cesta se deben a cada producto: su subida por su peso. Ordenado de lo que más sube la cesta a lo que más la baja.</p>
+  <div class="desplazable">
+  <table class="tabla">
+    <thead><tr><th>Producto</th><th>Parte</th><th class="num">Peso en la cesta</th><th class="num">En un año</th><th class="num">Último mes</th><th class="num">Aporta (puntos)</th></tr></thead>
+    <tbody>
+    {% for f in cesta.filas %}
+      <tr><td>{% if f.materia %}<a href="{{ raiz }}materias/{{ f.materia }}.html">{{ f.nombre }}</a>{% else %}{{ f.nombre }}{% endif %}</td>
+        <td>{{ 'Energía' if f.grupo == 'energia' else 'Alimentos' }}</td>
+        <td class="num">{{ f.peso_pct|numero(1) }} %</td>
+        <td class="num cifra {{ 'sube' if f.anual and f.anual > 0 else 'baja' if f.anual and f.anual < 0 }}">{{ f.anual|porcentaje }}</td>
+        <td class="num cifra">{{ f.mensual|porcentaje }}</td>
+        <td class="num cifra">{{ f.aporta|numero(2) if f.aporta is not none else '—' }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% if cesta.fuera %}<p class="pequeno secundario">No entran en la cesta porque el INE no publica su ponderación: {{ cesta.fuera|join(', ') }}.</p>{% endif %}
+</section>
+
+<section class="bloque" aria-labelledby="t-mia">
+  <h2 id="t-mia">Tu cesta</h2>
+  <div class="texto">
+    <p>Escribe cuánto gastas al mes en cada cosa (no hace falta rellenarlo todo) y verás cuánto ha subido <em>tu</em> cesta y cuántos euros más te cuesta lo mismo que antes. Si lo prefieres, parte del reparto medio de los hogares españoles.</p>
+    <p class="pequeno secundario">Lo que escribas se guarda solo en este navegador: no se envía a ningún sitio ni se guarda en Cedron.</p>
+  </div>
+  <div class="mi-cesta" id="mi-cesta">
+    <div class="mi-cesta__controles">
+      <label>Gasto total al mes para el reparto medio: <input type="number" min="0" step="10" data-mc="total" value="600" inputmode="decimal"> €</label>
+      <button type="button" class="enlace-boton" data-mc="medio">Rellenar con el reparto medio</button>
+      <button type="button" class="enlace-boton" data-mc="borrar">Borrar todo</button>
+      <label>Comparar con hace
+        <select data-mc="anios"><option value="1" selected>1 año</option><option value="3">3 años</option><option value="5">5 años</option><option value="10">10 años</option></select>
+      </label>
+    </div>
+    <div class="mi-cesta__resultado" data-mc="resultado" role="status" aria-live="polite"></div>
+    <div class="desplazable">
+      <table class="tabla tabla--compacta mi-cesta__tabla">
+        <thead><tr><th>Producto</th><th class="num">€ al mes</th><th class="num">Cambio</th></tr></thead>
+        <tbody data-mc="filas"></tbody>
+      </table>
+    </div>
+    <p class="pequeno secundario">Tu cambio parte de lo que gastas hoy («cuánto costaba entonces lo mismo»), así que con el reparto medio puede salir algo distinto de la cesta de arriba, que parte de los pesos del INE. «Otros gastos» usa el IPC general. Para cada producto se usa su índice del IPC del INE: mide cómo cambia el precio de lo que compran los hogares, no de una marca o tienda concreta.</p>
+  </div>
+  <script type="application/json" id="datos-cesta">{{ cesta_json|safe }}</script>
+</section>
+{% else %}
+<p class="vacio">Todavía no hay datos del IPC. Aparecerán tras la próxima actualización.</p>
+{% endif %}
+
+{% if origen_ipc %}
+<section class="bloque" aria-labelledby="t-origen">
+  <h2 id="t-origen">Del origen a la tienda</h2>
+  <p class="texto secundario">Cambio en un año del precio en origen en España (lo que cobra el productor) y del IPC del grupo de productos en la tienda, en el mismo mes. En la tienda los precios suelen moverse en el mismo sentido, con retraso y con menos intensidad, porque el producto agrícola es solo una parte de lo que se paga.</p>
+  <div class="desplazable">
+  <table class="tabla">
+    <thead><tr><th>Materia</th><th>En la tienda (IPC)</th><th>Mes</th><th class="num">En origen</th><th class="num">En la tienda</th></tr></thead>
+    <tbody>
+    {% for x in origen_ipc if x.frente %}
+      <tr><td><a href="{{ raiz }}{{ x.enlace }}">{{ x.materia }}</a></td><td>{{ x.nombre }}</td><td>{{ x.frente.mes|mes }}</td>
+        <td class="num cifra {{ 'sube' if x.frente.origen > 0 else 'baja' if x.frente.origen < 0 }}">{{ x.frente.origen|porcentaje }}</td>
+        <td class="num cifra {{ 'sube' if x.frente.tienda and x.frente.tienda > 0 else 'baja' if x.frente.tienda and x.frente.tienda < 0 }}">{{ x.frente.tienda|porcentaje }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <p class="pequeno secundario">Fuentes: INE (IPC) y las de cada materia. El IPC incluye impuestos; el precio en origen, no.</p>
+</section>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script src="{{ raiz }}static/comparar.js" defer></script>
+<script src="{{ raiz }}static/cesta.js" defer></script>
+{% endblock %}
