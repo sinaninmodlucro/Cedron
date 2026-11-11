@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-11T15:11:41Z",
+ "actualizado": "2026-11-11T15:41:27Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -138,6 +138,18 @@
    "nombre": "Retirada obligatoria del 12 % del aceite de oliva de la campaña 2026/27",
    "sentido": "alza",
    "tipo": "medida"
+  },
+  {
+   "ahora": "alza",
+   "ambito": "Global",
+   "antes": "mixta",
+   "clave": "apoyo:niquel:global",
+   "enlace": "materias/niquel.html",
+   "fecha": "2026-11-11",
+   "materia": "niquel",
+   "nombre": "Níquel",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -185,11 +197,11 @@
     ],
     [
      "2026-11-11",
-     2721.0030230069556
+     2742.2780533836612
     ]
    ],
    "tendencia": "mixta",
-   "valor": 2721.0030230069556
+   "valor": 2742.2780533836612
   },
   "apoyo:aove:espana": {
    "fecha": "2026-10-26",
@@ -324,11 +336,11 @@
     ],
     [
      "2026-11-11",
-     12320.983031567683
+     12417.31856888649
     ]
    ],
    "tendencia": "mixta",
-   "valor": 12320.983031567683
+   "valor": 12417.31856888649
   },
   "apoyo:complejo:espana": {
    "fecha": "2026-07",
@@ -537,11 +549,11 @@
     ],
     [
      "2026-11-11",
-     14366.198885321919
+     14478.52559539858
     ]
    ],
-   "tendencia": "mixta",
-   "valor": 14366.198885321919
+   "tendencia": "alza",
+   "valor": 14478.52559539858
   },
   "apoyo:nitrato:espana": {
    "fecha": "2026-07",
@@ -579,11 +591,11 @@
     ],
     [
      "2026-11-11",
-     1666.9341894060994
+     1679.9676462658397
     ]
    ],
    "tendencia": "mixta",
-   "valor": 1666.9341894060994
+   "valor": 1679.9676462658397
   },
   "apoyo:pollo:espana": {
    "fecha": "2026-10-26",
@@ -698,11 +710,11 @@
     ],
     [
      "2026-11-11",
-     3336.3206705903335
+     3362.40675833558
     ]
    ],
    "tendencia": "mixta",
-   "valor": 3336.3206705903335
+   "valor": 3362.40675833558
   },
   "metal:cobre": {
    "fecha": "2026-11-11",
