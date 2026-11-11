@@ -1,9 +1,11 @@
 {% extends "base.html" %}
-{% block titulo %}Historial de previsiones | {{ sitio.nombre }}{% endblock %}
+{% from "_macros.html" import tabla_prevision %}
+{% block titulo %}Previsiones | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Todas nuestras previsiones apuntadas, con lo que pasó de verdad, frente a «lo habitual» y a los futuros.{% endblock %}
 {% block contenido %}
 <div class="texto">
-  <h1>Historial de previsiones</h1>
+  <h1>Previsiones</h1>
+  <p>Aquí están <strong>nuestras previsiones de la cadena de costes</strong> (a tres meses y a un año, con lo que acertaron en el pasado al lado) y el <strong>historial</strong> de todas las previsiones de la web. Elige abajo el grupo que quieras ver. Las previsiones de los metales y de las materias primas de apoyo siguen en la ficha de cada uno; aquí está su historial.</p>
   <p>Cada mes se apuntan aquí todas nuestras previsiones (metales, materias primas de apoyo y cadena de costes) <strong>y no se vuelven a tocar</strong>. Cada día se comprueba si ya se ha publicado el dato del mes en que vencen y se anota lo que pasó de verdad. Así, con los meses, se ve con datos si acertamos más que decir «lo habitual» (lo que suele cambiar ese precio en ese plazo) y más que el mercado de futuros.</p>
   <p>Con cada previsión se guarda también <strong>lo que decían las noticias</strong> de esa materia esa semana (cuántas, cuántas importantes, cuántas apuntaban al alza y a la baja). Así se podrá medir si las noticias se adelantan a los precios y si conviene meterlas en la previsión.</p>
   <p class="secundario">Solo cuentan las previsiones <strong>hechas a tiempo</strong>: las que vencen después del mes en que se apuntaron. Cuando un dato se publica con meses de retraso, la previsión puede apuntarse con el plazo ya pasado; esas se separan como «atrasadas», porque se parecen más a adivinar un dato ya ocurrido que a prever.</p>
@@ -22,14 +24,30 @@
 {% endif %}
 
 <nav class="vistas vistas--grupos" aria-label="Grupos de previsiones" data-clave="cedron-previsiones">
-  {% for g in hist.grupos %}<a href="#{{ g.id }}" data-grupo="{{ g.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ g.titulo }}</a>{% endfor %}
+  {% for g in hist.grupos %}<a href="#{{ g.id }}" data-grupo="{{ g.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ g.pestana }}</a>{% endfor %}
   <a href="#todas" data-grupo="todas" aria-pressed="false">Todas</a>
 </nav>
 <p class="pequeno secundario pista-grupos">Pulsa varios grupos para verlos juntos; vuelve a pulsar uno para quitarlo.</p>
 
-{% for g in hist.grupos %}{% set r = (res.grupos or {}).get(g.id) or {} %}
+{% for g in hist.grupos %}{% set r = g.resumen or {} %}
 <section class="bloque" aria-labelledby="t-{{ g.id }}" data-grupo="{{ g.id }}">
   <h2 id="t-{{ g.id }}">{{ g.titulo }}</h2>
+  {% if g.eslabones %}
+  <p class="pequeno secundario">Cambio previsto del precio de abajo de cada eslabón comprobado. Las columnas de acierto salen de la prueba a ciegas: cada previsión del pasado se hizo solo con los datos que había entonces. Cuánto y en cuánto tiempo se traslada cada precio está en <a href="{{ raiz }}cadena.html#{{ g.id }}">Cadena de costes</a>.</p>
+  <ol class="eslabones">
+  {% for e in g.eslabones %}{% set p = e.previsiones['12'] or e.previsiones['3'] %}
+    <li class="eslabon">
+      <h3 class="eslabon__titulo">{{ e.arriba }} <span aria-hidden="true">→</span><span class="oculto"> hacia </span> {{ e.abajo }}</h3>
+      <div class="prevision">
+        <h4 class="prevision__titulo">Nuestra previsión para {{ e.abajo_corto }}</h4>
+        {{ tabla_prevision(e.previsiones, e.historial, nombres_piezas) }}
+        <p class="pequeno secundario">Cambio previsto desde {{ p.desde_mes|mes }} (último dato {{ e.de_abajo }}), con {{ e.arriba_corto }} hasta {{ p.arriba_hasta|mes }}.</p>
+      </div>
+    </li>
+  {% endfor %}
+  </ol>
+  <h3>Historial de este grupo</h3>
+  {% endif %}
   {% set nu = r.nuestras %}
   {% if nu %}
   <p>{{ nu.apuntadas }} previsiones apuntadas, {{ nu.a_tiempo }} hechas a tiempo; {{ nu.pendientes }} esperan su dato.</p>

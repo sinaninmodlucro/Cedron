@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% from "_macros.html" import noticia, tabla_prevision %}
+{% from "_macros.html" import noticia %}
 {% block titulo %}Cadena de costes | {{ sitio.nombre }}{% endblock %}
 {% block descripcion %}Cuánto y en cuánto tiempo se traslada el precio de la energía y las materias primas a abonos, alimentos y materiales, medido con datos.{% endblock %}
 {% block contenido %}
 <div class="texto">
   <h1>Cadena de costes</h1>
   <p>Cuando sube el petróleo o el gas, ¿cuánto acaban subiendo el diésel, los abonos, los alimentos o los materiales, y cuánto tardan? Aquí se mide con datos de muchos años. Cada eslabón se lee así: <strong>de cada 10 % que sube el precio de arriba, el de abajo sube de media tanto</strong>, al cabo de un mes, de seis meses y de un año.</p>
-  <p>Solo se muestran como comprobados los eslabones que aparecen con claridad en los datos y en las dos mitades del periodo; los demás se muestran en gris, para ver la cadena completa sin inventar. Cada eslabón comprobado lleva <strong>nuestra previsión</strong> a tres meses y a un año, con lo que acertó en el pasado al lado, y vamos apuntando cada previsión para comprobarla cuando llegue su fecha. Son medias del pasado: cada vez puede ser distinta. <a href="{{ raiz }}metodologia.html#cadena">Cómo se calcula</a>.</p>
+  <p>Solo se muestran como comprobados los eslabones que aparecen con claridad en los datos y en las dos mitades del periodo; los demás se muestran en gris, para ver la cadena completa sin inventar. Son medias del pasado: cada vez puede ser distinta. <strong>Nuestra previsión</strong> de cada eslabón comprobado, a tres meses y a un año, está en la página <a href="{{ raiz }}previsiones.html">Previsiones</a>. <a href="{{ raiz }}metodologia.html#cadena">Cómo se calcula</a>.</p>
 </div>
 
 {% if cadena %}
@@ -48,12 +48,7 @@
           {% if e.nota %}<li>{{ e.nota }}</li>{% endif %}
         </ul>
         {% if e.previsiones %}
-        <div class="prevision">
-          <h4 class="prevision__titulo">Nuestra previsión para {{ e.abajo_corto }}</h4>
-          {% set p = e.previsiones['12'] or e.previsiones['3'] %}
-          {{ tabla_prevision(e.previsiones, e.historial, nombres_piezas) }}
-          <p class="pequeno secundario">Cambio previsto desde {{ p.desde_mes|mes }} (último dato {{ e.de_abajo }}), con {{ e.arriba_corto }} hasta {{ p.arriba_hasta|mes }}. Las columnas de acierto salen de la prueba a ciegas: cada previsión del pasado se hizo solo con los datos que había entonces.</p>
-        </div>
+        <p class="pequeno"><a href="{{ raiz }}previsiones.html#{{ c.id }}">Nuestra previsión para {{ e.abajo_corto }}</a> está en la página «Previsiones».</p>
         {% endif %}
       {% elif e.clase == 'no_se_aprecia' %}
         {% set x6 = e.seis %}

@@ -417,24 +417,57 @@ def nombres_previsiones(cfg: dict) -> dict:
     return nombres
 
 
-def datos_historial(cfg: dict) -> dict:
-    """Pagina «Previsiones»: cada prevision apuntada, con la de los futuros al lado."""
+def datos_historial(cfg: dict, cadena: dict | None = None) -> dict:
+    """Pagina «Previsiones»: cada prevision apuntada, con la de los futuros al lado.
+
+    La cadena de costes se reparte en un grupo por cadena (energia, alimentos...), y cada
+    uno lleva tambien las previsiones vigentes de sus eslabones (11-nov-2026: antes salian
+    en la pagina «Cadena de costes»). `cadena` es la salida de `datos_cadena`.
+    """
     from cedron import seguimiento
     nombres = nombres_previsiones(cfg)
-    grupos = []
-    for gid, titulo in (("metales", "Metales"), ("apoyo", "Materias primas de apoyo"), ("cadena", "Cadena de costes")):
-        registro = leer(seguimiento.ARCHIVOS[gid], []) or []
-        futuros = {(r["id"][len("futuros:"):], r["plazo"], r["desde"]): r for r in registro if r["id"].startswith("futuros:")}
-        filas = []
+    resumen = leer("previsiones_resumen.json") or {}
+
+    def propio(r):
+        return r["id"][len("futuros:"):] if r["id"].startswith("futuros:") else r["id"]
+
+    def filas(gid, registro):
+        futuros = {(propio(r), r["plazo"], r["desde"]): r for r in registro if r["id"].startswith("futuros:")}
+        out = []
         for r in registro:
             if r["id"].startswith("futuros:"):
                 continue
             f = futuros.get((r["id"], r["plazo"], r["desde"]))
-            filas.append({**r, "nombre": nombres.get((gid, r["id"]), r["id"]), "a_tiempo": seguimiento.a_tiempo(r),
-                          "futuros": f["previsto"] if f else None})
-        filas.sort(key=lambda r: (r["real"] is None, r["vence"], r["nombre"], r["plazo"]))
-        grupos.append({"id": gid, "titulo": titulo, "filas": filas})
-    return {"grupos": grupos, "resumen": leer("previsiones_resumen.json") or {}}
+            out.append({**r, "nombre": nombres.get((gid, r["id"]), r["id"]), "a_tiempo": seguimiento.a_tiempo(r),
+                        "futuros": f["previsto"] if f else None})
+        out.sort(key=lambda r: (r["real"] is None, r["vence"], r["nombre"], r["plazo"]))
+        return out
+
+    grupos = []
+    for gid, titulo in (("metales", "Metales"), ("apoyo", "Materias primas de apoyo")):
+        registro = leer(seguimiento.ARCHIVOS[gid], []) or []
+        grupos.append({"id": gid, "titulo": titulo, "pestana": titulo, "filas": filas(gid, registro),
+                       "resumen": (resumen.get("grupos") or {}).get(gid) or {}})
+    registro = leer(seguimiento.ARCHIVOS["cadena"], []) or []
+    cadenas = (cadena or {}).get("cadenas") or []
+    if not cadenas:
+        grupos.append({"id": "cadena", "titulo": "Cadena de costes", "pestana": "Cadena de costes",
+                       "filas": filas("cadena", registro), "resumen": (resumen.get("grupos") or {}).get("cadena") or {}})
+    vistos: set[str] = set()
+    for c in cadenas:
+        ids = {e["id"] for e in c["eslabones"]} - vistos
+        vistos |= ids
+        parte = [r for r in registro if propio(r) in ids]
+        grupos.append({"id": c["id"], "titulo": f"Cadena de costes: {c['nombre'].lower()}",
+                       "pestana": f"Cadena: {c['nombre'].lower()}", "filas": filas("cadena", parte),
+                       "resumen": seguimiento.resumir({"x": parte})["grupos"]["x"] if parte else {},
+                       "eslabones": [e for e in c["eslabones"] if e.get("previsiones")]})
+    resto = [r for r in registro if propio(r) not in vistos] if cadenas else []
+    if resto:      # eslabones que ya no estan en la cadena: su historial no se pierde de vista
+        grupos.append({"id": "cadena_otros", "titulo": "Cadena de costes: eslabones retirados",
+                       "pestana": "Cadena: retirados", "filas": filas("cadena", resto),
+                       "resumen": seguimiento.resumir({"x": resto})["grupos"]["x"]})
+    return {"grupos": grupos, "resumen": resumen}
 
 
 def datos_cadena(cadena: dict | None) -> dict | None:
@@ -637,13 +670,14 @@ def construir(cfg: dict, destino: Path, demo: bool = False, privado: bool = Fals
            filtros_seccion=[("preciosos", "Metales preciosos", [i for i in ids if i in preciosos]),
                             ("materias", "Materias primas", [i for i in ids if i not in preciosos])],
            balance=[(i, bal[i]) for i in ids if i in bal])
-    pagina("previsiones.html", "previsiones.html", seccion="previsiones", hist=datos_historial(cfg))
+    cadena_datos = datos_cadena(leer("cadena.json"))
+    pagina("previsiones.html", "previsiones.html", seccion="previsiones", hist=datos_historial(cfg, cadena_datos))
     mats = ncfg.get("materias") or {}
     noticias_materia = {k: sorted([n for n in noticias if k in (n.get("materias") or news.materias(n["titulo"], mats))],
                                   key=lambda n: (n.get("impacto") or 0, n["fecha"]), reverse=True) for k in mats}
     pagina("cadena.html", "cadena.html", seccion="cadena", noticias_materia=noticias_materia,
            nombres_materia={k: v["nombre"] for k, v in mats.items()},
-           materia_de_serie=ncfg.get("materia_de_serie") or {}, cadena=datos_cadena(leer("cadena.json")),
+           materia_de_serie=ncfg.get("materia_de_serie") or {}, cadena=cadena_datos,
            noticias_tema={t: [n for n in noticias if t in n["activos"]][:6] for t in temas})
     historial = rendimiento_historial(leer("historial_lecturas.json", []) or [], historicos)
     pagina("metodologia.html", "metodologia.html", seccion="metodologia", historial=historial[:200],

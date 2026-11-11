@@ -82,7 +82,8 @@ GitHub Actions (cada hora, minuto 17 UTC)  →  run.py
   - **La luz, semana a semana** (`novedades.semanas`, `semanal: true` en la materia): medias de lunes a domingo del mercado mayorista y del PVPC con su cambio frente a la semana anterior, en la ficha de electricidad, en la portada y en el resumen semanal.
   - **Vista previa local**: `.claude/launch.json` (no está en git, excluido en `.git/info/exclude`) sirve `_site_demo` en el puerto 8000 y `_site` en el 8001 para el panel del navegador de la app de Claude. Desde Windows se usa `py -3.12` (el Python 3.15 no instala PyYAML).
   - **Por qué se movió**: `novedades.saltos` (cambio > `novedades.salto_veces` desviaciones típicas del último año) + `noticias_de` (archivo de noticias por metal o `materia_de_apoyo`), en fichas, portada y correo.
-- `tests/`: 99 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
+- **Previsiones de la cadena, en «Previsiones» (11-nov-2026, petición del usuario)**: la tabla de previsión de cada eslabón ya no sale en `cadena.html` (queda un enlace) sino en `previsiones.html`, con una pestaña por cadena («Cadena: energía», «Cadena: abonos y alimentos», «Cadena: construcción») junto a «Metales» y «Materias primas de apoyo». `build.datos_historial(cfg, cadena)` reparte el historial de la cadena por cadena y calcula su resumen con `seguimiento.resumir`. El cálculo no cambia. Las previsiones de metales y materias de apoyo siguen en sus fichas.
+- `tests/`: 100 pruebas (`python -m unittest discover tests`). Se ejecutan en cada actualización; **pásalas antes de subir cambios**.
 - `.github/workflows/actualizar.yml`: la automatización. Si una fuente falla 3 veces seguidas, abre una incidencia en GitHub (le llega por correo) y la cierra al recuperarse.
 
 Comandos:
