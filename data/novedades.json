@@ -1,0 +1,733 @@
+{
+ "actualizado": "2026-11-11T15:11:41Z",
+ "eventos": [
+  {
+   "ambito": "EE. UU.",
+   "anterior": "2026-11-02",
+   "cambio_pct": -2.4222806586783996,
+   "clave": "apoyo:diesel:global",
+   "dato": "2026-11-09",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-11",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/galón",
+   "valor": 5.473956937371572
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-09",
+   "cambio_pct": -1.9230769230769162,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-10",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-11",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 84.15
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-11",
+   "cambio_pct": -44.931163954943685,
+   "clave": "apoyo:electricidad:espana",
+   "dato": "2026-11-12",
+   "diaria": true,
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-11",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 116.16
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": 1.4637932673935206,
+   "clave": "apoyo:aluminio:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/aluminio.html",
+   "fecha": "2026-11-11",
+   "materia": "aluminio",
+   "nombre": "Aluminio",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 2721.0030230069556
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": 0.23382422559719007,
+   "clave": "apoyo:cobre_industrial:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/cobre_industrial.html",
+   "fecha": "2026-11-11",
+   "materia": "cobre_industrial",
+   "nombre": "Cobre",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 12320.983031567683
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": 1.321854333331518,
+   "clave": "apoyo:zinc:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/zinc.html",
+   "fecha": "2026-11-11",
+   "materia": "zinc",
+   "nombre": "Zinc",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 3336.3206705903335
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": 0.700636038073088,
+   "clave": "apoyo:niquel:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/niquel.html",
+   "fecha": "2026-11-11",
+   "materia": "niquel",
+   "nombre": "Níquel",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 14366.198885321919
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": -0.17622556872797235,
+   "clave": "apoyo:plomo:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/plomo.html",
+   "fecha": "2026-11-11",
+   "materia": "plomo",
+   "nombre": "Plomo",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 1666.9341894060994
+  },
+  {
+   "clave": "medida:aove|Retirada obligatoria del 12 % del aceite de oliva de la campaña 2026/27",
+   "desde": "2026-11-01",
+   "enlace": "materias/aove.html",
+   "fecha": "2026-11-11",
+   "materia": "aove",
+   "nombre": "Retirada obligatoria del 12 % del aceite de oliva de la campaña 2026/27",
+   "sentido": "alza",
+   "tipo": "medida"
+  }
+ ],
+ "medidas": [
+  "aove|Retirada obligatoria del 12 % del aceite de oliva de la campaña 2026/27"
+ ],
+ "series": {
+  "apoyo:acero:espana": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 107.5
+  },
+  "apoyo:acero:europa": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 105.3
+  },
+  "apoyo:algodon:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 1.7854606691419646
+  },
+  "apoyo:aluminio:espana": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 2945.0668642480027
+  },
+  "apoyo:aluminio:europa": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 2955.5400750027966
+  },
+  "apoyo:aluminio:global": {
+   "fecha": "2026-11-11",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/aluminio.html",
+    "materia": "aluminio",
+    "nombre": "Aluminio",
+    "unidad": "€/tonelada"
+   },
+   "puntos": [
+    [
+     "2026-11-10",
+     2681.7477795612626
+    ],
+    [
+     "2026-11-11",
+     2721.0030230069556
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 2721.0030230069556
+  },
+  "apoyo:aove:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "baja",
+   "valor": 2.8992316
+  },
+  "apoyo:aove:global": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 4.936748403611261
+  },
+  "apoyo:arroz:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "alza",
+   "valor": 1.2149
+  },
+  "apoyo:arroz:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 436.5451336052103
+  },
+  "apoyo:azucar:espana": {
+   "fecha": "2026-08",
+   "tendencia": "baja",
+   "valor": 1.1771847506101896
+  },
+  "apoyo:azucar:europa": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 0.33031022379126346
+  },
+  "apoyo:azucar:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 0.3838740438655224
+  },
+  "apoyo:brent:global": {
+   "fecha": "2026-11-03",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/brent.html",
+    "materia": "brent",
+    "nombre": "Petróleo Brent",
+    "unidad": "€/barril"
+   },
+   "puntos": [
+    [
+     "2026-11-02",
+     95.74714693295293
+    ],
+    [
+     "2026-11-03",
+     95.742016280526
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 95.742016280526
+  },
+  "apoyo:cacao:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 5.133199423783148
+  },
+  "apoyo:cafe:espana": {
+   "fecha": "2026-08",
+   "tendencia": "baja",
+   "valor": 16.987549947780597
+  },
+  "apoyo:cafe:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 6.606204475825269
+  },
+  "apoyo:carbon:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 135.9628299551606
+  },
+  "apoyo:cebada:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "alza",
+   "valor": 236.04
+  },
+  "apoyo:cebolla:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 0.3179
+  },
+  "apoyo:cemento:espana": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 146.8
+  },
+  "apoyo:cemento:europa": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 159.0
+  },
+  "apoyo:cerdo:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "baja",
+   "valor": 1.6025
+  },
+  "apoyo:cerdo:global": {
+   "fecha": "2026-09",
+   "tendencia": "baja",
+   "valor": 1.5949245833795647
+  },
+  "apoyo:cobre_industrial:espana": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 11965.041882754085
+  },
+  "apoyo:cobre_industrial:europa": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 12225.151488900912
+  },
+  "apoyo:cobre_industrial:global": {
+   "fecha": "2026-11-11",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/cobre_industrial.html",
+    "materia": "cobre_industrial",
+    "nombre": "Cobre",
+    "unidad": "€/tonelada"
+   },
+   "puntos": [
+    [
+     "2026-11-10",
+     12292.240794720885
+    ],
+    [
+     "2026-11-11",
+     12320.983031567683
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 12320.983031567683
+  },
+  "apoyo:complejo:espana": {
+   "fecha": "2026-07",
+   "tendencia": "alza",
+   "valor": 658.4000000000001
+  },
+  "apoyo:diesel:espana": {
+   "fecha": "2026-11-02",
+   "tendencia": "alza",
+   "valor": 1.898318015
+  },
+  "apoyo:diesel:europa": {
+   "fecha": "2026-11-02",
+   "tendencia": "alza",
+   "valor": 2.1539358162767477
+  },
+  "apoyo:diesel:global": {
+   "fecha": "2026-11-09",
+   "tendencia": "mixta",
+   "valor": 5.473956937371572
+  },
+  "apoyo:electricidad:espana": {
+   "fecha": "2026-11-12",
+   "info": {
+    "ambito": "España",
+    "enlace": "materias/electricidad.html",
+    "materia": "electricidad",
+    "nombre": "Electricidad",
+    "unidad": "€/MWh"
+   },
+   "puntos": [
+    [
+     "2026-11-11",
+     210.936
+    ],
+    [
+     "2026-11-12",
+     116.16
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 116.16
+  },
+  "apoyo:estano:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 46150.5873759815
+  },
+  "apoyo:estructuras:espana": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 108.5
+  },
+  "apoyo:estructuras:europa": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 122.6
+  },
+  "apoyo:fosfatos:espana": {
+   "fecha": "2026-07",
+   "tendencia": "alza",
+   "valor": 911.8000000000001
+  },
+  "apoyo:fosfatos:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 716.9517316939559
+  },
+  "apoyo:gas:espana": {
+   "fecha": "2026-11-10",
+   "info": {
+    "ambito": "España",
+    "enlace": "materias/gas.html",
+    "materia": "gas",
+    "nombre": "Gas natural",
+    "unidad": "€/MWh"
+   },
+   "puntos": [
+    [
+     "2026-11-09",
+     85.8
+    ],
+    [
+     "2026-11-10",
+     84.15
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 84.15
+  },
+  "apoyo:gas:europa": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 25.442814535272994
+  },
+  "apoyo:gas:global": {
+   "fecha": "2026-11-03",
+   "info": {
+    "ambito": "EE. UU.",
+    "enlace": "materias/gas.html",
+    "materia": "gas",
+    "nombre": "Gas natural",
+    "unidad": "€/MMBtu"
+   },
+   "puntos": [
+    [
+     "2026-11-02",
+     2.2646219686162627
+    ],
+    [
+     "2026-11-03",
+     2.3526254584488773
+    ]
+   ],
+   "tendencia": "baja",
+   "valor": 2.3526254584488773
+  },
+  "apoyo:girasol:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 1.332252
+  },
+  "apoyo:girasol:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 1.1605137257288942
+  },
+  "apoyo:hierro:global": {
+   "fecha": "2026-10",
+   "tendencia": "baja",
+   "valor": 81.05991437904518
+  },
+  "apoyo:hormigon:espana": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 155.9
+  },
+  "apoyo:hormigon:europa": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 145.7
+  },
+  "apoyo:huevos:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 0.13333328
+  },
+  "apoyo:leche:espana": {
+   "fecha": "2026-08",
+   "tendencia": "baja",
+   "valor": 0.9669928259319349
+  },
+  "apoyo:madera:espana": {
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 387.0070553227182
+  },
+  "apoyo:madera:europa": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 335.6681987836577
+  },
+  "apoyo:madera:global": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 260.73308872403675
+  },
+  "apoyo:maiz:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 252.7
+  },
+  "apoyo:maiz:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 202.2034207803275
+  },
+  "apoyo:manzana:espana": {
+   "fecha": "2026-10-12",
+   "tendencia": "baja",
+   "valor": 0.601
+  },
+  "apoyo:naranja:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "baja",
+   "valor": 0.2633
+  },
+  "apoyo:naranja:global": {
+   "fecha": "2026-10",
+   "tendencia": "baja",
+   "valor": 0.6695477509282367
+  },
+  "apoyo:niquel:global": {
+   "fecha": "2026-11-11",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/niquel.html",
+    "materia": "niquel",
+    "nombre": "Níquel",
+    "unidad": "€/tonelada"
+   },
+   "puntos": [
+    [
+     "2026-11-10",
+     14266.24443552702
+    ],
+    [
+     "2026-11-11",
+     14366.198885321919
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 14366.198885321919
+  },
+  "apoyo:nitrato:espana": {
+   "fecha": "2026-07",
+   "tendencia": "alza",
+   "valor": 457.59999999999997
+  },
+  "apoyo:patata:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 0.3925
+  },
+  "apoyo:platano:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "alza",
+   "valor": 1.1803000000000001
+  },
+  "apoyo:platano:europa": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 0.9820033680280805
+  },
+  "apoyo:plomo:global": {
+   "fecha": "2026-11-11",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/plomo.html",
+    "materia": "plomo",
+    "nombre": "Plomo",
+    "unidad": "€/tonelada"
+   },
+   "puntos": [
+    [
+     "2026-11-10",
+     1669.8769395398608
+    ],
+    [
+     "2026-11-11",
+     1666.9341894060994
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 1666.9341894060994
+  },
+  "apoyo:pollo:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 2.3438
+  },
+  "apoyo:pollo:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 1.6426238156106074
+  },
+  "apoyo:potasa:espana": {
+   "fecha": "2026-07",
+   "tendencia": "mixta",
+   "valor": 524.2
+  },
+  "apoyo:potasa:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 319.1510946091262
+  },
+  "apoyo:soja:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "alza",
+   "valor": 424.73
+  },
+  "apoyo:soja:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 404.406841560655
+  },
+  "apoyo:ternera:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 6.688400000000001
+  },
+  "apoyo:ternera:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 6.097348185119809
+  },
+  "apoyo:tomate:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "alza",
+   "valor": 1.1764000000000001
+  },
+  "apoyo:trigo:espana": {
+   "fecha": "2026-10-26",
+   "tendencia": "mixta",
+   "valor": 247.6
+  },
+  "apoyo:trigo:global": {
+   "fecha": "2026-10",
+   "tendencia": "mixta",
+   "valor": 282.9955160590014
+  },
+  "apoyo:urea:espana": {
+   "fecha": "2026-07",
+   "tendencia": "mixta",
+   "valor": 772.6999999999999
+  },
+  "apoyo:urea:global": {
+   "fecha": "2026-10",
+   "tendencia": "alza",
+   "valor": 374.9467405198126
+  },
+  "apoyo:wti:global": {
+   "fecha": "2026-11-03",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/wti.html",
+    "materia": "wti",
+    "nombre": "Petróleo WTI",
+    "unidad": "€/barril"
+   },
+   "puntos": [
+    [
+     "2026-11-02",
+     89.21184022824536
+    ],
+    [
+     "2026-11-03",
+     89.1314071026031
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 89.1314071026031
+  },
+  "apoyo:zinc:espana": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 3137.770523020643
+  },
+  "apoyo:zinc:europa": {
+   "fecha": "2026-09",
+   "tendencia": "alza",
+   "valor": 3165.4771130218296
+  },
+  "apoyo:zinc:global": {
+   "fecha": "2026-11-11",
+   "info": {
+    "ambito": "Global",
+    "enlace": "materias/zinc.html",
+    "materia": "zinc",
+    "nombre": "Zinc",
+    "unidad": "€/tonelada"
+   },
+   "puntos": [
+    [
+     "2026-11-10",
+     3292.7947208846085
+    ],
+    [
+     "2026-11-11",
+     3336.3206705903335
+    ]
+   ],
+   "tendencia": "mixta",
+   "valor": 3336.3206705903335
+  },
+  "metal:cobre": {
+   "fecha": "2026-11-11",
+   "tendencia": "mixta",
+   "valor": 6.26718
+  },
+  "metal:oro": {
+   "fecha": "2026-11-11",
+   "tendencia": "baja",
+   "valor": 4037.81237
+  },
+  "metal:paladio": {
+   "fecha": "2026-11-11",
+   "tendencia": null,
+   "valor": 1086.69554
+  },
+  "metal:plata": {
+   "fecha": "2026-11-11",
+   "tendencia": "mixta",
+   "valor": 52.72357
+  },
+  "metal:platino": {
+   "fecha": "2026-11-11",
+   "tendencia": "mixta",
+   "valor": 1573.99887
+  }
+ }
+}
