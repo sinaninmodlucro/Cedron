@@ -410,37 +410,37 @@
    "alza": 14,
    "baja": 3,
    "importantes": 14,
-   "noticias": 66
+   "noticias": 65
   },
   "cobre": {
    "alza": 10,
    "baja": 2,
-   "importantes": 5,
-   "noticias": 25
+   "importantes": 7,
+   "noticias": 26
   },
   "construccion": {
-   "alza": 7,
+   "alza": 9,
    "baja": 2,
-   "importantes": 7,
-   "noticias": 36
+   "importantes": 9,
+   "noticias": 35
   },
   "energia": {
-   "alza": 34,
-   "baja": 44,
-   "importantes": 69,
-   "noticias": 232
+   "alza": 36,
+   "baja": 42,
+   "importantes": 70,
+   "noticias": 239
   },
   "m:acero": {
-   "alza": 3,
+   "alza": 4,
    "baja": 1,
-   "importantes": 4,
-   "noticias": 22
+   "importantes": 5,
+   "noticias": 21
   },
   "m:aluminio": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
-   "importantes": 1,
-   "noticias": 3
+   "importantes": 2,
+   "noticias": 4
   },
   "m:aove": {
    "alza": 0,
@@ -467,16 +467,16 @@
    "noticias": 2
   },
   "m:cobre": {
-   "alza": 8,
+   "alza": 7,
    "baja": 2,
-   "importantes": 3,
+   "importantes": 4,
    "noticias": 18
   },
   "m:diesel": {
    "alza": 3,
    "baja": 6,
    "importantes": 4,
-   "noticias": 59
+   "noticias": 61
   },
   "m:electricidad": {
    "alza": 4,
@@ -488,7 +488,7 @@
    "alza": 2,
    "baja": 1,
    "importantes": 0,
-   "noticias": 7
+   "noticias": 6
   },
   "m:frutas": {
    "alza": 0,
@@ -500,7 +500,7 @@
    "alza": 5,
    "baja": 0,
    "importantes": 7,
-   "noticias": 21
+   "noticias": 19
   },
   "m:girasol": {
    "alza": 0,
@@ -533,10 +533,10 @@
    "noticias": 3
   },
   "m:petroleo": {
-   "alza": 14,
-   "baja": 31,
+   "alza": 15,
+   "baja": 29,
    "importantes": 49,
-   "noticias": 102
+   "noticias": 103
   },
   "m:pollo": {
    "alza": 0,
@@ -566,13 +566,13 @@
    "alza": 1,
    "baja": 0,
    "importantes": 2,
-   "noticias": 7
+   "noticias": 6
   },
   "oro": {
-   "alza": 23,
-   "baja": 56,
-   "importantes": 16,
-   "noticias": 154
+   "alza": 21,
+   "baja": 60,
+   "importantes": 15,
+   "noticias": 155
   },
   "paladio": {
    "alza": 0,
@@ -584,13 +584,13 @@
    "alza": 5,
    "baja": 14,
    "importantes": 3,
-   "noticias": 46
+   "noticias": 47
   },
   "platino": {
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 6
+   "noticias": 5
   }
  }
 }
