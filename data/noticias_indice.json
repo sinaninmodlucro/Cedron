@@ -405,5 +405,72 @@
    "noticias": 6
   }
  },
- "2026-11-12": {}
+ "2026-11-12": {
+  "cobre": {
+   "alza": 2,
+   "baja": 0,
+   "importantes": 1,
+   "noticias": 2
+  },
+  "construccion": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "energia": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 0,
+   "noticias": 6
+  },
+  "m:acero": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "m:cobre": {
+   "alza": 2,
+   "baja": 0,
+   "importantes": 1,
+   "noticias": 2
+  },
+  "m:diesel": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 3
+  },
+  "m:gas": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "oro": {
+   "alza": 2,
+   "baja": 4,
+   "importantes": 1,
+   "noticias": 12
+  },
+  "paladio": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "plata": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "platino": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  }
+ }
 }
