@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-11T23:11:10Z",
+ "actualizado": "2026-11-12T00:04:44Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -162,6 +162,66 @@
    "nombre": "Platino",
    "tipo": "tendencia",
    "tipo_serie": "metal"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-02",
+   "cambio_pct": 0.0,
+   "clave": "apoyo:diesel:espana",
+   "dato": "2026-11-09",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-12",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 1.898318015
+  },
+  {
+   "ambito": "Europa",
+   "anterior": "2026-11-02",
+   "cambio_pct": -2.6112948781737866,
+   "clave": "apoyo:diesel:europa",
+   "dato": "2026-11-09",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-12",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 2.0970892579730642
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "Europa",
+   "antes": "alza",
+   "clave": "apoyo:diesel:europa",
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-12",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-10",
+   "cambio_pct": 0.10695187165774556,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-12",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 84.24
   }
  ],
  "medidas": [
@@ -360,14 +420,14 @@
    "valor": 658.4000000000001
   },
   "apoyo:diesel:espana": {
-   "fecha": "2026-11-02",
+   "fecha": "2026-11-09",
    "tendencia": "alza",
    "valor": 1.898318015
   },
   "apoyo:diesel:europa": {
-   "fecha": "2026-11-02",
-   "tendencia": "alza",
-   "valor": 2.1539358162767477
+   "fecha": "2026-11-09",
+   "tendencia": "mixta",
+   "valor": 2.0970892579730642
   },
   "apoyo:diesel:global": {
    "fecha": "2026-11-09",
@@ -422,7 +482,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-10",
+   "fecha": "2026-11-11",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -438,10 +498,14 @@
     [
      "2026-11-10",
      84.15
+    ],
+    [
+     "2026-11-11",
+     84.24
     ]
    ],
    "tendencia": "mixta",
-   "valor": 84.15
+   "valor": 84.24
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
