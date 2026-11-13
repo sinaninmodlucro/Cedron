@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-12T23:04:27Z",
+ "actualizado": "2026-11-13T00:03:13Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -342,6 +342,62 @@
    "nombre": "Plata",
    "tipo": "tendencia",
    "tipo_serie": "metal"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-11",
+   "cambio_pct": 3.3950617283950546,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-12",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-13",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 87.1
+  },
+  {
+   "ahora": "alza",
+   "ambito": "España",
+   "antes": "mixta",
+   "clave": "apoyo:gas:espana",
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-13",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "EE. UU.",
+   "anterior": "2026-11-10",
+   "cambio_pct": 0.7818819088703188,
+   "clave": "apoyo:gas:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-13",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MMBtu",
+   "valor": 2.6961445133459154
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "EE. UU.",
+   "antes": "baja",
+   "clave": "apoyo:gas:global",
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-13",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -614,7 +670,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-11",
+   "fecha": "2026-11-12",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -634,10 +690,14 @@
     [
      "2026-11-11",
      84.24
+    ],
+    [
+     "2026-11-12",
+     87.1
     ]
    ],
-   "tendencia": "mixta",
-   "valor": 84.24
+   "tendencia": "alza",
+   "valor": 87.1
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
@@ -645,7 +705,7 @@
    "valor": 25.442814535272994
   },
   "apoyo:gas:global": {
-   "fecha": "2026-11-03",
+   "fecha": "2026-11-11",
    "info": {
     "ambito": "EE. UU.",
     "enlace": "materias/gas.html",
@@ -661,10 +721,18 @@
     [
      "2026-11-03",
      2.3526254584488773
+    ],
+    [
+     "2026-11-10",
+     2.675227394328518
+    ],
+    [
+     "2026-11-11",
+     2.6961445133459154
     ]
    ],
-   "tendencia": "baja",
-   "valor": 2.3526254584488773
+   "tendencia": "mixta",
+   "valor": 2.6961445133459154
   },
   "apoyo:girasol:espana": {
    "fecha": "2026-10-26",
