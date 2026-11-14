@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-13T23:56:24Z",
+ "actualizado": "2026-11-14T01:30:23Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -506,6 +506,358 @@
    "nombre": "Níquel",
    "tipo": "tendencia",
    "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": 2.9951486144998984,
+   "clave": "apoyo:brent:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/brent.html",
+   "fecha": "2026-11-14",
+   "materia": "brent",
+   "nombre": "Petróleo Brent",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/barril",
+   "valor": 82.80758515323087
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-10",
+   "cambio_pct": 0.7818819088703188,
+   "clave": "apoyo:wti:global",
+   "dato": "2026-11-11",
+   "diaria": true,
+   "enlace": "materias/wti.html",
+   "fecha": "2026-11-14",
+   "materia": "wti",
+   "nombre": "Petróleo WTI",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/barril",
+   "valor": 80.54282376202032
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-12",
+   "cambio_pct": 3.8461538461538547,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-13",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-14",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 90.45
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -2.739469578783138,
+   "clave": "apoyo:cerdo:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/cerdo.html",
+   "fecha": "2026-11-14",
+   "materia": "cerdo",
+   "nombre": "Cerdo",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg canal",
+   "valor": 1.5586000000000002
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -0.36265892994281623,
+   "clave": "apoyo:pollo:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/pollo.html",
+   "fecha": "2026-11-14",
+   "materia": "pollo",
+   "nombre": "Pollo",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg canal",
+   "valor": 2.3353
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": 0.01943663656478467,
+   "clave": "apoyo:ternera:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/ternera.html",
+   "fecha": "2026-11-14",
+   "materia": "ternera",
+   "nombre": "Ternera",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg canal",
+   "valor": 6.6897
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": 4.374999999999996,
+   "clave": "apoyo:huevos:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/huevos.html",
+   "fecha": "2026-11-14",
+   "materia": "huevos",
+   "nombre": "Huevos",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/unidad",
+   "valor": 0.139166611
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -0.9006462035541118,
+   "clave": "apoyo:trigo:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/trigo.html",
+   "fecha": "2026-11-14",
+   "materia": "trigo",
+   "nombre": "Trigo",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 245.37
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": 0.0,
+   "clave": "apoyo:arroz:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/arroz.html",
+   "fecha": "2026-11-14",
+   "materia": "arroz",
+   "nombre": "Arroz",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 1.2149
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -2.1326340399987376,
+   "clave": "apoyo:aove:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/aove.html",
+   "fecha": "2026-11-14",
+   "materia": "aove",
+   "nombre": "Aceite de oliva virgen extra",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 2.8374015999999997
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -0.21407361370071598,
+   "clave": "apoyo:girasol:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/girasol.html",
+   "fecha": "2026-11-14",
+   "materia": "girasol",
+   "nombre": "Aceite de girasol",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 1.3294
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -4.3057324840764295,
+   "clave": "apoyo:patata:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/patata.html",
+   "fecha": "2026-11-14",
+   "materia": "patata",
+   "nombre": "Patata",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 0.37560000000000004
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": 10.464127847670834,
+   "clave": "apoyo:tomate:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/tomate.html",
+   "fecha": "2026-11-14",
+   "materia": "tomate",
+   "nombre": "Tomate",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 1.2994999999999999
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -0.07595898214962649,
+   "clave": "apoyo:naranja:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/naranja.html",
+   "fecha": "2026-11-14",
+   "materia": "naranja",
+   "nombre": "Naranja",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 0.2631
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "baja",
+   "clave": "apoyo:naranja:espana",
+   "enlace": "materias/naranja.html",
+   "fecha": "2026-11-14",
+   "materia": "naranja",
+   "nombre": "Naranja",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": 0.27111751249682126,
+   "clave": "apoyo:platano:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/platano.html",
+   "fecha": "2026-11-14",
+   "materia": "platano",
+   "nombre": "Plátano",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 1.1835
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": 5.53633217993077,
+   "clave": "apoyo:cebolla:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/cebolla.html",
+   "fecha": "2026-11-14",
+   "materia": "cebolla",
+   "nombre": "Cebolla",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 0.33549999999999996
+  },
+  {
+   "ahora": "alza",
+   "ambito": "España",
+   "antes": "mixta",
+   "clave": "apoyo:cebolla:espana",
+   "enlace": "materias/cebolla.html",
+   "fecha": "2026-11-14",
+   "materia": "cebolla",
+   "nombre": "Cebolla",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -1.1950929956470069,
+   "clave": "apoyo:maiz:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/maiz.html",
+   "fecha": "2026-11-14",
+   "materia": "maiz",
+   "nombre": "Maíz",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 249.68
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -0.8176580240637055,
+   "clave": "apoyo:cebada:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/cebada.html",
+   "fecha": "2026-11-14",
+   "materia": "cebada",
+   "nombre": "Cebada",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 234.11
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "alza",
+   "clave": "apoyo:cebada:espana",
+   "enlace": "materias/cebada.html",
+   "fecha": "2026-11-14",
+   "materia": "cebada",
+   "nombre": "Cebada",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-10-26",
+   "cambio_pct": -1.7258022743860901,
+   "clave": "apoyo:soja:espana",
+   "dato": "2026-11-02",
+   "diaria": false,
+   "enlace": "materias/soja.html",
+   "fecha": "2026-11-14",
+   "materia": "soja",
+   "nombre": "Soja (harina para pienso)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 417.4
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "alza",
+   "clave": "apoyo:soja:espana",
+   "enlace": "materias/soja.html",
+   "fecha": "2026-11-14",
+   "materia": "soja",
+   "nombre": "Soja (harina para pienso)",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -568,9 +920,9 @@
    "valor": 2723.7758052841114
   },
   "apoyo:aove:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "baja",
-   "valor": 2.8992316
+   "valor": 2.8374015999999997
   },
   "apoyo:aove:global": {
    "fecha": "2026-09",
@@ -578,7 +930,7 @@
    "valor": 4.936748403611261
   },
   "apoyo:arroz:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "alza",
    "valor": 1.2149
   },
@@ -603,7 +955,7 @@
    "valor": 0.3838740438655224
   },
   "apoyo:brent:global": {
-   "fecha": "2026-11-03",
+   "fecha": "2026-11-11",
    "info": {
     "ambito": "Global",
     "enlace": "materias/brent.html",
@@ -619,10 +971,18 @@
     [
      "2026-11-03",
      95.742016280526
+    ],
+    [
+     "2026-11-10",
+     80.39950062421973
+    ],
+    [
+     "2026-11-11",
+     82.80758515323087
     ]
    ],
    "tendencia": "mixta",
-   "valor": 95.742016280526
+   "valor": 82.80758515323087
   },
   "apoyo:cacao:global": {
    "fecha": "2026-10",
@@ -645,14 +1005,14 @@
    "valor": 135.9628299551606
   },
   "apoyo:cebada:espana": {
-   "fecha": "2026-10-26",
-   "tendencia": "alza",
-   "valor": 236.04
+   "fecha": "2026-11-02",
+   "tendencia": "mixta",
+   "valor": 234.11
   },
   "apoyo:cebolla:espana": {
-   "fecha": "2026-10-26",
-   "tendencia": "mixta",
-   "valor": 0.3179
+   "fecha": "2026-11-02",
+   "tendencia": "alza",
+   "valor": 0.33549999999999996
   },
   "apoyo:cemento:espana": {
    "fecha": "2026-09",
@@ -665,9 +1025,9 @@
    "valor": 159.0
   },
   "apoyo:cerdo:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "baja",
-   "valor": 1.6025
+   "valor": 1.5586000000000002
   },
   "apoyo:cerdo:global": {
    "fecha": "2026-09",
@@ -790,7 +1150,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-12",
+   "fecha": "2026-11-13",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -814,10 +1174,14 @@
     [
      "2026-11-12",
      87.1
+    ],
+    [
+     "2026-11-13",
+     90.45
     ]
    ],
    "tendencia": "alza",
-   "valor": 87.1
+   "valor": 90.45
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
@@ -855,9 +1219,9 @@
    "valor": 2.6961445133459154
   },
   "apoyo:girasol:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 1.332252
+   "valor": 1.3294
   },
   "apoyo:girasol:global": {
    "fecha": "2026-10",
@@ -880,9 +1244,9 @@
    "valor": 145.7
   },
   "apoyo:huevos:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 0.13333328
+   "valor": 0.139166611
   },
   "apoyo:leche:espana": {
    "fecha": "2026-08",
@@ -905,9 +1269,9 @@
    "valor": 260.73308872403675
   },
   "apoyo:maiz:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 252.7
+   "valor": 249.68
   },
   "apoyo:maiz:global": {
    "fecha": "2026-10",
@@ -920,9 +1284,9 @@
    "valor": 0.601
   },
   "apoyo:naranja:espana": {
-   "fecha": "2026-10-26",
-   "tendencia": "baja",
-   "valor": 0.2633
+   "fecha": "2026-11-02",
+   "tendencia": "mixta",
+   "valor": 0.2631
   },
   "apoyo:naranja:global": {
    "fecha": "2026-10",
@@ -965,14 +1329,14 @@
    "valor": 457.59999999999997
   },
   "apoyo:patata:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 0.3925
+   "valor": 0.37560000000000004
   },
   "apoyo:platano:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "alza",
-   "valor": 1.1803000000000001
+   "valor": 1.1835
   },
   "apoyo:platano:europa": {
    "fecha": "2026-10",
@@ -1010,9 +1374,9 @@
    "valor": 1704.4878754976476
   },
   "apoyo:pollo:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 2.3438
+   "valor": 2.3353
   },
   "apoyo:pollo:global": {
    "fecha": "2026-10",
@@ -1030,9 +1394,9 @@
    "valor": 319.1510946091262
   },
   "apoyo:soja:espana": {
-   "fecha": "2026-10-26",
-   "tendencia": "alza",
-   "valor": 424.73
+   "fecha": "2026-11-02",
+   "tendencia": "mixta",
+   "valor": 417.4
   },
   "apoyo:soja:global": {
    "fecha": "2026-10",
@@ -1040,9 +1404,9 @@
    "valor": 404.406841560655
   },
   "apoyo:ternera:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 6.688400000000001
+   "valor": 6.6897
   },
   "apoyo:ternera:global": {
    "fecha": "2026-10",
@@ -1050,14 +1414,14 @@
    "valor": 6.097348185119809
   },
   "apoyo:tomate:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "alza",
-   "valor": 1.1764000000000001
+   "valor": 1.2994999999999999
   },
   "apoyo:trigo:espana": {
-   "fecha": "2026-10-26",
+   "fecha": "2026-11-02",
    "tendencia": "mixta",
-   "valor": 247.6
+   "valor": 245.37
   },
   "apoyo:trigo:global": {
    "fecha": "2026-10",
@@ -1075,7 +1439,7 @@
    "valor": 374.9467405198126
   },
   "apoyo:wti:global": {
-   "fecha": "2026-11-03",
+   "fecha": "2026-11-11",
    "info": {
     "ambito": "Global",
     "enlace": "materias/wti.html",
@@ -1091,10 +1455,18 @@
     [
      "2026-11-03",
      89.1314071026031
+    ],
+    [
+     "2026-11-10",
+     79.9179596932406
+    ],
+    [
+     "2026-11-11",
+     80.54282376202032
     ]
    ],
    "tendencia": "mixta",
-   "valor": 89.1314071026031
+   "valor": 80.54282376202032
   },
   "apoyo:zinc:espana": {
    "fecha": "2026-09",
