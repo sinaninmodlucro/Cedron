@@ -791,32 +791,38 @@
   "alimentos": {
    "alza": 0,
    "baja": 0,
-   "importantes": 0,
-   "noticias": 3
+   "importantes": 1,
+   "noticias": 7
   },
   "cobre": {
-   "alza": 0,
+   "alza": 1,
    "baja": 0,
-   "importantes": 1,
-   "noticias": 2
+   "importantes": 2,
+   "noticias": 5
   },
   "construccion": {
    "alza": 0,
    "baja": 2,
    "importantes": 1,
-   "noticias": 4
+   "noticias": 5
   },
   "energia": {
    "alza": 2,
-   "baja": 7,
-   "importantes": 4,
-   "noticias": 22
+   "baja": 9,
+   "importantes": 8,
+   "noticias": 33
   },
   "m:acero": {
    "alza": 0,
    "baja": 2,
    "importantes": 0,
    "noticias": 3
+  },
+  "m:aove": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
   },
   "m:cerdo": {
    "alza": 0,
@@ -825,18 +831,24 @@
    "noticias": 1
   },
   "m:cobre": {
-   "alza": 0,
+   "alza": 1,
    "baja": 0,
-   "importantes": 0,
-   "noticias": 1
+   "importantes": 1,
+   "noticias": 4
   },
   "m:diesel": {
    "alza": 0,
    "baja": 1,
    "importantes": 1,
-   "noticias": 4
+   "noticias": 7
   },
   "m:electricidad": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 0,
+   "noticias": 2
+  },
+  "m:fertilizantes": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
@@ -851,14 +863,14 @@
   "m:maiz": {
    "alza": 0,
    "baja": 0,
-   "importantes": 0,
-   "noticias": 1
+   "importantes": 1,
+   "noticias": 3
   },
   "m:petroleo": {
    "alza": 1,
-   "baja": 6,
-   "importantes": 2,
-   "noticias": 12
+   "baja": 7,
+   "importantes": 5,
+   "noticias": 17
   },
   "m:pollo": {
    "alza": 0,
@@ -866,17 +878,23 @@
    "importantes": 0,
    "noticias": 2
   },
+  "m:soja": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
   "m:zinc": {
    "alza": 0,
    "baja": 0,
    "importantes": 1,
-   "noticias": 1
+   "noticias": 2
   },
   "oro": {
-   "alza": 4,
-   "baja": 10,
+   "alza": 5,
+   "baja": 11,
    "importantes": 0,
-   "noticias": 42
+   "noticias": 56
   },
   "paladio": {
    "alza": 0,
@@ -888,7 +906,7 @@
    "alza": 4,
    "baja": 2,
    "importantes": 0,
-   "noticias": 13
+   "noticias": 14
   },
   "platino": {
    "alza": 0,
