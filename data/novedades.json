@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-14T11:57:46Z",
+ "actualizado": "2026-11-14T13:18:26Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -858,6 +858,34 @@
    "nombre": "Soja (harina para pienso)",
    "tipo": "tendencia",
    "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-14",
+   "cambio_pct": -46.0886701832643,
+   "clave": "apoyo:electricidad:espana",
+   "dato": "2026-11-15",
+   "diaria": true,
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-14",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 91.37
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "alza",
+   "clave": "apoyo:electricidad:espana",
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-14",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -1095,7 +1123,7 @@
    "valor": 5.473956937371572
   },
   "apoyo:electricidad:espana": {
-   "fecha": "2026-11-14",
+   "fecha": "2026-11-15",
    "info": {
     "ambito": "España",
     "enlace": "materias/electricidad.html",
@@ -1119,10 +1147,14 @@
     [
      "2026-11-14",
      169.482
+    ],
+    [
+     "2026-11-15",
+     91.37
     ]
    ],
-   "tendencia": "alza",
-   "valor": 169.482
+   "tendencia": "mixta",
+   "valor": 91.37
   },
   "apoyo:estano:global": {
    "fecha": "2026-10",
