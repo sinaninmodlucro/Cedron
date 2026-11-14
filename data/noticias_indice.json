@@ -789,16 +789,16 @@
  },
  "2026-11-14": {
   "alimentos": {
-   "alza": 1,
+   "alza": 2,
    "baja": 3,
    "importantes": 3,
-   "noticias": 21
+   "noticias": 22
   },
   "cobre": {
    "alza": 1,
-   "baja": 2,
+   "baja": 3,
    "importantes": 4,
-   "noticias": 8
+   "noticias": 10
   },
   "construccion": {
    "alza": 0,
@@ -807,10 +807,10 @@
    "noticias": 16
   },
   "energia": {
-   "alza": 7,
-   "baja": 23,
-   "importantes": 21,
-   "noticias": 105
+   "alza": 11,
+   "baja": 26,
+   "importantes": 24,
+   "noticias": 112
   },
   "m:acero": {
    "alza": 0,
@@ -824,6 +824,12 @@
    "importantes": 0,
    "noticias": 1
   },
+  "m:arroz": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
   "m:cerdo": {
    "alza": 0,
    "baja": 0,
@@ -832,15 +838,15 @@
   },
   "m:cobre": {
    "alza": 1,
-   "baja": 2,
+   "baja": 3,
    "importantes": 3,
-   "noticias": 7
+   "noticias": 8
   },
   "m:diesel": {
-   "alza": 0,
-   "baja": 6,
+   "alza": 1,
+   "baja": 7,
    "importantes": 3,
-   "noticias": 39
+   "noticias": 41
   },
   "m:electricidad": {
    "alza": 0,
@@ -861,10 +867,10 @@
    "noticias": 3
   },
   "m:gas": {
-   "alza": 1,
+   "alza": 2,
    "baja": 1,
    "importantes": 0,
-   "noticias": 5
+   "noticias": 6
   },
   "m:leche": {
    "alza": 0,
@@ -885,10 +891,10 @@
    "noticias": 5
   },
   "m:petroleo": {
-   "alza": 5,
-   "baja": 13,
-   "importantes": 10,
-   "noticias": 40
+   "alza": 8,
+   "baja": 15,
+   "importantes": 14,
+   "noticias": 48
   },
   "m:pollo": {
    "alza": 0,
@@ -897,10 +903,10 @@
    "noticias": 6
   },
   "m:soja": {
-   "alza": 1,
+   "alza": 2,
    "baja": 0,
    "importantes": 2,
-   "noticias": 3
+   "noticias": 4
   },
   "m:trigo": {
    "alza": 0,
@@ -918,7 +924,7 @@
    "alza": 8,
    "baja": 20,
    "importantes": 2,
-   "noticias": 101
+   "noticias": 102
   },
   "paladio": {
    "alza": 0,
@@ -930,7 +936,7 @@
    "alza": 7,
    "baja": 3,
    "importantes": 1,
-   "noticias": 28
+   "noticias": 30
   },
   "platino": {
    "alza": 0,
