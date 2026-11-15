@@ -968,7 +968,7 @@
    "alza": 1,
    "baja": 1,
    "importantes": 3,
-   "noticias": 19
+   "noticias": 20
   },
   "cobre": {
    "alza": 1,
@@ -980,13 +980,13 @@
    "alza": 1,
    "baja": 0,
    "importantes": 1,
-   "noticias": 7
+   "noticias": 9
   },
   "energia": {
-   "alza": 11,
-   "baja": 31,
-   "importantes": 22,
-   "noticias": 103
+   "alza": 13,
+   "baja": 32,
+   "importantes": 24,
+   "noticias": 113
   },
   "m:acero": {
    "alza": 1,
@@ -998,7 +998,7 @@
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
   },
   "m:aove": {
    "alza": 0,
@@ -1012,12 +1012,6 @@
    "importantes": 0,
    "noticias": 2
   },
-  "m:cemento": {
-   "alza": 0,
-   "baja": 0,
-   "importantes": 0,
-   "noticias": 1
-  },
   "m:cobre": {
    "alza": 1,
    "baja": 0,
@@ -1025,16 +1019,16 @@
    "noticias": 3
   },
   "m:diesel": {
-   "alza": 1,
-   "baja": 13,
+   "alza": 2,
+   "baja": 14,
    "importantes": 3,
-   "noticias": 43
+   "noticias": 46
   },
   "m:electricidad": {
    "alza": 2,
    "baja": 3,
    "importantes": 0,
-   "noticias": 5
+   "noticias": 6
   },
   "m:fertilizantes": {
    "alza": 0,
@@ -1064,7 +1058,7 @@
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 4
+   "noticias": 5
   },
   "m:naranja": {
    "alza": 0,
@@ -1073,10 +1067,10 @@
    "noticias": 1
   },
   "m:petroleo": {
-   "alza": 6,
+   "alza": 7,
    "baja": 16,
-   "importantes": 12,
-   "noticias": 45
+   "importantes": 14,
+   "noticias": 49
   },
   "m:piensos": {
    "alza": 0,
@@ -1094,13 +1088,13 @@
    "alza": 0,
    "baja": 0,
    "importantes": 1,
-   "noticias": 3
+   "noticias": 4
   },
   "m:trigo": {
    "alza": 0,
    "baja": 0,
    "importantes": 1,
-   "noticias": 2
+   "noticias": 3
   },
   "m:zinc": {
    "alza": 0,
@@ -1112,13 +1106,13 @@
    "alza": 3,
    "baja": 19,
    "importantes": 4,
-   "noticias": 74
+   "noticias": 78
   },
   "plata": {
    "alza": 0,
-   "baja": 3,
+   "baja": 4,
    "importantes": 3,
-   "noticias": 21
+   "noticias": 22
   },
   "platino": {
    "alza": 0,
