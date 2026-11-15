@@ -977,10 +977,10 @@
    "noticias": 1
   },
   "energia": {
-   "alza": 0,
-   "baja": 4,
-   "importantes": 4,
-   "noticias": 10
+   "alza": 1,
+   "baja": 7,
+   "importantes": 5,
+   "noticias": 17
   },
   "m:aove": {
    "alza": 0,
@@ -996,27 +996,27 @@
   },
   "m:diesel": {
    "alza": 0,
-   "baja": 4,
+   "baja": 6,
+   "importantes": 2,
+   "noticias": 13
+  },
+  "m:petroleo": {
+   "alza": 1,
+   "baja": 3,
    "importantes": 2,
    "noticias": 8
   },
-  "m:petroleo": {
-   "alza": 0,
-   "baja": 2,
-   "importantes": 1,
-   "noticias": 5
-  },
   "oro": {
    "alza": 0,
-   "baja": 5,
+   "baja": 4,
    "importantes": 0,
-   "noticias": 12
+   "noticias": 18
   },
   "plata": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 2
+   "noticias": 5
   }
  }
 }
