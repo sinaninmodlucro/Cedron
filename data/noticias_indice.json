@@ -984,9 +984,9 @@
   },
   "energia": {
    "alza": 3,
-   "baja": 17,
+   "baja": 18,
    "importantes": 7,
-   "noticias": 39
+   "noticias": 41
   },
   "m:aluminio": {
    "alza": 0,
@@ -1022,7 +1022,7 @@
    "alza": 2,
    "baja": 7,
    "importantes": 3,
-   "noticias": 14
+   "noticias": 15
   },
   "m:soja": {
    "alza": 0,
@@ -1038,15 +1038,21 @@
   },
   "oro": {
    "alza": 1,
-   "baja": 10,
+   "baja": 11,
    "importantes": 0,
-   "noticias": 40
+   "noticias": 44
   },
   "plata": {
    "alza": 0,
    "baja": 0,
    "importantes": 1,
-   "noticias": 10
+   "noticias": 12
+  },
+  "platino": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
   }
  }
 }
