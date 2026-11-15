@@ -967,8 +967,8 @@
   "alimentos": {
    "alza": 1,
    "baja": 1,
-   "importantes": 3,
-   "noticias": 21
+   "importantes": 5,
+   "noticias": 27
   },
   "cobre": {
    "alza": 1,
@@ -983,10 +983,10 @@
    "noticias": 11
   },
   "energia": {
-   "alza": 14,
+   "alza": 15,
    "baja": 32,
-   "importantes": 25,
-   "noticias": 118
+   "importantes": 29,
+   "noticias": 124
   },
   "m:acero": {
    "alza": 1,
@@ -1004,7 +1004,7 @@
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 2
+   "noticias": 3
   },
   "m:arroz": {
    "alza": 1,
@@ -1022,18 +1022,24 @@
    "alza": 2,
    "baja": 14,
    "importantes": 3,
-   "noticias": 47
+   "noticias": 48
   },
   "m:electricidad": {
-   "alza": 2,
+   "alza": 3,
    "baja": 3,
    "importantes": 0,
-   "noticias": 6
+   "noticias": 7
   },
   "m:fertilizantes": {
    "alza": 0,
    "baja": 0,
-   "importantes": 0,
+   "importantes": 1,
+   "noticias": 3
+  },
+  "m:gas": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 1,
    "noticias": 1
   },
   "m:girasol": {
@@ -1045,8 +1051,8 @@
   "m:leche": {
    "alza": 0,
    "baja": 0,
-   "importantes": 0,
-   "noticias": 1
+   "importantes": 1,
+   "noticias": 4
   },
   "m:madera": {
    "alza": 0,
