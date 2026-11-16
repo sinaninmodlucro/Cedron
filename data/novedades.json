@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-16T12:38:46Z",
+ "actualizado": "2026-11-16T15:57:38Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -1014,6 +1014,22 @@
    "tipo_serie": "apoyo",
    "unidad": "€/tonelada",
    "valor": 1700.235251538183
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-16",
+   "cambio_pct": -51.292323012855334,
+   "clave": "apoyo:electricidad:espana",
+   "dato": "2026-11-17",
+   "diaria": true,
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-16",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 64.563
   }
  ],
  "medidas": [
@@ -1073,11 +1089,11 @@
     ],
     [
      "2026-11-16",
-     2692.806099348534
+     2702.096696023243
     ]
    ],
    "tendencia": "mixta",
-   "valor": 2692.806099348534
+   "valor": 2702.096696023243
   },
   "apoyo:aove:espana": {
    "fecha": "2026-11-02",
@@ -1232,11 +1248,11 @@
     ],
     [
      "2026-11-16",
-     12015.29070712993
+     12056.74531461776
     ]
    ],
    "tendencia": "mixta",
-   "valor": 12015.29070712993
+   "valor": 12056.74531461776
   },
   "apoyo:complejo:espana": {
    "fecha": "2026-07",
@@ -1259,7 +1275,7 @@
    "valor": 5.473956937371572
   },
   "apoyo:electricidad:espana": {
-   "fecha": "2026-11-16",
+   "fecha": "2026-11-17",
    "info": {
     "ambito": "España",
     "enlace": "materias/electricidad.html",
@@ -1291,10 +1307,14 @@
     [
      "2026-11-16",
      132.552
+    ],
+    [
+     "2026-11-17",
+     64.563
     ]
    ],
    "tendencia": "mixta",
-   "valor": 132.552
+   "valor": 64.563
   },
   "apoyo:estano:global": {
    "fecha": "2026-10",
@@ -1501,11 +1521,11 @@
     ],
     [
      "2026-11-16",
-     14392.9201927253
+     14442.577988923189
     ]
    ],
    "tendencia": "mixta",
-   "valor": 14392.9201927253
+   "valor": 14442.577988923189
   },
   "apoyo:nitrato:espana": {
    "fecha": "2026-07",
@@ -1555,11 +1575,11 @@
     ],
     [
      "2026-11-16",
-     1700.235251538183
+     1706.1013255856183
     ]
    ],
    "tendencia": "mixta",
-   "valor": 1700.235251538183
+   "valor": 1706.1013255856183
   },
   "apoyo:pollo:espana": {
    "fecha": "2026-11-02",
@@ -1694,11 +1714,11 @@
     ],
     [
      "2026-11-16",
-     3334.011943539631
+     3345.514799346287
     ]
    ],
    "tendencia": "mixta",
-   "valor": 3334.011943539631
+   "valor": 3345.514799346287
   },
   "metal:cobre": {
    "fecha": "2026-11-16",
