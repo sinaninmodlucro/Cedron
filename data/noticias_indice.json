@@ -1348,33 +1348,33 @@
  "2026-11-17": {
   "alimentos": {
    "alza": 12,
-   "baja": 6,
+   "baja": 7,
    "importantes": 10,
-   "noticias": 46
+   "noticias": 51
   },
   "cobre": {
-   "alza": 2,
+   "alza": 3,
    "baja": 6,
-   "importantes": 2,
-   "noticias": 14
+   "importantes": 3,
+   "noticias": 15
   },
   "construccion": {
    "alza": 5,
-   "baja": 6,
+   "baja": 7,
    "importantes": 4,
-   "noticias": 29
+   "noticias": 33
   },
   "energia": {
    "alza": 9,
-   "baja": 30,
-   "importantes": 23,
-   "noticias": 122
+   "baja": 38,
+   "importantes": 29,
+   "noticias": 147
   },
   "m:acero": {
    "alza": 3,
    "baja": 4,
    "importantes": 3,
-   "noticias": 18
+   "noticias": 21
   },
   "m:aluminio": {
    "alza": 1,
@@ -1413,22 +1413,22 @@
    "noticias": 5
   },
   "m:cobre": {
-   "alza": 2,
+   "alza": 3,
    "baja": 6,
-   "importantes": 2,
-   "noticias": 14
+   "importantes": 3,
+   "noticias": 15
   },
   "m:diesel": {
    "alza": 0,
-   "baja": 2,
-   "importantes": 0,
-   "noticias": 20
+   "baja": 3,
+   "importantes": 1,
+   "noticias": 26
   },
   "m:electricidad": {
    "alza": 0,
-   "baja": 2,
+   "baja": 3,
    "importantes": 0,
-   "noticias": 7
+   "noticias": 8
   },
   "m:fertilizantes": {
    "alza": 0,
@@ -1446,13 +1446,13 @@
    "alza": 1,
    "baja": 1,
    "importantes": 3,
-   "noticias": 16
+   "noticias": 18
   },
   "m:girasol": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 2
+   "noticias": 3
   },
   "m:leche": {
    "alza": 0,
@@ -1470,13 +1470,13 @@
    "alza": 3,
    "baja": 2,
    "importantes": 2,
-   "noticias": 9
+   "noticias": 10
   },
   "m:petroleo": {
    "alza": 4,
-   "baja": 20,
-   "importantes": 17,
-   "noticias": 59
+   "baja": 22,
+   "importantes": 20,
+   "noticias": 69
   },
   "m:piensos": {
    "alza": 0,
@@ -1494,7 +1494,7 @@
    "alza": 3,
    "baja": 1,
    "importantes": 0,
-   "noticias": 6
+   "noticias": 7
   },
   "m:trigo": {
    "alza": 5,
@@ -1515,10 +1515,10 @@
    "noticias": 5
   },
   "oro": {
-   "alza": 18,
-   "baja": 24,
-   "importantes": 7,
-   "noticias": 121
+   "alza": 17,
+   "baja": 27,
+   "importantes": 8,
+   "noticias": 140
   },
   "paladio": {
    "alza": 0,
@@ -1530,7 +1530,7 @@
    "alza": 11,
    "baja": 10,
    "importantes": 2,
-   "noticias": 58
+   "noticias": 64
   },
   "platino": {
    "alza": 0,
