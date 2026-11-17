@@ -1347,10 +1347,10 @@
  },
  "2026-11-17": {
   "alimentos": {
-   "alza": 1,
+   "alza": 3,
    "baja": 1,
-   "importantes": 0,
-   "noticias": 3
+   "importantes": 2,
+   "noticias": 7
   },
   "cobre": {
    "alza": 0,
@@ -1362,23 +1362,29 @@
    "alza": 1,
    "baja": 1,
    "importantes": 1,
-   "noticias": 7
+   "noticias": 8
   },
   "energia": {
-   "alza": 0,
-   "baja": 10,
+   "alza": 2,
+   "baja": 12,
    "importantes": 4,
-   "noticias": 25
+   "noticias": 36
   },
   "m:acero": {
    "alza": 1,
    "baja": 0,
    "importantes": 1,
-   "noticias": 5
+   "noticias": 6
   },
   "m:cafe": {
    "alza": 0,
    "baja": 1,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "m:cemento": {
+   "alza": 0,
+   "baja": 0,
    "importantes": 0,
    "noticias": 1
   },
@@ -1398,19 +1404,43 @@
    "alza": 0,
    "baja": 0,
    "importantes": 0,
+   "noticias": 3
+  },
+  "m:electricidad": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 0,
    "noticias": 1
   },
   "m:gas": {
    "alza": 0,
    "baja": 1,
    "importantes": 0,
-   "noticias": 2
+   "noticias": 3
+  },
+  "m:leche": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 1,
+   "noticias": 1
+  },
+  "m:maiz": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
   },
   "m:petroleo": {
-   "alza": 0,
-   "baja": 7,
+   "alza": 1,
+   "baja": 8,
    "importantes": 3,
-   "noticias": 18
+   "noticias": 24
+  },
+  "m:trigo": {
+   "alza": 2,
+   "baja": 0,
+   "importantes": 1,
+   "noticias": 2
   },
   "m:zinc": {
    "alza": 0,
@@ -1419,10 +1449,10 @@
    "noticias": 2
   },
   "oro": {
-   "alza": 3,
-   "baja": 9,
-   "importantes": 1,
-   "noticias": 28
+   "alza": 7,
+   "baja": 18,
+   "importantes": 3,
+   "noticias": 58
   },
   "paladio": {
    "alza": 0,
@@ -1431,16 +1461,16 @@
    "noticias": 1
   },
   "plata": {
-   "alza": 3,
-   "baja": 3,
+   "alza": 5,
+   "baja": 4,
    "importantes": 0,
-   "noticias": 15
+   "noticias": 20
   },
   "platino": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
   }
  }
 }
