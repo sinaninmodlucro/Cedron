@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-17T23:15:55Z",
+ "actualizado": "2026-11-18T00:09:43Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -1166,6 +1166,38 @@
    "nombre": "Níquel",
    "tipo": "tendencia",
    "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "EE. UU.",
+   "anterior": "2026-11-09",
+   "cambio_pct": -1.5262219940026744,
+   "clave": "apoyo:diesel:global",
+   "dato": "2026-11-16",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-18",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/galón",
+   "valor": 5.390412202651172
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-16",
+   "cambio_pct": -3.7363133536516546,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-17",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-18",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 85.28
   }
  ],
  "medidas": [
@@ -1414,9 +1446,9 @@
    "valor": 2.0970892579730642
   },
   "apoyo:diesel:global": {
-   "fecha": "2026-11-09",
+   "fecha": "2026-11-16",
    "tendencia": "mixta",
-   "valor": 5.473956937371572
+   "valor": 5.390412202651172
   },
   "apoyo:electricidad:espana": {
    "fecha": "2026-11-18",
@@ -1490,7 +1522,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-16",
+   "fecha": "2026-11-17",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -1530,10 +1562,14 @@
     [
      "2026-11-16",
      88.59
+    ],
+    [
+     "2026-11-17",
+     85.28
     ]
    ],
    "tendencia": "alza",
-   "valor": 88.59
+   "valor": 85.28
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
