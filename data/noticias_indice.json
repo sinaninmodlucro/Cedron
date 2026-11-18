@@ -1535,34 +1535,34 @@
  },
  "2026-11-18": {
   "alimentos": {
-   "alza": 14,
-   "baja": 5,
-   "importantes": 14,
-   "noticias": 63
+   "alza": 13,
+   "baja": 11,
+   "importantes": 13,
+   "noticias": 68
   },
   "cobre": {
    "alza": 1,
-   "baja": 17,
-   "importantes": 11,
-   "noticias": 51
+   "baja": 21,
+   "importantes": 13,
+   "noticias": 56
   },
   "construccion": {
    "alza": 2,
    "baja": 4,
    "importantes": 5,
-   "noticias": 24
+   "noticias": 26
   },
   "energia": {
-   "alza": 22,
-   "baja": 45,
+   "alza": 23,
+   "baja": 50,
    "importantes": 47,
-   "noticias": 189
+   "noticias": 195
   },
   "m:acero": {
    "alza": 0,
    "baja": 3,
    "importantes": 4,
-   "noticias": 19
+   "noticias": 20
   },
   "m:aluminio": {
    "alza": 0,
@@ -1572,9 +1572,9 @@
   },
   "m:aove": {
    "alza": 0,
-   "baja": 3,
+   "baja": 5,
    "importantes": 3,
-   "noticias": 4
+   "noticias": 7
   },
   "m:carbon": {
    "alza": 0,
@@ -1596,13 +1596,13 @@
   },
   "m:cobre": {
    "alza": 1,
-   "baja": 17,
-   "importantes": 10,
-   "noticias": 49
+   "baja": 21,
+   "importantes": 12,
+   "noticias": 54
   },
   "m:diesel": {
-   "alza": 5,
-   "baja": 5,
+   "alza": 4,
+   "baja": 7,
    "importantes": 3,
    "noticias": 33
   },
@@ -1610,7 +1610,7 @@
    "alza": 0,
    "baja": 4,
    "importantes": 0,
-   "noticias": 10
+   "noticias": 11
   },
   "m:fertilizantes": {
    "alza": 2,
@@ -1632,15 +1632,15 @@
   },
   "m:girasol": {
    "alza": 0,
-   "baja": 1,
-   "importantes": 0,
-   "noticias": 3
+   "baja": 2,
+   "importantes": 1,
+   "noticias": 5
   },
   "m:leche": {
    "alza": 3,
    "baja": 1,
    "importantes": 0,
-   "noticias": 7
+   "noticias": 9
   },
   "m:madera": {
    "alza": 1,
@@ -1649,10 +1649,10 @@
    "noticias": 1
   },
   "m:maiz": {
-   "alza": 5,
-   "baja": 0,
-   "importantes": 4,
-   "noticias": 13
+   "alza": 3,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 11
   },
   "m:naranja": {
    "alza": 0,
@@ -1661,34 +1661,28 @@
    "noticias": 2
   },
   "m:petroleo": {
-   "alza": 11,
-   "baja": 30,
+   "alza": 13,
+   "baja": 31,
    "importantes": 29,
-   "noticias": 91
-  },
-  "m:piensos": {
-   "alza": 1,
-   "baja": 0,
-   "importantes": 0,
-   "noticias": 1
+   "noticias": 95
   },
   "m:pollo": {
-   "alza": 2,
+   "alza": 1,
    "baja": 0,
    "importantes": 2,
-   "noticias": 5
+   "noticias": 4
   },
   "m:soja": {
-   "alza": 0,
-   "baja": 0,
+   "alza": 1,
+   "baja": 1,
    "importantes": 0,
-   "noticias": 8
+   "noticias": 9
   },
   "m:trigo": {
-   "alza": 3,
-   "baja": 1,
+   "alza": 2,
+   "baja": 4,
    "importantes": 3,
-   "noticias": 11
+   "noticias": 12
   },
   "m:vacuno": {
    "alza": 0,
@@ -1700,31 +1694,31 @@
    "alza": 0,
    "baja": 1,
    "importantes": 1,
-   "noticias": 3
+   "noticias": 4
   },
   "oro": {
    "alza": 4,
-   "baja": 59,
-   "importantes": 16,
-   "noticias": 148
+   "baja": 62,
+   "importantes": 21,
+   "noticias": 155
   },
   "paladio": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 3
+   "noticias": 2
   },
   "plata": {
-   "alza": 4,
-   "baja": 25,
-   "importantes": 6,
-   "noticias": 66
+   "alza": 6,
+   "baja": 26,
+   "importantes": 7,
+   "noticias": 71
   },
   "platino": {
    "alza": 0,
-   "baja": 1,
+   "baja": 0,
    "importantes": 1,
-   "noticias": 8
+   "noticias": 6
   }
  }
 }
