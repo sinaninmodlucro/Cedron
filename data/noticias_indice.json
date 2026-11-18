@@ -1534,13 +1534,31 @@
   }
  },
  "2026-11-18": {
+  "alimentos": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 2
+  },
   "cobre": {
    "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 2
+  },
+  "construccion": {
+   "alza": 0,
    "baja": 0,
    "importantes": 0,
    "noticias": 1
   },
   "energia": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 1,
+   "noticias": 6
+  },
+  "m:acero": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
@@ -1550,9 +1568,39 @@
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
   },
   "m:gas": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 2
+  },
+  "m:maiz": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "m:petroleo": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 1,
+   "noticias": 3
+  },
+  "m:trigo": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "oro": {
+   "alza": 0,
+   "baja": 3,
+   "importantes": 0,
+   "noticias": 5
+  },
+  "platino": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
