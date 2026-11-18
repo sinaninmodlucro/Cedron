@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-18T15:18:33Z",
+ "actualizado": "2026-11-18T16:25:37Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -1294,6 +1294,18 @@
    "tipo_serie": "apoyo",
    "unidad": "€/MWh",
    "valor": 32.678
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "Global",
+   "antes": "alza",
+   "clave": "apoyo:niquel:global",
+   "enlace": "materias/niquel.html",
+   "fecha": "2026-11-18",
+   "materia": "niquel",
+   "nombre": "Níquel",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -1361,11 +1373,11 @@
     ],
     [
      "2026-11-18",
-     2614.3918034281546
+     2586.5612326768783
     ]
    ],
    "tendencia": "mixta",
-   "valor": 2614.3918034281546
+   "valor": 2586.5612326768783
   },
   "apoyo:aove:espana": {
    "fecha": "2026-11-02",
@@ -1528,11 +1540,11 @@
     ],
     [
      "2026-11-18",
-     11509.672176695842
+     11336.245286105031
     ]
    ],
    "tendencia": "mixta",
-   "valor": 11509.672176695842
+   "valor": 11336.245286105031
   },
   "apoyo:complejo:espana": {
    "fecha": "2026-07",
@@ -1825,11 +1837,11 @@
     ],
     [
      "2026-11-18",
-     14567.862985047412
+     14419.230789569658
     ]
    ],
-   "tendencia": "alza",
-   "valor": 14567.862985047412
+   "tendencia": "mixta",
+   "valor": 14419.230789569658
   },
   "apoyo:nitrato:espana": {
    "fecha": "2026-07",
@@ -1887,11 +1899,11 @@
     ],
     [
      "2026-11-18",
-     1698.9423778264043
+     1695.6601021152444
     ]
    ],
    "tendencia": "mixta",
-   "valor": 1698.9423778264043
+   "valor": 1695.6601021152444
   },
   "apoyo:pollo:espana": {
    "fecha": "2026-11-02",
@@ -2034,36 +2046,36 @@
     ],
     [
      "2026-11-18",
-     3266.798869438366
+     3178.633296863603
     ]
    ],
    "tendencia": "mixta",
-   "valor": 3266.798869438366
+   "valor": 3178.633296863603
   },
   "metal:cobre": {
    "fecha": "2026-11-18",
    "tendencia": "mixta",
-   "valor": 5.72607
+   "valor": 5.63979
   },
   "metal:oro": {
    "fecha": "2026-11-18",
    "tendencia": "baja",
-   "valor": 3777.86173
+   "valor": 3743.21542
   },
   "metal:paladio": {
    "fecha": "2026-11-18",
    "tendencia": null,
-   "valor": 954.4717
+   "valor": 956.11435
   },
   "metal:plata": {
    "fecha": "2026-11-18",
    "tendencia": "baja",
-   "valor": 45.78755
+   "valor": 44.92969
   },
   "metal:platino": {
    "fecha": "2026-11-18",
    "tendencia": "baja",
-   "valor": 1372.21269
+   "valor": 1367.52137
   }
  }
 }
