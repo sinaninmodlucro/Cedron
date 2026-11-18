@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-18T08:35:07Z",
+ "actualizado": "2026-11-18T10:28:16Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -1198,6 +1198,86 @@
    "tipo_serie": "apoyo",
    "unidad": "€/MWh",
    "valor": 85.28
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-17",
+   "cambio_pct": -2.3488137691713984,
+   "clave": "apoyo:aluminio:global",
+   "dato": "2026-11-18",
+   "diaria": true,
+   "enlace": "materias/aluminio.html",
+   "fecha": "2026-11-18",
+   "materia": "aluminio",
+   "nombre": "Aluminio",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 2609.4138047138044
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-17",
+   "cambio_pct": -4.210280100578922,
+   "clave": "apoyo:cobre_industrial:global",
+   "dato": "2026-11-18",
+   "diaria": true,
+   "enlace": "materias/cobre_industrial.html",
+   "fecha": "2026-11-18",
+   "materia": "cobre_industrial",
+   "nombre": "Cobre",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 11502.282352352351
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-17",
+   "cambio_pct": -0.9920341019437395,
+   "clave": "apoyo:zinc:global",
+   "dato": "2026-11-18",
+   "diaria": true,
+   "enlace": "materias/zinc.html",
+   "fecha": "2026-11-18",
+   "materia": "zinc",
+   "nombre": "Zinc",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 3284.5345345345345
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-17",
+   "cambio_pct": -2.3772020875056254,
+   "clave": "apoyo:niquel:global",
+   "dato": "2026-11-18",
+   "diaria": true,
+   "enlace": "materias/niquel.html",
+   "fecha": "2026-11-18",
+   "materia": "niquel",
+   "nombre": "Níquel",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 14562.855746655747
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-17",
+   "cambio_pct": -0.26815402767348395,
+   "clave": "apoyo:plomo:global",
+   "dato": "2026-11-18",
+   "diaria": true,
+   "enlace": "materias/plomo.html",
+   "fecha": "2026-11-18",
+   "materia": "plomo",
+   "nombre": "Plomo",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 1692.2376922376923
   }
  ],
  "medidas": [
@@ -1230,7 +1310,7 @@
    "valor": 2955.5400750027966
   },
   "apoyo:aluminio:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "info": {
     "ambito": "Global",
     "enlace": "materias/aluminio.html",
@@ -1262,10 +1342,14 @@
     [
      "2026-11-17",
      2672.1782964782965
+    ],
+    [
+     "2026-11-18",
+     2609.4138047138044
     ]
    ],
    "tendencia": "mixta",
-   "valor": 2672.1782964782965
+   "valor": 2609.4138047138044
   },
   "apoyo:aove:espana": {
    "fecha": "2026-11-02",
@@ -1393,7 +1477,7 @@
    "valor": 12225.151488900912
   },
   "apoyo:cobre_industrial:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "info": {
     "ambito": "Global",
     "enlace": "materias/cobre_industrial.html",
@@ -1425,10 +1509,14 @@
     [
      "2026-11-17",
      12007.846316316316
+    ],
+    [
+     "2026-11-18",
+     11502.282352352351
     ]
    ],
    "tendencia": "mixta",
-   "valor": 12007.846316316316
+   "valor": 11502.282352352351
   },
   "apoyo:complejo:espana": {
    "fecha": "2026-07",
@@ -1682,7 +1770,7 @@
    "valor": 0.6695477509282367
   },
   "apoyo:niquel:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "info": {
     "ambito": "Global",
     "enlace": "materias/niquel.html",
@@ -1714,10 +1802,14 @@
     [
      "2026-11-17",
      14917.474256074258
+    ],
+    [
+     "2026-11-18",
+     14562.855746655747
     ]
    ],
    "tendencia": "alza",
-   "valor": 14917.474256074258
+   "valor": 14562.855746655747
   },
   "apoyo:nitrato:espana": {
    "fecha": "2026-07",
@@ -1740,7 +1832,7 @@
    "valor": 0.9820033680280805
   },
   "apoyo:plomo:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "info": {
     "ambito": "Global",
     "enlace": "materias/plomo.html",
@@ -1772,10 +1864,14 @@
     [
      "2026-11-17",
      1696.7876967876966
+    ],
+    [
+     "2026-11-18",
+     1692.2376922376923
     ]
    ],
    "tendencia": "mixta",
-   "valor": 1696.7876967876966
+   "valor": 1692.2376922376923
   },
   "apoyo:pollo:espana": {
    "fecha": "2026-11-02",
@@ -1883,7 +1979,7 @@
    "valor": 3165.4771130218296
   },
   "apoyo:zinc:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "info": {
     "ambito": "Global",
     "enlace": "materias/zinc.html",
@@ -1915,35 +2011,39 @@
     [
      "2026-11-17",
      3317.4447174447173
+    ],
+    [
+     "2026-11-18",
+     3284.5345345345345
     ]
    ],
    "tendencia": "mixta",
-   "valor": 3317.4447174447173
+   "valor": 3284.5345345345345
   },
   "metal:cobre": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "tendencia": "mixta",
-   "valor": 5.98535
+   "valor": 5.73335
   },
   "metal:oro": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "tendencia": "baja",
-   "valor": 3849.1147
+   "valor": 3769.47784
   },
   "metal:paladio": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "tendencia": null,
-   "valor": 972.95194
+   "valor": 951.09047
   },
   "metal:plata": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "tendencia": "baja",
-   "valor": 47.44283
+   "valor": 45.75265
   },
   "metal:platino": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-18",
    "tendencia": "baja",
-   "valor": 1426.49282
+   "valor": 1380.35195
   }
  }
 }
