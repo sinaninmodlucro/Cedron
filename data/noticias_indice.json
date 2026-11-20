@@ -1911,44 +1911,56 @@
  },
  "2026-11-20": {
   "alimentos": {
-   "alza": 0,
+   "alza": 1,
    "baja": 3,
    "importantes": 2,
-   "noticias": 4
+   "noticias": 11
   },
   "cobre": {
    "alza": 1,
-   "baja": 2,
+   "baja": 4,
    "importantes": 2,
-   "noticias": 9
+   "noticias": 13
   },
   "construccion": {
    "alza": 1,
-   "baja": 0,
-   "importantes": 0,
-   "noticias": 5
+   "baja": 3,
+   "importantes": 1,
+   "noticias": 11
   },
   "energia": {
-   "alza": 7,
-   "baja": 5,
-   "importantes": 9,
-   "noticias": 35
+   "alza": 11,
+   "baja": 8,
+   "importantes": 15,
+   "noticias": 51
   },
   "m:acero": {
    "alza": 0,
-   "baja": 0,
+   "baja": 1,
    "importantes": 0,
-   "noticias": 4
+   "noticias": 6
   },
   "m:aove": {
    "alza": 0,
    "baja": 1,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
+  },
+  "m:azucar": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 2
   },
   "m:cafe": {
    "alza": 0,
    "baja": 1,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "m:carbon": {
+   "alza": 0,
+   "baja": 0,
    "importantes": 0,
    "noticias": 1
   },
@@ -1960,27 +1972,39 @@
   },
   "m:cobre": {
    "alza": 1,
-   "baja": 1,
+   "baja": 3,
    "importantes": 1,
-   "noticias": 8
+   "noticias": 12
   },
   "m:diesel": {
    "alza": 1,
-   "baja": 2,
+   "baja": 3,
    "importantes": 0,
-   "noticias": 5
+   "noticias": 9
   },
   "m:electricidad": {
-   "alza": 2,
+   "alza": 3,
    "baja": 0,
    "importantes": 0,
-   "noticias": 2
+   "noticias": 4
   },
   "m:gas": {
    "alza": 0,
    "baja": 1,
    "importantes": 0,
    "noticias": 3
+  },
+  "m:girasol": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "m:leche": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
   },
   "m:maiz": {
    "alza": 0,
@@ -1989,10 +2013,10 @@
    "noticias": 2
   },
   "m:petroleo": {
-   "alza": 4,
-   "baja": 1,
-   "importantes": 7,
-   "noticias": 20
+   "alza": 6,
+   "baja": 3,
+   "importantes": 10,
+   "noticias": 27
   },
   "m:soja": {
    "alza": 0,
@@ -2008,21 +2032,21 @@
   },
   "m:zinc": {
    "alza": 1,
-   "baja": 0,
-   "importantes": 0,
-   "noticias": 1
+   "baja": 2,
+   "importantes": 1,
+   "noticias": 5
   },
   "oro": {
-   "alza": 2,
-   "baja": 24,
-   "importantes": 4,
-   "noticias": 62
+   "alza": 3,
+   "baja": 42,
+   "importantes": 10,
+   "noticias": 95
   },
   "plata": {
    "alza": 1,
-   "baja": 9,
-   "importantes": 1,
-   "noticias": 19
+   "baja": 18,
+   "importantes": 3,
+   "noticias": 35
   }
  }
 }
