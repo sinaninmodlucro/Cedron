@@ -1910,11 +1910,53 @@
   }
  },
  "2026-11-20": {
+  "alimentos": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 2
+  },
   "energia": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 6
+  },
+  "m:diesel": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
    "noticias": 1
+  },
+  "m:maiz": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 2
+  },
+  "m:petroleo": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 3
+  },
+  "m:soja": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 2
+  },
+  "m:trigo": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 2,
+   "noticias": 2
+  },
+  "oro": {
+   "alza": 0,
+   "baja": 4,
+   "importantes": 1,
+   "noticias": 5
   }
  }
 }
