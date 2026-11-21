@@ -2099,31 +2099,37 @@
  },
  "2026-11-21": {
   "alimentos": {
-   "alza": 1,
+   "alza": 3,
    "baja": 0,
    "importantes": 1,
-   "noticias": 4
+   "noticias": 6
   },
   "cobre": {
    "alza": 0,
-   "baja": 2,
+   "baja": 3,
    "importantes": 1,
-   "noticias": 5
+   "noticias": 6
   },
   "construccion": {
    "alza": 0,
-   "baja": 0,
+   "baja": 1,
    "importantes": 0,
-   "noticias": 2
+   "noticias": 3
   },
   "energia": {
    "alza": 1,
    "baja": 4,
    "importantes": 1,
-   "noticias": 14
+   "noticias": 17
   },
   "m:acero": {
    "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
+  },
+  "m:azucar": {
+   "alza": 1,
    "baja": 0,
    "importantes": 0,
    "noticias": 1
@@ -2138,7 +2144,7 @@
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 4
+   "noticias": 5
   },
   "m:electricidad": {
    "alza": 0,
@@ -2162,31 +2168,37 @@
    "alza": 1,
    "baja": 3,
    "importantes": 0,
-   "noticias": 8
+   "noticias": 10
   },
   "m:trigo": {
-   "alza": 0,
+   "alza": 1,
    "baja": 0,
+   "importantes": 0,
+   "noticias": 3
+  },
+  "m:zinc": {
+   "alza": 0,
+   "baja": 1,
    "importantes": 0,
    "noticias": 2
   },
-  "m:zinc": {
+  "oro": {
+   "alza": 1,
+   "baja": 15,
+   "importantes": 3,
+   "noticias": 43
+  },
+  "plata": {
+   "alza": 0,
+   "baja": 4,
+   "importantes": 1,
+   "noticias": 12
+  },
+  "platino": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
    "noticias": 1
-  },
-  "oro": {
-   "alza": 1,
-   "baja": 11,
-   "importantes": 3,
-   "noticias": 33
-  },
-  "plata": {
-   "alza": 0,
-   "baja": 3,
-   "importantes": 1,
-   "noticias": 7
   }
  }
 }
