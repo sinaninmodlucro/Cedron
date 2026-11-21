@@ -2113,20 +2113,20 @@
   "construccion": {
    "alza": 0,
    "baja": 3,
-   "importantes": 1,
-   "noticias": 9
+   "importantes": 2,
+   "noticias": 10
   },
   "energia": {
    "alza": 4,
    "baja": 6,
    "importantes": 2,
-   "noticias": 30
+   "noticias": 35
   },
   "m:acero": {
    "alza": 0,
    "baja": 2,
-   "importantes": 1,
-   "noticias": 5
+   "importantes": 2,
+   "noticias": 6
   },
   "m:aluminio": {
    "alza": 0,
@@ -2150,7 +2150,7 @@
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 8
+   "noticias": 13
   },
   "m:electricidad": {
    "alza": 1,
@@ -2174,7 +2174,7 @@
    "alza": 3,
    "baja": 5,
    "importantes": 1,
-   "noticias": 17
+   "noticias": 18
   },
   "m:trigo": {
    "alza": 2,
@@ -2190,9 +2190,9 @@
   },
   "oro": {
    "alza": 2,
-   "baja": 23,
+   "baja": 26,
    "importantes": 3,
-   "noticias": 63
+   "noticias": 69
   },
   "paladio": {
    "alza": 0,
@@ -2202,15 +2202,15 @@
   },
   "plata": {
    "alza": 0,
-   "baja": 6,
+   "baja": 7,
    "importantes": 1,
-   "noticias": 16
+   "noticias": 18
   },
   "platino": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
   }
  }
 }
