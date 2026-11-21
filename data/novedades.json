@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-21T12:01:50Z",
+ "actualizado": "2026-11-21T13:23:36Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -1954,6 +1954,22 @@
    "tipo_serie": "apoyo",
    "unidad": "€/MWh",
    "valor": 84.33
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-21",
+   "cambio_pct": -56.11501098101564,
+   "clave": "apoyo:electricidad:espana",
+   "dato": "2026-11-22",
+   "diaria": true,
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-21",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 65.142
   }
  ],
  "medidas": [
@@ -2239,7 +2255,7 @@
    "valor": 5.390412202651172
   },
   "apoyo:electricidad:espana": {
-   "fecha": "2026-11-21",
+   "fecha": "2026-11-22",
    "info": {
     "ambito": "España",
     "enlace": "materias/electricidad.html",
@@ -2291,10 +2307,14 @@
     [
      "2026-11-21",
      148.438
+    ],
+    [
+     "2026-11-22",
+     65.142
     ]
    ],
    "tendencia": "mixta",
-   "valor": 148.438
+   "valor": 65.142
   },
   "apoyo:estano:global": {
    "fecha": "2026-10",
