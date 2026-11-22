@@ -2260,7 +2260,7 @@
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 8
+   "noticias": 9
   },
   "cobre": {
    "alza": 0,
@@ -2270,9 +2270,9 @@
   },
   "energia": {
    "alza": 0,
-   "baja": 5,
-   "importantes": 2,
-   "noticias": 13
+   "baja": 8,
+   "importantes": 5,
+   "noticias": 27
   },
   "m:cobre": {
    "alza": 0,
@@ -2282,9 +2282,9 @@
   },
   "m:diesel": {
    "alza": 0,
-   "baja": 3,
+   "baja": 4,
    "importantes": 1,
-   "noticias": 7
+   "noticias": 14
   },
   "m:electricidad": {
    "alza": 0,
@@ -2306,9 +2306,9 @@
   },
   "m:petroleo": {
    "alza": 0,
-   "baja": 2,
-   "importantes": 1,
-   "noticias": 6
+   "baja": 4,
+   "importantes": 4,
+   "noticias": 13
   },
   "m:pollo": {
    "alza": 0,
@@ -2326,19 +2326,19 @@
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 3
+   "noticias": 4
   },
   "oro": {
    "alza": 0,
-   "baja": 12,
-   "importantes": 0,
-   "noticias": 33
+   "baja": 25,
+   "importantes": 1,
+   "noticias": 63
   },
   "plata": {
    "alza": 0,
    "baja": 5,
    "importantes": 0,
-   "noticias": 12
+   "noticias": 16
   }
  }
 }
