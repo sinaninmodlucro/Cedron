@@ -20,7 +20,7 @@
   "newsdata": {
    "2026-11-20": 64,
    "2026-11-21": 84,
-   "2026-11-22": 68
+   "2026-11-22": 72
   }
  },
  "fred_dia": "2026-11-22",
@@ -32,7 +32,7 @@
   "BCE (tipo de cambio)": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-15T01:30:31Z",
-   "ultimo_ok": "2026-11-22T21:02:12Z"
+   "ultimo_ok": "2026-11-22T22:00:54Z"
   },
   "Banco Mundial": {
    "fallos_seguidos": 0,
@@ -63,9 +63,9 @@
    "ultimo_ok": "2026-11-10T18:50:42Z"
   },
   "Eurostat (precios industriales)": {
-   "fallos_seguidos": 194,
+   "fallos_seguidos": 195,
    "ultimo_error": "Eurostat no trae datos de EU27_2020|D351",
-   "ultimo_fallo": "2026-11-22T21:02:12Z",
+   "ultimo_fallo": "2026-11-22T22:00:54Z",
    "ultimo_ok": "2026-11-11T01:27:37Z"
   },
   "FRED": {
@@ -115,11 +115,11 @@
   },
   "NewsData.io": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:59Z"
+   "ultimo_ok": "2026-11-22T22:01:25Z"
   },
   "Novedades y resumen semanal": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:03:15Z"
+   "ultimo_ok": "2026-11-22T22:01:56Z"
   },
   "Previsiones de metales (FRED)": {
    "fallos_seguidos": 0,
@@ -131,294 +131,298 @@
   },
   "RSS 3tres3 (porcino)": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:27Z"
+   "ultimo_ok": "2026-11-22T22:01:10Z"
   },
   "RSS Agroinformación": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:25Z"
+   "ultimo_ok": "2026-11-22T22:01:08Z"
   },
   "RSS Agropopular": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-20T01:31:36Z",
-   "ultimo_ok": "2026-11-22T21:02:26Z"
+   "ultimo_ok": "2026-11-22T22:01:09Z"
   },
   "RSS Banco Central Europeo": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:13Z"
+   "ultimo_ok": "2026-11-22T22:00:55Z"
   },
   "RSS Banco de Inglaterra": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:13Z"
+   "ultimo_ok": "2026-11-22T22:00:56Z"
   },
   "RSS Bloomberg - Industrias": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-08T16:56:04Z",
-   "ultimo_ok": "2026-11-22T21:02:15Z"
+   "ultimo_ok": "2026-11-22T22:00:57Z"
   },
   "RSS Bloomberg - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:14Z"
+   "ultimo_ok": "2026-11-22T22:00:56Z"
   },
   "RSS Bloomberg Línea - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:15Z"
+   "ultimo_ok": "2026-11-22T22:00:57Z"
   },
   "RSS CNBC - Energía": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:21Z"
+   "ultimo_ok": "2026-11-22T22:01:05Z"
   },
   "RSS CNBC - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:21Z"
+   "ultimo_ok": "2026-11-22T22:01:04Z"
   },
   "RSS Cinco Días - Mercados": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-06T00:31:02Z",
-   "ultimo_ok": "2026-11-22T21:02:18Z"
+   "ultimo_ok": "2026-11-22T22:01:00Z"
   },
   "RSS Dairy Reporter": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:31Z"
+   "ultimo_ok": "2026-11-22T22:01:14Z"
   },
   "RSS EFEAgro": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:25Z"
+   "ultimo_ok": "2026-11-22T22:01:08Z"
   },
   "RSS EIA (Agencia de energía de EE. UU.)": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:21Z"
+   "ultimo_ok": "2026-11-22T22:01:05Z"
   },
   "RSS El Periódico de la Energía": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:23Z"
+   "ultimo_ok": "2026-11-22T22:01:07Z"
   },
   "RSS Europa Press - Economía": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:24Z"
+   "ultimo_ok": "2026-11-22T22:01:08Z"
   },
   "RSS Expansión - Economía": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:24Z"
+   "ultimo_ok": "2026-11-22T22:01:07Z"
   },
   "RSS Expansión - Energía": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:24Z"
+   "ultimo_ok": "2026-11-22T22:01:07Z"
   },
   "RSS Expansión - Mercados": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:18Z"
+   "ultimo_ok": "2026-11-22T22:01:00Z"
   },
   "RSS Farm Progress": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:32Z"
+   "ultimo_ok": "2026-11-22T22:01:15Z"
   },
   "RSS Feed Navigator": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-17T03:09:19Z",
-   "ultimo_ok": "2026-11-22T21:02:30Z"
+   "ultimo_ok": "2026-11-22T22:01:13Z"
   },
   "RSS Financial Times - Agrícolas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:19Z"
+   "ultimo_ok": "2026-11-22T22:01:02Z"
   },
   "RSS Financial Times - Energía": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-18T03:12:10Z",
-   "ultimo_ok": "2026-11-22T21:02:19Z"
+   "ultimo_ok": "2026-11-22T22:01:01Z"
   },
   "RSS Financial Times - Materias primas": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-18T03:11:40Z",
-   "ultimo_ok": "2026-11-22T21:02:14Z"
+   "ultimo_ok": "2026-11-22T22:00:56Z"
   },
   "RSS Financial Times - Metales industriales": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:20Z"
+   "ultimo_ok": "2026-11-22T22:01:03Z"
   },
   "RSS Financial Times - Oro": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:20Z"
+   "ultimo_ok": "2026-11-22T22:01:04Z"
   },
   "RSS Financial Times - Petróleo": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:18Z"
+   "ultimo_ok": "2026-11-22T22:01:00Z"
   },
   "RSS FreshPlaza España": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:29Z"
+   "ultimo_ok": "2026-11-22T22:01:12Z"
   },
   "RSS GMK Center (acero)": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T09:07:17Z",
-   "ultimo_ok": "2026-11-22T21:02:51Z"
+   "ultimo_ok": "2026-11-22T22:01:16Z"
   },
   "RSS GoldSeek News": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-05T23:39:59Z",
-   "ultimo_ok": "2026-11-22T21:02:18Z"
+   "ultimo_ok": "2026-11-22T22:01:00Z"
   },
   "RSS Google Noticias - abonos y cereales": {
-   "fallos_seguidos": 0,
-   "ultimo_fallo": "2026-11-22T11:05:55Z",
+   "fallos_seguidos": 1,
+   "ultimo_error": "limite de consultas alcanzado (429)",
+   "ultimo_fallo": "2026-11-22T22:01:20Z",
    "ultimo_ok": "2026-11-22T21:02:54Z"
   },
   "RSS Google Noticias - aceite y frutas": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:06:02Z",
-   "ultimo_ok": "2026-11-22T21:02:55Z"
+   "ultimo_ok": "2026-11-22T22:01:21Z"
   },
   "RSS Google Noticias - alimentos en España": {
-   "fallos_seguidos": 0,
-   "ultimo_fallo": "2026-11-22T11:05:16Z",
+   "fallos_seguidos": 1,
+   "ultimo_error": "limite de consultas alcanzado (429)",
+   "ultimo_fallo": "2026-11-22T22:01:18Z",
    "ultimo_ok": "2026-11-22T21:02:53Z"
   },
   "RSS Google Noticias - carne, leche y huevos": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:55Z",
-   "ultimo_ok": "2026-11-22T21:02:55Z"
+   "ultimo_ok": "2026-11-22T22:01:20Z"
   },
   "RSS Google Noticias - cobre (inglés)": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:10Z",
-   "ultimo_ok": "2026-11-22T21:02:52Z"
+   "ultimo_ok": "2026-11-22T22:01:18Z"
   },
   "RSS Google Noticias - construcción": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:06:22Z",
-   "ultimo_ok": "2026-11-22T21:02:56Z"
+   "ultimo_ok": "2026-11-22T22:01:21Z"
   },
   "RSS Google Noticias - construcción y materiales": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:25Z",
-   "ultimo_ok": "2026-11-22T21:02:53Z"
+   "ultimo_ok": "2026-11-22T22:01:19Z"
   },
   "RSS Google Noticias - crops and fertilizer": {
-   "fallos_seguidos": 0,
-   "ultimo_fallo": "2026-11-22T11:06:54Z",
+   "fallos_seguidos": 1,
+   "ultimo_error": "limite de consultas alcanzado (429)",
+   "ultimo_fallo": "2026-11-22T22:01:23Z",
    "ultimo_ok": "2026-11-22T21:02:57Z"
   },
   "RSS Google Noticias - electricidad": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:46Z",
-   "ultimo_ok": "2026-11-22T21:02:54Z"
+   "ultimo_ok": "2026-11-22T22:01:20Z"
   },
   "RSS Google Noticias - gold and silver": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:06:32Z",
-   "ultimo_ok": "2026-11-22T21:02:56Z"
+   "ultimo_ok": "2026-11-22T22:01:22Z"
   },
   "RSS Google Noticias - metales industriales": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T15:06:06Z",
-   "ultimo_ok": "2026-11-22T21:02:55Z"
+   "ultimo_ok": "2026-11-22T22:01:21Z"
   },
   "RSS Google Noticias - metals": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T15:06:08Z",
-   "ultimo_ok": "2026-11-22T21:02:57Z"
+   "ultimo_ok": "2026-11-22T22:01:23Z"
   },
   "RSS Google Noticias - oil and gas": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:06:40Z",
-   "ultimo_ok": "2026-11-22T21:02:57Z"
+   "ultimo_ok": "2026-11-22T22:01:22Z"
   },
   "RSS Google Noticias - oro y plata": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:33Z",
-   "ultimo_ok": "2026-11-22T21:02:53Z"
+   "ultimo_ok": "2026-11-22T22:01:19Z"
   },
   "RSS Google Noticias - petróleo y gas": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:39Z",
-   "ultimo_ok": "2026-11-22T21:02:54Z"
+   "ultimo_ok": "2026-11-22T22:01:19Z"
   },
   "RSS Google Noticias - plata (inglés)": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:05:03Z",
-   "ultimo_ok": "2026-11-22T21:02:52Z"
+   "ultimo_ok": "2026-11-22T22:01:18Z"
   },
   "RSS Google Noticias - platino y paladio": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T11:04:56Z",
-   "ultimo_ok": "2026-11-22T21:02:52Z"
+   "ultimo_ok": "2026-11-22T22:01:17Z"
   },
   "RSS Google Noticias - platino y paladio (inglés)": {
-   "fallos_seguidos": 0,
-   "ultimo_fallo": "2026-11-22T11:04:49Z",
+   "fallos_seguidos": 1,
+   "ultimo_error": "limite de consultas alcanzado (429)",
+   "ultimo_fallo": "2026-11-22T22:01:17Z",
    "ultimo_ok": "2026-11-22T21:02:51Z"
   },
   "RSS Hellenic Shipping News": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-17T22:14:59Z",
-   "ultimo_ok": "2026-11-22T21:02:51Z"
+   "ultimo_ok": "2026-11-22T22:01:16Z"
   },
   "RSS Investing.com - Análisis de materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:17Z"
+   "ultimo_ok": "2026-11-22T22:00:59Z"
   },
   "RSS Investing.com - Economía": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:25Z"
+   "ultimo_ok": "2026-11-22T22:01:08Z"
   },
   "RSS Investing.com - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:15Z"
+   "ultimo_ok": "2026-11-22T22:00:57Z"
   },
   "RSS Investing.com España - Economía": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-16T23:05:03Z",
-   "ultimo_ok": "2026-11-22T21:02:25Z"
+   "ultimo_ok": "2026-11-22T22:01:08Z"
   },
   "RSS Investing.com España - Materias primas": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:15Z"
+   "ultimo_ok": "2026-11-22T22:00:57Z"
   },
   "RSS Mining Technology": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:17Z"
+   "ultimo_ok": "2026-11-22T22:00:59Z"
   },
   "RSS Mining Weekly": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:50Z"
+   "ultimo_ok": "2026-11-22T22:01:15Z"
   },
   "RSS Natural Gas Intelligence": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:22Z"
+   "ultimo_ok": "2026-11-22T22:01:06Z"
   },
   "RSS OilPrice.com": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:22Z"
+   "ultimo_ok": "2026-11-22T22:01:05Z"
   },
   "RSS Recycling Today": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:51Z"
+   "ultimo_ok": "2026-11-22T22:01:16Z"
   },
   "RSS Reserva Federal": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-18T15:17:09Z",
-   "ultimo_ok": "2026-11-22T21:02:13Z"
+   "ultimo_ok": "2026-11-22T22:00:54Z"
   },
   "RSS Rigzone": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-22T16:03:09Z",
-   "ultimo_ok": "2026-11-22T21:02:22Z"
+   "ultimo_ok": "2026-11-22T22:01:06Z"
   },
   "RSS Silver Institute": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:17Z"
+   "ultimo_ok": "2026-11-22T22:00:59Z"
   },
   "RSS The Northern Miner": {
    "fallos_seguidos": 0,
    "ultimo_fallo": "2026-11-21T21:59:41Z",
-   "ultimo_ok": "2026-11-22T21:02:17Z"
+   "ultimo_ok": "2026-11-22T22:00:59Z"
   },
   "RSS Valencia Fruits": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:28Z"
+   "ultimo_ok": "2026-11-22T22:01:11Z"
   },
   "RSS World-Grain": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:02:29Z"
+   "ultimo_ok": "2026-11-22T22:01:12Z"
   },
   "Red Eléctrica (electricidad)": {
    "fallos_seguidos": 0,
@@ -431,7 +435,7 @@
   },
   "Traductor de titulares": {
    "fallos_seguidos": 0,
-   "ultimo_ok": "2026-11-22T21:03:15Z"
+   "ultimo_ok": "2026-11-22T22:01:55Z"
   }
  },
  "futuros_dia": "2026-11-22",
@@ -457,5 +461,5 @@
  "prueba_mes": "2026-11/v4",
  "resumen_semana": "2026-47",
  "revision_dia": "2026-11-22",
- "ultima_ejecucion": "2026-11-22T21:03:15Z"
+ "ultima_ejecucion": "2026-11-22T22:01:56Z"
 }
