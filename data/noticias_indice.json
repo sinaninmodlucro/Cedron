@@ -2260,7 +2260,7 @@
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 5
+   "noticias": 6
   },
   "cobre": {
    "alza": 0,
@@ -2272,7 +2272,7 @@
    "alza": 0,
    "baja": 3,
    "importantes": 2,
-   "noticias": 8
+   "noticias": 10
   },
   "m:cobre": {
    "alza": 0,
@@ -2284,7 +2284,13 @@
    "alza": 0,
    "baja": 2,
    "importantes": 1,
-   "noticias": 4
+   "noticias": 6
+  },
+  "m:fertilizantes": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 1
   },
   "m:maiz": {
    "alza": 0,
@@ -2318,15 +2324,15 @@
   },
   "oro": {
    "alza": 0,
-   "baja": 7,
+   "baja": 8,
    "importantes": 0,
-   "noticias": 18
+   "noticias": 23
   },
   "plata": {
    "alza": 0,
    "baja": 1,
    "importantes": 0,
-   "noticias": 4
+   "noticias": 6
   }
  }
 }
