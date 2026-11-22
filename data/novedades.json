@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-22T12:00:41Z",
+ "actualizado": "2026-11-22T13:21:33Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -1998,6 +1998,34 @@
    "nombre": "Gas natural",
    "tipo": "tendencia",
    "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-22",
+   "cambio_pct": 215.00414479137882,
+   "clave": "apoyo:electricidad:espana",
+   "dato": "2026-11-23",
+   "diaria": true,
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-22",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 205.2
+  },
+  {
+   "ahora": "alza",
+   "ambito": "España",
+   "antes": "mixta",
+   "clave": "apoyo:electricidad:espana",
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-22",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -2283,7 +2311,7 @@
    "valor": 5.390412202651172
   },
   "apoyo:electricidad:espana": {
-   "fecha": "2026-11-22",
+   "fecha": "2026-11-23",
    "info": {
     "ambito": "España",
     "enlace": "materias/electricidad.html",
@@ -2339,10 +2367,14 @@
     [
      "2026-11-22",
      65.142
+    ],
+    [
+     "2026-11-23",
+     205.2
     ]
    ],
-   "tendencia": "mixta",
-   "valor": 65.142
+   "tendencia": "alza",
+   "valor": 205.2
   },
   "apoyo:estano:global": {
    "fecha": "2026-10",
