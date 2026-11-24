@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-24T21:16:30Z",
+ "generado": "2026-11-24T22:20:28Z",
  "noticias": [
   {
    "activos": [
@@ -350,52 +350,29 @@
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://www.investing.com/news/commodities-news/oil-prices-fall-amid-equity-selloff-though-iran-war-attacks-limit-losses-5044242",
-   "fecha": "2026-11-23T20:24:40Z",
+   "enlace": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPT1NwZUhEUk1EN0VUT1dwa2U0cXQwY3JTMm11NXRsVS1mNUFfZ0ZrYXZldVdZbmRoektXRGo4NWI5d3VwUFNsRHJ6XzVHZ1h3Yl93OFY2QlFDODJUdzZpRlBkNXVGYW9KOTY2SEQ4bG1QZWE1WklQZDNMM3pZd0ZQR1BkZHZua1IxOGx1bGU5Mk1qTUZBWE0xM0FpMFhVdUFmT0JVclFkenZqZ2hESHNoMEREZjlHRzNEZ2c1QlRSSGh1QWpWc1BjR3FZcXhqckpNZV9J?oc=5",
+   "fecha": "2026-11-24T21:35:31Z",
    "idioma": "en",
-   "impacto": 84,
-   "materias": [],
-   "medio": "Investing.com - Materias primas",
-   "nivel": "alta",
-   "nota": 89,
+   "impacto": 46,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "BNN Bloomberg",
+   "nivel": "baja",
+   "nota": 88,
    "resumen": "",
    "seccion": [
     "materias"
    ],
    "sentido": "baja",
    "tambien_en": [
-    "The Globe and Mail",
-    "The Lufkin Daily News"
+    "BOE Report",
+    "EnergyNow",
+    "Toronto Star"
    ],
-   "tipo": "oferta",
-   "titulo": "Oil slumps to 3-month low on increased Middle East flows, Libyan pipeline restart",
-   "titulo_es": "El petróleo cae a mínimos de 3 meses por aumento de flujos de Medio Oriente y reanudación del oleoducto libio"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVnBvekdxUE5QSkRORzlVcXRVdXBRMW9oWTZMV1haTFZTNHhzRThZRE5idWxIdVU4TmhyUGxWa0JOS2hRaXhlT1lFRGEzVmM3OUk5Y3NmRUFEeEJ6QzNrN21HcDAtRWNwYmg2ZThCM2QtZGVqU3dudURZVE42MDhsSTg5RVk5UlBTVTdqNGpzT0oxRUhpR2x0TDZEYUticmNVN2tDUFdDRXlDdw?oc=5",
-   "fecha": "2026-11-23T19:33:32Z",
-   "idioma": "en",
-   "impacto": 54,
-   "materias": [],
-   "medio": "FXStreet",
-   "nivel": "media",
-   "nota": 89,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [
-    "Mitrade",
-    "www.tmgm.com"
-   ],
-   "tipo": "precio",
-   "titulo": "Gold reclaims $3,650 as Nvidia news sparks rally ahead of US PCE",
-   "titulo_es": "El oro recupera 3.650 dólares después de que las noticias de Nvidia desencadenen un repunte antes del PCE de EEUU"
+   "tipo": "opinion",
+   "titulo": "Macklem says inflation forecast is lower, but oil price pressures are lingering",
+   "titulo_es": "Macklem dice que pronóstico de inflación es más bajo, pero las presiones sobre el precio del petróleo persisten"
   },
   {
    "activos": [
@@ -727,7 +704,9 @@
    ],
    "sentido": "alza",
    "tambien_en": [
+    "Belleville News-Democrat",
     "Reuters",
+    "San Luis Obispo Tribune",
     "The Lufkin Daily News",
     "TradingView"
    ],
@@ -1105,6 +1084,58 @@
     "energia"
    ],
    "comercial": false,
+   "enlace": "https://www.investing.com/news/commodities-news/oil-prices-fall-amid-equity-selloff-though-iran-war-attacks-limit-losses-5044242",
+   "fecha": "2026-11-23T20:24:40Z",
+   "idioma": "en",
+   "impacto": 84,
+   "materias": [],
+   "medio": "Investing.com - Materias primas",
+   "nivel": "alta",
+   "nota": 88,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "The Globe and Mail",
+    "The Lufkin Daily News"
+   ],
+   "tipo": "oferta",
+   "titulo": "Oil slumps to 3-month low on increased Middle East flows, Libyan pipeline restart",
+   "titulo_es": "El petróleo cae a mínimos de 3 meses por aumento de flujos de Medio Oriente y reanudación del oleoducto libio"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVnBvekdxUE5QSkRORzlVcXRVdXBRMW9oWTZMV1haTFZTNHhzRThZRE5idWxIdVU4TmhyUGxWa0JOS2hRaXhlT1lFRGEzVmM3OUk5Y3NmRUFEeEJ6QzNrN21HcDAtRWNwYmg2ZThCM2QtZGVqU3dudURZVE42MDhsSTg5RVk5UlBTVTdqNGpzT0oxRUhpR2x0TDZEYUticmNVN2tDUFdDRXlDdw?oc=5",
+   "fecha": "2026-11-23T19:33:32Z",
+   "idioma": "en",
+   "impacto": 54,
+   "materias": [],
+   "medio": "FXStreet",
+   "nivel": "media",
+   "nota": 88,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "alza",
+   "tambien_en": [
+    "Mitrade",
+    "www.tmgm.com"
+   ],
+   "tipo": "precio",
+   "titulo": "Gold reclaims $3,650 as Nvidia news sparks rally ahead of US PCE",
+   "titulo_es": "El oro recupera 3.650 dólares después de que las noticias de Nvidia desencadenen un repunte antes del PCE de EEUU"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQMVBkOVhJX1BRWDBxYnk0eVU3REJGakpaYjg2UEc1X2RENE1HakNYeHhaeElOSlJOejVGak5kS2RoOGc3SUUwQzhLVzNmRzltMmlodFJtRGZaS01FUGVBWnpPSFdXZ2pRM2xKSjRqb3FXRU1pYmxoSGh6SHp3eTFEeHc0dkhQbmVKUncwYmljVlpJZ0NtcVFzSzNwRkttSlh0LXV1amNGMEx0WnVjOGc?oc=5",
    "fecha": "2026-11-23T21:54:13Z",
    "idioma": "en",
@@ -1114,7 +1145,7 @@
    ],
    "medio": "The Globe and Mail",
    "nivel": "baja",
-   "nota": 88,
+   "nota": 87,
    "resumen": "",
    "seccion": [
     "materias"
@@ -1140,7 +1171,7 @@
    "materias": [],
    "medio": "Yahoo! Finance Canada",
    "nivel": "baja",
-   "nota": 88,
+   "nota": 87,
    "resumen": "",
    "seccion": [
     "materias"
@@ -1156,31 +1187,29 @@
   },
   {
    "activos": [
-    "plata"
+    "cobre"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOLV9QYXhzbmZvWFVSRjBsS3h5RTNCZGtwajFHY1J6cHZDVTJHVjZodHZJZTJkOTdQZkg0d0dja3ZYdGJfRWUyWTdrYUVBalVtc2tuMTVLQ0JPMmRxMGpLVUNrUWlNR3lTWmd4SlFVWUpuNzNJV2M3ai1NWmpIOWNLNFNzcWM5bmhwUTQ3cTREWFBuWFR4M3h5WVlIRjhBdFh6TjhEc3V3?oc=5",
-   "fecha": "2026-11-23T21:04:00Z",
-   "idioma": "en",
-   "impacto": 40,
-   "materias": [],
-   "medio": "USA Today",
-   "nivel": "baja",
-   "nota": 87,
-   "resumen": "",
+   "enlace": "https://www.bloomberglinea.com/mercados/el-cobre-se-desploma-entra-en-mercado-bajista-y-golpea-al-peso-chileno/",
+   "fecha": "2026-11-24T20:54:42Z",
+   "idioma": "es",
+   "impacto": 50,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Bloomberg Línea - Mercados",
+   "nivel": "media",
+   "nota": 86,
+   "resumen": "Las dudas sobre las inversiones en inteligencia artificial, la debilidad de la demanda china y las expectativas de nuevas alzas de tasas en EE.UU. presionan al metal.",
    "seccion": [
-    "preciosos"
+    "materias"
    ],
-   "sentido": "alza",
+   "sentido": "baja",
    "tambien_en": [
-    "Forbes",
-    "Usa Today",
-    "Vietnam.vn",
-    "azcentral.com and The Arizona Republic"
+    "El Ecosistema Startup"
    ],
-   "tipo": null,
-   "titulo": "Silver Price Today: Silver Rises 1.93% on November 23, 2026",
-   "titulo_es": "Precio de la Plata Hoy: La Plata Sube 1.93% el 23 de noviembre de 2026"
+   "tipo": "precio",
+   "titulo": "El cobre se desploma, entra en mercado bajista y golpea al peso chileno"
   },
   {
    "activos": [
@@ -1236,84 +1265,31 @@
   },
   {
    "activos": [
-    "alimentos"
+    "plata"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNakJtcy1vN18tU3FWWEpwQ3dScHk0SDdXU18yU3ZGWjhwTXNzdmw0Y1hlX2EzczhFUURQS1NQZExZdDZBM3RIaVVqdW5obTJlWWhpcGkwa1V3NkdMWFZNR0FYRExNaEYyN2g3R1lCUW51UlBZdnpyVVRpSGhIMkRpVFRDN25yRUpUX0NWWEFRSGJuSGtlVFVfMjY1aU1jbDdhSlRLajk5UQ?oc=5",
-   "fecha": "2026-11-23T19:50:46Z",
+   "enlace": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOLV9QYXhzbmZvWFVSRjBsS3h5RTNCZGtwajFHY1J6cHZDVTJHVjZodHZJZTJkOTdQZkg0d0dja3ZYdGJfRWUyWTdrYUVBalVtc2tuMTVLQ0JPMmRxMGpLVUNrUWlNR3lTWmd4SlFVWUpuNzNJV2M3ai1NWmpIOWNLNFNzcWM5bmhwUTQ3cTREWFBuWFR4M3h5WVlIRjhBdFh6TjhEc3V3?oc=5",
+   "fecha": "2026-11-23T21:04:00Z",
    "idioma": "en",
-   "impacto": 52,
-   "materias": [
-    "fertilizantes"
-   ],
-   "medio": "PembinaValleyOnline",
-   "nivel": "media",
+   "impacto": 40,
+   "materias": [],
+   "medio": "USA Today",
+   "nivel": "baja",
    "nota": 86,
    "resumen": "",
    "seccion": [
-    "materias"
+    "preciosos"
    ],
-   "sentido": "",
+   "sentido": "alza",
    "tambien_en": [
-    "DiscoverMooseJaw",
-    "DiscoverWestman",
-    "StrathmoreNow"
-   ],
-   "tipo": "precio",
-   "titulo": "StoneX: Urea prices ease, but fertilizer rally could be ahead",
-   "titulo_es": "StoneX: Los precios de la urea se alivian, pero el rally de los fertilizantes podría estar por delante"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVEh4eWhaVnphRFVGQm84MlNwUXBUekRfTUZCQjRLYU5IU2RnUndFNG9NYjYtYjJUZTQwUnJJRFdEQVY2THY0Wjd3OU9aZXVYaVJhZE9hUGgydFQ0Z3JMNF84TXB2RFc3S29JekNDeXdNYzk0am16dFdWU2Z4dG1nYlVaY3U0djZtUmdJVS1CZFViMGp5dGx5STAxaDBDangzZ0swNXk0d21PZw?oc=5",
-   "fecha": "2026-11-23T21:06:15Z",
-   "idioma": "es",
-   "impacto": 37,
-   "materias": [
-    "gas"
-   ],
-   "medio": "El Periódico de la Energía",
-   "nivel": "baja",
-   "nota": 85,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "El Nacional.cat"
+    "Forbes",
+    "Usa Today",
+    "Vietnam.vn",
+    "azcentral.com and The Arizona Republic"
    ],
    "tipo": null,
-   "titulo": "El precio del gas natural reduce las ganancias al 1% hasta los 90 euros"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPeXBvLWZhTDJwbGV4aGlydTFXVkNNZURvaTlScDJMQ2hJM0pFeWRtNG1neXpaRXVBY2RMYkNseHNic25zb1lYdzVPNzZvcW0xbi13TTkyY2lfbWVrSlRERlRhMkJoQUlCSWhPcUxwVTR4MVc2dmFLdGZDdGF1aVBnOWREckRFS29rTVhjU0JrWjFBaDg3VW1ndlprSzVZNUFyMEoybUxWVlRkblg0NnFzRlVGRy1DM0puZktmVA?oc=5",
-   "fecha": "2026-11-23T21:06:15Z",
-   "idioma": "es",
-   "impacto": 37,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "El Periódico de la Energía",
-   "nivel": "baja",
-   "nota": 85,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [
-    "Teleamazonas"
-   ],
-   "tipo": null,
-   "titulo": "El Brent cae un 3,46% y cierra por debajo los 90 dólares por primera vez desde agosto"
+   "titulo": "Silver Price Today: Silver Rises 1.93% on November 23, 2026",
+   "titulo_es": "Precio de la Plata Hoy: La Plata Sube 1.93% el 23 de noviembre de 2026"
   },
   {
    "activos": [
@@ -1342,31 +1318,32 @@
   },
   {
    "activos": [
-    "energia"
+    "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/European-Natural-Gas-Prices-Surge-86-as-Cold-Snap-Looms.html",
-   "fecha": "2026-11-23T13:41:00Z",
+   "enlace": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNakJtcy1vN18tU3FWWEpwQ3dScHk0SDdXU18yU3ZGWjhwTXNzdmw0Y1hlX2EzczhFUURQS1NQZExZdDZBM3RIaVVqdW5obTJlWWhpcGkwa1V3NkdMWFZNR0FYRExNaEYyN2g3R1lCUW51UlBZdnpyVVRpSGhIMkRpVFRDN25yRUpUX0NWWEFRSGJuSGtlVFVfMjY1aU1jbDdhSlRLajk5UQ?oc=5",
+   "fecha": "2026-11-23T19:50:46Z",
    "idioma": "en",
-   "impacto": 55,
+   "impacto": 52,
    "materias": [
-    "gas"
+    "fertilizantes"
    ],
-   "medio": "OilPrice.com",
+   "medio": "PembinaValleyOnline",
    "nivel": "media",
    "nota": 85,
-   "resumen": "Natural gas prices in Europe started the week with a rise to 96.075 euros per MWh, gaining 8.6% from Friday as weather forecasts saw colder weather coming to the continent, which is struggling with record-low inventories. The benchmark TTF price is equal to $105.49 per MWh and is the highest daily p",
+   "resumen": "",
    "seccion": [
     "materias"
    ],
-   "sentido": "alza",
+   "sentido": "",
    "tambien_en": [
-    "Crude Oil Prices Today | OilPrice.com",
-    "Investing.com - Análisis de materias primas"
+    "DiscoverMooseJaw",
+    "DiscoverWestman",
+    "StrathmoreNow"
    ],
    "tipo": "precio",
-   "titulo": "European Natural Gas Prices Surge 8.6% as Cold Snap Looms",
-   "titulo_es": "Los precios del gas natural en Europa suben un 8,6%"
+   "titulo": "StoneX: Urea prices ease, but fertilizer rally could be ahead",
+   "titulo_es": "StoneX: Los precios de la urea se alivian, pero el rally de los fertilizantes podría estar por delante"
   },
   {
    "activos": [
@@ -1475,6 +1452,58 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVEh4eWhaVnphRFVGQm84MlNwUXBUekRfTUZCQjRLYU5IU2RnUndFNG9NYjYtYjJUZTQwUnJJRFdEQVY2THY0Wjd3OU9aZXVYaVJhZE9hUGgydFQ0Z3JMNF84TXB2RFc3S29JekNDeXdNYzk0am16dFdWU2Z4dG1nYlVaY3U0djZtUmdJVS1CZFViMGp5dGx5STAxaDBDangzZ0swNXk0d21PZw?oc=5",
+   "fecha": "2026-11-23T21:06:15Z",
+   "idioma": "es",
+   "impacto": 37,
+   "materias": [
+    "gas"
+   ],
+   "medio": "El Periódico de la Energía",
+   "nivel": "baja",
+   "nota": 84,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "El Nacional.cat"
+   ],
+   "tipo": null,
+   "titulo": "El precio del gas natural reduce las ganancias al 1% hasta los 90 euros"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPeXBvLWZhTDJwbGV4aGlydTFXVkNNZURvaTlScDJMQ2hJM0pFeWRtNG1neXpaRXVBY2RMYkNseHNic25zb1lYdzVPNzZvcW0xbi13TTkyY2lfbWVrSlRERlRhMkJoQUlCSWhPcUxwVTR4MVc2dmFLdGZDdGF1aVBnOWREckRFS29rTVhjU0JrWjFBaDg3VW1ndlprSzVZNUFyMEoybUxWVlRkblg0NnFzRlVGRy1DM0puZktmVA?oc=5",
+   "fecha": "2026-11-23T21:06:15Z",
+   "idioma": "es",
+   "impacto": 37,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "El Periódico de la Energía",
+   "nivel": "baja",
+   "nota": 84,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "Teleamazonas"
+   ],
+   "tipo": null,
+   "titulo": "El Brent cae un 3,46% y cierra por debajo los 90 dólares por primera vez desde agosto"
+  },
+  {
+   "activos": [
     "cobre"
    ],
    "comercial": false,
@@ -1499,6 +1528,34 @@
    "tipo": null,
    "titulo": "Canadian Copper sees expansion opportunites in New Brunswick",
    "titulo_es": "Canadian Copper ve oportunidades de expansión en Nuevo Brunswick"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/European-Natural-Gas-Prices-Surge-86-as-Cold-Snap-Looms.html",
+   "fecha": "2026-11-23T13:41:00Z",
+   "idioma": "en",
+   "impacto": 55,
+   "materias": [
+    "gas"
+   ],
+   "medio": "OilPrice.com",
+   "nivel": "media",
+   "nota": 84,
+   "resumen": "Natural gas prices in Europe started the week with a rise to 96.075 euros per MWh, gaining 8.6% from Friday as weather forecasts saw colder weather coming to the continent, which is struggling with record-low inventories. The benchmark TTF price is equal to $105.49 per MWh and is the highest daily p",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [
+    "Crude Oil Prices Today | OilPrice.com",
+    "Investing.com - Análisis de materias primas"
+   ],
+   "tipo": "precio",
+   "titulo": "European Natural Gas Prices Surge 8.6% as Cold Snap Looms",
+   "titulo_es": "Los precios del gas natural en Europa suben un 8,6%"
   },
   {
    "activos": [
@@ -1532,34 +1589,6 @@
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Slide-as-AI-Bubble-Fears-Rattle-Global-Markets.html",
-   "fecha": "2026-11-23T10:47:00Z",
-   "idioma": "en",
-   "impacto": 43,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "OilPrice.com",
-   "nivel": "baja",
-   "nota": 83,
-   "resumen": "A stock selloff driven by doubts about the economic growth potential of artificial intelligence infected commodities, too, dragging crude oil prices down today despite continued tanker attacks in the Persian Gulf. At the time of writing, Brent crude was trading at $92.55 per barrel, with West Texas ",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Crude Oil Prices Today | OilPrice.com",
-    "Investing.com - Análisis de materias primas"
-   ],
-   "tipo": null,
-   "titulo": "Oil Prices Slide as AI Bubble Fears Rattle Global Markets",
-   "titulo_es": "Los precios del petróleo caen mientras los temores de burbuja de IA sacuden los mercados globales"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
    "enlace": "https://www.bloomberg.com/news/articles/2026-11-24/canadian-dollar-gains-most-since-august-on-boc-inflation-warning",
    "fecha": "2026-11-24T19:31:25Z",
    "idioma": "en",
@@ -1568,15 +1597,15 @@
    "medio": "Bloomberg - Mercados",
    "nivel": "baja",
    "nota": 82,
-   "resumen": "The Canadian dollar is headed for its biggest gain in more than three months after the head of the Bank of Canada warned higher oil costs will further drive up consumer prices, compounding persistent inflation.",
+   "resumen": "The Canadian dollar logged its biggest gain in more than three months after the head of the Bank of Canada warned higher oil costs will further drive up consumer prices, compounding persistent inflation.",
    "seccion": [
     "materias"
    ],
    "sentido": "alza",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Canadian Dollar Gains Most Since August on BOC Inflation Warning",
-   "titulo_es": "Dólar canadiense gana más desde agosto por advertencia de inflación del BOC"
+   "titulo": "Canadian Dollar Gains Most Since August on Inflation Warning",
+   "titulo_es": "Dólar canadiense gana más desde agosto por advertencia de inflación"
   },
   {
    "activos": [
@@ -2297,15 +2326,15 @@
    "medio": "Bloomberg - Mercados",
    "nivel": "media",
    "nota": 82,
-   "resumen": "Copper dropped to its lowest since March as a selloff in technology giants dragged down stocks and commodities, while the White House promised another round of tariffs.",
+   "resumen": "Copper closed at a 13-month low as a selloff in technology giants dragged down stocks and commodities, while the White House is set to unleash another round of tariffs.",
    "seccion": [
     "materias"
    ],
-   "sentido": "baja",
+   "sentido": "",
    "tambien_en": [],
    "tipo": "comercio",
-   "titulo": "Copper Drops to Lowest Since March on Tech Rout, Tariff Fears",
-   "titulo_es": "El cobre cae a su nivel más bajo desde marzo por temor a aranceles"
+   "titulo": "Copper Edges Closer to Bear Market on Tech Rout, Tariff Anxiety",
+   "titulo_es": "El cobre se acerca al mercado bajista en la ruta tecnológica, ansiedad arancelaria"
   },
   {
    "activos": [
@@ -2363,20 +2392,20 @@
    "enlace": "https://www.bloomberg.com/news/articles/2026-11-24/gold-holds-gain-after-nvidia-s-rehiring-of-huang-sparks-rally",
    "fecha": "2026-11-24T00:06:57Z",
    "idioma": "en",
-   "impacto": 46,
+   "impacto": 68,
    "materias": [],
    "medio": "Bloomberg - Mercados",
-   "nivel": "baja",
+   "nivel": "media",
    "nota": 82,
-   "resumen": "Gold fell, erasing most of Monday’s dramatic rebound as the White House’s latest tariff plans drove equities lower and investors contemplated further interest rate hikes.",
+   "resumen": "Gold slumped, erasing most of Monday’s dramatic rebound as investors bet on further interest-rate hikes while a tariff-driven rout in equities prompted some traders to sell bullion to cover losses elsewhere.",
    "seccion": [
     "preciosos"
    ],
-   "sentido": "baja",
+   "sentido": "",
    "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Gold Slumps as Investors Weigh Fed Outlook, Stocks Selloff",
-   "titulo_es": "El oro cae mientras los inversores sopesan perspectivas de Fed y venta de acciones"
+   "tipo": "comercio",
+   "titulo": "Gold Slips as Investors Weigh Fed Outlook, US Tariff Plans",
+   "titulo_es": "El oro cae mientras los inversores sopesan perspectivas de la Fed y planes arancelarios de Estados Unidos"
   },
   {
    "activos": [
@@ -2481,6 +2510,34 @@
     "energia"
    ],
    "comercial": false,
+   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Slide-as-AI-Bubble-Fears-Rattle-Global-Markets.html",
+   "fecha": "2026-11-23T10:47:00Z",
+   "idioma": "en",
+   "impacto": 43,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "OilPrice.com",
+   "nivel": "baja",
+   "nota": 82,
+   "resumen": "A stock selloff driven by doubts about the economic growth potential of artificial intelligence infected commodities, too, dragging crude oil prices down today despite continued tanker attacks in the Persian Gulf. At the time of writing, Brent crude was trading at $92.55 per barrel, with West Texas ",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Crude Oil Prices Today | OilPrice.com",
+    "Investing.com - Análisis de materias primas"
+   ],
+   "tipo": null,
+   "titulo": "Oil Prices Slide as AI Bubble Fears Rattle Global Markets",
+   "titulo_es": "Los precios del petróleo caen mientras los temores de burbuja de IA sacuden los mercados globales"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOVWF6Q1N3bjRXd1VDU1RzUENxOWdWOC13YUw5NXg5TzY1NkEtWkdQc3pZN3gtWmJVZlc3eWFQVk15UXRNa1RHNTVmYVJtdTQtb05vS1hjS2ROUG5mcWZ4dnJUdGdFLTM2aUhoLTA5S3RwNktGTDNxTUozRFlTQUw4T3JnYjJWb0FIWTZFbk9MclIzTzlhUzBwRl9FYXhNcDBMSTZMdDJnT3lyVU5nRGhMZ1FUd2stcUtJaUF1QW9vcTVmdndoRkNtTUZkS0Iyd3VFNUpTcXJZYXBrSWVieWdF?oc=5",
    "fecha": "2026-11-23T14:43:00Z",
    "idioma": "es",
@@ -2490,7 +2547,7 @@
    ],
    "medio": "Mi bolsillo",
    "nivel": "baja",
-   "nota": 82,
+   "nota": 81,
    "resumen": "",
    "seccion": [
     "materias"
@@ -2502,86 +2559,6 @@
    ],
    "tipo": null,
    "titulo": "Precio de la gasolina hoy 23 de noviembre de 2026: Magna en $23.69, Premium y diésel en México"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://agroinformacion.com/la-produccion-mundial-de-aceite-de-oliva-crecera-un-64-en-2026-27-y-alcanzara-los-374-millones-de-toneladas/",
-   "fecha": "2026-11-23T17:31:00Z",
-   "idioma": "es",
-   "impacto": 36,
-   "materias": [
-    "aove"
-   ],
-   "medio": "Agroinformación",
-   "nivel": "baja",
-   "nota": 81,
-   "resumen": "La producción mundial de aceite de oliva alcanzará aproximadamente 3,74 millones de toneladas en la campaña 2026/27, lo que supone un incremento del 6,4% respecto a 2025/26, según las últimas estimaciones presentadas por el Consejo Oleícola Internacional (COI). Dichas estimaciones se elaboran en bas",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Infobae"
-   ],
-   "tipo": null,
-   "titulo": "La producción mundial de aceite de oliva crecerá un 6,4% en 2026/27 y alcanzará los 3,74 millones de toneladas"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQREJZa3IteGp0UmxLNVhRY0Z4T0MyUFpfS3lPZUtDWXJhcVZMdldvVjZ2eV9MU1ViMnZmYjc2M3lKcG5BUVh2QnZoNm9PRU02VzJMREh2cVNaaDAzQ25jekRHbHJpako0cFdjM2dLV2VTeU1hNWh5T3pFMTY4UGEwMl90YUUxd1ZaV0k0TmtqTkpPdmc?oc=5",
-   "fecha": "2026-11-23T13:40:24Z",
-   "idioma": "en",
-   "impacto": 52,
-   "materias": [],
-   "medio": "Kitco",
-   "nivel": "media",
-   "nota": 81,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [
-    "CNBC",
-    "Khaleej Times",
-    "Reuters"
-   ],
-   "tipo": "precio",
-   "titulo": "Gold climbs more than 2% as dollar rally pauses",
-   "titulo_es": "El oro sube más de un 2% mientras el rally del dólar se detiene"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNTVJWUlNMcTVqVVMyM0JoU0ptQlozQm5XQmNzMTQ1S3hOMFlZZTZFSzdEejZ4dXh1WmdZMERHYVpadTJDSkJlelhEdGZDV3hVZFlRSFRuemlxM2tDS1l0OFhBZy05NnR5ckVIUFVNT1RrTElZXzZyWDE4QjRaNTlQaEl6S3hEaFFhWTAtY3Juc0ZiYWU3SVdNVFFMblNuQlB0N2FfcjVxNWl3dm1C?oc=5",
-   "fecha": "2026-11-24T20:54:30Z",
-   "idioma": "en",
-   "impacto": 38,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "EnergyNow",
-   "nivel": "baja",
-   "nota": 80,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [
-    "Toronto Star"
-   ],
-   "tipo": "opinion",
-   "titulo": "Macklem says inflation forecast is lower, but oil price pressures are lingering",
-   "titulo_es": "Macklem dice que pronóstico de inflación es más bajo, pero las presiones sobre el precio del petróleo persisten"
   },
   {
    "activos": [
@@ -2640,6 +2617,34 @@
   },
   {
    "activos": [
+    "alimentos",
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5EVmd3Y2pLaDBpR0RMTC1zdnY0LUVOVWxoMTBmY29kYnB3Q0d1Q3dUOHpyQWhwQk1sSk9CX2VNcG9IV3RiQkx2QkY3T09ybjJ2b1E5OXRlcnZJYWEzd0dUX0FJWTI2a1pFR0Z1VnJiSQ?oc=5",
+   "fecha": "2026-11-24T19:05:58Z",
+   "idioma": "en",
+   "impacto": 32,
+   "materias": [
+    "fertilizantes"
+   ],
+   "medio": "Michigan Farm News",
+   "nivel": "baja",
+   "nota": 80,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Philstar.com"
+   ],
+   "tipo": null,
+   "titulo": "Fuel & Fertilizer Price Tracker: Nov. 24, 2026",
+   "titulo_es": "Rastreador de precios de combustible y fertilizantes: 24 de noviembre de 2026"
+  },
+  {
+   "activos": [
     "oro"
    ],
    "comercial": false,
@@ -2661,34 +2666,6 @@
    ],
    "tipo": null,
    "titulo": "Precio del oro retrocede ante expectativas de una FED más restrictiva"
-  },
-  {
-   "activos": [
-    "alimentos",
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5EVmd3Y2pLaDBpR0RMTC1zdnY0LUVOVWxoMTBmY29kYnB3Q0d1Q3dUOHpyQWhwQk1sSk9CX2VNcG9IV3RiQkx2QkY3T09ybjJ2b1E5OXRlcnZJYWEzd0dUX0FJWTI2a1pFR0Z1VnJiSQ?oc=5",
-   "fecha": "2026-11-24T18:39:08Z",
-   "idioma": "en",
-   "impacto": 32,
-   "materias": [
-    "fertilizantes"
-   ],
-   "medio": "Michigan Farm News",
-   "nivel": "baja",
-   "nota": 80,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Philstar.com"
-   ],
-   "tipo": null,
-   "titulo": "Fuel & Fertilizer Price Tracker: Nov. 24, 2026",
-   "titulo_es": "Rastreador de precios de combustible y fertilizantes: 24 de noviembre de 2026"
   },
   {
    "activos": [
@@ -3245,6 +3222,32 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPOFc3YTBiZ2lSbjJ0Um5mNWR2VnJ0OUtLWnEyRmxFVmNpOUFUOWkzZ2YtNTZhSGU4RlBTcDdPYVEzRzRvRllPckRfQ2ZYcDFOR2VXaFZySzFyVjFXY1o3WDVuODczcm9ZbXBfckhPbjNLMWpiaURmbDdadXZKcXpKbFp4TU92UdIBiwFBVV95cUxPQ0NwX1VXN285RW5XQXpJaG9tRV8yMW5PU3FvZkEzMkVFQ21CS1JadkgtRjZQTTNqYnE4ODVlZnZuTXBoRFdkM1cxd25qd0NGS3hKN0RWcGhOZlNvX3dGNF9EYy1oV19RM2xaSVhTNHNKaDRYSmlDelZZYndIY3RxYnE5bXBCLU5fd1hF?oc=5",
+   "fecha": "2026-11-24T06:34:00Z",
+   "idioma": "es",
+   "impacto": 32,
+   "materias": [
+    "electricidad"
+   ],
+   "medio": "Demócrata",
+   "nivel": "baja",
+   "nota": 80,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "El periódico verde"
+   ],
+   "tipo": null,
+   "titulo": "Precio de la luz hoy, 24 de noviembre: la hora más cara será de 20:00 a 21:00 y la más barata de 23:00 a 24:00"
+  },
+  {
+   "activos": [
     "alimentos"
    ],
    "comercial": false,
@@ -3560,16 +3563,42 @@
   },
   {
    "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://agroinformacion.com/la-produccion-mundial-de-aceite-de-oliva-crecera-un-64-en-2026-27-y-alcanzara-los-374-millones-de-toneladas/",
+   "fecha": "2026-11-23T17:31:00Z",
+   "idioma": "es",
+   "impacto": 36,
+   "materias": [
+    "aove"
+   ],
+   "medio": "Agroinformación",
+   "nivel": "baja",
+   "nota": 80,
+   "resumen": "La producción mundial de aceite de oliva alcanzará aproximadamente 3,74 millones de toneladas en la campaña 2026/27, lo que supone un incremento del 6,4% respecto a 2025/26, según las últimas estimaciones presentadas por el Consejo Oleícola Internacional (COI). Dichas estimaciones se elaboran en bas",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Infobae"
+   ],
+   "tipo": null,
+   "titulo": "La producción mundial de aceite de oliva crecerá un 6,4% en 2026/27 y alcanzará los 3,74 millones de toneladas"
+  },
+  {
+   "activos": [
     "oro"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVy1Pa3puQ1RUS0xLT3pTdTBrdUc0Q0J4TkFqMW81cXpOdUpQSU9LV2wtNlJIS19wOG9uMEVEUlZkZUNIQXJBcXdNeWdaV0JiXzF4WGluNWtSaVU4T09reFVtYkc0dXJOZkFLXzFMUGNzOVl1SHRVaG5PR3dvVnpwR3VTbGJibEloRHVzcjQxYWc5UWxZdWR5OWdmdGE5UTh0c1NSRF9vc09YUk1aVHNFNmFVZw?oc=5",
-   "fecha": "2026-11-23T21:16:22Z",
+   "enlace": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQREJZa3IteGp0UmxLNVhRY0Z4T0MyUFpfS3lPZUtDWXJhcVZMdldvVjZ2eV9MU1ViMnZmYjc2M3lKcG5BUVh2QnZoNm9PRU02VzJMREh2cVNaaDAzQ25jekRHbHJpako0cFdjM2dLV2VTeU1hNWh5T3pFMTY4UGEwMl90YUUxd1ZaV0k0TmtqTkpPdmc?oc=5",
+   "fecha": "2026-11-23T13:40:24Z",
    "idioma": "en",
-   "impacto": 32,
+   "impacto": 52,
    "materias": [],
-   "medio": "Bloomberg",
-   "nivel": "baja",
+   "medio": "Kitco",
+   "nivel": "media",
    "nota": 80,
    "resumen": "",
    "seccion": [
@@ -3577,116 +3606,13 @@
    ],
    "sentido": "alza",
    "tambien_en": [
-    "TradingView"
+    "CNBC",
+    "Khaleej Times",
+    "Reuters"
    ],
-   "tipo": null,
-   "titulo": "Gold Rebounds as Traders Pare Bets on Near-Term Fed Rate Hikes",
-   "titulo_es": "El oro repunta mientras los operadores evitan apuestas sobre subidas de tasas de la Fed a corto plazo"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOSUM4Y05QSk1ydjh5ODFWQm4zSWR3LTlhTE9UaEhxYzVYQ3RWUGJHLWFYZC10WkV3Ty14UkhDdUp2cXRfTEFXNVR5cUJmLTRkeGRpNmRXQ0h1SUFnTTcyT01rNWUzWEdoUDNiaS1OTHdMeWZhaVJfRmoyT1lUZU1UV2xBMGNjRXBiQ2dnNzlwdVNDZHhqaFpfbWl1TWZSaElyY1VPRjZHN1NRRzd5dm1YUExQWjlxd0R0V21tWDk2SVRlMG5nN2c?oc=5",
-   "fecha": "2026-11-23T21:14:08Z",
-   "idioma": "en",
-   "impacto": 71,
-   "materias": [],
-   "medio": "TradingView",
-   "nivel": "alta",
-   "nota": 80,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [
-    "Seeking Alpha"
-   ],
-   "tipo": "geopolitica",
-   "titulo": "Oil slides more than 3% as supply growth overshadows attack risks",
-   "titulo_es": "El petróleo cae más de un 3% mientras el crecimiento de la oferta eclipsa los riesgos de ataque"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPVkRJdUt0LVhZdzVhR0RpSnN6RWh6cDdGQVhOUU9vNENLN0hnSXB1YXJFU01rMzZBaXhuelM3ODlra1hKdnRxcnYweGNRSmFmSEpnMzJSQWxkOXZqZVM3NjBrZ2UwQS1PQS12di1uaHFUQWJRZHE2aHhxMnlLcVJ5Z3owcXd2WTV4NFJQSUM0SWplUVA5bW80ZU9fdDYzV1Z5QnFvcW1kdlhPMW8xc2JRQnVJc19mZw?oc=5",
-   "fecha": "2026-11-23T21:08:00Z",
-   "idioma": "en",
-   "impacto": 71,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "WSJ",
-   "nivel": "alta",
-   "nota": 80,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [
-    "Yahoo Finance"
-   ],
-   "tipo": "geopolitica",
-   "titulo": "Oil Prices Fall as Traders Weigh Supply Surplus, Gulf Attacks",
-   "titulo_es": "Los precios del petróleo caen mientras los comerciantes sopesan excedente de oferta y ataques en el Golfo"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOaUFYQ25yc0VneDVGTnBFZjNfNVJ1MXNvZmtyOHNXUUVXMDhHVXdkZVQyLUxZZFltMjRPbDdwRU90T0pPZVFMenRYS2hpajcwZDBELXFsMkxKTTN5MG5sTDV6T1U0eVZEcmJFOHJVS0RabV9iTmNpVWRZcmpTbWhBTE5NdjlvNTZvLXozS0xzcXF3WWZqSzk0NHlxZnZIMXYtdEl3ZlRsX1FPa3UzS2RSc0tWSEtxN0c2R1JURm0zMDRFWThadFFHRDRLVG5xVGtwRERicjY2RmROd9IB3wFBVV95cUxNMjlaRkIwZXlkRm1UQk5MYUtwV0F3WUt1YVY3bWh4SEhYdi1QVVFaWkVtOEVnZFRQV0h6Qmhxd1NDcGlyY0pLSU5qWW41bWc4UDd0SmEtQ3g1ZVFPQ3ExMXlBczBaYmNHZTEyTm5BY0dQMGYtWDJNUVdtMlBNZlVVQ2Y0SGlrSmJhYnNNeDdOT2JzT0o0WDFhM2l4MUN1aV9LSUVrZ3BEendoWGJnSnFBTzB6dUdHWmJjS29UYWc5T0VrT0NpTktha01HLUZPMzJod3YwaEdjNUg0VlhLVmRJ?oc=5",
-   "fecha": "2026-11-23T20:45:30Z",
-   "idioma": "es",
-   "impacto": 59,
-   "materias": [
-    "trigo"
-   ],
-   "medio": "Opinión Bolivia",
-   "nivel": "media",
-   "nota": 80,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Urgentebo"
-   ],
-   "tipo": "demanda",
-   "titulo": "ANAPO demanda que Emapa priorice la compra de trigo boliviano para proveer harina a los panificadores"
-  },
-  {
-   "activos": [
-    "cobre",
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/videos/2026-11-23/jeff-currie-sees-liquidity-crisis-behind-copper-selloff-video",
-   "fecha": "2026-11-23T17:45:30Z",
-   "idioma": "en",
-   "impacto": 34,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "Bloomberg - Mercados",
-   "nivel": "baja",
-   "nota": 80,
-   "resumen": "Jeff Currie, CEO at Real Macro, examines the copper selloff and explains what would make him return to being long gold and copper. He speaks on “Bloomberg Surveillance.” (Source: Bloomberg)",
-   "seccion": [
-    "preciosos",
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Jeff Currie Sees a Liquidity Crisis Behind Copper Selloff",
-   "titulo_es": "Jeff Currie ve una crisis de liquidez detrás de la venta del cobre"
+   "tipo": "precio",
+   "titulo": "Gold climbs more than 2% as dollar rally pauses",
+   "titulo_es": "El oro sube más de un 2% mientras el rally del dólar se detiene"
   },
   {
    "activos": [
@@ -3710,30 +3636,6 @@
    "tipo": "datos",
    "titulo": "Gold price falls 2% on hawkish Fed bets, US inflation data in focus",
    "titulo_es": "El precio del oro cae un 2% por las apuestas halconeras de la Fed, los datos de inflación de EE.UU. en foco"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.bloomberglinea.com/mercados/el-cobre-se-desploma-entra-en-mercado-bajista-y-golpea-al-peso-chileno/",
-   "fecha": "2026-11-24T20:39:57Z",
-   "idioma": "es",
-   "impacto": 43,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "Bloomberg Línea - Mercados",
-   "nivel": "baja",
-   "nota": 79,
-   "resumen": "Las dudas sobre las inversiones en inteligencia artificial, la debilidad de la demanda china y las expectativas de nuevas alzas de tasas en EE.UU. presionan al metal.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "El cobre se desploma, entra en mercado bajista y golpea al peso chileno"
   },
   {
    "activos": [
@@ -3911,53 +3813,133 @@
   },
   {
    "activos": [
-    "energia"
+    "oro"
    ],
    "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/articles/2026-11-23/germany-to-press-ahead-with-gasoline-price-cap-from-next-year",
-   "fecha": "2026-11-23T17:14:35Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVy1Pa3puQ1RUS0xLT3pTdTBrdUc0Q0J4TkFqMW81cXpOdUpQSU9LV2wtNlJIS19wOG9uMEVEUlZkZUNIQXJBcXdNeWdaV0JiXzF4WGluNWtSaVU4T09reFVtYkc0dXJOZkFLXzFMUGNzOVl1SHRVaG5PR3dvVnpwR3VTbGJibEloRHVzcjQxYWc5UWxZdWR5OWdmdGE5UTh0c1NSRF9vc09YUk1aVHNFNmFVZw?oc=5",
+   "fecha": "2026-11-23T21:16:22Z",
    "idioma": "en",
-   "impacto": 74,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "Bloomberg - Mercados",
-   "nivel": "alta",
+   "impacto": 32,
+   "materias": [],
+   "medio": "Bloomberg",
+   "nivel": "baja",
    "nota": 79,
-   "resumen": "Germany is set to move ahead with a temporary three-month cap on gasoline prices from the start of next year as Berlin attempts to shield drivers in Europe’s biggest economy from higher fuel costs caused by the Iran war.",
+   "resumen": "",
    "seccion": [
-    "materias"
+    "preciosos"
    ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "regulacion",
-   "titulo": "Germany to Press Ahead With Gasoline Price Cap From Next Year",
-   "titulo_es": "Alemania presionará para imponer un tope a los precios de la gasolina a partir del próximo año"
+   "sentido": "alza",
+   "tambien_en": [
+    "TradingView"
+   ],
+   "tipo": null,
+   "titulo": "Gold Rebounds as Traders Pare Bets on Near-Term Fed Rate Hikes",
+   "titulo_es": "El oro repunta mientras los operadores evitan apuestas sobre subidas de tasas de la Fed a corto plazo"
   },
   {
    "activos": [
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Slides-Nearly-4-as-Returning-Supply-Outweighs-Gulf-Attacks.html",
-   "fecha": "2026-11-23T15:51:00Z",
+   "enlace": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOSUM4Y05QSk1ydjh5ODFWQm4zSWR3LTlhTE9UaEhxYzVYQ3RWUGJHLWFYZC10WkV3Ty14UkhDdUp2cXRfTEFXNVR5cUJmLTRkeGRpNmRXQ0h1SUFnTTcyT01rNWUzWEdoUDNiaS1OTHdMeWZhaVJfRmoyT1lUZU1UV2xBMGNjRXBiQ2dnNzlwdVNDZHhqaFpfbWl1TWZSaElyY1VPRjZHN1NRRzd5dm1YUExQWjlxd0R0V21tWDk2SVRlMG5nN2c?oc=5",
+   "fecha": "2026-11-23T21:14:08Z",
    "idioma": "en",
-   "impacto": 75,
+   "impacto": 71,
    "materias": [],
-   "medio": "OilPrice.com",
+   "medio": "TradingView",
    "nivel": "alta",
    "nota": 79,
-   "resumen": "Crude prices deepened their slide on Monday even as Wall Street rallied on Nvidia's reinstatement of chief executive Jensen Huang, with West Texas Intermediate (WTI) trading at its weakest level since late August. At 10:29 a.m. ET, WTI was down 3.5% at $80.50 per barrel, Brent was down 3.6% at 89.23",
+   "resumen": "",
    "seccion": [
     "materias"
    ],
    "sentido": "baja",
    "tambien_en": [
-    "Crude Oil Prices Today | OilPrice.com"
+    "Seeking Alpha"
    ],
    "tipo": "geopolitica",
-   "titulo": "Oil Slides Nearly 4% as Returning Supply Outweighs Gulf Attacks",
-   "titulo_es": "El petróleo cae casi un 4% mientras el suministro supera los ataques en el Golfo"
+   "titulo": "Oil slides more than 3% as supply growth overshadows attack risks",
+   "titulo_es": "El petróleo cae más de un 3% mientras el crecimiento de la oferta eclipsa los riesgos de ataque"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPVkRJdUt0LVhZdzVhR0RpSnN6RWh6cDdGQVhOUU9vNENLN0hnSXB1YXJFU01rMzZBaXhuelM3ODlra1hKdnRxcnYweGNRSmFmSEpnMzJSQWxkOXZqZVM3NjBrZ2UwQS1PQS12di1uaHFUQWJRZHE2aHhxMnlLcVJ5Z3owcXd2WTV4NFJQSUM0SWplUVA5bW80ZU9fdDYzV1Z5QnFvcW1kdlhPMW8xc2JRQnVJc19mZw?oc=5",
+   "fecha": "2026-11-23T21:08:00Z",
+   "idioma": "en",
+   "impacto": 71,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "WSJ",
+   "nivel": "alta",
+   "nota": 79,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "Yahoo Finance"
+   ],
+   "tipo": "geopolitica",
+   "titulo": "Oil Prices Fall as Traders Weigh Supply Surplus, Gulf Attacks",
+   "titulo_es": "Los precios del petróleo caen mientras los comerciantes sopesan excedente de oferta y ataques en el Golfo"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOaUFYQ25yc0VneDVGTnBFZjNfNVJ1MXNvZmtyOHNXUUVXMDhHVXdkZVQyLUxZZFltMjRPbDdwRU90T0pPZVFMenRYS2hpajcwZDBELXFsMkxKTTN5MG5sTDV6T1U0eVZEcmJFOHJVS0RabV9iTmNpVWRZcmpTbWhBTE5NdjlvNTZvLXozS0xzcXF3WWZqSzk0NHlxZnZIMXYtdEl3ZlRsX1FPa3UzS2RSc0tWSEtxN0c2R1JURm0zMDRFWThadFFHRDRLVG5xVGtwRERicjY2RmROd9IB3wFBVV95cUxNMjlaRkIwZXlkRm1UQk5MYUtwV0F3WUt1YVY3bWh4SEhYdi1QVVFaWkVtOEVnZFRQV0h6Qmhxd1NDcGlyY0pLSU5qWW41bWc4UDd0SmEtQ3g1ZVFPQ3ExMXlBczBaYmNHZTEyTm5BY0dQMGYtWDJNUVdtMlBNZlVVQ2Y0SGlrSmJhYnNNeDdOT2JzT0o0WDFhM2l4MUN1aV9LSUVrZ3BEendoWGJnSnFBTzB6dUdHWmJjS29UYWc5T0VrT0NpTktha01HLUZPMzJod3YwaEdjNUg0VlhLVmRJ?oc=5",
+   "fecha": "2026-11-23T20:45:30Z",
+   "idioma": "es",
+   "impacto": 59,
+   "materias": [
+    "trigo"
+   ],
+   "medio": "Opinión Bolivia",
+   "nivel": "media",
+   "nota": 79,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Urgentebo"
+   ],
+   "tipo": "demanda",
+   "titulo": "ANAPO demanda que Emapa priorice la compra de trigo boliviano para proveer harina a los panificadores"
+  },
+  {
+   "activos": [
+    "cobre",
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.bloomberg.com/news/videos/2026-11-23/jeff-currie-sees-liquidity-crisis-behind-copper-selloff-video",
+   "fecha": "2026-11-23T17:45:30Z",
+   "idioma": "en",
+   "impacto": 34,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Bloomberg - Mercados",
+   "nivel": "baja",
+   "nota": 79,
+   "resumen": "Jeff Currie, CEO at Real Macro, examines the copper selloff and explains what would make him return to being long gold and copper. He speaks on “Bloomberg Surveillance.” (Source: Bloomberg)",
+   "seccion": [
+    "preciosos",
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Jeff Currie Sees a Liquidity Crisis Behind Copper Selloff",
+   "titulo_es": "Jeff Currie ve una crisis de liquidez detrás de la venta del cobre"
   },
   {
    "activos": [
@@ -3982,6 +3964,30 @@
    "tambien_en": [],
    "tipo": "geopolitica",
    "titulo": "El Brent sube más de 2% y supera los 91 dólares tras los nuevos ataques a buques en Ormuz"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://elperiodicodelaenergia.com/hungria-acuerda-envio-de-diesel-a-ucrania-en-la-primera-visita-al-pais-del-primer-ministro/",
+   "fecha": "2026-11-24T21:06:00Z",
+   "idioma": "es",
+   "impacto": 30,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "El Periódico de la Energía",
+   "nivel": "baja",
+   "nota": 78,
+   "resumen": "Hungría enviará suministros adicionales de diésel a Ucrania, según ha acordado el primer ministro húngaro con el presidente ucraniano.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Hungría acuerda el envío de diésel a Ucrania en la primera visita al país del primer ministro"
   },
   {
    "activos": [
@@ -4138,8 +4144,8 @@
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/alberta-seeks-to-unlock-natural-gas-growth-with-government-backed-pipelines/",
-   "fecha": "2026-11-24T16:45:55Z",
+   "enlace": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNRTktUi1VV0EyMFluLWo4YURPU2RBc2UxdEtXZG9Ha0xJMnhfUDdiNXBUeG1yc1BKNkpsdld6VkI0a1I0VGpRVEVrUHlpS1lDTm1CWWFLVkpBZGdiOFVtbHVnc1E5cXN4LTg1WmczWXZ4LTVKMVBSYzJ3OGVxeDdQeEFWV1Z3dGxESDJoM0NWc1lMMnhQTHllXzR0OVd3ZVJYTER1ZUIwSXNPWkc3SVE?oc=5",
+   "fecha": "2026-11-24T16:47:48Z",
    "idioma": "en",
    "impacto": 30,
    "materias": [
@@ -4148,7 +4154,7 @@
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
    "nota": 78,
-   "resumen": "The hydrocarbons-rich Canadian province of Alberta introduced a bill Monday that would establish a framework for provincial involvement in natural gas transmission planning, construction and financing.",
+   "resumen": "",
    "seccion": [
     "materias"
    ],
@@ -4496,108 +4502,53 @@
   },
   {
    "activos": [
-    "cobre",
-    "construccion"
+    "energia"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQd3JOMEpKN2tscTVDdV9peWhOcm5OSWQ1Ny0ySkJiTkNfNF9tLVkyU2hqNno2OC1Ec1c5QmNwUVJLa2dUMm03d0Mxa1JSREU0T0d2WVlNNU5KT3RKQ01Jem45UEpISW1NdnUwdlVQakMxck9mUFBkSTNZdmpZRThGV1R4UGhVY1lrTVdWOVptLVpHRDdaQm1MTnNR?oc=5",
-   "fecha": "2026-11-23T20:07:12Z",
+   "enlace": "https://www.bloomberg.com/news/articles/2026-11-23/germany-to-press-ahead-with-gasoline-price-cap-from-next-year",
+   "fecha": "2026-11-23T17:14:35Z",
    "idioma": "en",
-   "impacto": 73,
+   "impacto": 74,
    "materias": [
-    "aluminio"
+    "diesel"
    ],
-   "medio": "Mining.com",
+   "medio": "Bloomberg - Mercados",
    "nivel": "alta",
    "nota": 78,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "alza",
-   "tambien_en": [],
-   "tipo": "oferta",
-   "titulo": "LME should intervene in historic aluminum squeeze, trader says",
-   "titulo_es": "La LME debería intervenir en el histórico apretón del aluminio, dice comerciante"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9laERjdWFEWjh5WGMwVFhlRlBMakZBMEU5WFdPb3BZMWVidE5rbTI4b2xINy1wV2dJZzVPUk1iSk14cUl4Q0hqTUdseC1Pd0wyWWUyQWtWa0VyR1U?oc=5",
-   "fecha": "2026-11-23T18:43:50Z",
-   "idioma": "en",
-   "impacto": 44,
-   "materias": [],
-   "medio": "Cryptonews.net",
-   "nivel": "baja",
-   "nota": 78,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [
-    "CoinGape"
-   ],
-   "tipo": "precio",
-   "titulo": "Gold Price Prediction: XAU/USD Reclaims $3,600, But Is This Just a Relief Rally?",
-   "titulo_es": "Predicción del precio del oro: XAU/USD recupera $3,600, pero ¿es esto solo un repunte de alivio?"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1SQWhLWlVjbHNlbnZhNWJVQXdJSkVkbjYxaV9uanBIYkdxZ09oaktlbkRVMGQ2bmJWS09BVDczSHpJNzcxd0VSWjg5Sndjd3B2bmFfR2JTa1I1NEpPZE5OcWRXMHVPV2pLdnZLVGVQbUJwYjM1Z0lOVXdpODA?oc=5",
-   "fecha": "2026-11-23T18:35:48Z",
-   "idioma": "en",
-   "impacto": 32,
-   "materias": [
-    "trigo"
-   ],
-   "medio": "Marine News Magazine",
-   "nivel": "baja",
-   "nota": 78,
-   "resumen": "",
+   "resumen": "Germany is set to move ahead with a temporary three-month cap on gasoline prices from the start of next year as Berlin attempts to shield drivers in Europe’s biggest economy from higher fuel costs caused by the Iran war.",
    "seccion": [
     "materias"
    ],
    "sentido": "",
-   "tambien_en": [
-    "marketscreener.com"
-   ],
-   "tipo": null,
-   "titulo": "Russian Wheat Export Prices Spike After Trilateral Summit",
-   "titulo_es": "Precios de exportación de trigo ruso suben tras cumbre trilateral"
+   "tambien_en": [],
+   "tipo": "regulacion",
+   "titulo": "Germany to Press Ahead With Gasoline Price Cap From Next Year",
+   "titulo_es": "Alemania presionará para imponer un tope a los precios de la gasolina a partir del próximo año"
   },
   {
    "activos": [
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://www.investing.com/news/commodities-news/natural-gas-prices-fall-as-mild-hdd-readings-weigh-on-heating-demand-outlook-93CH-5046018",
-   "fecha": "2026-11-23T16:07:12Z",
+   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Slides-Nearly-4-as-Returning-Supply-Outweighs-Gulf-Attacks.html",
+   "fecha": "2026-11-23T15:51:00Z",
    "idioma": "en",
-   "impacto": 62,
-   "materias": [
-    "gas"
-   ],
-   "medio": "Investing.com - Materias primas",
-   "nivel": "media",
+   "impacto": 75,
+   "materias": [],
+   "medio": "OilPrice.com",
+   "nivel": "alta",
    "nota": 78,
-   "resumen": "",
+   "resumen": "Crude prices deepened their slide on Monday even as Wall Street rallied on Nvidia's reinstatement of chief executive Jensen Huang, with West Texas Intermediate (WTI) trading at its weakest level since late August. At 10:29 a.m. ET, WTI was down 3.5% at $80.50 per barrel, Brent was down 3.6% at 89.23",
    "seccion": [
     "materias"
    ],
    "sentido": "baja",
    "tambien_en": [
-    "Investing.com"
+    "Crude Oil Prices Today | OilPrice.com"
    ],
-   "tipo": "demanda",
-   "titulo": "Natural gas prices fall as mild HDD readings weigh on heating demand outlook",
-   "titulo_es": "Los precios del gas natural caen mientras las lecturas de HDD pesan sobre las perspectivas de demanda de calefacción"
+   "tipo": "geopolitica",
+   "titulo": "Oil Slides Nearly 4% as Returning Supply Outweighs Gulf Attacks",
+   "titulo_es": "El petróleo cae casi un 4% mientras el suministro supera los ataques en el Golfo"
   },
   {
    "activos": [
@@ -4626,107 +4577,134 @@
   },
   {
    "activos": [
-    "energia"
+    "cobre",
+    "construccion"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPZ3JqZEhQanBackJRTms5TDl6M1JwU3dKN2c4bzFzMmhHRi02SlNPcU9qSkhiSlFKS2FzaUxhcEJWRkF2UWlfaThXWTFuem41ak9kWXphRjVQdUd1MkNhV0dSajZXSUJLQVJodkdMejNqSmxGbzA5MlNWSk4tOERad1pVMUJSZ1gyT3l6MllUYlRWQjJVbjhmVFlLOA?oc=5",
-   "fecha": "2026-11-23T20:33:39Z",
+   "enlace": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQd3JOMEpKN2tscTVDdV9peWhOcm5OSWQ1Ny0ySkJiTkNfNF9tLVkyU2hqNno2OC1Ec1c5QmNwUVJLa2dUMm03d0Mxa1JSREU0T0d2WVlNNU5KT3RKQ01Jem45UEpISW1NdnUwdlVQakMxck9mUFBkSTNZdmpZRThGV1R4UGhVY1lrTVdWOVptLVpHRDdaQm1MTnNR?oc=5",
+   "fecha": "2026-11-23T20:07:12Z",
    "idioma": "en",
-   "impacto": 30,
+   "impacto": 73,
    "materias": [
-    "gas"
+    "aluminio"
    ],
-   "medio": "Natural Gas Intelligence",
-   "nivel": "baja",
+   "medio": "Mining.com",
+   "nivel": "alta",
    "nota": 77,
    "resumen": "",
    "seccion": [
     "materias"
    ],
-   "sentido": "",
+   "sentido": "alza",
    "tambien_en": [],
-   "tipo": null,
-   "titulo": "‘Weekend Weather Wipeout’ Sends Natural Gas Futures Reeling",
-   "titulo_es": "El ‘Fin de Semana Climatológico’ Envía a los Futuros de Gas Natural"
-  },
-  {
-   "activos": [
-    "alimentos",
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://www.kjan.com/ag-outdoor/iowa-soybean-producers-benefit-from-biofuel-demand/",
-   "fecha": "2026-11-23T18:04:57Z",
-   "idioma": "en",
-   "impacto": 59,
-   "materias": [
-    "soja"
-   ],
-   "medio": "Kjan",
-   "nivel": "media",
-   "nota": 77,
-   "resumen": "by Dustin Hoffmann (Iowa Agribusiness Radio Network) Growing demand for biodiesel and renewable diesel is changing the economics of soybean processing, with soybean oil becoming an increasingly valuable part of the crop. Devin Mogler, president and CEO of the National Oilseed Processors Association ",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Iowa Agri Business Radio Network"
-   ],
-   "tipo": "demanda",
-   "titulo": "Iowa soybean producers benefit from biofuel demand",
-   "titulo_es": "Los productores de soja de Iowa se benefician de la demanda de biocombustibles"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMijAJBVV95cUxNVzRlNE11aFBqQzNxQWptN0l2MXdWUlVHWS1BZlpPbE9MYzlsUXRpeFU4MGtzcjNvT2taamxPOG1QRVZfaENGaTlLUWJJR0tkVXhfOG9yRzR1dzNrUm1JT1pQaEVwNHo5anlLRTU0eEthMmc5cjM4bnQtTWlvYkkxYTNnRTY2bjhJODVnMUppZmtmdTNRMzRYRjlhVnhZRzlZNlRMTUw5YWxqLS1OT3N1OC1yclNqTEZNbk9UeDB6eEdTaWN1Y2ZWTy1uUkx4dFkzS0YyU0hPSC1KdlpvUk5RTGdaaWxqQzA5TW9GWDRKNzdvQWFtdk1wRFkzVU5JeWNON3pMaFBGSnJzcGNp?oc=5",
-   "fecha": "2026-11-23T17:48:48Z",
-   "idioma": "es",
-   "impacto": 32,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "BioBioChile",
-   "nivel": "baja",
-   "nota": 77,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Atacama Noticias"
-   ],
-   "tipo": null,
-   "titulo": "Cobre toma fuerzas tras regreso del CEO de Nvidia y ayuda a contener el precio del dólar en Chile"
+   "tipo": "oferta",
+   "titulo": "LME should intervene in historic aluminum squeeze, trader says",
+   "titulo_es": "La LME debería intervenir en el histórico apretón del aluminio, dice comerciante"
   },
   {
    "activos": [
     "oro"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaUtqSmZmekdIRkI1M09DSHE2NURWVEJVX2hzTUllY3VGREJiaHpCM1BnVFVpTnBfQVcyTlg4MFBwRjg1Q1Q2Q1F0S1FsalNISDVZbkk1cmNoLWpiYmllWUdlWlZub0podEZjNkVkT3pKSGNOdXJYT3BORzVGREVoUC1iQUZyVnRuUzRvdXJQVQ?oc=5",
-   "fecha": "2026-11-23T17:19:19Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9laERjdWFEWjh5WGMwVFhlRlBMakZBMEU5WFdPb3BZMWVidE5rbTI4b2xINy1wV2dJZzVPUk1iSk14cUl4Q0hqTUdseC1Pd0wyWWUyQWtWa0VyR1U?oc=5",
+   "fecha": "2026-11-23T18:43:50Z",
    "idioma": "en",
-   "impacto": 32,
+   "impacto": 44,
    "materias": [],
-   "medio": "The Country Today",
+   "medio": "Cryptonews.net",
    "nivel": "baja",
    "nota": 77,
    "resumen": "",
    "seccion": [
     "preciosos"
    ],
-   "sentido": "baja",
+   "sentido": "alza",
    "tambien_en": [
-    "The Financial Express"
+    "CoinGape"
+   ],
+   "tipo": "precio",
+   "titulo": "Gold Price Prediction: XAU/USD Reclaims $3,600, But Is This Just a Relief Rally?",
+   "titulo_es": "Predicción del precio del oro: XAU/USD recupera $3,600, pero ¿es esto solo un repunte de alivio?"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1SQWhLWlVjbHNlbnZhNWJVQXdJSkVkbjYxaV9uanBIYkdxZ09oaktlbkRVMGQ2bmJWS09BVDczSHpJNzcxd0VSWjg5Sndjd3B2bmFfR2JTa1I1NEpPZE5OcWRXMHVPV2pLdnZLVGVQbUJwYjM1Z0lOVXdpODA?oc=5",
+   "fecha": "2026-11-23T18:35:48Z",
+   "idioma": "en",
+   "impacto": 32,
+   "materias": [
+    "trigo"
+   ],
+   "medio": "Marine News Magazine",
+   "nivel": "baja",
+   "nota": 77,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "marketscreener.com"
    ],
    "tipo": null,
-   "titulo": "Gold prices rebound after nine consecutive drops",
-   "titulo_es": "Los precios del oro se recuperan tras nueve caídas consecutivas"
+   "titulo": "Russian Wheat Export Prices Spike After Trilateral Summit",
+   "titulo_es": "Precios de exportación de trigo ruso suben tras cumbre trilateral"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/news/commodities-news/natural-gas-prices-fall-as-mild-hdd-readings-weigh-on-heating-demand-outlook-93CH-5046018",
+   "fecha": "2026-11-23T16:07:12Z",
+   "idioma": "en",
+   "impacto": 62,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Investing.com - Materias primas",
+   "nivel": "media",
+   "nota": 77,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "Investing.com"
+   ],
+   "tipo": "demanda",
+   "titulo": "Natural gas prices fall as mild HDD readings weigh on heating demand outlook",
+   "titulo_es": "Los precios del gas natural caen mientras las lecturas de HDD pesan sobre las perspectivas de demanda de calefacción"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://oilprice.com/Latest-Energy-News/World-News/US-Crude-Oil-Inventories-Inches-Up-as-Gasoline-Holds-Steady.html",
+   "fecha": "2026-11-24T22:00:00Z",
+   "idioma": "en",
+   "impacto": 58,
+   "materias": [
+    "petroleo",
+    "diesel"
+   ],
+   "medio": "OilPrice.com",
+   "nivel": "media",
+   "nota": 76,
+   "resumen": "The American Petroleum Institute (API) estimated that crude oil inventories in the United States rose 126,000 barrels in the week ending November 20—the last count before the Thanksgiving holiday. In the week prior, US crude oil inventories rose by 5.3 million barrels. Commercial crude oil inventori",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "datos",
+   "titulo": "US Crude Oil Inventories Inches Up as Gasoline Holds Steady",
+   "titulo_es": "Los inventarios de petróleo crudo de EE.UU. suben mientras la gasolina se mantiene estable"
   },
   {
    "activos": [
@@ -4953,8 +4931,8 @@
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/colder-european-warmer-asian-forecasts-favor-transatlantic-us-lng-trade/",
-   "fecha": "2026-11-23T19:54:25Z",
+   "enlace": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPZ3JqZEhQanBackJRTms5TDl6M1JwU3dKN2c4bzFzMmhHRi02SlNPcU9qSkhiSlFKS2FzaUxhcEJWRkF2UWlfaThXWTFuem41ak9kWXphRjVQdUd1MkNhV0dSajZXSUJLQVJodkdMejNqSmxGbzA5MlNWSk4tOERad1pVMUJSZ1gyT3l6MllUYlRWQjJVbjhmVFlLOA?oc=5",
+   "fecha": "2026-11-23T20:33:39Z",
    "idioma": "en",
    "impacto": 30,
    "materias": [
@@ -4962,188 +4940,171 @@
    ],
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
-   "nota": 76,
-   "resumen": "Forecasts for Europe turned markedly colder Monday, leaving natural gas buyers to contend with below-normal temperatures across much of the continent into early December while storage still trails last year's pace.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Colder European, Warmer Asian Forecasts Favor Transatlantic US LNG Trade",
-   "titulo_es": "Los pronósticos europeos más fríos y asiáticos más cálidos favorecen el comercio transatlántico de GNL de EE."
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/totalenergies-expands-us-natural-gas-production-to-bolster-lng-export-portfolio/",
-   "fecha": "2026-11-23T19:42:00Z",
-   "idioma": "en",
-   "impacto": 30,
-   "materias": [
-    "gas"
-   ],
-   "medio": "Natural Gas Intelligence",
-   "nivel": "baja",
-   "nota": 76,
-   "resumen": "TotalEnergies has acquired upstream natural gas assets in the United States that are expected to add around 150 MMcf/d to its production portfolio.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "TotalEnergies Expands US Natural Gas Production to Bolster LNG Export Portfolio",
-   "titulo_es": "TotalEnergies expande la producción de gas natural en EE.UU. para reforzar su cartera de exportación de GNL"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/ferc-greenlights-interstate-natural-gas-pipelines-serving-appalachian-permian-basins/",
-   "fecha": "2026-11-23T19:20:00Z",
-   "idioma": "en",
-   "impacto": 30,
-   "materias": [
-    "gas"
-   ],
-   "medio": "Natural Gas Intelligence",
-   "nivel": "baja",
-   "nota": 76,
-   "resumen": "The Federal Energy Regulatory Commission (FERC) has granted certificates of public convenience and necessity for two major interstate natural gas pipelines, each of which would serve one of the country’s two leading supply basins.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "FERC Greenlights Interstate Natural Gas Pipelines Serving Appalachian, Permian Basins",
-   "titulo_es": "FERC da luz verde a gasoductos interestatales de gas natural que sirven a las cuencas de los Apalaches y el Pérmico"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQclNUWUNnSmN3V1BqSnJobnN5T3QwZGdVZG1uX2xETDB0a0FvckVUTkFfVndDcGN0SGJOTVB0M2tyeUZ5RVFfRU5UVW8xY214bWljTDAzeDFlNUpFUjY1TGFWanJWTTlUYWxLcVMxSzFsOEhob1NlblR5ZUFCNFNLS0VvdG5IeGJEbVpyeTNTUEZ1MXlGbDNRMU95VkJBNnItaU5qLQ?oc=5",
-   "fecha": "2026-11-23T17:22:50Z",
-   "idioma": "en",
-   "impacto": 31,
-   "materias": [],
-   "medio": "Mining.com",
-   "nivel": "baja",
-   "nota": 76,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Goldman forecasts gold price to take two years to recapture all-time highs",
-   "titulo_es": "Goldman prevé que el precio del oro tardará dos años en recuperar los máximos históricos"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQY2s5TUNSQkJVSDQ5SUUyNXNPVlBBQW8yZXhqZ2gyTkhWSF9tYlNkMkNZVjlWay1JLWxyZFVtcVJRWlM5V3Y4emMwZnp5dFBmcGVQZVhnU1NEN3Q0OXdoaU9YOHctSE9LWnZUd1locE9ka0FJMnNmV3YwcjQ3SmNwdFA5ZzR3MWc3UVE3WVZHSHNIUzlYZ3VOOGNFQUU2YmxMeExR?oc=5",
-   "fecha": "2026-11-23T16:53:05Z",
-   "idioma": "en",
-   "impacto": 74,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "CryptoRank",
-   "nivel": "alta",
    "nota": 76,
    "resumen": "",
    "seccion": [
     "materias"
    ],
    "sentido": "",
-   "tambien_en": [
-    "Coinpaper"
-   ],
-   "tipo": "oferta",
-   "titulo": "Oil Price Forecast: Can OPEC+ Prevent Brent From Falling Below $90?",
-   "titulo_es": "Pronóstico del precio del petróleo: ¿Puede la OPEP+ evitar que el Brent caiga por debajo de los 90 dólares?"
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "‘Weekend Weather Wipeout’ Sends Natural Gas Futures Reeling",
+   "titulo_es": "El ‘Fin de Semana Climatológico’ Envía a los Futuros de Gas Natural"
   },
   {
    "activos": [
-    "oro"
+    "alimentos",
+    "energia"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZk82MnpRVkJKdHlCcFNWdDNnbVc4Unl2ZmN5a2R4RTNBOUUtSkpvQ2RWbG1UYlc0ZnNQNkxxUzlNZUo1bVBjeXdmNEcySklzLTAtWk9pb1pxS2RiVFpJN1NTVXFzRWVtVW53NzZaQ3FqQjEwaHkwM1pJNUdIeks0Nlp2MXdOcVlyQWJQbXU4M1h4Qm8taElyOXJKa1I0ZlBaM2g0dDM3VTIyYmZ1RkxVZ2hjNA?oc=5",
-   "fecha": "2026-11-23T16:01:00Z",
+   "enlace": "https://www.kjan.com/ag-outdoor/iowa-soybean-producers-benefit-from-biofuel-demand/",
+   "fecha": "2026-11-23T18:04:57Z",
    "idioma": "en",
    "impacto": 59,
-   "materias": [],
-   "medio": "kalkine.ca",
+   "materias": [
+    "soja"
+   ],
+   "medio": "Kjan",
    "nivel": "media",
    "nota": 76,
-   "resumen": "",
+   "resumen": "by Dustin Hoffmann (Iowa Agribusiness Radio Network) Growing demand for biodiesel and renewable diesel is changing the economics of soybean processing, with soybean oil becoming an increasingly valuable part of the crop. Devin Mogler, president and CEO of the National Oilseed Processors Association ",
    "seccion": [
-    "preciosos"
+    "materias"
    ],
    "sentido": "",
    "tambien_en": [
-    "kalkine.co.uk"
+    "Iowa Agri Business Radio Network"
    ],
    "tipo": "demanda",
-   "titulo": "Gold Prices Rebound as Safe-Haven Demand Returns to Global Commodity Markets",
-   "titulo_es": "Los precios del oro rebotan mientras la demanda de refugio vuelve a los mercados globales de materias primas"
+   "titulo": "Iowa soybean producers benefit from biofuel demand",
+   "titulo_es": "Los productores de soja de Iowa se benefician de la demanda de biocombustibles"
   },
   {
    "activos": [
-    "plata"
+    "cobre"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQWEozdG1lbnJLdTh5QzJrWExQM2NHX1Zlb3E2ZUYzRXNUMHNTRzYtcWZPN29vT3FmUXFQd0pmb2pzY3lCbzlxYWVjWWRHWDZKd0o3Nmd5SUlWbHFyX0ZaOU5YNzNRbU1PZ0FYSDh4X1p5NkRxZVFZNmFwZ1pER3o3YkRCaEYtekZDYWM5QmFXVlhya1gyVGFvaHJZSmg2enE3ZjRXZFRZVXIydktJcjdFT3JzN3ZMckFYYVVWRTBQOEN6dzJwNVdPQVBKcFRlWnBiZWc?oc=5",
-   "fecha": "2026-11-23T13:27:24Z",
+   "enlace": "https://news.google.com/rss/articles/CBMijAJBVV95cUxNVzRlNE11aFBqQzNxQWptN0l2MXdWUlVHWS1BZlpPbE9MYzlsUXRpeFU4MGtzcjNvT2taamxPOG1QRVZfaENGaTlLUWJJR0tkVXhfOG9yRzR1dzNrUm1JT1pQaEVwNHo5anlLRTU0eEthMmc5cjM4bnQtTWlvYkkxYTNnRTY2bjhJODVnMUppZmtmdTNRMzRYRjlhVnhZRzlZNlRMTUw5YWxqLS1OT3N1OC1yclNqTEZNbk9UeDB6eEdTaWN1Y2ZWTy1uUkx4dFkzS0YyU0hPSC1KdlpvUk5RTGdaaWxqQzA5TW9GWDRKNzdvQWFtdk1wRFkzVU5JeWNON3pMaFBGSnJzcGNp?oc=5",
+   "fecha": "2026-11-23T17:48:48Z",
    "idioma": "es",
-   "impacto": 34,
+   "impacto": 32,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "BioBioChile",
+   "nivel": "baja",
+   "nota": 76,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Atacama Noticias"
+   ],
+   "tipo": null,
+   "titulo": "Cobre toma fuerzas tras regreso del CEO de Nvidia y ayuda a contener el precio del dólar en Chile"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaUtqSmZmekdIRkI1M09DSHE2NURWVEJVX2hzTUllY3VGREJiaHpCM1BnVFVpTnBfQVcyTlg4MFBwRjg1Q1Q2Q1F0S1FsalNISDVZbkk1cmNoLWpiYmllWUdlWlZub0podEZjNkVkT3pKSGNOdXJYT3BORzVGREVoUC1iQUZyVnRuUzRvdXJQVQ?oc=5",
+   "fecha": "2026-11-23T17:19:19Z",
+   "idioma": "en",
+   "impacto": 32,
    "materias": [],
-   "medio": "FXStreet",
+   "medio": "The Country Today",
    "nivel": "baja",
    "nota": 76,
    "resumen": "",
    "seccion": [
     "preciosos"
    ],
-   "sentido": "alza",
+   "sentido": "baja",
    "tambien_en": [
-    "www.tmgm.com"
+    "The Financial Express"
    ],
    "tipo": null,
-   "titulo": "Plata Análisis del Precio: El XAG/USD rebota más de un 3%, pero los bajistas mantienen el control"
+   "titulo": "Gold prices rebound after nine consecutive drops",
+   "titulo_es": "Los precios del oro se recuperan tras nueve caídas consecutivas"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://www.hellenicshippingnews.com/china-is-back-buying-us-soybeans-at-harvest-as-us-wheat-exports-fall-by-about-a-third/",
+   "fecha": "2026-11-24T22:00:57Z",
+   "idioma": "en",
+   "impacto": 27,
+   "materias": [
+    "trigo",
+    "soja"
+   ],
+   "medio": "Hellenic Shipping News",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "China took about 4.3 Mt of US soybeans in September and October, against almost none a year earlier during the trade war. Our view is that US soybean shipments to China look to be heading about 15% higher over the July to June 2026/27 season, with more of the buying at harvest time and less ...",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "China is back buying US soybeans at harvest, as US wheat exports fall by about a third",
+   "titulo_es": "China vuelve a comprar soja estadounidense en la cosecha, ya que las exportaciones de trigo de Estados Unidos caen en aproximadamente un tercio"
   },
   {
    "activos": [
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/newsletters/2026-11-23/us-oil-refining-s-stellar-run-is-starting-to-slow",
-   "fecha": "2026-11-23T13:26:01Z",
+   "enlace": "https://www.hellenicshippingnews.com/why-200000m%c2%b3-lng-carriers-could-be-the-next-step-in-fleet-renewal/",
+   "fecha": "2026-11-24T22:00:57Z",
    "idioma": "en",
-   "impacto": 34,
-   "materias": [],
-   "medio": "Bloomberg - Mercados",
+   "impacto": 33,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Hellenic Shipping News",
    "nivel": "baja",
-   "nota": 76,
-   "resumen": "Weakening gasoline means profits may have peaked.",
+   "nota": 75,
+   "resumen": "For LNG shipping, the question of vessel size has always involved a careful trade-off. Increasing cargo capacity can improve transport efficiency, but those gains have limited value if a ship becomes too large for the infrastructure it needs to serve. A new technical and commercial assessment of 200",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "opinion",
+   "titulo": "Why 200,000m³ LNG carriers could be the next step in fleet renewal",
+   "titulo_es": "Por qué los buques de GNL de 200.000 m³ podrían ser el siguiente paso en la renovación de la flota"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://www.hellenicshippingnews.com/singapore-shipping-corporation-orders-two-lng-capable-car-carriers-in-china/",
+   "fecha": "2026-11-24T22:00:37Z",
+   "idioma": "en",
+   "impacto": 27,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Hellenic Shipping News",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "Singapore-based shipping firm Singapore Shipping Corporation (SSC) has signed shipbuilding contracts with Guangzhou Shipyard International in China for two pure car and truck carriers (PCTCs). The ships, each with a capacity of 7,000 car equivalent units, will have dual-fuel engines able to run on L",
    "seccion": [
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "US Oil Refining’s Stellar Run Is Starting to Slow",
-   "titulo_es": "La carrera estelar de la refinería de petróleo de EE.UU. está empezando a desacelerar"
+   "titulo": "Singapore Shipping Corporation orders two LNG-capable car carriers in China",
+   "titulo_es": "Singapore Shipping Corporation ordena dos portacoches con capacidad de GNL en China"
   },
   {
    "activos": [
@@ -6615,23 +6576,75 @@
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://www.investing.com/analysis/oil-glut-pricing-pushes-war-risk-to-the-edge-of-the-market-200692176",
-   "fecha": "2026-11-23T21:38:00Z",
+   "enlace": "https://naturalgasintel.com/news/colder-european-warmer-asian-forecasts-favor-transatlantic-us-lng-trade/",
+   "fecha": "2026-11-23T19:54:25Z",
    "idioma": "en",
-   "impacto": 66,
-   "materias": [],
-   "medio": "Investing.com - Análisis de materias primas",
-   "nivel": "media",
+   "impacto": 30,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Natural Gas Intelligence",
+   "nivel": "baja",
    "nota": 75,
-   "resumen": "",
+   "resumen": "Forecasts for Europe turned markedly colder Monday, leaving natural gas buyers to contend with below-normal temperatures across much of the continent into early December while storage still trails last year's pace.",
    "seccion": [
     "materias"
    ],
-   "sentido": "baja",
+   "sentido": "",
    "tambien_en": [],
-   "tipo": "geopolitica",
-   "titulo": "Oil Glut Pricing Pushes War Risk to the Edge of the Market",
-   "titulo_es": "El exceso de precios del petróleo empuja el riesgo de guerra al borde del mercado"
+   "tipo": null,
+   "titulo": "Colder European, Warmer Asian Forecasts Favor Transatlantic US LNG Trade",
+   "titulo_es": "Los pronósticos europeos más fríos y asiáticos más cálidos favorecen el comercio transatlántico de GNL de EE."
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://naturalgasintel.com/news/totalenergies-expands-us-natural-gas-production-to-bolster-lng-export-portfolio/",
+   "fecha": "2026-11-23T19:42:00Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Natural Gas Intelligence",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "TotalEnergies has acquired upstream natural gas assets in the United States that are expected to add around 150 MMcf/d to its production portfolio.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "TotalEnergies Expands US Natural Gas Production to Bolster LNG Export Portfolio",
+   "titulo_es": "TotalEnergies expande la producción de gas natural en EE.UU. para reforzar su cartera de exportación de GNL"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://naturalgasintel.com/news/ferc-greenlights-interstate-natural-gas-pipelines-serving-appalachian-permian-basins/",
+   "fecha": "2026-11-23T19:20:00Z",
+   "idioma": "en",
+   "impacto": 30,
+   "materias": [
+    "gas"
+   ],
+   "medio": "Natural Gas Intelligence",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "The Federal Energy Regulatory Commission (FERC) has granted certificates of public convenience and necessity for two major interstate natural gas pipelines, each of which would serve one of the country’s two leading supply basins.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "FERC Greenlights Interstate Natural Gas Pipelines Serving Appalachian, Permian Basins",
+   "titulo_es": "FERC da luz verde a gasoductos interestatales de gas natural que sirven a las cuencas de los Apalaches y el Pérmico"
   },
   {
    "activos": [
@@ -6660,65 +6673,90 @@
   },
   {
    "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQclNUWUNnSmN3V1BqSnJobnN5T3QwZGdVZG1uX2xETDB0a0FvckVUTkFfVndDcGN0SGJOTVB0M2tyeUZ5RVFfRU5UVW8xY214bWljTDAzeDFlNUpFUjY1TGFWanJWTTlUYWxLcVMxSzFsOEhob1NlblR5ZUFCNFNLS0VvdG5IeGJEbVpyeTNTUEZ1MXlGbDNRMU95VkJBNnItaU5qLQ?oc=5",
+   "fecha": "2026-11-23T17:22:50Z",
+   "idioma": "en",
+   "impacto": 31,
+   "materias": [],
+   "medio": "Mining.com",
+   "nivel": "baja",
+   "nota": 75,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Goldman forecasts gold price to take two years to recapture all-time highs",
+   "titulo_es": "Goldman prevé que el precio del oro tardará dos años en recuperar los máximos históricos"
+  },
+  {
+   "activos": [
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOazJOV2QwN1RPSndBMEN3RVluUU1OZzc5amRDbjVlUDRMTExlRVJSUU5BRDBuSWhWdTE4cTVIMnphQUotV3Q4Nm9sc2xFclhPaEw5aWF0SUo3ZWdLcFUtRkQtbEZYRldlS2hLRmNTaTdzeUZyQzdselc0WjlLWnpxSngyMjJoZlQ5WmRHVWR0N2ZuV3lvbXpZblNsWXhGdm1fVDdqcllxVXVfQQ?oc=5",
-   "fecha": "2026-11-23T18:36:18Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQY2s5TUNSQkJVSDQ5SUUyNXNPVlBBQW8yZXhqZ2gyTkhWSF9tYlNkMkNZVjlWay1JLWxyZFVtcVJRWlM5V3Y4emMwZnp5dFBmcGVQZVhnU1NEN3Q0OXdoaU9YOHctSE9LWnZUd1locE9ka0FJMnNmV3YwcjQ3SmNwdFA5ZzR3MWc3UVE3WVZHSHNIUzlYZ3VOOGNFQUU2YmxMeExR?oc=5",
+   "fecha": "2026-11-23T16:53:05Z",
    "idioma": "en",
-   "impacto": 68,
+   "impacto": 74,
    "materias": [
-    "gas"
+    "petroleo"
    ],
-   "medio": "Natural Gas Intelligence",
-   "nivel": "media",
+   "medio": "CryptoRank",
+   "nivel": "alta",
    "nota": 75,
    "resumen": "",
    "seccion": [
     "materias"
    ],
    "sentido": "",
-   "tambien_en": [],
-   "tipo": "geopolitica",
-   "titulo": "Global Natural Gas Prices Gain as Cold Grips Europe, Iran Risks Resurface",
-   "titulo_es": "Los precios mundiales del gas natural suben mientras el frío se apodera de Europa y los riesgos de Irán resurgen"
-  },
-  {
-   "activos": [
-    "cobre"
+   "tambien_en": [
+    "Coinpaper"
    ],
-   "comercial": false,
-   "enlace": "https://www.ft.com/content/b84dbcb1-f216-422e-89c7-f203e0ab2757?syn-25a6b1a6=1",
-   "fecha": "2026-11-23T12:21:55Z",
-   "idioma": "en",
-   "impacto": 68,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "Financial Times - Metales industriales",
-   "nivel": "media",
-   "nota": 75,
-   "resumen": "Acute Chinese shortage and high local premium create lucrative arbitrage",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "comercio",
-   "titulo": "Traders start to move US copper to China as Trump tariff fears ease",
-   "titulo_es": "Los comerciantes comienzan a mover el cobre estadounidense a China mientras los temores arancelarios de Trump se alivian"
+   "tipo": "oferta",
+   "titulo": "Oil Price Forecast: Can OPEC+ Prevent Brent From Falling Below $90?",
+   "titulo_es": "Pronóstico del precio del petróleo: ¿Puede la OPEP+ evitar que el Brent caiga por debajo de los 90 dólares?"
   },
   {
    "activos": [
     "oro"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5qT0VQbzVlV3hDNHhMNEpYcVYtQ2lvWnVWSXQ1YzVxS3hQQ3NtaXJhZENudUV1eFpMXzNSelJwSFRYRzAxTXpNVmNOUmF2YnRFcVlwbTc4dWVzOG9mRjRqQm1IMjhjWVh6QUVv?oc=5",
-   "fecha": "2026-11-23T06:43:30Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZk82MnpRVkJKdHlCcFNWdDNnbVc4Unl2ZmN5a2R4RTNBOUUtSkpvQ2RWbG1UYlc0ZnNQNkxxUzlNZUo1bVBjeXdmNEcySklzLTAtWk9pb1pxS2RiVFpJN1NTVXFzRWVtVW53NzZaQ3FqQjEwaHkwM1pJNUdIeks0Nlp2MXdOcVlyQWJQbXU4M1h4Qm8taElyOXJKa1I0ZlBaM2g0dDM3VTIyYmZ1RkxVZ2hjNA?oc=5",
+   "fecha": "2026-11-23T16:01:00Z",
    "idioma": "en",
-   "impacto": 40,
+   "impacto": 59,
    "materias": [],
-   "medio": "Banglanews24",
+   "medio": "kalkine.ca",
+   "nivel": "media",
+   "nota": 75,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "kalkine.co.uk"
+   ],
+   "tipo": "demanda",
+   "titulo": "Gold Prices Rebound as Safe-Haven Demand Returns to Global Commodity Markets",
+   "titulo_es": "Los precios del oro rebotan mientras la demanda de refugio vuelve a los mercados globales de materias primas"
+  },
+  {
+   "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQWEozdG1lbnJLdTh5QzJrWExQM2NHX1Zlb3E2ZUYzRXNUMHNTRzYtcWZPN29vT3FmUXFQd0pmb2pzY3lCbzlxYWVjWWRHWDZKd0o3Nmd5SUlWbHFyX0ZaOU5YNzNRbU1PZ0FYSDh4X1p5NkRxZVFZNmFwZ1pER3o3YkRCaEYtekZDYWM5QmFXVlhya1gyVGFvaHJZSmg2enE3ZjRXZFRZVXIydktJcjdFT3JzN3ZMckFYYVVWRTBQOEN6dzJwNVdPQVBKcFRlWnBiZWc?oc=5",
+   "fecha": "2026-11-23T13:27:24Z",
+   "idioma": "es",
+   "impacto": 34,
+   "materias": [],
+   "medio": "FXStreet",
    "nivel": "baja",
    "nota": 75,
    "resumen": "",
@@ -6727,39 +6765,33 @@
    ],
    "sentido": "alza",
    "tambien_en": [
-    "Daily Sun",
-    "Daily Times Of Bangladesh",
-    "www.daily-sun.com"
+    "www.tmgm.com"
    ],
    "tipo": null,
-   "titulo": "Gold prices rise after nine consecutive cuts",
-   "titulo_es": "Los precios del oro suben tras nueve recortes consecutivos"
+   "titulo": "Plata Análisis del Precio: El XAG/USD rebota más de un 3%, pero los bajistas mantienen el control"
   },
   {
    "activos": [
-    "oro"
+    "energia"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5UZHprbzZLVkJ0WXQ1dlNtNmh1UFdQMWZfS3g0VmRaYzV5bEc3V0t5V1pvdE8wWnpWdHp5QmRLUl96al9NUXZDSTNZclhhcUNkQU8tRFEwZzZ4SWVL?oc=5",
-   "fecha": "2026-11-23T06:17:30Z",
+   "enlace": "https://www.bloomberg.com/news/newsletters/2026-11-23/us-oil-refining-s-stellar-run-is-starting-to-slow",
+   "fecha": "2026-11-23T13:26:01Z",
    "idioma": "en",
-   "impacto": 52,
+   "impacto": 34,
    "materias": [],
-   "medio": "Sharjah24",
-   "nivel": "media",
+   "medio": "Bloomberg - Mercados",
+   "nivel": "baja",
    "nota": 75,
-   "resumen": "",
+   "resumen": "Weakening gasoline means profits may have peaked.",
    "seccion": [
-    "preciosos"
+    "materias"
    ],
-   "sentido": "baja",
-   "tambien_en": [
-    "VnExpress International",
-    "www.wam.ae"
-   ],
-   "tipo": "precio",
-   "titulo": "Gold prices recover from 14-month low",
-   "titulo_es": "Los precios del oro se recuperan del mínimo de 14 meses"
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "US Oil Refining’s Stellar Run Is Starting to Slow",
+   "titulo_es": "La carrera estelar de la refinería de petróleo de EE.UU. está empezando a desacelerar"
   },
   {
    "activos": [
@@ -6811,6 +6843,29 @@
   },
   {
    "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://www.investing.com/analysis/oil-glut-pricing-pushes-war-risk-to-the-edge-of-the-market-200692176",
+   "fecha": "2026-11-23T21:38:00Z",
+   "idioma": "en",
+   "impacto": 66,
+   "materias": [],
+   "medio": "Investing.com - Análisis de materias primas",
+   "nivel": "media",
+   "nota": 74,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": "geopolitica",
+   "titulo": "Oil Glut Pricing Pushes War Risk to the Edge of the Market",
+   "titulo_es": "El exceso de precios del petróleo empuja el riesgo de guerra al borde del mercado"
+  },
+  {
+   "activos": [
     "alimentos",
     "energia"
    ],
@@ -6838,101 +6893,28 @@
   },
   {
    "activos": [
-    "cobre",
-    "construccion",
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://oilprice.com/Energy/Energy-General/The-Energy-Transition-Needs-More-Metals-but-Less-Extraction.html",
-   "fecha": "2026-11-23T18:00:00Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOazJOV2QwN1RPSndBMEN3RVluUU1OZzc5amRDbjVlUDRMTExlRVJSUU5BRDBuSWhWdTE4cTVIMnphQUotV3Q4Nm9sc2xFclhPaEw5aWF0SUo3ZWdLcFUtRkQtbEZYRldlS2hLRmNTaTdzeUZyQzdselc0WjlLWnpxSngyMjJoZlQ5WmRHVWR0N2ZuV3lvbXpZblNsWXhGdm1fVDdqcllxVXVfQQ?oc=5",
+   "fecha": "2026-11-23T18:36:18Z",
    "idioma": "en",
-   "impacto": 28,
-   "materias": [],
-   "medio": "OilPrice.com",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "The energy transition is often described as a switch from one extraction industry to another. Instead of digging up coal and drilling for oil, the argument goes, we will simply dig up enormous quantities of lithium, copper and nickel. There is some truth in that description. More mines will be neede",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "The Energy Transition Needs More Metals but Less Extraction",
-   "titulo_es": "La transición energética necesita más metales pero menos extracción"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/as-production-recovers-and-weather-wimps-out-natural-gas-prices-plummet/",
-   "fecha": "2026-11-23T17:05:32Z",
-   "idioma": "en",
-   "impacto": 30,
+   "impacto": 68,
    "materias": [
     "gas"
    ],
    "medio": "Natural Gas Intelligence",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "Rising production and forecasts for a warm start to December sent natural gas futures into freefall on the New York Mercantile Exchange at midday on Monday.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "As Production Recovers and Weather Wimps Out, Natural Gas Prices Plummet",
-   "titulo_es": "A medida que la producción se recupera y el clima se debilita, los precios del gas natural caen"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.northernminer.com/news/prospectiva-hits-rich-copper-zone-at-sao-francisco/1003898150/",
-   "fecha": "2026-11-23T16:57:39Z",
-   "idioma": "en",
-   "impacto": 30,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "The Northern Miner",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "New drilling by Prospectiva Resources (TSXV: PSVA) at the São Francisco project in northeastern Brazil has produced its most significant copper intersection yet ahead of... The post Prospectiva hits rich copper zone at São Francisco appeared first on The Northern Miner .",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Prospectiva hits rich copper zone at São Francisco",
-   "titulo_es": "Prospectiva golpea zona rica en cobre en São Francisco"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQ01MbDdGek9jMG03bjU2OEhwQXpYU3pUOWUtRnRlbHY5VkhoMy05QkRFR2FfREVoMkQ2NzQtUGxJMDJ6R3dHNVJHaWpvNkJEaGo2dXNNb0ZsbEVOT1JPYUloOW1JQnZhMF9jNGgyOXV2eEJHdGVtNlBHMW04c0J3bTBHOGplXzJUUWE4cjRzaG9zQk1DWE53?oc=5",
-   "fecha": "2026-11-23T15:55:37Z",
-   "idioma": "en",
-   "impacto": 43,
-   "materias": [],
-   "medio": "Mining.com",
-   "nivel": "baja",
+   "nivel": "media",
    "nota": 74,
    "resumen": "",
    "seccion": [
-    "preciosos"
+    "materias"
    ],
    "sentido": "",
    "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Gold price drops to more than one-year low as US dollar marches higher",
-   "titulo_es": "El precio del oro cae a mínimos de más de un año mientras el dólar estadounidense avanza"
+   "tipo": "geopolitica",
+   "titulo": "Global Natural Gas Prices Gain as Cold Grips Europe, Iran Risks Resurface",
+   "titulo_es": "Los precios mundiales del gas natural suben mientras el frío se apodera de Europa y los riesgos de Irán resurgen"
   },
   {
    "activos": [
@@ -6963,16 +6945,68 @@
   },
   {
    "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://www.ft.com/content/b84dbcb1-f216-422e-89c7-f203e0ab2757?syn-25a6b1a6=1",
+   "fecha": "2026-11-23T12:21:55Z",
+   "idioma": "en",
+   "impacto": 68,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Financial Times - Metales industriales",
+   "nivel": "media",
+   "nota": 74,
+   "resumen": "Acute Chinese shortage and high local premium create lucrative arbitrage",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": "comercio",
+   "titulo": "Traders start to move US copper to China as Trump tariff fears ease",
+   "titulo_es": "Los comerciantes comienzan a mover el cobre estadounidense a China mientras los temores arancelarios de Trump se alivian"
+  },
+  {
+   "activos": [
     "oro"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOX2tlcVlqbXFtRkl2U1F4aXRjbzlLVlJ6bm9jVDVuRDRYMUJTOU1zUDNiY2p5R2JLcUdQTUVaZ2xadDgza0dCX0hmVnJPcFdZdEd2QnZBaXFiX3NZTDlueHpfTUl6M3Z2ZGxTTzJFdXBNODlfTXpzZ3BRZ0FQU1ZVcnRlQUl5U2g3SXoxd09rc2ZxTC1XSHRFTXltOXZqU2NBUFM5c1ZaQVpUeHlGaUYwUHRSYmlrVUNteHg0cXRBY1V1ZW9Wa3lINzkyaUt4N1RmNGhuQ00wYVVqNWMwbnlr0gHfAUFVX3lxTE5fa2VxWWptcW1GSXZTUXhpdGNvOUtWUnpub2NUNW5ENFgxQlM5TXNQM2JjanlHYktxR1BNRVpnbFp0ODNrR0JfSGZWck9wV1l0R3ZCdkFpcWJfc1lMOW54el9NSXozdnZkbFNPMkV1cE04OV9NenNncFFnQVBTVlVydGVBSXlTaDdJejF3T2tzZnFMLVdIdEVNeW05dmpTY0FQUzlzVlpBWlR4eUZpRjBQdFJiaWtVQ214eDRxdEFjVXVlb1ZreUg3OTJpS3g3VGY0aG5DTTBhVWo1YzBueWs?oc=5",
-   "fecha": "2026-11-23T13:42:38Z",
+   "enlace": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5qT0VQbzVlV3hDNHhMNEpYcVYtQ2lvWnVWSXQ1YzVxS3hQQ3NtaXJhZENudUV1eFpMXzNSelJwSFRYRzAxTXpNVmNOUmF2YnRFcVlwbTc4dWVzOG9mRjRqQm1IMjhjWVh6QUVv?oc=5",
+   "fecha": "2026-11-23T06:43:30Z",
    "idioma": "en",
-   "impacto": 44,
+   "impacto": 40,
    "materias": [],
-   "medio": "Devdiscourse",
+   "medio": "Banglanews24",
    "nivel": "baja",
+   "nota": 74,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "alza",
+   "tambien_en": [
+    "Daily Sun",
+    "Daily Times Of Bangladesh",
+    "www.daily-sun.com"
+   ],
+   "tipo": null,
+   "titulo": "Gold prices rise after nine consecutive cuts",
+   "titulo_es": "Los precios del oro suben tras nueve recortes consecutivos"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5UZHprbzZLVkJ0WXQ1dlNtNmh1UFdQMWZfS3g0VmRaYzV5bEc3V0t5V1pvdE8wWnpWdHp5QmRLUl96al9NUXZDSTNZclhhcUNkQU8tRFEwZzZ4SWVL?oc=5",
+   "fecha": "2026-11-23T06:17:30Z",
+   "idioma": "en",
+   "impacto": 52,
+   "materias": [],
+   "medio": "Sharjah24",
+   "nivel": "media",
    "nota": 74,
    "resumen": "",
    "seccion": [
@@ -6980,187 +7014,45 @@
    ],
    "sentido": "baja",
    "tambien_en": [
-    "ANI News"
+    "VnExpress International",
+    "www.wam.ae"
    ],
    "tipo": "precio",
-   "titulo": "PM Modi's foresight saved millions from financial ruin amid gold price crash: CTI Chairman",
-   "titulo_es": "La previsión del primer ministro Modi salvó a millones de la ruina financiera en medio de la caída del precio del oro: presidente de CTI"
+   "titulo": "Gold prices recover from 14-month low",
+   "titulo_es": "Los precios del oro se recuperan del mínimo de 14 meses"
   },
   {
    "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://www.financialcontent.com/article/gnwcq-2026-11-23-namib-minerals-pours-first-gold-at-redwing-mine-marking-return-to-production-and-advancing-its-multi-asset-gold-strategy",
-   "fecha": "2026-11-23T13:38:43Z",
-   "idioma": "en",
-   "impacto": 32,
-   "materias": [],
-   "medio": "Financialcontent",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "NEW YORK, Nov. 23, 2026 (GLOBE NEWSWIRE) -- Namib Minerals (Nasdaq: NAMM) (“Namib” or the “Company”), an established African gold producer with a portfolio of mining assets in Zimbabwe, today announced that it has poured first gold at Redwing Mine, in line with the November 2026 target announced on ",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [
-    "Globe Newswire"
-   ],
-   "tipo": null,
-   "titulo": "Namib Minerals Pours First Gold at Redwing Mine, Marking Return to Production and Advancing Its Multi-Asset Gold Strategy",
-   "titulo_es": "Namib Minerals vertió su primer oro en la mina Redwing, marcando el regreso a la producción y avanzando su estrategia de oro multiactivo"
-  },
-  {
-   "activos": [
+    "cobre",
+    "construccion",
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://www.bloomberg.com/news/articles/2026-11-23/small-refinery-in-southern-russia-halts-operations-after-attack",
-   "fecha": "2026-11-23T11:30:44Z",
-   "idioma": "en",
-   "impacto": 34,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "Bloomberg - Mercados",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "Ukraine said it hit yet another Russian refinery, this time striking a major fuel-producing plant in the Perm region, as the two countries continued to trade attacks on each other’s energy infrastructure.",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Ukraine Hits Russian Oil Refinery as 15 Attacked This Month",
-   "titulo_es": "Ucrania ataca refinería de petróleo rusa y 15 personas son atacadas este mes"
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://www.hellenicshippingnews.com/lme-copper-briefly-falls-below-12000-a-ton-as-tech-selloff-deepens/",
-   "fecha": "2026-11-23T11:00:33Z",
-   "idioma": "en",
-   "impacto": 34,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "Hellenic Shipping News",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "Copper prices briefly fell below $12,000 a ton on Monday, as mounting concerns over artificial intelligence spending, a stronger U.S. dollar and the prospect of higher interest rates weighed on investor sentiment. Benchmark three-month Copper Futures on the London Metal Exchange fell to around $11,9",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [
-    "Investing.com - Materias primas"
-   ],
-   "tipo": null,
-   "titulo": "LME copper briefly falls below $12,000 a ton as tech selloff deepens",
-   "titulo_es": "El cobre de la LME cae brevemente por debajo de los 12.000 dólares la tonelada"
-  },
-  {
-   "activos": [
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQX1ZHOVFwZTFOTC0wQi1YbEpQczV5R2JfQ2tnSTBmcjRMT05VbHBLVFFhYUdPUVNFRHBXcVJxNGtGMl9GQ1ljTXZOM01kNktOZkhpWjNIS3Z5dWxUbWNpVWgxOEJkNlp2MG9kakxhX2YtZG9TMmFCQVprVnFOZnRLY1BSbWlmTzE1T3FQcGo3YlpQamFsZi01UHROb1BELVZYYTdfZQ?oc=5",
-   "fecha": "2026-11-23T10:32:56Z",
-   "idioma": "es",
-   "impacto": 34,
-   "materias": [],
-   "medio": "FXStreet",
-   "nivel": "baja",
-   "nota": 74,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [
-    "www.tmgm.com"
-   ],
-   "tipo": null,
-   "titulo": "Precio de la Plata Hoy: sube el 23 de noviembre"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNQ2tWWl92R3dWVEx3a2J2NU1UZU04UzZWelR2bHVRWUpubXprZTZEbHN2M1g0OW55NlhMVjlOUjlxdkpxa090T1NYSlpWSjhtd0syV1BQTGxqOFdMQ1oySHRoNVlYaXU0bXR2SG9WRjkxb0UzWldIdmFtVlc3dVV5RWgxaWc4V3ZtWFFnclprUFZqMmhkU21mVHY0WVVIb05QcGhQNUhQR1RGaEpubk10ZkRGZ3ZnaV9OMXZsZC04bnNwMXlXVGdITnVyY0RtMFVGclYzTW55aERtWWVaMkZsaUhsOUM?oc=5",
-   "fecha": "2026-11-23T19:17:12Z",
-   "idioma": "es",
-   "impacto": 27,
-   "materias": [],
-   "medio": "FXStreet",
-   "nivel": "baja",
-   "nota": 73,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "El precio del Oro recupera los 3.650$ mientras las noticias de Nvidia desatan un repunte antes del PCE de EE.UU."
-  },
-  {
-   "activos": [
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOTmtaNHJVb2pjbDBVdmMteVVJdHhXd1hsRFNPdmNNendSeHlUUEVkN0x5TnEwUjBIWW9SVEhvVnlBRm5TNjJqX3NaQmdTb25yWkYwRE5jaXdsQTR2NFFNN2xFcjNFNU1Qd0hCdmtnN2xiVURZR2dVWmZ4ZzI2Y1h2LU54aFQxejRnbl9nNERBZE1ENnpvLWJmR1Vra2M2REhBdGRLMFdQNmtBd1FGd0pVRFVad3g5UVNkNkQxa0NtOHVaRnN4ZFQzTDlmRk1iQQ?oc=5",
-   "fecha": "2026-11-23T19:14:45Z",
-   "idioma": "es",
-   "impacto": 27,
-   "materias": [],
-   "medio": "FXStreet",
-   "nivel": "baja",
-   "nota": 73,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Plata Análisis del Precio: El harami alcista se enfrenta a una prueba de ruptura de los 43.95$"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://oilprice.com/Energy/Energy-General/Americas-Biggest-Oil-Export-Port-Faces-Thousands-of-Cyberattack-Attempts.html",
-   "fecha": "2026-11-23T17:00:00Z",
+   "enlace": "https://oilprice.com/Energy/Energy-General/The-Energy-Transition-Needs-More-Metals-but-Less-Extraction.html",
+   "fecha": "2026-11-23T18:00:00Z",
    "idioma": "en",
    "impacto": 28,
    "materias": [],
    "medio": "OilPrice.com",
    "nivel": "baja",
    "nota": 73,
-   "resumen": "The port that ships most of America's crude oil overseas is now fending off \"hundreds or even thousands\" of attempts to break into its systems every day, Port of Corpus Christi CEO Kent Britton told the Financial Times, as hackers step up a campaign against US ports and the cargo ships that call on ",
+   "resumen": "The energy transition is often described as a switch from one extraction industry to another. Instead of digging up coal and drilling for oil, the argument goes, we will simply dig up enormous quantities of lithium, copper and nickel. There is some truth in that description. More mines will be neede",
    "seccion": [
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "America’s Biggest Oil Export Port Faces Thousands of Cyberattack Attempts",
-   "titulo_es": "El mayor puerto de exportación de petróleo de Estados Unidos enfrenta miles de intentos de ciberataques"
+   "titulo": "The Energy Transition Needs More Metals but Less Extraction",
+   "titulo_es": "La transición energética necesita más metales pero menos extracción"
   },
   {
    "activos": [
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/winter-makes-presence-felt-as-us-natural-gas-storage-shifts-to-withdrawal-mode/",
-   "fecha": "2026-11-23T15:58:00Z",
+   "enlace": "https://naturalgasintel.com/news/as-production-recovers-and-weather-wimps-out-natural-gas-prices-plummet/",
+   "fecha": "2026-11-23T17:05:32Z",
    "idioma": "en",
    "impacto": 30,
    "materias": [
@@ -7169,40 +7061,63 @@
    "medio": "Natural Gas Intelligence",
    "nivel": "baja",
    "nota": 73,
-   "resumen": "Following the return of more normal winter temperatures last week, NGI is expecting the next US Energy Information Administration (EIA) Weekly Natural Gas Storage Report for the week ended Nov. 20 will show the first withdrawal of the 2026/27 heating season.",
+   "resumen": "Rising production and forecasts for a warm start to December sent natural gas futures into freefall on the New York Mercantile Exchange at midday on Monday.",
    "seccion": [
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Winter Makes Presence Felt as US Natural Gas Storage Shifts to Withdrawal Mode",
-   "titulo_es": "El invierno hace sentir su presencia mientras el almacenamiento de gas natural de EE.UU. cambia a modo de retirada"
+   "titulo": "As Production Recovers and Weather Wimps Out, Natural Gas Prices Plummet",
+   "titulo_es": "A medida que la producción se recupera y el clima se debilita, los precios del gas natural caen"
   },
   {
    "activos": [
-    "energia"
+    "cobre"
    ],
    "comercial": false,
-   "enlace": "https://naturalgasintel.com/news/spot-natural-gas-prices-lose-stream-in-latest-weekly-period/",
-   "fecha": "2026-11-23T15:45:17Z",
+   "enlace": "https://www.northernminer.com/news/prospectiva-hits-rich-copper-zone-at-sao-francisco/1003898150/",
+   "fecha": "2026-11-23T16:57:39Z",
    "idioma": "en",
    "impacto": 30,
    "materias": [
-    "gas"
+    "cobre"
    ],
-   "medio": "Natural Gas Intelligence",
+   "medio": "The Northern Miner",
    "nivel": "baja",
    "nota": 73,
-   "resumen": "Weekly natural gas cash prices gave up ground, hampered by mild weather and signs of rising production.",
+   "resumen": "New drilling by Prospectiva Resources (TSXV: PSVA) at the São Francisco project in northeastern Brazil has produced its most significant copper intersection yet ahead of... The post Prospectiva hits rich copper zone at São Francisco appeared first on The Northern Miner .",
    "seccion": [
     "materias"
    ],
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Spot Natural Gas Prices Lose Stream in Latest Weekly Period",
-   "titulo_es": "Los precios del gas natural al contado pierden flujo en el último período semanal"
+   "titulo": "Prospectiva hits rich copper zone at São Francisco",
+   "titulo_es": "Prospectiva golpea zona rica en cobre en São Francisco"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQ01MbDdGek9jMG03bjU2OEhwQXpYU3pUOWUtRnRlbHY5VkhoMy05QkRFR2FfREVoMkQ2NzQtUGxJMDJ6R3dHNVJHaWpvNkJEaGo2dXNNb0ZsbEVOT1JPYUloOW1JQnZhMF9jNGgyOXV2eEJHdGVtNlBHMW04c0J3bTBHOGplXzJUUWE4cjRzaG9zQk1DWE53?oc=5",
+   "fecha": "2026-11-23T15:55:37Z",
+   "idioma": "en",
+   "impacto": 43,
+   "materias": [],
+   "medio": "Mining.com",
+   "nivel": "baja",
+   "nota": 73,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "Gold price drops to more than one-year low as US dollar marches higher",
+   "titulo_es": "El precio del oro cae a mínimos de más de un año mientras el dólar estadounidense avanza"
   },
   {
    "activos": [
@@ -7228,6 +7143,56 @@
    "tipo": null,
    "titulo": "BHP bets $17.4 billion on doubling South Australian copper output",
    "titulo_es": "BHP apuesta 17.400 millones de dólares por duplicar producción de cobre en Australia del Sur"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOX2tlcVlqbXFtRkl2U1F4aXRjbzlLVlJ6bm9jVDVuRDRYMUJTOU1zUDNiY2p5R2JLcUdQTUVaZ2xadDgza0dCX0hmVnJPcFdZdEd2QnZBaXFiX3NZTDlueHpfTUl6M3Z2ZGxTTzJFdXBNODlfTXpzZ3BRZ0FQU1ZVcnRlQUl5U2g3SXoxd09rc2ZxTC1XSHRFTXltOXZqU2NBUFM5c1ZaQVpUeHlGaUYwUHRSYmlrVUNteHg0cXRBY1V1ZW9Wa3lINzkyaUt4N1RmNGhuQ00wYVVqNWMwbnlr0gHfAUFVX3lxTE5fa2VxWWptcW1GSXZTUXhpdGNvOUtWUnpub2NUNW5ENFgxQlM5TXNQM2JjanlHYktxR1BNRVpnbFp0ODNrR0JfSGZWck9wV1l0R3ZCdkFpcWJfc1lMOW54el9NSXozdnZkbFNPMkV1cE04OV9NenNncFFnQVBTVlVydGVBSXlTaDdJejF3T2tzZnFMLVdIdEVNeW05dmpTY0FQUzlzVlpBWlR4eUZpRjBQdFJiaWtVQ214eDRxdEFjVXVlb1ZreUg3OTJpS3g3VGY0aG5DTTBhVWo1YzBueWs?oc=5",
+   "fecha": "2026-11-23T13:42:38Z",
+   "idioma": "en",
+   "impacto": 44,
+   "materias": [],
+   "medio": "Devdiscourse",
+   "nivel": "baja",
+   "nota": 73,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "ANI News"
+   ],
+   "tipo": "precio",
+   "titulo": "PM Modi's foresight saved millions from financial ruin amid gold price crash: CTI Chairman",
+   "titulo_es": "La previsión del primer ministro Modi salvó a millones de la ruina financiera en medio de la caída del precio del oro: presidente de CTI"
+  },
+  {
+   "activos": [
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://www.financialcontent.com/article/gnwcq-2026-11-23-namib-minerals-pours-first-gold-at-redwing-mine-marking-return-to-production-and-advancing-its-multi-asset-gold-strategy",
+   "fecha": "2026-11-23T13:38:43Z",
+   "idioma": "en",
+   "impacto": 32,
+   "materias": [],
+   "medio": "Financialcontent",
+   "nivel": "baja",
+   "nota": 73,
+   "resumen": "NEW YORK, Nov. 23, 2026 (GLOBE NEWSWIRE) -- Namib Minerals (Nasdaq: NAMM) (“Namib” or the “Company”), an established African gold producer with a portfolio of mining assets in Zimbabwe, today announced that it has poured first gold at Redwing Mine, in line with the November 2026 target announced on ",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [
+    "Globe Newswire"
+   ],
+   "tipo": null,
+   "titulo": "Namib Minerals Pours First Gold at Redwing Mine, Marking Return to Production and Advancing Its Multi-Asset Gold Strategy",
+   "titulo_es": "Namib Minerals vertió su primer oro en la mina Redwing, marcando el regreso a la producción y avanzando su estrategia de oro multiactivo"
   },
   {
    "activos": [
@@ -7260,61 +7225,178 @@
     "energia"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQSTU3d3NVTGVSblZjYVU1SWlzSHV6OW8zV0c1and6UGlqYTJ1UnFWWnRtSnJ1RkJpd1FLZ0pPZ3ptSDZ0ODl6VHZCZHNqTlJHZi1reVh4bF9iUWI4RUJueE5HRklENWFrMy1xaWp3R3Z1THJSQzVTQ2ZyczJzVF93bWt1SGxvSGRkd24yS2stWlI5MEFGTzdQYVkyWmdmQW5IblFRZ2l4RUg1YXoy?oc=5",
-   "fecha": "2026-11-23T12:34:00Z",
-   "idioma": "es",
-   "impacto": 32,
+   "enlace": "https://www.bloomberg.com/news/articles/2026-11-23/small-refinery-in-southern-russia-halts-operations-after-attack",
+   "fecha": "2026-11-23T11:30:44Z",
+   "idioma": "en",
+   "impacto": 34,
    "materias": [
-    "electricidad"
+    "diesel"
    ],
-   "medio": "El Confidencial",
+   "medio": "Bloomberg - Mercados",
+   "nivel": "baja",
+   "nota": 73,
+   "resumen": "Ukraine said it hit yet another Russian refinery, this time striking a major fuel-producing plant in the Perm region, as the two countries continued to trade attacks on each other’s energy infrastructure.",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Ukraine Hits Russian Oil Refinery as 15 Attacked This Month",
+   "titulo_es": "Ucrania ataca refinería de petróleo rusa y 15 personas son atacadas este mes"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://www.hellenicshippingnews.com/lme-copper-briefly-falls-below-12000-a-ton-as-tech-selloff-deepens/",
+   "fecha": "2026-11-23T11:00:33Z",
+   "idioma": "en",
+   "impacto": 34,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Hellenic Shipping News",
+   "nivel": "baja",
+   "nota": 73,
+   "resumen": "Copper prices briefly fell below $12,000 a ton on Monday, as mounting concerns over artificial intelligence spending, a stronger U.S. dollar and the prospect of higher interest rates weighed on investor sentiment. Benchmark three-month Copper Futures on the London Metal Exchange fell to around $11,9",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [
+    "Investing.com - Materias primas"
+   ],
+   "tipo": null,
+   "titulo": "LME copper briefly falls below $12,000 a ton as tech selloff deepens",
+   "titulo_es": "El cobre de la LME cae brevemente por debajo de los 12.000 dólares la tonelada"
+  },
+  {
+   "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQX1ZHOVFwZTFOTC0wQi1YbEpQczV5R2JfQ2tnSTBmcjRMT05VbHBLVFFhYUdPUVNFRHBXcVJxNGtGMl9GQ1ljTXZOM01kNktOZkhpWjNIS3Z5dWxUbWNpVWgxOEJkNlp2MG9kakxhX2YtZG9TMmFCQVprVnFOZnRLY1BSbWlmTzE1T3FQcGo3YlpQamFsZi01UHROb1BELVZYYTdfZQ?oc=5",
+   "fecha": "2026-11-23T10:32:56Z",
+   "idioma": "es",
+   "impacto": 34,
+   "materias": [],
+   "medio": "FXStreet",
    "nivel": "baja",
    "nota": 73,
    "resumen": "",
    "seccion": [
-    "materias"
+    "preciosos"
    ],
-   "sentido": "",
+   "sentido": "alza",
    "tambien_en": [
-    "SevillaInfo"
+    "www.tmgm.com"
    ],
    "tipo": null,
-   "titulo": "Precio de la luz hoy, lunes 23 de noviembre, por horas: las horas más baratas y más caras, con máximos de 301 euros"
+   "titulo": "Precio de la Plata Hoy: sube el 23 de noviembre"
   },
   {
    "activos": [
-    "construccion"
+    "oro",
+    "plata"
    ],
    "comercial": false,
-   "enlace": "https://gmk.center/en/news/arcelormittal-raises-flat-steel-prices-in-europe/",
-   "fecha": "2026-11-23T08:31:45Z",
+   "enlace": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQOGpFVDBEV2RqdFozbDhjTnJGUnVaYjBpaFlRMFpfdHRIelhKRm56dFVkQ3ZmNXBPRXp4OWRxQTJYQjExb245V2o5QklmTUdWZkRMVFFXcThkYml6Q1dvWUJDRnhxZkZTLTFFei1sMnpNbE1xaVduMDE2T2pPeHFpZTF5YjdCV2ZWU3c?oc=5",
+   "fecha": "2026-11-24T22:15:39Z",
    "idioma": "en",
    "impacto": 36,
-   "materias": [
-    "acero"
-   ],
-   "medio": "GMK Center (acero)",
+   "materias": [],
+   "medio": "theopenpress.in",
    "nivel": "baja",
-   "nota": 73,
-   "resumen": "ArcelorMittal has announced another increase in its coil prices on the European market. The main drivers behind the price revision are rising energy costs and a gradual recovery in demand, reports Reuters. According to the producer’s updated offers, base delivered prices have been set at the followi",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "Gold and Silver Price Crash: Gold Falls ₹1,556, Silver Drops Nearly ₹5,000 in a Day; Why Did Prices Fall Again?",
+   "titulo_es": "El precio del oro y la plata cae: el oro cae 1.556 ₹, la plata cae casi 5.000 ₹ en un día; ¿Por qué los precios cayeron de nuevo?"
+  },
+  {
+   "activos": [
+    "platino"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOWG1hUWtQa3NocXZNS2NSM0lYaEVaeVRlV1Vtc2VYT2VzNy02SUdqM0Zia2d1WF9pbUdMRjVJNU8zdVVlaFlGTHJMLVFrZ01aUXB4S0l3M1dRUzgtTENZNzNkVlloRE1SU3BtMjRMSVZ4RXFYNlljSy16SDk2YllQZnFTNUdhVHh1SHJ0RkVSSDNLbjh2UkRV?oc=5",
+   "fecha": "2026-11-24T22:09:28Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Traders Union",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Platinum price drops over 4% after technical signals confirm bearish structure",
+   "titulo_es": "El precio del platino cae más de un 4% después de que las señales técnicas confirmen una estructura bajista"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNR2hCb0h4Ynlvc24tbnVNNVl6SE5yR3g2TzFEVWxYdjBsZmo5VkhHUFpNTFpOODlDbzk1RlZKeERhMXBxQmFNQTk3RU90ZWxxVDBFeVBuekhnUnE1NDBXbFZyWTRrclRQQlpMTENVNnFJX21TOEs3dzJHelF4OEhiUXJ0MzBTaVZsczQ2aWZKRHI0QzluNGcxNjVPcWYzeHYyT2JnMUdfZDRqNjlQdHZ1eGpB?oc=5",
+   "fecha": "2026-11-24T22:05:28Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "Urgentebo",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
    "seccion": [
     "materias"
    ],
-   "sentido": "",
-   "tambien_en": [
-    "GMK Center"
-   ],
+   "sentido": "alza",
+   "tambien_en": [],
    "tipo": null,
-   "titulo": "ArcelorMittal raises flat steel prices in Europe",
-   "titulo_es": "ArcelorMittal sube los precios del acero plano en Europa"
+   "titulo": "Al menos tres sectores rechazan el alza del diésel, advierten con bloqueos y subida de precios"
+  },
+  {
+   "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPVFFBSkNKaVhJazVIVFFiWTlwRkFtaXdvRW4tcG9QVHFrV1FGbE1XZ2Z4dFljNm14WWdldm93T0FGaXU0OEhSZWNwdGtWTDhpNzlLYmZQRllHTXN2LVlsSTEydFd6SWdFVnVPckk1LUtDUG84MWJqaXBxTG5lbVRaNmk4enh6RTBzMnVSLXYxM3d0dFFobUk0ZmZ4ZEcyUndvYVNzeHNiVGR6SzBOa0VRTkhxd29pSGc1blo1NVpCWUx5QTRxUXFoTU4yUjVKbmE2THRkOEMyUGpfQjRabWhNNVJyNA?oc=5",
+   "fecha": "2026-11-24T21:54:57Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "The Motley Fool",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Stock Market Today, Nov. 24: Hecla Mining Slides as Silver Prices Fall on Rate-Hike Worries",
+   "titulo_es": "Bolsa hoy, 24 de noviembre: Hecla Mining se desliza mientras los precios de la plata caen por preocupaciones por aumento de tasas"
   },
   {
    "activos": [
     "alimentos"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQWUhNelRPZnNObjJDaDZkc1NSaFJsS1RXTG4wUjR3a2NFSlZWWXRjYlVzanFuRGtNOU9EYmJ4N0E1cG85RkowdHRaaEYxMy1UazM2NjRVU1F0dXlnVXlNSHNTN1BrMXJSVDBhUTh2ejlWYjZLLXFsVUktZzJvcTd1WWhTMXZLNW8tV1hIeU1veEZwVGpfR080M2hnbXM0dVRnMVZEcllRRExHRVUwOE53Ynh6M3NscTNDREp0aFl6WWdTNTZ2MjE1MFZibUNrN25Kamp5NllkV2t6QQ?oc=5",
-   "fecha": "2026-11-24T21:10:33Z",
+   "enlace": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOQ1NYMklqcGRLa080aGxMZmFIejdveXc2bTJLd0JmbU5xcEFmVVhiQzgyb3p2ZWFmVWE0QkswQm9kSDg4SUJaYTRMMGxnbEVXbmRQdkJNTWVRQzMxOEVKU21ySmZNaEkta2l1U2VYVE9KRDEtcDc0aWVQRkFXUy1FcHQ4Rm1DZ3VUMHc4UlYxcHZ0UGVzbUlyRUlHRm56MmtKd1NEZ0tTUTZjUEtqS2lHT19qMHhwaVdua1dSSlgyenVSckJITG00?oc=5",
+   "fecha": "2026-11-24T21:50:33Z",
    "idioma": "es",
    "impacto": 24,
    "materias": [
@@ -7330,7 +7412,278 @@
    "sentido": "",
    "tambien_en": [],
    "tipo": null,
-   "titulo": "Compran 2 mil 500 toneladas de maíz para contener precio de la tortilla durante diciembre"
+   "titulo": "Compran maíz para evitar aumento al precio de la tortilla durante diciembre"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQXzZYQUZrSENSV0ZmYnZHRkFSaFZFTTlSbkVsN0ZKTFNqOFN2SmxyNEZLeTJJZDVKWDB5eXRoZFlGalNibjNoTVY3aHVxWWRESmg2d0Y3RUl6cDdUbXgzd3pCUURGMEdKSlpQZm05Y0xCQ0d6cHRsUzkzeVNOeWRKdW5xYWlZWjRIRjBRVTNsTVR3RGJ4UkF4TGl3?oc=5",
+   "fecha": "2026-11-24T21:42:26Z",
+   "idioma": "en",
+   "impacto": 64,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "Middle East Online",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "geopolitica",
+   "titulo": "Oil prices rebound more than 2% on fresh shipping attacks near Hormuz",
+   "titulo_es": "Los precios del petróleo rebotan más de un 2% tras nuevos ataques de buques cerca de Ormuz"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQTzBoYXpURUNvZWE3OFQxblNmdHVPb1FuT2xVUy1CaEJZQ2NkejN4OHZ2Nkt6dDk5SFVmN05ObGtkRXJYQzJJeWp5X2pFdFhDOVdCbndUMjNySzRiMTFzWWdqemZNczFwSTliR3JpanVhZU14ZHpfdWJwR0lKTFVDTGRxZkxvcWVKS3F4cU05VWRTbzUyb1lPOUlFTVhuU0RoR1RrRk42dHdwbU9YZXJZLUE2Z3k5dlBRTGhJWVk2NXllc1A2YTZqZjBscVkyQkhNQlNReVVTc0RFcm83c2hoTGNqTFFwZmZrY3cwUnR0aWROMTB4VmVzVnhwUjEyZmZ6aDlMdA?oc=5",
+   "fecha": "2026-11-24T21:38:23Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "RPP Noticias",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Precio del dólar cerró en S/3,48, su mayor nivel en casi siete meses: la inteligencia artificial y el cobre están detrás, ¿por qué?"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWW1BRGYzSUJNdUxWZjZyV21zRVVYZW96SlotZk1yTWV4bEtlU01QUUxIQlBCYUZ6cW1ndmdEd3lvOThjRVdLbExlaUswQTcxTDJycV95TExrMzVLbTFNN1BtRmdsZUZ6c1lQdVVjMmtLTGpRWjE4YVozbm9VN21zaS05dzFQcHZNNllUZDlMa3ZnX3Q5eG15OWF6UmRFOTdDaVVBalhSZmI1Q1o0MlhlV0ZtYnNoLXE3V05Eb0hqdERlZUZFQkh2NkkwaHJwSkJ5eDJURg?oc=5",
+   "fecha": "2026-11-24T21:36:59Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "Oxígeno Digital",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Fencomin rechaza incremento del precio del diésel y advierte: “La tolerancia se termina, hay rabia y la vamos a demostrar”"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNLTNDR1RqMExSa2VTTW0yY09UY2NldW5la0h3Q2s2dTM5UjVsV3Z4eG4yYXNORHZ1ejJDdy1EaXptU2NBSzA0cHBIZVVXMnBGeHBCa0FzQ3U5S05yYVVxXzJBeEdhMUxjQVVPb25weXVSdDJPaC05dkt2N1pOaURfQUFkdEpkcXg3SFlQSFFiSnE2NGJST1N4dUJxVXBxYjJ6SWJyVk9tbmFEZw?oc=5",
+   "fecha": "2026-11-24T21:34:37Z",
+   "idioma": "en",
+   "impacto": 64,
+   "materias": [],
+   "medio": "Seeking Alpha",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [],
+   "tipo": "geopolitica",
+   "titulo": "Oil rebounds as Hormuz attacks renew supply fears",
+   "titulo_es": "El petróleo repunta mientras los ataques de Ormuz renuevan los temores de suministro"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOV3NtbzNDWUtFTm1nZWNaVXNscnk1Mlpocmo5ZUdTdU16M2kxRXdWZFh5N3U1dDdreS1Vc2xnM0ZDZlpSSjdlMnF4MmZTY3F4OHBYY0tRckpUVXBxU1hKb2JEUE1HWC1sU0RKWE1tUDJBcU9ZcnhxVkJlZ2RFbm1BaUFmb0IzMkFZUjFjUTdNakJtVDdKV01ZZF81bElpZkJTNEQxcHQ4N0hWYlAzR1dv?oc=5",
+   "fecha": "2026-11-24T21:33:50Z",
+   "idioma": "en",
+   "impacto": 36,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "investingLive",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "alza",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "Copper sends two signals: a 20% slide on the LME, record premiums in China",
+   "titulo_es": "El cobre envía dos señales: un descenso del 20% en la LME, primas récord en China"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVzluT2dTQ2g4eWNmTGF6cWwzS2pnSmFvaTg2T0hBYk1Dekh6RXFSWkdoV2FEdWF6TlpTVkJvdTd2R0NTQ1diSU9xN1ZXZlpzQ1JKTXBFTGN5Sk5pTlA5MEtUandlTEQ0V1FuV18xeHN2RDdwRnZiVGl3SGtqNFdZLUZkSmtoYXNIeElhcnZfQ1JqaXdWQXJ5ZTRaTnU4TlNaWXI5Q2ZVamo4OGZJVmtqbjZfVnpYQmZxd2lTcHNrNU9INDVtUDdxNDNyaXNfdw?oc=5",
+   "fecha": "2026-11-24T21:30:45Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "notiperú",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Perú.- Dólar cierra en S/ 3.484 ante retroceso del cobre y expectativas restrictivas de la FED"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQMkpRNmtac0F4dkZ2QTRqVEhSc2piS0Vpd1JNaHVScnZZYmRfdzBEbWZXOUFjb0dhR29XZURYZnRUcTVkQW41Y3pOT1plS0ZDOU5NTm1Qel9OUWRMNU53Y2ZoUjBWU045YUczZFRfZGswa0UtY2hVMVJMS2g0b29qUmw3YjN4VHF0aGVTYjVZdl94WjcwdXkxZ3diaVNXSWZwcE9tM2V3b3JLcTRTU0o0aw?oc=5",
+   "fecha": "2026-11-24T21:30:17Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "WSJ",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Oil Prices Rebound as Shipping Risks Persist",
+   "titulo_es": "Los precios del petróleo rebotan mientras persisten los riesgos de envío"
+  },
+  {
+   "activos": [
+    "energia",
+    "oro"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQM1ljM2NfLXUwSENYazc2cERKNkFvM3FuRkF5aGd3dnRRZFB6d1FnVnZlMlZMem1ScmNWWDV6X2ZuclZCSm92WDAtVlZFLWxMWDItS2NzendFVGQzN3VobEhhU1dZeXRFNjFXWEVRdTJ5c1d0WFpxcUdvcURia1RwSlBxX1NjV29GZ04yT1RNdExOLVJERmZWdXRtSWF4NDhxQk9mOGhTRk9HOHN1Zmd6QktFcVB1N0FhTFplQ21Oal83ODFNYTJKNmtxNEVuNFZwRDVQSnlIYzBBOElrOW5ldFg1aEFhVER2SlVKZ09n?oc=5",
+   "fecha": "2026-11-24T21:25:29Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "Eurasia Business News",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos",
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Stock Market Today, November 24, 2026: Nasdaq Falls as Nvidia and Anthropic Slide, Oil price at $89, Gold Drops to $3,620",
+   "titulo_es": "Mercado de valores Hoy, 24 de noviembre de 2026: Nasdaq cae mientras Nvidia y Anthropic se deslizan, el precio del petróleo en $89, el oro cae a $3,620"
+  },
+  {
+   "activos": [
+    "alimentos"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMikgJBVV95cUxPRTdYNWZvRU5wWlpKZnNIcVVtbTZiUHNSV05JNGpyV3hva2xzcWdGRGF0ZUh5NzBheUNaX3pwbUpHa3djZnd5UHJOTXV4NzVDYmVZRm90ZXplME5YaWZfcm5IM0pLMEZhWkVIbHlGY01pSFlYMk1BajdJd1d3ekwtWWJrTWNkQm5Ga1BxVTFrb1ptN0t4MjBlX1N0WEVvUnhSekpZdXoxWUNBQlVOS0dUTjg3aFZYTkRsU012a0dkMWp4eWVmS2cwRmo4aEtoODNSN0VtSDlWdTllQWkwdzJibTRUdk5rbUVkOENmM05Da24tR2FpdmJWaXBVSkh3cV8xSVEzTkRsSEpRbl9Vak9OVk9R0gGSAkFVX3lxTE1LbG8zcWVnSDlJNkQ3aXdNYVdsM3lGSEhqcHI2cDViU2thSVdDaFJhcjB3VG5aSHBEX3BhcWZia1FROWM4bmRfMGU3dDFHZ0JSeFJFOVY5XzNuM3R5Ukp0ZkZObVgwa3I5WXhBbnJJUnBLN1lQem51UU4xMVRDdkZZVGFNRXVlWVhGTzNhck44bFF3WVRsQTVCc0V6WEllNC01eHBVbFN6NFFzM2FZN0hvYnRmb3JVMVhlWGxSa25OT2pqbWNLbDMwcEVNODA1WWNkQjRDM1pDZml5c3d0VkZ6Q1Y1RVgwSGNHSDkwZkJKSkdTMVBSbzVWUmFhYUhETGpIaDdTRWxuWkdEa3M2NDRrMUE?oc=5",
+   "fecha": "2026-11-24T21:21:48Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "leche"
+   ],
+   "medio": "NTN24",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Ciudadano expone los exorbitantes precios de la mantequilla en supermercado de Venezuela: \"¿Esa leche que usan será la de las vacas sagradas?\""
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPTWpELUVzOWpYMm9MZWg5d2xDcUlPbmZxRmVpRUN0TWFaMUVuNnM5MmdhQmVlWlpBS3k2YXFrTXdOaEdYdklSZUNMLW93WTBta1luLUhNdjNFdVAyS1ktMXFUc3AxbWZXSW1DWHkyQmo0SEtfNGRDR1pVUkw0aEtaZWVueU9UMFZRalZndENKQ0Y4NWY3M0NUV1NnUEVHX2ZwWEx5MFRkajY5eUNwS2lZTkdXNEtFSXkwSzdFeTJlZ3VyLWc?oc=5",
+   "fecha": "2026-11-24T21:18:30Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "petroleo"
+   ],
+   "medio": "Trefis",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "What Would It Take For Lower Oil Prices To Break Occidental Stock?",
+   "titulo_es": "¿Qué se necesitaría para que los precios más bajos del petróleo rompieran las acciones de Occidental?"
+  },
+  {
+   "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPbmNuQkZxZjBSM3otZDBjU0EwclJBMGtUbERBUFRlZ3JVYUFvdlM2WHNCaldpcEpNaUlNbHVETUowT19iT0NPLTNKZXZWR1hnR2hZNjJGYktTUDJVeHF5cWFHMVRtcTFPX0pUbTNIUnMtSG5MY1I4TDBhN19PS05IU0FUS20?oc=5",
+   "fecha": "2026-11-24T21:13:00Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Barron's",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Why Copper Producer Chile Is Missing Out on Surging Prices",
+   "titulo_es": "Por qué el productor de cobre Chile se está perdiendo el aumento de los precios"
   },
   {
    "activos": [
@@ -7453,30 +7806,6 @@
   },
   {
    "activos": [
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQOGpFVDBEV2RqdFozbDhjTnJGUnVaYjBpaFlRMFpfdHRIelhKRm56dFVkQ3ZmNXBPRXp4OWRxQTJYQjExb245V2o5QklmTUdWZkRMVFFXcThkYml6Q1dvWUJDRnhxZkZTLTFFei1sMnpNbE1xaVduMDE2T2pPeHFpZTF5YjdCV2ZWU3c?oc=5",
-   "fecha": "2026-11-24T20:47:10Z",
-   "idioma": "en",
-   "impacto": 36,
-   "materias": [],
-   "medio": "theopenpress.in",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Gold and Silver Price Crash: Gold Falls ₹1,556, Silver Drops Nearly ₹5,000 in a Day; Why Did Prices Fall Again?",
-   "titulo_es": "El precio del oro y la plata cae: el oro cae 1.556 ₹, la plata cae casi 5.000 ₹ en un día; ¿Por qué los precios cayeron de nuevo?"
-  },
-  {
-   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -7552,6 +7881,29 @@
     "energia"
    ],
    "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPZHlvYnhRbW9lUElIUUR4bnJSWUVBaEJhcl8yZHVmWHYtNlBjcHlBQk5uTTNNenloU1YwMVFzSUZqaWl3anZnR2R2RlR6MlQ4YTNqb0Y0TUdsUGgtUjdvenRkYS1fTVJIcVZhRE04UkRYSWZhUnlEcDV4TnNHMFRHU1pSQXFqN0Vybk1nQVRqVDdYeTg1MEY1RGR4MGZSMHN5STRQVnduS1NlVlA5RV9Xekw2Yjc?oc=5",
+   "fecha": "2026-11-24T20:29:45Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Bloomberg.com",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Treasuries Advance as Cheaper Oil Alleviates Inflation Concerns",
+   "titulo_es": "Bonos del Tesoro avanzan mientras petróleo más barato alivia preocupaciones por inflación"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPdlh4OVpiSFlycjJaQzZybmxMOHVscFdMX2lqNl9yYUFUSkpXcTBLMTBBOU9EdUs4dnVhVTJSYWwwU0JTRWZpcjh1UUtkX0otbDhsSjUwOVNaLWdKTW5IZDdXbUxaMExYeU16Z3ROYW16MkQwZjhRT3BGQnlBNE1Pd2NMb0V3U0pOV1Y4MVRJWFFPUFU3V1dZT0d6SklfM2h5Tmgw?oc=5",
    "fecha": "2026-11-24T20:24:00Z",
    "idioma": "en",
@@ -7571,31 +7923,6 @@
    "tipo": null,
    "titulo": "Gasoline, diesel prices drop ahead of Thanksgiving travel. Here's how much Houston is paying.",
    "titulo_es": "Los precios de la gasolina y el diesel bajan antes de viajar en Acción de Gracias."
-  },
-  {
-   "activos": [
-    "cobre"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPbmNuQkZxZjBSM3otZDBjU0EwclJBMGtUbERBUFRlZ3JVYUFvdlM2WHNCaldpcEpNaUlNbHVETUowT19iT0NPLTNKZXZWR1hnR2hZNjJGYktTUDJVeHF5cWFHMVRtcTFPX0pUbTNIUnMtSG5MY1I4TDBhN19PS05IU0FUS20?oc=5",
-   "fecha": "2026-11-24T20:19:00Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [
-    "cobre"
-   ],
-   "medio": "Barron's",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Why Copper Producer Chile Is Missing Out on Surging Prices",
-   "titulo_es": "Por qué el productor de cobre Chile se está perdiendo el aumento de los precios"
   },
   {
    "activos": [
@@ -7695,30 +8022,6 @@
   },
   {
    "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOZWhKMlE0bW0wM0wxVlBwSl9aeVk4TWd2SFZveXc4LXg4Ulk5RVpsNEh2c1NDMjFOMDFtQ1ZhcHNndnNaZW9UM1NuNFd1el9oUHlsV0dfTF9qcnFxd1JYcWFacUU2VTBxNFVrbjNmRzM2a2ZDaFU2aEtiaGZhZlNoQWVibDNXNzJGbzFMcUgxUXjSAZYBQVVfeXFMTXI0dHhaYTE4Sk1tNWhsV081aC1oR2hOYXMxYk1Ubk9STHlrZXlRYTV6UzEycGh3UkpKeUlpTVVsaGcxcWpIZm5jZjlzc1I3czVjazByR1VrZnRGSHBCWHhrTVJ6ZWFnS01jWXluODBFZHByREstOTZOeVN0Y1dYeGhtSm4xaDZhVlNuNy0xWGh2V0FrbHRB?oc=5",
-   "fecha": "2026-11-24T20:04:55Z",
-   "idioma": "es",
-   "impacto": 36,
-   "materias": [
-    "electricidad"
-   ],
-   "medio": "Noticias Trabajo",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "El precio de la luz se desploma este miércoles 25 de noviembre pero 4 horas estarán por encima de los 300 euros"
-  },
-  {
-   "activos": [
     "oro"
    ],
    "comercial": false,
@@ -7811,6 +8114,30 @@
    "tambien_en": [],
    "tipo": "demanda",
    "titulo": "El cobre entra en mercado bajista ante incertidumbre por la IA y debilidad de la demanda china"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNaHp6VWpZejY1SGwwc2Iwb01PWEV6QjJhaVk1THA2cjl0YjZrN211bGs5MXR5bC1qREFkMm9CQVIxVVNKcjBCbWxvU3NIbEtIakNEbFpnSFNvU3VoaGVtYmNGZ091OWlleXFjVHljNHZsaHJpRUYxWi1mRnRjQ2dmSkp1aWU3S2V0WVlOT0NkSkQwZm9ENXg2Sw?oc=5",
+   "fecha": "2026-11-24T19:50:00Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "electricidad"
+   ],
+   "medio": "El periódico verde",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Precio de la luz hoy, miércoles 25 de noviembre, por horas: baja un 19,4 % y una hora se queda en 5,5 céntimos; la hora más barata, de 14.00 a 15.00 - ECOticias.com"
   },
   {
    "activos": [
@@ -8058,7 +8385,7 @@
    ],
    "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNR1JvT19PdllWOUZkVEpmbWNlUGpsWHltVm9rN2hwdm5GV2c0SXgzUThtZFZoRXFsZkhBQTd6TE9kdFdubExOS2pqQklWWTFKQXZybFo1YkROWlp4NDQ4Z0VRTmJOZ0lYQkJuX1Y0OVN1c2Y4X21rZEc2N1N5RGh3VWxKUFR6YjlNcXNNRnNaWG5mU1NTMWN2MHkwNHE2WTVjMFA4RWtEcDZyV3EtLXpvZTc1ZExkNFp2RjUxMzdPUUdJa3c?oc=5",
-   "fecha": "2026-11-24T19:21:39Z",
+   "fecha": "2026-11-24T19:20:22Z",
    "idioma": "en",
    "impacto": 30,
    "materias": [
@@ -8100,6 +8427,53 @@
    "tambien_en": [],
    "tipo": null,
    "titulo": "Precio del petróleo Brent cae por debajo de los 89 dólares por barril"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOcmZqSXREVm92bENEdWc1WGthazlIYTB5VzA4QVNLeWZieFAtcU45ZUlqejJIdEZlU1JfckJiMkxlbWN4MThOQmhaS0pTMGFHWlpVdjVxVWVud0lzaXp5N0c2RnpLYzhGTU5vcmg4MTkxTmJwdnBiWmI1TGFtZWRBRUhTYWF0R3M5VGZmUW9n?oc=5",
+   "fecha": "2026-11-24T19:13:00Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Barron's",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Why Pump Prices Are Likely to Stay High in 2027—Even if Oil Gets Cheaper",
+   "titulo_es": "Por qué es probable que los precios de las bombas permanezcan altos en 2027, incluso si el petróleo se vuelve más barato"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNcFVnd3duNEFYeHhaYmhDTk1lNnNOM0o1RmFnR1k3TkVTeTFfYUl1OFdndVYtN2pKLWRWV1RiaVlyWnJPdWNwQTRaa1o3eHV4Yy1URG9vcnFQUXpLcmg2Ymx6RkxBMS1QLVVORWVHMWtNaGtWR2pBZGNDemRhWURZQUN6a0ZJdE5UelZZbGFPbWxhc3VXTXpKbXZkVzU4QmdONHIzMW02eU54Q0xwakJ2eWRidUlxZ19udlY0dnlXcWE5NDA0emRfS3JGeEpzX3UwaFZjR1pZTFFwc09KTXB1NHJrLVFjUFhi?oc=5",
+   "fecha": "2026-11-24T19:06:28Z",
+   "idioma": "es",
+   "impacto": 24,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "unitel.bo",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Alza del diésel: “Si nos cobran precio de mercado, que nos garanticen el abastecimiento”, dice dirigente cívico"
   },
   {
    "activos": [
@@ -8176,26 +8550,26 @@
   },
   {
    "activos": [
-    "energia"
+    "oro"
    ],
    "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPZHlvYnhRbW9lUElIUUR4bnJSWUVBaEJhcl8yZHVmWHYtNlBjcHlBQk5uTTNNenloU1YwMVFzSUZqaWl3anZnR2R2RlR6MlQ4YTNqb0Y0TUdsUGgtUjdvenRkYS1fTVJIcVZhRE04UkRYSWZhUnlEcDV4TnNHMFRHU1pSQXFqN0Vybk1nQVRqVDdYeTg1MEY1RGR4MGZSMHN5STRQVnduS1NlVlA5RV9Xekw2Yjc?oc=5",
-   "fecha": "2026-11-24T18:52:39Z",
+   "enlace": "https://news.google.com/rss/articles/CBMirAJBVV95cUxNc2ZqZXM2dWZXY3c4T3lKN0tTemNMd3ZSZW54SDVjZVdQYklLYVBqanlXdWZSZG5FUXZfSU51UktSSWJKZC1uTGx0elZRemdwN05SdmVnRHctZmJqeThXLXppVEI2SXBUaWtMX1ZQZGR4UUtyVmU0NDhzRlFqVC1JUU1DUUtJa2x0QkFoTTVHV2lUUEFTVjhWbDEzVmlfNklOUkZBUWZpeDBPY1NITTVHTWhrd211Y2JPNTVhYWJ4Wjc3LTlicTc5V25KaEVHZ0FCNEcteS1FYzZtSEtLeWVyV0lVV1VkUnRMRlJSekFOdHBQeF9RX2d0TmxBN0Y1YkJrdXRLLVREY1lXWTRfMjdOTXVQcXBYS0tUUHRlMktnRHVocXdGcGhiT0xIVEXSAbICQVVfeXFMUDQwb09FWlFGNEdiWS1aQjBKQzVXbjJwcjJIU1p0S1pkZjZtVU05ZWo5OWl6d0xWMUtQcl9sQnNWVGxYdVV0M0tPdTdyUXBtb3UxLXRfYWVlVXd6d2JvVGxqN1daZkdfMDRIbHBRSFpreXpsVF9nbVNNSmJBQ0VJVjVONDk2dF9rS3RoVy1PMEdrYkRmYU94MDZtZFFxUXNwZWJLOHdtd1ZFUm03Tjl5bUplVnhmUWZ5SENRZFE0aFBhU3JKR25PNy1jdlAtTndZX3gwVTEzNjc2M2VmT2pXTE1QUlFXQ2NZWjZNZnF6bXBBU1ZyUVlzNWFhR3lLUW1GZTFDbGNoX09PcG1XQW5GV3RrM2RkWnp4aHJzMTR6OER2QVhjRWEzUXZGMjgwMnViMFZ3?oc=5",
+   "fecha": "2026-11-24T18:49:48Z",
    "idioma": "en",
-   "impacto": 24,
+   "impacto": 36,
    "materias": [],
-   "medio": "Bloomberg.com",
+   "medio": "The Economic Times",
    "nivel": "baja",
    "nota": 72,
    "resumen": "",
    "seccion": [
-    "materias"
+    "preciosos"
    ],
    "sentido": "",
    "tambien_en": [],
-   "tipo": null,
-   "titulo": "Treasuries Advance as Cheaper Oil Alleviates Inflation Concerns",
-   "titulo_es": "Bonos del Tesoro avanzan mientras petróleo más barato alivia preocupaciones por inflación"
+   "tipo": "precio",
+   "titulo": "Gold price prediction 2027: Gold crashes nearly 36% to $3,585 from January record but Goldman still sees $",
+   "titulo_es": "Predicción del precio del oro 2027: El oro cae casi un 36% a $3,585 desde el récord de enero, pero Goldman todavía ve $"
   },
   {
    "activos": [
@@ -8275,10 +8649,10 @@
    "enlace": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOVWh3bzRZOVNGVlZaWTNwVWFKQk5YQW5uNnRkQXczYWppelV1N1BGa2R6M2ZJU2ZGNC1EVE1LVk1iWXg0OUUwMkdEaE9RWmtyY05tTzdiOExGQkZ4WklvUlNTLUpwd3pZZUJTWjRSRHYtUnE4NmYzOGQ5NFFLbGwxWDROaEhGOXFvWHN6ZXZWTTlQNEM3STZKUFREdl9PdUpCRTIwRGxCZnFNenBr?oc=5",
    "fecha": "2026-11-24T18:33:45Z",
    "idioma": "en",
-   "impacto": 54,
+   "impacto": 24,
    "materias": [],
    "medio": "Forbes Middle East",
-   "nivel": "media",
+   "nivel": "baja",
    "nota": 72,
    "resumen": "",
    "seccion": [
@@ -8286,9 +8660,9 @@
    ],
    "sentido": "baja",
    "tambien_en": [],
-   "tipo": "datos",
-   "titulo": "Silver Falls Below $41, Gold Drops 2% Ahead Of US Inflation Data",
-   "titulo_es": "La plata cae por debajo de los 41 dólares, el oro cae un 2% por delante de los datos de inflación estadounidenses"
+   "tipo": null,
+   "titulo": "Silver Falls 5% Below $41, Gold Drops 2% Ahead Of US Inflation Report",
+   "titulo_es": "La plata cae un 5% por debajo de los 41 dólares, el oro cae un 2% antes del informe de inflación de Estados Unidos"
   },
   {
    "activos": [
@@ -8458,30 +8832,6 @@
   },
   {
    "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNcFVnd3duNEFYeHhaYmhDTk1lNnNOM0o1RmFnR1k3TkVTeTFfYUl1OFdndVYtN2pKLWRWV1RiaVlyWnJPdWNwQTRaa1o3eHV4Yy1URG9vcnFQUXpLcmg2Ymx6RkxBMS1QLVVORWVHMWtNaGtWR2pBZGNDemRhWURZQUN6a0ZJdE5UelZZbGFPbWxhc3VXTXpKbXZkVzU4QmdONHIzMW02eU54Q0xwakJ2eWRidUlxZ19udlY0dnlXcWE5NDA0emRfS3JGeEpzX3UwaFZjR1pZTFFwc09KTXB1NHJrLVFjUFhi?oc=5",
-   "fecha": "2026-11-24T18:07:45Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "unitel.bo",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Alza del diésel: “Si nos cobran precio de mercado, que nos garanticen el abastecimiento”, dice dirigente cívico"
-  },
-  {
-   "activos": [
     "plata"
    ],
    "comercial": false,
@@ -8645,6 +8995,31 @@
    "tipo": "demanda",
    "titulo": "Escalating demand uncertainty keeps copper under pressure in key industries",
    "titulo_es": "La creciente incertidumbre de la demanda mantiene al cobre bajo presión en industrias clave"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQdy1semt6WE51dGFpejcwZEVCdFBta3lLRGpxLXdXTDQ3VUZPT3h5RmMxX21iTG9XNzNmMnZEMU00THFEbDBscUliZGZQd2JlWVp6OXFMM0g5Z2diUVpGZ2FFN2tnTEx6bjV2dngxemlYcng2UkFfZXYwWjN0NU9jd0EwVUZBallnR3F5MEpCelk3WFlUUHRMYkxoS3c?oc=5",
+   "fecha": "2026-11-24T17:37:33Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "gas"
+   ],
+   "medio": "World Bank Blogs",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Natural gas markets tighten amid Gulf supply disruptions",
+   "titulo_es": "Los mercados de gas natural se ajustan en medio de las interrupciones del suministro del Golfo"
   },
   {
    "activos": [
@@ -8887,6 +9262,30 @@
    "tambien_en": [],
    "tipo": "datos",
    "titulo": "Brent más barato en 2027: Goldman Sachs y la AIE anticipan un superávit que hundirá el precio de la gasolina"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQQWxVaXgtOFB3YWgxXzA2ZFQycEVBb29tM1Z2akVzbTRLeFliRXljWk9uNC13MllJNXpsWUwtTzdMejNGam9VX2RCazlCb19LSEV1dGNITS1UZHQzVUtPdzlyTWdCWXJGOVV3MFFoU2pQay1LV3dFeDR1V3lvVVplS1RKQVNvRUJzSUl3NkhNamQzU3BHUHRReW4wVVRMODIySFliYg?oc=5",
+   "fecha": "2026-11-24T17:09:06Z",
+   "idioma": "es",
+   "impacto": 52,
+   "materias": [
+    "diesel"
+   ],
+   "medio": "Driving ECO",
+   "nivel": "media",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": "demanda",
+   "titulo": "Qué es un SUV híbrido full hybrid y en qué se diferencia de un mild hybrid gasolina en consumo y precio final"
   },
   {
    "activos": [
@@ -9203,29 +9602,6 @@
   },
   {
    "activos": [
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMicEFVX3lxTFAyOGhqYl92eHEwSXV2UFRpUS1qVXlMYk5pSGlGMWpZZkhRRzMtQWtwel9fNzIzTWxQSTdYVlNZTXBqOHk0LWVQbGM5V05QbjFuQkJFR25xaDZ6enJGNTY0MjUzTTVIUU4zYXN2VG5Jdzk?oc=5",
-   "fecha": "2026-11-24T16:32:08Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [],
-   "medio": "Fortune",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Current price of silver as of Tuesday, Nov. 24, 2026",
-   "titulo_es": "Precio actual de la plata a partir del martes, 24 de noviembre de 2026"
-  },
-  {
-   "activos": [
     "energia"
    ],
    "comercial": false,
@@ -9369,30 +9745,6 @@
    "tambien_en": [],
    "tipo": null,
    "titulo": "Casi $5.000 subiría el precio de la gasolina en Colombia con Ley Rescate del Gobierno"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQQWxVaXgtOFB3YWgxXzA2ZFQycEVBb29tM1Z2akVzbTRLeFliRXljWk9uNC13MllJNXpsWUwtTzdMejNGam9VX2RCazlCb19LSEV1dGNITS1UZHQzVUtPdzlyTWdCWXJGOVV3MFFoU2pQay1LV3dFeDR1V3lvVVplS1RKQVNvRUJzSUl3NkhNamQzU3BHUHRReW4wVVRMODIySFliYg?oc=5",
-   "fecha": "2026-11-24T16:19:15Z",
-   "idioma": "es",
-   "impacto": 52,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "Driving ECO",
-   "nivel": "media",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "demanda",
-   "titulo": "Qué es un SUV híbrido full hybrid y en qué se diferencia de un mild hybrid gasolina en consumo y precio final"
   },
   {
    "activos": [
@@ -9584,6 +9936,29 @@
    "tipo": "precio",
    "titulo": "Global Gold Prices Plunge 36% From Peak, Fed Interest Rates Blamed",
    "titulo_es": "Los precios mundiales del oro caen un 36% desde su pico, culpan a las tasas de interés de la Fed"
+  },
+  {
+   "activos": [
+    "plata"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMicEFVX3lxTFAyOGhqYl92eHEwSXV2UFRpUS1qVXlMYk5pSGlGMWpZZkhRRzMtQWtwel9fNzIzTWxQSTdYVlNZTXBqOHk0LWVQbGM5V05QbjFuQkJFR25xaDZ6enJGNTY0MjUzTTVIUU4zYXN2VG5Jdzk?oc=5",
+   "fecha": "2026-11-24T16:02:08Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [],
+   "medio": "Fortune",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "preciosos"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "Current price of silver as of Tuesday, Nov. 24, 2026",
+   "titulo_es": "Precio actual de la plata a partir del martes, 24 de noviembre de 2026"
   },
   {
    "activos": [
@@ -9947,18 +10322,19 @@
   },
   {
    "activos": [
+    "cobre",
     "construccion"
    ],
    "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNT1hiU2xUMlF0aDVXLWlMZTVnOUlvYWZOSlNZTmJoUXd0dTBMall5ZWhQdlpuYWZCUTg5d3ZkNkc5bGdDdlBlRDhVa1MwVGxkUU1HbHhzOFVJVjdKSzZtdHBSZDZobUFqM0ZUczBzY3ViYTRLcGVsVXhjZmVlLVYwckk5ckpxb2NjNkw1SmlLSDJNM3Z6Z1NNVF9vN09WNnk3Umprdms3RTNSUzZuYmNlSVBaMDRvdUU?oc=5",
    "fecha": "2026-11-24T15:28:36Z",
    "idioma": "es",
-   "impacto": 66,
+   "impacto": 24,
    "materias": [
     "aluminio"
    ],
    "medio": "Revista Digital Minera REDIMIN",
-   "nivel": "media",
+   "nivel": "baja",
    "nota": 72,
    "resumen": "",
    "seccion": [
@@ -9966,8 +10342,8 @@
    ],
    "sentido": "",
    "tambien_en": [],
-   "tipo": "oferta",
-   "titulo": "Mercado del aluminio enfrenta histórica escasez en Londres: Inventarios caen más de 56% en 2026"
+   "tipo": null,
+   "titulo": "Aluminio en la LME: la prima inmediata vuelve a niveles de 1988 y tensiona el control del mercado"
   },
   {
    "activos": [
@@ -11405,6 +11781,30 @@
     "energia"
    ],
    "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOZWhKMlE0bW0wM0wxVlBwSl9aeVk4TWd2SFZveXc4LXg4Ulk5RVpsNEh2c1NDMjFOMDFtQ1ZhcHNndnNaZW9UM1NuNFd1el9oUHlsV0dfTF9qcnFxd1JYcWFacUU2VTBxNFVrbjNmRzM2a2ZDaFU2aEtiaGZhZlNoQWVibDNXNzJGbzFMcUgxUXjSAZYBQVVfeXFMTXI0dHhaYTE4Sk1tNWhsV081aC1oR2hOYXMxYk1Ubk9STHlrZXlRYTV6UzEycGh3UkpKeUlpTVVsaGcxcWpIZm5jZjlzc1I3czVjazByR1VrZnRGSHBCWHhrTVJ6ZWFnS01jWXluODBFZHByREstOTZOeVN0Y1dYeGhtSm4xaDZhVlNuNy0xWGh2V0FrbHRB?oc=5",
+   "fecha": "2026-11-24T12:38:25Z",
+   "idioma": "es",
+   "impacto": 36,
+   "materias": [
+    "electricidad"
+   ],
+   "medio": "Noticias Trabajo",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "baja",
+   "tambien_en": [],
+   "tipo": "precio",
+   "titulo": "El precio de la luz se desploma este miércoles 25 de noviembre pero 4 horas estarán por encima de los 300 euros"
+  },
+  {
+   "activos": [
+    "energia"
+   ],
+   "comercial": false,
    "enlace": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxOemN0R0RITjhCUGY0VWxxaEVkaW5iUjBZclFDMTRaRXViUUxpRFVBTU1mUnZfb044enZ2aU9EcjN1S1ZZOWs4MV9PYVZfNk03M0VPZzRSbXVWblE4LUl3UHkzdlcxLWpJQjNGUmt3ZnI5anlua1hHb0xEN09xSzQzdF92Vm1BTzcwVF95cnBGOFA1WEZFMTcwSW96elFZblNpS2xKTHE2WHNfZXRXTjFWZGNSQXpLUkQxUXNpZkhvcW5tUGpnX3RhSHN2SEhjcWtWaGFLODYtcEIwb0RYa1h5N1FHU2JRUzRnZ1d1UHBPeEdhaEFOTi1Z?oc=5",
    "fecha": "2026-11-24T12:37:09Z",
    "idioma": "es",
@@ -11473,31 +11873,6 @@
    "tipo": null,
    "titulo": "Spot market natural gas prices for Monday, Nov. 23",
    "titulo_es": "Precios del gas natural en el mercado spot para el lunes 23 de noviembre"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQMkpRNmtac0F4dkZ2QTRqVEhSc2piS0Vpd1JNaHVScnZZYmRfdzBEbWZXOUFjb0dhR29XZURYZnRUcTVkQW41Y3pOT1plS0ZDOU5NTm1Qel9OUWRMNU53Y2ZoUjBWU045YUczZFRfZGswa0UtY2hVMVJMS2g0b29qUmw3YjN4VHF0aGVTYjVZdl94WjcwdXkxZ3diaVNXSWZwcE9tM2V3b3JLcTRTU0o0aw?oc=5",
-   "fecha": "2026-11-24T12:33:00Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "WSJ",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Oil Prices Rebound as Shipping Risks Persist",
-   "titulo_es": "Los precios del petróleo rebotan mientras persisten los riesgos de envío"
   },
   {
    "activos": [
@@ -13624,6 +13999,31 @@
   },
   {
    "activos": [
+    "cobre"
+   ],
+   "comercial": false,
+   "enlace": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9sYlhMV096aHBPWTZzZU5MR184OUozRW9HMjR2Z0dSWG9lT24xbzdsN09xc2k2TUpGWEtqcnlyc0d6Vk1DS2xVZDB0RFlNNVRNMG1YMg?oc=5",
+   "fecha": "2026-11-24T08:36:47Z",
+   "idioma": "en",
+   "impacto": 24,
+   "materias": [
+    "cobre"
+   ],
+   "medio": "Yahoo! Finance Canada",
+   "nivel": "baja",
+   "nota": 72,
+   "resumen": "",
+   "seccion": [
+    "materias"
+   ],
+   "sentido": "",
+   "tambien_en": [],
+   "tipo": null,
+   "titulo": "NorthWest Copper Corp. (NWST.V) Stock Price, News, Quote & History",
+   "titulo_es": "NorthWest Copper Corp. (NWST.V) Precio de acciones, noticias, cotizaciones e historial"
+  },
+  {
+   "activos": [
     "oro"
    ],
    "comercial": false,
@@ -14390,389 +14790,6 @@
    "tipo": "opinion",
    "titulo": "Gold Price Forecast: XAU/USD Rejected at $3,651 Ahead of PCE Inflation",
    "titulo_es": "Pronóstico del precio del oro: XAU/USD rechazado en $3,651 antes de la inflación del PCE"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMifEFVX3lxTE13T3V5QlhEWDBoWWFTc3N0WmtoWVRfSUVXbVhzRU5pb2thV2JhUGJQb2I3Y2VfbmRSbXh4U3BrX3VQTm94emRnLXdRMzItTjJRQ2FGeTVGTlZfWVZfU0N0bmN5MlNEeDkxbmpqUDBDM0ZqLTJfbkxHdHl5ZDHSAYIBQVVfeXFMTUZJMW9WaHVEOEgzdkNnZ0h1bk1GZ0ROVDNvSE52YzNQcUp1NFlIdnRTZC1CWHIwYVVoTmZCUmozUl92WGlMN1oyRFFWbTFEX0lPOFZyWkxmNUw3SHV1aTZGaGhqQ3JreEZ4YmtXUUNHNmZqYjVlQmxuSkF4cVIwZDIyUQ?oc=5",
-   "fecha": "2026-11-24T07:18:00Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "Demócrata",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "El precio de la gasolina hoy, martes 24 de noviembre: la gasolina 95 baja a 1,537 euros y el diésel, a 1,771"
-  },
-  {
-   "activos": [
-    "alimentos"
-   ],
-   "comercial": false,
-   "enlace": "https://www.zawya.com/en/economy/egypt-prices-for-fertilizers-building-materials-up-on-november-23-2462669",
-   "fecha": "2026-11-24T07:17:02Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [
-    "fertilizantes"
-   ],
-   "medio": "Zawya",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Egypt: Prices for fertilizers, building materials up on November 23",
-   "titulo_es": "Egipto: Precios de fertilizantes y materiales de construcción suben el 23 de noviembre"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNUGx6T09TVWkzWXJvMG5oVnpkTWU4M0xqMVRZVzBWQlFZRlVRd2VIWWdwN011ZWdmVUxsdGQ5eXhaZXh3R2hXbEJGOEhaNkdHTWhOUWthTm5NeFdCa0tUNXpwV29DbjkydFV3ekJXZFpkcVNUQktXWEp0dEZrcl9RN0dUeHh0OUI4V05ZeUtUdDFULVA3UnAycHRROXlVeDIwREpoSWhQeWNHS01zUlJzTy1KSQ?oc=5",
-   "fecha": "2026-11-24T07:16:42Z",
-   "idioma": "en",
-   "impacto": 66,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "Anadolu Ajansı",
-   "nivel": "media",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "oferta",
-   "titulo": "Oil prices fall on supply surplus expectations, Libya pipeline reopening",
-   "titulo_es": "Precios del petróleo caen por expectativas de superávit de oferta y reapertura del oleoducto de Libia"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOWGRhUGFLcHhyQk5uQzc4TGFIMUZhNmNNRDRvWk1NUW1ETWRfV3J4VjdoeE9xLTZMQWM1OFdxZWJWQUhKaklfQXpSbUNCd1RtX1B2ZzNOQlcyZE45aEc5RXNkcDdTbHBhend2a0JQeHdRaUg0Ul8ySUprWEpGVmFfbHktUnVjcEJuQkh4UUZnMTRIcVRRRHBjT2NTSnZBT2RkTHl2OGQtRFN6bGs0UElmazlibmxYOVl6UzUwb1d0UzRxVHcwSmJnWXZwSjhNM0dJMThCMkp0N3Z5aUJnRFJJOEdJUUTSAeoBQVVfeXFMUDFjVWwyREpycmFhWHV0Qk9pZmVZaDd2SDlRalE3dE1TMXVHa3hTdUtfLTJ6OTFPaDcxQ1JHandKb1liSHdMOHQtWndKbjBvNEoyb3g0Y0RURm50NDhub2QtcVdwdkxndXBLSUNXN05WSUhBV3pRbko3Q1hoWldSVTJhN1VHVklndG1qRDFjcUd5WlhIOEpDdERsVW9uNVE0RHU1NE5Dd0xwc28tSnA1UkkzenFuMmw3Y0d2X3VRYmxFZHlvLTBfdjFKRkh5Z2FnUjRBdFVmVjFGd3BVT3dzRGFyUzRyVnBpUWNR?oc=5",
-   "fecha": "2026-11-24T07:14:08Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "Canarias7",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Las gasolineras más económicas de Santa Cruz de Tenerife este martes: precios de gasolina y diésel"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQRzQ4SG0yb203OEphczdDaXRxQ2FiaWwxMEY5RWQ5NnI4bGprQ0pXYmk0bG40LV9wREhWVjdRdlAzNmpfak16OTBHTnp4ZnZFUHpyYnBURGVtZ1Q0YlNPS1hfZDdSTWdjSVNVUjZ3VE03TjY5bFpsdkVoNXF6cUFKZVlXRjl1d3ZPc2dYeW9LeHg?oc=5",
-   "fecha": "2026-11-24T07:11:04Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "MM News",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Global Oil Prices Slide for Second Day as Brent Crude Falls Below $89",
-   "titulo_es": "Los precios mundiales del petróleo caen por segundo día mientras el crudo Brent cae por debajo de los 89 dólares"
-  },
-  {
-   "activos": [
-    "construccion"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNbzlTbDdOTEtaQUp1S0dyRGVjR3R6UF96ZGZkSkI2WGdLTXdrZVFzcXhBUnV4VUVENmdVWFFEY1NxSHpwVHd6b1d2ZU1RYkZMaS1mREZZdlFtRFJ4SVkxUTBvbWVmUk1idFlfOEZqQlczemxVWmk1TnY3dDkyUEVXeDRn?oc=5",
-   "fecha": "2026-11-24T07:10:53Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [
-    "madera"
-   ],
-   "medio": "Fordaq",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "alza",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Los precios de producción de la madera aserrada alemana siguen al alza en octubre; el grupo de pellets sube un 30,6"
-  },
-  {
-   "activos": [
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1oeDNMY2hyLVVvbUp6Ylh1WDBnQmlrZGQ0Qk5RRXNibFBjZXZsU2Q4dnA1UERZaWh4aFJKVW5KWUV0Z0tycEZrZ1RSYjBhODlSVnNXQWlTaWlJVFMyQS1QWXJBdEtqamRGQUE5QzF1cFZUYVI1dDN3Rg?oc=5",
-   "fecha": "2026-11-24T07:09:17Z",
-   "idioma": "en",
-   "impacto": 36,
-   "materias": [],
-   "medio": "Kotak Neo",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Silver Price Today Rises Over ₹3,000 on MCX After 16% Weekly Crash; Can the Recovery Continue?",
-   "titulo_es": "El precio de la plata hoy sube por encima de ₹ 3,000 en MCX después de un 16% de caída semanal; ¿Puede continuar la recuperación?"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMirAJBVV95cUxNc2ZqZXM2dWZXY3c4T3lKN0tTemNMd3ZSZW54SDVjZVdQYklLYVBqanlXdWZSZG5FUXZfSU51UktSSWJKZC1uTGx0elZRemdwN05SdmVnRHctZmJqeThXLXppVEI2SXBUaWtMX1ZQZGR4UUtyVmU0NDhzRlFqVC1JUU1DUUtJa2x0QkFoTTVHV2lUUEFTVjhWbDEzVmlfNklOUkZBUWZpeDBPY1NITTVHTWhrd211Y2JPNTVhYWJ4Wjc3LTlicTc5V25KaEVHZ0FCNEcteS1FYzZtSEtLeWVyV0lVV1VkUnRMRlJSekFOdHBQeF9RX2d0TmxBN0Y1YkJrdXRLLVREY1lXWTRfMjdOTXVQcXBYS0tUUHRlMktnRHVocXdGcGhiT0xIVEXSAbICQVVfeXFMUDQwb09FWlFGNEdiWS1aQjBKQzVXbjJwcjJIU1p0S1pkZjZtVU05ZWo5OWl6d0xWMUtQcl9sQnNWVGxYdVV0M0tPdTdyUXBtb3UxLXRfYWVlVXd6d2JvVGxqN1daZkdfMDRIbHBRSFpreXpsVF9nbVNNSmJBQ0VJVjVONDk2dF9rS3RoVy1PMEdrYkRmYU94MDZtZFFxUXNwZWJLOHdtd1ZFUm03Tjl5bUplVnhmUWZ5SENRZFE0aFBhU3JKR25PNy1jdlAtTndZX3gwVTEzNjc2M2VmT2pXTE1QUlFXQ2NZWjZNZnF6bXBBU1ZyUVlzNWFhR3lLUW1GZTFDbGNoX09PcG1XQW5GV3RrM2RkWnp4aHJzMTR6OER2QVhjRWEzUXZGMjgwMnViMFZ3?oc=5",
-   "fecha": "2026-11-24T07:05:59Z",
-   "idioma": "en",
-   "impacto": 36,
-   "materias": [],
-   "medio": "The Economic Times",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": "precio",
-   "titulo": "Gold price prediction 2027: Gold crashes nearly 36% to $3,585 from January record but Goldman still sees $",
-   "titulo_es": "Predicción del precio del oro 2027: El oro cae casi un 36% a $3,585 desde el récord de enero, pero Goldman todavía ve $"
-  },
-  {
-   "activos": [
-    "oro",
-    "plata"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQOTFLSURFWUMtZUMtYjZsNGg5eGg3QmxzSXoxNGs1c3VvS09ldGc1TFQ4NUo1SVJ2VWtkY0doajl1ejZzWVdmVE02MGZmNTRTbUdNTGlUdzJoS2M4NWo5OXdzSnd0b1RVQXBiTFJ1RUxORHQ2bktpQUF4Z0ZUeWotNm9UY3JmVXdiZnd4dE02cTJJaDd0?oc=5",
-   "fecha": "2026-11-24T06:53:40Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [],
-   "medio": "jeevanutsahnews.in",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "alza",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Gold Silver Price Today: Prices Rise Sharply",
-   "titulo_es": "Precio del oro y la plata hoy: los precios suben bruscamente"
-  },
-  {
-   "activos": [
-    "oro",
-    "paladio",
-    "plata",
-    "platino"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2h0UU0zTjF0cUVjWkRYZHhtbURvU2hkYjZfWk1GSkZkRDEtbnFGanZRZGt5R2NjMmNYUEtpOUVPbGFTS2w3czJoV0cyU3ZXOFQzV0lSSmZZdmZQMFM1NGh4NzNVQmltTFVmd0FlbnFDS24xM3VoVHRmQk1nLXBHdHkzbUR4elpnRkpxNE9rMGNVUzBpSVRocA?oc=5",
-   "fecha": "2026-11-24T06:52:45Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [],
-   "medio": "MM News",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Gold Prices Rebound in Global Market as Silver, Platinum and Palladium Gain",
-   "titulo_es": "Los precios del oro rebotan en el mercado global mientras la plata, el platino y el paladio ganan"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMib0FVX3lxTE90eWFpOEhiakVjaF9qRy1oZVJVNnY0R0RnX2t5V1Y3TU54NExqR0FjZ3gzSTRkSGxwSVJYTHhacThxNklVT25FclZnSFBsUDFQWHQxb0ctZm4zRUc4V2k2WG9TVUVQVWsybTdPcWZSOA?oc=5",
-   "fecha": "2026-11-24T06:47:00Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [
-    "diesel"
-   ],
-   "medio": "Canarias en Pleno",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Precio Gasolina hoy El Hierro"
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQNEVEdUZxbVZfMkRVOGJSZ2pDMTA4RzRVT3hsU0h3N29uVUp0U0lCMUQ5VHFpZkliRGJWczVTOVBjV1I5OHJzOENBMWtJNUdnNXNSc2tUNXhUU1V5QmxwSGJRY2tJUzRNZTFYaTlYandQcnRTOEI2WENGZGF5YjIxZU8wTjNKWUlvUnYxcHhqNDVPQk13VnNZZjlkNjhLdVRRalUzdmIwZk5jakhQYlVhaHZvS210S01DX0lmRGRIZ3pCTGs1LXNtcUdnazNMMGZMaWVIRNIB4gFBVV95cUxPdmtZYmFHTFJTRmhuZEstcWUxbTZIWUlEWDRxUDYwam9OckVDbmdEd0FxU3NfMVd4OVExc3VBS3g3ZDZyLUpmTEJiVS03QkJ2YmFqU2gzQWQwam9LbjVxdXZzVWR3aGtHTExpZGNkZ091YkN5dHdfYl85eVBPV2lFUlk1TTBHU2dtcUt0LXF3VzgxTDM4OHcya3h6Zm5NN0daamUycWVIcExrREMzVGFsOFZ1TGlpQ29WMkVnV3JLRHRzMUxGaHoxRDBoNks1RVJyRTByVmxfWU9zT3hIbmhtamdn?oc=5",
-   "fecha": "2026-11-24T06:42:06Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [
-    "electricidad"
-   ],
-   "medio": "Mundo Deportivo",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Precio de la luz hoy martes 24 de noviembre por franjas y tramos: ¿Cuándo es más barata?"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQQjltRDFsc2FKSFViYjR2SGRhWTc5VmdFMDduMUxpcklNTjJ6cjlUMVRwQjhmUldja18xNFZfQTJkeHZWem12UTdxYzB1MkZlZklzU1FzaVBCamxrcVBzOUw4b0FFNEFuaEVFT1RKdTYxS1NCM0VXZUp4WDNxUkFxeHU2RFo1RFZzelY1X2R3N1lFZGNLMEItRkh3Q1hIaWhoeHJOazN2VjlVQjgzSWRMQmhXN2FyeGszTUo1TQ?oc=5",
-   "fecha": "2026-11-24T06:41:20Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [],
-   "medio": "Vietnam.vn",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Actualizado a las 09:12 del 24 de noviembre de 2026: Los precios nacionales del oro se mantuvieron estables en su mayoría, excepto el BTMH, que disminuyó en 1 millón de VND."
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOeWdkOFNKNTlkbzdmRkdhWVlvWGs4N2lJMFdsTzNKOVM1N0YtekdUTkc3UGpmTTl4NFRDdzAxMjJvLW1FTWxuM1U4RG12MVhONGZxOE9Ec3JmeXZfbElQMDZRQmszZXRULW5rQVh6eFlLcWdFZlk0MUIxYUo5dmlaXzM2SVphSWpMblEyN3luSjU5bzhackxaeDluQllsa2I5UWJlbTlkU3c1SVRMUnBKcnRpN0JaZ3BkS0VDOExwWkg1VWlVMURsMzNGdmxKZHM1UHRMYTB0NjVNYklkRXJ6V3VMMFlSV3dhal9z?oc=5",
-   "fecha": "2026-11-24T06:38:44Z",
-   "idioma": "es",
-   "impacto": 24,
-   "materias": [],
-   "medio": "Vietnam.vn",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Hoy, 24 de noviembre, el precio del oro está recuperando impulso y repuntando, pero no se descartan nuevas caídas. ¿Debería comprar ahora que está en su punto más bajo?"
-  },
-  {
-   "activos": [
-    "oro"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQel9GTjZNdFZ1SFpZTVlELV9id0hzMFJCR2hpRUNLSUhBOFR1YnJXOVM1Y1VmMHExeGk5YmRzTXlGUjhiNzZDaHh4SS14SVJBTVdnRkhOVTlMMWRWdzctLVl2UDlwbzJvNktna3I4LWluV1dyRVcySXYwbk5NbTcyUl9Hc2xUaDlHRHB1THRDOUxrTkVqRnN1QzhWdXZRNWpqVDlRNA?oc=5",
-   "fecha": "2026-11-24T06:38:42Z",
-   "idioma": "en",
-   "impacto": 24,
-   "materias": [],
-   "medio": "Vietnam.vn",
-   "nivel": "baja",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "preciosos"
-   ],
-   "sentido": "",
-   "tambien_en": [],
-   "tipo": null,
-   "titulo": "Gold price update, morning of November 24, 2026: SJC, 9999 DOJI rings, BTMC PNJ, Phu Quy, Tuesday.",
-   "titulo_es": "Actualización del precio del oro, mañana del 24 de noviembre de 2026: SJC, 9999 anillos DOJI, BTMC PNJ, Phu Quy, martes."
-  },
-  {
-   "activos": [
-    "energia"
-   ],
-   "comercial": false,
-   "enlace": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSmFnY2NvVkp5LWQ3WFFleFRCNDlINEpTX0NzRjZUSktIUFpGQld3T0hacEViTDVjZW53YmNTSU1Ca3FDNGZoLW5rRGlaTk9WVEhLUl9mSy1aeENRWURnQThYd1R2cFcxdlB1VlVhZ0N5YXRFUkNpdnlPMTRScGliMWxSM2k4a25yYUVORTVuNzNQVW5RLU5jdHprRk9teGxiX1l3Rm10bThoOWlfZzQ1eWNSbExITjJLNEI5Q3oycXg?oc=5",
-   "fecha": "2026-11-24T06:37:36Z",
-   "idioma": "en",
-   "impacto": 64,
-   "materias": [
-    "petroleo"
-   ],
-   "medio": "Kotak Neo",
-   "nivel": "media",
-   "nota": 72,
-   "resumen": "",
-   "seccion": [
-    "materias"
-   ],
-   "sentido": "baja",
-   "tambien_en": [],
-   "tipo": "geopolitica",
-   "titulo": "Oil Price Today, 24 November: Brent Falls Below $90 as US-Iran Talks Offset Supply Risks",
-   "titulo_es": "Precio del petróleo hoy, 24 de noviembre: Brent cae por debajo de $90 mientras las conversaciones entre EE.UU. e Irán compensan los riesgos de suministro"
   }
  ]
 }
