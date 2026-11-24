@@ -1,6 +1,6 @@
 {
  "cobre": {
-  "calculado": "2026-11-24T14:32:44Z",
+  "calculado": "2026-11-24T16:32:57Z",
   "contexto": [
    {
     "dato": "Percentil 19 de los últimos 3 años",
@@ -530,29 +530,29 @@
    ],
    [
     "2026-11",
-    5.955605285714285
+    5.946567428571428
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 5.53303,
+  "precio_usado": 5.4065,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -15.920574199485793,
+     "cambio_pct": -17.843312689343794,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 6.580718109478528,
      "sube": false
     },
     {
-     "cambio_pct": -14.852414525069102,
+     "cambio_pct": -16.79957981969844,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 6.498164298069299,
      "sube": false
     },
     {
-     "cambio_pct": 12.82133828282095,
+     "cambio_pct": 10.241326258139116,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 4.90424070855265,
@@ -567,7 +567,7 @@
   }
  },
  "oro": {
-  "calculado": "2026-11-24T14:32:44Z",
+  "calculado": "2026-11-24T16:32:57Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,45 puntos; dólar +4,5 %",
@@ -586,7 +586,7 @@
     "puntos": 0
    },
    {
-    "dato": "Ratio 80,66 (media 10 años: 80,56)",
+    "dato": "Ratio 80,75 (media 10 años: 80,56)",
     "explicacion": "Frente al otro metal, el activo está en su rango habitual.",
     "fecha": "2026-11",
     "id": "ratio",
@@ -1113,29 +1113,29 @@
    ],
    [
     "2026-11",
-    3851.354667142857
+    3847.2185885714284
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 3624.23891,
+  "precio_usado": 3566.33381,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -11.711597807551765,
+     "cambio_pct": -13.122197076735686,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 4105.0,
      "sube": false
     },
     {
-     "cambio_pct": -17.83634300612106,
+     "cambio_pct": -19.14908614826569,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 4411.0,
      "sube": false
     },
     {
-     "cambio_pct": -11.322757279177875,
+     "cambio_pct": -12.739569121605088,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 4087.0,
@@ -1150,7 +1150,7 @@
   }
  },
  "paladio": {
-  "calculado": "2026-11-24T14:32:44Z",
+  "calculado": "2026-11-24T16:32:57Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,45 puntos; dólar +4,5 %",
@@ -1172,15 +1172,15 @@
   "mensual": [
    [
     "2026-11",
-    976.144995
+    974.3369035714286
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 888.57295,
+  "precio_usado": 863.25967,
   "tendencia": null
  },
  "plata": {
-  "calculado": "2026-11-24T14:32:44Z",
+  "calculado": "2026-11-24T16:32:57Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,45 puntos; dólar +4,5 %",
@@ -1199,7 +1199,7 @@
     "puntos": 1
    },
    {
-    "dato": "Ratio 80,66 (media 10 años: 80,56)",
+    "dato": "Ratio 80,75 (media 10 años: 80,56)",
     "explicacion": "Frente al otro metal, el activo está en su rango habitual.",
     "fecha": "2026-11",
     "id": "ratio",
@@ -1726,29 +1726,29 @@
    ],
    [
     "2026-11",
-    47.74888
+    47.642025
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 42.4863,
+  "precio_usado": 40.99033,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -25.46263157894737,
+     "cambio_pct": -28.087140350877192,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 57.0,
      "sube": false
     },
     {
-     "cambio_pct": -35.0362385321101,
+     "cambio_pct": -37.32365443425078,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 65.4,
      "sube": false
     },
     {
-     "cambio_pct": -15.701785714285709,
+     "cambio_pct": -18.66998015873016,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 50.4,
@@ -1763,7 +1763,7 @@
   }
  },
  "platino": {
-  "calculado": "2026-11-24T14:32:44Z",
+  "calculado": "2026-11-24T16:32:57Z",
   "contexto": [
    {
     "dato": "En 3 meses: tipo real +0,45 puntos; dólar +4,5 %",
@@ -2309,29 +2309,29 @@
    ],
    [
     "2026-11",
-    1445.6223964285714
+    1443.5576307142858
    ]
   ],
   "precio_origen": "precio actual",
-  "precio_usado": 1304.56336,
+  "precio_usado": 1275.65664,
   "tendencia": {
    "detalle": [
     {
-     "cambio_pct": -19.52107587908698,
+     "cambio_pct": -21.304340530536713,
      "mes_ref": "2026-10",
      "meses": 1,
      "referencia": 1621.0,
      "sube": false
     },
     {
-     "cambio_pct": -26.709923595505614,
+     "cambio_pct": -28.333896629213484,
      "mes_ref": "2026-08",
      "meses": 3,
      "referencia": 1780.0,
      "sube": false
     },
     {
-     "cambio_pct": -16.641318849840246,
+     "cambio_pct": -18.488393610223653,
      "mes_ref": "2025-11",
      "meses": 12,
      "referencia": 1565.0,
