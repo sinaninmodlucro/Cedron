@@ -2615,34 +2615,34 @@
  },
  "2026-11-24": {
   "alimentos": {
-   "alza": 0,
+   "alza": 1,
    "baja": 1,
    "importantes": 2,
-   "noticias": 5
+   "noticias": 7
   },
   "cobre": {
    "alza": 2,
    "baja": 0,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 8
   },
   "construccion": {
    "alza": 2,
    "baja": 1,
    "importantes": 2,
-   "noticias": 9
+   "noticias": 11
   },
   "energia": {
-   "alza": 2,
-   "baja": 12,
-   "importantes": 7,
-   "noticias": 24
+   "alza": 6,
+   "baja": 15,
+   "importantes": 11,
+   "noticias": 44
   },
   "m:acero": {
    "alza": 1,
    "baja": 1,
    "importantes": 2,
-   "noticias": 5
+   "noticias": 6
   },
   "m:aluminio": {
    "alza": 1,
@@ -2651,40 +2651,46 @@
    "noticias": 1
   },
   "m:cerdo": {
-   "alza": 0,
+   "alza": 1,
    "baja": 0,
    "importantes": 1,
-   "noticias": 2
+   "noticias": 3
   },
   "m:cobre": {
    "alza": 2,
    "baja": 0,
    "importantes": 1,
-   "noticias": 6
+   "noticias": 8
   },
   "m:diesel": {
-   "alza": 0,
-   "baja": 0,
-   "importantes": 0,
-   "noticias": 2
+   "alza": 1,
+   "baja": 1,
+   "importantes": 1,
+   "noticias": 6
   },
   "m:electricidad": {
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
   },
   "m:gas": {
+   "alza": 1,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 3
+  },
+  "m:petroleo": {
+   "alza": 3,
+   "baja": 12,
+   "importantes": 7,
+   "noticias": 26
+  },
+  "m:soja": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
-   "noticias": 2
-  },
-  "m:petroleo": {
-   "alza": 1,
-   "baja": 9,
-   "importantes": 4,
-   "noticias": 15
+   "noticias": 1
   },
   "m:trigo": {
    "alza": 0,
@@ -2696,19 +2702,19 @@
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 4
+   "noticias": 5
   },
   "oro": {
-   "alza": 9,
+   "alza": 13,
    "baja": 2,
    "importantes": 1,
-   "noticias": 33
+   "noticias": 52
   },
   "plata": {
-   "alza": 3,
+   "alza": 4,
    "baja": 0,
    "importantes": 0,
-   "noticias": 9
+   "noticias": 12
   }
  }
 }
