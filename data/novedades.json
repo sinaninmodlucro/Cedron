@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-23T23:15:57Z",
+ "actualizado": "2026-11-24T00:10:28Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -2138,6 +2138,22 @@
    "tipo_serie": "apoyo",
    "unidad": "€/MWh",
    "valor": 210.135
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-22",
+   "cambio_pct": 2.0445669653112786,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-23",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-24",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 88.84
   }
  ],
  "medidas": [
@@ -2526,7 +2542,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-22",
+   "fecha": "2026-11-23",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -2590,10 +2606,14 @@
     [
      "2026-11-22",
      87.06
+    ],
+    [
+     "2026-11-23",
+     88.84
     ]
    ],
    "tendencia": "alza",
-   "valor": 87.06
+   "valor": 88.84
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
