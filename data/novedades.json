@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-25T11:20:22Z",
+ "actualizado": "2026-11-25T13:47:25Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -2446,6 +2446,34 @@
    "tipo_serie": "apoyo",
    "unidad": "€/tonelada",
    "valor": 1656.5721061753168
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-25",
+   "cambio_pct": 75.2917726428198,
+   "clave": "apoyo:electricidad:espana",
+   "dato": "2026-11-26",
+   "diaria": true,
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-25",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 194.353
+  },
+  {
+   "ahora": "alza",
+   "ambito": "España",
+   "antes": "mixta",
+   "clave": "apoyo:electricidad:espana",
+   "enlace": "materias/electricidad.html",
+   "fecha": "2026-11-25",
+   "materia": "electricidad",
+   "nombre": "Electricidad",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -2533,11 +2561,11 @@
     ],
     [
      "2026-11-25",
-     2492.60373985223
+     2512.3708930037396
     ]
    ],
    "tendencia": "mixta",
-   "valor": 2492.60373985223
+   "valor": 2512.3708930037396
   },
   "apoyo:aove:espana": {
    "fecha": "2026-11-09",
@@ -2728,11 +2756,11 @@
     ],
     [
      "2026-11-25",
-     10630.016837179603
+     10660.181299461825
     ]
    ],
    "tendencia": "mixta",
-   "valor": 10630.016837179603
+   "valor": 10660.181299461825
   },
   "apoyo:complejo:espana": {
    "fecha": "2026-07",
@@ -2755,7 +2783,7 @@
    "valor": 5.206143157509827
   },
   "apoyo:electricidad:espana": {
-   "fecha": "2026-11-25",
+   "fecha": "2026-11-26",
    "info": {
     "ambito": "España",
     "enlace": "materias/electricidad.html",
@@ -2823,10 +2851,14 @@
     [
      "2026-11-25",
      110.874
+    ],
+    [
+     "2026-11-26",
+     194.353
     ]
    ],
-   "tendencia": "mixta",
-   "valor": 110.874
+   "tendencia": "alza",
+   "valor": 194.353
   },
   "apoyo:estano:global": {
    "fecha": "2026-10",
@@ -3105,11 +3137,11 @@
     ],
     [
      "2026-11-25",
-     13806.408081729453
+     13870.689847669433
     ]
    ],
    "tendencia": "mixta",
-   "valor": 13806.408081729453
+   "valor": 13870.689847669433
   },
   "apoyo:nitrato:espana": {
    "fecha": "2026-07",
@@ -3187,11 +3219,11 @@
     ],
     [
      "2026-11-25",
-     1656.5721061753168
+     1667.791662866004
     ]
    ],
    "tendencia": "mixta",
-   "valor": 1656.5721061753168
+   "valor": 1667.791662866004
   },
   "apoyo:pollo:espana": {
    "fecha": "2026-11-09",
@@ -3362,36 +3394,36 @@
     ],
     [
      "2026-11-25",
-     3085.3780899388853
+     3108.7749703548297
     ]
    ],
    "tendencia": "mixta",
-   "valor": 3085.3780899388853
+   "valor": 3108.7749703548297
   },
   "metal:cobre": {
    "fecha": "2026-11-25",
    "tendencia": "mixta",
-   "valor": 5.28603
+   "valor": 5.30103
   },
   "metal:oro": {
    "fecha": "2026-11-25",
    "tendencia": "baja",
-   "valor": 3529.07962
+   "valor": 3470.25296
   },
   "metal:paladio": {
    "fecha": "2026-11-25",
    "tendencia": null,
-   "valor": 852.22431
+   "valor": 848.28716
   },
   "metal:plata": {
    "fecha": "2026-11-25",
    "tendencia": "baja",
-   "valor": 40.27062
+   "valor": 39.32364
   },
   "metal:platino": {
    "fecha": "2026-11-25",
    "tendencia": "baja",
-   "valor": 1259.3031
+   "valor": 1246.25951
   }
  }
 }
