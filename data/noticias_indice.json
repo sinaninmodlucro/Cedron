@@ -2792,33 +2792,33 @@
  "2026-11-25": {
   "alimentos": {
    "alza": 0,
-   "baja": 0,
+   "baja": 2,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 6
   },
   "cobre": {
    "alza": 1,
    "baja": 0,
    "importantes": 1,
-   "noticias": 2
-  },
-  "construccion": {
-   "alza": 2,
-   "baja": 0,
-   "importantes": 3,
    "noticias": 3
   },
+  "construccion": {
+   "alza": 3,
+   "baja": 0,
+   "importantes": 3,
+   "noticias": 6
+  },
   "energia": {
-   "alza": 0,
-   "baja": 3,
-   "importantes": 5,
-   "noticias": 15
+   "alza": 1,
+   "baja": 10,
+   "importantes": 11,
+   "noticias": 29
   },
   "m:acero": {
-   "alza": 1,
+   "alza": 2,
    "baja": 0,
    "importantes": 2,
-   "noticias": 2
+   "noticias": 5
   },
   "m:aluminio": {
    "alza": 1,
@@ -2826,17 +2826,23 @@
    "importantes": 1,
    "noticias": 1
   },
-  "m:cobre": {
+  "m:arroz": {
    "alza": 0,
    "baja": 0,
    "importantes": 0,
    "noticias": 1
   },
+  "m:cobre": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 2
+  },
   "m:diesel": {
    "alza": 0,
-   "baja": 1,
-   "importantes": 2,
-   "noticias": 7
+   "baja": 5,
+   "importantes": 5,
+   "noticias": 13
   },
   "m:gas": {
    "alza": 0,
@@ -2846,27 +2852,45 @@
   },
   "m:leche": {
    "alza": 0,
-   "baja": 0,
+   "baja": 1,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
+  },
+  "m:maiz": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 0,
+   "noticias": 2
   },
   "m:petroleo": {
    "alza": 0,
-   "baja": 2,
-   "importantes": 3,
-   "noticias": 5
+   "baja": 5,
+   "importantes": 4,
+   "noticias": 11
+  },
+  "m:soja": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 0,
+   "noticias": 2
+  },
+  "m:trigo": {
+   "alza": 0,
+   "baja": 1,
+   "importantes": 0,
+   "noticias": 1
   },
   "oro": {
    "alza": 1,
-   "baja": 8,
+   "baja": 10,
    "importantes": 7,
-   "noticias": 19
+   "noticias": 27
   },
   "plata": {
    "alza": 0,
-   "baja": 3,
+   "baja": 6,
    "importantes": 3,
-   "noticias": 10
+   "noticias": 14
   }
  }
 }
