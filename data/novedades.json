@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-24T22:20:28Z",
+ "actualizado": "2026-11-25T00:06:15Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -2262,6 +2262,110 @@
    "nombre": "Electricidad",
    "tipo": "tendencia",
    "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "EE. UU.",
+   "anterior": "2026-11-16",
+   "cambio_pct": -3.418459260883888,
+   "clave": "apoyo:diesel:global",
+   "dato": "2026-11-23",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-25",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/galón",
+   "valor": 5.206143157509827
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-23",
+   "cambio_pct": 1.9135524538496096,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-24",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-25",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 90.54
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-08",
+   "cambio_pct": 0.01363452179810043,
+   "clave": "apoyo:leche:espana",
+   "dato": "2026-09",
+   "diaria": false,
+   "enlace": "materias/leche.html",
+   "fecha": "2026-11-25",
+   "materia": "leche",
+   "nombre": "Leche",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 0.9740020618278239
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "baja",
+   "clave": "apoyo:leche:espana",
+   "enlace": "materias/leche.html",
+   "fecha": "2026-11-25",
+   "materia": "leche",
+   "nombre": "Leche",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-08",
+   "cambio_pct": 2.8505981664722624,
+   "clave": "apoyo:azucar:espana",
+   "dato": "2026-09",
+   "diaria": false,
+   "enlace": "materias/azucar.html",
+   "fecha": "2026-11-25",
+   "materia": "azucar",
+   "nombre": "Azúcar",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 1.209312654269999
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "baja",
+   "clave": "apoyo:azucar:espana",
+   "enlace": "materias/azucar.html",
+   "fecha": "2026-11-25",
+   "materia": "azucar",
+   "nombre": "Azúcar",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-08",
+   "cambio_pct": -1.0564514686388748,
+   "clave": "apoyo:cafe:espana",
+   "dato": "2026-09",
+   "diaria": false,
+   "enlace": "materias/cafe.html",
+   "fecha": "2026-11-25",
+   "materia": "cafe",
+   "nombre": "Café",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/kg",
+   "valor": 16.55964169588091
   }
  ],
  "medidas": [
@@ -2372,9 +2476,9 @@
    "valor": 436.5451336052103
   },
   "apoyo:azucar:espana": {
-   "fecha": "2026-08",
-   "tendencia": "baja",
-   "valor": 1.1771847506101896
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 1.209312654269999
   },
   "apoyo:azucar:europa": {
    "fecha": "2026-10",
@@ -2430,9 +2534,9 @@
    "valor": 5.133199423783148
   },
   "apoyo:cafe:espana": {
-   "fecha": "2026-08",
+   "fecha": "2026-09",
    "tendencia": "baja",
-   "valor": 16.987549947780597
+   "valor": 16.55964169588091
   },
   "apoyo:cafe:global": {
    "fecha": "2026-10",
@@ -2558,9 +2662,9 @@
    "valor": 2.0497103140755484
   },
   "apoyo:diesel:global": {
-   "fecha": "2026-11-16",
+   "fecha": "2026-11-23",
    "tendencia": "mixta",
-   "valor": 5.390412202651172
+   "valor": 5.206143157509827
   },
   "apoyo:electricidad:espana": {
    "fecha": "2026-11-25",
@@ -2662,7 +2766,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-23",
+   "fecha": "2026-11-24",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -2730,10 +2834,14 @@
     [
      "2026-11-23",
      88.84
+    ],
+    [
+     "2026-11-24",
+     90.54
     ]
    ],
    "tendencia": "alza",
-   "valor": 88.84
+   "valor": 90.54
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
@@ -2809,9 +2917,9 @@
    "valor": 0.128333282
   },
   "apoyo:leche:espana": {
-   "fecha": "2026-08",
-   "tendencia": "baja",
-   "valor": 0.9669928259319349
+   "fecha": "2026-09",
+   "tendencia": "mixta",
+   "valor": 0.9740020618278239
   },
   "apoyo:madera:espana": {
    "fecha": "2026-09",
