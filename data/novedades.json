@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-25T22:21:26Z",
+ "actualizado": "2026-11-26T00:09:00Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -2474,6 +2474,102 @@
    "nombre": "Electricidad",
    "tipo": "tendencia",
    "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-16",
+   "cambio_pct": -2.4468571271059503,
+   "clave": "apoyo:diesel:espana",
+   "dato": "2026-11-23",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-26",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 1.7922594920000001
+  },
+  {
+   "ambito": "Europa",
+   "anterior": "2026-11-16",
+   "cambio_pct": -2.4134948661953315,
+   "clave": "apoyo:diesel:europa",
+   "dato": "2026-11-23",
+   "diaria": false,
+   "enlace": "materias/diesel.html",
+   "fecha": "2026-11-26",
+   "materia": "diesel",
+   "nombre": "Diésel (gasóleo A)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/litro",
+   "valor": 2.000240660873459
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-23",
+   "cambio_pct": 0.4375363063318094,
+   "clave": "apoyo:brent:global",
+   "dato": "2026-11-24",
+   "diaria": true,
+   "enlace": "materias/brent.html",
+   "fecha": "2026-11-26",
+   "materia": "brent",
+   "nombre": "Petróleo Brent",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/barril",
+   "valor": 83.73620359390677
+  },
+  {
+   "ambito": "Global",
+   "anterior": "2026-11-23",
+   "cambio_pct": 0.7860006009808629,
+   "clave": "apoyo:wti:global",
+   "dato": "2026-11-24",
+   "diaria": true,
+   "enlace": "materias/wti.html",
+   "fecha": "2026-11-26",
+   "materia": "wti",
+   "nombre": "Petróleo WTI",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/barril",
+   "valor": 75.0159627839095
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-24",
+   "cambio_pct": -2.242102937927992,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-25",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-26",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 88.51
+  },
+  {
+   "ambito": "EE. UU.",
+   "anterior": "2026-11-23",
+   "cambio_pct": 0.3895030512833797,
+   "clave": "apoyo:gas:global",
+   "dato": "2026-11-24",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-26",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MMBtu",
+   "valor": 3.0101249657940343
   }
  ],
  "medidas": [
@@ -2603,7 +2699,7 @@
    "valor": 0.3838740438655224
   },
   "apoyo:brent:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-24",
    "info": {
     "ambito": "Global",
     "enlace": "materias/brent.html",
@@ -2635,10 +2731,18 @@
     [
      "2026-11-17",
      84.57548457548458
+    ],
+    [
+     "2026-11-23",
+     83.37142334765518
+    ],
+    [
+     "2026-11-24",
+     83.73620359390677
     ]
    ],
    "tendencia": "mixta",
-   "valor": 84.57548457548458
+   "valor": 83.73620359390677
   },
   "apoyo:cacao:global": {
    "fecha": "2026-10",
@@ -2768,14 +2872,14 @@
    "valor": 658.4000000000001
   },
   "apoyo:diesel:espana": {
-   "fecha": "2026-11-16",
+   "fecha": "2026-11-23",
    "tendencia": "mixta",
-   "valor": 1.837213481
+   "valor": 1.7922594920000001
   },
   "apoyo:diesel:europa": {
-   "fecha": "2026-11-16",
+   "fecha": "2026-11-23",
    "tendencia": "mixta",
-   "valor": 2.0497103140755484
+   "valor": 2.000240660873459
   },
   "apoyo:diesel:global": {
    "fecha": "2026-11-23",
@@ -2886,7 +2990,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-24",
+   "fecha": "2026-11-25",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -2958,10 +3062,14 @@
     [
      "2026-11-24",
      90.54
+    ],
+    [
+     "2026-11-25",
+     88.51
     ]
    ],
    "tendencia": "alza",
-   "valor": 90.54
+   "valor": 88.51
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
@@ -2969,7 +3077,7 @@
    "valor": 25.442814535272994
   },
   "apoyo:gas:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-24",
    "info": {
     "ambito": "EE. UU.",
     "enlace": "materias/gas.html",
@@ -3001,10 +3109,18 @@
     [
      "2026-11-17",
      2.8210028210028213
+    ],
+    [
+     "2026-11-23",
+     2.998445927415668
+    ],
+    [
+     "2026-11-24",
+     3.0101249657940343
     ]
    ],
    "tendencia": "mixta",
-   "valor": 2.8210028210028213
+   "valor": 3.0101249657940343
   },
   "apoyo:girasol:espana": {
    "fecha": "2026-11-09",
@@ -3291,7 +3407,7 @@
    "valor": 374.9467405198126
   },
   "apoyo:wti:global": {
-   "fecha": "2026-11-17",
+   "fecha": "2026-11-24",
    "info": {
     "ambito": "Global",
     "enlace": "materias/wti.html",
@@ -3323,10 +3439,18 @@
     [
      "2026-11-17",
      81.47238147238147
+    ],
+    [
+     "2026-11-23",
+     74.43093518603162
+    ],
+    [
+     "2026-11-24",
+     75.0159627839095
     ]
    ],
    "tendencia": "mixta",
-   "valor": 81.47238147238147
+   "valor": 75.0159627839095
   },
   "apoyo:zinc:espana": {
    "fecha": "2026-09",
