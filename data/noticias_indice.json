@@ -3382,25 +3382,49 @@
    "alza": 1,
    "baja": 0,
    "importantes": 0,
+   "noticias": 2
+  },
+  "construccion": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
+   "noticias": 2
+  },
+  "energia": {
+   "alza": 0,
+   "baja": 2,
+   "importantes": 1,
+   "noticias": 3
+  },
+  "m:acero": {
+   "alza": 0,
+   "baja": 0,
+   "importantes": 0,
    "noticias": 1
   },
   "m:cobre": {
    "alza": 1,
    "baja": 0,
    "importantes": 0,
-   "noticias": 1
+   "noticias": 2
+  },
+  "m:petroleo": {
+   "alza": 0,
+   "baja": 2,
+   "importantes": 1,
+   "noticias": 3
   },
   "oro": {
-   "alza": 1,
+   "alza": 2,
    "baja": 0,
    "importantes": 1,
-   "noticias": 1
+   "noticias": 4
   },
   "plata": {
    "alza": 1,
    "baja": 0,
    "importantes": 1,
-   "noticias": 1
+   "noticias": 2
   },
   "platino": {
    "alza": 1,
