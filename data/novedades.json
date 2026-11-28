@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-27T22:19:21Z",
+ "actualizado": "2026-11-28T00:09:34Z",
  "eventos": [
   {
    "ambito": "EE. UU.",
@@ -3070,6 +3070,126 @@
    "tipo_serie": "apoyo",
    "unidad": "€/MWh",
    "valor": 211.394
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-11-26",
+   "cambio_pct": -1.2141535615171062,
+   "clave": "apoyo:gas:espana",
+   "dato": "2026-11-27",
+   "diaria": true,
+   "enlace": "materias/gas.html",
+   "fecha": "2026-11-28",
+   "materia": "gas",
+   "nombre": "Gas natural",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/MWh",
+   "valor": 85.43
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-07",
+   "cambio_pct": -0.6859065614080451,
+   "clave": "apoyo:urea:espana",
+   "dato": "2026-08",
+   "diaria": false,
+   "enlace": "materias/urea.html",
+   "fecha": "2026-11-28",
+   "materia": "urea",
+   "nombre": "Urea",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 767.4
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-07",
+   "cambio_pct": -2.6879370629370514,
+   "clave": "apoyo:nitrato:espana",
+   "dato": "2026-08",
+   "diaria": false,
+   "enlace": "materias/nitrato.html",
+   "fecha": "2026-11-28",
+   "materia": "nitrato",
+   "nombre": "Nitrato amónico cálcico",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 445.3
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "alza",
+   "clave": "apoyo:nitrato:espana",
+   "enlace": "materias/nitrato.html",
+   "fecha": "2026-11-28",
+   "materia": "nitrato",
+   "nombre": "Nitrato amónico cálcico",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-07",
+   "cambio_pct": 1.491555165606484,
+   "clave": "apoyo:fosfatos:espana",
+   "dato": "2026-08",
+   "diaria": false,
+   "enlace": "materias/fosfatos.html",
+   "fecha": "2026-11-28",
+   "materia": "fosfatos",
+   "nombre": "Fosfatos (DAP)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 925.4000000000001
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-07",
+   "cambio_pct": -5.665776421213287,
+   "clave": "apoyo:potasa:espana",
+   "dato": "2026-08",
+   "diaria": false,
+   "enlace": "materias/potasa.html",
+   "fecha": "2026-11-28",
+   "materia": "potasa",
+   "nombre": "Potasa (cloruro potásico)",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 494.5
+  },
+  {
+   "ambito": "España",
+   "anterior": "2026-07",
+   "cambio_pct": -0.3341433778857872,
+   "clave": "apoyo:complejo:espana",
+   "dato": "2026-08",
+   "diaria": false,
+   "enlace": "materias/complejo.html",
+   "fecha": "2026-11-28",
+   "materia": "complejo",
+   "nombre": "Abono complejo 15-15-15",
+   "tipo": "dato",
+   "tipo_serie": "apoyo",
+   "unidad": "€/tonelada",
+   "valor": 656.2
+  },
+  {
+   "ahora": "mixta",
+   "ambito": "España",
+   "antes": "alza",
+   "clave": "apoyo:complejo:espana",
+   "enlace": "materias/complejo.html",
+   "fecha": "2026-11-28",
+   "materia": "complejo",
+   "nombre": "Abono complejo 15-15-15",
+   "tipo": "tendencia",
+   "tipo_serie": "apoyo"
   }
  ],
  "medidas": [
@@ -3383,9 +3503,9 @@
    "valor": 11118.854189832984
   },
   "apoyo:complejo:espana": {
-   "fecha": "2026-07",
-   "tendencia": "alza",
-   "valor": 658.4000000000001
+   "fecha": "2026-08",
+   "tendencia": "mixta",
+   "valor": 656.2
   },
   "apoyo:diesel:espana": {
    "fecha": "2026-11-23",
@@ -3504,9 +3624,9 @@
    "valor": 122.6
   },
   "apoyo:fosfatos:espana": {
-   "fecha": "2026-07",
+   "fecha": "2026-08",
    "tendencia": "alza",
-   "valor": 911.8000000000001
+   "valor": 925.4000000000001
   },
   "apoyo:fosfatos:global": {
    "fecha": "2026-10",
@@ -3514,7 +3634,7 @@
    "valor": 716.9517316939559
   },
   "apoyo:gas:espana": {
-   "fecha": "2026-11-26",
+   "fecha": "2026-11-27",
    "info": {
     "ambito": "España",
     "enlace": "materias/gas.html",
@@ -3594,10 +3714,14 @@
     [
      "2026-11-26",
      86.48
+    ],
+    [
+     "2026-11-27",
+     85.43
     ]
    ],
    "tendencia": "alza",
-   "valor": 86.48
+   "valor": 85.43
   },
   "apoyo:gas:europa": {
    "fecha": "2026-10",
@@ -3796,9 +3920,9 @@
    "valor": 14432.70624258465
   },
   "apoyo:nitrato:espana": {
-   "fecha": "2026-07",
-   "tendencia": "alza",
-   "valor": 457.59999999999997
+   "fecha": "2026-08",
+   "tendencia": "mixta",
+   "valor": 445.3
   },
   "apoyo:patata:espana": {
    "fecha": "2026-11-16",
@@ -3896,9 +4020,9 @@
    "valor": 1.6426238156106074
   },
   "apoyo:potasa:espana": {
-   "fecha": "2026-07",
+   "fecha": "2026-08",
    "tendencia": "mixta",
-   "valor": 524.2
+   "valor": 494.5
   },
   "apoyo:potasa:global": {
    "fecha": "2026-10",
@@ -3941,9 +4065,9 @@
    "valor": 282.9955160590014
   },
   "apoyo:urea:espana": {
-   "fecha": "2026-07",
+   "fecha": "2026-08",
    "tendencia": "mixta",
-   "valor": 772.6999999999999
+   "valor": 767.4
   },
   "apoyo:urea:global": {
    "fecha": "2026-10",
